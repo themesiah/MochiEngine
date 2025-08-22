@@ -40,3 +40,4 @@ target_compile_options(compiler_flags INTERFACE
 
 # Add all subdirectories
 add_subdirectory("src/Engine")
+add_subdirectory("src/Test")

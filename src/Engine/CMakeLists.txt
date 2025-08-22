@@ -1,4 +1,4 @@
-# Get all .h and .cpp files
+# Get all .cpp files
 file(GLOB Engine_src CONFIGURE_DEPENDS "Graphics/*.cpp" "*.cpp")
 
 # Create the library
