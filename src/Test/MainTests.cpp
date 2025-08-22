@@ -1,13 +1,13 @@
-#include <iostream>
+// https://github.com/doctest/doctest/blob/master/doc/markdown/tutorial.md
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include "doctest.h"
 
-int main()
-{
-    std::cout << "In main" << std::endl;
-    return 1;
-}
+int factorial(int number) { return number <= 1 ? number : factorial(number - 1) * number; }
 
-bool FirstTest()
+TEST_CASE("testing the factorial function")
 {
-    std::cout << "In test" << std::endl;
-    return true;
+    CHECK(factorial(1) == 1);
+    CHECK(factorial(2) == 2);
+    CHECK(factorial(3) == 6);
+    CHECK(factorial(10) == 3628800);
 }
