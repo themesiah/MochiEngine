@@ -17,8 +17,10 @@ target_compile_definitions(compiler_flags INTERFACE "DEBUG")
 
 # Link common use libraries
 add_subdirectory(Includes/SDL3 EXCLUDE_FROM_ALL)
+add_subdirectory(Includes/SDL3_image EXCLUDE_FROM_ALL)
 target_link_libraries(compiler_flags
                       INTERFACE
+                      SDL3_image::SDL3_image
                       SDL3::SDL3
 )
 

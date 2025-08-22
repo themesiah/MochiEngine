@@ -15,27 +15,14 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 {
     int i;
 
-    *appstate = new World();
-    World &state = *static_cast<World *>(*appstate);
-
-    SDL_SetAppMetadata("Space Shooter", "0.1", "com.magicmochi.spaceshooter");
-
-    if (!SDL_Init(SDL_INIT_VIDEO))
+    try
     {
-        SDL_Log("Couldn't initialize SDL: %s", SDL_GetError());
-        return SDL_APP_FAILURE;
+        *appstate = new World();
+        World &state = *static_cast<World *>(*appstate);
     }
-
-    if (!SDL_CreateWindowAndRenderer("Space Shooter", 640, 480, SDL_WINDOW_ALWAYS_ON_TOP, &state.window, &state.renderer))
+    catch (SDL_AppResult errorCode)
     {
-        SDL_Log("Couldn't create window/renderer: %s", SDL_GetError());
-        return SDL_APP_FAILURE;
-    }
-
-    if (!SDL_SetRenderVSync(state.renderer, 1))
-    {
-        SDL_Log("Couldn't set vsyinc to true: %s", SDL_GetError());
-        return SDL_APP_FAILURE;
+        return errorCode;
     }
 
     return SDL_APP_CONTINUE; /* carry on with the program! */
