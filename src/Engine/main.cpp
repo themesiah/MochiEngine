@@ -13,18 +13,18 @@
 /* We will use this renderer to draw into this window every frame. */
 constexpr int screenFps{60};
 
+FMOD_SYSTEM *fmodSystem = NULL;
 /* This function runs once at startup. */
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 {
     FMOD_RESULT result;
-    FMOD_SYSTEM *system = NULL;
-    result = FMOD_System_Create(&system, FMOD_VERSION);
+    result = FMOD_System_Create(&fmodSystem, FMOD_VERSION);
     if (result != FMOD_OK)
     {
         std::cout << "Can't create FMOD system" << std::endl;
         exit(-1);
     }
-    result = FMOD_System_Init(system, 512, FMOD_INIT_NORMAL, 0);
+    result = FMOD_System_Init(fmodSystem, 512, FMOD_INIT_NORMAL, 0);
     if (result != FMOD_OK)
     {
         std::cout << "Can't init FMOD system" << std::endl;
@@ -92,4 +92,5 @@ SDL_AppResult SDL_AppIterate(void *appstate)
 void SDL_AppQuit(void *appstate, SDL_AppResult result)
 {
     /* SDL will clean up the window/renderer for us. */
+    FMOD_System_Release(fmodSystem);
 }
