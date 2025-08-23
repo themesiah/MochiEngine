@@ -1,15 +1,16 @@
 #ifndef HDEF_WORLD
 #define HDEF_WORLD
 
-#include <SDL3/SDL.h>
-
-#include "Graphics/Sprite.h"
-
+class Sprite;
+struct SDL_Window;
+struct SDL_Renderer;
+struct FMOD_SYSTEM;
 class World
 {
 private:
     int _timesUpdated;
     Sprite *mSampleSprite;
+    FMOD_SYSTEM *mFmodSystem;
 
 public:
     SDL_Window *window{nullptr};

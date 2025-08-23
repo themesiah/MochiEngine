@@ -4,6 +4,10 @@
 #include <iostream>
 #include <SDL3_image/SDL_image.h>
 #include <filesystem>
+#include <fmod.h>
+#include <fmod_common.h>
+
+#include "Graphics/Sprite.h"
 
 World::World()
 {
@@ -30,11 +34,21 @@ World::World()
     }
 
     mSampleSprite = new Sprite(renderer, "Data\\Coproducers.jpg");
-    //  if (!texture)
-    //{
-    //      std::cout << "Image not found in " << std::filesystem::current_path() << std::endl;
-    //      std::cout << "Error is: " << SDL_GetError() << std::endl;
-    //  }
+
+    FMOD_RESULT result;
+    mFmodSystem = NULL;
+    result = FMOD_System_Create(&mFmodSystem, FMOD_VERSION);
+    if (result != FMOD_OK)
+    {
+        std::cout << "Can't create FMOD system" << std::endl;
+        exit(-1);
+    }
+    result = FMOD_System_Init(mFmodSystem, 512, FMOD_INIT_NORMAL, 0);
+    if (result != FMOD_OK)
+    {
+        std::cout << "Can't init FMOD system" << std::endl;
+        exit(-1);
+    }
 }
 
 void World::Update(const float &dt)
@@ -48,6 +62,12 @@ void World::Update(const float &dt)
 
     _timesUpdated++;
     // std::cout << "Times updated is: " << _timesUpdated << std::endl;
+
+    FMOD_RESULT result = FMOD_System_Update(mFmodSystem);
+    if (result != FMOD_OK)
+    {
+        std::cout << "Couldn't update FMOD system" << std::endl;
+    }
 }
 
 void World::Render() const
@@ -78,4 +98,5 @@ void World::Render() const
 World::~World()
 {
     delete mSampleSprite;
+    FMOD_System_Release(mFmodSystem);
 }
