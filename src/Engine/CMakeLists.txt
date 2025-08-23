@@ -17,3 +17,11 @@ add_custom_command(
   "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Data"
   COMMENT "Copying data folder from ${PROJECT_SOURCE_DIR} TO ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
 )
+
+add_custom_command(
+  TARGET Engine POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy
+  "${CMAKE_SOURCE_DIR}/Includes/FMOD/win/core/lib/x64/fmod.dll"
+  "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/fmod.dll"
+  COMMENT "Copying fmod.dll"
+)

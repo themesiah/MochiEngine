@@ -1,9 +1,12 @@
 #define SDL_MAIN_USE_CALLBACKS 1
 
 #include <chrono>
+#include <iostream>
 
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
+#include <fmod.h>
+#include <fmod_common.h>
 
 #include "World.h"
 
@@ -13,6 +16,21 @@ constexpr int screenFps{60};
 /* This function runs once at startup. */
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 {
+    FMOD_RESULT result;
+    FMOD_SYSTEM *system = NULL;
+    result = FMOD_System_Create(&system, FMOD_VERSION);
+    if (result != FMOD_OK)
+    {
+        std::cout << "Can't create FMOD system" << std::endl;
+        exit(-1);
+    }
+    result = FMOD_System_Init(system, 512, FMOD_INIT_NORMAL, 0);
+    if (result != FMOD_OK)
+    {
+        std::cout << "Can't init FMOD system" << std::endl;
+        exit(-1);
+    }
+
     int i;
 
     try

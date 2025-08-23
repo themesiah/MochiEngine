@@ -17,13 +17,21 @@ target_compile_features(compiler_flags INTERFACE cxx_std_23)
 # Set some precompiling definitions depending on target
 target_compile_definitions(compiler_flags INTERFACE "DEBUG")
 
+#fmod
+#add_library(fmod SHARED IMPORTED GLOBAL)
+#set_target_properties(fmod PROPERTIES IMPORTED_LOCATION "${CMAKE_SOURCE_DIR}/Includes/FMOD/fmod.dll")
+#set_target_properties(fmod PROPERTIES IMPORTED_IMPLIB "${CMAKE_SOURCE_DIR}/Includes/FMOD/fmod_vc.lib")
+
 # Link common use libraries
 add_subdirectory(Includes/SDL3 EXCLUDE_FROM_ALL)
 add_subdirectory(Includes/SDL3_image EXCLUDE_FROM_ALL)
+add_subdirectory(Includes/FMOD EXCLUDE_FROM_ALL)
+include_directories("${CMAKE_SOURCE_DIR}/Includes/FMOD")
 target_link_libraries(compiler_flags
                       INTERFACE
                       SDL3_image::SDL3_image
                       SDL3::SDL3
+                      fmod
 )
 
 
