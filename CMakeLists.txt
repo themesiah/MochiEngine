@@ -27,6 +27,7 @@ target_link_libraries(compiler_flags
                       SDL3_image::SDL3_image
                       SDL3::SDL3
                       fmod
+                      fmodstudio
 )
 
 

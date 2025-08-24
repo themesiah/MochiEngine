@@ -21,18 +21,15 @@ add_custom_command(
 add_custom_command(
   TARGET Engine POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy
+  "${CMAKE_SOURCE_DIR}/Includes/FMOD/win/studio/lib/x64/fmodstudio.dll"
+  "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/fmodstudio.dll"
+  COMMENT "Copying fmodstudio.dll"
+)
+
+add_custom_command(
+  TARGET Engine POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy
   "${CMAKE_SOURCE_DIR}/Includes/FMOD/win/core/lib/x64/fmod.dll"
   "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/fmod.dll"
   COMMENT "Copying fmod.dll"
-)
-
-message("AAAAAAAAA")
-message("${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
-message("${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../../tests/$<CONFIG>")
-add_custom_command(
-  TARGET Engine POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy_directory
-  "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
-  "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/../../tests/$<CONFIG>"
-  COMMENT "Copying all to tests"
 )

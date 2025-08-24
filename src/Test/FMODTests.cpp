@@ -2,17 +2,17 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 
-#include <fmod.h>
-#include <fmod_common.h>
+#include <fmod_studio.h>
 
 TEST_CASE("Init FMOD")
 {
     FMOD_RESULT result;
-    FMOD_SYSTEM *system = NULL;
-    result = FMOD_System_Create(&system, FMOD_VERSION);
+    FMOD_STUDIO_SYSTEM *system = NULL;
+
+    result = FMOD_Studio_System_Create(&system, FMOD_VERSION);
     CHECK(result == FMOD_OK);
-    result = FMOD_System_Init(system, 512, FMOD_INIT_NORMAL, 0);
+    result = FMOD_Studio_System_Initialize(system, 512, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, 0);
     CHECK(result == FMOD_OK);
-    result = FMOD_System_Release(system);
+    result = FMOD_Studio_System_Release(system);
     CHECK(result == FMOD_OK);
 }
