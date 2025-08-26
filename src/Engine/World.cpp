@@ -8,11 +8,10 @@
 
 #include "Audio/FMODWrapper.h"
 #include "Graphics/Sprite.h"
+#include "Input/InputManager.h"
 
 World::World()
 {
-    _timesUpdated = 0;
-
     SDL_SetAppMetadata("Space Shooter", "0.1", "com.magicmochi.spaceshooter");
 
     if (!SDL_Init(SDL_INIT_VIDEO))
@@ -21,7 +20,7 @@ World::World()
         throw SDL_APP_FAILURE;
     }
 
-    if (!SDL_CreateWindowAndRenderer("Space Shooter", 640, 480, SDL_WINDOW_ALWAYS_ON_TOP, &window, &renderer))
+    if (!SDL_CreateWindowAndRenderer("Space Shooter", 640, 480, 0, &window, &renderer))
     {
         SDL_Log("Couldn't create window/renderer: %s", SDL_GetError());
         throw SDL_APP_FAILURE;
@@ -38,29 +37,29 @@ World::World()
     mFmod = std::make_unique<FMODWrapper>();
     mFmod->Init();
     mFmod->LoadBank("Master");
+
+    mInputManager = std::make_unique<InputManager>();
 }
 
 void World::Update(const float &dt)
 {
     const bool *keyboardState = SDL_GetKeyboardState(NULL);
-
-    _timesUpdated++;
-
+    mInputManager->Update(keyboardState);
     mFmod->Update();
 
-    if (keyboardState[SDL_SCANCODE_B] == true)
+    if (mInputManager->WasPressed(SDL_SCANCODE_B))
     {
         std::cout << "B is pressed!" << std::endl;
         mFmod->PlayBGM("TestMusic");
     }
 
-    if (keyboardState[SDL_SCANCODE_C] == true)
+    if (mInputManager->WasPressed(SDL_SCANCODE_C))
     {
         std::cout << "C is pressed!" << std::endl;
         mFmod->PauseBGM();
     }
 
-    if (keyboardState[SDL_SCANCODE_D] == true)
+    if (mInputManager->WasPressed(SDL_SCANCODE_D))
     {
         std::cout << "D is pressed!" << std::endl;
         mFmod->ResumeBGM();

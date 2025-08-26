@@ -1,5 +1,5 @@
 # Get all .cpp files
-file(GLOB Engine_src CONFIGURE_DEPENDS "Graphics/*.cpp" "Audio/*.cpp" "*.cpp")
+file(GLOB Engine_src CONFIGURE_DEPENDS "Graphics/*.cpp" "Audio/*.cpp" "Input/*.cpp" "*.cpp")
 
 # Create the library
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<CONFIG>)

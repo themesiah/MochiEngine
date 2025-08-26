@@ -10,6 +10,7 @@ set(
   TestList
   MainTests
   FMODTests
+  InputTests
 )
 
 foreach(name IN LISTS TestList)

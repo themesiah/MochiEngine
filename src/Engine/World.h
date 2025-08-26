@@ -6,15 +6,14 @@
 
 class Sprite;
 class FMODWrapper;
+class InputManager;
 struct SDL_Window;
 struct SDL_Renderer;
-struct FMOD_STUDIO_SYSTEM;
-struct FMOD_STUDIO_BANK;
 class World
 {
 private:
     std::unique_ptr<FMODWrapper> mFmod;
-    int _timesUpdated;
+    std::unique_ptr<InputManager> mInputManager;
     Sprite *mSampleSprite;
 
 public:
