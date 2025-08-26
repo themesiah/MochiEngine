@@ -4,11 +4,8 @@
 
 InputManager::InputManager()
 {
-    for (unsigned int i = 0; i < SDL_SCANCODE_COUNT; ++i)
-    {
-        mKeyboardState[i] = false;
-        mKeyboardLastState[i] = false;
-    }
+    memset(mKeyboardState, false, sizeof(mKeyboardState));
+    memset(mKeyboardLastState, false, sizeof(mKeyboardLastState));
 }
 
 bool InputManager::IsDown(const unsigned int &key) const
