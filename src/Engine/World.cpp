@@ -5,23 +5,13 @@
 #include <iostream>
 #include <SDL3_image/SDL_image.h>
 #include <filesystem>
-#include <fmod_studio.h>
-#include <fmod_studio_common.h>
-#include <fmod.h>
-#include <fmod_common.h>
-#include <fmod_errors.h>
 
+#include "Audio/FMODWrapper.h"
 #include "Graphics/Sprite.h"
-
-void PrintFMODError(FMOD_RESULT result)
-{
-    std::cout << FMOD_ErrorString(result) << std::endl;
-}
 
 World::World()
 {
     _timesUpdated = 0;
-    bWasDown = false;
 
     SDL_SetAppMetadata("Space Shooter", "0.1", "com.magicmochi.spaceshooter");
 
@@ -45,107 +35,35 @@ World::World()
 
     mSampleSprite = new Sprite(renderer, "Data\\Coproducers.jpg");
 
-    FMOD_RESULT result;
-    mFmodSystem = NULL;
-    result = FMOD_Studio_System_Create(&mFmodSystem, FMOD_VERSION);
-    if (result != FMOD_OK)
-    {
-        std::cout << "Can't create FMOD system" << std::endl;
-        PrintFMODError(result);
-        exit(-1);
-    }
-    result = FMOD_Studio_System_Initialize(mFmodSystem, 512, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, 0);
-    if (result != FMOD_OK)
-    {
-        std::cout << "Can't init FMOD system" << std::endl;
-        PrintFMODError(result);
-        exit(-1);
-    }
-    result = FMOD_Studio_System_LoadBankFile(mFmodSystem, "Data/Audiobanks/Master.bank", 0, &mMainBank);
-    if (result != FMOD_OK)
-    {
-        std::cout << "Can't load bank" << std::endl;
-        PrintFMODError(result);
-        exit(-1);
-    }
-    result = FMOD_Studio_System_LoadBankFile(mFmodSystem, "Data/Audiobanks/Master.strings.bank", 0, &mStringsBank);
-    if (result != FMOD_OK)
-    {
-        std::cout << "Can't load strings bank" << std::endl;
-        PrintFMODError(result);
-        exit(-1);
-    }
+    mFmod = std::make_unique<FMODWrapper>();
+    mFmod->Init();
+    mFmod->LoadBank("Master");
 }
 
 void World::Update(const float &dt)
 {
     const bool *keyboardState = SDL_GetKeyboardState(NULL);
 
-    if (keyboardState[SDL_SCANCODE_A] == true)
-    {
-        std::cout << "A is pressed!";
-    }
-
     _timesUpdated++;
-    // std::cout << "Times updated is: " << _timesUpdated << std::endl;
 
-    FMOD_RESULT result = FMOD_Studio_System_Update(mFmodSystem);
-    if (result != FMOD_OK)
-    {
-        std::cout << "Couldn't update FMOD system" << std::endl;
-        PrintFMODError(result);
-    }
+    mFmod->Update();
 
     if (keyboardState[SDL_SCANCODE_B] == true)
     {
-        if (!bWasDown)
-        {
-            std::cout << "B is pressed!" << std::endl;
-            FMOD_STUDIO_EVENTDESCRIPTION *eventDescription = NULL;
-            FMOD_STUDIO_EVENTINSTANCE *eventInstance = NULL;
-
-            FMOD_STUDIO_EVENTDESCRIPTION *eventDescriptionList = NULL;
-            int count = 0;
-            result = FMOD_Studio_Bank_GetEventList(mMainBank, &eventDescriptionList, 5, &count);
-            if (result != FMOD_OK)
-            {
-                std::cout << "Can't get event list" << std::endl;
-                PrintFMODError(result);
-                bWasDown = false;
-                return;
-            }
-
-            result = FMOD_Studio_System_GetEvent(mFmodSystem, "event:/TestMusic", &eventDescription);
-            if (result != FMOD_OK)
-            {
-                std::cout << "Can't get event" << std::endl;
-                PrintFMODError(result);
-                bWasDown = false;
-                return;
-            }
-            result = FMOD_Studio_EventDescription_CreateInstance(eventDescription, &eventInstance);
-            if (result != FMOD_OK)
-            {
-                std::cout << "Can't create an instance of the event" << std::endl;
-                PrintFMODError(result);
-                bWasDown = false;
-                return;
-            }
-            result = FMOD_Studio_EventInstance_Start(eventInstance);
-            if (result != FMOD_OK)
-            {
-                std::cout << "Can't start the instance" << std::endl;
-                PrintFMODError(result);
-                bWasDown = false;
-                return;
-            }
-            FMOD_Studio_EventInstance_Release(eventInstance);
-        }
-        bWasDown = true;
+        std::cout << "B is pressed!" << std::endl;
+        mFmod->PlayBGM("TestMusic");
     }
-    else
+
+    if (keyboardState[SDL_SCANCODE_C] == true)
     {
-        bWasDown = false;
+        std::cout << "C is pressed!" << std::endl;
+        mFmod->PauseBGM();
+    }
+
+    if (keyboardState[SDL_SCANCODE_D] == true)
+    {
+        std::cout << "D is pressed!" << std::endl;
+        mFmod->ResumeBGM();
     }
 }
 
@@ -181,6 +99,4 @@ void World::Render() const
 World::~World()
 {
     delete mSampleSprite;
-    FMOD_Studio_System_Release(mFmodSystem);
-    FMOD_Studio_Bank_Unload(mMainBank);
 }

@@ -1,9 +1,9 @@
 # Get all .cpp files
-file(GLOB Engine_src CONFIGURE_DEPENDS "Graphics/*.cpp" "*.cpp")
+file(GLOB Engine_src CONFIGURE_DEPENDS "Graphics/*.cpp" "Audio/*.cpp" "*.cpp")
 
 # Create the library
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<CONFIG>)
-add_executable(Engine ${Engine_src})
+add_library(Engine ${Engine_src})
 
 target_link_libraries(Engine PUBLIC
   compiler_flags

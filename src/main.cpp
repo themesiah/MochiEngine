@@ -6,7 +6,7 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 
-#include "World.h"
+#include "Engine/World.h"
 
 /* We will use this renderer to draw into this window every frame. */
 constexpr int screenFps{60};

@@ -3,16 +3,24 @@
 #include "doctest.h"
 
 #include <fmod_studio.h>
+#include "Audio/FmodWrapper.h"
+
+#include <iostream>
+#include <filesystem>
 
 TEST_CASE("Init FMOD")
 {
-    FMOD_RESULT result;
-    FMOD_STUDIO_SYSTEM *system = NULL;
-
-    result = FMOD_Studio_System_Create(&system, FMOD_VERSION);
+    FMODWrapper fmod = FMODWrapper();
+    FMOD_RESULT result = fmod.Init();
     CHECK(result == FMOD_OK);
-    result = FMOD_Studio_System_Initialize(system, 512, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, 0);
+    result = fmod.LoadBank("Master");
     CHECK(result == FMOD_OK);
-    result = FMOD_Studio_System_Release(system);
+    result = fmod.PlayBGM("TestMusic");
+    CHECK(result == FMOD_OK);
+    result = fmod.PauseBGM();
+    CHECK(result == FMOD_OK);
+    result = fmod.ResumeBGM();
+    CHECK(result == FMOD_OK);
+    result = fmod.StopBGM();
     CHECK(result == FMOD_OK);
 }

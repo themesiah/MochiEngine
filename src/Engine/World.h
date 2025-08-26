@@ -1,9 +1,11 @@
 #ifndef HDEF_WORLD
 #define HDEF_WORLD
 
+#include <memory>
 #include <SDL3/SDL_events.h>
 
 class Sprite;
+class FMODWrapper;
 struct SDL_Window;
 struct SDL_Renderer;
 struct FMOD_STUDIO_SYSTEM;
@@ -11,12 +13,9 @@ struct FMOD_STUDIO_BANK;
 class World
 {
 private:
+    std::unique_ptr<FMODWrapper> mFmod;
     int _timesUpdated;
     Sprite *mSampleSprite;
-    FMOD_STUDIO_SYSTEM *mFmodSystem;
-    FMOD_STUDIO_BANK *mMainBank;
-    FMOD_STUDIO_BANK *mStringsBank;
-    bool bWasDown;
 
 public:
     SDL_Window *window{nullptr};
