@@ -1,0 +1,11 @@
+{
+	"TriggerNotes":"0 is never, 1 is down, 2 is pressed, 3 is released",
+	"KeycodeNotes":"https://wiki.libsdl.org/SDL3/SDL_Scancode use 1 for unused keycodes",
+	"Actions":[
+		{"Name":"Shot", "Trigger":1, "KeycodePositive":29, "KeycodeNegative":1},
+		{"Name":"Horizontal", "Trigger":1, "KeycodePositive":79, "KeycodeNegative":80},
+		{"Name":"Debug1", "Trigger":2, "KeycodePositive":5, "KeycodeNegative":1},
+		{"Name":"Debug2", "Trigger":2, "KeycodePositive":6, "KeycodeNegative":1},
+		{"Name":"Debug3", "Trigger":2, "KeycodePositive":7, "KeycodeNegative":1}
+	]
+}

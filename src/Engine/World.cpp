@@ -6,13 +6,15 @@
 #include <SDL3_image/SDL_image.h>
 #include <filesystem>
 
+#include "Constants.h"
 #include "Audio/FMODWrapper.h"
 #include "Graphics/Sprite.h"
 #include "Input/InputManager.h"
+#include "Input/ActionManager.h"
 
 World::World()
 {
-    SDL_SetAppMetadata("Space Shooter", "0.1", "com.magicmochi.spaceshooter");
+    SDL_SetAppMetadata(CONST_APP_NAME, CONST_APP_VERSION, CONST_APP_ID);
 
     if (!SDL_Init(SDL_INIT_VIDEO))
     {
@@ -20,7 +22,7 @@ World::World()
         throw SDL_APP_FAILURE;
     }
 
-    if (!SDL_CreateWindowAndRenderer("Space Shooter", 640, 480, 0, &window, &renderer))
+    if (!SDL_CreateWindowAndRenderer(CONST_WINDOW_NAME, 640, 480, 0, &window, &renderer))
     {
         SDL_Log("Couldn't create window/renderer: %s", SDL_GetError());
         throw SDL_APP_FAILURE;
@@ -32,34 +34,39 @@ World::World()
         throw SDL_APP_FAILURE;
     }
 
-    mSampleSprite = new Sprite(renderer, "Data\\Coproducers.jpg");
+    mSampleSprite = new Sprite(renderer, CONST_TEST_IMAGE);
 
-    mFmod = std::make_unique<FMODWrapper>();
+    mFmod = std::make_shared<FMODWrapper>();
     mFmod->Init();
-    mFmod->LoadBank("Master");
+    mFmod->LoadBank(CONST_MASTER_BANK);
 
-    mInputManager = std::make_unique<InputManager>();
+    mActionManager = std::make_shared<ActionManager>(std::make_shared<InputManager>());
+    bool success = mActionManager->LoadActions(CONST_ACTIONS_FILE);
+    if (!success)
+    {
+        std::cout << "Can't open Actions.json" << std::endl;
+    }
 }
 
 void World::Update(const float &dt)
 {
     const bool *keyboardState = SDL_GetKeyboardState(NULL);
-    mInputManager->Update(keyboardState);
+    mActionManager->Update(dt, keyboardState);
     mFmod->Update();
 
-    if (mInputManager->WasPressed(SDL_SCANCODE_B))
+    if (mActionManager->Performed("Debug1"))
     {
         std::cout << "B is pressed!" << std::endl;
         mFmod->PlayBGM("TestMusic");
     }
 
-    if (mInputManager->WasPressed(SDL_SCANCODE_C))
+    if (mActionManager->Performed("Debug2"))
     {
         std::cout << "C is pressed!" << std::endl;
         mFmod->PauseBGM();
     }
 
-    if (mInputManager->WasPressed(SDL_SCANCODE_D))
+    if (mActionManager->Performed("Debug3"))
     {
         std::cout << "D is pressed!" << std::endl;
         mFmod->ResumeBGM();
