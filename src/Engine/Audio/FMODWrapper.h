@@ -2,6 +2,7 @@
 #define HDEF_FMODWRAPPER
 
 #include <fmod_common.h>
+#include <fmod_studio_common.h>
 #include <vector>
 #include <string>
 
@@ -23,6 +24,8 @@ private:
     FMOD_STUDIO_EVENTINSTANCE *mBgmEventInstance;
     std::vector<FMOD_Bank_Pair> mBankPairs;
     void PrintFMODError(FMOD_RESULT result) const;
+    static FMOD_RESULT F_CALL EventCallback(FMOD_STUDIO_EVENT_CALLBACK_TYPE type, FMOD_STUDIO_EVENTINSTANCE *event, void *parameters);
+    void OnEventCallback(FMOD_STUDIO_EVENT_CALLBACK_TYPE type, FMOD_STUDIO_EVENTINSTANCE *event, void *parameters);
 
 public:
     FMODWrapper();

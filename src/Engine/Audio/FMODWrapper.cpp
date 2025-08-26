@@ -4,7 +4,6 @@
 #include <format>
 #include <fmod_studio.h>
 #include <fmod.h>
-#include <fmod_common.h>
 #include <fmod_errors.h>
 
 FMODWrapper::FMODWrapper()
@@ -84,6 +83,29 @@ FMOD_RESULT FMODWrapper::LoadBank(const std::string &bankName)
     return FMOD_OK;
 }
 
+FMOD_RESULT F_CALL FMODWrapper::EventCallback(FMOD_STUDIO_EVENT_CALLBACK_TYPE type, FMOD_STUDIO_EVENTINSTANCE *event, void *parameters)
+{
+    void *userData = nullptr;
+    FMOD_Studio_EventInstance_GetUserData(event, &userData);
+    FMODWrapper *self = reinterpret_cast<FMODWrapper *>(userData);
+
+    if (self)
+    {
+        self->OnEventCallback(type, event, parameters);
+    }
+
+    return FMOD_OK;
+}
+
+void FMODWrapper::OnEventCallback(FMOD_STUDIO_EVENT_CALLBACK_TYPE type, FMOD_STUDIO_EVENTINSTANCE *event, void *parameters)
+{
+    if (type == FMOD_STUDIO_EVENT_CALLBACK_TIMELINE_MARKER)
+    {
+        FMOD_STUDIO_TIMELINE_MARKER_PROPERTIES *marker = (FMOD_STUDIO_TIMELINE_MARKER_PROPERTIES *)parameters;
+        std::cout << "Marker with name " << marker->name << " triggered at millisecond " << marker->position << std::endl;
+    }
+}
+
 FMOD_RESULT FMODWrapper::PlayBGM(const std::string &eventName)
 {
     if (mBgmEventInstance != NULL)
@@ -109,6 +131,22 @@ FMOD_RESULT FMODWrapper::PlayBGM(const std::string &eventName)
     if (result != FMOD_OK)
     {
         std::cout << "Can't start the instance" << std::endl;
+        PrintFMODError(result);
+        return result;
+    }
+
+    result = FMOD_Studio_EventInstance_SetUserData(mBgmEventInstance, this);
+    if (result != FMOD_OK)
+    {
+        std::cout << "Can't set user data on the instance" << std::endl;
+        PrintFMODError(result);
+        return result;
+    }
+
+    result = FMOD_Studio_EventInstance_SetCallback(mBgmEventInstance, EventCallback, FMOD_STUDIO_EVENT_CALLBACK_ALL);
+    if (result != FMOD_OK)
+    {
+        std::cout << "Can't set callback" << std::endl;
         PrintFMODError(result);
         return result;
     }
