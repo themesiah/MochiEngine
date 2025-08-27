@@ -9,12 +9,18 @@ class FMODWrapper;
 class ActionManager;
 struct SDL_Window;
 struct SDL_Renderer;
+struct TTF_Font;
+struct TTF_TextEngine;
+struct TTF_Text;
 class World
 {
 private:
     std::shared_ptr<FMODWrapper> mFmod;
     std::shared_ptr<ActionManager> mActionManager;
     Sprite *mSampleSprite;
+    TTF_Font *mFont;
+    TTF_TextEngine *mTextEngine;
+    TTF_Text *mText;
 
 public:
     SDL_Window *window{nullptr};

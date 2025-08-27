@@ -2,6 +2,7 @@
 
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_events.h>
+#include <SDL3_ttf/SDL_ttf.h>
 #include <iostream>
 #include <SDL3_image/SDL_image.h>
 #include <filesystem>
@@ -31,6 +32,31 @@ World::World()
     if (!SDL_SetRenderVSync(renderer, 1))
     {
         SDL_Log("Couldn't set vsyinc to true: %s", SDL_GetError());
+        throw SDL_APP_FAILURE;
+    }
+
+    if (!TTF_Init())
+    {
+        SDL_Log("Couldn't init ttf: %s", SDL_GetError());
+        throw SDL_APP_FAILURE;
+    }
+
+    mFont = TTF_OpenFont(CONST_MAIN_FONT_PATH, CONST_DEVBUILD_TEXT_SIZE);
+    if (!mFont)
+    {
+        SDL_Log("Couldn't load %s: %s", CONST_MAIN_FONT_PATH, SDL_GetError());
+        throw SDL_APP_FAILURE;
+    }
+    mTextEngine = TTF_CreateRendererTextEngine(renderer);
+    if (!mTextEngine)
+    {
+        SDL_Log("Couldn't create a ttf text engine: %s", SDL_GetError());
+        throw SDL_APP_FAILURE;
+    }
+    mText = TTF_CreateText(mTextEngine, mFont, CONST_DEVBUILD_TEXT, 0);
+    if (!mText)
+    {
+        SDL_Log("Couldn't create a ttf text: %s", SDL_GetError());
         throw SDL_APP_FAILURE;
     }
 
@@ -90,13 +116,14 @@ void World::Render() const
     int h = 0;
 
 #ifdef DEBUG
+
     SDL_GetRenderOutputSize(renderer, &w, &h);
     SDL_SetRenderScale(renderer, 1, 1);
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
-    if (!SDL_RenderDebugText(renderer, 5, h - 10, "DEVELOPMENT BUILD"))
-    {
-        std::cout << "Can't render text? Error is: " << SDL_GetError() << std::endl;
-    }
+
+    int tw, th;
+    TTF_GetTextSize(mText, &tw, &th);
+    TTF_DrawRendererText(mText, w - tw - 1, h - th);
 #endif
     ///////////////////////////////
     SDL_RenderPresent(renderer); /* put it all on the screen! */
@@ -105,4 +132,16 @@ void World::Render() const
 World::~World()
 {
     delete mSampleSprite;
+    if (mFont)
+    {
+        TTF_CloseFont(mFont);
+    }
+    if (mTextEngine)
+    {
+        TTF_DestroyRendererTextEngine(mTextEngine);
+    }
+    if (mText)
+    {
+        TTF_DestroyText(mText);
+    }
 }

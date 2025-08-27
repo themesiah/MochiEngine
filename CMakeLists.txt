@@ -18,8 +18,10 @@ target_compile_features(compiler_flags INTERFACE cxx_std_23)
 target_compile_definitions(compiler_flags INTERFACE "DEBUG")
 
 # Link common use libraries
+set(SDLTTF_VENDORED ON)
 add_subdirectory(Includes/SDL3 EXCLUDE_FROM_ALL)
 add_subdirectory(Includes/SDL3_image EXCLUDE_FROM_ALL)
+add_subdirectory(Includes/SDL3_ttf EXCLUDE_FROM_ALL)
 add_subdirectory(Includes/FMOD EXCLUDE_FROM_ALL)
 include_directories("${CMAKE_SOURCE_DIR}/Includes/FMOD")
 include_directories("${CMAKE_SOURCE_DIR}/Includes/Json")
@@ -27,6 +29,7 @@ target_link_libraries(compiler_flags
                       INTERFACE
                       SDL3_image::SDL3_image
                       SDL3::SDL3
+                      SDL3_ttf::SDL3_ttf
                       fmod
                       fmodstudio
 )

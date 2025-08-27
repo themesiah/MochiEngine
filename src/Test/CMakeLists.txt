@@ -11,6 +11,7 @@ set(
   MainTests
   FMODTests
   InputTests
+  TextRenderTests
 )
 
 foreach(name IN LISTS TestList)
