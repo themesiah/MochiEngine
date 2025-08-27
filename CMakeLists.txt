@@ -15,7 +15,7 @@ add_library(compiler_flags INTERFACE)
 target_compile_features(compiler_flags INTERFACE cxx_std_23)
 
 # Set some precompiling definitions depending on target
-target_compile_definitions(compiler_flags INTERFACE "DEBUG")
+target_compile_definitions(compiler_flags INTERFACE $<$<CONFIG:Debug>:DEBUG>)
 
 # Link common use libraries
 set(SDLTTF_VENDORED ON)
@@ -52,7 +52,20 @@ target_compile_options(compiler_flags INTERFACE
 add_subdirectory("src/Engine")
 add_subdirectory("src/Test")
 
-add_executable(Game src/main.cpp)
+# Win32 mode (no console) or not
+set(GAME_WIN32_FLAG "")
+
+if(WIN32)
+    # Only add the WIN32 flag in Release builds
+    if(CMAKE_BUILD_TYPE STREQUAL "Release") # Single-config generators (Makefiles, Ninja)
+        set(GAME_WIN32_FLAG "WIN32")
+    elseif(CMAKE_CONFIGURATION_TYPES) # Multi-config generators (Visual Studio, Xcode)
+        # For MSVC / multi-config, WIN32 is a target property so we set it after creation
+        set(GAME_WIN32_FLAG "WIN32")
+    endif()
+endif()
+
+add_executable(Game ${GAME_WIN32_FLAG} src/main.cpp)
 target_link_libraries(Game
                       PUBLIC
                       Engine
