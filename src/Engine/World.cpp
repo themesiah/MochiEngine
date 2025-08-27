@@ -13,6 +13,8 @@
 #include "Input/InputManager.h"
 #include "Input/ActionManager.h"
 
+#include "Logger.h"
+
 World::World()
 {
     SDL_SetAppMetadata(CONST_APP_NAME, CONST_APP_VERSION, CONST_APP_ID);
@@ -60,11 +62,15 @@ World::World()
         throw SDL_APP_FAILURE;
     }
 
+    LOG_OK("SDL Initialized");
+
     mSampleSprite = new Sprite(renderer, CONST_TEST_IMAGE);
 
     mFmod = std::make_shared<FMODWrapper>();
-    mFmod->Init();
-    mFmod->LoadBank(CONST_MASTER_BANK);
+    if (mFmod->Init() == FMOD_OK && mFmod->LoadBank(CONST_MASTER_BANK) == FMOD_OK)
+    {
+        LOG_OK("FMOD Initialized");
+    }
 
     mActionManager = std::make_shared<ActionManager>(std::make_shared<InputManager>());
     bool success = mActionManager->LoadActions(CONST_ACTIONS_FILE);

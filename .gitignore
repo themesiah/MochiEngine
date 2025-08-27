@@ -32,3 +32,7 @@
 *.app
 
 /[Bb]uild
+Includes/SDL3_ttf/external/freetype/
+Includes/SDL3_ttf/external/harfbuzz/
+Includes/SDL3_ttf/external/plutosvg/
+Includes/SDL3_ttf/external/plutovg/
