@@ -9,6 +9,7 @@ enable_testing()
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib/$<CONFIG>)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib/$<CONFIG>)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<CONFIG>)
+set(LUA_VERSION "lua-5.4.8")
 
 # Specify the C++ standard
 add_library(compiler_flags INTERFACE)
@@ -23,6 +24,8 @@ add_subdirectory(Includes/SDL3 EXCLUDE_FROM_ALL)
 add_subdirectory(Includes/SDL3_image EXCLUDE_FROM_ALL)
 add_subdirectory(Includes/SDL3_ttf EXCLUDE_FROM_ALL)
 add_subdirectory(Includes/FMOD EXCLUDE_FROM_ALL)
+add_subdirectory(Includes/lua)
+add_subdirectory(Includes/sol2)
 include_directories("${CMAKE_SOURCE_DIR}/Includes/FMOD")
 include_directories("${CMAKE_SOURCE_DIR}/Includes/Json")
 target_link_libraries(compiler_flags
@@ -32,6 +35,8 @@ target_link_libraries(compiler_flags
                       SDL3_ttf::SDL3_ttf
                       fmod
                       fmodstudio
+                      sol2
+                      lua_static
 )
 
 

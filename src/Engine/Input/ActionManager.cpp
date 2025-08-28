@@ -16,7 +16,7 @@ ActionManager::ActionManager(std::shared_ptr<InputManager> inputManager) : mInpu
 bool ActionManager::LoadActions(const std::string &actionsFile)
 {
     std::ifstream f(actionsFile);
-    ASSERT("Can't open actions file", !f.fail());
+    ASSERT(std::format("Can't open actions file on {}", actionsFile), !f.fail());
     json data = json::parse(f);
     f.close();
     mActions.clear();

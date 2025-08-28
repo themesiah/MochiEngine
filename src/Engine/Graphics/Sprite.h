@@ -13,7 +13,7 @@ private:
     float mScale;
 
 public:
-    Sprite(SDL_Renderer *renderer, const char *file);
+    Sprite(SDL_Renderer *renderer, const std::string &file);
     void Render(SDL_Renderer *renderer) const;
     virtual ~Sprite();
 };

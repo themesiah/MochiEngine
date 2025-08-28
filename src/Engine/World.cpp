@@ -43,7 +43,7 @@ World::World()
         throw SDL_APP_FAILURE;
     }
 
-    mFont = TTF_OpenFont(CONST_MAIN_FONT_PATH, CONST_DEVBUILD_TEXT_SIZE);
+    mFont = TTF_OpenFont(std::format("{}/{}", CONST_DATA_FOLDER, CONST_MAIN_FONT_PATH).c_str(), CONST_DEVBUILD_TEXT_SIZE);
     if (!mFont)
     {
         SDL_Log("Couldn't load %s: %s", CONST_MAIN_FONT_PATH, SDL_GetError());
@@ -64,7 +64,7 @@ World::World()
 
     LOG_OK("SDL Initialized");
 
-    mSampleSprite = new Sprite(renderer, CONST_TEST_IMAGE);
+    mSampleSprite = new Sprite(renderer, std::format("{}/{}", CONST_DATA_FOLDER, CONST_TEST_IMAGE));
 
     mFmod = std::make_shared<FMODWrapper>();
     if (mFmod->Init() == FMOD_OK && mFmod->LoadBank(CONST_MASTER_BANK) == FMOD_OK)
@@ -73,7 +73,7 @@ World::World()
     }
 
     mActionManager = std::make_shared<ActionManager>(std::make_shared<InputManager>());
-    bool success = mActionManager->LoadActions(CONST_ACTIONS_FILE);
+    bool success = mActionManager->LoadActions(std::format("{}/{}", CONST_DATA_FOLDER, CONST_ACTIONS_FILE));
     if (!success)
     {
         std::cout << "Can't open Actions.json" << std::endl;

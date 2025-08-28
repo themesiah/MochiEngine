@@ -13,10 +13,10 @@ TEST_CASE("Init FMOD")
     FMODWrapper fmod = FMODWrapper();
     FMOD_RESULT result = fmod.Init();
     CHECK(result == FMOD_OK);
-    result = fmod.LoadBank("Master");
-    CHECK(result == FMOD_OK);
+    result = fmod.LoadBank("Audiobanks/Master");
+    REQUIRE(result == FMOD_OK);
     result = fmod.PlayBGM("TestMusic");
-    CHECK(result == FMOD_OK);
+    REQUIRE(result == FMOD_OK);
     result = fmod.PauseBGM();
     CHECK(result == FMOD_OK);
     result = fmod.ResumeBGM();

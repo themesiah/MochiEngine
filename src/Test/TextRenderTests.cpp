@@ -4,6 +4,7 @@
 
 #include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
+#include <string>
 
 #include "Constants.h"
 
@@ -19,7 +20,7 @@ TEST_CASE("Init TTF and sample text")
     success = TTF_Init();
     REQUIRE(success);
 
-    TTF_Font *font = TTF_OpenFont(CONST_MAIN_FONT_PATH, CONST_DEVBUILD_TEXT_SIZE);
+    TTF_Font *font = TTF_OpenFont(std::format("{}/{}", CONST_DATA_FOLDER, CONST_MAIN_FONT_PATH).c_str(), CONST_DEVBUILD_TEXT_SIZE);
     REQUIRE(font);
     TTF_TextEngine *textEngine = TTF_CreateRendererTextEngine(renderer);
     REQUIRE(textEngine);

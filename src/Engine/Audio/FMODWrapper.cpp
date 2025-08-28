@@ -7,6 +7,7 @@
 #include <fmod_errors.h>
 
 #include "../Logger.h"
+#include "../Constants.h"
 
 FMODWrapper::FMODWrapper()
 {
@@ -66,14 +67,14 @@ FMOD_RESULT FMODWrapper::LoadBank(const std::string &bankName)
 {
     FMOD_RESULT result;
     FMOD_Bank_Pair bankPair;
-    result = FMOD_Studio_System_LoadBankFile(mFmodSystem, std::format("Data/Audiobanks/{}.bank", bankName).c_str(), 0, &bankPair.bank);
+    result = FMOD_Studio_System_LoadBankFile(mFmodSystem, std::format("{}/{}.bank", CONST_DATA_FOLDER, bankName).c_str(), 0, &bankPair.bank);
     if (result != FMOD_OK)
     {
         LOG_ERROR("Can't load bank");
         PrintFMODError(result);
         return result;
     }
-    result = FMOD_Studio_System_LoadBankFile(mFmodSystem, std::format("Data/Audiobanks/{}.strings.bank", bankName).c_str(), 0, &bankPair.stringsBank);
+    result = FMOD_Studio_System_LoadBankFile(mFmodSystem, std::format("{}/{}.strings.bank", CONST_DATA_FOLDER, bankName).c_str(), 0, &bankPair.stringsBank);
     if (result != FMOD_OK)
     {
         LOG_ERROR("Can't load strings bank");

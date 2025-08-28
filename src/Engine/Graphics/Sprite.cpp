@@ -3,9 +3,9 @@
 #include <iostream>
 #include <SDL3_image/SDL_image.h>
 
-Sprite::Sprite(SDL_Renderer *renderer, const char *file)
+Sprite::Sprite(SDL_Renderer *renderer, const std::string &file)
 {
-    mTexture = std::shared_ptr<SDL_Texture>(IMG_LoadTexture(renderer, file), SDL_DestroyTexture);
+    mTexture = std::shared_ptr<SDL_Texture>(IMG_LoadTexture(renderer, file.c_str()), SDL_DestroyTexture);
     if (!mTexture)
     {
         std::cout << "Image not found!" << std::endl;
