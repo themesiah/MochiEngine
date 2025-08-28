@@ -56,6 +56,7 @@ target_compile_options(compiler_flags INTERFACE
 # Add all subdirectories
 add_subdirectory("src/Engine")
 add_subdirectory("src/Test")
+add_subdirectory("src/Packer")
 
 # Win32 mode (no console) or not
 set(GAME_WIN32_FLAG "")

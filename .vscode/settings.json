@@ -91,6 +91,7 @@
         "ranges": "cpp",
         "valarray": "cpp",
         "xtree": "cpp",
-        "xhash": "cpp"
+        "xhash": "cpp",
+        "bitset": "cpp"
     }
 }
