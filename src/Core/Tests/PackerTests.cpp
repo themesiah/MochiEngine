@@ -12,9 +12,10 @@
 #include <fmod_errors.h>
 
 #include "PackFile.h"
+#include "SystemFileLoader.h"
 #include "CoreConstants.h"
 
-TEST_CASE("Unpack SDL texture")
+TEST_CASE("SDL texture Packfile")
 {
     PackFile file(std::format("{}/Data.pak", CONST_DATA_FOLDER));
     REQUIRE(file.IsValid());
@@ -33,7 +34,26 @@ TEST_CASE("Unpack SDL texture")
     CHECK(true);
 }
 
-TEST_CASE("Unpack audiobank")
+TEST_CASE("SDL texture Filesystem")
+{
+    SystemFileLoader dir(CONST_DATA_FOLDER);
+    REQUIRE(dir.IsValid());
+    bool success;
+    SDL_Window *window;
+    SDL_Renderer *renderer;
+    success = SDL_Init(SDL_INIT_VIDEO);
+    REQUIRE(success);
+    success = SDL_CreateWindowAndRenderer("TEST", 640, 480, 0, &window, &renderer);
+    REQUIRE(success);
+
+    REQUIRE(dir.HasFile("Coproducers.jpg"));
+    auto buffer = dir.GetFile("Coproducers.jpg");
+    SDL_Texture *texture = IMG_LoadTexture_IO(renderer, SDL_IOFromConstMem(buffer.data(), buffer.size()), true);
+    REQUIRE(texture != NULL);
+    CHECK(true);
+}
+
+TEST_CASE("Load audiobank Packfile")
 {
     PackFile file(std::format("{}/Data.pak", CONST_DATA_FOLDER));
     REQUIRE(file.IsValid());
@@ -57,7 +77,31 @@ TEST_CASE("Unpack audiobank")
     CHECK(result == FMOD_OK);
 }
 
-TEST_CASE("Load fonts")
+TEST_CASE("Load audiobank Filesystem")
+{
+    SystemFileLoader dir(CONST_DATA_FOLDER);
+    REQUIRE(dir.IsValid());
+
+    FMOD_RESULT result;
+    FMOD_STUDIO_SYSTEM *system;
+    result = FMOD_Studio_System_Create(&system, FMOD_VERSION);
+    REQUIRE(result == FMOD_OK);
+    result = FMOD_Studio_System_Initialize(system, 512, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, 0);
+    REQUIRE(result == FMOD_OK);
+
+    REQUIRE(dir.HasFile("Audiobanks/Master.bank"));
+    REQUIRE(dir.HasFile("Audiobanks/Master.strings.bank"));
+    auto masterBuffer = dir.GetFile("Audiobanks/Master.bank");
+    FMOD_STUDIO_BANK *masterBank;
+    result = FMOD_Studio_System_LoadBankMemory(system, masterBuffer.data(), masterBuffer.size(), FMOD_STUDIO_LOAD_MEMORY_MODE::FMOD_STUDIO_LOAD_MEMORY, 0, &masterBank);
+    CHECK(result == FMOD_OK);
+    auto stringsBuffer = dir.GetFile("Audiobanks/Master.strings.bank");
+    FMOD_STUDIO_BANK *stringsBank;
+    result = FMOD_Studio_System_LoadBankMemory(system, stringsBuffer.data(), stringsBuffer.size(), FMOD_STUDIO_LOAD_MEMORY_MODE::FMOD_STUDIO_LOAD_MEMORY, 0, &stringsBank);
+    CHECK(result == FMOD_OK);
+}
+
+TEST_CASE("Load fonts Packfile")
 {
     PackFile file(std::format("{}/Data.pak", CONST_DATA_FOLDER));
     REQUIRE(file.IsValid());
@@ -74,6 +118,27 @@ TEST_CASE("Load fonts")
 
     REQUIRE(file.HasFile("Fonts/SuperTechnology.ttf"));
     auto buffer = file.GetFile("Fonts/SuperTechnology.ttf");
+    TTF_Font *font = TTF_OpenFontIO(SDL_IOFromConstMem(buffer.data(), buffer.size()), true, 16.0f);
+    REQUIRE(font);
+}
+
+TEST_CASE("Load fonts Filesystem")
+{
+    SystemFileLoader dir(CONST_DATA_FOLDER);
+    REQUIRE(dir.IsValid());
+
+    bool success;
+    SDL_Window *window;
+    SDL_Renderer *renderer;
+    success = SDL_Init(SDL_INIT_VIDEO);
+    REQUIRE(success);
+    success = SDL_CreateWindowAndRenderer("TEST", 640, 480, 0, &window, &renderer);
+    REQUIRE(success);
+    success = TTF_Init();
+    REQUIRE(success);
+
+    REQUIRE(dir.HasFile("Fonts/SuperTechnology.ttf"));
+    auto buffer = dir.GetFile("Fonts/SuperTechnology.ttf");
     TTF_Font *font = TTF_OpenFontIO(SDL_IOFromConstMem(buffer.data(), buffer.size()), true, 16.0f);
     REQUIRE(font);
 }

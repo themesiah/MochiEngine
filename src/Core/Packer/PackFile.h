@@ -1,6 +1,8 @@
 #ifndef HDEF_PACKFILE
 #define HDEF_PACKFILE
 
+#include "IFileLoader.h"
+
 #include <string>
 #include <unordered_map>
 #include <fstream>
@@ -28,7 +30,7 @@ struct PackHeader
     Header_t HeaderMap;
 };
 
-class PackFile
+class PackFile : IFileLoader
 {
 private:
     PackHeader mHeader;
@@ -40,12 +42,12 @@ private:
 
 public:
     PackFile(const std::string &packfilePath);
-    ~PackFile();
-    bool IsValid() const;
+    virtual ~PackFile();
+    virtual bool IsValid() const;
     static size_t Pack(const std::string &folderPath, const std::string &outPath);
     size_t Unpack(const std::string &outFolder);
-    std::vector<char> GetFile(std::string path);
-    bool HasFile(std::string path) const;
+    virtual std::vector<char> GetFile(std::string path);
+    virtual bool HasFile(std::string path) const;
 };
 
 #endif
