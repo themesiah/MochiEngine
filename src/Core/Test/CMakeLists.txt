@@ -1,4 +1,3 @@
-project(Tests)
 enable_testing()
 
 include(${CMAKE_CURRENT_LIST_DIR}/scripts/doctest.cmake)
@@ -8,10 +7,10 @@ set(DOCTEST_INCLUDE_DIR Includes/doctest CACHE INTERNAL "Path to include folder 
 
 set(
   TestList
-  #MainTests
-  #FMODTests
-  #InputTests
-  #TextRenderTests
+  MainTests
+  FMODTests
+  InputTests
+  TextRenderTests
   LuaTest
 )
 

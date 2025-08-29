@@ -12,6 +12,8 @@ add_subdirectory(Includes/FMOD EXCLUDE_FROM_ALL)
 add_subdirectory(Includes/lua EXCLUDE_FROM_ALL)
 add_subdirectory(Includes/sol2 EXCLUDE_FROM_ALL)
 
+add_subdirectory(Test)
+
 add_library(Core ${Core_src})
 target_compile_features(Core PUBLIC cxx_std_23)
 target_compile_definitions(Core PUBLIC $<$<CONFIG:Debug>:DEBUG>)

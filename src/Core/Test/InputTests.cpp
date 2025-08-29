@@ -7,7 +7,7 @@
 #include "Input/InputManager.h"
 #include "Input/ActionManager.h"
 
-#include "Constants.h"
+#include "CoreConstants.h"
 
 TEST_CASE("Input Manager")
 {
