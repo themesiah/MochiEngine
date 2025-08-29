@@ -8,7 +8,7 @@
 
 #include <sol/sol.hpp>
 
-#include "Constants.h"
+#include "CoreConstants.h"
 
 class Cat
 {

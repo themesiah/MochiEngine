@@ -3,6 +3,8 @@
 #include <fstream>
 #include <vector>
 #include <unordered_map>
+#include <string>
+#include <format>
 
 typedef uint16_t PathLenSize_t;
 typedef uint64_t PackHeaderLength_t;

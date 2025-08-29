@@ -8,6 +8,7 @@
 #include <filesystem>
 
 #include "Constants.h"
+#include "CoreConstants.h"
 #include "Audio/FMODWrapper.h"
 #include "Graphics/Sprite.h"
 #include "Input/InputManager.h"

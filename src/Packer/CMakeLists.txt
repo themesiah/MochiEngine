@@ -6,7 +6,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/packer/$<CONFIG>)
 add_executable(Packer ${Packer_src})
 
 target_link_libraries(Packer PUBLIC
-  compiler_flags
+  Core
 )
 
 add_custom_command(

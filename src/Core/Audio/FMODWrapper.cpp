@@ -7,7 +7,7 @@
 #include <fmod_errors.h>
 
 #include "../Logger.h"
-#include "../Constants.h"
+#include "../CoreConstants.h"
 
 FMODWrapper::FMODWrapper()
 {

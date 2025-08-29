@@ -3,12 +3,6 @@
 
 #include <string>
 
-#ifdef CTEST
-inline constexpr const char *CONST_DATA_FOLDER = "TestData";
-#else
-inline constexpr const char *CONST_DATA_FOLDER = "Data";
-#endif
-
 inline constexpr const char *CONST_APP_NAME = "Space Shooter";
 inline constexpr const char *CONST_APP_VERSION = "0.1";
 inline constexpr const char *CONST_APP_ID = "com.magicmochi.spaceshooter";
