@@ -14,7 +14,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<CONFIG>)
 # Add all subdirectories
 add_subdirectory("src/Core")
 add_subdirectory("src/Engine")
-add_subdirectory("src/Packer")
 
 # Win32 mode (no console) or not
 set(GAME_WIN32_FLAG "")

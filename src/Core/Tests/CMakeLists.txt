@@ -1,7 +1,6 @@
 enable_testing()
 
 include(${CMAKE_CURRENT_LIST_DIR}/scripts/doctest.cmake)
-include_directories("${PROJECT_SOURCE_DIR}/../Core")
 
 set(DOCTEST_INCLUDE_DIR Includes/doctest CACHE INTERNAL "Path to include folder for doctest")
 
@@ -12,6 +11,7 @@ set(
   InputTests
   TextRenderTests
   LuaTest
+  PackerTests
 )
 
 

@@ -11,8 +11,9 @@ add_subdirectory(Includes/SDL3_ttf EXCLUDE_FROM_ALL)
 add_subdirectory(Includes/FMOD EXCLUDE_FROM_ALL)
 add_subdirectory(Includes/lua EXCLUDE_FROM_ALL)
 add_subdirectory(Includes/sol2 EXCLUDE_FROM_ALL)
+add_subdirectory(Packer)
 
-add_subdirectory(Test)
+add_subdirectory(Tests)
 
 add_library(Core ${Core_src})
 target_compile_features(Core PUBLIC cxx_std_23)
@@ -31,6 +32,7 @@ target_link_libraries(Core
                       fmodstudio
                       sol2
                       lua_static
+                      PackerStatic
 )
 
 # add compiler warning flags just when building this project via
