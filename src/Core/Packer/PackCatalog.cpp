@@ -113,3 +113,14 @@ bool PackCatalog::HasFile(const std::string &filePath) const
     }
     return false;
 }
+
+std::vector<std::string> PackCatalog::GetAvailableFiles() const
+{
+    std::vector<std::string> list;
+    for (size_t i = 0; i < mPacks.size(); ++i)
+    {
+        auto files = mPacks[i].fileLoader->GetAvailableFiles();
+        list.insert(list.end(), files.begin(), files.end());
+    }
+    return list;
+}

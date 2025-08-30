@@ -4,6 +4,8 @@
 #include <format>
 #include <fstream>
 
+#include "../Utils/StringUtils.h"
+
 SystemFileLoader::SystemFileLoader(const std::string &directoryPath) : mDirectoryPath(directoryPath)
 {
     if (!IsValid())
@@ -21,13 +23,14 @@ bool SystemFileLoader::IsValid() const
     return std::filesystem::is_directory(mDirectoryPath);
 }
 
-std::vector<char> SystemFileLoader::GetFile(std::string path)
+std::vector<char> SystemFileLoader::GetFile(const std::string &path)
 {
-    if (!HasFile(path))
+    std::string normalizedPath = NormalizePath(path);
+    if (!HasFile(normalizedPath))
     {
         throw std::runtime_error(std::format("{} is not a file", path));
     }
-    std::filesystem::path filepath(path);
+    std::filesystem::path filepath(normalizedPath);
     filepath = mDirectoryPath / filepath;
     std::ifstream file(filepath, std::ios::binary);
 
@@ -36,13 +39,27 @@ std::vector<char> SystemFileLoader::GetFile(std::string path)
     return data;
 }
 
-bool SystemFileLoader::HasFile(std::string path) const
+bool SystemFileLoader::HasFile(const std::string &path) const
 {
+    std::string normalizedPath = NormalizePath(path);
     if (!IsValid())
     {
         throw std::runtime_error(std::format("{} is not a directory", mDirectoryPath.string()));
     }
-    std::filesystem::path filepath(path);
+    std::filesystem::path filepath(normalizedPath);
     filepath = mDirectoryPath / filepath;
     return std::filesystem::exists(filepath);
+}
+
+std::vector<std::string> SystemFileLoader::GetAvailableFiles() const
+{
+    std::vector<std::string> list;
+    for (const auto &p : std::filesystem::recursive_directory_iterator(mDirectoryPath))
+    {
+        if (!std::filesystem::is_directory(p))
+        {
+            list.push_back(p.path().string());
+        }
+    }
+    return list;
 }

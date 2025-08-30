@@ -140,10 +140,10 @@ void PackFile::LoadPackIndex()
     mHeader = packHeader;
 }
 
-std::vector<char> PackFile::GetFile(std::string path)
+std::vector<char> PackFile::GetFile(const std::string &path)
 {
-    std::replace(path.begin(), path.end(), '/', '\\');
-    FileEntry meta = mHeader.HeaderMap[path];
+    std::string normalizedPath = NormalizePath(path);
+    FileEntry meta = mHeader.HeaderMap[normalizedPath];
     if (!mHandler)
         throw std::runtime_error("Packfile is not opened");
 
@@ -155,8 +155,18 @@ std::vector<char> PackFile::GetFile(std::string path)
     return buffer;
 }
 
-bool PackFile::HasFile(std::string path) const
+bool PackFile::HasFile(const std::string &path) const
 {
-    std::replace(path.begin(), path.end(), '/', '\\');
-    return mHeader.HeaderMap.find(path) != mHeader.HeaderMap.end();
+    std::string normalizedPath = NormalizePath(path);
+    return mHeader.HeaderMap.find(normalizedPath) != mHeader.HeaderMap.end();
+}
+
+std::vector<std::string> PackFile::GetAvailableFiles() const
+{
+    std::vector<std::string> list;
+    for (auto &file : mHeader.HeaderMap)
+    {
+        list.push_back(file.first);
+    }
+    return list;
 }

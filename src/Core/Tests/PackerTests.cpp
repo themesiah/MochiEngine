@@ -119,6 +119,13 @@ TEST_CASE("Load fonts Packfile")
     success = TTF_Init();
     REQUIRE(success);
 
+    auto files = file.GetAvailableFiles();
+    MESSAGE("AAAAAAAAAA");
+    for (auto f : files)
+    {
+        MESSAGE(f);
+    }
+
     REQUIRE(file.HasFile("Fonts/SuperTechnology.ttf"));
     auto buffer = file.GetFile("Fonts/SuperTechnology.ttf");
     TTF_Font *font = TTF_OpenFontIO(SDL_IOFromConstMem(buffer.data(), buffer.size()), true, 16.0f);
@@ -178,10 +185,10 @@ TEST_CASE("Catalog test filesystem")
 {
     PackCatalog pc(PackCatalog::FileLoaderType::FileSystem);
 
-    CHECK_FALSE(pc.IsPackOpen("data"));
+    CHECK_FALSE(pc.IsPackOpen("testdata"));
     CHECK_FALSE(pc.HasFile("Actions.json"));
-    pc.OpenPack("Data");
-    REQUIRE(pc.IsPackOpen("data"));
+    pc.OpenPack("TestData");
+    REQUIRE(pc.IsPackOpen("testdata"));
     CHECK(pc.HasFile("Actions.json"));
 }
 
@@ -193,5 +200,6 @@ TEST_CASE("Catalog test packfile")
     CHECK_FALSE(pc.HasFile("Actions.json"));
     pc.OpenPack("TestData/Data");
     REQUIRE(pc.IsPackOpen("TestData/data"));
+    auto files = pc.GetAvailableFiles();
     CHECK(pc.HasFile("Actions.json"));
 }

@@ -48,8 +48,9 @@ public:
     virtual bool IsValid() const;
     static size_t Pack(const std::string &folderPath, const std::string &outPath);
     size_t Unpack(const std::string &outFolder);
-    virtual std::vector<char> GetFile(std::string path);
-    virtual bool HasFile(std::string path) const;
+    virtual std::vector<char> GetFile(const std::string &outFolder);
+    virtual bool HasFile(const std::string &outFolder) const;
+    virtual std::vector<std::string> GetAvailableFiles() const;
 };
 
 #endif

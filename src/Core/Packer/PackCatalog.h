@@ -22,6 +22,7 @@ public:
     bool IsPackOpen(const std::string &);
     std::vector<char> GetFile(const std::string &) const;
     bool HasFile(const std::string &) const;
+    std::vector<std::string> GetAvailableFiles() const;
 
 private:
     struct Pack
