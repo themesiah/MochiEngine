@@ -8,7 +8,6 @@
 #include <filesystem>
 
 #include "Constants.h"
-#include "CoreConstants.h"
 #include "Audio/FMODWrapper.h"
 #include "Graphics/Sprite.h"
 #include "Input/InputManager.h"
@@ -16,8 +15,17 @@
 
 #include "Logger.h"
 
+#include "Packer/PackCatalog.h"
+
 World::World()
 {
+#ifdef DEBUG
+    mCatalog = std::make_shared<PackCatalog>(PackCatalog::FileLoaderType::FileSystem);
+#else
+    mCatalog = std::make_shared<PackCatalog>(PackCatalog::FileLoaderType::Packfile);
+#endif
+    mCatalog->OpenPack("Data");
+
     SDL_SetAppMetadata(CONST_APP_NAME, CONST_APP_VERSION, CONST_APP_ID);
 
     if (!SDL_Init(SDL_INIT_VIDEO))
@@ -44,7 +52,8 @@ World::World()
         throw SDL_APP_FAILURE;
     }
 
-    mFont = TTF_OpenFont(std::format("{}/{}", CONST_DATA_FOLDER, CONST_MAIN_FONT_PATH).c_str(), CONST_DEVBUILD_TEXT_SIZE);
+    auto fontBuffer = mCatalog->GetFile(CONST_MAIN_FONT_PATH);
+    mFont = TTF_OpenFontIO(SDL_IOFromConstMem(fontBuffer.data(), fontBuffer.size()), true, CONST_DEVBUILD_TEXT_SIZE);
     if (!mFont)
     {
         SDL_Log("Couldn't load %s: %s", CONST_MAIN_FONT_PATH, SDL_GetError());
@@ -65,16 +74,19 @@ World::World()
 
     LOG_OK("SDL Initialized");
 
-    mSampleSprite = new Sprite(renderer, std::format("{}/{}", CONST_DATA_FOLDER, CONST_TEST_IMAGE));
+    auto spriteBuffer = mCatalog->GetFile(CONST_TEST_IMAGE);
+    mSampleSprite = new Sprite(renderer, spriteBuffer);
 
-    mFmod = std::make_shared<FMODWrapper>();
+    mFmod = std::make_shared<FMODWrapper>(mCatalog);
     if (mFmod->Init() == FMOD_OK && mFmod->LoadBank(CONST_MASTER_BANK) == FMOD_OK)
     {
         LOG_OK("FMOD Initialized");
     }
 
     mActionManager = std::make_shared<ActionManager>(std::make_shared<InputManager>());
-    bool success = mActionManager->LoadActionsFromFile(std::format("{}/{}", CONST_DATA_FOLDER, CONST_ACTIONS_FILE));
+
+    auto actionsBuffer = mCatalog->GetFile(CONST_ACTIONS_FILE);
+    bool success = mActionManager->LoadActions(actionsBuffer);
     if (!success)
     {
         std::cout << "Can't open Actions.json" << std::endl;

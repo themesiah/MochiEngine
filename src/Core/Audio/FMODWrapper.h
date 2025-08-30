@@ -5,7 +5,9 @@
 #include <fmod_studio_common.h>
 #include <vector>
 #include <string>
+#include <memory>
 
+class PackCatalog;
 struct FMOD_STUDIO_SYSTEM;
 struct FMOD_STUDIO_BANK;
 struct FMOD_STUDIO_EVENTDESCRIPTION;
@@ -26,9 +28,10 @@ private:
     void PrintFMODError(FMOD_RESULT result) const;
     static FMOD_RESULT F_CALL EventCallback(FMOD_STUDIO_EVENT_CALLBACK_TYPE type, FMOD_STUDIO_EVENTINSTANCE *event, void *parameters);
     void OnEventCallback(FMOD_STUDIO_EVENT_CALLBACK_TYPE type, FMOD_STUDIO_EVENTINSTANCE *event, void *parameters);
+    std::shared_ptr<PackCatalog> mCatalog;
 
 public:
-    FMODWrapper();
+    FMODWrapper(std::shared_ptr<PackCatalog>);
     ~FMODWrapper();
     FMOD_RESULT Init();
     FMOD_RESULT Update() const;

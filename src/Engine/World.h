@@ -7,6 +7,7 @@
 class Sprite;
 class FMODWrapper;
 class ActionManager;
+class PackCatalog;
 struct SDL_Window;
 struct SDL_Renderer;
 struct TTF_Font;
@@ -17,6 +18,7 @@ class World
 private:
     std::shared_ptr<FMODWrapper> mFmod;
     std::shared_ptr<ActionManager> mActionManager;
+    std::shared_ptr<PackCatalog> mCatalog;
     Sprite *mSampleSprite;
     TTF_Font *mFont;
     TTF_TextEngine *mTextEngine;

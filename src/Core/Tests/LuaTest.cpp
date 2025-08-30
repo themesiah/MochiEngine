@@ -8,8 +8,6 @@
 
 #include <sol/sol.hpp>
 
-#include "CoreConstants.h"
-
 class Cat
 {
 public:

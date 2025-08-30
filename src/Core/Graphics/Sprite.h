@@ -2,6 +2,7 @@
 #define HDEF_SPRITE
 
 #include <memory>
+#include <vector>
 #include <SDL3/SDL.h>
 
 class Sprite
@@ -13,7 +14,7 @@ private:
     float mScale;
 
 public:
-    Sprite(SDL_Renderer *renderer, const std::string &file);
+    Sprite(SDL_Renderer *, std::vector<char>);
     void Render(SDL_Renderer *renderer) const;
     virtual ~Sprite();
 };

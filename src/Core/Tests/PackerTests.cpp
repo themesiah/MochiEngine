@@ -14,13 +14,12 @@
 #include "PackCatalog.h"
 #include "PackFile.h"
 #include "SystemFileLoader.h"
-#include "CoreConstants.h"
 #include "Input/ActionManager.h"
 #include "Input/InputManager.h"
 
 TEST_CASE("SDL texture Packfile")
 {
-    PackFile file(std::format("{}/Data.pak", CONST_DATA_FOLDER));
+    PackFile file("TestData/Data.pak");
     REQUIRE(file.IsValid());
     bool success;
     SDL_Window *window;
@@ -39,7 +38,7 @@ TEST_CASE("SDL texture Packfile")
 
 TEST_CASE("SDL texture Filesystem")
 {
-    SystemFileLoader dir(CONST_DATA_FOLDER);
+    SystemFileLoader dir("TestData");
     REQUIRE(dir.IsValid());
     bool success;
     SDL_Window *window;
@@ -58,7 +57,7 @@ TEST_CASE("SDL texture Filesystem")
 
 TEST_CASE("Load audiobank Packfile")
 {
-    PackFile file(std::format("{}/Data.pak", CONST_DATA_FOLDER));
+    PackFile file("TestData/Data.pak");
     REQUIRE(file.IsValid());
 
     FMOD_RESULT result;
@@ -82,7 +81,7 @@ TEST_CASE("Load audiobank Packfile")
 
 TEST_CASE("Load audiobank Filesystem")
 {
-    SystemFileLoader dir(CONST_DATA_FOLDER);
+    SystemFileLoader dir("TestData");
     REQUIRE(dir.IsValid());
 
     FMOD_RESULT result;
@@ -106,7 +105,7 @@ TEST_CASE("Load audiobank Filesystem")
 
 TEST_CASE("Load fonts Packfile")
 {
-    PackFile file(std::format("{}/Data.pak", CONST_DATA_FOLDER));
+    PackFile file("TestData/Data.pak");
     REQUIRE(file.IsValid());
 
     bool success;
@@ -118,14 +117,6 @@ TEST_CASE("Load fonts Packfile")
     REQUIRE(success);
     success = TTF_Init();
     REQUIRE(success);
-
-    auto files = file.GetAvailableFiles();
-    MESSAGE("AAAAAAAAAA");
-    for (auto f : files)
-    {
-        MESSAGE(f);
-    }
-
     REQUIRE(file.HasFile("Fonts/SuperTechnology.ttf"));
     auto buffer = file.GetFile("Fonts/SuperTechnology.ttf");
     TTF_Font *font = TTF_OpenFontIO(SDL_IOFromConstMem(buffer.data(), buffer.size()), true, 16.0f);
@@ -134,7 +125,7 @@ TEST_CASE("Load fonts Packfile")
 
 TEST_CASE("Load fonts Filesystem")
 {
-    SystemFileLoader dir(CONST_DATA_FOLDER);
+    SystemFileLoader dir("TestData");
     REQUIRE(dir.IsValid());
 
     bool success;
@@ -155,7 +146,7 @@ TEST_CASE("Load fonts Filesystem")
 
 TEST_CASE("Load actions Packfile")
 {
-    PackFile file(std::format("{}/Data.pak", CONST_DATA_FOLDER));
+    PackFile file("TestData/Data.pak");
     REQUIRE(file.IsValid());
 
     std::shared_ptr<InputManager> inputManager = std::make_shared<InputManager>();
@@ -169,7 +160,7 @@ TEST_CASE("Load actions Packfile")
 
 TEST_CASE("Load actions Filesystem")
 {
-    SystemFileLoader dir(CONST_DATA_FOLDER);
+    SystemFileLoader dir("TestData");
     REQUIRE(dir.IsValid());
 
     std::shared_ptr<InputManager> inputManager = std::make_shared<InputManager>();

@@ -6,8 +6,6 @@
 #include <SDL3_ttf/SDL_ttf.h>
 #include <string>
 
-#include "CoreConstants.h"
-
 TEST_CASE("Init TTF and sample text")
 {
     bool success;
@@ -20,7 +18,7 @@ TEST_CASE("Init TTF and sample text")
     success = TTF_Init();
     REQUIRE(success);
 
-    TTF_Font *font = TTF_OpenFont(std::format("{}/{}", CONST_DATA_FOLDER, "Fonts/SuperTechnology.ttf").c_str(), 16.0f);
+    TTF_Font *font = TTF_OpenFont(std::format("TestData/{}", "Fonts/SuperTechnology.ttf").c_str(), 16.0f);
     REQUIRE(font);
     TTF_TextEngine *textEngine = TTF_CreateRendererTextEngine(renderer);
     REQUIRE(textEngine);
