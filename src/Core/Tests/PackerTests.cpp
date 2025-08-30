@@ -14,6 +14,8 @@
 #include "PackFile.h"
 #include "SystemFileLoader.h"
 #include "CoreConstants.h"
+#include "Input/ActionManager.h"
+#include "Input/InputManager.h"
 
 TEST_CASE("SDL texture Packfile")
 {
@@ -141,4 +143,32 @@ TEST_CASE("Load fonts Filesystem")
     auto buffer = dir.GetFile("Fonts/SuperTechnology.ttf");
     TTF_Font *font = TTF_OpenFontIO(SDL_IOFromConstMem(buffer.data(), buffer.size()), true, 16.0f);
     REQUIRE(font);
+}
+
+TEST_CASE("Load actions Packfile")
+{
+    PackFile file(std::format("{}/Data.pak", CONST_DATA_FOLDER));
+    REQUIRE(file.IsValid());
+
+    std::shared_ptr<InputManager> inputManager = std::make_shared<InputManager>();
+    ActionManager actionManager = ActionManager(inputManager);
+    REQUIRE(file.HasFile("Actions.json"));
+    auto buffer = file.GetFile("Actions.json");
+    bool success = actionManager.LoadActions(buffer);
+    REQUIRE(success);
+    CHECK(actionManager.HasAction("Debug1"));
+}
+
+TEST_CASE("Load actions Filesystem")
+{
+    SystemFileLoader dir(CONST_DATA_FOLDER);
+    REQUIRE(dir.IsValid());
+
+    std::shared_ptr<InputManager> inputManager = std::make_shared<InputManager>();
+    ActionManager actionManager = ActionManager(inputManager);
+    REQUIRE(dir.HasFile("Actions.json"));
+    auto buffer = dir.GetFile("Actions.json");
+    bool success = actionManager.LoadActions(buffer);
+    REQUIRE(success);
+    CHECK(actionManager.HasAction("Debug1"));
 }

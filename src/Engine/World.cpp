@@ -74,7 +74,7 @@ World::World()
     }
 
     mActionManager = std::make_shared<ActionManager>(std::make_shared<InputManager>());
-    bool success = mActionManager->LoadActions(std::format("{}/{}", CONST_DATA_FOLDER, CONST_ACTIONS_FILE));
+    bool success = mActionManager->LoadActionsFromFile(std::format("{}/{}", CONST_DATA_FOLDER, CONST_ACTIONS_FILE));
     if (!success)
     {
         std::cout << "Can't open Actions.json" << std::endl;

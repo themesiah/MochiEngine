@@ -2,8 +2,8 @@
 #include "InputManager.h"
 
 #include <fstream>
-#include <json.hpp>
 #include <iostream>
+#include <json.hpp>
 
 #include "../Assert.h"
 
@@ -13,12 +13,9 @@ ActionManager::ActionManager(std::shared_ptr<InputManager> inputManager) : mInpu
 {
 }
 
-bool ActionManager::LoadActions(const std::string &actionsFile)
+bool ActionManager::LoadActions(std::vector<char> jsonContent)
 {
-    std::ifstream f(actionsFile);
-    ASSERT(std::format("Can't open actions file on {}", actionsFile), !f.fail());
-    json data = json::parse(f);
-    f.close();
+    json data = json::parse(jsonContent);
     mActions.clear();
     ASSERT("Actions data can't be empty", !data["Actions"].empty());
     for (unsigned int i = 0; i < data["Actions"].size(); ++i)
@@ -48,6 +45,15 @@ bool ActionManager::LoadActions(const std::string &actionsFile)
         mActions[name] = action;
     }
     return true;
+}
+
+bool ActionManager::LoadActionsFromFile(const std::string &actionsFile)
+{
+    std::ifstream f(actionsFile);
+    ASSERT(std::format("Can't open actions file on {}", actionsFile), !f.fail());
+    std::vector<char> data((std::istreambuf_iterator<char>(f)), std::istreambuf_iterator<char>());
+    f.close();
+    return LoadActions(data);
 }
 
 bool ActionManager::HasAction(const std::string &actionName) const

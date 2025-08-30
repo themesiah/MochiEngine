@@ -45,7 +45,7 @@ TEST_CASE("Action manager")
     memset(keyboardState, false, sizeof(keyboardState));
 
     ActionManager actionManager = ActionManager(inputManager);
-    bool success = actionManager.LoadActions(std::format("{}/Actions.json", CONST_DATA_FOLDER));
+    bool success = actionManager.LoadActionsFromFile(std::format("{}/Actions.json", CONST_DATA_FOLDER));
     REQUIRE(success);
     REQUIRE(actionManager.HasAction("Shot"));
     REQUIRE(actionManager.HasAction("Horizontal"));

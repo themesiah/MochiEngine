@@ -4,6 +4,7 @@
 #include <string>
 #include <memory>
 #include <map>
+#include <vector>
 
 class InputManager;
 class ActionManager
@@ -27,8 +28,9 @@ private:
 
 public:
     ActionManager(std::shared_ptr<InputManager> inputManager);
-    bool LoadActions(const std::string &actionsFile);
-    bool HasAction(const std::string &actionName) const;
+    bool LoadActions(std::vector<char>);
+    bool LoadActionsFromFile(const std::string &path);
+    bool HasAction(const std::string &) const;
     void Update(const float &delta, const bool *keyboardState);
     bool Performed(const std::string &actionName) const;
     float Value(const std::string &actionName) const;
