@@ -7,7 +7,7 @@
 #include <vector>
 #include <filesystem>
 
-class SystemFileLoader : IFileLoader
+class SystemFileLoader : public IFileLoader
 {
 private:
     std::filesystem::path mDirectoryPath;

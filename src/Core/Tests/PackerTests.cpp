@@ -11,6 +11,7 @@
 #include <fmod.h>
 #include <fmod_errors.h>
 
+#include "PackCatalog.h"
 #include "PackFile.h"
 #include "SystemFileLoader.h"
 #include "CoreConstants.h"
@@ -171,4 +172,26 @@ TEST_CASE("Load actions Filesystem")
     bool success = actionManager.LoadActions(buffer);
     REQUIRE(success);
     CHECK(actionManager.HasAction("Debug1"));
+}
+
+TEST_CASE("Catalog test filesystem")
+{
+    PackCatalog pc(PackCatalog::FileLoaderType::FileSystem);
+
+    CHECK_FALSE(pc.IsPackOpen("data"));
+    CHECK_FALSE(pc.HasFile("Actions.json"));
+    pc.OpenPack("Data");
+    REQUIRE(pc.IsPackOpen("data"));
+    CHECK(pc.HasFile("Actions.json"));
+}
+
+TEST_CASE("Catalog test packfile")
+{
+    PackCatalog pc(PackCatalog::FileLoaderType::Packfile);
+
+    CHECK_FALSE(pc.IsPackOpen("TestData/data"));
+    CHECK_FALSE(pc.HasFile("Actions.json"));
+    pc.OpenPack("TestData/Data");
+    REQUIRE(pc.IsPackOpen("TestData/data"));
+    CHECK(pc.HasFile("Actions.json"));
 }

@@ -1,6 +1,6 @@
 project(MochiCore)
 # Get all .cpp files
-file(GLOB Core_src CONFIGURE_DEPENDS "Graphics/*.cpp" "Audio/*.cpp" "Input/*.cpp" "*.cpp")
+file(GLOB Core_src CONFIGURE_DEPENDS "Graphics/*.cpp" "Audio/*.cpp" "Input/*.cpp" "Utils/*.cpp" "*.cpp")
 
 
 set(SDLTTF_VENDORED ON)

@@ -5,6 +5,8 @@
 #include <iostream>
 #include <algorithm>
 
+#include "../Utils/StringUtils.h"
+
 PackFile::PackFile(const std::string &packfilePath)
 {
     mHandler = std::ifstream(packfilePath, std::ios::binary);
@@ -46,6 +48,7 @@ size_t PackFile::Pack(const std::string &folderPath, const std::string &outPath)
         if (!std::filesystem::is_directory(p))
         {
             std::string path = p.path().string().substr(folderPath.size() + 1);
+            path = NormalizePath(path);
 
             std::ifstream f(p.path(), std::ios::binary);
             std::vector<char> data((std::istreambuf_iterator<char>(f)), std::istreambuf_iterator<char>());

@@ -1,5 +1,5 @@
 # Get all .cpp files
-file(GLOB Packer_src CONFIGURE_DEPENDS "PackFile.cpp" "SystemFileLoader.cpp")
+file(GLOB Packer_src CONFIGURE_DEPENDS "PackFile.cpp" "SystemFileLoader.cpp" "PackCatalog.cpp")
 
 # Create the library
 add_library(PackerStatic ${Packer_src})

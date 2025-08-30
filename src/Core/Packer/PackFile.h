@@ -9,6 +9,8 @@
 #include <stdint.h>
 #include <vector>
 
+inline constexpr const char *PACKFILE_EXTENSION = "pak";
+
 typedef uint16_t PathLenSize_t;
 typedef uint64_t PackHeaderLength_t;
 typedef uint64_t FileOffset_t;
@@ -30,7 +32,7 @@ struct PackHeader
     Header_t HeaderMap;
 };
 
-class PackFile : IFileLoader
+class PackFile : public IFileLoader
 {
 private:
     PackHeader mHeader;
