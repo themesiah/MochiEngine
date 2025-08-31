@@ -10,10 +10,12 @@
 #include <SDL3/SDL.h>
 
 class PackCatalog;
+class TextureFactory;
+class AnimationFactory;
 class AnimatedSprite : public IRenderable, public IAnimatable
 {
 private:
-    AnimationsData mAnimationsData;
+    std::shared_ptr<AnimationsData> mAnimationsData;
     float mTimer;
     int mCurrentFrame;
     std::string mCurrentAnimation;
@@ -25,7 +27,7 @@ private:
     float mScale;
 
 public:
-    AnimatedSprite(std::shared_ptr<PackCatalog>, SDL_Renderer *, const std::string &animationPath, const std::string &mainAnimation);
+    AnimatedSprite(std::shared_ptr<AnimationFactory>, std::shared_ptr<TextureFactory>, SDL_Renderer *, const std::string &animationPath, const std::string &mainAnimation);
     virtual ~AnimatedSprite();
     virtual void Render(SDL_Renderer *renderer) const;
     virtual void UpdateAnimation(const float &dt);

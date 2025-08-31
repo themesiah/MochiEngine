@@ -17,6 +17,8 @@
 #include "Logger.h"
 
 #include "Packer/PackCatalog.h"
+#include "Graphics/AnimationFactory.h"
+#include "Graphics/TextureFactory.h"
 
 World::World()
 {
@@ -59,6 +61,9 @@ World::World()
         throw SDL_APP_FAILURE;
     }
 
+    mTextureFactory = std::make_shared<TextureFactory>(mCatalog, renderer);
+    mAnimationFactory = std::make_shared<AnimationFactory>(mCatalog);
+
     auto fontBuffer = mCatalog->GetFile(CONST_MAIN_FONT_PATH);
     mFont = TTF_OpenFontIO(SDL_IOFromConstMem(fontBuffer.data(), fontBuffer.size()), true, CONST_DEVBUILD_TEXT_SIZE);
     if (!mFont)
@@ -81,10 +86,9 @@ World::World()
 
     LOG_OK("SDL Initialized");
 
-    auto spriteBuffer = mCatalog->GetFile(CONST_TEST_IMAGE);
-    mSampleSprite = new Sprite(renderer, spriteBuffer);
+    mSampleSprite = new Sprite(mTextureFactory, renderer, CONST_TEST_IMAGE);
 
-    mAnimatedSprite = new AnimatedSprite(mCatalog, renderer, "Sprites/Snake.json", "Idle");
+    mAnimatedSprite = new AnimatedSprite(mAnimationFactory, mTextureFactory, renderer, "Sprites/Snake.json", "Idle");
 
     mFmod = std::make_shared<FMODWrapper>(mCatalog);
     if (mFmod->Init() == FMOD_OK && mFmod->LoadBank(CONST_MASTER_BANK) == FMOD_OK)

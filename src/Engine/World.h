@@ -9,6 +9,8 @@ class AnimatedSprite;
 class FMODWrapper;
 class ActionManager;
 class PackCatalog;
+class TextureFactory;
+class AnimationFactory;
 struct SDL_Window;
 struct SDL_Renderer;
 struct TTF_Font;
@@ -20,6 +22,8 @@ private:
     std::shared_ptr<FMODWrapper> mFmod;
     std::shared_ptr<ActionManager> mActionManager;
     std::shared_ptr<PackCatalog> mCatalog;
+    std::shared_ptr<TextureFactory> mTextureFactory;
+    std::shared_ptr<AnimationFactory> mAnimationFactory;
     Sprite *mSampleSprite;
     AnimatedSprite *mAnimatedSprite;
     TTF_Font *mFont;

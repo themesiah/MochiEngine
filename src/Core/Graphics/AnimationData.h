@@ -26,6 +26,7 @@ AnimationsData:
 #include <SDL3/SDL.h>
 #include <string>
 #include <unordered_map>
+#include <filesystem>
 
 struct FrameData
 {
@@ -35,19 +36,27 @@ struct FrameData
     float Duration;
 };
 
+enum AnimationDirection
+{
+    Forward,
+    Backward,
+    Pingpong,
+    BackwardPingPong
+};
+
 struct FrameTag
 {
     std::string Name;
     int From;
     int To;
-    std::string Direction;
+    AnimationDirection Direction;
     int Repeat;
     std::string UserData;
 };
 
 struct AnimationsData
 {
-    std::string TexturePath;
+    std::filesystem::path TexturePath;
     SDL_FPoint Size;
     std::vector<FrameData> Frames;
     std::unordered_map<std::string, FrameTag> Animations;

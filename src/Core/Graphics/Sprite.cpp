@@ -1,18 +1,18 @@
 #include "Sprite.h"
 
+#include <memory>
+#include <string>
 #include <iostream>
 #include <SDL3_image/SDL_image.h>
 #include <format>
 
 #include "../Logger.h"
+#include "../Packer/PackCatalog.h"
+#include "TextureFactory.h"
 
-Sprite::Sprite(SDL_Renderer *renderer, std::vector<char> buffer)
+Sprite::Sprite(std::shared_ptr<TextureFactory> textureFactory, SDL_Renderer *renderer, const std::string &filename) : mRenderer(renderer)
 {
-    mTexture = std::shared_ptr<SDL_Texture>(IMG_LoadTexture_IO(renderer, SDL_IOFromConstMem(buffer.data(), buffer.size()), true), SDL_DestroyTexture);
-    if (!mTexture)
-    {
-        LOG_ERROR(std::format("Image not loaded. Error is: {}", SDL_GetError()));
-    }
+    mTexture = textureFactory->GetTexture(filename);
 
     mScale = 0.5f;
 
