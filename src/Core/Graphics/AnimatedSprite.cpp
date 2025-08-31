@@ -7,14 +7,14 @@
 #include "../Packer/PackCatalog.h"
 #include "json.hpp"
 #include "../Assert.h"
+#include "../Logger.h"
 
 using json = nlohmann::json;
 
 AnimatedSprite::AnimatedSprite(std::shared_ptr<PackCatalog> catalog, SDL_Renderer *renderer, const std::string &animationPath, const std::string &mainAnimation) : mTimer(0.0f),
                                                                                                                                                                    mCurrentFrame(0),
                                                                                                                                                                    mDestRect(),
-                                                                                                                                                                   mSrcRect(),
-                                                                                                                                                                   mScale(3.0f)
+                                                                                                                                                                   mSrcRect()
 {
     auto animationFileBuffer = catalog->GetFile(animationPath);
     json data = json::parse(animationFileBuffer);
@@ -32,6 +32,11 @@ AnimatedSprite::AnimatedSprite(std::shared_ptr<PackCatalog> catalog, SDL_Rendere
 
     auto textureBuffer = catalog->GetFile(texturePath.string());
     mTexture = std::shared_ptr<SDL_Texture>(IMG_LoadTexture_IO(renderer, SDL_IOFromConstMem(textureBuffer.data(), textureBuffer.size()), true), SDL_DestroyTexture);
+    if (!mTexture)
+    {
+        LOG_ERROR(std::format("Image on path {} not loaded. Error is: {}", texturePath.string(), SDL_GetError()));
+    }
+    SDL_SetTextureScaleMode(mTexture.get(), SDL_ScaleMode::SDL_SCALEMODE_NEAREST); // SUPER IMPORTANT!
 
     ASSERT("The \"meta\" object of an animation requires a \"size\" object with the w and h values.", meta.contains("size") && meta["size"].contains("w") && meta["size"].contains("h"));
     mAnimationsData.Size.x = meta["size"]["w"];
@@ -74,6 +79,7 @@ AnimatedSprite::AnimatedSprite(std::shared_ptr<PackCatalog> catalog, SDL_Rendere
         FrameData frameData;
         frameData.Filename = frame["filename"];
         frameData.Duration = frame["duration"];
+        frameData.Duration /= 1000.0f; // Millis
         frameData.Frame.x = frame["frame"]["x"];
         frameData.Frame.y = frame["frame"]["y"];
         frameData.Frame.w = frame["frame"]["w"];
@@ -89,10 +95,20 @@ AnimatedSprite::AnimatedSprite(std::shared_ptr<PackCatalog> catalog, SDL_Rendere
     ASSERT(std::format("Animated sprite does not have the default animation \"{}\"", mainAnimation), mAnimationsData.Animations.find(mainAnimation) != mAnimationsData.Animations.end());
     mCurrentAnimation = mAnimationsData.Animations[mainAnimation].Name;
 
-    mDestRect.x = 300; // TEMP
-    mDestRect.y = 300; // TEMP
-    mDestRect.w = mAnimationsData.Size.x;
-    mDestRect.h = mAnimationsData.Size.y;
+    int w = 0;
+    int h = 0;
+    SDL_RendererLogicalPresentation *rlp = NULL;
+    SDL_GetRenderLogicalPresentation(renderer, &w, &h, rlp);
+    /*SDL_GetRenderOutputSize(renderer, &w, &h);
+    SDL_GetTextureSize(mTexture.get(), &mDestRect.w, &mDestRect.h);
+    mDestRect.x = ((w)-mDestRect.w) / 2;
+    mDestRect.y = ((h)-mDestRect.h) / 2;*/
+
+    mScale = 5.0f;
+    mDestRect.x = 100.5f;
+    mDestRect.y = 100;
+
+    LOG_INFO(std::format("W: {}, H: {}, mDestRect.w: {}, mDestRect.h: {}", w, h, mDestRect.w, mDestRect.h));
 }
 
 AnimatedSprite::~AnimatedSprite()
@@ -101,7 +117,7 @@ AnimatedSprite::~AnimatedSprite()
 
 void AnimatedSprite::Render(SDL_Renderer *renderer) const
 {
-    SDL_SetRenderScale(renderer, mScale, mScale);
+    SDL_SetRenderScale(renderer, 1, 1);
     SDL_RenderTexture(renderer, mTexture.get(), &mSrcRect, &mDestRect);
 }
 
@@ -126,6 +142,9 @@ void AnimatedSprite::UpdateAnimation(const float &dt)
     }
 
     mSrcRect = currentFrame.Frame;
+
+    mDestRect.w = currentFrame.Frame.w * mScale;
+    mDestRect.h = currentFrame.Frame.h * mScale;
 }
 
 void AnimatedSprite::PlayAnimation(const std::string &animationName)

@@ -35,9 +35,15 @@ World::World()
         throw SDL_APP_FAILURE;
     }
 
-    if (!SDL_CreateWindowAndRenderer(CONST_WINDOW_NAME, 640, 480, 0, &window, &renderer))
+    if (!SDL_CreateWindowAndRenderer(CONST_WINDOW_NAME, 640, 360, 0, &window, &renderer))
     {
         SDL_Log("Couldn't create window/renderer: %s", SDL_GetError());
+        throw SDL_APP_FAILURE;
+    }
+
+    if (!SDL_SetRenderLogicalPresentation(renderer, 320, 180, SDL_RendererLogicalPresentation::SDL_LOGICAL_PRESENTATION_INTEGER_SCALE))
+    {
+        SDL_Log("Couldn't set render logical presentation: %s", SDL_GetError());
         throw SDL_APP_FAILURE;
     }
 
@@ -105,20 +111,25 @@ void World::Update(const float &dt)
     if (mActionManager->Performed("Debug1"))
     {
         std::cout << "B is pressed!" << std::endl;
-        mFmod->PlayBGM("TestMusic");
+        // mFmod->PlayBGM("TestMusic");
+        mAnimatedSprite->PlayAnimation("Walk");
     }
 
     if (mActionManager->Performed("Debug2"))
     {
         std::cout << "C is pressed!" << std::endl;
-        mFmod->PauseBGM();
+        // mFmod->PauseBGM();
+        mAnimatedSprite->PlayAnimation("Run");
     }
 
     if (mActionManager->Performed("Debug3"))
     {
         std::cout << "D is pressed!" << std::endl;
-        mFmod->ResumeBGM();
+        // mFmod->ResumeBGM();
+        mAnimatedSprite->PlayAnimation("Attack");
     }
+
+    mAnimatedSprite->UpdateAnimation(dt);
 }
 
 void World::AppEvent(SDL_Event *event)
@@ -127,7 +138,7 @@ void World::AppEvent(SDL_Event *event)
 
 void World::Render() const
 {
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+    SDL_SetRenderDrawColor(renderer, 154, 192, 193, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(renderer);
     ///////////////////////////////
 
