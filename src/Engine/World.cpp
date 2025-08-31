@@ -10,6 +10,7 @@
 #include "Constants.h"
 #include "Audio/FMODWrapper.h"
 #include "Graphics/Sprite.h"
+#include "Graphics/AnimatedSprite.h"
 #include "Input/InputManager.h"
 #include "Input/ActionManager.h"
 
@@ -77,6 +78,8 @@ World::World()
     auto spriteBuffer = mCatalog->GetFile(CONST_TEST_IMAGE);
     mSampleSprite = new Sprite(renderer, spriteBuffer);
 
+    mAnimatedSprite = new AnimatedSprite(mCatalog, renderer, "Sprites/Snake.json", "Idle");
+
     mFmod = std::make_shared<FMODWrapper>(mCatalog);
     if (mFmod->Init() == FMOD_OK && mFmod->LoadBank(CONST_MASTER_BANK) == FMOD_OK)
     {
@@ -128,7 +131,8 @@ void World::Render() const
     SDL_RenderClear(renderer);
     ///////////////////////////////
 
-    mSampleSprite->Render(renderer);
+    // mSampleSprite->Render(renderer);
+    mAnimatedSprite->Render(renderer);
 
     // Dev build message
     int w = 0;

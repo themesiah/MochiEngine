@@ -100,7 +100,7 @@ std::vector<char> PackCatalog::GetFile(const std::string &filePath) const
         }
     }
     LOG_ERROR(std::format("File on path {} was not found on any mounted file loaders", filePath));
-    throw std::runtime_error("File not found");
+    throw std::runtime_error(std::format("File not found: {}", filePath));
 }
 
 bool PackCatalog::HasFile(const std::string &filePath) const

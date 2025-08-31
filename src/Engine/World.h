@@ -5,6 +5,7 @@
 #include <SDL3/SDL_events.h>
 
 class Sprite;
+class AnimatedSprite;
 class FMODWrapper;
 class ActionManager;
 class PackCatalog;
@@ -20,6 +21,7 @@ private:
     std::shared_ptr<ActionManager> mActionManager;
     std::shared_ptr<PackCatalog> mCatalog;
     Sprite *mSampleSprite;
+    AnimatedSprite *mAnimatedSprite;
     TTF_Font *mFont;
     TTF_TextEngine *mTextEngine;
     TTF_Text *mText;

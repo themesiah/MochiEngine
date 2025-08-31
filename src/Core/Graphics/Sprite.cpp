@@ -36,5 +36,4 @@ void Sprite::Render(SDL_Renderer *renderer) const
 
 Sprite::~Sprite()
 {
-    SDL_DestroyTexture(mTexture.get());
 }
