@@ -95,18 +95,17 @@ AnimatedSprite::AnimatedSprite(std::shared_ptr<PackCatalog> catalog, SDL_Rendere
     ASSERT(std::format("Animated sprite does not have the default animation \"{}\"", mainAnimation), mAnimationsData.Animations.find(mainAnimation) != mAnimationsData.Animations.end());
     mCurrentAnimation = mAnimationsData.Animations[mainAnimation].Name;
 
+    mSize.x = mAnimationsData.Frames[0].Frame.w;
+    mSize.y = mAnimationsData.Frames[0].Frame.h;
+
     int w = 0;
     int h = 0;
     SDL_RendererLogicalPresentation *rlp = NULL;
     SDL_GetRenderLogicalPresentation(renderer, &w, &h, rlp);
-    /*SDL_GetRenderOutputSize(renderer, &w, &h);
-    SDL_GetTextureSize(mTexture.get(), &mDestRect.w, &mDestRect.h);
-    mDestRect.x = ((w)-mDestRect.w) / 2;
-    mDestRect.y = ((h)-mDestRect.h) / 2;*/
 
-    mScale = 5.0f;
-    mDestRect.x = 100.5f;
-    mDestRect.y = 100;
+    mScale = 5;
+    mDestRect.x = 160 - mSize.x * mScale / 2;
+    mDestRect.y = 90 - mSize.y * mScale / 2;
 
     LOG_INFO(std::format("W: {}, H: {}, mDestRect.w: {}, mDestRect.h: {}", w, h, mDestRect.w, mDestRect.h));
 }

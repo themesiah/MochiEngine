@@ -21,6 +21,7 @@ private:
     std::shared_ptr<SDL_Texture> mTexture;
     SDL_FRect mDestRect;
     SDL_FRect mSrcRect;
+    SDL_FPoint mSize;
     float mScale;
 
 public:
