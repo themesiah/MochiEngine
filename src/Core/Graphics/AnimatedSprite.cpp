@@ -30,8 +30,8 @@ AnimatedSprite::AnimatedSprite(std::shared_ptr<AnimationFactory> animationFactor
     mSize.y = mAnimationsData->Frames[0].Frame.h;
 
     mScale = 5;
-    mDestRect.x = 160 - mSize.x * mScale / 2;
-    mDestRect.y = 90 - mSize.y * mScale / 2;
+    mDestRect.x = 0;
+    mDestRect.y = 0;
 }
 
 AnimatedSprite::~AnimatedSprite()

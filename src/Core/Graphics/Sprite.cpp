@@ -25,8 +25,8 @@ Sprite::Sprite(std::shared_ptr<TextureFactory> textureFactory, const std::string
 
     mDestRect.w = w * mScale;
     mDestRect.h = h * mScale;
-    mDestRect.x = 160 - mDestRect.w / 2;
-    mDestRect.y = 90 - mDestRect.h / 2;
+    mDestRect.x = 0;
+    mDestRect.y = 0;
 }
 
 RenderCommand Sprite::GetRenderData() const

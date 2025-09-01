@@ -4,6 +4,7 @@
 	"Actions":[
 		{"Name":"Shot", "Trigger":1, "KeycodePositive":29},
 		{"Name":"Horizontal", "Trigger":1, "KeycodePositive":79, "KeycodeNegative":80},
+		{"Name":"Vertical", "Trigger":1, "KeycodePositive":82, "KeycodeNegative":81},
 		{"Name":"Debug1", "Trigger":2, "KeycodePositive":5},
 		{"Name":"Debug2", "Trigger":2, "KeycodePositive":6},
 		{"Name":"Debug3", "Trigger":2, "KeycodePositive":7}

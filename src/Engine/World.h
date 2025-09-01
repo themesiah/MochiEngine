@@ -12,6 +12,7 @@ class ActionManager;
 class PackCatalog;
 class TextureFactory;
 class AnimationFactory;
+class Camera;
 class Renderer;
 struct TTF_Font;
 struct TTF_TextEngine;
@@ -25,6 +26,7 @@ private:
     std::shared_ptr<PackCatalog> mCatalog;
     std::shared_ptr<TextureFactory> mTextureFactory;
     std::shared_ptr<AnimationFactory> mAnimationFactory;
+    std::shared_ptr<Camera> mCamera;
     Sprite *mSampleSprite;
     AnimatedSprite *mAnimatedSprite;
     TTF_Font *mFont;

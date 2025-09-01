@@ -3,7 +3,13 @@
 #include <SDL3/SDL.h>
 #include <algorithm>
 
+#include "Camera.h"
+
 Renderer::Renderer()
+{
+}
+
+Renderer::~Renderer()
 {
 }
 
@@ -49,16 +55,24 @@ void Renderer::StartFrameRendering() const
     SDL_RenderClear(mRenderer.get());
 }
 
-void Renderer::Render(std::vector<RenderCommand> renderQueue) const
+void Renderer::Render(std::vector<RenderCommand> renderQueue, std::shared_ptr<Camera> camera) const
 {
     std::sort(renderQueue.begin(), renderQueue.end(),
               [](RenderCommand &a, RenderCommand &b)
               { return a.zindex < b.zindex; });
 
-    SDL_SetRenderScale(mRenderer.get(), 1, 1);
+    SDL_RendererLogicalPresentation *rlp{NULL};
+    int logicalW, logicalH;
+    SDL_GetRenderLogicalPresentation(mRenderer.get(), &logicalW, &logicalH, rlp);
+
+    float cameraZoom = camera->GetZoom();
+    SDL_SetRenderScale(mRenderer.get(), cameraZoom, cameraZoom);
     for (auto &command : renderQueue)
     {
-        SDL_RenderTexture(mRenderer.get(), command.texture.get(), &command.sourceRect, &command.destRect);
+        auto dstRect = camera->WorldToScreen(command.destRect);
+        dstRect.x += logicalW / 2; // Move local size to camera!
+        dstRect.y += logicalH / 2;
+        SDL_RenderTexture(mRenderer.get(), command.texture.get(), &command.sourceRect, &dstRect);
     }
 }
 

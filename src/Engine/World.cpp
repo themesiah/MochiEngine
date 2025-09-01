@@ -11,6 +11,7 @@
 #include "Graphics/AnimationFactory.h"
 #include "Graphics/TextureFactory.h"
 #include "Graphics/Renderer.h"
+#include "Graphics/Camera.h"
 #include "Graphics/Sprite.h"
 #include "Graphics/AnimatedSprite.h"
 
@@ -37,6 +38,11 @@ World::World()
         LOG_PANIC("Can't initialize renderer, panic!");
         throw SDL_APP_FAILURE;
     }
+
+    SDL_FPoint point;
+    point.x = 0;
+    point.y = 0;
+    mCamera = std::make_shared<Camera>(point, 1);
 
     if (!TTF_Init())
     {
@@ -95,6 +101,9 @@ SDL_AppResult World::Update(const float &dt)
     mActionManager->Update(dt, keyboardState);
     mFmod->Update();
 
+    mCamera->Move(mActionManager->Value("Horizontal") * dt * 1,
+                  mActionManager->Value("Vertical") * dt * 1);
+
     if (mActionManager->Performed("Debug1"))
     {
         std::cout << "B is pressed!" << std::endl;
@@ -134,7 +143,7 @@ void World::Render() const
     renderQueue.push_back(mSampleSprite->GetRenderData());
     renderQueue.push_back(mAnimatedSprite->GetRenderData());
 
-    mRenderer->Render(renderQueue);
+    mRenderer->Render(renderQueue, mCamera);
 
 #ifdef DEBUG
     // Dev build message
