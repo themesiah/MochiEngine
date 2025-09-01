@@ -27,9 +27,9 @@ private:
     float mScale;
 
 public:
-    AnimatedSprite(std::shared_ptr<AnimationFactory>, std::shared_ptr<TextureFactory>, SDL_Renderer *, const std::string &animationPath, const std::string &mainAnimation);
+    AnimatedSprite(std::shared_ptr<AnimationFactory>, std::shared_ptr<TextureFactory>, const std::string &animationPath, const std::string &mainAnimation);
     virtual ~AnimatedSprite();
-    virtual void Render(SDL_Renderer *renderer) const;
+    virtual RenderCommand GetRenderData() const;
     virtual void UpdateAnimation(const float &dt);
     void PlayAnimation(const std::string &animationName);
 };

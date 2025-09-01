@@ -4,21 +4,23 @@
 #include <SDL3/SDL_events.h>
 #include <SDL3_ttf/SDL_ttf.h>
 #include <iostream>
-#include <SDL3_image/SDL_image.h>
 #include <filesystem>
 
-#include "Constants.h"
-#include "Audio/FMODWrapper.h"
+#include "Packer/PackCatalog.h"
+
+#include "Graphics/AnimationFactory.h"
+#include "Graphics/TextureFactory.h"
+#include "Graphics/Renderer.h"
 #include "Graphics/Sprite.h"
 #include "Graphics/AnimatedSprite.h"
+
 #include "Input/InputManager.h"
 #include "Input/ActionManager.h"
 
-#include "Logger.h"
+#include "Audio/FMODWrapper.h"
 
-#include "Packer/PackCatalog.h"
-#include "Graphics/AnimationFactory.h"
-#include "Graphics/TextureFactory.h"
+#include "Constants.h"
+#include "Logger.h"
 
 World::World()
 {
@@ -29,29 +31,10 @@ World::World()
 #endif
     mCatalog->OpenPack("Data");
 
-    SDL_SetAppMetadata(CONST_APP_NAME, CONST_APP_VERSION, CONST_APP_ID);
-
-    if (!SDL_Init(SDL_INIT_VIDEO))
+    mRenderer = std::make_shared<Renderer>();
+    if (!mRenderer->Init(CONST_APP_NAME, CONST_APP_VERSION, CONST_APP_ID, CONST_WINDOW_NAME))
     {
-        SDL_Log("Couldn't initialize SDL: %s", SDL_GetError());
-        throw SDL_APP_FAILURE;
-    }
-
-    if (!SDL_CreateWindowAndRenderer(CONST_WINDOW_NAME, 640, 360, 0, &window, &renderer))
-    {
-        SDL_Log("Couldn't create window/renderer: %s", SDL_GetError());
-        throw SDL_APP_FAILURE;
-    }
-
-    if (!SDL_SetRenderLogicalPresentation(renderer, 320, 180, SDL_RendererLogicalPresentation::SDL_LOGICAL_PRESENTATION_INTEGER_SCALE))
-    {
-        SDL_Log("Couldn't set render logical presentation: %s", SDL_GetError());
-        throw SDL_APP_FAILURE;
-    }
-
-    if (!SDL_SetRenderVSync(renderer, 1))
-    {
-        SDL_Log("Couldn't set vsyinc to true: %s", SDL_GetError());
+        LOG_PANIC("Can't initialize renderer, panic!");
         throw SDL_APP_FAILURE;
     }
 
@@ -61,7 +44,7 @@ World::World()
         throw SDL_APP_FAILURE;
     }
 
-    mTextureFactory = std::make_shared<TextureFactory>(mCatalog, renderer);
+    mTextureFactory = std::make_shared<TextureFactory>(mCatalog, mRenderer->GetRenderer());
     mAnimationFactory = std::make_shared<AnimationFactory>(mCatalog);
 
     auto fontBuffer = mCatalog->GetFile(CONST_MAIN_FONT_PATH);
@@ -71,7 +54,7 @@ World::World()
         SDL_Log("Couldn't load %s: %s", CONST_MAIN_FONT_PATH, SDL_GetError());
         throw SDL_APP_FAILURE;
     }
-    mTextEngine = TTF_CreateRendererTextEngine(renderer);
+    mTextEngine = TTF_CreateRendererTextEngine(mRenderer->GetRenderer().get());
     if (!mTextEngine)
     {
         SDL_Log("Couldn't create a ttf text engine: %s", SDL_GetError());
@@ -86,9 +69,9 @@ World::World()
 
     LOG_OK("SDL Initialized");
 
-    mSampleSprite = new Sprite(mTextureFactory, renderer, CONST_TEST_IMAGE);
+    mSampleSprite = new Sprite(mTextureFactory, "Sprites/Background2.png");
 
-    mAnimatedSprite = new AnimatedSprite(mAnimationFactory, mTextureFactory, renderer, "Sprites/Snake.json", "Idle");
+    mAnimatedSprite = new AnimatedSprite(mAnimationFactory, mTextureFactory, "Sprites/Snake.json", "Idle");
 
     mFmod = std::make_shared<FMODWrapper>(mCatalog);
     if (mFmod->Init() == FMOD_OK && mFmod->LoadBank(CONST_MASTER_BANK) == FMOD_OK)
@@ -106,7 +89,7 @@ World::World()
     }
 }
 
-void World::Update(const float &dt)
+SDL_AppResult World::Update(const float &dt)
 {
     const bool *keyboardState = SDL_GetKeyboardState(NULL);
     mActionManager->Update(dt, keyboardState);
@@ -134,37 +117,39 @@ void World::Update(const float &dt)
     }
 
     mAnimatedSprite->UpdateAnimation(dt);
+    return SDL_APP_CONTINUE;
 }
 
-void World::AppEvent(SDL_Event *event)
+SDL_AppResult World::AppEvent(SDL_Event *event)
 {
+    return SDL_APP_CONTINUE;
 }
 
 void World::Render() const
 {
-    SDL_SetRenderDrawColor(renderer, 154, 192, 193, SDL_ALPHA_OPAQUE);
-    SDL_RenderClear(renderer);
+    mRenderer->StartFrameRendering();
     ///////////////////////////////
 
-    // mSampleSprite->Render(renderer);
-    mAnimatedSprite->Render(renderer);
+    std::vector<RenderCommand> renderQueue;
+    renderQueue.push_back(mSampleSprite->GetRenderData());
+    renderQueue.push_back(mAnimatedSprite->GetRenderData());
 
+    mRenderer->Render(renderQueue);
+
+#ifdef DEBUG
     // Dev build message
     int w = 0;
     int h = 0;
-
-#ifdef DEBUG
-
-    SDL_GetRenderOutputSize(renderer, &w, &h);
-    SDL_SetRenderScale(renderer, 1, 1);
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+    SDL_GetRenderOutputSize(mRenderer->GetRenderer().get(), &w, &h);
+    SDL_SetRenderScale(mRenderer->GetRenderer().get(), 1, 1);
+    SDL_SetRenderDrawColor(mRenderer->GetRenderer().get(), 255, 255, 255, SDL_ALPHA_OPAQUE);
 
     int tw, th;
     TTF_GetTextSize(mText, &tw, &th);
     TTF_DrawRendererText(mText, w - tw - 1, h - th);
 #endif
     ///////////////////////////////
-    SDL_RenderPresent(renderer); /* put it all on the screen! */
+    mRenderer->FinishRendering(); /* put it all on the screen! */
 }
 
 World::~World()

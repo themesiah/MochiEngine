@@ -13,10 +13,10 @@
 
 using json = nlohmann::json;
 
-AnimatedSprite::AnimatedSprite(std::shared_ptr<AnimationFactory> animationFactory, std::shared_ptr<TextureFactory> textureFactory, SDL_Renderer *renderer, const std::string &animationPath, const std::string &mainAnimation) : mTimer(0.0f),
-                                                                                                                                                                                                                                 mCurrentFrame(0),
-                                                                                                                                                                                                                                 mDestRect(),
-                                                                                                                                                                                                                                 mSrcRect()
+AnimatedSprite::AnimatedSprite(std::shared_ptr<AnimationFactory> animationFactory, std::shared_ptr<TextureFactory> textureFactory, const std::string &animationPath, const std::string &mainAnimation) : mTimer(0.0f),
+                                                                                                                                                                                                         mCurrentFrame(0),
+                                                                                                                                                                                                         mDestRect(),
+                                                                                                                                                                                                         mSrcRect()
 {
     mAnimationsData = animationFactory->GetAnimationsData(animationPath);
     ASSERT("Animations data was not loaded", mAnimationsData != nullptr);
@@ -29,26 +29,22 @@ AnimatedSprite::AnimatedSprite(std::shared_ptr<AnimationFactory> animationFactor
     mSize.x = mAnimationsData->Frames[0].Frame.w;
     mSize.y = mAnimationsData->Frames[0].Frame.h;
 
-    int w = 0;
-    int h = 0;
-    SDL_RendererLogicalPresentation *rlp = NULL;
-    SDL_GetRenderLogicalPresentation(renderer, &w, &h, rlp);
-
     mScale = 5;
     mDestRect.x = 160 - mSize.x * mScale / 2;
     mDestRect.y = 90 - mSize.y * mScale / 2;
-
-    LOG_INFO(std::format("W: {}, H: {}, mDestRect.w: {}, mDestRect.h: {}", w, h, mDestRect.w, mDestRect.h));
 }
 
 AnimatedSprite::~AnimatedSprite()
 {
 }
-
-void AnimatedSprite::Render(SDL_Renderer *renderer) const
+RenderCommand AnimatedSprite::GetRenderData() const
 {
-    SDL_SetRenderScale(renderer, 1, 1);
-    SDL_RenderTexture(renderer, mTexture.get(), &mSrcRect, &mDestRect);
+    RenderCommand rc;
+    rc.texture = mTexture;
+    rc.sourceRect = mSrcRect;
+    rc.destRect = mDestRect;
+    rc.zindex = 1; // TEMP
+    return rc;
 }
 
 void AnimatedSprite::UpdateAnimation(const float &dt)

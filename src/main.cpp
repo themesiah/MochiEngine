@@ -33,7 +33,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
 {
     World &state = *static_cast<World *>(appstate);
-    state.AppEvent(event);
+    SDL_AppResult result = state.AppEvent(event);
     if (event->type == SDL_EVENT_QUIT)
     {
         return SDL_APP_SUCCESS; /* end the program, reporting success to the OS. */
@@ -42,11 +42,7 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
     {
         return SDL_APP_SUCCESS;
     }
-    else if (event->type == SDL_EVENT_KEY_DOWN && event->key.key == SDLK_F1)
-    {
-        SDL_SetWindowSize(state.window, 800, 600);
-    }
-    return SDL_APP_CONTINUE; /* carry on with the program! */
+    return result; /* carry on with the program! */
 }
 
 /* This function runs once per frame, and is the heart of the program. */
@@ -56,7 +52,7 @@ SDL_AppResult SDL_AppIterate(void *appstate)
 
     // Update the world
     World &state = *static_cast<World *>(appstate);
-    state.Update(0.016f);
+    SDL_AppResult result = state.Update(0.016f);
     state.Render();
 
     // Sleep if we are ahead of FPS
@@ -69,7 +65,7 @@ SDL_AppResult SDL_AppIterate(void *appstate)
         SDL_DelayNS(sleepTime);
     }
 
-    return SDL_APP_CONTINUE; /* carry on with the program! */
+    return result;
 }
 
 /* This function runs once at shutdown. */

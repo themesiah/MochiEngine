@@ -8,7 +8,7 @@
 #include "../Utils/StringUtils.h"
 #include "../Logger.h"
 
-TextureFactory::TextureFactory(std::shared_ptr<PackCatalog> catalog, SDL_Renderer *renderer) : mTexturesMap(), mCatalog(catalog), mRenderer(renderer)
+TextureFactory::TextureFactory(std::shared_ptr<PackCatalog> catalog, std::shared_ptr<SDL_Renderer> renderer) : mTexturesMap(), mCatalog(catalog), mRenderer(renderer)
 {
 }
 
@@ -28,7 +28,7 @@ std::shared_ptr<SDL_Texture> TextureFactory::GetTexture(const std::string &textu
     }
 
     auto textureBuffer = mCatalog->GetFile(normalizedPath);
-    auto tex = std::shared_ptr<SDL_Texture>(IMG_LoadTexture_IO(mRenderer, SDL_IOFromConstMem(textureBuffer.data(), textureBuffer.size()), true), SDL_DestroyTexture);
+    auto tex = std::shared_ptr<SDL_Texture>(IMG_LoadTexture_IO(mRenderer.get(), SDL_IOFromConstMem(textureBuffer.data(), textureBuffer.size()), true), SDL_DestroyTexture);
     ASSERT("Failed loading texture from the catalog", tex != nullptr);
     SDL_SetTextureScaleMode(tex.get(), SDL_ScaleMode::SDL_SCALEMODE_NEAREST); // SUPER IMPORTANT!
     mTexturesMap[normalizedPath] = tex;

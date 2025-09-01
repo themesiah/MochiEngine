@@ -15,13 +15,12 @@ private:
     std::shared_ptr<SDL_Texture> mTexture;
     SDL_FRect mDestRect;
     SDL_FRect mSrcRect;
-    SDL_Renderer *mRenderer;
     float mScale;
 
 public:
-    Sprite(std::shared_ptr<TextureFactory>, SDL_Renderer *, const std::string &filename);
+    Sprite(std::shared_ptr<TextureFactory>, const std::string &filename);
     virtual ~Sprite();
-    virtual void Render(SDL_Renderer *renderer) const;
+    virtual RenderCommand GetRenderData() const;
 };
 
 #endif

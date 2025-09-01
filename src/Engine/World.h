@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <SDL3/SDL_events.h>
+#include <SDL3/SDL.h>
 
 class Sprite;
 class AnimatedSprite;
@@ -11,14 +12,14 @@ class ActionManager;
 class PackCatalog;
 class TextureFactory;
 class AnimationFactory;
-struct SDL_Window;
-struct SDL_Renderer;
+class Renderer;
 struct TTF_Font;
 struct TTF_TextEngine;
 struct TTF_Text;
 class World
 {
 private:
+    std::shared_ptr<Renderer> mRenderer;
     std::shared_ptr<FMODWrapper> mFmod;
     std::shared_ptr<ActionManager> mActionManager;
     std::shared_ptr<PackCatalog> mCatalog;
@@ -31,11 +32,9 @@ private:
     TTF_Text *mText;
 
 public:
-    SDL_Window *window{nullptr};
-    SDL_Renderer *renderer{nullptr};
     World();
-    void Update(const float &dt);
-    void AppEvent(SDL_Event *event);
+    SDL_AppResult Update(const float &dt);
+    SDL_AppResult AppEvent(SDL_Event *event);
     void Render() const;
     virtual ~World();
 };

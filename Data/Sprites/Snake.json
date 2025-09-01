@@ -163,15 +163,6 @@
    },
    {
     "filename": "Attack_0",
-    "frame": { "x": 0, "y": 0, "w": 16, "h": 16 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 16, "h": 16 },
-    "sourceSize": { "w": 16, "h": 16 },
-    "duration": 150
-   },
-   {
-    "filename": "Attack_1",
     "frame": { "x": 48, "y": 48, "w": 16, "h": 16 },
     "rotated": false,
     "trimmed": false,
@@ -180,7 +171,7 @@
     "duration": 150
    },
    {
-    "filename": "Attack_2",
+    "filename": "Attack_1",
     "frame": { "x": 64, "y": 48, "w": 16, "h": 16 },
     "rotated": false,
     "trimmed": false,
@@ -189,8 +180,17 @@
     "duration": 150
    },
    {
-    "filename": "Attack_3",
+    "filename": "Attack_2",
     "frame": { "x": 0, "y": 64, "w": 16, "h": 16 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 16, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   {
+    "filename": "Attack_3",
+    "frame": { "x": 16, "y": 64, "w": 16, "h": 16 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 16, "h": 16 },
