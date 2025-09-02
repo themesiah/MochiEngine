@@ -49,3 +49,11 @@ SDL_FRect Camera::WorldToScreen(const SDL_FRect &dstRect) const
     newRect.y = (newRect.y + mPosition.y) * CONST_PIXEL_PER_METER - dstRect.h / 2;
     return newRect;
 }
+
+SDL_FRect Camera::ScreenToWorld(const SDL_FRect &dstRect) const
+{
+    SDL_FRect newRect = dstRect;
+    newRect.x = (newRect.x + dstRect.w / 2) / CONST_PIXEL_PER_METER + mPosition.x;
+    newRect.y = (newRect.y + dstRect.h / 2) / CONST_PIXEL_PER_METER + mPosition.y;
+    return newRect;
+}

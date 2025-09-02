@@ -12,6 +12,7 @@ set(
   TextRenderTests
   LuaTest
   PackerTests
+  CameraTests
 )
 
 

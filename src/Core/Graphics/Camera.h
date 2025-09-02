@@ -21,6 +21,7 @@ public:
     float GetZoom() const;
     void Move(const float &horizontal, const float &vertical);
     SDL_FRect WorldToScreen(const SDL_FRect &dstRect) const;
+    SDL_FRect ScreenToWorld(const SDL_FRect &dstRect) const;
 };
 
 #endif
