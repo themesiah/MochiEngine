@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <SDL3/SDL_events.h>
 #include <SDL3/SDL.h>
+#include <chrono>
 
 typedef uint32_t EntityHandler;
 
@@ -29,10 +30,10 @@ class Engine
 {
 private:
     int mTargetFPS;
-    int64_t mNsPerFrame;
+    std::chrono::steady_clock::time_point mFrameStart;
     float mLastDeltaTime;
-    void Render() const;
 
+    void Render() const;
     EntityHandler mLastEntityHandler;
     std::vector<EntityHandler> mFreeEntityHandlers;
     std::unordered_map<EntityHandler, std::shared_ptr<IEntity>> mEntities;

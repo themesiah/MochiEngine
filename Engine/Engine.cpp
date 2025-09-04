@@ -5,6 +5,7 @@
 #include <SDL3_ttf/SDL_ttf.h>
 #include <iostream>
 #include <filesystem>
+#include <chrono>
 
 #include "Packer/PackCatalog.h"
 
@@ -22,13 +23,14 @@
 
 #include "Constants.h"
 #include "Logger.h"
+#include "Assert.h"
 
 #include "Entity/IEntity.h"
 #include "Entity/IRenderable.h"
 #include "Entity/IUpdateable.h"
 #include "Entity/IAnimatable.h"
 
-Engine::Engine() : mTargetFPS(60), mNsPerFrame(1000000000 / mTargetFPS), mLastDeltaTime(0.016f), mLastEntityHandler(1)
+Engine::Engine() : mTargetFPS(60), mLastDeltaTime(0.016f), mLastEntityHandler(1)
 {
 #ifdef DEBUG
     mCatalog = std::make_shared<PackCatalog>(PackCatalog::FileLoaderType::FileSystem);
@@ -94,6 +96,8 @@ Engine::Engine() : mTargetFPS(60), mNsPerFrame(1000000000 / mTargetFPS), mLastDe
     {
         std::cout << "Can't open Actions.json" << std::endl;
     }
+
+    mFrameStart = std::chrono::steady_clock::now();
 }
 
 bool Engine::Update()
@@ -106,7 +110,6 @@ bool Engine::Update()
             return 0;
         }
     }
-    auto start = std::chrono::high_resolution_clock::now();
     const bool *keyboardState = SDL_GetKeyboardState(NULL);
     mActionManager->Update(mLastDeltaTime, keyboardState);
     mFmod->Update();
@@ -128,17 +131,23 @@ bool Engine::Update()
 
     Render();
 
-    auto end = std::chrono::high_resolution_clock::now();
-    auto ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
-    if (ns < mNsPerFrame)
+    const auto target = std::chrono::nanoseconds(1'000'000'000 / mTargetFPS);
+    auto work = std::chrono::steady_clock::now() - mFrameStart;
+
+    if (work < target)
     {
-        int64_t sleepTime = mNsPerFrame - ns;
-        SDL_DelayNS(sleepTime);
+        SDL_DelayNS((target - work).count());
     }
-    else
-    {
-        mLastDeltaTime = ns / 1000000000;
-    }
+
+    auto frameEnd = std::chrono::steady_clock::now();
+    auto frameDur = frameEnd - mFrameStart;
+    mFrameStart = frameEnd;
+
+    mLastDeltaTime = std::chrono::duration<float>(frameDur).count();
+
+    ASSERT(std::format("Delta time should not be less than the target, as we waited for it: Last {} target {}", mLastDeltaTime, 1.f / mTargetFPS), mLastDeltaTime >= 1.f / mTargetFPS);
+    if (mLastDeltaTime > 0.25f)
+        mLastDeltaTime = 0.25f; // Cap at 250ms
 
     return true;
 }
