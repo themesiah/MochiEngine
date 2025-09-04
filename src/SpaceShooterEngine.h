@@ -4,8 +4,17 @@
 
 #include "Engine.h"
 
+#include <memory>
+
 class SpaceShooterEngine : public Engine
 {
+private:
+    // TEMP
+    std::shared_ptr<Sprite> mSampleSprite;
+    std::shared_ptr<AnimatedSprite> mAnimatedSprite;
+    EntityHandler mSpriteHandler;
+    EntityHandler mAnimatedSpriteHandler;
+    // END TEMP
 public:
     SpaceShooterEngine();
     virtual ~SpaceShooterEngine();

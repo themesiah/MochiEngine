@@ -1,8 +1,9 @@
 #ifndef HDEF_ANIMATEDSPRITE
 #define HDEF_ANIMATEDSPRITE
 
-#include "IAnimatable.h"
-#include "IRenderable.h"
+#include "../Entity/IAnimatable.h"
+#include "../Entity/IRenderable.h"
+#include "../Entity/IEntity.h"
 #include "AnimationData.h"
 
 #include <string>
@@ -12,7 +13,7 @@
 class PackCatalog;
 class TextureFactory;
 class AnimationFactory;
-class AnimatedSprite : public IRenderable, public IAnimatable
+class AnimatedSprite : public IRenderable, public IAnimatable, public IEntity
 {
 private:
     std::shared_ptr<AnimationsData> mAnimationsData;

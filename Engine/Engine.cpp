@@ -23,7 +23,12 @@
 #include "Constants.h"
 #include "Logger.h"
 
-Engine::Engine() : mTargetFPS(60), mNsPerFrame(1000000000 / mTargetFPS), mLastDeltaTime(0.016f)
+#include "Entity/IEntity.h"
+#include "Entity/IRenderable.h"
+#include "Entity/IUpdateable.h"
+#include "Entity/IAnimatable.h"
+
+Engine::Engine() : mTargetFPS(60), mNsPerFrame(1000000000 / mTargetFPS), mLastDeltaTime(0.016f), mLastEntityHandler(1)
 {
 #ifdef DEBUG
     mCatalog = std::make_shared<PackCatalog>(PackCatalog::FileLoaderType::FileSystem);
@@ -89,10 +94,6 @@ Engine::Engine() : mTargetFPS(60), mNsPerFrame(1000000000 / mTargetFPS), mLastDe
     {
         std::cout << "Can't open Actions.json" << std::endl;
     }
-
-    mSampleSprite = new Sprite(mTextureFactory, "Sprites/Background2.png");
-
-    mAnimatedSprite = new AnimatedSprite(mAnimationFactory, mTextureFactory, "Sprites/Snake.json", "Idle");
 }
 
 bool Engine::Update()
@@ -109,6 +110,15 @@ bool Engine::Update()
     const bool *keyboardState = SDL_GetKeyboardState(NULL);
     mActionManager->Update(mLastDeltaTime, keyboardState);
     mFmod->Update();
+
+    for (auto updatable : mUpdateables)
+    {
+        updatable->Update(mLastDeltaTime);
+    }
+    for (auto animatable : mAnimatables)
+    {
+        animatable->UpdateAnimation(mLastDeltaTime);
+    }
 
     // USER DEFINED
     if (!OnUpdate(mLastDeltaTime))
@@ -139,8 +149,10 @@ void Engine::Render() const
     ///////////////////////////////
 
     std::vector<RenderCommand> renderQueue;
-    renderQueue.push_back(mSampleSprite->GetRenderData());
-    renderQueue.push_back(mAnimatedSprite->GetRenderData());
+    for (auto renderable : mRenderables)
+    {
+        renderQueue.push_back(renderable->GetRenderData());
+    }
 
     mRenderer->Render(renderQueue, mCamera);
 
@@ -160,9 +172,63 @@ void Engine::Render() const
     mRenderer->FinishRendering(); /* put it all on the screen! */
 }
 
+EntityHandler Engine::AddEntity(std::shared_ptr<IEntity> e)
+{
+    if (std::shared_ptr<IUpdateable> updateable = dynamic_pointer_cast<IUpdateable>(e))
+    {
+        mUpdateables.push_back(updateable);
+    }
+    if (std::shared_ptr<IRenderable> renderable = dynamic_pointer_cast<IRenderable>(e))
+    {
+        mRenderables.push_back(renderable);
+    }
+    if (std::shared_ptr<IAnimatable> animatable = dynamic_pointer_cast<IAnimatable>(e))
+    {
+        mAnimatables.push_back(animatable);
+    }
+
+    EntityHandler handler;
+    if (mFreeEntityHandlers.size() > 0)
+    {
+        handler = mFreeEntityHandlers.back();
+        mFreeEntityHandlers.pop_back();
+    }
+    else
+    {
+        handler = mLastEntityHandler;
+        mLastEntityHandler++;
+    }
+
+    mEntities[handler] = e;
+
+    return handler;
+}
+
+bool Engine::RemoveEntity(EntityHandler entityHandler)
+{
+    auto it = mEntities.find(entityHandler);
+    if (it == mEntities.end())
+        return false;
+    auto e = mEntities[entityHandler];
+    mEntities.erase(it);
+
+    if (std::shared_ptr<IUpdateable> updateable = dynamic_pointer_cast<IUpdateable>(e))
+    {
+        mUpdateables.erase(std::remove(mUpdateables.begin(), mUpdateables.end(), updateable), mUpdateables.end());
+    }
+    if (std::shared_ptr<IRenderable> renderable = dynamic_pointer_cast<IRenderable>(e))
+    {
+        mRenderables.erase(std::remove(mRenderables.begin(), mRenderables.end(), renderable), mRenderables.end());
+    }
+    if (std::shared_ptr<IAnimatable> animatable = dynamic_pointer_cast<IAnimatable>(e))
+    {
+        mAnimatables.erase(std::remove(mAnimatables.begin(), mAnimatables.end(), animatable), mAnimatables.end());
+    }
+    return true;
+}
+
 Engine::~Engine()
 {
-    delete mSampleSprite;
     if (mFont)
     {
         TTF_CloseFont(mFont);

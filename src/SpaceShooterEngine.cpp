@@ -10,6 +10,12 @@
 
 SpaceShooterEngine::SpaceShooterEngine() : Engine()
 {
+    mSampleSprite = std::make_shared<Sprite>(mTextureFactory, "Sprites/Background2.png");
+
+    mAnimatedSprite = std::make_shared<AnimatedSprite>(mAnimationFactory, mTextureFactory, "Sprites/Snake.json", "Idle");
+
+    mSpriteHandler = AddEntity(mSampleSprite);
+    mAnimatedSpriteHandler = AddEntity(mAnimatedSprite);
 }
 
 SpaceShooterEngine::~SpaceShooterEngine()
@@ -25,7 +31,8 @@ bool SpaceShooterEngine::OnUpdate(const float &dt)
     {
         std::cout << "B is pressed!" << std::endl;
         // mFmod->PlayBGM("TestMusic");
-        mAnimatedSprite->PlayAnimation("Walk");
+        // mAnimatedSprite->PlayAnimation("Walk");
+        RemoveEntity(mAnimatedSpriteHandler);
     }
 
     if (mActionManager->Performed("Debug2"))
@@ -41,8 +48,6 @@ bool SpaceShooterEngine::OnUpdate(const float &dt)
         // mFmod->ResumeBGM();
         mAnimatedSprite->PlayAnimation("Attack");
     }
-
-    mAnimatedSprite->UpdateAnimation(dt);
 
     return true;
 }

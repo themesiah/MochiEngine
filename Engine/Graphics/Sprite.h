@@ -1,15 +1,17 @@
 #ifndef HDEF_SPRITE
 #define HDEF_SPRITE
 
-#include "IRenderable.h"
+#include "../Entity/IRenderable.h"
 
 #include <memory>
 #include <vector>
 #include <string>
 #include <SDL3/SDL.h>
 
+#include "../Entity/IEntity.h"
+
 class TextureFactory;
-class Sprite : public IRenderable
+class Sprite : public IRenderable, public IEntity
 {
 private:
     std::shared_ptr<SDL_Texture> mTexture;
