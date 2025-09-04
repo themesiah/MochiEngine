@@ -102,6 +102,8 @@ Engine::Engine() : mTargetFPS(60), mLastDeltaTime(0.016f), mLastEntityHandler(1)
 
 bool Engine::Update()
 {
+    ASSERT("Delta time should not be 0", mLastDeltaTime != 0.f);
+    TimeSystem::GetInstance().Tick(mLastDeltaTime);
     SDL_Event event;
     while (SDL_PollEvent(&event))
     {
@@ -111,20 +113,20 @@ bool Engine::Update()
         }
     }
     const bool *keyboardState = SDL_GetKeyboardState(NULL);
-    mActionManager->Update(mLastDeltaTime, keyboardState);
+    mActionManager->Update(TimeSystem::GetDeltaTime(), keyboardState);
     mFmod->Update();
 
     for (auto updatable : mUpdateables)
     {
-        updatable->Update(mLastDeltaTime, mActionManager);
+        updatable->Update(TimeSystem::GetDeltaTime(), mActionManager);
     }
     for (auto animatable : mAnimatables)
     {
-        animatable->UpdateAnimation(mLastDeltaTime);
+        animatable->UpdateAnimation(TimeSystem::GetDeltaTime());
     }
 
     // USER DEFINED
-    if (!OnUpdate(mLastDeltaTime))
+    if (!OnUpdate(TimeSystem::GetDeltaTime()))
     {
         return 0;
     }

@@ -8,6 +8,8 @@
 #include <SDL3/SDL.h>
 #include <chrono>
 
+#include "Time/TimeSystem.h"
+
 typedef uint32_t EntityHandler;
 
 class Sprite;
