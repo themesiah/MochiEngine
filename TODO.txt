@@ -10,6 +10,7 @@
 - Math utils (lerp, easing)
 - Debug ImGUI (onscreen info and more)
 - Time manager (delta time, time scale, fixed time...)
+- Event Bus
 
 
 Requires art:

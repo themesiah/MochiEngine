@@ -12,8 +12,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<CONFIG>)
 
 
 # Add all subdirectories
-add_subdirectory("src/Core")
-add_subdirectory("src/Engine")
+add_subdirectory("Engine")
 
 # Win32 mode (no console) or not
 set(GAME_WIN32_FLAG "")
@@ -28,10 +27,10 @@ if(WIN32)
     endif()
 endif()
 
-
-add_executable(Game ${GAME_WIN32_FLAG} src/main.cpp)
+file(GLOB Game_src CONFIGURE_DEPENDS "src/*.cpp")
+add_executable(Game ${GAME_WIN32_FLAG} ${Game_src})
 target_link_libraries(Game
-                      PUBLIC
+                      PRIVATE
                       Engine
 )
 

@@ -1,4 +1,4 @@
-#include "World.h"
+#include "Engine.h"
 
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_events.h>
@@ -23,7 +23,7 @@
 #include "Constants.h"
 #include "Logger.h"
 
-World::World()
+Engine::Engine() : mTargetFPS(60), mNsPerFrame(1000000000 / mTargetFPS), mLastDeltaTime(0.016f)
 {
 #ifdef DEBUG
     mCatalog = std::make_shared<PackCatalog>(PackCatalog::FileLoaderType::FileSystem);
@@ -75,10 +75,6 @@ World::World()
 
     LOG_OK("SDL Initialized");
 
-    mSampleSprite = new Sprite(mTextureFactory, "Sprites/Background2.png");
-
-    mAnimatedSprite = new AnimatedSprite(mAnimationFactory, mTextureFactory, "Sprites/Snake.json", "Idle");
-
     mFmod = std::make_shared<FMODWrapper>(mCatalog);
     if (mFmod->Init() == FMOD_OK && mFmod->LoadBank(CONST_MASTER_BANK) == FMOD_OK)
     {
@@ -93,48 +89,51 @@ World::World()
     {
         std::cout << "Can't open Actions.json" << std::endl;
     }
+
+    mSampleSprite = new Sprite(mTextureFactory, "Sprites/Background2.png");
+
+    mAnimatedSprite = new AnimatedSprite(mAnimationFactory, mTextureFactory, "Sprites/Snake.json", "Idle");
 }
 
-SDL_AppResult World::Update(const float &dt)
+bool Engine::Update()
 {
+    SDL_Event event;
+    while (SDL_PollEvent(&event))
+    {
+        if (event.type == SDL_EVENT_QUIT)
+        {
+            return 0;
+        }
+    }
+    auto start = std::chrono::high_resolution_clock::now();
     const bool *keyboardState = SDL_GetKeyboardState(NULL);
-    mActionManager->Update(dt, keyboardState);
+    mActionManager->Update(mLastDeltaTime, keyboardState);
     mFmod->Update();
 
-    mCamera->Move(mActionManager->Value("Horizontal") * dt * 1,
-                  mActionManager->Value("Vertical") * dt * 1);
-
-    if (mActionManager->Performed("Debug1"))
+    // USER DEFINED
+    if (!OnUpdate(mLastDeltaTime))
     {
-        std::cout << "B is pressed!" << std::endl;
-        // mFmod->PlayBGM("TestMusic");
-        mAnimatedSprite->PlayAnimation("Walk");
+        return 0;
     }
 
-    if (mActionManager->Performed("Debug2"))
+    Render();
+
+    auto end = std::chrono::high_resolution_clock::now();
+    auto ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    if (ns < mNsPerFrame)
     {
-        std::cout << "C is pressed!" << std::endl;
-        // mFmod->PauseBGM();
-        mAnimatedSprite->PlayAnimation("Run");
+        int64_t sleepTime = mNsPerFrame - ns;
+        SDL_DelayNS(sleepTime);
+    }
+    else
+    {
+        mLastDeltaTime = ns / 1000000000;
     }
 
-    if (mActionManager->Performed("Debug3"))
-    {
-        std::cout << "D is pressed!" << std::endl;
-        // mFmod->ResumeBGM();
-        mAnimatedSprite->PlayAnimation("Attack");
-    }
-
-    mAnimatedSprite->UpdateAnimation(dt);
-    return SDL_APP_CONTINUE;
+    return true;
 }
 
-SDL_AppResult World::AppEvent(SDL_Event *event)
-{
-    return SDL_APP_CONTINUE;
-}
-
-void World::Render() const
+void Engine::Render() const
 {
     mRenderer->StartFrameRendering();
     ///////////////////////////////
@@ -161,7 +160,7 @@ void World::Render() const
     mRenderer->FinishRendering(); /* put it all on the screen! */
 }
 
-World::~World()
+Engine::~Engine()
 {
     delete mSampleSprite;
     if (mFont)

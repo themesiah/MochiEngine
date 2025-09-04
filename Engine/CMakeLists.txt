@@ -1,6 +1,6 @@
-project(MochiCore)
+project(MochiEngine)
 # Get all .cpp files
-file(GLOB Core_src CONFIGURE_DEPENDS "Graphics/*.cpp" "Audio/*.cpp" "Input/*.cpp" "Utils/*.cpp" "*.cpp")
+file(GLOB Engine_src CONFIGURE_DEPENDS "Graphics/*.cpp" "Audio/*.cpp" "Input/*.cpp" "Utils/*.cpp" "*.cpp")
 
 
 set(SDLTTF_VENDORED ON)
@@ -15,15 +15,15 @@ add_subdirectory(Packer)
 
 add_subdirectory(Tests)
 
-add_library(Core ${Core_src})
-target_compile_features(Core PUBLIC cxx_std_23)
-target_compile_definitions(Core PUBLIC $<$<CONFIG:Debug>:DEBUG>)
+add_library(Engine ${Engine_src})
+target_compile_features(Engine PUBLIC cxx_std_23)
+target_compile_definitions(Engine PUBLIC $<$<CONFIG:Debug>:DEBUG>)
 
-target_include_directories(Core PUBLIC "Includes/FMOD")
-target_include_directories(Core PUBLIC "Includes/Json")
-target_include_directories(Core INTERFACE "")
+target_include_directories(Engine PUBLIC "Includes/FMOD")
+target_include_directories(Engine PUBLIC "Includes/Json")
+target_include_directories(Engine INTERFACE "")
 
-target_link_libraries(Core
+target_link_libraries(Engine
                       PUBLIC
                       SDL3_image::SDL3_image
                       SDL3::SDL3
@@ -39,13 +39,13 @@ target_link_libraries(Core
 # the BUILD_INTERFACE genex
 set(gcc_like_cxx "$<COMPILE_LANG_AND_ID:CXX,ARMClang,AppleClang,Clang,GNU,LCC>")
 set(msvc_cxx "$<COMPILE_LANG_AND_ID:CXX,MSVC>")
-target_compile_options(Core PUBLIC
+target_compile_options(Engine PUBLIC
   "$<${gcc_like_cxx}:$<BUILD_INTERFACE:-Wall;-Wextra;-Wshadow;-Wformat=2;-Wunused;-Wno-unused-variable;-Wno-unused-parameter>>"
   "$<${msvc_cxx}:$<BUILD_INTERFACE:-W3>>"
 )
 
 add_custom_command(
-  TARGET Core POST_BUILD
+  TARGET Engine POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy
   "${PROJECT_SOURCE_DIR}/Includes/FMOD/win/studio/lib/x64/fmodstudio.dll"
   "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/fmodstudio.dll"
@@ -53,7 +53,7 @@ add_custom_command(
 )
 
 add_custom_command(
-  TARGET Core POST_BUILD
+  TARGET Engine POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy
   "${PROJECT_SOURCE_DIR}/Includes/FMOD/win/core/lib/x64/fmod.dll"
   "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/fmod.dll"

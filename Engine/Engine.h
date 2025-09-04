@@ -17,9 +17,21 @@ class Renderer;
 struct TTF_Font;
 struct TTF_TextEngine;
 struct TTF_Text;
-class World
+class Engine
 {
 private:
+    int mTargetFPS;
+    int64_t mNsPerFrame;
+    float mLastDeltaTime;
+    void Render() const;
+
+    // TEMP
+    TTF_Font *mFont;
+    TTF_TextEngine *mTextEngine;
+    TTF_Text *mText;
+    // END TEMP
+
+protected:
     std::shared_ptr<Renderer> mRenderer;
     std::shared_ptr<FMODWrapper> mFmod;
     std::shared_ptr<ActionManager> mActionManager;
@@ -27,18 +39,17 @@ private:
     std::shared_ptr<TextureFactory> mTextureFactory;
     std::shared_ptr<AnimationFactory> mAnimationFactory;
     std::shared_ptr<Camera> mCamera;
+    virtual bool OnUpdate(const float &dt) = 0;
+
+    // TEMP
     Sprite *mSampleSprite;
     AnimatedSprite *mAnimatedSprite;
-    TTF_Font *mFont;
-    TTF_TextEngine *mTextEngine;
-    TTF_Text *mText;
+    // END TEMP
 
 public:
-    World();
-    SDL_AppResult Update(const float &dt);
-    SDL_AppResult AppEvent(SDL_Event *event);
-    void Render() const;
-    virtual ~World();
+    Engine();
+    bool Update();
+    virtual ~Engine();
 };
 
 #endif
