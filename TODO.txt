@@ -3,7 +3,7 @@
 - More FMOD Api methods (move to part of the song, play sound, change volume, change parameter...)
 - Check export to WebGL
 - Add FMOD callback to LUA
-- Perfect project separation (treat non Space Shooter specifics as the "Game Engine")
+x Perfect project separation (treat non Space Shooter specifics as the "Game Engine")
 - GUI class with button, image, text, toggle, slider... (with focus!)
 - Physics system (collision with shapes)
 - Scene system

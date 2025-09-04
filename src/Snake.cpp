@@ -1,0 +1,35 @@
+#include "Snake.h"
+
+#include <memory>
+#include <string>
+
+#include "Graphics/AnimatedSprite.h"
+#include "Graphics/AnimationFactory.h"
+#include "Graphics/TextureFactory.h"
+#include "Input/ActionManager.h"
+
+#include "Entity/IUpdateable.h"
+
+Snake::Snake(std::shared_ptr<AnimationFactory> mAnimationFactory, std::shared_ptr<TextureFactory> mTextureFactory, const std::string &animationPath, const std::string &mainAnimation)
+    : AnimatedSprite(mAnimationFactory, mTextureFactory, animationPath, mainAnimation)
+{
+}
+
+Snake::~Snake() {}
+void Snake::Update(const float &dt, std::shared_ptr<ActionManager> mActionManager)
+{
+    if (mActionManager->Performed("Debug1"))
+    {
+        PlayAnimation("Walk");
+    }
+
+    if (mActionManager->Performed("Debug2"))
+    {
+        PlayAnimation("Run");
+    }
+
+    if (mActionManager->Performed("Debug3"))
+    {
+        PlayAnimation("Attack");
+    }
+}

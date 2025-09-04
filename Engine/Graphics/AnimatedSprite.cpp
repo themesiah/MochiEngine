@@ -11,6 +11,8 @@
 #include "TextureFactory.h"
 #include "AnimationFactory.h"
 
+#include "../Input/ActionManager.h"
+
 using json = nlohmann::json;
 
 AnimatedSprite::AnimatedSprite(std::shared_ptr<AnimationFactory> animationFactory, std::shared_ptr<TextureFactory> textureFactory, const std::string &animationPath, const std::string &mainAnimation) : mTimer(0.0f),

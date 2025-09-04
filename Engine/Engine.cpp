@@ -113,7 +113,7 @@ bool Engine::Update()
 
     for (auto updatable : mUpdateables)
     {
-        updatable->Update(mLastDeltaTime);
+        updatable->Update(mLastDeltaTime, mActionManager);
     }
     for (auto animatable : mAnimatables)
     {
