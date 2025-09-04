@@ -8,6 +8,8 @@
 - Physics system (collision with shapes)
 - Scene system
 - Math utils (lerp, easing)
+- Debug ImGUI (onscreen info and more)
+- Time manager (delta time, time scale, fixed time...)
 
 
 Requires art:
@@ -17,3 +19,6 @@ Requires art:
 
 Might?:
 - Profiler / Performance metrics
+
+Future:
+- Options and save
