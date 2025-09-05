@@ -10,13 +10,13 @@
 
 #include "Entity/IUpdateable.h"
 
-Snake::Snake(std::shared_ptr<AnimationFactory> mAnimationFactory, std::shared_ptr<TextureFactory> mTextureFactory, const std::string &animationPath, const std::string &mainAnimation)
+Snake::Snake(std::shared_ptr<Mochi::Graphics::AnimationFactory> mAnimationFactory, std::shared_ptr<Mochi::Graphics::TextureFactory> mTextureFactory, const std::string &animationPath, const std::string &mainAnimation)
     : AnimatedSprite(mAnimationFactory, mTextureFactory, animationPath, mainAnimation)
 {
 }
 
 Snake::~Snake() {}
-void Snake::Update(const float &dt, std::shared_ptr<ActionManager> mActionManager)
+void Snake::Update(const float &dt, std::shared_ptr<Mochi::Input::ActionManager> mActionManager)
 {
     if (mActionManager->Performed("Debug1"))
     {

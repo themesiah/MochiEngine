@@ -1,9 +1,12 @@
 #ifndef HDEF_IENTITY
 #define HDEF_IENTITY
 
-struct IEntity
+namespace Mochi
 {
-    virtual ~IEntity() {}
-};
+    struct IEntity
+    {
+        virtual ~IEntity() {}
+    };
+}
 
 #endif

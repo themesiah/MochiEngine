@@ -10,7 +10,7 @@ x Perfect project separation (treat non Space Shooter specifics as the "Game Eng
 - Scene system
 - Math utils (lerp, easing)
 - Debug ImGUI (onscreen info and more)
-- Time manager (delta time, time scale, fixed time...)
+x Time manager (delta time, time scale, fixed time...)
 - Event Bus
 
 

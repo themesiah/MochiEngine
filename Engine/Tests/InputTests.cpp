@@ -9,7 +9,7 @@
 
 TEST_CASE("Input Manager")
 {
-    InputManager input;
+    Mochi::Input::InputManager input;
     bool keyboardState[SDL_SCANCODE_COUNT];
     memset(keyboardState, false, sizeof(keyboardState));
 
@@ -38,11 +38,11 @@ TEST_CASE("Input Manager")
 
 TEST_CASE("Action manager")
 {
-    std::shared_ptr<InputManager> inputManager = std::make_shared<InputManager>();
+    std::shared_ptr<Mochi::Input::InputManager> inputManager = std::make_shared<Mochi::Input::InputManager>();
     bool keyboardState[SDL_SCANCODE_COUNT];
     memset(keyboardState, false, sizeof(keyboardState));
 
-    ActionManager actionManager = ActionManager(inputManager);
+    Mochi::Input::ActionManager actionManager(inputManager);
     bool success = actionManager.LoadActionsFromFile("TestData/Actions.json");
     REQUIRE(success);
     REQUIRE(actionManager.HasAction("Shot"));

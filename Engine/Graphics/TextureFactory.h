@@ -7,20 +7,29 @@
 
 struct SDL_Texture;
 struct SDL_Renderer;
-class PackCatalog;
-class TextureFactory
+namespace Mochi
 {
-private:
-    std::unordered_map<std::string, std::shared_ptr<SDL_Texture>> mTexturesMap;
-    std::shared_ptr<PackCatalog> mCatalog;
-    std::shared_ptr<SDL_Renderer> mRenderer;
+    namespace FS
+    {
+        class PackCatalog;
+    }
+    namespace Graphics
+    {
+        class TextureFactory
+        {
+        private:
+            std::unordered_map<std::string, std::shared_ptr<SDL_Texture>> mTexturesMap;
+            std::shared_ptr<FS::PackCatalog> mCatalog;
+            std::shared_ptr<SDL_Renderer> mRenderer;
 
-public:
-    TextureFactory(std::shared_ptr<PackCatalog>, std::shared_ptr<SDL_Renderer>);
-    ~TextureFactory();
-    std::shared_ptr<SDL_Texture> GetTexture(const std::string &texturePath);
-    void DeleteCache();
-    void DeleteTexture(const std::string &texturePath);
-};
+        public:
+            TextureFactory(std::shared_ptr<FS::PackCatalog>, std::shared_ptr<SDL_Renderer>);
+            ~TextureFactory();
+            std::shared_ptr<SDL_Texture> GetTexture(const std::string &texturePath);
+            void DeleteCache();
+            void DeleteTexture(const std::string &texturePath);
+        };
+    }
+}
 
 #endif

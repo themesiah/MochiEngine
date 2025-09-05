@@ -19,7 +19,7 @@
 
 TEST_CASE("SDL texture Packfile")
 {
-    PackFile file("TestData/Data.pak");
+    Mochi::FS::PackFile file("TestData/Data.pak");
     REQUIRE(file.IsValid());
     bool success;
     SDL_Window *window;
@@ -38,7 +38,7 @@ TEST_CASE("SDL texture Packfile")
 
 TEST_CASE("SDL texture Filesystem")
 {
-    SystemFileLoader dir("TestData");
+    Mochi::FS::SystemFileLoader dir("TestData");
     REQUIRE(dir.IsValid());
     bool success;
     SDL_Window *window;
@@ -57,7 +57,7 @@ TEST_CASE("SDL texture Filesystem")
 
 TEST_CASE("Load audiobank Packfile")
 {
-    PackFile file("TestData/Data.pak");
+    Mochi::FS::PackFile file("TestData/Data.pak");
     REQUIRE(file.IsValid());
 
     FMOD_RESULT result;
@@ -81,7 +81,7 @@ TEST_CASE("Load audiobank Packfile")
 
 TEST_CASE("Load audiobank Filesystem")
 {
-    SystemFileLoader dir("TestData");
+    Mochi::FS::SystemFileLoader dir("TestData");
     REQUIRE(dir.IsValid());
 
     FMOD_RESULT result;
@@ -105,7 +105,7 @@ TEST_CASE("Load audiobank Filesystem")
 
 TEST_CASE("Load fonts Packfile")
 {
-    PackFile file("TestData/Data.pak");
+    Mochi::FS::PackFile file("TestData/Data.pak");
     REQUIRE(file.IsValid());
 
     bool success;
@@ -125,7 +125,7 @@ TEST_CASE("Load fonts Packfile")
 
 TEST_CASE("Load fonts Filesystem")
 {
-    SystemFileLoader dir("TestData");
+    Mochi::FS::SystemFileLoader dir("TestData");
     REQUIRE(dir.IsValid());
 
     bool success;
@@ -146,11 +146,11 @@ TEST_CASE("Load fonts Filesystem")
 
 TEST_CASE("Load actions Packfile")
 {
-    PackFile file("TestData/Data.pak");
+    Mochi::FS::PackFile file("TestData/Data.pak");
     REQUIRE(file.IsValid());
 
-    std::shared_ptr<InputManager> inputManager = std::make_shared<InputManager>();
-    ActionManager actionManager = ActionManager(inputManager);
+    std::shared_ptr<Mochi::Input::InputManager> inputManager = std::make_shared<Mochi::Input::InputManager>();
+    Mochi::Input::ActionManager actionManager(inputManager);
     REQUIRE(file.HasFile("Actions.json"));
     auto buffer = file.GetFile("Actions.json");
     bool success = actionManager.LoadActions(buffer);
@@ -160,11 +160,11 @@ TEST_CASE("Load actions Packfile")
 
 TEST_CASE("Load actions Filesystem")
 {
-    SystemFileLoader dir("TestData");
+    Mochi::FS::SystemFileLoader dir("TestData");
     REQUIRE(dir.IsValid());
 
-    std::shared_ptr<InputManager> inputManager = std::make_shared<InputManager>();
-    ActionManager actionManager = ActionManager(inputManager);
+    std::shared_ptr<Mochi::Input::InputManager> inputManager = std::make_shared<Mochi::Input::InputManager>();
+    Mochi::Input::ActionManager actionManager(inputManager);
     REQUIRE(dir.HasFile("Actions.json"));
     auto buffer = dir.GetFile("Actions.json");
     bool success = actionManager.LoadActions(buffer);
@@ -174,7 +174,7 @@ TEST_CASE("Load actions Filesystem")
 
 TEST_CASE("Catalog test filesystem")
 {
-    PackCatalog pc(PackCatalog::FileLoaderType::FileSystem);
+    Mochi::FS::PackCatalog pc(Mochi::FS::PackCatalog::FileLoaderType::FileSystem);
 
     CHECK_FALSE(pc.IsPackOpen("testdata"));
     CHECK_FALSE(pc.HasFile("Actions.json"));
@@ -185,7 +185,7 @@ TEST_CASE("Catalog test filesystem")
 
 TEST_CASE("Catalog test packfile")
 {
-    PackCatalog pc(PackCatalog::FileLoaderType::Packfile);
+    Mochi::FS::PackCatalog pc(Mochi::FS::PackCatalog::FileLoaderType::Packfile);
 
     CHECK_FALSE(pc.IsPackOpen("TestData/data"));
     CHECK_FALSE(pc.HasFile("Actions.json"));

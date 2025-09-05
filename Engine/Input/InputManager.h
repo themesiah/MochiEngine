@@ -3,18 +3,24 @@
 
 #include <SDL3/SDL.h>
 
-class InputManager
+namespace Mochi
 {
-private:
-    bool mKeyboardState[SDL_SCANCODE_COUNT];
-    bool mKeyboardLastState[SDL_SCANCODE_COUNT];
+    namespace Input
+    {
+        class InputManager
+        {
+        private:
+            bool mKeyboardState[SDL_SCANCODE_COUNT];
+            bool mKeyboardLastState[SDL_SCANCODE_COUNT];
 
-public:
-    InputManager();
-    bool IsDown(const unsigned int &key) const;
-    bool WasPressed(const unsigned int &key) const;
-    bool WasReleased(const unsigned int &key) const;
-    void Update(const bool *keyboardState);
-};
+        public:
+            InputManager();
+            bool IsDown(const unsigned int &key) const;
+            bool WasPressed(const unsigned int &key) const;
+            bool WasReleased(const unsigned int &key) const;
+            void Update(const bool *keyboardState);
+        };
+    }
+}
 
 #endif

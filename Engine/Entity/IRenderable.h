@@ -3,10 +3,12 @@
 
 #include "../Graphics/RenderCommand.h"
 
-struct IRenderable
+namespace Mochi
 {
-    virtual ~IRenderable() {}
-    virtual RenderCommand GetRenderData() const = 0;
-};
-
+    struct IRenderable
+    {
+        virtual ~IRenderable() {}
+        virtual Graphics::RenderCommand GetRenderData() const = 0;
+    };
+}
 #endif

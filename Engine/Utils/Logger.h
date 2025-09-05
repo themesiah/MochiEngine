@@ -23,5 +23,4 @@ inline constexpr const char *LOG_COLOR_PANIC = "\x1B[91m";
 #define LOG_ERROR(x) (std::cout << LOG_COLOR_RED << x << " (" << __FILE__ << ":" << __LINE__ << ")" << LOG_NOCOLOR << std::endl)
 #define LOG_PANIC(x) (std::cout << LOG_COLOR_PANIC << x << " (" << __FILE__ << ":" << __LINE__ << ")" << LOG_NOCOLOR << std::endl)
 #endif
-
 #endif

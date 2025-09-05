@@ -6,6 +6,8 @@
 #include "Time/Timer.h"
 #include "Time/Chrono.h"
 
+using Mochi::Time::TimeSystem;
+
 TEST_CASE("Time system")
 {
     CHECK_EQ(TimeSystem::GetGameTime(), 0);
@@ -58,7 +60,7 @@ TEST_CASE("Time system")
 
 TEST_CASE("Timer")
 {
-    Timer t(5);
+    Mochi::Time::Timer t(5);
     CHECK_FALSE(t.IsDone());
     t.Tick(1);
     CHECK_FALSE(t.IsDone());

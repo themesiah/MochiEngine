@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
         {
             std::string arg2(argv[2]);
             std::string arg3(argv[3]);
-            PackFile::Pack(arg2, arg3);
+            Mochi::FS::PackFile::Pack(arg2, arg3);
         }
         catch (const std::exception &e)
         {
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
         {
             std::string arg2(argv[2]);
             std::string arg3(argv[3]);
-            PackFile file(arg2);
+            Mochi::FS::PackFile file(arg2);
             file.Unpack(arg3);
         }
         catch (const std::exception &e)

@@ -1,11 +1,17 @@
 #ifndef HDEF_IUPDATEABLE
 #define HDEF_IUPDATEABLE
 
-class ActionManager;
-struct IUpdateable
+namespace Mochi
 {
-    virtual ~IUpdateable() {}
-    virtual void Update(const float &dt, std::shared_ptr<ActionManager>) = 0;
-};
+    namespace Input
+    {
+        class ActionManager;
+    }
+    struct IUpdateable
+    {
+        virtual ~IUpdateable() {}
+        virtual void Update(const float &dt, std::shared_ptr<Input::ActionManager>) = 0;
+    };
+}
 
 #endif

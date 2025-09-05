@@ -10,7 +10,7 @@ TEST_CASE("Camera init")
     SDL_FPoint cameraPos;
     cameraPos.x = 0;
     cameraPos.y = 0;
-    Camera cam(cameraPos, 1);
+    Mochi::Graphics::Camera cam(cameraPos, 1);
     CHECK(cam.GetPosition().x == 0);
     CHECK(cam.GetPosition().y == 0);
     CHECK(cam.GetZoom() == 1);
@@ -21,7 +21,7 @@ TEST_CASE("World and screen")
     SDL_FPoint cameraPos;
     cameraPos.x = 0;
     cameraPos.y = 0;
-    Camera cam(cameraPos, 1);
+    Mochi::Graphics::Camera cam(cameraPos, 1);
 
     SDL_FRect destRect;
     destRect.x = 0;

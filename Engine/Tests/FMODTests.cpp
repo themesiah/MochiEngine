@@ -12,9 +12,9 @@
 
 TEST_CASE("Init FMOD")
 {
-    std::shared_ptr<PackCatalog> pc = std::make_shared<PackCatalog>(PackCatalog::FileLoaderType::FileSystem);
+    std::shared_ptr<Mochi::FS::PackCatalog> pc = std::make_shared<Mochi::FS::PackCatalog>(Mochi::FS::PackCatalog::FileLoaderType::FileSystem);
     pc->OpenPack("TestData");
-    FMODWrapper fmod = FMODWrapper(pc);
+    Mochi::Audio::FMODWrapper fmod(pc);
     FMOD_RESULT result = fmod.Init();
     CHECK(result == FMOD_OK);
     result = fmod.LoadBank("Audiobanks/Master");

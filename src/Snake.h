@@ -7,14 +7,23 @@
 #include "Graphics/AnimatedSprite.h"
 #include "Entity/IUpdateable.h"
 
-class ActionManager;
-class TextureFactory;
-class Snake : public AnimatedSprite, public IUpdateable
+namespace Mochi
+{
+    namespace Input
+    {
+        class ActionManager;
+    }
+    namespace Graphics
+    {
+        class TextureFactory;
+    }
+}
+class Snake : public Mochi::Graphics::AnimatedSprite, public Mochi::IUpdateable
 {
 public:
-    Snake(std::shared_ptr<AnimationFactory>, std::shared_ptr<TextureFactory>, const std::string &animationPath, const std::string &mainAnimation);
+    Snake(std::shared_ptr<Mochi::Graphics::AnimationFactory>, std::shared_ptr<Mochi::Graphics::TextureFactory>, const std::string &animationPath, const std::string &mainAnimation);
     virtual ~Snake();
-    virtual void Update(const float &dt, std::shared_ptr<ActionManager> mActionManager);
+    virtual void Update(const float &dt, std::shared_ptr<Mochi::Input::ActionManager> mActionManager);
 };
 
 #endif
