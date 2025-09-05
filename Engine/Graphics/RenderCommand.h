@@ -4,18 +4,15 @@
 #include <SDL3/SDL.h>
 #include <memory>
 
-namespace Mochi
+namespace Mochi::Graphics
 {
-    namespace Graphics
+    struct RenderCommand
     {
-        struct RenderCommand
-        {
-            std::shared_ptr<SDL_Texture> texture;
-            SDL_FRect sourceRect;
-            SDL_FRect destRect;
-            unsigned int zindex;
-        };
-    }
+        std::shared_ptr<SDL_Texture> texture;
+        SDL_FRect sourceRect;
+        SDL_FRect destRect;
+        unsigned int zindex;
+    };
 }
 
 #endif

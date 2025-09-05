@@ -10,25 +10,22 @@
 
 #include "../Entity/IEntity.h"
 
-namespace Mochi
+namespace Mochi::Graphics
 {
-    namespace Graphics
+    class TextureFactory;
+    class Sprite : public IRenderable, public IEntity
     {
-        class TextureFactory;
-        class Sprite : public IRenderable, public IEntity
-        {
-        private:
-            std::shared_ptr<SDL_Texture> mTexture;
-            SDL_FRect mDestRect;
-            SDL_FRect mSrcRect;
-            float mScale;
+    private:
+        std::shared_ptr<SDL_Texture> mTexture;
+        SDL_FRect mDestRect;
+        SDL_FRect mSrcRect;
+        float mScale;
 
-        public:
-            Sprite(std::shared_ptr<TextureFactory>, const std::string &filename);
-            virtual ~Sprite();
-            virtual RenderCommand GetRenderData() const;
-        };
-    }
+    public:
+        Sprite(std::shared_ptr<TextureFactory>, const std::string &filename);
+        virtual ~Sprite();
+        virtual RenderCommand GetRenderData() const;
+    };
 }
 
 #endif

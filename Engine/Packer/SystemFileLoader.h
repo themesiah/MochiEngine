@@ -7,24 +7,21 @@
 #include <vector>
 #include <filesystem>
 
-namespace Mochi
+namespace Mochi::FS
 {
-    namespace FS
+    class SystemFileLoader : public IFileLoader
     {
-        class SystemFileLoader : public IFileLoader
-        {
-        private:
-            std::filesystem::path mDirectoryPath;
+    private:
+        std::filesystem::path mDirectoryPath;
 
-        public:
-            SystemFileLoader(const std::string &directoryPath);
-            virtual ~SystemFileLoader();
-            virtual bool IsValid() const;
-            virtual std::vector<char> GetFile(const std::string &path);
-            virtual bool HasFile(const std::string &path) const;
-            virtual std::vector<std::string> GetAvailableFiles() const;
-        };
-    }
+    public:
+        SystemFileLoader(const std::string &directoryPath);
+        virtual ~SystemFileLoader();
+        virtual bool IsValid() const;
+        virtual std::vector<char> GetFile(const std::string &path);
+        virtual bool HasFile(const std::string &path) const;
+        virtual std::vector<std::string> GetAvailableFiles() const;
+    };
 }
 
 #endif

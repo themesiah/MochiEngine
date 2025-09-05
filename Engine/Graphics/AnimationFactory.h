@@ -7,28 +7,26 @@
 #include <unordered_map>
 #include <string>
 
-namespace Mochi
+namespace Mochi::FS
 {
-    namespace FS
-    {
-        class PackCatalog;
-    }
-    namespace Graphics
-    {
-        class AnimationFactory
-        {
-        private:
-            std::unordered_map<std::string, std::shared_ptr<AnimationsData>> mAnimationDataMap;
-            std::shared_ptr<FS::PackCatalog> mCatalog;
-
-        public:
-            AnimationFactory(std::shared_ptr<FS::PackCatalog>);
-            ~AnimationFactory();
-            std::shared_ptr<AnimationsData> GetAnimationsData(const std::string &animationDataPath);
-            void DeleteCache();
-            void DeleteAnimation(const std::string &texturePath);
-        };
-
-    }
+    class PackCatalog;
 }
+namespace Mochi::Graphics
+{
+    class AnimationFactory
+    {
+    private:
+        std::unordered_map<std::string, std::shared_ptr<AnimationsData>> mAnimationDataMap;
+        std::shared_ptr<FS::PackCatalog> mCatalog;
+
+    public:
+        AnimationFactory(std::shared_ptr<FS::PackCatalog>);
+        ~AnimationFactory();
+        std::shared_ptr<AnimationsData> GetAnimationsData(const std::string &animationDataPath);
+        void DeleteCache();
+        void DeleteAnimation(const std::string &texturePath);
+    };
+
+}
+
 #endif

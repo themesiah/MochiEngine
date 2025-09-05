@@ -2,24 +2,21 @@
 
 #include <stdexcept>
 
-namespace Mochi
+namespace Mochi::Time
 {
-    namespace Time
+    Chrono::Chrono() : mTotalTime(0)
     {
-        Chrono::Chrono() : mTotalTime(0)
-        {
-        }
+    }
 
-        float Chrono::GetTime() const
-        {
-            return mTotalTime;
-        }
+    float Chrono::GetTime() const
+    {
+        return mTotalTime;
+    }
 
-        void Chrono::Tick(const float &dt)
-        {
-            if (dt < 0)
-                throw std::runtime_error("Delta time can not be less than 0");
-            mTotalTime += dt;
-        }
+    void Chrono::Tick(const float &dt)
+    {
+        if (dt < 0)
+            throw std::runtime_error("Delta time can not be less than 0");
+        mTotalTime += dt;
     }
 }

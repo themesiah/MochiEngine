@@ -10,41 +10,38 @@
 #include "../Packer/PackCatalog.h"
 #include "TextureFactory.h"
 
-namespace Mochi
+namespace Mochi::Graphics
 {
-    namespace Graphics
+    Sprite::Sprite(std::shared_ptr<TextureFactory> textureFactory, const std::string &filename)
     {
-        Sprite::Sprite(std::shared_ptr<TextureFactory> textureFactory, const std::string &filename)
-        {
-            mTexture = textureFactory->GetTexture(filename);
+        mTexture = textureFactory->GetTexture(filename);
 
-            mScale = 2;
-            float w, h;
-            SDL_GetTextureSize(mTexture.get(), &w, &h);
+        mScale = 2;
+        float w, h;
+        SDL_GetTextureSize(mTexture.get(), &w, &h);
 
-            mSrcRect.x = 0;
-            mSrcRect.y = 0;
-            mSrcRect.w = w;
-            mSrcRect.h = h;
+        mSrcRect.x = 0;
+        mSrcRect.y = 0;
+        mSrcRect.w = w;
+        mSrcRect.h = h;
 
-            mDestRect.w = w * mScale;
-            mDestRect.h = h * mScale;
-            mDestRect.x = 0;
-            mDestRect.y = 0;
-        }
+        mDestRect.w = w * mScale;
+        mDestRect.h = h * mScale;
+        mDestRect.x = 0;
+        mDestRect.y = 0;
+    }
 
-        RenderCommand Sprite::GetRenderData() const
-        {
-            RenderCommand rc;
-            rc.texture = mTexture;
-            rc.sourceRect = mSrcRect;
-            rc.destRect = mDestRect;
-            rc.zindex = 1; // TEMP
-            return rc;
-        }
+    RenderCommand Sprite::GetRenderData() const
+    {
+        RenderCommand rc;
+        rc.texture = mTexture;
+        rc.sourceRect = mSrcRect;
+        rc.destRect = mDestRect;
+        rc.zindex = 1; // TEMP
+        return rc;
+    }
 
-        Sprite::~Sprite()
-        {
-        }
+    Sprite::~Sprite()
+    {
     }
 }

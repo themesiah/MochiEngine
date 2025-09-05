@@ -28,44 +28,41 @@ AnimationsData:
 #include <unordered_map>
 #include <filesystem>
 
-namespace Mochi
+namespace Mochi::Graphics
 {
-    namespace Graphics
+    struct FrameData
     {
-        struct FrameData
-        {
-            std::string Filename; // for debug purposes
-            SDL_FRect Frame;
-            SDL_FRect SpriteSourceSize;
-            float Duration;
-        };
+        std::string Filename; // for debug purposes
+        SDL_FRect Frame;
+        SDL_FRect SpriteSourceSize;
+        float Duration;
+    };
 
-        enum AnimationDirection
-        {
-            Forward,
-            Backward,
-            Pingpong,
-            BackwardPingPong
-        };
+    enum AnimationDirection
+    {
+        Forward,
+        Backward,
+        Pingpong,
+        BackwardPingPong
+    };
 
-        struct FrameTag
-        {
-            std::string Name;
-            int From;
-            int To;
-            AnimationDirection Direction;
-            int Repeat;
-            std::string UserData;
-        };
+    struct FrameTag
+    {
+        std::string Name;
+        int From;
+        int To;
+        AnimationDirection Direction;
+        int Repeat;
+        std::string UserData;
+    };
 
-        struct AnimationsData
-        {
-            std::filesystem::path TexturePath;
-            SDL_FPoint Size;
-            std::vector<FrameData> Frames;
-            std::unordered_map<std::string, FrameTag> Animations;
-        };
-    }
+    struct AnimationsData
+    {
+        std::filesystem::path TexturePath;
+        SDL_FPoint Size;
+        std::vector<FrameData> Frames;
+        std::unordered_map<std::string, FrameTag> Animations;
+    };
 }
 
 #endif

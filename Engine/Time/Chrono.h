@@ -1,20 +1,18 @@
 #ifndef HDEF_CHRONO
 #define HDEF_CHRONO
 
-namespace Mochi
+namespace Mochi::Time
 {
-    namespace Time
+    class Chrono
     {
-        class Chrono
-        {
-        private:
-            float mTotalTime;
+    private:
+        float mTotalTime;
 
-        public:
-            float GetTime() const;
-            Chrono();
-            void Tick(const float &dt);
-        };
-    }
+    public:
+        float GetTime() const;
+        Chrono();
+        void Tick(const float &dt);
+    };
 }
+
 #endif
