@@ -8,6 +8,7 @@ class TimeSystem
 {
 private:
     float mDeltaTime;
+    float mUnscaledDeltaTime;
     float mGameTime;
     float mUnscaledGameTime;
     float mTimeScale;

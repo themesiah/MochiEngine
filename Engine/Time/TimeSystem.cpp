@@ -4,11 +4,16 @@ TimeSystem::TimeSystem() : mDeltaTime(0.f), mGameTime(0.f), mUnscaledGameTime(0.
 {
 }
 
-float TimeSystem::InternalGetDeltaTime() const { return mDeltaTime * mTimeScale; }
-float TimeSystem::InternalGetUnscaledDeltaTime() const { return mDeltaTime; }
+float TimeSystem::InternalGetDeltaTime() const { return mDeltaTime; }
+float TimeSystem::InternalGetUnscaledDeltaTime() const { return mUnscaledDeltaTime; }
 float TimeSystem::InternalGetGameTime() const { return mGameTime; }
 float TimeSystem::InternalGetUnscaledGameTime() const { return mUnscaledGameTime; }
-void TimeSystem::InternalSetTimeScale(const float &scale) { mTimeScale = scale; }
+void TimeSystem::InternalSetTimeScale(const float &scale)
+{
+    if (scale < 0.f)
+        throw std::runtime_error("Time scale time can't be negative");
+    mTimeScale = scale;
+}
 
 TimeSystem &TimeSystem::GetInstance()
 {
@@ -18,10 +23,12 @@ TimeSystem &TimeSystem::GetInstance()
 TimeSystem::~TimeSystem() {}
 void TimeSystem::Tick(const float &dt)
 {
-    mDeltaTime = dt;
+    if (dt < 0.f)
+        throw std::runtime_error("Delta time can't be negative");
+    mDeltaTime = dt * mTimeScale;
+    mUnscaledDeltaTime = dt;
     mGameTime += dt * mTimeScale;
     mUnscaledGameTime += dt;
-    // LOG_INFO(std::format("Ticking with dt {} and now delta time is {}", dt, mDeltaTime));
 }
 
 float TimeSystem::GetDeltaTime() { return TimeSystem::GetInstance().InternalGetDeltaTime(); }

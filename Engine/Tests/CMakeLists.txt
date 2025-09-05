@@ -13,6 +13,7 @@ set(
   LuaTest
   PackerTests
   CameraTests
+  TimeTests
 )
 
 

@@ -102,7 +102,6 @@ Engine::Engine() : mTargetFPS(60), mLastDeltaTime(0.016f), mLastEntityHandler(1)
 
 bool Engine::Update()
 {
-    ASSERT("Delta time should not be 0", mLastDeltaTime != 0.f);
     TimeSystem::GetInstance().Tick(mLastDeltaTime);
     SDL_Event event;
     while (SDL_PollEvent(&event))

@@ -1,3 +1,4 @@
+- Namespaces
 - Camera IsOffscreen
 - Animation directions
 - More FMOD Api methods (move to part of the song, play sound, change volume, change parameter...)
