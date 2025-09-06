@@ -9,9 +9,9 @@
 
 namespace Mochi::Event
 {
-    typedef size_t SubscriptionHandler;
-    typedef std::function<void(const void *)> SubscriberFunc;
-    typedef std::pair<SubscriptionHandler, SubscriberFunc> SubscriberPair;
+    using SubscriptionHandler = size_t;
+    using SubscriberFunc = std::function<void(const void *)>;
+    using SubscriberPair = std::pair<SubscriptionHandler, SubscriberFunc>;
     class EventBus
     {
     private:

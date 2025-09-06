@@ -13,11 +13,11 @@ namespace Mochi::FS
 {
     inline constexpr const char *PACKFILE_EXTENSION = "pak";
 
-    typedef uint16_t PathLenSize_t;
-    typedef uint64_t PackHeaderLength_t;
-    typedef uint64_t FileOffset_t;
-    typedef uint64_t FileSize_t;
-    typedef uint32_t FileCount_t;
+    using PathLenSize_t = uint16_t;
+    using PackHeaderLength_t = uint64_t;
+    using FileOffset_t = uint64_t;
+    using FileSize_t = uint64_t;
+    using FileCount_t = uint32_t;
 
     struct FileEntry
     {
@@ -25,7 +25,7 @@ namespace Mochi::FS
         FileOffset_t offset;
         FileSize_t size;
     };
-    typedef std::unordered_map<std::string, FileEntry> Header_t;
+    using Header_t = std::unordered_map<std::string, FileEntry>;
 
     struct PackHeader
     {

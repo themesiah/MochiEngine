@@ -1,0 +1,41 @@
+#ifndef HDEF_GUI
+#define HDEF_GUI
+
+#include <SDL3/SDL.h>
+#include <SDL3_ttf/SDL_ttf.h>
+#include <string>
+#include <memory>
+#include <vector>
+
+#include "../Graphics/TextureFactory.h"
+
+namespace Mochi::FS
+{
+    class PackCatalog;
+}
+namespace Mochi::Graphics
+{
+    using GUIElementId = unsigned int;
+
+    class Renderer;
+    class GUI
+    {
+    private:
+        GUIElementId mCurrentId;
+        GUIElementId mFocusId;
+        std::unique_ptr<TextureFactory> mTextureFactory;
+        std::shared_ptr<Renderer> mRenderer;
+
+        std::shared_ptr<TTF_Font> mFont;
+        GUIElementId GetNextId();
+
+    public:
+        GUI(std::shared_ptr<FS::PackCatalog> catalog, std::shared_ptr<Renderer> renderer);
+        ~GUI();
+        void ResetFrame();
+        bool Button(const char *label, SDL_FRect dstRect, const std::string &texturePath);
+        void Text(const char *label, const float &textSize, SDL_FPoint position, const SDL_Color &color);
+    };
+}
+
+#endif

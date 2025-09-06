@@ -15,6 +15,7 @@
 #include "Graphics/Camera.h"
 #include "Graphics/Sprite.h"
 #include "Graphics/AnimatedSprite.h"
+#include "GUI/GUI.h"
 
 #include "Input/InputManager.h"
 #include "Input/ActionManager.h"
@@ -38,7 +39,7 @@ namespace Mochi
 #ifdef DEBUG
         mCatalog = std::make_shared<FS::PackCatalog>(FS::PackCatalog::FileLoaderType::FileSystem);
 #else
-        mCatalog = std::make_shared<PackCatalog>(PackCatalog::FileLoaderType::Packfile);
+        mCatalog = std::make_shared<FS::PackCatalog>(FS::PackCatalog::FileLoaderType::Packfile);
 #endif
         mCatalog->OpenPack("Data");
 
@@ -48,39 +49,14 @@ namespace Mochi
             LOG_PANIC("Can't initialize renderer, panic!");
             throw SDL_APP_FAILURE;
         }
+        LOG_OK("SDL Initialized");
 
         mCamera = mRenderer->CreateCamera();
 
-        if (!TTF_Init())
-        {
-            SDL_Log("Couldn't init ttf: %s", SDL_GetError());
-            throw SDL_APP_FAILURE;
-        }
+        mGUI = std::make_shared<Graphics::GUI>(mCatalog, mRenderer);
 
         mTextureFactory = std::make_shared<Graphics::TextureFactory>(mCatalog, mRenderer->GetRenderer());
         mAnimationFactory = std::make_shared<Graphics::AnimationFactory>(mCatalog);
-
-        auto fontBuffer = mCatalog->GetFile(CONST_MAIN_FONT_PATH);
-        mFont = TTF_OpenFontIO(SDL_IOFromConstMem(fontBuffer.data(), fontBuffer.size()), true, CONST_DEVBUILD_TEXT_SIZE);
-        if (!mFont)
-        {
-            SDL_Log("Couldn't load %s: %s", CONST_MAIN_FONT_PATH, SDL_GetError());
-            throw SDL_APP_FAILURE;
-        }
-        mTextEngine = TTF_CreateRendererTextEngine(mRenderer->GetRenderer().get());
-        if (!mTextEngine)
-        {
-            SDL_Log("Couldn't create a ttf text engine: %s", SDL_GetError());
-            throw SDL_APP_FAILURE;
-        }
-        mText = TTF_CreateText(mTextEngine, mFont, CONST_DEVBUILD_TEXT, 0);
-        if (!mText)
-        {
-            SDL_Log("Couldn't create a ttf text: %s", SDL_GetError());
-            throw SDL_APP_FAILURE;
-        }
-
-        LOG_OK("SDL Initialized");
 
         mFmod = std::make_shared<Audio::FMODWrapper>(mCatalog);
         if (mFmod->Init() == FMOD_OK && mFmod->LoadBank(CONST_MASTER_BANK) == FMOD_OK)
@@ -164,19 +140,16 @@ namespace Mochi
             renderQueue.push_back(renderable->GetRenderData());
         }
 
-        mRenderer->Render(renderQueue, mCamera);
+        // mRenderer->Render(renderQueue, mCamera);
 
 #ifdef DEBUG
         // Dev build message
-        int w = 0;
-        int h = 0;
-        SDL_GetRenderOutputSize(mRenderer->GetRenderer().get(), &w, &h);
-        SDL_SetRenderScale(mRenderer->GetRenderer().get(), 1, 1);
-        SDL_SetRenderDrawColor(mRenderer->GetRenderer().get(), 255, 255, 255, SDL_ALPHA_OPAQUE);
+        SDL_RendererLogicalPresentation *rlp{NULL};
+        int logicalW, logicalH;
+        SDL_GetRenderLogicalPresentation(mRenderer->GetRenderer().get(), &logicalW, &logicalH, rlp);
 
-        int tw, th;
-        TTF_GetTextSize(mText, &tw, &th);
-        TTF_DrawRendererText(mText, w - tw - 1, h - th);
+        SDL_SetRenderScale(mRenderer->GetRenderer().get(), 1, 1);
+        mGUI->Text(CONST_DEVBUILD_TEXT, 8, {0, (float)logicalH - 8}, {255, 255, 255, SDL_ALPHA_OPAQUE});
 #endif
         ///////////////////////////////
         mRenderer->FinishRendering(); /* put it all on the screen! */
@@ -239,17 +212,5 @@ namespace Mochi
 
     Engine::~Engine()
     {
-        if (mFont)
-        {
-            TTF_CloseFont(mFont);
-        }
-        if (mTextEngine)
-        {
-            TTF_DestroyRendererTextEngine(mTextEngine);
-        }
-        if (mText)
-        {
-            TTF_DestroyText(mText);
-        }
     }
 }

@@ -1,6 +1,6 @@
 project(MochiEngine)
 # Get all .cpp files
-file(GLOB Engine_src CONFIGURE_DEPENDS "Graphics/*.cpp" "Audio/*.cpp" "Input/*.cpp" "Utils/*.cpp" "Time/*.cpp" "Event/EventBus.h" "*.cpp")
+file(GLOB Engine_src CONFIGURE_DEPENDS "Graphics/*.cpp" "Audio/*.cpp" "Input/*.cpp" "Utils/*.cpp" "Time/*.cpp" "Event/EventBus.h" "GUI/*.cpp" "*.cpp")
 
 
 set(SDLTTF_VENDORED ON)

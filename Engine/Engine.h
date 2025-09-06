@@ -1,5 +1,5 @@
-#ifndef HDEF_WORLD
-#define HDEF_WORLD
+#ifndef HDEF_ENGINE
+#define HDEF_ENGINE
 
 #include <memory>
 #include <vector>
@@ -16,7 +16,7 @@ struct TTF_Text;
 
 namespace Mochi
 {
-    typedef uint32_t EntityHandler;
+    using EntityHandler = uint32_t;
 
     struct IUpdateable;
     struct IRenderable;
@@ -30,6 +30,7 @@ namespace Mochi
         class Camera;
         class Renderer;
         class AnimationFactory;
+        class GUI;
     }
     namespace Audio
     {
@@ -58,12 +59,6 @@ namespace Mochi
         std::vector<std::shared_ptr<IRenderable>> mRenderables;
         std::vector<std::shared_ptr<IAnimatable>> mAnimatables;
 
-        // TEMP
-        TTF_Font *mFont;
-        TTF_TextEngine *mTextEngine;
-        TTF_Text *mText;
-        // END TEMP
-
     protected:
         std::shared_ptr<Graphics::Renderer> mRenderer;
         std::shared_ptr<Audio::FMODWrapper> mFmod;
@@ -72,6 +67,7 @@ namespace Mochi
         std::shared_ptr<Graphics::TextureFactory> mTextureFactory;
         std::shared_ptr<Graphics::AnimationFactory> mAnimationFactory;
         std::shared_ptr<Graphics::Camera> mCamera;
+        std::shared_ptr<Graphics::GUI> mGUI;
         virtual bool OnUpdate(const float &dt) = 0;
         EntityHandler AddEntity(std::shared_ptr<IEntity>);
         bool RemoveEntity(EntityHandler);
