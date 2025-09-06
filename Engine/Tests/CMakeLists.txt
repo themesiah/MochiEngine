@@ -14,6 +14,7 @@ set(
   PackerTests
   CameraTests
   TimeTests
+  EventBusTests
 )
 
 
