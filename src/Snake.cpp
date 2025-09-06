@@ -6,9 +6,12 @@
 #include "Graphics/AnimatedSprite.h"
 #include "Graphics/AnimationFactory.h"
 #include "Graphics/TextureFactory.h"
+#include "Graphics/Camera.h"
 #include "Input/ActionManager.h"
 
 #include "Entity/IUpdateable.h"
+
+#include "Utils/Logger.h"
 
 Snake::Snake(std::shared_ptr<Mochi::Graphics::AnimationFactory> mAnimationFactory, std::shared_ptr<Mochi::Graphics::TextureFactory> mTextureFactory, const std::string &animationPath, const std::string &mainAnimation)
     : AnimatedSprite(mAnimationFactory, mTextureFactory, animationPath, mainAnimation)

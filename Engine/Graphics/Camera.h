@@ -12,9 +12,10 @@ namespace Mochi::Graphics
     private:
         SDL_FPoint mPosition;
         float mZoom;
+        SDL_Point mLogicalPresentation;
 
     public:
-        Camera(SDL_FPoint startingPosition, float startingZoom);
+        Camera(SDL_FPoint startingPosition, float startingZoom, SDL_Point logicalPresentation);
         ~Camera();
         void SetPosition(const float &x, const float &y);
         void SetPosition(const SDL_FPoint &point);
@@ -24,6 +25,7 @@ namespace Mochi::Graphics
         void Move(const float &horizontal, const float &vertical);
         SDL_FRect WorldToScreen(const SDL_FRect &dstRect) const;
         SDL_FRect ScreenToWorld(const SDL_FRect &dstRect) const;
+        bool IsOnScreen(const SDL_FRect &dstRect) const;
     };
 }
 

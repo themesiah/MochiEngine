@@ -27,6 +27,7 @@ namespace Mochi::Graphics
         void StartFrameRendering() const;
         void Render(std::vector<RenderCommand> renderQueue, std::shared_ptr<Camera> camera) const;
         void FinishRendering() const;
+        std::shared_ptr<Camera> CreateCamera() const;
     };
 }
 

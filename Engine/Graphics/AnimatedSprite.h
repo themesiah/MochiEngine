@@ -16,7 +16,7 @@ namespace Mochi::Graphics
     class AnimationFactory;
     class AnimatedSprite : public IRenderable, public IAnimatable, public IEntity
     {
-    private:
+    protected:
         std::shared_ptr<AnimationsData> mAnimationsData;
         float mTimer;
         int mCurrentFrame;

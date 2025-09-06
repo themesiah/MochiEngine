@@ -2,6 +2,7 @@
 
 #include <SDL3/SDL.h>
 #include <algorithm>
+#include <memory>
 
 #include "Camera.h"
 
@@ -73,8 +74,6 @@ namespace Mochi::Graphics
         for (auto &command : renderQueue)
         {
             auto dstRect = camera->WorldToScreen(command.destRect);
-            dstRect.x += logicalW / 2; // Move local size to camera!
-            dstRect.y += logicalH / 2;
             SDL_RenderTexture(mRenderer.get(), command.texture.get(), &command.sourceRect, &dstRect);
         }
     }
@@ -82,6 +81,14 @@ namespace Mochi::Graphics
     void Renderer::FinishRendering() const
     {
         SDL_RenderPresent(mRenderer.get());
+    }
+
+    std::shared_ptr<Camera> Renderer::CreateCamera() const
+    {
+        int w, h;
+        SDL_RendererLogicalPresentation *rlp = NULL;
+        SDL_GetRenderLogicalPresentation(mRenderer.get(), &w, &h, rlp);
+        return std::make_shared<Camera>((SDL_FPoint){0, 0}, 1, (SDL_Point){w, h});
     }
 
 }

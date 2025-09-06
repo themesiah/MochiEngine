@@ -7,10 +7,7 @@
 
 TEST_CASE("Camera init")
 {
-    SDL_FPoint cameraPos;
-    cameraPos.x = 0;
-    cameraPos.y = 0;
-    Mochi::Graphics::Camera cam(cameraPos, 1);
+    Mochi::Graphics::Camera cam((SDL_FPoint){0, 0}, 1, (SDL_Point){1, 1});
     CHECK(cam.GetPosition().x == 0);
     CHECK(cam.GetPosition().y == 0);
     CHECK(cam.GetZoom() == 1);
@@ -18,10 +15,7 @@ TEST_CASE("Camera init")
 
 TEST_CASE("World and screen")
 {
-    SDL_FPoint cameraPos;
-    cameraPos.x = 0;
-    cameraPos.y = 0;
-    Mochi::Graphics::Camera cam(cameraPos, 1);
+    Mochi::Graphics::Camera cam((SDL_FPoint){0, 0}, 1, (SDL_Point){1, 1});
 
     SDL_FRect destRect;
     destRect.x = 0;
@@ -36,4 +30,26 @@ TEST_CASE("World and screen")
     auto result2 = cam.ScreenToWorld(result);
     CHECK_EQ(result2.x, 0);
     CHECK_EQ(result2.y, 0);
+}
+
+TEST_CASE("Is on screen")
+{
+    Mochi::Graphics::Camera cam((SDL_FPoint){0, 0}, 1, (SDL_Point){100, 100});
+    SDL_FRect rect1{0, 0, 50, 50};
+    SDL_FRect rect2{-1, 0, 50, 50};
+    SDL_FRect rect3{-10, 0, 50, 50};
+    SDL_FRect rect4{-1, -1, 50, 50};
+    SDL_FRect rect5{10, 0, 50, 50};
+    SDL_FRect rect6{0, -10, 50, 50};
+    SDL_FRect rect7{1, 1, 50, 50};
+    SDL_FRect rect8{0, 1, 50, 50};
+
+    CHECK(cam.IsOnScreen(rect1));
+    CHECK(cam.IsOnScreen(rect2));
+    CHECK_FALSE(cam.IsOnScreen(rect3));
+    CHECK(cam.IsOnScreen(rect4));
+    CHECK_FALSE(cam.IsOnScreen(rect5));
+    CHECK_FALSE(cam.IsOnScreen(rect6));
+    CHECK(cam.IsOnScreen(rect7));
+    CHECK(cam.IsOnScreen(rect8));
 }

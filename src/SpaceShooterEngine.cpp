@@ -13,7 +13,8 @@ SpaceShooterEngine::SpaceShooterEngine(const char *appName, const char *appVersi
     : Engine(appName, appVersion, appId, windowName)
 {
     mSpriteHandler = AddEntity(std::make_shared<Mochi::Graphics::Sprite>(mTextureFactory, "Sprites/Background2.png"));
-    mAnimatedSpriteHandler = AddEntity(std::make_shared<Snake>(mAnimationFactory, mTextureFactory, "Sprites/Snake.json", "Idle"));
+    auto snake = std::make_shared<Snake>(mAnimationFactory, mTextureFactory, "Sprites/Snake.json", "Idle");
+    mAnimatedSpriteHandler = AddEntity(snake);
 }
 
 SpaceShooterEngine::~SpaceShooterEngine()

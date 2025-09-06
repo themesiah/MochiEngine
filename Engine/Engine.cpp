@@ -49,10 +49,7 @@ namespace Mochi
             throw SDL_APP_FAILURE;
         }
 
-        SDL_FPoint point;
-        point.x = 0;
-        point.y = 0;
-        mCamera = std::make_shared<Graphics::Camera>(point, 1);
+        mCamera = mRenderer->CreateCamera();
 
         if (!TTF_Init())
         {
