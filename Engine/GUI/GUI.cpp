@@ -3,15 +3,18 @@
 #include "../Packer/PackCatalog.h"
 #include "../Graphics/Renderer.h"
 
+#include "../Input/ActionManager.h"
+#include "../Input/InputManager.h"
+
 #include "../Constants.h"
 #include "../Utils/Assert.h"
 #include "../Utils/Logger.h"
 
 namespace Mochi::Graphics
 {
-    GUI::GUI(std::shared_ptr<FS::PackCatalog> catalog, std::shared_ptr<Renderer> renderer) : mCurrentId(0), mFocusId(0)
+    GUI::GUI(std::shared_ptr<FS::PackCatalog> catalog, std::shared_ptr<Renderer> renderer, std::shared_ptr<Input::ActionManager> actionManager)
+        : mCurrentId(0), mFocusId(0), mRenderer(renderer), mActionManager(actionManager)
     {
-        mRenderer = renderer;
         mTextureFactory = std::make_unique<TextureFactory>(catalog, renderer->GetRenderer());
 
         if (!TTF_Init())
@@ -46,12 +49,23 @@ namespace Mochi::Graphics
         return mCurrentId++;
     }
 
-    bool GUI::Button(const char *label, SDL_FRect dstRect, const std::string &texturePath)
+    bool GUI::Button(const char *label, const float &textSize, SDL_FRect dstRect, const std::string &texturePath)
     {
         auto tex = mTextureFactory->GetTexture(texturePath);
-        return false;
 
-        // SDL_RenderTexture9Grid()
+        SDL_RenderTexture9Grid(mRenderer->GetRenderer().get(), tex.get(), NULL, 10, 10, 10, 10, 0, &dstRect);
+        GUI::Text(label, textSize, {dstRect.x + dstRect.w / 2 - (textSize * strlen(label) / 4), dstRect.y + dstRect.h / 2 - textSize / 2}, {255, 255, 255, 255});
+
+        if (mActionManager->GetInputManager()->MouseWasPressed(1))
+        {
+            auto mousePos = mActionManager->GetInputManager()->GetMousePosition();
+            if (mousePos.x > dstRect.x && mousePos.x < dstRect.x + dstRect.w && mousePos.y > dstRect.y && mousePos.y < dstRect.y + dstRect.h)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     void GUI::Text(const char *label, const float &textSize, SDL_FPoint position, const SDL_Color &color)

@@ -53,8 +53,6 @@ namespace Mochi
 
         mCamera = mRenderer->CreateCamera();
 
-        mGUI = std::make_shared<Graphics::GUI>(mCatalog, mRenderer);
-
         mTextureFactory = std::make_shared<Graphics::TextureFactory>(mCatalog, mRenderer->GetRenderer());
         mAnimationFactory = std::make_shared<Graphics::AnimationFactory>(mCatalog);
 
@@ -65,6 +63,7 @@ namespace Mochi
         }
 
         mActionManager = std::make_shared<Input::ActionManager>(std::make_shared<Input::InputManager>());
+        mGUI = std::make_shared<Graphics::GUI>(mCatalog, mRenderer, mActionManager);
 
         auto actionsBuffer = mCatalog->GetFile(CONST_ACTIONS_FILE);
         bool success = mActionManager->LoadActions(actionsBuffer);
@@ -78,7 +77,10 @@ namespace Mochi
 
     bool Engine::Update()
     {
+        // Time
         Time::TimeSystem::GetInstance().Tick(mLastDeltaTime);
+
+        // SDL Events
         SDL_Event event;
         while (SDL_PollEvent(&event))
         {
@@ -87,10 +89,18 @@ namespace Mochi
                 return 0;
             }
         }
+
+        // Input
         const bool *keyboardState = SDL_GetKeyboardState(NULL);
-        mActionManager->Update(Time::TimeSystem::GetDeltaTime(), keyboardState);
+        float x, y;
+        const SDL_MouseButtonFlags mouseFlags = SDL_GetMouseState(&x, &y);
+        SDL_RenderCoordinatesFromWindow(mRenderer->GetRenderer().get(), x, y, &x, &y);
+        mActionManager->Update(Time::TimeSystem::GetDeltaTime(), keyboardState, mouseFlags, x, y);
+
+        // Audio
         mFmod->Update();
 
+        // Entities
         for (auto updatable : mUpdateables)
         {
             updatable->Update(Time::TimeSystem::GetDeltaTime(), mActionManager);
@@ -140,7 +150,12 @@ namespace Mochi
             renderQueue.push_back(renderable->GetRenderData());
         }
 
-        // mRenderer->Render(renderQueue, mCamera);
+        mRenderer->Render(renderQueue, mCamera);
+
+        if (mGUI->Button("Press me!", 8, {0, 0, 50, 50}, "UI/UIButtonTest.png"))
+        {
+            LOG_INFO("Button was pressed!");
+        }
 
 #ifdef DEBUG
         // Dev build message

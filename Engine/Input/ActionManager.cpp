@@ -63,9 +63,9 @@ namespace Mochi::Input
         return mActions.find(actionName) != mActions.end();
     }
 
-    void ActionManager::Update(const float &delta, const bool *keyboardState)
+    void ActionManager::Update(const float &delta, const bool *keyboardState, const uint32_t &mouseFlags, const float &x, const float &y)
     {
-        mInputManager->Update(keyboardState);
+        mInputManager->Update(keyboardState, mouseFlags, x, y);
     }
 
     bool ActionManager::Performed(const std::string &actionName) const

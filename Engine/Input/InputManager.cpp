@@ -25,9 +25,35 @@ namespace Mochi::Input
         return !mKeyboardState[key] && mKeyboardLastState[key];
     }
 
-    void InputManager::Update(const bool *keyboardState)
+    void InputManager::Update(const bool *keyboardState, const uint32_t &mouseFlags, const float &x, const float &y)
     {
         memcpy(mKeyboardLastState, mKeyboardState, SDL_SCANCODE_COUNT);
         memcpy(mKeyboardState, keyboardState, SDL_SCANCODE_COUNT);
+
+        mMouseLastState = mMouseState;
+        mMouseState = mouseFlags;
+        mMouseX = x;
+        mMouseY = y;
     }
+
+    bool InputManager::MouseIsDown(const unsigned int &mouseButton) const
+    {
+        return mMouseState == SDL_BUTTON_MASK(mouseButton);
+    }
+
+    bool InputManager::MouseWasPressed(const unsigned int &mouseButton) const
+    {
+        return mMouseState == SDL_BUTTON_MASK(mouseButton) && mMouseLastState != SDL_BUTTON_MASK(mouseButton);
+    }
+
+    bool InputManager::MouseWasReleased(const unsigned int &mouseButton) const
+    {
+        return mMouseState != SDL_BUTTON_MASK(mouseButton) && mMouseLastState == SDL_BUTTON_MASK(mouseButton);
+    }
+
+    SDL_FPoint InputManager::GetMousePosition() const
+    {
+        return {mMouseX, mMouseY};
+    }
+
 }

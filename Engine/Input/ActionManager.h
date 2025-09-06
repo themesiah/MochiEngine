@@ -30,10 +30,11 @@ namespace Mochi::Input
 
     public:
         ActionManager(std::shared_ptr<InputManager> inputManager);
+        std::shared_ptr<InputManager> GetInputManager() const { return mInputManager; }
         bool LoadActions(std::vector<char>);
         bool LoadActionsFromFile(const std::string &path);
         bool HasAction(const std::string &) const;
-        void Update(const float &delta, const bool *keyboardState);
+        void Update(const float &delta, const bool *keyboardState, const uint32_t &mouseFlags, const float &x, const float &y);
         bool Performed(const std::string &actionName) const;
         float Value(const std::string &actionName) const;
     };
