@@ -20,6 +20,7 @@ namespace Mochi::Graphics
         std::shared_ptr<AnimationsData> mAnimationsData;
         float mTimer;
         int mCurrentFrame;
+        bool mForward;
         std::string mCurrentAnimation;
 
         std::shared_ptr<SDL_Texture> mTexture;

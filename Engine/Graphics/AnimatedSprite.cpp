@@ -28,7 +28,8 @@ namespace Mochi::Graphics
         ASSERT("Texture data was not loaded", mTexture != nullptr);
 
         ASSERT(std::format("Animated sprite does not have the default animation \"{}\"", mainAnimation), mAnimationsData->Animations.find(mainAnimation) != mAnimationsData->Animations.end());
-        mCurrentAnimation = mAnimationsData->Animations[mainAnimation].Name;
+        PlayAnimation(mainAnimation);
+        // mCurrentAnimation = mAnimationsData->Animations[mainAnimation].Name;
 
         mSize.x = mAnimationsData->Frames[0].Frame.w;
         mSize.y = mAnimationsData->Frames[0].Frame.h;
@@ -60,12 +61,38 @@ namespace Mochi::Graphics
         if (mTimer >= currentFrame.Duration)
         {
             // If direction forward. Only this for now
+            switch (frameTag.Direction)
             {
+            case AnimationDirection::Forward:
                 mCurrentFrame++;
                 if (mCurrentFrame > frameTag.To)
                 {
                     mCurrentFrame = frameTag.From;
                 }
+                break;
+            case AnimationDirection::Backward:
+                mCurrentFrame--;
+                if (mCurrentFrame < frameTag.From)
+                {
+                    mCurrentFrame = frameTag.To;
+                }
+                break;
+            case AnimationDirection::Pingpong:
+                if (mForward)
+                    mCurrentFrame++;
+                else
+                    mCurrentFrame--;
+                if (mCurrentFrame == frameTag.To || mCurrentFrame == frameTag.From)
+                    mForward = !mForward;
+                break;
+            case AnimationDirection::BackwardPingPong:
+                if (mForward)
+                    mCurrentFrame++;
+                else
+                    mCurrentFrame--;
+                if (mCurrentFrame == frameTag.To || mCurrentFrame == frameTag.From)
+                    mForward = !mForward;
+                break;
             }
 
             mTimer = mTimer - currentFrame.Duration;
@@ -85,5 +112,11 @@ namespace Mochi::Graphics
         FrameTag frameTag = mAnimationsData->Animations[mCurrentAnimation];
         mTimer = 0.0f;
         mCurrentFrame = frameTag.From;
+
+        mForward = true;
+        if (frameTag.Direction == AnimationDirection::Backward || frameTag.Direction == AnimationDirection::BackwardPingPong)
+        {
+            mForward = false;
+        }
     }
 }
