@@ -95,7 +95,7 @@ namespace Mochi::Audio
     {
         void *userData = nullptr;
         FMOD_Studio_EventInstance_GetUserData(event, &userData);
-        FMODWrapper *self = reinterpret_cast<FMODWrapper *>(userData);
+        FMODWrapper *self = static_cast<FMODWrapper *>(userData);
 
         if (self)
         {
