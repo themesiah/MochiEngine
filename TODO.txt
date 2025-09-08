@@ -4,7 +4,7 @@ x Namespaces
 x Camera IsOffscreen
 x Animation directions
 x Event Bus
-- Define my own Vector2 and Rect structs.
+x Define my own Vector2 and Rect structs.
 - More FMOD Api methods (move to part of the song, play sound, change volume, change parameter...)
 - Check export to WebGL
 - Add FMOD callback to LUA
