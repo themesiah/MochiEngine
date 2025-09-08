@@ -2,6 +2,7 @@
 #define HDEF_CAMERA
 
 #include <SDL3/SDL.h>
+#include "../Types/Types.hpp"
 
 inline constexpr float CONST_PIXEL_PER_METER = 32.0f;
 
@@ -10,17 +11,17 @@ namespace Mochi::Graphics
     class Camera
     {
     private:
-        SDL_FPoint mPosition;
+        Vector2f mPosition;
         float mZoom;
         SDL_Point mLogicalPresentation;
 
     public:
-        Camera(SDL_FPoint startingPosition, float startingZoom, SDL_Point logicalPresentation);
+        Camera(Vector2f startingPosition, float startingZoom, SDL_Point logicalPresentation);
         ~Camera();
         void SetPosition(const float &x, const float &y);
-        void SetPosition(const SDL_FPoint &point);
+        void SetPosition(const Vector2f &point);
         void SetZoom(const float &zoom);
-        SDL_FPoint GetPosition() const;
+        Vector2f GetPosition() const;
         float GetZoom() const;
         void Move(const float &horizontal, const float &vertical);
         SDL_FRect WorldToScreen(const SDL_FRect &dstRect) const;

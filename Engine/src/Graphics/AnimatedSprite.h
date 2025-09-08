@@ -5,10 +5,10 @@
 #include "../Entity/IRenderable.h"
 #include "../Entity/IEntity.h"
 #include "AnimationData.h"
+#include "../Types/Types.hpp"
 
 #include <string>
 #include <memory>
-#include <SDL3/SDL.h>
 
 namespace Mochi::Graphics
 {
@@ -26,7 +26,7 @@ namespace Mochi::Graphics
         std::shared_ptr<SDL_Texture> mTexture;
         SDL_FRect mDestRect;
         SDL_FRect mSrcRect;
-        SDL_FPoint mSize;
+        Vector2f mSize;
         float mScale;
 
     public:

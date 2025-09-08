@@ -27,6 +27,7 @@ AnimationsData:
 #include <string>
 #include <unordered_map>
 #include <filesystem>
+#include "../Types/Types.hpp"
 
 namespace Mochi::Graphics
 {
@@ -59,7 +60,7 @@ namespace Mochi::Graphics
     struct AnimationsData
     {
         std::filesystem::path TexturePath;
-        SDL_FPoint Size;
+        Vector2f Size;
         std::vector<FrameData> Frames;
         std::unordered_map<std::string, FrameTag> Animations;
     };

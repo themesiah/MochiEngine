@@ -1,7 +1,7 @@
 #ifndef HDEF_INPUTMANAGER
 #define HDEF_INPUTMANAGER
 
-#include <SDL3/SDL.h>
+#include "../Types/Types.hpp"
 
 namespace Mochi::Input
 {
@@ -10,8 +10,8 @@ namespace Mochi::Input
     private:
         bool mKeyboardState[SDL_SCANCODE_COUNT];
         bool mKeyboardLastState[SDL_SCANCODE_COUNT];
-        SDL_MouseButtonFlags mMouseState;
-        SDL_MouseButtonFlags mMouseLastState;
+        uint32_t mMouseState;
+        uint32_t mMouseLastState;
 
         float mMouseX;
         float mMouseY;
@@ -25,7 +25,7 @@ namespace Mochi::Input
         bool MouseIsDown(const unsigned int &mouseButton) const;
         bool MouseWasPressed(const unsigned int &mouseButton) const;
         bool MouseWasReleased(const unsigned int &mouseButton) const;
-        SDL_FPoint GetMousePosition() const;
+        Vector2f GetMousePosition() const;
     };
 }
 

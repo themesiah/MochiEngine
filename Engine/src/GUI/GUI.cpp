@@ -68,7 +68,7 @@ namespace Mochi::Graphics
         return false;
     }
 
-    void GUI::Text(const char *label, const float &textSize, SDL_FPoint position, const SDL_Color &color)
+    void GUI::Text(const char *label, const float &textSize, Vector2f position, const SDL_Color &color)
     {
         SDL_Surface *surface = TTF_RenderText_Solid(mFont.get(), label, 0, color);
         ASSERT(std::format("Surface is null: {}", SDL_GetError()), surface != NULL);

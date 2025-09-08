@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "../Graphics/TextureFactory.h"
+#include "../Types/Types.hpp"
 
 namespace Mochi::FS
 {
@@ -39,7 +40,7 @@ namespace Mochi::Graphics
         ~GUI();
         void ResetFrame();
         bool Button(const char *label, const float &textSize, SDL_FRect dstRect, const std::string &texturePath);
-        void Text(const char *label, const float &textSize, SDL_FPoint position, const SDL_Color &color);
+        void Text(const char *label, const float &textSize, Vector2f position, const SDL_Color &color);
     };
 }
 

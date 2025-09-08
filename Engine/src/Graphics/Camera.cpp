@@ -4,7 +4,7 @@
 
 namespace Mochi::Graphics
 {
-    Camera::Camera(SDL_FPoint startingPosition, float startingZoom, SDL_Point logicalPresentation) : mPosition(startingPosition), mZoom(startingZoom), mLogicalPresentation(logicalPresentation)
+    Camera::Camera(Vector2f startingPosition, float startingZoom, SDL_Point logicalPresentation) : mPosition(startingPosition), mZoom(startingZoom), mLogicalPresentation(logicalPresentation)
     {
     }
 
@@ -14,13 +14,13 @@ namespace Mochi::Graphics
 
     void Camera::SetPosition(const float &x, const float &y)
     {
-        SDL_FPoint point;
+        Vector2f point;
         point.x = x;
         point.y = y;
         SetPosition(point);
     }
 
-    void Camera::SetPosition(const SDL_FPoint &point)
+    void Camera::SetPosition(const Vector2f &point)
     {
         mPosition = point;
     }
@@ -30,7 +30,7 @@ namespace Mochi::Graphics
         mZoom = zoom;
     }
 
-    SDL_FPoint Camera::GetPosition() const
+    Vector2f Camera::GetPosition() const
     {
         return mPosition;
     }

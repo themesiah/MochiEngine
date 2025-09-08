@@ -51,7 +51,7 @@ namespace Mochi::Input
         return mMouseState != SDL_BUTTON_MASK(mouseButton) && mMouseLastState == SDL_BUTTON_MASK(mouseButton);
     }
 
-    SDL_FPoint InputManager::GetMousePosition() const
+    Vector2f InputManager::GetMousePosition() const
     {
         return {mMouseX, mMouseY};
     }

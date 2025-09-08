@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "Camera.h"
+#include "../Types/Types.hpp"
 
 namespace Mochi::Graphics
 {
@@ -88,7 +89,7 @@ namespace Mochi::Graphics
         int w, h;
         SDL_RendererLogicalPresentation *rlp = NULL;
         SDL_GetRenderLogicalPresentation(mRenderer.get(), &w, &h, rlp);
-        return std::make_shared<Camera>((SDL_FPoint){0, 0}, 1, (SDL_Point){w, h});
+        return std::make_shared<Camera>((Vector2f){0, 0}, 1, (SDL_Point){w, h});
     }
 
 }
