@@ -1,15 +1,15 @@
 project(MochiEngine)
 # Get all .cpp files
 file(GLOB Engine_src CONFIGURE_DEPENDS
-        "Graphics/*.cpp"
-        "Audio/*.cpp"
-        "Input/*.cpp"
-        "Utils/*.cpp"
-        "Time/*.cpp"
-        "Event/EventBus.h"
-        "GUI/*.cpp"
-        "Types/Types.hpp"
-        "*.cpp")
+        "src/Graphics/*.cpp"
+        "src/Audio/*.cpp"
+        "src/Input/*.cpp"
+        "src/Utils/*.cpp"
+        "src/Time/*.cpp"
+        "src/Event/EventBus.h"
+        "src/GUI/*.cpp"
+        "src/Types/Types.hpp"
+        "src/*.cpp")
 
 
 set(SDLTTF_VENDORED ON)
@@ -20,7 +20,7 @@ add_subdirectory(Includes/SDL3_ttf EXCLUDE_FROM_ALL)
 add_subdirectory(Includes/FMOD EXCLUDE_FROM_ALL)
 add_subdirectory(Includes/lua EXCLUDE_FROM_ALL)
 add_subdirectory(Includes/sol2 EXCLUDE_FROM_ALL)
-add_subdirectory(Packer)
+add_subdirectory(src/Packer)
 
 add_subdirectory(Tests)
 
@@ -30,7 +30,7 @@ target_compile_definitions(Engine PUBLIC $<$<CONFIG:Debug>:DEBUG>)
 
 target_include_directories(Engine PUBLIC "Includes/FMOD")
 target_include_directories(Engine PUBLIC "Includes/Json")
-target_include_directories(Engine INTERFACE "")
+target_include_directories(Engine INTERFACE "src")
 
 target_link_libraries(Engine
                       PUBLIC
