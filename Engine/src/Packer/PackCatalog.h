@@ -19,7 +19,7 @@ namespace Mochi::FS
         };
         PackCatalog(FileLoaderType);
         ~PackCatalog();
-        bool OpenPack(const std::string &);
+        void OpenPack(const std::string &);
         bool ClosePack(const std::string &);
         bool IsPackOpen(const std::string &);
         std::vector<char> GetFile(const std::string &) const;

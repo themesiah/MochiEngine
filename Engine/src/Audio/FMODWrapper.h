@@ -39,9 +39,8 @@ namespace Mochi::Audio
     public:
         FMODWrapper(std::shared_ptr<FS::PackCatalog>);
         ~FMODWrapper();
-        FMOD_RESULT Init();
         FMOD_RESULT Update() const;
-        FMOD_RESULT LoadBank(const std::string &bankName);
+        void LoadBank(const std::string &bankName);
         FMOD_RESULT PlayBGM(const std::string &eventName);
         FMOD_RESULT PauseBGM();
         FMOD_RESULT ResumeBGM();

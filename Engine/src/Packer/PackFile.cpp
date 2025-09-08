@@ -6,6 +6,7 @@
 #include <algorithm>
 
 #include "../Utils/StringUtils.h"
+#include "../Exception.hpp"
 
 namespace Mochi::FS
 {
@@ -105,7 +106,7 @@ namespace Mochi::FS
     size_t PackFile::Unpack(const std::string &outFolder)
     {
         if (!mHandler)
-            throw std::runtime_error("Packfile is not opened");
+            throw EngineError("Packfile is not opened");
 
         for (auto &e : mHeader.HeaderMap)
         {
@@ -148,7 +149,7 @@ namespace Mochi::FS
         std::string normalizedPath = Utils::NormalizePath(path);
         FileEntry meta = mHeader.HeaderMap[normalizedPath];
         if (!mHandler)
-            throw std::runtime_error("Packfile is not opened");
+            throw EngineError("Packfile is not opened");
 
         mHandler.seekg(mHeader.HeaderLength + meta.offset, std::ios::beg);
 

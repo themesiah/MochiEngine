@@ -23,6 +23,7 @@
 #include "Audio/FMODWrapper.h"
 
 #include "Constants.h"
+#include "Exception.hpp"
 #include "Utils/Logger.h"
 #include "Utils/Assert.h"
 
@@ -36,107 +37,124 @@ namespace Mochi
 
     Engine::Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName) : mTargetFPS(60), mLastDeltaTime(0.016f), mLastEntityHandler(1)
     {
+        try
+        {
 #ifdef DEBUG
-        mCatalog = std::make_shared<FS::PackCatalog>(FS::PackCatalog::FileLoaderType::FileSystem);
+            mCatalog = std::make_shared<FS::PackCatalog>(FS::PackCatalog::FileLoaderType::FileSystem);
 #else
-        mCatalog = std::make_shared<FS::PackCatalog>(FS::PackCatalog::FileLoaderType::Packfile);
+            mCatalog = std::make_shared<FS::PackCatalog>(FS::PackCatalog::FileLoaderType::Packfile);
 #endif
-        mCatalog->OpenPack("Data");
+            mCatalog->OpenPack("Data");
+            LOG_OK("Catalog Initialized");
 
-        mRenderer = std::make_shared<Graphics::Renderer>();
-        if (!mRenderer->Init(appName, appVersion, appId, windowName))
-        {
-            LOG_PANIC("Can't initialize renderer, panic!");
-            throw SDL_APP_FAILURE;
-        }
-        LOG_OK("SDL Initialized");
+            mRenderer = std::make_shared<Graphics::Renderer>(appName, appVersion, appId, windowName);
+            LOG_OK("SDL Initialized");
 
-        mCamera = mRenderer->CreateCamera();
+            mCamera = mRenderer->CreateCamera();
+            LOG_OK("Camera Initialized");
 
-        mTextureFactory = std::make_shared<Graphics::TextureFactory>(mCatalog, mRenderer->GetRenderer());
-        mAnimationFactory = std::make_shared<Graphics::AnimationFactory>(mCatalog);
+            mTextureFactory = std::make_shared<Graphics::TextureFactory>(mCatalog, mRenderer->GetRenderer());
+            LOG_OK("Main texture factory Initialized");
 
-        mFmod = std::make_shared<Audio::FMODWrapper>(mCatalog);
-        if (mFmod->Init() == FMOD_OK && mFmod->LoadBank(CONST_MASTER_BANK) == FMOD_OK)
-        {
+            mAnimationFactory = std::make_shared<Graphics::AnimationFactory>(mCatalog);
+            LOG_OK("Main animation factory Initialized");
+
+            mFmod = std::make_shared<Audio::FMODWrapper>(mCatalog);
+            mFmod->LoadBank(CONST_MASTER_BANK);
             LOG_OK("FMOD Initialized");
+
+            mActionManager = std::make_shared<Input::ActionManager>(std::make_shared<Input::InputManager>());
+            auto actionsBuffer = mCatalog->GetFile(CONST_ACTIONS_FILE);
+            bool success = mActionManager->LoadActions(actionsBuffer);
+            LOG_OK("Action manager Initialized");
+
+            mGUI = std::make_shared<Graphics::GUI>(mCatalog, mRenderer, mActionManager);
+            LOG_OK("GUI Initialized");
+
+            mFrameStart = std::chrono::steady_clock::now();
         }
-
-        mActionManager = std::make_shared<Input::ActionManager>(std::make_shared<Input::InputManager>());
-        mGUI = std::make_shared<Graphics::GUI>(mCatalog, mRenderer, mActionManager);
-
-        auto actionsBuffer = mCatalog->GetFile(CONST_ACTIONS_FILE);
-        bool success = mActionManager->LoadActions(actionsBuffer);
-        if (!success)
+        catch (const SystemInitializationError &e)
         {
-            std::cout << "Can't open Actions.json" << std::endl;
+            LOG_ERROR(e.what());
+            exit(-1);
         }
-
-        mFrameStart = std::chrono::steady_clock::now();
+        catch (const EngineError &e)
+        {
+            LOG_PANIC(e.what());
+            exit(-1);
+        }
     }
 
     bool Engine::Update()
     {
-        // Time
-        Time::TimeSystem::GetInstance().Tick(mLastDeltaTime);
-
-        // SDL Events
-        SDL_Event event;
-        while (SDL_PollEvent(&event))
+        try
         {
-            if (event.type == SDL_EVENT_QUIT)
+            // Time
+            Time::TimeSystem::GetInstance().Tick(mLastDeltaTime);
+
+            // SDL Events
+            SDL_Event event;
+            while (SDL_PollEvent(&event))
+            {
+                if (event.type == SDL_EVENT_QUIT)
+                {
+                    return 0;
+                }
+            }
+
+            // Input
+            const bool *keyboardState = SDL_GetKeyboardState(NULL);
+            float x, y;
+            const SDL_MouseButtonFlags mouseFlags = SDL_GetMouseState(&x, &y);
+            SDL_RenderCoordinatesFromWindow(mRenderer->GetRenderer().get(), x, y, &x, &y);
+            mActionManager->Update(Time::TimeSystem::GetDeltaTime(), keyboardState, mouseFlags, x, y);
+
+            // Audio
+            mFmod->Update();
+
+            // Entities
+            for (auto updatable : mUpdateables)
+            {
+                updatable->Update(Time::TimeSystem::GetDeltaTime(), mActionManager);
+            }
+            for (auto animatable : mAnimatables)
+            {
+                animatable->UpdateAnimation(Time::TimeSystem::GetDeltaTime());
+            }
+
+            // USER DEFINED
+            if (!OnUpdate(Time::TimeSystem::GetDeltaTime()))
             {
                 return 0;
             }
+
+            Render();
+
+            const auto target = std::chrono::nanoseconds(1'000'000'000 / mTargetFPS);
+            auto work = std::chrono::steady_clock::now() - mFrameStart;
+
+            if (work < target)
+            {
+                SDL_DelayNS((target - work).count());
+            }
+
+            auto frameEnd = std::chrono::steady_clock::now();
+            auto frameDur = frameEnd - mFrameStart;
+            mFrameStart = frameEnd;
+
+            mLastDeltaTime = std::chrono::duration<float>(frameDur).count();
+
+            ASSERT(std::format("Delta time should not be less than the target, as we waited for it: Last {} target {}", mLastDeltaTime, 1.f / mTargetFPS), mLastDeltaTime >= 1.f / mTargetFPS);
+            if (mLastDeltaTime > 0.25f)
+                mLastDeltaTime = 0.25f; // Cap at 250ms
+
+            return true;
         }
-
-        // Input
-        const bool *keyboardState = SDL_GetKeyboardState(NULL);
-        float x, y;
-        const SDL_MouseButtonFlags mouseFlags = SDL_GetMouseState(&x, &y);
-        SDL_RenderCoordinatesFromWindow(mRenderer->GetRenderer().get(), x, y, &x, &y);
-        mActionManager->Update(Time::TimeSystem::GetDeltaTime(), keyboardState, mouseFlags, x, y);
-
-        // Audio
-        mFmod->Update();
-
-        // Entities
-        for (auto updatable : mUpdateables)
+        catch (const EngineError &e)
         {
-            updatable->Update(Time::TimeSystem::GetDeltaTime(), mActionManager);
+            LOG_PANIC(e.what());
+            exit(-1);
         }
-        for (auto animatable : mAnimatables)
-        {
-            animatable->UpdateAnimation(Time::TimeSystem::GetDeltaTime());
-        }
-
-        // USER DEFINED
-        if (!OnUpdate(Time::TimeSystem::GetDeltaTime()))
-        {
-            return 0;
-        }
-
-        Render();
-
-        const auto target = std::chrono::nanoseconds(1'000'000'000 / mTargetFPS);
-        auto work = std::chrono::steady_clock::now() - mFrameStart;
-
-        if (work < target)
-        {
-            SDL_DelayNS((target - work).count());
-        }
-
-        auto frameEnd = std::chrono::steady_clock::now();
-        auto frameDur = frameEnd - mFrameStart;
-        mFrameStart = frameEnd;
-
-        mLastDeltaTime = std::chrono::duration<float>(frameDur).count();
-
-        ASSERT(std::format("Delta time should not be less than the target, as we waited for it: Last {} target {}", mLastDeltaTime, 1.f / mTargetFPS), mLastDeltaTime >= 1.f / mTargetFPS);
-        if (mLastDeltaTime > 0.25f)
-            mLastDeltaTime = 0.25f; // Cap at 250ms
-
-        return true;
     }
 
     void Engine::Render() const

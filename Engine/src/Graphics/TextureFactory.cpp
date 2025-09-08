@@ -8,6 +8,7 @@
 #include "../Utils/Assert.h"
 #include "../Utils/StringUtils.h"
 #include "../Utils/Logger.h"
+#include "../Exception.hpp"
 
 namespace Mochi::Graphics
 {
@@ -33,6 +34,9 @@ namespace Mochi::Graphics
         auto textureBuffer = mCatalog->GetFile(normalizedPath);
         auto tex = std::shared_ptr<SDL_Texture>(IMG_LoadTexture_IO(mRenderer.get(), SDL_IOFromConstMem(textureBuffer.data(), textureBuffer.size()), true), SDL_DestroyTexture);
         ASSERT("Failed loading texture from the catalog", tex != nullptr);
+        if (tex == nullptr)
+            throw EngineError(std::format("Texture {} was not loaded, but was found on the system", texturePath));
+
         SDL_SetTextureScaleMode(tex.get(), SDL_ScaleMode::SDL_SCALEMODE_NEAREST); // SUPER IMPORTANT!
         mTexturesMap[normalizedPath] = tex;
         return tex;

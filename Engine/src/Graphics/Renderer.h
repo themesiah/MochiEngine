@@ -19,9 +19,8 @@ namespace Mochi::Graphics
         std::shared_ptr<SDL_Window> mWindow;
 
     public:
-        Renderer();
+        Renderer(const char *appName, const char *appVersion, const char *appId, const char *windowName);
         ~Renderer();
-        bool Init(const char *appName, const char *appVersion, const char *appId, const char *windowName);
         std::shared_ptr<SDL_Renderer> GetRenderer() const { return mRenderer; }
         std::shared_ptr<SDL_Window> GetWindow() const { return mWindow; }
         void StartFrameRendering() const;

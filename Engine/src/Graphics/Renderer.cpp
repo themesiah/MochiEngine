@@ -6,19 +6,12 @@
 
 #include "Camera.h"
 #include "../Types/Types.hpp"
+#include "../Exception.hpp"
 
 namespace Mochi::Graphics
 {
 
-    Renderer::Renderer()
-    {
-    }
-
-    Renderer::~Renderer()
-    {
-    }
-
-    bool Renderer::Init(const char *appName, const char *appVersion, const char *appId, const char *windowName)
+    Renderer::Renderer(const char *appName, const char *appVersion, const char *appId, const char *windowName)
     {
         SDL_Renderer *renderer;
         SDL_Window *window;
@@ -26,14 +19,12 @@ namespace Mochi::Graphics
 
         if (!SDL_Init(SDL_INIT_VIDEO))
         {
-            SDL_Log("Couldn't initialize SDL: %s", SDL_GetError());
-            return false;
+            throw SystemInitializationError("Graphics", SDL_GetError());
         }
 
         if (!SDL_CreateWindowAndRenderer(windowName, 640, 360, 0, &window, &renderer))
         {
-            SDL_Log("Couldn't create window/renderer: %s", SDL_GetError());
-            return false;
+            throw SystemInitializationError("Graphics", SDL_GetError());
         }
 
         mRenderer = std::shared_ptr<SDL_Renderer>(renderer, SDL_DestroyRenderer);
@@ -41,17 +32,17 @@ namespace Mochi::Graphics
 
         if (!SDL_SetRenderLogicalPresentation(mRenderer.get(), 320, 180, SDL_RendererLogicalPresentation::SDL_LOGICAL_PRESENTATION_INTEGER_SCALE))
         {
-            SDL_Log("Couldn't set render logical presentation: %s", SDL_GetError());
-            return false;
+            throw SystemInitializationError("Graphics", SDL_GetError());
         }
 
         if (!SDL_SetRenderVSync(mRenderer.get(), 1))
         {
-            SDL_Log("Couldn't set vsyinc to true: %s", SDL_GetError());
-            return false;
+            throw SystemInitializationError("Graphics", SDL_GetError());
         }
+    }
 
-        return true;
+    Renderer::~Renderer()
+    {
     }
 
     void Renderer::StartFrameRendering() const

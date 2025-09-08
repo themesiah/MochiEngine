@@ -5,6 +5,7 @@
 #include <fstream>
 
 #include "../Utils/StringUtils.h"
+#include "../Exception.hpp"
 
 namespace Mochi::FS
 {
@@ -13,7 +14,7 @@ namespace Mochi::FS
     {
         if (!IsValid())
         {
-            throw std::runtime_error(std::format("{} is not a directory", directoryPath));
+            throw EngineError(std::format("{} is not a directory", directoryPath));
         }
     }
 
@@ -31,7 +32,7 @@ namespace Mochi::FS
         std::string normalizedPath = Utils::NormalizePath(path);
         if (!HasFile(normalizedPath))
         {
-            throw std::runtime_error(std::format("{} is not a file", path));
+            throw EngineError(std::format("{} is not a file", path));
         }
         std::filesystem::path filepath(normalizedPath);
         filepath = mDirectoryPath / filepath;
@@ -47,7 +48,7 @@ namespace Mochi::FS
         std::string normalizedPath = Utils::NormalizePath(path);
         if (!IsValid())
         {
-            throw std::runtime_error(std::format("{} is not a directory", mDirectoryPath.string()));
+            throw EngineError(std::format("{} is not a directory", mDirectoryPath.string()));
         }
         std::filesystem::path filepath(normalizedPath);
         filepath = mDirectoryPath / filepath;

@@ -6,6 +6,7 @@
 #include <json.hpp>
 
 #include "../Utils/Assert.h"
+#include "../Exception.hpp"
 
 using json = nlohmann::json;
 
@@ -17,42 +18,51 @@ namespace Mochi::Input
 
     bool ActionManager::LoadActions(std::vector<char> jsonContent)
     {
-        json data = json::parse(jsonContent);
-        mActions.clear();
-        ASSERT("Actions data can't be empty", !data["Actions"].empty());
-        for (unsigned int i = 0; i < data["Actions"].size(); ++i)
+        try
         {
-            Action action;
-            action.KeycodePositive = -1;
-            action.KeycodeNegative = -1;
-            action.Trigger = ActionTrigger::Never;
-
-            json entry = data["Actions"][i];
-            ASSERT("All actions need a string as a Name", entry.contains("Name") && entry["Name"].is_string());
-            std::string name = entry["Name"];
-
-            ASSERT("All actions need a trigger", entry.contains("Trigger") && entry["Trigger"].is_number_integer());
-            action.Trigger = (ActionTrigger)entry["Trigger"];
-
-            if (entry.contains("KeycodePositive"))
+            json data = json::parse(jsonContent);
+            mActions.clear();
+            ASSERT("Actions data can't be empty", !data["Actions"].empty());
+            for (unsigned int i = 0; i < data["Actions"].size(); ++i)
             {
-                ASSERT("KeycodePositive must be an integer", entry["KeycodePositive"].is_number_integer());
-                action.KeycodePositive = entry["KeycodePositive"];
+                Action action;
+                action.KeycodePositive = -1;
+                action.KeycodeNegative = -1;
+                action.Trigger = ActionTrigger::Never;
+
+                json entry = data["Actions"][i];
+                ASSERT("All actions need a string as a Name", entry.contains("Name") && entry["Name"].is_string());
+                std::string name = entry["Name"];
+
+                ASSERT("All actions need a trigger", entry.contains("Trigger") && entry["Trigger"].is_number_integer());
+                action.Trigger = (ActionTrigger)entry["Trigger"];
+
+                if (entry.contains("KeycodePositive"))
+                {
+                    ASSERT("KeycodePositive must be an integer", entry["KeycodePositive"].is_number_integer());
+                    action.KeycodePositive = entry["KeycodePositive"];
+                }
+                if (entry.contains("KeycodeNegative"))
+                {
+                    ASSERT("KeycodeNegative must be an integer", entry["KeycodeNegative"].is_number_integer());
+                    action.KeycodeNegative = entry["KeycodeNegative"];
+                }
+                mActions[name] = action;
             }
-            if (entry.contains("KeycodeNegative"))
-            {
-                ASSERT("KeycodeNegative must be an integer", entry["KeycodeNegative"].is_number_integer());
-                action.KeycodeNegative = entry["KeycodeNegative"];
-            }
-            mActions[name] = action;
+            return true;
         }
-        return true;
+        catch (const std::runtime_error &e)
+        {
+            throw EngineError(e.what());
+        }
     }
 
     bool ActionManager::LoadActionsFromFile(const std::string &actionsFile)
     {
         std::ifstream f(actionsFile);
         ASSERT(std::format("Can't open actions file on {}", actionsFile), !f.fail());
+        if (f.fail())
+            throw ResourceNotFoundError(actionsFile);
         std::vector<char> data((std::istreambuf_iterator<char>(f)), std::istreambuf_iterator<char>());
         f.close();
         return LoadActions(data);

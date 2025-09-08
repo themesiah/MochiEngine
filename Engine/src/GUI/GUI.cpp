@@ -10,6 +10,8 @@
 #include "../Utils/Assert.h"
 #include "../Utils/Logger.h"
 
+#include "../Exception.hpp"
+
 namespace Mochi::Graphics
 {
     GUI::GUI(std::shared_ptr<FS::PackCatalog> catalog, std::shared_ptr<Renderer> renderer, std::shared_ptr<Input::ActionManager> actionManager)
@@ -19,8 +21,7 @@ namespace Mochi::Graphics
 
         if (!TTF_Init())
         {
-            SDL_Log("Couldn't init ttf: %s", SDL_GetError());
-            throw SDL_APP_FAILURE;
+            throw SystemInitializationError("GUI", SDL_GetError());
         }
 
         auto fontBuffer = catalog->GetFile(CONST_MAIN_FONT_PATH);
@@ -30,8 +31,7 @@ namespace Mochi::Graphics
         mFont = std::shared_ptr<TTF_Font>(TTF_OpenFontIO(rw, true, CONST_DEVBUILD_TEXT_SIZE), TTF_CloseFont);
         if (!mFont)
         {
-            SDL_Log("Couldn't load %s: %s", CONST_MAIN_FONT_PATH, SDL_GetError());
-            throw SDL_APP_FAILURE;
+            throw SystemInitializationError("GUI", SDL_GetError());
         }
     }
 

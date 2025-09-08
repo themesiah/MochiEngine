@@ -8,6 +8,7 @@
 
 #include "../Utils/Logger.h"
 #include "../Packer/PackCatalog.h"
+#include "../Exception.hpp"
 
 namespace Mochi::Audio
 {
@@ -16,27 +17,19 @@ namespace Mochi::Audio
         mFmodSystem = NULL;
         mBgmEventDescription = NULL;
         mBgmEventInstance = NULL;
-    }
 
-    FMOD_RESULT FMODWrapper::Init()
-    {
         FMOD_RESULT result;
 
         result = FMOD_Studio_System_Create(&mFmodSystem, FMOD_VERSION);
         if (result != FMOD_OK)
         {
-            LOG_ERROR("Can't create FMOD system");
-            PrintFMODError(result);
-            return result;
+            throw SystemInitializationError("Audio", FMOD_ErrorString(result));
         }
         result = FMOD_Studio_System_Initialize(mFmodSystem, 512, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, 0);
         if (result != FMOD_OK)
         {
-            LOG_ERROR("Can't init FMOD system");
-            PrintFMODError(result);
-            return result;
+            throw SystemInitializationError("Audio", FMOD_ErrorString(result));
         }
-        return FMOD_OK;
     }
 
     FMOD_RESULT FMODWrapper::Update() const
@@ -65,7 +58,7 @@ namespace Mochi::Audio
         LOG_WARNING(FMOD_ErrorString(result));
     }
 
-    FMOD_RESULT FMODWrapper::LoadBank(const std::string &bankName)
+    void FMODWrapper::LoadBank(const std::string &bankName)
     {
         FMOD_RESULT result;
         FMOD_Bank_Pair bankPair;
@@ -74,21 +67,16 @@ namespace Mochi::Audio
         result = FMOD_Studio_System_LoadBankMemory(mFmodSystem, bankBuffer.data(), bankBuffer.size(), FMOD_STUDIO_LOAD_MEMORY_MODE::FMOD_STUDIO_LOAD_MEMORY, 0, &bankPair.bank);
         if (result != FMOD_OK)
         {
-            LOG_ERROR("Can't load bank");
-            PrintFMODError(result);
-            return result;
+            throw ResourceNotFoundError("Audio bank", FMOD_ErrorString(result));
         }
         auto stringsBankBuffer = mCatalog->GetFile(std::format("{}.strings.bank", bankName));
         result = FMOD_Studio_System_LoadBankMemory(mFmodSystem, stringsBankBuffer.data(), stringsBankBuffer.size(), FMOD_STUDIO_LOAD_MEMORY_MODE::FMOD_STUDIO_LOAD_MEMORY, 0, &bankPair.stringsBank);
         if (result != FMOD_OK)
         {
-            LOG_ERROR("Can't load strings bank");
             FMOD_Studio_Bank_Unload(bankPair.bank);
-            PrintFMODError(result);
-            return result;
+            throw ResourceNotFoundError("Audio string bank", FMOD_ErrorString(result));
         }
         mBankPairs.push_back(bankPair);
-        return FMOD_OK;
     }
 
     FMOD_RESULT F_CALL FMODWrapper::EventCallback(FMOD_STUDIO_EVENT_CALLBACK_TYPE type, FMOD_STUDIO_EVENTINSTANCE *event, void *parameters)

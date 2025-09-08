@@ -11,6 +11,7 @@
 #include "SystemFileLoader.h"
 #include "../Utils/StringUtils.h"
 #include "../Utils/Logger.h"
+#include "../Exception.hpp"
 
 namespace Mochi::FS
 {
@@ -22,7 +23,7 @@ namespace Mochi::FS
     {
     }
 
-    bool PackCatalog::OpenPack(const std::string &packPath)
+    void PackCatalog::OpenPack(const std::string &packPath)
     {
         std::shared_ptr<IFileLoader> fileLoader;
         switch (mLoaderType)
@@ -36,7 +37,7 @@ namespace Mochi::FS
             fileLoader = std::make_shared<PackFile>(std::format("{}.{}", packPath, PACKFILE_EXTENSION));
             break;
         default:
-            return false;
+            throw EngineError("Invalid loader for catalog");
         }
 
         if (fileLoader)
@@ -46,13 +47,11 @@ namespace Mochi::FS
             pack.packId = pathNormalized;
             pack.fileLoader = fileLoader;
             mPacks.insert(mPacks.begin(), pack);
-
-            return true;
         }
         else
         {
-            LOG_ERROR(std::format("Pack in {} with loading mode {} was not found, or could not be opened.", packPath, mLoaderType));
-            return false;
+            std::string str = std::format("Pack in {} with loading mode {}", packPath, mLoaderType == FileLoaderType::FileSystem ? "File System" : "Pack File");
+            throw ResourceNotFoundError(str);
         }
     }
 
@@ -101,8 +100,7 @@ namespace Mochi::FS
                 return mPacks[i].fileLoader->GetFile(normalizedPath);
             }
         }
-        LOG_ERROR(std::format("File on path {} was not found on any mounted file loaders", filePath));
-        throw std::runtime_error(std::format("File not found: {}", filePath));
+        throw ResourceNotFoundError(filePath);
     }
 
     bool PackCatalog::HasFile(const std::string &filePath) const

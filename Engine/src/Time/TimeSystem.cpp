@@ -1,5 +1,7 @@
 #include "TimeSystem.h"
 
+#include "../Exception.hpp"
+
 namespace Mochi::Time
 {
     TimeSystem::TimeSystem() : mDeltaTime(0.f), mGameTime(0.f), mUnscaledGameTime(0.f), mTimeScale(1.f)
@@ -13,7 +15,7 @@ namespace Mochi::Time
     void TimeSystem::InternalSetTimeScale(const float &scale)
     {
         if (scale < 0.f)
-            throw std::runtime_error("Time scale time can't be negative");
+            throw EngineError("Time scale time can't be negative");
         mTimeScale = scale;
     }
 
@@ -26,7 +28,7 @@ namespace Mochi::Time
     void TimeSystem::Tick(const float &dt)
     {
         if (dt < 0.f)
-            throw std::runtime_error("Delta time can't be negative");
+            throw EngineError("Delta time can't be negative");
         mDeltaTime = dt * mTimeScale;
         mUnscaledDeltaTime = dt;
         mGameTime += dt * mTimeScale;

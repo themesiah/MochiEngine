@@ -2,12 +2,14 @@
 
 #include <stdexcept>
 
+#include "../Exception.hpp"
+
 namespace Mochi::Time
 {
     Timer::Timer(const float &time) : mTargetTime(time), mTotalTime(0)
     {
         if (time < 0)
-            throw std::runtime_error("Time can not be less than 0");
+            throw EngineError("Time can not be less than 0");
     }
 
     float Timer::GetTime() const
@@ -30,7 +32,7 @@ namespace Mochi::Time
     void Timer::Tick(const float &dt)
     {
         if (dt < 0)
-            throw std::runtime_error("Delta time can not be less than 0");
+            throw EngineError("Delta time can not be less than 0");
         mTotalTime += dt;
     }
 }
