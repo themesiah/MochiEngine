@@ -23,7 +23,6 @@ AnimationsData:
 */
 
 #include <vector>
-#include <SDL3/SDL.h>
 #include <string>
 #include <unordered_map>
 #include <filesystem>
@@ -34,8 +33,8 @@ namespace Mochi::Graphics
     struct FrameData
     {
         std::string Filename; // for debug purposes
-        SDL_FRect Frame;
-        SDL_FRect SpriteSourceSize;
+        Rectf Frame;
+        Rectf SpriteSourceSize;
         float Duration;
     };
 

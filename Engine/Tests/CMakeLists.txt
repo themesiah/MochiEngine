@@ -6,7 +6,6 @@ set(DOCTEST_INCLUDE_DIR Includes/doctest CACHE INTERNAL "Path to include folder 
 
 set(
   TestList
-  MainTests
   FMODTests
   InputTests
   TextRenderTests

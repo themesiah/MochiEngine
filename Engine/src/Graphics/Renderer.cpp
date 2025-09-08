@@ -74,8 +74,9 @@ namespace Mochi::Graphics
         SDL_SetRenderScale(mRenderer.get(), cameraZoom, cameraZoom);
         for (auto &command : renderQueue)
         {
-            auto dstRect = camera->WorldToScreen(command.destRect);
-            SDL_RenderTexture(mRenderer.get(), command.texture.get(), &command.sourceRect, &dstRect);
+            SDL_FRect dstRect = camera->WorldToScreen(command.destRect);
+            SDL_FRect src = command.sourceRect;
+            SDL_RenderTexture(mRenderer.get(), command.texture.get(), &src, &dstRect);
         }
     }
 

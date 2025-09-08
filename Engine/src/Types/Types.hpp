@@ -123,6 +123,103 @@ namespace Mochi
     {
         return !(lhs == rhs);
     }
+
+    struct Rectf
+    {
+        float x, y, w, h;
+
+        Rectf(float _x = 0, float _y = 0, float _w = 0, float _h = 0) : x(_x), y(_y), w(_w), h(_h) {}
+        Rectf(const Rectf &r) : x(r.x), y(r.y), w(r.w), h(r.h) {}
+        Rectf(Rectf &&r) : x(r.x), y(r.y), w(r.w), h(r.h) {}
+        Rectf(Vector2f pos, Vector2f size) : x(pos.x), y(pos.y), w(size.x), h(size.y) {}
+
+        // SDL_FPoint conversion
+        Rectf(const SDL_FRect &r) : x(r.x), y(r.y), w(r.w), h(r.h) {}
+        inline operator SDL_FRect() const { return SDL_FRect(x, y, w, h); }
+
+        // Arithmetic operations
+        inline Rectf &operator=(const Rectf &other)
+        {
+            if (this == &other)
+                return *this;
+
+            x = other.x;
+            y = other.y;
+            w = other.w;
+            h = other.h;
+            return *this;
+        }
+
+        // Overloaded operators
+        inline Rectf &operator=(const SDL_FRect &other)
+        {
+            x = other.x;
+            y = other.y;
+            w = other.w;
+            h = other.h;
+            return *this;
+        }
+
+        /// @brief Moves the position of the rect adding a vector
+        /// @param rhs The movement vector
+        /// @return Modified rect
+        inline Rectf &operator+=(const Vector2f &rhs)
+        {
+            this->x += rhs.x;
+            this->y += rhs.y;
+            return *this;
+        }
+
+        /// @brief Moves the position of the rect subtracting a vector
+        /// @param rhs The movement vector
+        /// @return Modified rect
+        inline Rectf &operator-=(const Vector2f &rhs)
+        {
+            this->x -= rhs.x;
+            this->y -= rhs.y;
+            return *this;
+        }
+
+        /// @brief Moves the position of the rect adding a vector
+        /// @param rhs The movement vector
+        /// @return Resulting rect
+        friend Rectf operator+(Rectf lhs, const Vector2f &rhs)
+        {
+            lhs += rhs;
+            return lhs;
+        }
+
+        /// @brief Moves the position of the rect subtracting a vector
+        /// @param rhs The movement vector
+        /// @return Resulting rect
+        friend Rectf operator-(Rectf lhs, const Vector2f &rhs)
+        {
+            lhs -= rhs;
+            return lhs;
+        }
+
+        // Utilities
+        inline Vector2f GetPosition() const
+        {
+            return {x, y};
+        }
+
+        inline Vector2f GetSize() const
+        {
+            return {w, h};
+        }
+
+        inline void Scale(const float &scale)
+        {
+            w *= scale;
+            h *= scale;
+        }
+
+        inline bool IsTextureValid()
+        {
+            return w > 0 && h > 0;
+        }
+    };
 }
 
 #endif

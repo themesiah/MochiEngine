@@ -24,8 +24,8 @@ namespace Mochi::Graphics
         std::string mCurrentAnimation;
 
         std::shared_ptr<SDL_Texture> mTexture;
-        SDL_FRect mDestRect;
-        SDL_FRect mSrcRect;
+        Rectf mDestRect;
+        Rectf mSrcRect;
         Vector2f mSize;
         float mScale;
 

@@ -149,3 +149,82 @@ TEST_CASE("Vector2f constants")
     Vector2f v3 = Vector2f::Right;
     CHECK(v3.x == 1);
 }
+
+TEST_CASE("Rectf conversion with SDL_FRect")
+{
+    Rectf r1{0, 0, 1, 1};
+    SDL_FRect sr1 = r1;
+    CHECK(sr1.x == 0);
+    CHECK(sr1.w == 1);
+
+    SDL_FRect sr2{1, 1, 2, 2};
+    Rectf r2 = sr2;
+    CHECK(r2.x == 1);
+    CHECK(r2.w == 2);
+}
+
+TEST_CASE("Rectf arithmetic operations")
+{
+    Rectf r1{0, 0, 1, 1};
+    Vector2f v1{5, -3};
+    r1 += v1;
+    CHECK(r1.x == 5);
+    CHECK(r1.y == -3);
+    CHECK(r1.w == 1);
+    CHECK(r1.h == 1);
+
+    Rectf r2{0, 0, 1, 1};
+    SDL_FPoint p1{3, -7};
+    r2 -= p1;
+    CHECK(r2.x == -3);
+    CHECK(r2.y == 7);
+    CHECK(r2.w == 1);
+    CHECK(r2.h == 1);
+
+    Rectf r3{0, 0, 1, 1};
+    Vector2f v2{1, 1};
+    SDL_FRect p2 = r3 + v2;
+    CHECK(p2.x == 1);
+    CHECK(p2.y == 1);
+    CHECK(p2.w == 1);
+    CHECK(p2.h == 1);
+}
+
+TEST_CASE("Rectf scale")
+{
+    Rectf r1{5, 10, 1, 2};
+    r1.Scale(2);
+    CHECK(r1.x == 5);
+    CHECK(r1.y == 10);
+    CHECK(r1.w == 2);
+    CHECK(r1.h == 4);
+}
+
+TEST_CASE("Rectf position")
+{
+    Rectf r1{5, 10, 1, 1};
+    auto pos = r1.GetPosition();
+    CHECK(pos.x == 5);
+    CHECK(pos.y == 10);
+}
+
+TEST_CASE("Rectf size")
+{
+    Rectf r1{5, 10, 1, 5};
+    auto size = r1.GetSize();
+    CHECK(size.x == 1);
+    CHECK(size.y == 5);
+}
+
+TEST_CASE("Rectf Texture valid")
+{
+    Rectf r1{0, 0, 0, 1};
+    Rectf r2{0, 0, 1, 0};
+    Rectf r3{0, 0, -1, -1};
+    Rectf r4{0, 0, 1, 1};
+
+    CHECK_FALSE(r1.IsTextureValid());
+    CHECK_FALSE(r2.IsTextureValid());
+    CHECK_FALSE(r3.IsTextureValid());
+    CHECK(r4.IsTextureValid());
+}

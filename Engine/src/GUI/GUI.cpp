@@ -49,11 +49,12 @@ namespace Mochi::Graphics
         return mCurrentId++;
     }
 
-    bool GUI::Button(const char *label, const float &textSize, SDL_FRect dstRect, const std::string &texturePath)
+    bool GUI::Button(const char *label, const float &textSize, Rectf dstRect, const std::string &texturePath)
     {
         auto tex = mTextureFactory->GetTexture(texturePath);
 
-        SDL_RenderTexture9Grid(mRenderer->GetRenderer().get(), tex.get(), NULL, 10, 10, 10, 10, 0, &dstRect);
+        SDL_FRect dst = dstRect;
+        SDL_RenderTexture9Grid(mRenderer->GetRenderer().get(), tex.get(), NULL, 10, 10, 10, 10, 0, &dst);
         GUI::Text(label, textSize, {dstRect.x + dstRect.w / 2 - (textSize * strlen(label) / 4), dstRect.y + dstRect.h / 2 - textSize / 2}, {255, 255, 255, 255});
 
         if (mActionManager->GetInputManager()->MouseWasPressed(1))

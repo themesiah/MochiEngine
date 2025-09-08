@@ -6,10 +6,11 @@
 #include <memory>
 #include <vector>
 #include <string>
-#include <SDL3/SDL.h>
 
 #include "../Entity/IEntity.h"
+#include "../Types/Types.hpp"
 
+struct SDL_Texture;
 namespace Mochi::Graphics
 {
     class TextureFactory;
@@ -17,8 +18,8 @@ namespace Mochi::Graphics
     {
     private:
         std::shared_ptr<SDL_Texture> mTexture;
-        SDL_FRect mDestRect;
-        SDL_FRect mSrcRect;
+        Rectf mDestRect;
+        Rectf mSrcRect;
         float mScale;
 
     public:

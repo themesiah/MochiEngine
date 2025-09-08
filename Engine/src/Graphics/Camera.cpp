@@ -46,9 +46,9 @@ namespace Mochi::Graphics
         mPosition.y += vertical;
     }
 
-    SDL_FRect Camera::WorldToScreen(const SDL_FRect &dstRect) const
+    Rectf Camera::WorldToScreen(const Rectf &dstRect) const
     {
-        SDL_FRect newRect = dstRect;
+        Rectf newRect = dstRect;
         newRect.x = (newRect.x - mPosition.x) * CONST_PIXEL_PER_METER - dstRect.w / 2;
         newRect.y = (newRect.y + mPosition.y) * CONST_PIXEL_PER_METER - dstRect.h / 2;
 
@@ -57,9 +57,9 @@ namespace Mochi::Graphics
         return newRect;
     }
 
-    SDL_FRect Camera::ScreenToWorld(const SDL_FRect &dstRect) const
+    Rectf Camera::ScreenToWorld(const Rectf &dstRect) const
     {
-        SDL_FRect newRect = dstRect;
+        Rectf newRect = dstRect;
         newRect.x -= mLogicalPresentation.x / 2;
         newRect.y -= mLogicalPresentation.y / 2;
         newRect.x = (newRect.x + dstRect.w / 2) / CONST_PIXEL_PER_METER + mPosition.x;
@@ -67,9 +67,9 @@ namespace Mochi::Graphics
         return newRect;
     }
 
-    bool Camera::IsOnScreen(const SDL_FRect &dstRect) const
+    bool Camera::IsOnScreen(const Rectf &dstRect) const
     {
-        SDL_FRect newRect = WorldToScreen(dstRect);
+        Rectf newRect = WorldToScreen(dstRect);
         LOG_INFO(std::format("Pos was {}x {}y and size was {}w {}h and logical presentation is {}x {}y", newRect.x, newRect.y, newRect.w, newRect.h, mLogicalPresentation.x, mLogicalPresentation.y));
 
         if (newRect.x + newRect.w < 0)

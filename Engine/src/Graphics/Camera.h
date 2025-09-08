@@ -24,9 +24,9 @@ namespace Mochi::Graphics
         Vector2f GetPosition() const;
         float GetZoom() const;
         void Move(const float &horizontal, const float &vertical);
-        SDL_FRect WorldToScreen(const SDL_FRect &dstRect) const;
-        SDL_FRect ScreenToWorld(const SDL_FRect &dstRect) const;
-        bool IsOnScreen(const SDL_FRect &dstRect) const;
+        Rectf WorldToScreen(const Rectf &dstRect) const;
+        Rectf ScreenToWorld(const Rectf &dstRect) const;
+        bool IsOnScreen(const Rectf &dstRect) const;
     };
 }
 

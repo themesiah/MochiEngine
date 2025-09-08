@@ -39,7 +39,7 @@ namespace Mochi::Graphics
         GUI(std::shared_ptr<FS::PackCatalog> catalog, std::shared_ptr<Renderer> renderer, std::shared_ptr<Input::ActionManager> actionManager);
         ~GUI();
         void ResetFrame();
-        bool Button(const char *label, const float &textSize, SDL_FRect dstRect, const std::string &texturePath);
+        bool Button(const char *label, const float &textSize, Rectf dstRect, const std::string &texturePath);
         void Text(const char *label, const float &textSize, Vector2f position, const SDL_Color &color);
     };
 }
