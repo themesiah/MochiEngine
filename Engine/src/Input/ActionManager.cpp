@@ -6,6 +6,7 @@
 #include <json.hpp>
 
 #include "../Utils/Assert.h"
+#include "../Utils/Logger.h"
 #include "../Exception.hpp"
 
 using json = nlohmann::json;
@@ -25,36 +26,63 @@ namespace Mochi::Input
             ASSERT("Actions data can't be empty", !data["Actions"].empty());
             for (unsigned int i = 0; i < data["Actions"].size(); ++i)
             {
-                Action action;
-                action.KeycodePositive = -1;
-                action.KeycodeNegative = -1;
-                action.Trigger = ActionTrigger::Never;
-
                 json entry = data["Actions"][i];
                 ASSERT("All actions need a string as a Name", entry.contains("Name") && entry["Name"].is_string());
                 std::string name = entry["Name"];
 
-                ASSERT("All actions need a trigger", entry.contains("Trigger") && entry["Trigger"].is_number_integer());
-                action.Trigger = (ActionTrigger)entry["Trigger"];
-
-                if (entry.contains("KeycodePositive"))
-                {
-                    ASSERT("KeycodePositive must be an integer", entry["KeycodePositive"].is_number_integer());
-                    action.KeycodePositive = entry["KeycodePositive"];
-                }
-                if (entry.contains("KeycodeNegative"))
-                {
-                    ASSERT("KeycodeNegative must be an integer", entry["KeycodeNegative"].is_number_integer());
-                    action.KeycodeNegative = entry["KeycodeNegative"];
-                }
-                mActions[name] = action;
+                auto p = entry.template get<Action>();
+                mActions[name] = p;
             }
             return true;
         }
-        catch (const std::runtime_error &e)
+        catch (const std::exception &e)
         {
             throw EngineError(e.what());
         }
+    }
+
+    void from_json(const json &entry, Action &action)
+    {
+        json keyboard = entry["Keyboard"];
+        auto k = keyboard.template get<KeyboardAction>();
+        action.Keyboard = k;
+
+        json gamepad = entry["Gamepad"];
+        auto g = gamepad.template get<GamepadAction>();
+        action.Gamepad = g;
+
+        json mouse = entry["Mouse"];
+        auto m = mouse.template get<MouseAction>();
+        action.Mouse = m;
+    }
+
+    void from_json(const json &keyboard, KeyboardAction &action)
+    {
+        action.KeycodeNegative = -1;
+        action.KeycodePositive = -1;
+        action.Trigger = ActionTrigger::Never;
+
+        ASSERT("All actions need a trigger", keyboard.contains("Trigger") && keyboard["Trigger"].is_number_integer());
+        action.Trigger = (ActionTrigger)keyboard["Trigger"];
+
+        if (keyboard.contains("KeycodePositive"))
+        {
+            ASSERT("KeycodePositive must be an integer", keyboard["KeycodePositive"].is_number_integer());
+            action.KeycodePositive = keyboard["KeycodePositive"];
+        }
+        if (keyboard.contains("KeycodeNegative"))
+        {
+            ASSERT("KeycodeNegative must be an integer", keyboard["KeycodeNegative"].is_number_integer());
+            action.KeycodeNegative = keyboard["KeycodeNegative"];
+        }
+    }
+
+    void from_json(const json &j, GamepadAction &action)
+    {
+    }
+
+    void from_json(const json &j, MouseAction &action)
+    {
     }
 
     bool ActionManager::LoadActionsFromFile(const std::string &actionsFile)
@@ -73,9 +101,9 @@ namespace Mochi::Input
         return mActions.find(actionName) != mActions.end();
     }
 
-    void ActionManager::Update(const float &delta, const bool *keyboardState, const uint32_t &mouseFlags, const float &x, const float &y)
+    void ActionManager::Update(const float &delta)
     {
-        mInputManager->Update(keyboardState, mouseFlags, x, y);
+        mInputManager->Update();
     }
 
     bool ActionManager::Performed(const std::string &actionName) const
@@ -95,24 +123,24 @@ namespace Mochi::Input
         }
         Action action = mActions.find(actionName)->second;
         float value = 0.0f;
-        switch (action.Trigger)
+        switch (action.Keyboard.Trigger)
         {
         case ActionTrigger::Down:
-            if (action.KeycodePositive >= 0 && mInputManager->IsDown(action.KeycodePositive))
+            if (action.Keyboard.KeycodePositive >= 0 && mInputManager->IsDown(action.Keyboard.KeycodePositive))
                 value += 1.0f;
-            if (action.KeycodeNegative >= 0 && mInputManager->IsDown(action.KeycodeNegative))
+            if (action.Keyboard.KeycodeNegative >= 0 && mInputManager->IsDown(action.Keyboard.KeycodeNegative))
                 value -= 1.0f;
             break;
         case ActionTrigger::Pressed:
-            if (action.KeycodePositive >= 0 && mInputManager->WasPressed(action.KeycodePositive))
+            if (action.Keyboard.KeycodePositive >= 0 && mInputManager->WasPressed(action.Keyboard.KeycodePositive))
                 value += 1.0f;
-            if (action.KeycodeNegative >= 0 && mInputManager->WasPressed(action.KeycodeNegative))
+            if (action.Keyboard.KeycodeNegative >= 0 && mInputManager->WasPressed(action.Keyboard.KeycodeNegative))
                 value -= 1.0f;
             break;
         case ActionTrigger::Released:
-            if (action.KeycodePositive >= 0 && mInputManager->WasReleased(action.KeycodePositive))
+            if (action.Keyboard.KeycodePositive >= 0 && mInputManager->WasReleased(action.Keyboard.KeycodePositive))
                 value += 1.0f;
-            if (action.KeycodeNegative >= 0 && mInputManager->WasReleased(action.KeycodeNegative))
+            if (action.Keyboard.KeycodeNegative >= 0 && mInputManager->WasReleased(action.Keyboard.KeycodeNegative))
                 value -= 1.0f;
             break;
         default:

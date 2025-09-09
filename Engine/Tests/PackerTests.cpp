@@ -149,8 +149,7 @@ TEST_CASE("Load actions Packfile")
     Mochi::FS::PackFile file("TestData/Data.pak");
     REQUIRE(file.IsValid());
 
-    std::shared_ptr<Mochi::Input::InputManager> inputManager = std::make_shared<Mochi::Input::InputManager>();
-    Mochi::Input::ActionManager actionManager(inputManager);
+    Mochi::Input::ActionManager actionManager(nullptr);
     REQUIRE(file.HasFile("Actions.json"));
     auto buffer = file.GetFile("Actions.json");
     bool success = actionManager.LoadActions(buffer);
@@ -163,8 +162,7 @@ TEST_CASE("Load actions Filesystem")
     Mochi::FS::SystemFileLoader dir("TestData");
     REQUIRE(dir.IsValid());
 
-    std::shared_ptr<Mochi::Input::InputManager> inputManager = std::make_shared<Mochi::Input::InputManager>();
-    Mochi::Input::ActionManager actionManager(inputManager);
+    Mochi::Input::ActionManager actionManager(nullptr);
     REQUIRE(dir.HasFile("Actions.json"));
     auto buffer = dir.GetFile("Actions.json");
     bool success = actionManager.LoadActions(buffer);

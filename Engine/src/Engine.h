@@ -44,6 +44,10 @@ namespace Mochi
     {
         class PackCatalog;
     }
+    namespace Event
+    {
+        class EventBus;
+    }
     class Engine
     {
     private:
@@ -68,6 +72,7 @@ namespace Mochi
         std::shared_ptr<Graphics::AnimationFactory> mAnimationFactory;
         std::shared_ptr<Graphics::Camera> mCamera;
         std::shared_ptr<Graphics::GUI> mGUI;
+        std::shared_ptr<Event::EventBus> mEventBus;
         virtual bool OnUpdate(const float &dt) = 0;
         EntityHandler AddEntity(std::shared_ptr<IEntity>);
         bool RemoveEntity(EntityHandler);

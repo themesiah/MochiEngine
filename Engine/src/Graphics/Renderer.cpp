@@ -17,7 +17,9 @@ namespace Mochi::Graphics
         SDL_Window *window;
         SDL_SetAppMetadata(appName, appVersion, appId);
 
-        if (!SDL_Init(SDL_INIT_VIDEO))
+        SDL_SetHint(SDL_HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS, "1");
+
+        if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD))
         {
             throw SystemInitializationError("Graphics", SDL_GetError());
         }

@@ -5,26 +5,48 @@
 #include <memory>
 #include <map>
 #include <vector>
+#include <json.hpp>
+
+using json = nlohmann::json;
 
 namespace Mochi::Input
 {
+
+    enum ActionTrigger
+    {
+        Never = 0,
+        Down = 1,
+        Pressed = 2,
+        Released = 3
+    };
+
+    struct KeyboardAction
+    {
+        int KeycodePositive;
+        int KeycodeNegative;
+        ActionTrigger Trigger;
+    };
+    struct MouseAction
+    {
+    };
+    struct GamepadAction
+    {
+    };
+    struct Action
+    {
+        KeyboardAction Keyboard;
+        MouseAction Mouse;
+        GamepadAction Gamepad;
+    };
+    void from_json(const json &j, Action &action);
+    void from_json(const json &j, KeyboardAction &action);
+    void from_json(const json &j, MouseAction &action);
+    void from_json(const json &j, GamepadAction &action);
+
     class InputManager;
     class ActionManager
     {
     private:
-        enum ActionTrigger
-        {
-            Never = 0,
-            Down = 1,
-            Pressed = 2,
-            Released = 3
-        };
-        struct Action
-        {
-            int KeycodePositive;
-            int KeycodeNegative;
-            ActionTrigger Trigger;
-        };
         std::shared_ptr<InputManager> mInputManager;
         std::map<std::string, Action> mActions;
 
@@ -34,7 +56,7 @@ namespace Mochi::Input
         bool LoadActions(std::vector<char>);
         bool LoadActionsFromFile(const std::string &path);
         bool HasAction(const std::string &) const;
-        void Update(const float &delta, const bool *keyboardState, const uint32_t &mouseFlags, const float &x, const float &y);
+        void Update(const float &delta);
         bool Performed(const std::string &actionName) const;
         float Value(const std::string &actionName) const;
     };

@@ -19,6 +19,8 @@
 
 #include "Input/InputManager.h"
 #include "Input/ActionManager.h"
+#include "Input/SDLKeyboardProvider.h"
+#include "Input/SDLMouseProvider.h"
 
 #include "Audio/FMODWrapper.h"
 
@@ -31,6 +33,8 @@
 #include "Entity/IRenderable.h"
 #include "Entity/IUpdateable.h"
 #include "Entity/IAnimatable.h"
+
+#include "Event/EventBus.h"
 
 namespace Mochi
 {
@@ -50,6 +54,9 @@ namespace Mochi
             mRenderer = std::make_shared<Graphics::Renderer>(appName, appVersion, appId, windowName);
             LOG_OK("SDL Initialized");
 
+            mEventBus = std::make_shared<Event::EventBus>();
+            LOG_OK("Event bus Initialized");
+
             mCamera = mRenderer->CreateCamera();
             LOG_OK("Camera Initialized");
 
@@ -63,7 +70,8 @@ namespace Mochi
             mFmod->LoadBank(CONST_MASTER_BANK);
             LOG_OK("FMOD Initialized");
 
-            mActionManager = std::make_shared<Input::ActionManager>(std::make_shared<Input::InputManager>());
+            auto inputManager = std::make_shared<Input::InputManager>(std::make_shared<Input::SDLKeyboardProvider>(), std::make_shared<Input::SDLMouseProvider>(mRenderer));
+            mActionManager = std::make_shared<Input::ActionManager>(inputManager);
             auto actionsBuffer = mCatalog->GetFile(CONST_ACTIONS_FILE);
             bool success = mActionManager->LoadActions(actionsBuffer);
             LOG_OK("Action manager Initialized");
@@ -100,14 +108,11 @@ namespace Mochi
                 {
                     return 0;
                 }
+                mEventBus->Publish<SDL_Event>(event);
             }
 
             // Input
-            const bool *keyboardState = SDL_GetKeyboardState(NULL);
-            float x, y;
-            const SDL_MouseButtonFlags mouseFlags = SDL_GetMouseState(&x, &y);
-            SDL_RenderCoordinatesFromWindow(mRenderer->GetRenderer().get(), x, y, &x, &y);
-            mActionManager->Update(Time::TimeSystem::GetDeltaTime(), keyboardState, mouseFlags, x, y);
+            mActionManager->Update(Time::TimeSystem::GetDeltaTime());
 
             // Audio
             mFmod->Update();
@@ -151,6 +156,11 @@ namespace Mochi
             return true;
         }
         catch (const EngineError &e)
+        {
+            LOG_PANIC(e.what());
+            exit(-1);
+        }
+        catch (const std::exception &e)
         {
             LOG_PANIC(e.what());
             exit(-1);

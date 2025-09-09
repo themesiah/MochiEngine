@@ -93,6 +93,7 @@
         "xtree": "cpp",
         "xhash": "cpp",
         "bitset": "cpp",
-        "typeindex": "cpp"
+        "typeindex": "cpp",
+        "source_location": "cpp"
     }
 }

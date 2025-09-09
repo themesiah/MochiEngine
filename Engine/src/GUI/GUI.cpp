@@ -57,7 +57,7 @@ namespace Mochi::Graphics
         SDL_RenderTexture9Grid(mRenderer->GetRenderer().get(), tex.get(), NULL, 10, 10, 10, 10, 0, &dst);
         GUI::Text(label, textSize, {dstRect.x + dstRect.w / 2 - (textSize * strlen(label) / 4), dstRect.y + dstRect.h / 2 - textSize / 2}, {255, 255, 255, 255});
 
-        if (mActionManager->GetInputManager()->MouseWasPressed(1))
+        if (mActionManager->GetInputManager()->MouseWasPressed(Input::MouseButtons::MouseButtonLeft))
         {
             auto mousePos = mActionManager->GetInputManager()->GetMousePosition();
             if (mousePos.x > dstRect.x && mousePos.x < dstRect.x + dstRect.w && mousePos.y > dstRect.y && mousePos.y < dstRect.y + dstRect.h)
