@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{41122b34-2405-4c47-b401-50e89b4c3412}">
+		<property name="assetPath">
+			<value>WilhelmScream.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.2023958333333333</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{49bcc9b9-6f91-4cb6-937e-d32df47227c1}</destination>
+		</relationship>
+	</object>
+</objects>

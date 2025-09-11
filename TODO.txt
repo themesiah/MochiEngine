@@ -6,8 +6,8 @@ x Animation directions
 x Event Bus
 x Define my own Vector2 and Rect structs.
 x Robust error handling
-- Support gamepad and mouse with actions
-- More FMOD Api methods (move to part of the song, play sound, change volume, change parameter...)
+x Support gamepad and mouse with actions
+x More FMOD Api methods (move to part of the song, play sound, change volume, change parameter...)
 x Check export to WebGL (DISCARDED. Requires no external libraries. That means no FMOD.)
 - Add FMOD callback to LUA
 - Physics system (collision with shapes)

@@ -43,13 +43,31 @@
 			{"Type":"GamepadAxis", "Axis":1}
 		]},
 		{"Name":"Debug1", "Cases":[
-			{"Type":"Keyboard", "Trigger":2, "Keycode":5, "Value":1}
+			{"Type":"Keyboard", "Trigger":2, "Keycode":58, "Value":1}
 		]},
 		{"Name":"Debug2", "Cases":[
-			{"Type":"Keyboard", "Trigger":2, "Keycode":6, "Value":1}
+			{"Type":"Keyboard", "Trigger":2, "Keycode":59, "Value":1}
 		]},
 		{"Name":"Debug3", "Cases":[
-			{"Type":"Keyboard", "Trigger":2, "Keycode":7, "Value":1}
+			{"Type":"Keyboard", "Trigger":2, "Keycode":60, "Value":1}
+		]},
+		{"Name":"Debug4", "Cases":[
+			{"Type":"Keyboard", "Trigger":2, "Keycode":61, "Value":1}
+		]},
+		{"Name":"Debug5", "Cases":[
+			{"Type":"Keyboard", "Trigger":2, "Keycode":62, "Value":1}
+		]},
+		{"Name":"Debug6", "Cases":[
+			{"Type":"Keyboard", "Trigger":2, "Keycode":63, "Value":1}
+		]},
+		{"Name":"Debug7", "Cases":[
+			{"Type":"Keyboard", "Trigger":2, "Keycode":64, "Value":1}
+		]},
+		{"Name":"Debug8", "Cases":[
+			{"Type":"Keyboard", "Trigger":2, "Keycode":65, "Value":1}
+		]},
+		{"Name":"Debug9", "Cases":[
+			{"Type":"Keyboard", "Trigger":2, "Keycode":66, "Value":1}
 		]}
 	]
 }

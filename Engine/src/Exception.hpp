@@ -32,5 +32,11 @@ namespace Mochi
     public:
         explicit MalformedInputAction(std::source_location loc = std::source_location::current()) : EngineError("JSON input action was malformed", loc) {}
     };
+
+    class AudioOperationError : public EngineError
+    {
+    public:
+        explicit AudioOperationError(const std::string &operation, const std::string &msg) : EngineError(std::format("Audio operation failed: {} (({}))", operation, msg)) {}
+    };
 }
 #endif

@@ -6,6 +6,7 @@
 #include "Graphics/Sprite.h"
 
 #include "Input/ActionManager.h"
+#include "Audio/FMODWrapper.h"
 
 #include "Snake.h"
 
@@ -25,6 +26,23 @@ bool SpaceShooterEngine::OnUpdate(const float &dt)
 {
     mCamera->Move(mActionManager->Value("Horizontal") * dt * 1,
                   mActionManager->Value("Vertical") * dt * 1);
+
+    if (mActionManager->Performed("Debug1"))
+    {
+        mFmod->PlayOneShot("WilhelmScream");
+    }
+    if (mActionManager->Performed("Debug2"))
+    {
+        mFmod->SetBusVolume("SFX", 0.1f);
+    }
+    if (mActionManager->Performed("Debug3"))
+    {
+        mFmod->PlayBGM("TestMusic");
+    }
+    if (mActionManager->Performed("Debug4"))
+    {
+        mFmod->SkipToTimelinePosition(30000);
+    }
 
     return true;
 }
