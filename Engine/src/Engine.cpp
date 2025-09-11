@@ -37,6 +37,8 @@
 
 #include "Event/EventBus.h"
 
+#include "ScriptingManager.h"
+
 namespace Mochi
 {
 
@@ -51,6 +53,9 @@ namespace Mochi
 #endif
             mCatalog->OpenPack("Data");
             LOG_OK("Catalog Initialized");
+
+            mScripting = std::make_shared<Scripting::ScriptingManager>(mCatalog);
+            LOG_OK("LUA Initialized");
 
             mRenderer = std::make_shared<Graphics::Renderer>(appName, appVersion, appId, windowName);
             LOG_OK("SDL Initialized");
@@ -67,7 +72,7 @@ namespace Mochi
             mAnimationFactory = std::make_shared<Graphics::AnimationFactory>(mCatalog);
             LOG_OK("Main animation factory Initialized");
 
-            mFmod = std::make_shared<Audio::FMODWrapper>(mCatalog);
+            mFmod = std::make_shared<Audio::FMODWrapper>(mCatalog, mScripting);
             mFmod->LoadBank(CONST_MASTER_BANK);
             LOG_OK("FMOD Initialized");
 

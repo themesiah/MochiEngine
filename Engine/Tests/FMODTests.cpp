@@ -10,13 +10,15 @@
 #include "Audio/FmodWrapper.h"
 #include "Packer/PackCatalog.h"
 #include "DoctestUtils.h"
+#include "ScriptingManager.h"
 
 TEST_CASE("Audio::1- Init FMOD")
 {
     std::shared_ptr<Mochi::FS::PackCatalog> pc = std::make_shared<Mochi::FS::PackCatalog>(Mochi::FS::PackCatalog::FileLoaderType::FileSystem);
+    std::shared_ptr<Mochi::Scripting::ScriptingManager> sm = std::make_shared<Mochi::Scripting::ScriptingManager>(pc);
     pc->OpenPack("TestData");
     FMOD_RESULT result;
-    Mochi::Audio::FMODWrapper fmod(pc);
+    Mochi::Audio::FMODWrapper fmod(pc, sm);
     TEST_NOTHROWS(fmod.LoadBank("Audiobanks/Master"));
     TEST_NOTHROWS(fmod.PlayBGM("TestMusic"));
     TEST_NOTHROWS(fmod.PauseBGM());

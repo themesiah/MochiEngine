@@ -10,9 +10,11 @@
 #include "../Packer/PackCatalog.h"
 #include "../Exception.hpp"
 
+#include "../ScriptingManager.h"
+
 namespace Mochi::Audio
 {
-    FMODWrapper::FMODWrapper(std::shared_ptr<FS::PackCatalog> catalog) : mCatalog(catalog)
+    FMODWrapper::FMODWrapper(std::shared_ptr<FS::PackCatalog> catalog, std::shared_ptr<Scripting::ScriptingManager> scriptingManager) : mCatalog(catalog), mScripting(scriptingManager)
     {
         mFmodSystem = NULL;
         mBgmEventDescription = NULL;
@@ -121,6 +123,9 @@ namespace Mochi::Audio
         {
             FMOD_STUDIO_TIMELINE_MARKER_PROPERTIES *marker = (FMOD_STUDIO_TIMELINE_MARKER_PROPERTIES *)parameters;
             std::cout << "Marker with name " << marker->name << " triggered at millisecond " << marker->position << std::endl;
+            sol::table e = mScripting->State["GetEvent"]("AudioMarkerEvent");
+            sol::function fireFunc = e["fire"];
+            fireFunc(e, marker->name, marker->position);
         }
     }
 

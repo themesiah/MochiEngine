@@ -7,6 +7,7 @@
 #include <string>
 #include <memory>
 #include <unordered_map>
+#include <sol/sol.hpp>
 
 struct FMOD_STUDIO_SYSTEM;
 struct FMOD_STUDIO_BANK;
@@ -16,6 +17,10 @@ struct FMOD_STUDIO_EVENTINSTANCE;
 namespace Mochi::FS
 {
     class PackCatalog;
+}
+namespace Mochi::Scripting
+{
+    class ScriptingManager;
 }
 namespace Mochi::Audio
 {
@@ -36,11 +41,12 @@ namespace Mochi::Audio
         static FMOD_RESULT F_CALL EventCallback(FMOD_STUDIO_EVENT_CALLBACK_TYPE type, FMOD_STUDIO_EVENTINSTANCE *event, void *parameters);
         void OnEventCallback(FMOD_STUDIO_EVENT_CALLBACK_TYPE type, FMOD_STUDIO_EVENTINSTANCE *event, void *parameters);
         std::shared_ptr<FS::PackCatalog> mCatalog;
+        std::shared_ptr<Scripting::ScriptingManager> mScripting;
         std::unordered_map<std::string, FMOD_STUDIO_EVENTDESCRIPTION *> mSoundCache;
         std::unordered_map<std::string, FMOD_STUDIO_BUS *> mBusesCache;
 
     public:
-        FMODWrapper(std::shared_ptr<FS::PackCatalog>);
+        FMODWrapper(std::shared_ptr<FS::PackCatalog>, std::shared_ptr<Scripting::ScriptingManager>);
         ~FMODWrapper();
         void Update() const;
         void LoadBank(const std::string &bankName);

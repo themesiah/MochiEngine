@@ -7,6 +7,7 @@
 #include <SDL3/SDL_events.h>
 #include <SDL3/SDL.h>
 #include <chrono>
+#include <sol/sol.hpp>
 
 #include "Time/TimeSystem.h"
 
@@ -48,6 +49,10 @@ namespace Mochi
     {
         class EventBus;
     }
+    namespace Scripting
+    {
+        class ScriptingManager;
+    }
     class Engine
     {
     private:
@@ -73,6 +78,7 @@ namespace Mochi
         std::shared_ptr<Graphics::Camera> mCamera;
         std::shared_ptr<Graphics::GUI> mGUI;
         std::shared_ptr<Event::EventBus> mEventBus;
+        std::shared_ptr<Scripting::ScriptingManager> mScripting;
         virtual bool OnUpdate(const float &dt) = 0;
         EntityHandler AddEntity(std::shared_ptr<IEntity>);
         bool RemoveEntity(EntityHandler);

@@ -24,13 +24,6 @@ namespace Mochi::Input
     {
         try
         {
-            // This is incomplete or bad
-            // Instead of having a gamepad, mouse and keyboard action for each
-            // I should have an ARRAY of action triggers
-            // Each action trigger has a type (keyboard, mouse, mouse axis, gamepad, gamepad axis)
-            // Each type generates an implementation of an IActionPerformed interface
-            // IActionPerformed interface has bool Performed and float Value
-            // Each action has several IActionPerformed, and is performed if at least ONE of them is performed
             json data = json::parse(jsonContent);
             mActions.clear();
             auto actions = data.at("Actions");

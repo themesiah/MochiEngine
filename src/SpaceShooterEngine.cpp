@@ -7,6 +7,7 @@
 
 #include "Input/ActionManager.h"
 #include "Audio/FMODWrapper.h"
+#include "ScriptingManager.h"
 
 #include "Snake.h"
 
@@ -16,6 +17,8 @@ SpaceShooterEngine::SpaceShooterEngine(const char *appName, const char *appVersi
     mSpriteHandler = AddEntity(std::make_shared<Mochi::Graphics::Sprite>(mTextureFactory, "Sprites/Background2.png"));
     auto snake = std::make_shared<Snake>(mAnimationFactory, mTextureFactory, "Sprites/Snake.json", "Idle");
     mAnimatedSpriteHandler = AddEntity(snake);
+
+    mScripting->ExecuteFile("Script/FMODCallbackDefinitionAlternative.lua");
 }
 
 SpaceShooterEngine::~SpaceShooterEngine()
@@ -42,6 +45,10 @@ bool SpaceShooterEngine::OnUpdate(const float &dt)
     if (mActionManager->Performed("Debug4"))
     {
         mFmod->SkipToTimelinePosition(30000);
+    }
+    if (mActionManager->Performed("Debug5"))
+    {
+        mScripting->ExecuteFile("Script/TestScript.lua");
     }
 
     return true;
