@@ -2,6 +2,7 @@
 #define HDEF_IMOUSEPROVIDER
 
 #include <array>
+#include "InputCommons.h"
 
 namespace Mochi::Input
 {
@@ -9,7 +10,7 @@ namespace Mochi::Input
     {
     public:
         virtual ~IMouseProvider() {}
-        virtual std::array<bool, 5> GetState(float *x, float *y) = 0;
+        virtual std::array<bool, MouseButton::MouseButtonsCount> GetState(float *x, float *y) const = 0;
     };
 }
 

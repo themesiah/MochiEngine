@@ -13,7 +13,7 @@ namespace Mochi::Input
     {
     }
 
-    std::array<bool, 5> SDLMouseProvider::GetState(float *x, float *y)
+    std::array<bool, MouseButton::MouseButtonsCount> SDLMouseProvider::GetState(float *x, float *y) const
     {
         const SDL_MouseButtonFlags mouseFlags = SDL_GetMouseState(x, y);
         SDL_RenderCoordinatesFromWindow(mRenderer->GetRenderer().get(), *x, *y, x, y);

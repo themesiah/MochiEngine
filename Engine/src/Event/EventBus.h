@@ -34,6 +34,8 @@ namespace Mochi::Event
         }
 
     public:
+        EventBus() : mLastSubscriptionHandler(1) {}
+
         template <typename EventType>
         SubscriptionHandler Subscribe(std::function<void(const EventType &)> callback)
         {

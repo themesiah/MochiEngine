@@ -26,5 +26,11 @@ namespace Mochi
     public:
         explicit SystemInitializationError(const std::string &system, const std::string &msg) : EngineError(std::format("Error initializing system {}: {}", system, msg)) {}
     };
+
+    class MalformedInputAction : public EngineError
+    {
+    public:
+        explicit MalformedInputAction(std::source_location loc = std::source_location::current()) : EngineError("JSON input action was malformed", loc) {}
+    };
 }
 #endif

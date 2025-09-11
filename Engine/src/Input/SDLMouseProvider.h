@@ -2,6 +2,7 @@
 #define HDEF_SDLMOUSEPROVIDER
 
 #include "IMouseProvider.h"
+#include "InputCommons.h"
 
 #include <memory>
 
@@ -19,7 +20,7 @@ namespace Mochi::Input
     public:
         SDLMouseProvider(std::shared_ptr<Graphics::Renderer> renderer);
         ~SDLMouseProvider();
-        virtual std::array<bool, 5> GetState(float *x, float *y);
+        virtual std::array<bool, MouseButton::MouseButtonsCount> GetState(float *x, float *y) const;
     };
 }
 

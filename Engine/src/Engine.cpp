@@ -21,6 +21,7 @@
 #include "Input/ActionManager.h"
 #include "Input/SDLKeyboardProvider.h"
 #include "Input/SDLMouseProvider.h"
+#include "Input/SDLGamepadProvider.h"
 
 #include "Audio/FMODWrapper.h"
 
@@ -70,7 +71,9 @@ namespace Mochi
             mFmod->LoadBank(CONST_MASTER_BANK);
             LOG_OK("FMOD Initialized");
 
-            auto inputManager = std::make_shared<Input::InputManager>(std::make_shared<Input::SDLKeyboardProvider>(), std::make_shared<Input::SDLMouseProvider>(mRenderer));
+            auto inputManager = std::make_shared<Input::InputManager>(std::make_shared<Input::SDLKeyboardProvider>(),
+                                                                      std::make_shared<Input::SDLMouseProvider>(mRenderer),
+                                                                      std::make_shared<Input::SDLGamepadProvider>(mEventBus));
             mActionManager = std::make_shared<Input::ActionManager>(inputManager);
             auto actionsBuffer = mCatalog->GetFile(CONST_ACTIONS_FILE);
             bool success = mActionManager->LoadActions(actionsBuffer);

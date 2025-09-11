@@ -9,6 +9,9 @@
 #include "../Utils/Logger.h"
 #include "../Exception.hpp"
 
+#include "PerformableActions.h"
+#include "IPerformableAction.h"
+
 using json = nlohmann::json;
 
 namespace Mochi::Input
@@ -21,17 +24,32 @@ namespace Mochi::Input
     {
         try
         {
+            // This is incomplete or bad
+            // Instead of having a gamepad, mouse and keyboard action for each
+            // I should have an ARRAY of action triggers
+            // Each action trigger has a type (keyboard, mouse, mouse axis, gamepad, gamepad axis)
+            // Each type generates an implementation of an IActionPerformed interface
+            // IActionPerformed interface has bool Performed and float Value
+            // Each action has several IActionPerformed, and is performed if at least ONE of them is performed
             json data = json::parse(jsonContent);
             mActions.clear();
-            ASSERT("Actions data can't be empty", !data["Actions"].empty());
-            for (unsigned int i = 0; i < data["Actions"].size(); ++i)
+            auto actions = data.at("Actions");
+            ASSERT("Actions data can't be empty", !actions.empty());
+            for (size_t i = 0; i < actions.size(); ++i)
             {
-                json entry = data["Actions"][i];
-                ASSERT("All actions need a string as a Name", entry.contains("Name") && entry["Name"].is_string());
-                std::string name = entry["Name"];
+                try
+                {
+                    json entry = actions[i];
+                    ASSERT("All actions need a string as a Name", entry.contains("Name") && entry.at("Name").is_string());
+                    std::string name = entry.at("Name");
 
-                auto p = entry.template get<Action>();
-                mActions[name] = p;
+                    auto p = entry.template get<Action>();
+                    mActions[name] = p;
+                }
+                catch (const MalformedInputAction &e)
+                {
+                    LOG_WARNING(e.what());
+                }
             }
             return true;
         }
@@ -43,46 +61,51 @@ namespace Mochi::Input
 
     void from_json(const json &entry, Action &action)
     {
-        json keyboard = entry["Keyboard"];
-        auto k = keyboard.template get<KeyboardAction>();
-        action.Keyboard = k;
-
-        json gamepad = entry["Gamepad"];
-        auto g = gamepad.template get<GamepadAction>();
-        action.Gamepad = g;
-
-        json mouse = entry["Mouse"];
-        auto m = mouse.template get<MouseAction>();
-        action.Mouse = m;
-    }
-
-    void from_json(const json &keyboard, KeyboardAction &action)
-    {
-        action.KeycodeNegative = -1;
-        action.KeycodePositive = -1;
-        action.Trigger = ActionTrigger::Never;
-
-        ASSERT("All actions need a trigger", keyboard.contains("Trigger") && keyboard["Trigger"].is_number_integer());
-        action.Trigger = (ActionTrigger)keyboard["Trigger"];
-
-        if (keyboard.contains("KeycodePositive"))
+        if (!entry.contains("Cases"))
         {
-            ASSERT("KeycodePositive must be an integer", keyboard["KeycodePositive"].is_number_integer());
-            action.KeycodePositive = keyboard["KeycodePositive"];
+            throw MalformedInputAction(std::source_location::current());
         }
-        if (keyboard.contains("KeycodeNegative"))
+
+        auto cases = entry.at("Cases");
+        for (size_t i = 0; i < cases.size(); ++i)
         {
-            ASSERT("KeycodeNegative must be an integer", keyboard["KeycodeNegative"].is_number_integer());
-            action.KeycodeNegative = keyboard["KeycodeNegative"];
+            auto actionCase = cases[i];
+            if (!actionCase.contains("Type") || !actionCase.at("Type").is_string())
+            {
+                continue;
+            }
+            std::string type = actionCase.at("Type");
+            if (type == "Keyboard")
+            {
+                action.PerformableActions.push_back(std::make_shared<PerformableActionKeyboard>(actionCase));
+            }
+            else if (type == "Mouse")
+            {
+                action.PerformableActions.push_back(std::make_shared<PerformableActionMouse>(actionCase));
+            }
+            else if (type == "MouseAxis")
+            {
+                action.PerformableActions.push_back(std::make_shared<PerformableActionMouseAxis>(actionCase));
+            }
+            else if (type == "Gamepad")
+            {
+                action.PerformableActions.push_back(std::make_shared<PerformableActionGamepad>(actionCase));
+            }
+            else if (type == "GamepadAxis")
+            {
+                action.PerformableActions.push_back(std::make_shared<PerformableActionGamepadAxis>(actionCase));
+            }
+            else
+            {
+                LOG_WARNING(std::format("Performable action of type {} does not exist. Did you do a typo?", type));
+                continue;
+            }
         }
-    }
 
-    void from_json(const json &j, GamepadAction &action)
-    {
-    }
-
-    void from_json(const json &j, MouseAction &action)
-    {
+        if (action.PerformableActions.size() == 0)
+        {
+            throw MalformedInputAction(std::source_location::current());
+        }
     }
 
     bool ActionManager::LoadActionsFromFile(const std::string &actionsFile)
@@ -112,7 +135,13 @@ namespace Mochi::Input
         {
             return false;
         }
-        return Value(actionName) != 0.0f;
+        Action action = mActions.at(actionName);
+        for (auto performableAction : action.PerformableActions)
+        {
+            if (performableAction->IsPerformed(mInputManager))
+                return true;
+        }
+        return false;
     }
 
     float ActionManager::Value(const std::string &actionName) const
@@ -121,31 +150,22 @@ namespace Mochi::Input
         {
             return 0.0f;
         }
-        Action action = mActions.find(actionName)->second;
+        Action action = mActions.at(actionName);
         float value = 0.0f;
-        switch (action.Keyboard.Trigger)
+        for (auto performableAction : action.PerformableActions)
         {
-        case ActionTrigger::Down:
-            if (action.Keyboard.KeycodePositive >= 0 && mInputManager->IsDown(action.Keyboard.KeycodePositive))
-                value += 1.0f;
-            if (action.Keyboard.KeycodeNegative >= 0 && mInputManager->IsDown(action.Keyboard.KeycodeNegative))
-                value -= 1.0f;
-            break;
-        case ActionTrigger::Pressed:
-            if (action.Keyboard.KeycodePositive >= 0 && mInputManager->WasPressed(action.Keyboard.KeycodePositive))
-                value += 1.0f;
-            if (action.Keyboard.KeycodeNegative >= 0 && mInputManager->WasPressed(action.Keyboard.KeycodeNegative))
-                value -= 1.0f;
-            break;
-        case ActionTrigger::Released:
-            if (action.Keyboard.KeycodePositive >= 0 && mInputManager->WasReleased(action.Keyboard.KeycodePositive))
-                value += 1.0f;
-            if (action.Keyboard.KeycodeNegative >= 0 && mInputManager->WasReleased(action.Keyboard.KeycodeNegative))
-                value -= 1.0f;
-            break;
-        default:
-            value = 0.0f;
+            value += performableAction->GetValue(mInputManager);
         }
+        if (value < __FLT_EPSILON__ && value > -__FLT_EPSILON__)
+            return 0.0f;
+
         return value;
+    }
+
+    Vector2f ActionManager::CompoundValue(const std::string &action1, const std::string &action2) const
+    {
+        float x = Value(action1);
+        float y = Value(action2);
+        return {x, y};
     }
 }

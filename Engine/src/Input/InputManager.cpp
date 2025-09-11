@@ -10,39 +10,24 @@
 
 #include "IKeyboardProvider.h"
 #include "IMouseProvider.h"
+#include "IGamepadProvider.h"
 
 #include "../Exception.hpp"
 
 namespace Mochi::Input
 {
-    InputManager::InputManager(std::shared_ptr<IKeyboardProvider> keyboardProvider, std::shared_ptr<IMouseProvider> mouseProvider) : mKeyboardProvider(keyboardProvider),
-                                                                                                                                     mMouseProvider(mouseProvider)
+    InputManager::InputManager(std::shared_ptr<IKeyboardProvider> keyboardProvider,
+                               std::shared_ptr<IMouseProvider> mouseProvider,
+                               std::shared_ptr<IGamepadProvider> gamepadProvider) : mKeyboardProvider(keyboardProvider),
+                                                                                    mMouseProvider(mouseProvider),
+                                                                                    mGamepadProvider(gamepadProvider)
     {
         memset(mKeyboardState, false, sizeof(mKeyboardState));
         memset(mKeyboardLastState, false, sizeof(mKeyboardLastState));
-    }
-
-    InputManager::InputManager(std::shared_ptr<Graphics::Renderer> renderer, std::shared_ptr<Event::EventBus> eventBus) : mRenderer(renderer), mEventBus(eventBus)
-    {
-        memset(mKeyboardState, false, sizeof(mKeyboardState));
-        memset(mKeyboardLastState, false, sizeof(mKeyboardLastState));
-
-        mSDLEventSubscriptionHandler = eventBus->Subscribe<SDL_Event>([&](const SDL_Event &e)
-                                                                      {
-            if (e.type == SDL_EVENT_GAMEPAD_ADDED)
-            {
-                LOG_INFO(std::format("Gamepad with id {} added!", e.gdevice.which));
-            } else if (e.type == SDL_EVENT_GAMEPAD_REMOVED)
-            {
-                LOG_INFO(std::format("Gamepad with id {} removed!", e.gdevice.which));
-            } else {
-                //LOG_INFO(std::format("Other event: {}", e.type));
-            } });
     }
 
     InputManager::~InputManager()
     {
-        // mEventBus->Unsubscribe<SDL_Event>(mSDLEventSubscriptionHandler);
     }
 
     bool InputManager::IsDown(const int &key) const
@@ -79,26 +64,29 @@ namespace Mochi::Input
         mMouseY = y;
 
         // Gamepad
-        // SDL_Gamepad *gamepad = SDL_GetGamepadFromPlayerIndex(0);
-        // SDL_GamepadAxis axis = SDL_GetGamepadAxisFromString("asd");
-        // SDL_GetGamepadAxis(gamepad, axis);
+        if (mGamepadProvider->HasGamepad(0))
+        {
+            GamepadData gdata = mGamepadProvider->GetData(0);
+            mLastGamepadData = mGamepadData;
+            mGamepadData = gdata;
+        }
     }
 
-    bool InputManager::MouseIsDown(const int &mouseButton) const
+    bool InputManager::MouseIsDown(const unsigned int &mouseButton) const
     {
         if (mouseButton >= mMouseState.size())
             throw EngineError(std::format("Mouse buttons are {} at max", mMouseState.size()));
         return mMouseState[mouseButton];
     }
 
-    bool InputManager::MouseWasPressed(const int &mouseButton) const
+    bool InputManager::MouseWasPressed(const unsigned int &mouseButton) const
     {
         if (mouseButton >= mMouseState.size())
             throw EngineError(std::format("Mouse buttons are {} at max", mMouseState.size()));
         return mMouseState[mouseButton] && !mMouseLastState[mouseButton];
     }
 
-    bool InputManager::MouseWasReleased(const int &mouseButton) const
+    bool InputManager::MouseWasReleased(const unsigned int &mouseButton) const
     {
         if (mouseButton >= mMouseState.size())
             throw EngineError(std::format("Mouse buttons are {} at max", mMouseState.size()));
@@ -115,4 +103,21 @@ namespace Mochi::Input
         return {mDeltaMouseX, mDeltaMouseY};
     }
 
+    float InputManager::GetGamepadAxis(const GamepadAxis &axis) const
+    {
+        return mGamepadData.AxisData[axis];
+    }
+
+    bool InputManager::GamepadButtonIsDown(const GamepadButton &button) const
+    {
+        return mGamepadData.ButtonsData[button];
+    }
+    bool InputManager::GamepadButtonWasPressed(const GamepadButton &button) const
+    {
+        return mGamepadData.ButtonsData[button] && !mLastGamepadData.ButtonsData[button];
+    }
+    bool InputManager::GamepadButtonWasReleased(const GamepadButton &button) const
+    {
+        return !mGamepadData.ButtonsData[button] && mLastGamepadData.ButtonsData[button];
+    }
 }

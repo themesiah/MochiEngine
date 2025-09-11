@@ -1,11 +1,11 @@
 #ifndef HDEF_INPUTMANAGER
 #define HDEF_INPUTMANAGER
 
+#include "InputCommons.h"
+
 #include <memory>
 
 #include "../Types/Types.hpp"
-
-#include "../Event/EventBus.h"
 
 namespace Mochi::Graphics
 {
@@ -13,14 +13,6 @@ namespace Mochi::Graphics
 }
 namespace Mochi::Input
 {
-    enum MouseButtons
-    {
-        MouseButtonLeft = 0,
-        MouseButtonCenter = 1,
-        MouseButtonRight = 2,
-        MouseButtonSide1 = 3,
-        MouseButtonSide2 = 4
-    };
     class IKeyboardProvider;
     class IMouseProvider;
     class IGamepadProvider;
@@ -29,10 +21,7 @@ namespace Mochi::Input
     private:
         std::shared_ptr<IKeyboardProvider> mKeyboardProvider;
         std::shared_ptr<IMouseProvider> mMouseProvider;
-
-        std::shared_ptr<Graphics::Renderer> mRenderer;
-        std::shared_ptr<Event::EventBus> mEventBus;
-        Event::SubscriptionHandler mSDLEventSubscriptionHandler;
+        std::shared_ptr<IGamepadProvider> mGamepadProvider;
 
         bool mKeyboardState[SDL_SCANCODE_COUNT];
         bool mKeyboardLastState[SDL_SCANCODE_COUNT];
@@ -44,19 +33,25 @@ namespace Mochi::Input
         float mDeltaMouseX;
         float mDeltaMouseY;
 
+        GamepadData mGamepadData;
+        GamepadData mLastGamepadData;
+
     public:
-        InputManager(std::shared_ptr<IKeyboardProvider> keyboardProvider, std::shared_ptr<IMouseProvider> mouseProvider);
-        InputManager(std::shared_ptr<Graphics::Renderer> renderer, std::shared_ptr<Event::EventBus> eventBus);
+        InputManager(std::shared_ptr<IKeyboardProvider> keyboardProvider, std::shared_ptr<IMouseProvider> mouseProvider, std::shared_ptr<IGamepadProvider> mGamepadProvider);
         virtual ~InputManager();
         bool IsDown(const int &key) const;
         bool WasPressed(const int &key) const;
         bool WasReleased(const int &key) const;
         void Update();
-        bool MouseIsDown(const int &mouseButton) const;
-        bool MouseWasPressed(const int &mouseButton) const;
-        bool MouseWasReleased(const int &mouseButton) const;
+        bool MouseIsDown(const unsigned int &mouseButton) const;
+        bool MouseWasPressed(const unsigned int &mouseButton) const;
+        bool MouseWasReleased(const unsigned int &mouseButton) const;
         Vector2f GetMousePosition() const;
         Vector2f GetMouseDelta() const;
+        float GetGamepadAxis(const GamepadAxis &axis) const;
+        bool GamepadButtonIsDown(const GamepadButton &button) const;
+        bool GamepadButtonWasPressed(const GamepadButton &button) const;
+        bool GamepadButtonWasReleased(const GamepadButton &button) const;
     };
 }
 

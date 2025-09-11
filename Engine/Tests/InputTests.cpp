@@ -7,78 +7,119 @@
 #include "Input/InputManager.h"
 #include "Input/ActionManager.h"
 
-// TEST_CASE("Input Manager")
-// {
-//     Mochi::Input::InputManager input;
-//     bool keyboardState[SDL_SCANCODE_COUNT];
-//     memset(keyboardState, false, sizeof(keyboardState));
+#include "Input/IKeyboardProvider.h"
+#include "Input/IMouseProvider.h"
+#include "Input/IGamepadProvider.h"
+#include "Input/InputCommons.h"
 
-//     input.Update(keyboardState, 0, 0, 0);
-//     CHECK_FALSE(input.IsDown(SDL_SCANCODE_A));
-//     CHECK_FALSE(input.WasPressed(SDL_SCANCODE_A));
-//     CHECK_FALSE(input.WasReleased(SDL_SCANCODE_A));
+#include "Types/Types.hpp"
 
-//     keyboardState[SDL_SCANCODE_A] = true;
-//     input.Update(keyboardState, 0, 0, 0);
-//     CHECK(input.IsDown(SDL_SCANCODE_A));
-//     CHECK(input.WasPressed(SDL_SCANCODE_A));
-//     CHECK_FALSE(input.WasReleased(SDL_SCANCODE_A));
+using namespace Mochi;
+using namespace Mochi::Input;
 
-//     keyboardState[SDL_SCANCODE_A] = false;
-//     input.Update(keyboardState, 0, 0, 0);
-//     CHECK_FALSE(input.IsDown(SDL_SCANCODE_A));
-//     CHECK_FALSE(input.WasPressed(SDL_SCANCODE_A));
-//     CHECK(input.WasReleased(SDL_SCANCODE_A));
+struct MockKeyboardProvider : IKeyboardProvider
+{
+public:
+    bool state[SDL_SCANCODE_COUNT];
+    ~MockKeyboardProvider() {}
+    virtual const bool *GetState() const { return state; }
+    virtual size_t GetMaxKeys() const { return SDL_SCANCODE_COUNT; }
+};
 
-//     input.Update(keyboardState, 0, 0, 0);
-//     CHECK_FALSE(input.IsDown(SDL_SCANCODE_A));
-//     CHECK_FALSE(input.WasPressed(SDL_SCANCODE_A));
-//     CHECK_FALSE(input.WasReleased(SDL_SCANCODE_A));
-// }
+struct MockMouseProvider : IMouseProvider
+{
+public:
+    std::array<bool, MouseButton::MouseButtonsCount> state;
+    Vector2f position;
+    ~MockMouseProvider() {}
+    virtual std::array<bool, MouseButton::MouseButtonsCount> GetState(float *x, float *y) const
+    {
+        *x = position.x;
+        *y = position.y;
+        return state;
+    }
+};
 
-// TEST_CASE("Action manager")
-// {
-//     std::shared_ptr<Mochi::Input::InputManager> inputManager = std::make_shared<Mochi::Input::InputManager>();
-//     bool keyboardState[SDL_SCANCODE_COUNT];
-//     memset(keyboardState, false, sizeof(keyboardState));
+struct MockGamepadProvider : IGamepadProvider
+{
+public:
+    std::array<float, GamepadAxis::GAMEPAD_AXIS_COUNT> AxisData;
+    std::array<bool, GamepadButton::GAMEPAD_BUTTON_COUNT> ButtonsData;
+    ~MockGamepadProvider() {}
+    virtual GamepadData GetData(const unsigned int &player) const { return {AxisData, ButtonsData}; }
+    virtual bool HasGamepad(const unsigned int &player) const { return player == 0; }
+};
 
-//     Mochi::Input::ActionManager actionManager(inputManager);
-//     bool success = actionManager.LoadActionsFromFile("TestData/Actions.json");
-//     REQUIRE(success);
-//     REQUIRE(actionManager.HasAction("Shot"));
-//     REQUIRE(actionManager.HasAction("Horizontal"));
+TEST_CASE("Input::1- Input Manager")
+{
+    std::shared_ptr<MockKeyboardProvider> mockKeyboard = std::make_shared<MockKeyboardProvider>();
+    std::shared_ptr<MockMouseProvider> mockMouse = std::make_shared<MockMouseProvider>();
+    std::shared_ptr<MockGamepadProvider> mockGamepad = std::make_shared<MockGamepadProvider>();
+    InputManager input(mockKeyboard, mockMouse, mockGamepad);
+    memset(mockKeyboard->state, false, sizeof(mockKeyboard->state));
 
-//     actionManager.Update(0.1f, keyboardState, 0, 0, 0);
-//     CHECK_FALSE(actionManager.Performed("Shot"));
-//     CHECK_FALSE(actionManager.Performed("Horizontal"));
+    input.Update();
+    CHECK_FALSE(input.IsDown(SDL_SCANCODE_A));
+    CHECK_FALSE(input.WasPressed(SDL_SCANCODE_A));
+    CHECK_FALSE(input.WasReleased(SDL_SCANCODE_A));
 
-//     keyboardState[SDL_SCANCODE_Z] = true;
-//     actionManager.Update(0.1f, keyboardState, 0, 0, 0);
-//     CHECK(actionManager.Performed("Shot"));
-//     CHECK_FALSE(actionManager.Performed("Horizontal"));
+    mockKeyboard->state[SDL_SCANCODE_A] = true;
+    input.Update();
+    CHECK(input.IsDown(SDL_SCANCODE_A));
+    CHECK(input.WasPressed(SDL_SCANCODE_A));
+    CHECK_FALSE(input.WasReleased(SDL_SCANCODE_A));
 
-//     keyboardState[SDL_SCANCODE_LEFT] = true;
-//     actionManager.Update(0.1f, keyboardState, 0, 0, 0);
-//     CHECK(actionManager.Performed("Shot"));
-//     CHECK(actionManager.Performed("Horizontal"));
-//     CHECK_LT(actionManager.Value("Horizontal"), 0.0f);
+    mockKeyboard->state[SDL_SCANCODE_A] = false;
+    input.Update();
+    CHECK_FALSE(input.IsDown(SDL_SCANCODE_A));
+    CHECK_FALSE(input.WasPressed(SDL_SCANCODE_A));
+    CHECK(input.WasReleased(SDL_SCANCODE_A));
 
-//     keyboardState[SDL_SCANCODE_RIGHT] = true;
-//     actionManager.Update(0.1f, keyboardState, 0, 0, 0);
-//     CHECK(actionManager.Performed("Shot"));
-//     CHECK_FALSE(actionManager.Performed("Horizontal"));
-//     CHECK_EQ(actionManager.Value("Horizontal"), 0.0f);
+    input.Update();
+    CHECK_FALSE(input.IsDown(SDL_SCANCODE_A));
+    CHECK_FALSE(input.WasPressed(SDL_SCANCODE_A));
+    CHECK_FALSE(input.WasReleased(SDL_SCANCODE_A));
+}
 
-//     keyboardState[SDL_SCANCODE_LEFT] = false;
-//     actionManager.Update(0.1f, keyboardState, 0, 0, 0);
-//     CHECK(actionManager.Performed("Shot"));
-//     CHECK(actionManager.Performed("Horizontal"));
-//     CHECK_GT(actionManager.Value("Horizontal"), 0.0f);
+TEST_CASE("Input::2- Action manager")
+{
+    std::shared_ptr<MockKeyboardProvider> mockKeyboard = std::make_shared<MockKeyboardProvider>();
+    std::shared_ptr<MockMouseProvider> mockMouse = std::make_shared<MockMouseProvider>();
+    std::shared_ptr<MockGamepadProvider> mockGamepad = std::make_shared<MockGamepadProvider>();
+    std::shared_ptr<Mochi::Input::InputManager> inputManager = std::make_shared<Mochi::Input::InputManager>(mockKeyboard, mockMouse, mockGamepad);
+    memset(mockKeyboard->state, false, sizeof(mockKeyboard->state));
 
-//     keyboardState[SDL_SCANCODE_RIGHT] = false;
-//     keyboardState[SDL_SCANCODE_Z] = false;
-//     actionManager.Update(0.1f, keyboardState, 0, 0, 0);
-//     CHECK_FALSE(actionManager.Performed("Shot"));
-//     CHECK_FALSE(actionManager.Performed("Horizontal"));
-//     CHECK_EQ(actionManager.Value("Horizontal"), 0.0f);
-// }
+    ActionManager actionManager(inputManager);
+    bool success = actionManager.LoadActionsFromFile("TestData/Actions.json");
+    REQUIRE(success);
+    REQUIRE(actionManager.HasAction("Shot"));
+    REQUIRE(actionManager.HasAction("Horizontal"));
+
+    actionManager.Update(0.1f);
+    CHECK_FALSE(actionManager.Performed("Shot"));
+
+    mockKeyboard->state[SDL_SCANCODE_Z] = true;
+    actionManager.Update(0.1f);
+    CHECK(actionManager.Performed("Shot"));
+
+    mockKeyboard->state[SDL_SCANCODE_LEFT] = true;
+    actionManager.Update(0.1f);
+    CHECK(actionManager.Performed("Shot"));
+    CHECK_LT(actionManager.Value("Horizontal"), 0.0f);
+
+    mockKeyboard->state[SDL_SCANCODE_RIGHT] = true;
+    actionManager.Update(0.1f);
+    CHECK(actionManager.Performed("Shot"));
+    CHECK_EQ(actionManager.Value("Horizontal"), 0.0f);
+
+    mockKeyboard->state[SDL_SCANCODE_LEFT] = false;
+    actionManager.Update(0.1f);
+    CHECK(actionManager.Performed("Shot"));
+    CHECK_GT(actionManager.Value("Horizontal"), 0.0f);
+
+    mockKeyboard->state[SDL_SCANCODE_RIGHT] = false;
+    mockKeyboard->state[SDL_SCANCODE_Z] = false;
+    actionManager.Update(0.1f);
+    CHECK_FALSE(actionManager.Performed("Shot"));
+    CHECK_EQ(actionManager.Value("Horizontal"), 0.0f);
+}
