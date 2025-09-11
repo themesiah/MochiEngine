@@ -43,3 +43,10 @@ add_custom_command(
   "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Data"
   COMMENT "Copying data folder from ${PROJECT_SOURCE_DIR} TO ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
 )
+
+add_custom_target(copy_data_folder
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${PROJECT_SOURCE_DIR}/Data"
+        "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Data"
+        DEPENDS Game
+    )
