@@ -7,6 +7,7 @@
 
 #include "../Utils/Assert.h"
 #include "../Utils/Logger.h"
+#include "../Utils/MathUtils.h"
 #include "../Exception.hpp"
 
 #include "PerformableActions.h"
@@ -149,7 +150,7 @@ namespace Mochi::Input
         {
             value += performableAction->GetValue(mInputManager);
         }
-        if (value < __FLT_EPSILON__ && value > -__FLT_EPSILON__)
+        if (Math::Approx(value, 0.0f))
             return 0.0f;
 
         return value;

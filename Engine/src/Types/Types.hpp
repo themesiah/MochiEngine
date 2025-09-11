@@ -52,6 +52,20 @@ namespace Mochi
             return *this;
         }
 
+        inline Vector2f &operator*=(const Vector2f &rhs)
+        {
+            this->x *= rhs.x;
+            this->y *= rhs.y;
+            return *this;
+        }
+
+        inline Vector2f &operator/=(const Vector2f &rhs)
+        {
+            this->x /= rhs.x;
+            this->y /= rhs.y;
+            return *this;
+        }
+
         friend Vector2f operator+(Vector2f lhs, const Vector2f &rhs)
         {
             lhs += rhs;
@@ -61,6 +75,18 @@ namespace Mochi
         friend Vector2f operator-(Vector2f lhs, const Vector2f &rhs)
         {
             lhs -= rhs;
+            return lhs;
+        }
+
+        friend Vector2f operator*(Vector2f lhs, const Vector2f &rhs)
+        {
+            lhs *= rhs;
+            return lhs;
+        }
+
+        friend Vector2f operator/(Vector2f lhs, const Vector2f &rhs)
+        {
+            lhs /= rhs;
             return lhs;
         }
 

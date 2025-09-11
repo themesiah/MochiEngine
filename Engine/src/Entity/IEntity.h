@@ -3,6 +3,8 @@
 
 namespace Mochi
 {
+
+    using EntityHandler = uint32_t;
     struct IEntity
     {
         virtual ~IEntity() {}

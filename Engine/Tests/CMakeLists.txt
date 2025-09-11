@@ -15,6 +15,7 @@ set(
   TimeTests
   EventBusTests
   TypesTests
+  PhysicsTests
 )
 
 

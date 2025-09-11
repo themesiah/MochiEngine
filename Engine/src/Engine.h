@@ -10,6 +10,7 @@
 #include <sol/sol.hpp>
 
 #include "Time/TimeSystem.h"
+#include "Entity/IEntity.h"
 
 struct TTF_Font;
 struct TTF_TextEngine;
@@ -17,12 +18,9 @@ struct TTF_Text;
 
 namespace Mochi
 {
-    using EntityHandler = uint32_t;
-
     struct IUpdateable;
     struct IRenderable;
     struct IAnimatable;
-    struct IEntity;
     namespace Graphics
     {
         class Sprite;
