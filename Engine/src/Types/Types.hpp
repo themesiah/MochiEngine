@@ -115,14 +115,24 @@ namespace Mochi
 
         inline float Dot(const Vector2f &rhs) const
         {
-            auto n1 = this->Normalized();
-            auto n2 = rhs.Normalized();
-            return (n1.x * n2.x + n1.y * n2.y);
+            return (x * rhs.x + y * rhs.y);
         }
 
         static float Dot(Vector2f lhs, const Vector2f &rhs)
         {
             return lhs.Dot(rhs);
+        }
+
+        inline float CosineProximity(const Vector2f &rhs) const
+        {
+            auto n1 = this->Normalized();
+            auto n2 = rhs.Normalized();
+            return (n1.x * n2.x + n1.y * n2.y);
+        }
+
+        static float CosineProximity(Vector2f lhs, const Vector2f &rhs)
+        {
+            return lhs.CosineProximity(rhs);
         }
 
         static const Vector2f Zero;

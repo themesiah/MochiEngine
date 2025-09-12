@@ -5,6 +5,7 @@
 
 #include "../Types/Types.hpp"
 #include "../Entity/IEntity.h"
+#include "../Exception.hpp"
 
 namespace Mochi::Physics
 {
@@ -55,7 +56,11 @@ namespace Mochi::Physics
     struct Circle : public Shape
     {
     public:
-        Circle(const Vector2f &position, const EntityHandler &entity, const PhysicsLayer &layer, const float &radius) : Shape(position, entity, layer), Radius(radius) {}
+        Circle(const Vector2f &position, const EntityHandler &entity, const PhysicsLayer &layer, const float &radius) : Shape(position, entity, layer), Radius(radius)
+        {
+            if (Radius <= 0.0f)
+                throw EngineError("Circles require a radius greater than 0");
+        }
         virtual ~Circle() {}
         virtual bool Collides(Point p) const;
         virtual bool Collides(Line l) const;

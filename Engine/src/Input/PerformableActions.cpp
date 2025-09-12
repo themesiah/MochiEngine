@@ -181,6 +181,7 @@ namespace Mochi::Input
     {
         mAxis = GamepadAxis::GAMEPAD_AXIS_INVALID;
         mScale = 1.0f;
+        mThreshold = 0.5f;
 
         if (!json.contains("Axis") || !json.at("Axis").is_number_integer() || json.at("Axis") < 0 || json.at("Axis") >= GamepadAxis::GAMEPAD_AXIS_COUNT)
             throw MalformedInputAction(std::source_location::current());
@@ -190,13 +191,18 @@ namespace Mochi::Input
         {
             mScale = json.at("Scale");
         }
+
+        if (json.contains("Threshold") && json.at("Threshold").is_number())
+        {
+            mThreshold = json.at("Threshold");
+        }
     }
     PerformableActionGamepadAxis::~PerformableActionGamepadAxis()
     {
     }
     bool PerformableActionGamepadAxis::IsPerformed(std::shared_ptr<InputManager> input) const
     {
-        return true;
+        return std::fabs(GetValue(input)) >= mThreshold;
     }
     float PerformableActionGamepadAxis::GetValue(std::shared_ptr<InputManager> input) const
     {

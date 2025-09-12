@@ -68,6 +68,7 @@ namespace Mochi::Input
     private:
         GamepadAxis mAxis;
         float mScale;
+        float mThreshold;
 
     public:
         PerformableActionGamepadAxis(const json &json);

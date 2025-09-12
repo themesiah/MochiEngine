@@ -15,8 +15,8 @@
 TEST_CASE("Audio::1- Init FMOD")
 {
     std::shared_ptr<Mochi::FS::PackCatalog> pc = std::make_shared<Mochi::FS::PackCatalog>(Mochi::FS::PackCatalog::FileLoaderType::FileSystem);
-    std::shared_ptr<Mochi::Scripting::ScriptingManager> sm = std::make_shared<Mochi::Scripting::ScriptingManager>(pc);
     pc->OpenPack("TestData");
+    std::shared_ptr<Mochi::Scripting::ScriptingManager> sm = std::make_shared<Mochi::Scripting::ScriptingManager>(pc);
     FMOD_RESULT result;
     Mochi::Audio::FMODWrapper fmod(pc, sm);
     TEST_NOTHROWS(fmod.LoadBank("Audiobanks/Master"));

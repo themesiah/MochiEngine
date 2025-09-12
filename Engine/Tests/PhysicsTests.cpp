@@ -3,6 +3,7 @@
 #include "doctest.h"
 
 #include "Physics/Shapes.h"
+#include "DoctestUtils.h"
 
 TEST_CASE("Physics::1- PointVSPoint")
 {
@@ -94,4 +95,56 @@ TEST_CASE("Physics::7- LineVSPoint")
     CHECK(l1.Collides(p2));
     CHECK(l1.Collides(p3));
     CHECK_FALSE(l1.Collides(p4));
+}
+
+TEST_CASE("Physics::8- LineVSCircle")
+{
+    Mochi::Physics::Line l1({5, 0}, 0, 0, {5, 5});
+    Mochi::Physics::Line l2({6, 0}, 0, 0, {6, 5});
+    Mochi::Physics::Line l3({4, 4}, 0, 0, {6, 6});
+    Mochi::Physics::Line l4({4, 6}, 0, 0, {8, 6});
+    Mochi::Physics::Circle c1({6, 6}, 0, 0, 1.0f);
+
+    CHECK_FALSE(c1.Collides(l1));
+    CHECK(c1.Collides(l2));
+    CHECK(c1.Collides(l3));
+    CHECK(c1.Collides(l4));
+}
+
+TEST_CASE("Physics::9- LineVSLine")
+{
+    Mochi::Physics::Line l1({5, 0}, 0, 0, {5, 5});
+    Mochi::Physics::Line l2({4, 0}, 0, 0, {4, 5});
+    Mochi::Physics::Line l3({3, 2}, 0, 0, {7, 2});
+    Mochi::Physics::Line l4({5, 0}, 0, 0, {5, 5});
+    Mochi::Physics::Line l5({5, 0}, 0, 0, {5, -5});
+
+    CHECK_FALSE(l1.Collides(l2));
+    CHECK(l1.Collides(l3));
+    CHECK(l1.Collides(l4));
+    CHECK(l2.Collides(l3));
+    CHECK(l1.Collides(l5));
+}
+
+TEST_CASE("Physics::10- LineVSRectangle")
+{
+    Mochi::Physics::Rectangle r1({5.5, 4}, 0, 0, {1.5f, 1});
+    Mochi::Physics::Line l1({5, 0}, 0, 0, {5, 5});
+    Mochi::Physics::Line l2({4, 0}, 0, 0, {4, 5});
+    Mochi::Physics::Line l3({3, 2}, 0, 0, {7, 2});
+    Mochi::Physics::Line l4({6, 2}, 0, 0, {8, 4});
+    Mochi::Physics::Line l5({4, 4}, 0, 0, {6, 6});
+
+    CHECK(r1.Collides(l1));
+    CHECK(r1.Collides(l2));
+    CHECK_FALSE(r1.Collides(l3));
+    CHECK(r1.Collides(l4));
+    CHECK(r1.Collides(l5));
+}
+
+TEST_CASE("Physics::11- Exceptions")
+{
+    TEST_THROWS(Mochi::Physics::Circle c1({6, 6}, 0, 0, 0.0f));
+    TEST_THROWS(Mochi::Physics::Circle c1({6, 6}, 0, 0, -1.0f));
+    TEST_NOTHROWS(Mochi::Physics::Circle c1({0, 0}, 0, 0, 3.0f));
 }

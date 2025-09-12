@@ -32,9 +32,61 @@ namespace Mochi::Physics
                p.Position.y <= (r.Position.y + r.Extents.y);
     }
 
-    inline bool CollidesLineAndLine(const Line &l1, const Line &l2) { return false; }
-    inline bool CollidesLineAndCircle(const Line &l, const Circle &c) { return false; }
-    inline bool CollidesLineAndRectangle(const Line &l, const Rectangle &r) { return false; }
+    inline bool CollidesLineAndLine(const Line &l1, const Line &l2)
+    {
+        float x1 = l1.Position.x;
+        float x2 = l1.End.x;
+        float x3 = l2.Position.x;
+        float x4 = l2.End.x;
+        float y1 = l1.Position.y;
+        float y2 = l1.End.y;
+        float y3 = l2.Position.y;
+        float y4 = l2.End.y;
+        float uA = ((x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)) / ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1));
+        float uB = ((x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3)) / ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1));
+        if (uA >= 0 && uA <= 1 && uB >= 0 && uB <= 1)
+        {
+            return true;
+        }
+        else
+        {
+            Point start(l1.Position, 0, 0);
+            Point end(l1.End, 0, 0);
+            return l2.Collides(start) || l2.Collides(end);
+        }
+    }
+
+    inline bool CollidesLineAndCircle(const Line &l, const Circle &c)
+    {
+        auto lStart = Point(l.Position, 0, 0);
+        auto lEnd = Point(l.End, 0, 0);
+        if (c.Collides(lStart) || c.Collides(lEnd))
+            return true;
+
+        auto lineVector = l.End - l.Position;
+        float lineLength = lineVector.Distance();
+        float dot = Vector2f::Dot(c.Position - l.Position, lineVector) / (lineLength * lineLength);
+        Point closestPoint = Point(l.Position + (lineVector * dot), 0, 0);
+        return c.Collides(closestPoint);
+    }
+
+    inline bool CollidesLineAndRectangle(const Line &l, const Rectangle &r)
+    {
+        Line other = Line(r.Position + Vector2f(r.Extents.x, r.Extents.y), 0, 0, r.Position + Vector2f(r.Extents.x, -r.Extents.y));
+        if (l.Collides(other))
+            return true;
+        other = Line(r.Position + Vector2f(-r.Extents.x, r.Extents.y), 0, 0, r.Position + Vector2f(r.Extents.x, r.Extents.y));
+        if (l.Collides(other))
+            return true;
+        other = Line(r.Position + Vector2f(-r.Extents.x, r.Extents.y), 0, 0, r.Position + Vector2f(-r.Extents.x, -r.Extents.y));
+        if (l.Collides(other))
+            return true;
+        other = Line(r.Position + Vector2f(-r.Extents.x, -r.Extents.y), 0, 0, r.Position + Vector2f(r.Extents.x, -r.Extents.y));
+        if (l.Collides(other))
+            return true;
+
+        return false;
+    }
 
     inline bool CollidesCircleAndCircle(const Circle &c1, const Circle &c2)
     {

@@ -118,25 +118,25 @@ TEST_CASE("Vector2f Normalize")
     CHECK(v7.y == 6 / sqrtf(45));
 }
 
-TEST_CASE("Vector2f Dot")
+TEST_CASE("Vector2f Cosine proximity")
 {
     Vector2f v1{1, 0};
     Vector2f v2{5, 0};
-    float dot = v1.Dot(v2);
-    float dot2 = Vector2f::Dot(v1, v2);
+    float dot = v1.CosineProximity(v2);
+    float dot2 = Vector2f::CosineProximity(v1, v2);
     CHECK_EQ(dot, dot2);
     CHECK(dot == 1);
 
     Vector2f v3{0, 45};
-    float dot3 = Vector2f::Dot(v1, v3);
+    float dot3 = Vector2f::CosineProximity(v1, v3);
     CHECK(dot3 == 0);
 
     Vector2f v4{0, -45};
-    float dot4 = v1.Dot(v4);
+    float dot4 = v1.CosineProximity(v4);
     CHECK(dot4 == 0);
 
     Vector2f v5{-3, 0};
-    float dot5 = Vector2f::Dot(v1, v5);
+    float dot5 = Vector2f::CosineProximity(v1, v5);
     CHECK(dot5 == -1);
 }
 
