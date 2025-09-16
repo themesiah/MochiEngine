@@ -83,7 +83,9 @@ namespace Mochi::Graphics
         int w, h;
         SDL_RendererLogicalPresentation *rlp = NULL;
         SDL_GetRenderLogicalPresentation(mRenderer.get(), &w, &h, rlp);
-        return std::make_shared<Camera>((Vector2f){0, 0}, 1, (SDL_Point){w, h});
+        Vector2f pos{0, 0};
+        SDL_Point lsize{w, h};
+        return std::make_shared<Camera>(pos, 1, lsize);
     }
 
 }

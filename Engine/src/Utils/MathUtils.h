@@ -1,13 +1,13 @@
 #ifndef HDEF_MATHUTILS
 #define HDEF_MATHUTILS
 
-#include <stdint.h>
+#define F_EPSILON 0.00001f
 
 namespace Mochi::Math
 {
     inline bool Approx(float a, float b)
     {
-        return std::fabs(a - b) < __FLT_EPSILON__;
+        return std::fabs(a - b) < F_EPSILON;
     }
 }
 #endif

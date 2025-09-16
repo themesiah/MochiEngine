@@ -108,4 +108,14 @@ target_link_libraries(Game
 ~~~
 
 ## 9. Build
-TODO
+
+First of all, go to _Engine/Includes/SDL3_image/external_ and run _download.sh_ or _Get-GitModules.ps1_.
+Then go to _Engine/Includes/SDL3_ttf/external_ and again run _download.sh_ or _Get-GitModules.ps1_.
+Then, return to your root directory and on the console, do:
+
+~~~bash
+cmake -B build
+cmake --build build
+~~~
+
+If all is correct, on your _{sourceDir}/build/bin/Debug_ directory should appear a bunch of DLL files and your _Game.exe_. Copy your data folder there, and let's play!

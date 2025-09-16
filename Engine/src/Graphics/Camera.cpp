@@ -1,6 +1,7 @@
 #include "Camera.h"
 
 #include "../Utils/Logger.h"
+#include <format>
 
 namespace Mochi::Graphics
 {

@@ -110,7 +110,7 @@ option(SDLIMAGE_BACKEND_STB "Use stb_image for loading JPEG and PNG files" ON)
 cmake_dependent_option(SDLIMAGE_BACKEND_WIC "Add WIC backend (Windows Imaging Component)" OFF WIN32 OFF)
 cmake_dependent_option(SDLIMAGE_BACKEND_IMAGEIO "Use native Mac OS X frameworks for loading images" ON APPLE OFF)
 
-option(SDLIMAGE_AVIF "Support loading AVIF images" ON)
+option(SDLIMAGE_AVIF "Support loading AVIF images" OFF)
 option(SDLIMAGE_BMP "Support loading BMP images" ON)
 option(SDLIMAGE_GIF "Support loading GIF images" ON)
 option(SDLIMAGE_JPG "Support loading JPEG images" ON)
