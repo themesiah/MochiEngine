@@ -99,7 +99,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<CONFIG>)
 # Add all subdirectories
 add_subdirectory("Engine")
 
-add_executable(Game ${GAME_WIN32_FLAG} main.cpp MyEngine.cpp)
+add_executable(Game main.cpp MyEngine.cpp)
 
 target_link_libraries(Game
                       PRIVATE

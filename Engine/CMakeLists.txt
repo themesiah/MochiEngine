@@ -15,11 +15,13 @@ file(GLOB Engine_src CONFIGURE_DEPENDS
         "src/*.cpp")
 
 
-set(SDLTTF_VENDORED ON)
+# set(SDLTTF_VENDORED ON)
 set(LUA_VERSION "lua-5.4.8")
-add_subdirectory(Includes/SDL3 EXCLUDE_FROM_ALL)
-add_subdirectory(Includes/SDL3_image EXCLUDE_FROM_ALL)
-add_subdirectory(Includes/SDL3_ttf EXCLUDE_FROM_ALL)
+add_subdirectory(Includes)
+
+# add_subdirectory(Includes/SDL3 EXCLUDE_FROM_ALL)
+# add_subdirectory(Includes/SDL3_image EXCLUDE_FROM_ALL)
+# add_subdirectory(Includes/SDL3_ttf EXCLUDE_FROM_ALL)
 add_subdirectory(Includes/FMOD EXCLUDE_FROM_ALL)
 add_subdirectory(Includes/lua EXCLUDE_FROM_ALL)
 add_subdirectory(Includes/sol2 EXCLUDE_FROM_ALL)
@@ -37,9 +39,7 @@ target_include_directories(Engine INTERFACE "src")
 
 target_link_libraries(Engine
                       PUBLIC
-                      SDL3_image::SDL3_image
-                      SDL3::SDL3
-                      SDL3_ttf::SDL3_ttf
+                      EngineDependencies
                       fmod
                       fmodstudio
                       sol2
