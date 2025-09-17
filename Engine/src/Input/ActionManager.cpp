@@ -3,7 +3,7 @@
 
 #include <fstream>
 #include <iostream>
-#include <json.hpp>
+#include <nlohmann/json.hpp>
 
 #include "../Utils/Assert.h"
 #include "../Utils/Logger.h"
@@ -12,8 +12,6 @@
 
 #include "PerformableActions.h"
 #include "IPerformableAction.h"
-
-using json = nlohmann::json;
 
 namespace Mochi::Input
 {
@@ -25,7 +23,7 @@ namespace Mochi::Input
     {
         try
         {
-            json data = json::parse(jsonContent);
+            nlohmann::json data = nlohmann::json::parse(jsonContent);
             mActions.clear();
             auto actions = data.at("Actions");
             ASSERT("Actions data can't be empty", !actions.empty());
@@ -33,7 +31,7 @@ namespace Mochi::Input
             {
                 try
                 {
-                    json entry = actions[i];
+                    nlohmann::json entry = actions[i];
                     ASSERT("All actions need a string as a Name", entry.contains("Name") && entry.at("Name").is_string());
                     std::string name = entry.at("Name");
 
@@ -53,7 +51,7 @@ namespace Mochi::Input
         }
     }
 
-    void from_json(const json &entry, Action &action)
+    void from_json(const nlohmann::json &entry, Action &action)
     {
         if (!entry.contains("Cases"))
         {

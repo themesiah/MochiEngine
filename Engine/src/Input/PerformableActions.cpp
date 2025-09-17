@@ -1,5 +1,7 @@
 #include "PerformableActions.h"
 
+#include <nlohmann/json.hpp>
+
 #include "InputManager.h"
 #include "../Utils/Assert.h"
 #include "../Exception.hpp"
@@ -7,7 +9,7 @@
 
 namespace Mochi::Input
 {
-    PerformableActionKeyboard::PerformableActionKeyboard(const json &json)
+    PerformableActionKeyboard::PerformableActionKeyboard(const nlohmann::json &json)
     {
         mKey = -1;
         mTrigger = ActionTrigger::Never;
@@ -53,7 +55,7 @@ namespace Mochi::Input
             return 0.0f;
     }
 
-    PerformableActionMouse::PerformableActionMouse(const json &json)
+    PerformableActionMouse::PerformableActionMouse(const nlohmann::json &json)
     {
         mButton = MouseButton::MouseButtonInvalid;
         mValue = 0.0f;
@@ -96,7 +98,7 @@ namespace Mochi::Input
             return 0.0f;
     }
 
-    PerformableActionMouseAxis::PerformableActionMouseAxis(const json &json)
+    PerformableActionMouseAxis::PerformableActionMouseAxis(const nlohmann::json &json)
     {
         mAxis = MouseAxis::MouseAxisInvalid;
         mScale = 1.0f;
@@ -134,7 +136,7 @@ namespace Mochi::Input
         }
     }
 
-    PerformableActionGamepad::PerformableActionGamepad(const json &json)
+    PerformableActionGamepad::PerformableActionGamepad(const nlohmann::json &json)
     {
         mButton = GamepadButton::GAMEPAD_BUTTON_INVALID;
         mValue = 0.0f;
@@ -177,7 +179,7 @@ namespace Mochi::Input
             return 0.0f;
     }
 
-    PerformableActionGamepadAxis::PerformableActionGamepadAxis(const json &json)
+    PerformableActionGamepadAxis::PerformableActionGamepadAxis(const nlohmann::json &json)
     {
         mAxis = GamepadAxis::GAMEPAD_AXIS_INVALID;
         mScale = 1.0f;

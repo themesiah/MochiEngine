@@ -5,13 +5,11 @@
 #include <memory>
 #include <map>
 #include <vector>
-#include <json.hpp>
+#include <nlohmann/json_fwd.hpp>
 
 #include "InputCommons.h"
 #include "IPerformableAction.h"
 #include "../Types/Types.hpp"
-
-using json = nlohmann::json;
 
 namespace Mochi::Input
 {
@@ -19,7 +17,7 @@ namespace Mochi::Input
     {
         std::vector<std::shared_ptr<IPerformableAction>> PerformableActions;
     };
-    void from_json(const json &j, Action &action);
+    void from_json(const nlohmann::json &j, Action &action);
 
     class InputManager;
     class ActionManager

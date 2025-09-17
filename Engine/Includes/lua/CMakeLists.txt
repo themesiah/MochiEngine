@@ -1,33 +1,52 @@
-cmake_minimum_required(VERSION 3.1...3.12)
-cmake_policy(SET CMP0077 NEW)
-project(lua LANGUAGES C VERSION 5.4.7)
+include(FetchContent)
 
-option(LUA_SUPPORT_DL "Support dynamic loading of compiled modules" OFF)
-option(LUA_BUILD_AS_CXX "Build lua as C++" OFF)
-option(LUA_ENABLE_SHARED "Build dynamic liblua" ON)
-option(LUA_ENABLE_TESTING "Build and run tests" OFF)
+FetchContent_Declare(
+  lua
+  URL https://www.lua.org/ftp/lua-5.4.8.tar.gz
+)
+FetchContent_MakeAvailable(lua)
 
-enable_language(CXX)
-if(LUA_ENABLE_TESTING)
-    enable_testing()
-endif()
+FetchContent_MakeAvailable(lua)
 
-if(${PROJECT_NAME} STREQUAL ${CMAKE_PROJECT_NAME})
-    set(TOP_LEVEL TRUE)
-else()
-    set(TOP_LEVEL FALSE)
-endif()
+set(LUA_SRC
+    ${lua_SOURCE_DIR}/src/lapi.c
+    ${lua_SOURCE_DIR}/src/lcode.c
+    ${lua_SOURCE_DIR}/src/lctype.c
+    ${lua_SOURCE_DIR}/src/ldebug.c
+    ${lua_SOURCE_DIR}/src/ldo.c
+    ${lua_SOURCE_DIR}/src/ldump.c
+    ${lua_SOURCE_DIR}/src/lfunc.c
+    ${lua_SOURCE_DIR}/src/lgc.c
+    ${lua_SOURCE_DIR}/src/llex.c
+    ${lua_SOURCE_DIR}/src/lmem.c
+    ${lua_SOURCE_DIR}/src/lobject.c
+    ${lua_SOURCE_DIR}/src/lopcodes.c
+    ${lua_SOURCE_DIR}/src/lparser.c
+    ${lua_SOURCE_DIR}/src/lstate.c
+    ${lua_SOURCE_DIR}/src/lstring.c
+    ${lua_SOURCE_DIR}/src/ltable.c
+    ${lua_SOURCE_DIR}/src/ltm.c
+    ${lua_SOURCE_DIR}/src/lundump.c
+    ${lua_SOURCE_DIR}/src/lvm.c
+    ${lua_SOURCE_DIR}/src/lzio.c
+    ${lua_SOURCE_DIR}/src/lauxlib.c
+    ${lua_SOURCE_DIR}/src/lbaselib.c
+    ${lua_SOURCE_DIR}/src/lcorolib.c
+    ${lua_SOURCE_DIR}/src/ldblib.c
+    ${lua_SOURCE_DIR}/src/liolib.c
+    ${lua_SOURCE_DIR}/src/lmathlib.c
+    ${lua_SOURCE_DIR}/src/loadlib.c
+    ${lua_SOURCE_DIR}/src/loslib.c
+    ${lua_SOURCE_DIR}/src/lstrlib.c
+    ${lua_SOURCE_DIR}/src/ltablib.c
+    ${lua_SOURCE_DIR}/src/lutf8lib.c
+    ${lua_SOURCE_DIR}/src/linit.c
+)
 
-if(TOP_LEVEL)
-    option(LUA_BUILD_BINARY "Build lua binary" ON)
-    option(LUA_BUILD_COMPILER "Build luac compiler" ON)
-else()
-    option(LUA_BUILD_BINARY "Build lua binary" OFF)
-    option(LUA_BUILD_COMPILER "Build luac compiler" ON)
-endif()
+add_library(lua STATIC ${LUA_SRC})
 
-add_subdirectory(lua-${PROJECT_VERSION})
+target_include_directories(lua PUBLIC ${lua_SOURCE_DIR}/src)
 
-if(LUA_ENABLE_TESTING)
-    add_test(NAME lua-testsuite COMMAND lua -e "_U=true" all.lua WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lua-${CMAKE_PROJECT_VERSION}-tests)
-endif()
+set_target_properties(lua PROPERTIES
+    POSITION_INDEPENDENT_CODE ON
+)

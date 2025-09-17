@@ -21,8 +21,8 @@ set(
 
 add_test(NAME copy_test_data
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-    "${CMAKE_SOURCE_DIR}/TestData"
-    "${CMAKE_BINARY_DIR}/bin/$<CONFIG>/TestData"
+        "${CMAKE_SOURCE_DIR}/TestData"
+        "${CMAKE_BINARY_DIR}/bin/$<CONFIG>/TestData"
 )
 set_tests_properties(copy_test_data PROPERTIES FIXTURES_SETUP TestDataFixture)
 

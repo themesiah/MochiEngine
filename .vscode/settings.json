@@ -94,6 +94,8 @@
         "xhash": "cpp",
         "bitset": "cpp",
         "typeindex": "cpp",
-        "source_location": "cpp"
+        "source_location": "cpp",
+        "complex": "cpp",
+        "future": "cpp"
     }
 }

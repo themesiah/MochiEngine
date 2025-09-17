@@ -1,6 +1,6 @@
 #include "AnimationFactory.h"
 
-#include <json.hpp>
+#include <nlohmann/json.hpp>
 
 #include "../Utils/StringUtils.h"
 #include "../Utils/Logger.h"
@@ -8,8 +8,6 @@
 #include "../Packer/PackCatalog.h"
 
 #include "../Exception.hpp"
-
-using json = nlohmann::json;
 
 namespace Mochi::Graphics
 {
@@ -32,7 +30,7 @@ namespace Mochi::Graphics
             }
 
             auto animationFileBuffer = mCatalog->GetFile(normalizedPath);
-            json data = json::parse(animationFileBuffer);
+            nlohmann::json data = nlohmann::json::parse(animationFileBuffer);
             ASSERT("Animations file are exported by Aseprite and need a \"meta\" and a \"frames\" object. Frames should be an array", data.contains("frames"));
             ASSERT("Animations file are exported by Aseprite and need a \"meta\" and a \"frames\" object. Frames should be an array", data["frames"].is_array());
             ASSERT("Animations file are exported by Aseprite and need a \"meta\" and a \"frames\" object. Frames should be an array", !data["frames"].empty());

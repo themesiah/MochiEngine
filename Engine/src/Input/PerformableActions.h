@@ -3,11 +3,9 @@
 
 #include "IPerformableAction.h"
 
-#include <json.hpp>
+#include <nlohmann/json_fwd.hpp>
 
 #include "InputCommons.h"
-
-using json = nlohmann::json;
 
 namespace Mochi::Input
 {
@@ -19,7 +17,7 @@ namespace Mochi::Input
         float mValue;
 
     public:
-        PerformableActionKeyboard(const json &json);
+        PerformableActionKeyboard(const nlohmann::json &json);
         virtual ~PerformableActionKeyboard();
         virtual bool IsPerformed(std::shared_ptr<InputManager> input) const;
         virtual float GetValue(std::shared_ptr<InputManager> input) const;
@@ -33,7 +31,7 @@ namespace Mochi::Input
         float mValue;
 
     public:
-        PerformableActionMouse(const json &json);
+        PerformableActionMouse(const nlohmann::json &json);
         virtual ~PerformableActionMouse();
         virtual bool IsPerformed(std::shared_ptr<InputManager> input) const;
         virtual float GetValue(std::shared_ptr<InputManager> input) const;
@@ -45,7 +43,7 @@ namespace Mochi::Input
         float mScale;
 
     public:
-        PerformableActionMouseAxis(const json &json);
+        PerformableActionMouseAxis(const nlohmann::json &json);
         virtual ~PerformableActionMouseAxis();
         virtual bool IsPerformed(std::shared_ptr<InputManager> input) const;
         virtual float GetValue(std::shared_ptr<InputManager> input) const;
@@ -58,7 +56,7 @@ namespace Mochi::Input
         float mValue;
 
     public:
-        PerformableActionGamepad(const json &json);
+        PerformableActionGamepad(const nlohmann::json &json);
         virtual ~PerformableActionGamepad();
         virtual bool IsPerformed(std::shared_ptr<InputManager> input) const;
         virtual float GetValue(std::shared_ptr<InputManager> input) const;
@@ -71,7 +69,7 @@ namespace Mochi::Input
         float mThreshold;
 
     public:
-        PerformableActionGamepadAxis(const json &json);
+        PerformableActionGamepadAxis(const nlohmann::json &json);
         virtual ~PerformableActionGamepadAxis();
         virtual bool IsPerformed(std::shared_ptr<InputManager> input) const;
         virtual float GetValue(std::shared_ptr<InputManager> input) const;

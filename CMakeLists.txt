@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 4.0)
 
 
 # Set the project name and version
@@ -48,5 +48,11 @@ add_custom_target(copy_data_folder
     COMMAND ${CMAKE_COMMAND} -E copy_directory
         "${PROJECT_SOURCE_DIR}/Data"
         "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Data"
+    COMMAND ${CMAKE_COMMAND} -E copy
+        "${PROJECT_SOURCE_DIR}/Engine/Includes/FMOD/win/studio/lib/x64/fmodstudio.dll"
+        "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/fmodstudio.dll"
+    COMMAND ${CMAKE_COMMAND} -E copy
+        "${PROJECT_SOURCE_DIR}/Engine/Includes/FMOD/win/core/lib/x64/fmod.dll"
+        "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/fmod.dll"
         DEPENDS Game
     )

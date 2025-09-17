@@ -3,17 +3,15 @@
 #include <filesystem>
 #include <SDL3_image/SDL_image.h>
 #include <format>
+#include <nlohmann/json.hpp>
 
 #include "../Packer/PackCatalog.h"
-#include "json.hpp"
 #include "../Utils/Assert.h"
 #include "../Utils/Logger.h"
 #include "TextureFactory.h"
 #include "AnimationFactory.h"
 
 #include "../Input/ActionManager.h"
-
-using json = nlohmann::json;
 
 namespace Mochi::Graphics
 {
