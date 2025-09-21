@@ -97,5 +97,6 @@
         "source_location": "cpp",
         "complex": "cpp",
         "future": "cpp"
-    }
+    },
+	"editor.suggest.insertMode": "insert"
 }

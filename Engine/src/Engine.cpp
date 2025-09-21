@@ -181,17 +181,16 @@ namespace Mochi
         ///////////////////////////////
 
         std::vector<Graphics::RenderCommand> renderQueue;
-        for (auto renderable : mRenderables)
+        for (auto &renderable : mRenderables)
         {
-            renderQueue.push_back(renderable->GetRenderData());
+            auto commands = renderable->GetRenderData();
+            for (auto &command : commands)
+            {
+                renderQueue.push_back(command);
+            }
         }
 
         mRenderer->Render(renderQueue, mCamera);
-
-        if (mGUI->Button("Press me!", 8, {0, 0, 50, 50}, "UI/UIButtonTest.png"))
-        {
-            LOG_INFO("Button was pressed!");
-        }
 
 #ifdef DEBUG
         // Dev build message

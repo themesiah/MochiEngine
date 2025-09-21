@@ -9,6 +9,7 @@
 
 #include <string>
 #include <memory>
+#include <vector>
 
 namespace Mochi::Graphics
 {
@@ -32,9 +33,10 @@ namespace Mochi::Graphics
     public:
         AnimatedSprite(std::shared_ptr<AnimationFactory>, std::shared_ptr<TextureFactory>, const std::string &animationPath, const std::string &mainAnimation);
         virtual ~AnimatedSprite();
-        virtual RenderCommand GetRenderData() const;
+        virtual std::vector<RenderCommand> GetRenderData() const;
         virtual void UpdateAnimation(const float &dt);
         void PlayAnimation(const std::string &animationName);
+        void SetScale(const float &scale);
     };
 }
 

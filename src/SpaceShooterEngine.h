@@ -6,6 +6,7 @@
 
 #include <memory>
 
+class Player;
 class SpaceShooterEngine : public Mochi::Engine
 {
 private:
@@ -15,6 +16,9 @@ private:
     Mochi::EntityHandler mSpriteHandler;
     Mochi::EntityHandler mAnimatedSpriteHandler;
     // END TEMP
+    std::shared_ptr<Player> mPlayer;
+    Mochi::EntityHandler mPlayerHandler;
+
 public:
     SpaceShooterEngine(const char *appName, const char *appVersion, const char *appId, const char *windowName);
     virtual ~SpaceShooterEngine();

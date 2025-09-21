@@ -59,6 +59,13 @@ namespace Mochi
             return *this;
         }
 
+        inline Vector2f &operator*=(const float &rhs)
+        {
+            this->x *= rhs;
+            this->y *= rhs;
+            return *this;
+        }
+
         inline Vector2f &operator/=(const Vector2f &rhs)
         {
             this->x /= rhs.x;
@@ -79,6 +86,12 @@ namespace Mochi
         }
 
         friend Vector2f operator*(Vector2f lhs, const Vector2f &rhs)
+        {
+            lhs *= rhs;
+            return lhs;
+        }
+
+        friend Vector2f operator*(Vector2f lhs, const float &rhs)
         {
             lhs *= rhs;
             return lhs;
@@ -238,6 +251,18 @@ namespace Mochi
         inline Vector2f GetPosition() const
         {
             return {x, y};
+        }
+
+        inline void SetPosition(const Vector2f &pos)
+        {
+            x = pos.x;
+            y = pos.y;
+        }
+
+        inline void SetPosition(const float &newX, const float &newY)
+        {
+            x = newX;
+            y = newY;
         }
 
         inline Vector2f GetSize() const

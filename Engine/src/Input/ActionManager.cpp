@@ -140,6 +140,7 @@ namespace Mochi::Input
     {
         if (!HasAction(actionName))
         {
+            LOG_WARNING(std::format("Action with name {} does not exist", actionName));
             return 0.0f;
         }
         Action action = mActions.at(actionName);

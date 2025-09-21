@@ -25,7 +25,7 @@ namespace Mochi::Graphics
     public:
         Sprite(std::shared_ptr<TextureFactory>, const std::string &filename);
         virtual ~Sprite();
-        virtual RenderCommand GetRenderData() const;
+        virtual std::vector<RenderCommand> GetRenderData() const;
     };
 }
 

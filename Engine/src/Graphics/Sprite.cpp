@@ -31,14 +31,14 @@ namespace Mochi::Graphics
         mDestRect.y = 0;
     }
 
-    RenderCommand Sprite::GetRenderData() const
+    std::vector<RenderCommand> Sprite::GetRenderData() const
     {
         RenderCommand rc;
         rc.texture = mTexture;
         rc.sourceRect = mSrcRect;
         rc.destRect = mDestRect;
         rc.zindex = 1; // TEMP
-        return rc;
+        return {rc};
     }
 
     Sprite::~Sprite()

@@ -4,6 +4,7 @@
 #include <SDL3_image/SDL_image.h>
 #include <format>
 #include <nlohmann/json.hpp>
+#include <vector>
 
 #include "../Packer/PackCatalog.h"
 #include "../Utils/Assert.h"
@@ -18,7 +19,8 @@ namespace Mochi::Graphics
     AnimatedSprite::AnimatedSprite(std::shared_ptr<AnimationFactory> animationFactory, std::shared_ptr<TextureFactory> textureFactory, const std::string &animationPath, const std::string &mainAnimation) : mTimer(0.0f),
                                                                                                                                                                                                              mCurrentFrame(0),
                                                                                                                                                                                                              mDestRect(),
-                                                                                                                                                                                                             mSrcRect()
+                                                                                                                                                                                                             mSrcRect(),
+                                                                                                                                                                                                             mScale(1.0f)
     {
         mAnimationsData = animationFactory->GetAnimationsData(animationPath);
         ASSERT("Animations data was not loaded", mAnimationsData != nullptr);
@@ -32,7 +34,6 @@ namespace Mochi::Graphics
         mSize.x = mAnimationsData->Frames[0].Frame.w;
         mSize.y = mAnimationsData->Frames[0].Frame.h;
 
-        mScale = 5;
         mDestRect.x = 0;
         mDestRect.y = 0;
     }
@@ -40,14 +41,15 @@ namespace Mochi::Graphics
     AnimatedSprite::~AnimatedSprite()
     {
     }
-    RenderCommand AnimatedSprite::GetRenderData() const
+
+    std::vector<RenderCommand> AnimatedSprite::GetRenderData() const
     {
         RenderCommand rc;
         rc.texture = mTexture;
         rc.sourceRect = mSrcRect;
         rc.destRect = mDestRect;
         rc.zindex = 1; // TEMP
-        return rc;
+        return {rc};
     }
 
     void AnimatedSprite::UpdateAnimation(const float &dt)
@@ -116,5 +118,10 @@ namespace Mochi::Graphics
         {
             mForward = false;
         }
+    }
+
+    void AnimatedSprite::SetScale(const float &scale)
+    {
+        mScale = scale;
     }
 }
