@@ -7,7 +7,7 @@
 
 using namespace Mochi;
 
-TEST_CASE("Vector2f conversion with SDL_FPoint")
+TEST_CASE("Types::1- Vector2f conversion with SDL_FPoint")
 {
     SDL_FPoint p1{5, 10};
     Vector2f v1 = p1;
@@ -20,7 +20,7 @@ TEST_CASE("Vector2f conversion with SDL_FPoint")
     CHECK_EQ(p2.y, 14);
 }
 
-TEST_CASE("Vector2f arithmetic operations")
+TEST_CASE("Types::2- Vector2f arithmetic operations")
 {
     Vector2f v1{5, 10};
     Vector2f v2{1, 3};
@@ -64,9 +64,32 @@ TEST_CASE("Vector2f arithmetic operations")
     CHECK(v12 == v13);
     v13.x = 1;
     CHECK(v12 != v13);
+
+    Vector2f v14{1, 2};
+    float f1 = 5;
+    Vector2f v15 = v14 * f1;
+    CHECK(v15.x == 5);
+    CHECK(v15.y == 10);
+
+    Vector2f v16{1, 2};
+    v16 *= f1;
+    CHECK(v16.x == 5);
+    CHECK(v16.y == 10);
+
+    Vector2f v17{1, 2};
+    Vector2f v18{3, 4};
+    Vector2f v19 = v17 * v18;
+    CHECK(v19.x == 3);
+    CHECK(v19.y == 8);
+
+    Vector2f v20{1, 2};
+    Vector2f v21{3, 4};
+    v20 *= v21;
+    CHECK(v20.x == 3);
+    CHECK(v20.y == 8);
 }
 
-TEST_CASE("Vector2f Arithmetics with casts")
+TEST_CASE("Types::3- Vector2f Arithmetics with casts")
 {
     Vector2f v1{1, 1};
     SDL_FPoint p1{2, 3};
@@ -83,7 +106,7 @@ TEST_CASE("Vector2f Arithmetics with casts")
     CHECK(v2.y == 1);
 }
 
-TEST_CASE("Vector2f Distance")
+TEST_CASE("Types::4- Vector2f Distance")
 {
     Vector2f v1{1, 0};
     CHECK_EQ(v1.Distance(), 1);
@@ -93,7 +116,7 @@ TEST_CASE("Vector2f Distance")
     CHECK_EQ(v3.Distance(), sqrtf(74));
 }
 
-TEST_CASE("Vector2f Normalize")
+TEST_CASE("Types::5- Vector2f Normalize")
 {
     Vector2f v1{0, 0};
     Vector2f v2 = v1.Normalized();
@@ -118,7 +141,7 @@ TEST_CASE("Vector2f Normalize")
     CHECK(v7.y == 6 / sqrtf(45));
 }
 
-TEST_CASE("Vector2f Cosine proximity")
+TEST_CASE("Types::6- Vector2f Cosine proximity")
 {
     Vector2f v1{1, 0};
     Vector2f v2{5, 0};
@@ -140,7 +163,7 @@ TEST_CASE("Vector2f Cosine proximity")
     CHECK(dot5 == -1);
 }
 
-TEST_CASE("Vector2f constants")
+TEST_CASE("Types::7- Vector2f constants")
 {
     Vector2f v1{1, 0};
     Vector2f v2 = Vector2f::Right;
@@ -150,7 +173,7 @@ TEST_CASE("Vector2f constants")
     CHECK(v3.x == 1);
 }
 
-TEST_CASE("Rectf conversion with SDL_FRect")
+TEST_CASE("Types::8- Rectf conversion with SDL_FRect")
 {
     Rectf r1{0, 0, 1, 1};
     SDL_FRect sr1 = r1;
@@ -163,7 +186,7 @@ TEST_CASE("Rectf conversion with SDL_FRect")
     CHECK(r2.w == 2);
 }
 
-TEST_CASE("Rectf arithmetic operations")
+TEST_CASE("Types::9- Rectf arithmetic operations")
 {
     Rectf r1{0, 0, 1, 1};
     Vector2f v1{5, -3};
@@ -190,7 +213,7 @@ TEST_CASE("Rectf arithmetic operations")
     CHECK(p2.h == 1);
 }
 
-TEST_CASE("Rectf scale")
+TEST_CASE("Types::10- Rectf scale")
 {
     Rectf r1{5, 10, 1, 2};
     r1.Scale(2);
@@ -200,7 +223,7 @@ TEST_CASE("Rectf scale")
     CHECK(r1.h == 4);
 }
 
-TEST_CASE("Rectf position")
+TEST_CASE("Types::11- Rectf position")
 {
     Rectf r1{5, 10, 1, 1};
     auto pos = r1.GetPosition();
@@ -208,7 +231,7 @@ TEST_CASE("Rectf position")
     CHECK(pos.y == 10);
 }
 
-TEST_CASE("Rectf size")
+TEST_CASE("Types::12- Rectf size")
 {
     Rectf r1{5, 10, 1, 5};
     auto size = r1.GetSize();
@@ -216,7 +239,7 @@ TEST_CASE("Rectf size")
     CHECK(size.y == 5);
 }
 
-TEST_CASE("Rectf Texture valid")
+TEST_CASE("Types::13- Rectf Texture valid")
 {
     Rectf r1{0, 0, 0, 1};
     Rectf r2{0, 0, 1, 0};

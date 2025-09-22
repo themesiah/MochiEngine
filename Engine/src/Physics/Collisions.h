@@ -58,14 +58,15 @@ namespace Mochi::Physics
 
     inline bool CollidesLineAndCircle(const Line &l, const Circle &c)
     {
-        auto lStart = Point(l.Position, 0, 0);
-        auto lEnd = Point(l.End, 0, 0);
+        Point lStart = Point(l.Position, 0, 0);
+        Point lEnd = Point(l.End, 0, 0);
         if (c.Collides(lStart) || c.Collides(lEnd))
             return true;
 
-        auto lineVector = l.End - l.Position;
+        Vector2f lineVector = l.End - l.Position;
         float lineLength = lineVector.Distance();
         float dot = Vector2f::Dot(c.Position - l.Position, lineVector) / (lineLength * lineLength);
+        dot = Math::Clamp01(dot);
         Point closestPoint = Point(l.Position + (lineVector * dot), 0, 0);
         return c.Collides(closestPoint);
     }
