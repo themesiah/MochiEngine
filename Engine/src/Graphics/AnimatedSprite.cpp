@@ -16,92 +16,91 @@
 
 namespace Mochi::Graphics
 {
-    AnimatedSprite::AnimatedSprite(std::shared_ptr<AnimationFactory> animationFactory, std::shared_ptr<TextureFactory> textureFactory, const std::string &animationPath, const std::string &mainAnimation) : mTimer(0.0f),
-                                                                                                                                                                                                             mCurrentFrame(0),
-                                                                                                                                                                                                             mDestRect(),
-                                                                                                                                                                                                             mSrcRect(),
-                                                                                                                                                                                                             mScale(1.0f)
+    AnimatedSprite::AnimatedSprite(
+        std::shared_ptr<AnimationFactory> animationFactory,
+        std::shared_ptr<TextureFactory> textureFactory,
+        const std::string &animationPath,
+        const std::string &mainAnimation)
+        : Spritesheet(animationFactory, textureFactory, animationPath, 0),
+          mTimer(0.0f),
+          mLoops(0)
     {
-        mAnimationsData = animationFactory->GetAnimationsData(animationPath);
-        ASSERT("Animations data was not loaded", mAnimationsData != nullptr);
-        mTexture = textureFactory->GetTexture(mAnimationsData->TexturePath.string());
-        ASSERT("Texture data was not loaded", mTexture != nullptr);
-
         ASSERT(std::format("Animated sprite does not have the default animation \"{}\"", mainAnimation), mAnimationsData->Animations.find(mainAnimation) != mAnimationsData->Animations.end());
         PlayAnimation(mainAnimation);
-        // mCurrentAnimation = mAnimationsData->Animations[mainAnimation].Name;
-
-        mSize.x = mAnimationsData->Frames[0].Frame.w;
-        mSize.y = mAnimationsData->Frames[0].Frame.h;
-
-        mDestRect.x = 0;
-        mDestRect.y = 0;
     }
 
     AnimatedSprite::~AnimatedSprite()
     {
     }
 
-    std::vector<RenderCommand> AnimatedSprite::GetRenderData() const
-    {
-        RenderCommand rc;
-        rc.texture = mTexture;
-        rc.sourceRect = mSrcRect;
-        rc.destRect = mDestRect;
-        rc.zindex = 1; // TEMP
-        return {rc};
-    }
-
     void AnimatedSprite::UpdateAnimation(const float &dt)
     {
         mTimer += dt;
+        int currentFrame = GetFrame();
+        int lastFrame = currentFrame;
         FrameTag frameTag = mAnimationsData->Animations[mCurrentAnimation];
-        FrameData currentFrame = mAnimationsData->Frames[mCurrentFrame];
+        FrameData currentFrameData = mAnimationsData->Frames[currentFrame];
 
-        if (mTimer >= currentFrame.Duration)
+        if (mTimer >= currentFrameData.Duration && (frameTag.Repeat == 0 || mLoops < frameTag.Repeat))
         {
-            // If direction forward. Only this for now
+            bool looped = false;
             switch (frameTag.Direction)
             {
             case AnimationDirection::Forward:
-                mCurrentFrame++;
-                if (mCurrentFrame > frameTag.To)
+                currentFrame++;
+                if (currentFrame > frameTag.To)
                 {
-                    mCurrentFrame = frameTag.From;
+                    currentFrame = frameTag.From;
+                    looped = true;
                 }
                 break;
             case AnimationDirection::Backward:
-                mCurrentFrame--;
-                if (mCurrentFrame < frameTag.From)
+                currentFrame--;
+                if (currentFrame < frameTag.From)
                 {
-                    mCurrentFrame = frameTag.To;
+                    currentFrame = frameTag.To;
+                    looped = true;
                 }
                 break;
             case AnimationDirection::Pingpong:
                 if (mForward)
-                    mCurrentFrame++;
+                    currentFrame++;
                 else
-                    mCurrentFrame--;
-                if (mCurrentFrame == frameTag.To || mCurrentFrame == frameTag.From)
+                    currentFrame--;
+                if (currentFrame == frameTag.To || currentFrame == frameTag.From)
+                {
                     mForward = !mForward;
+                    looped = true;
+                }
                 break;
             case AnimationDirection::BackwardPingPong:
                 if (mForward)
-                    mCurrentFrame++;
+                    currentFrame++;
                 else
-                    mCurrentFrame--;
-                if (mCurrentFrame == frameTag.To || mCurrentFrame == frameTag.From)
+                    currentFrame--;
+                if (currentFrame == frameTag.To || currentFrame == frameTag.From)
+                {
                     mForward = !mForward;
+                    looped = true;
+                }
                 break;
             }
 
-            mTimer = mTimer - currentFrame.Duration;
+            mTimer = mTimer - currentFrameData.Duration;
+            if (looped && frameTag.Repeat != 0)
+            {
+                mLoops++;
+                if (mLoops >= frameTag.Repeat)
+                {
+                    currentFrame = lastFrame;
+                }
+            }
         }
 
-        mSrcRect = currentFrame.Frame;
-
-        mDestRect.w = currentFrame.Frame.w * mScale;
-        mDestRect.h = currentFrame.Frame.h * mScale;
+        if (lastFrame != currentFrame)
+        {
+            SetFrame(currentFrame);
+        }
     }
 
     void AnimatedSprite::PlayAnimation(const std::string &animationName)
@@ -111,17 +110,18 @@ namespace Mochi::Graphics
         mCurrentAnimation = animationName;
         FrameTag frameTag = mAnimationsData->Animations[mCurrentAnimation];
         mTimer = 0.0f;
-        mCurrentFrame = frameTag.From;
+        SetFrame(frameTag.From);
 
         mForward = true;
         if (frameTag.Direction == AnimationDirection::Backward || frameTag.Direction == AnimationDirection::BackwardPingPong)
         {
             mForward = false;
         }
+        mLoops = 0;
     }
 
-    void AnimatedSprite::SetScale(const float &scale)
+    std::string AnimatedSprite::GetCurrentAnimation() const
     {
-        mScale = scale;
+        return mCurrentAnimation;
     }
 }
