@@ -38,8 +38,8 @@
 			{"Type":"GamepadAxis", "Axis":0}
 		]},
 		{"Name":"Vertical", "Cases":[
-			{"Type":"Keyboard", "Trigger":1, "Keycode":82, "Value":-1},
-			{"Type":"Keyboard", "Trigger":1, "Keycode":81, "Value":1},
+			{"Type":"Keyboard", "Trigger":1, "Keycode":82, "Value":1},
+			{"Type":"Keyboard", "Trigger":1, "Keycode":81, "Value":-1},
 			{"Type":"GamepadAxis", "Axis":1}
 		]},
 		{"Name":"Debug1", "Cases":[

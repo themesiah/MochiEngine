@@ -51,7 +51,7 @@ namespace Mochi::Graphics
     {
         Rectf newRect = dstRect;
         newRect.x = (newRect.x - mPosition.x) * CONST_PIXEL_PER_METER - dstRect.w / 2;
-        newRect.y = (newRect.y + mPosition.y) * CONST_PIXEL_PER_METER - dstRect.h / 2;
+        newRect.y = (-newRect.y + mPosition.y) * CONST_PIXEL_PER_METER - dstRect.h / 2;
 
         newRect.x += mLogicalPresentation.x / 2; // Move local size to camera!
         newRect.y += mLogicalPresentation.y / 2;
