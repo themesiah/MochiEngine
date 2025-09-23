@@ -64,10 +64,11 @@ namespace Mochi::Input
         mMouseY = y;
 
         // Gamepad
+        mLastGamepadData = mGamepadData;
+        mGamepadData = {};
         if (mGamepadProvider->HasGamepad(0))
         {
             GamepadData gdata = mGamepadProvider->GetData(0);
-            mLastGamepadData = mGamepadData;
             mGamepadData = gdata;
         }
     }
