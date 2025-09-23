@@ -10,8 +10,7 @@ x Support gamepad and mouse with actions
 x More FMOD Api methods (move to part of the song, play sound, change volume, change parameter...)
 x Check export to WebGL (DISCARDED. Requires no external libraries. That means no FMOD.)
 x Add FMOD callback to LUA
-- Physics system (collision with shapes)
-- Scene system
+x Physics system (collision with shapes)
 
 Requires art:
 - Parallax effect
@@ -27,3 +26,4 @@ As needed:
 - Animation events
 - Options and save
 - Debug ImGUI (onscreen info and more)
+- Scene system

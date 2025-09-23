@@ -1,4 +1,7 @@
 #include "SpaceShooterEngine.h"
+#ifdef _MSC_VER
+#include <Windows.h>
+#endif
 
 int main()
 {
@@ -16,6 +19,6 @@ int main()
 #ifdef _MSC_VER
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-    return main(__argc, __argv);
+    return main();
 }
 #endif

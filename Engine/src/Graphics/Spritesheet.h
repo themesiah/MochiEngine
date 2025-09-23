@@ -11,7 +11,7 @@
 struct SDL_Texture;
 namespace Mochi::Graphics
 {
-    class AnimationsData;
+    struct AnimationsData;
     class TextureFactory;
     class AnimationFactory;
     class Spritesheet : public IRenderable, public IEntity
