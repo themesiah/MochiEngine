@@ -4,6 +4,11 @@ cmake_minimum_required(VERSION 4.0)
 # Set the project name and version
 project(SpaceShooter VERSION 0.1)
 
+
+
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libgcc -static-libstdc++")
+# set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -static-libgcc -static-libstdc++") # <-- Only for release!
+
 enable_testing()
 # Set output directories
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib/$<CONFIG>)
