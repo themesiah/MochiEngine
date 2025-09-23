@@ -26,7 +26,10 @@ namespace Mochi::Graphics
         void Move(const float &horizontal, const float &vertical);
         Rectf WorldToScreen(const Rectf &dstRect) const;
         Rectf ScreenToWorld(const Rectf &dstRect) const;
+        Vector2f WorldToScreen(const Vector2f &position) const;
+        Vector2f ScreenToWorld(const Vector2f &position) const;
         bool IsOnScreen(const Rectf &dstRect) const;
+        Vector2f GetLogicalPresentation() const;
     };
 }
 

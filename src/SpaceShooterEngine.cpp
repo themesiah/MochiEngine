@@ -20,7 +20,7 @@ SpaceShooterEngine::SpaceShooterEngine(const char *appName, const char *appVersi
 
     mScripting->ExecuteFile("Script/FMODCallbackDefinitionAlternative.lua");
 
-    mPlayer = std::make_shared<Player>(mAnimationFactory, mTextureFactory);
+    mPlayer = std::make_shared<Player>(mAnimationFactory, mTextureFactory, mCamera);
     mPlayerHandler = AddEntity(mPlayer);
 }
 

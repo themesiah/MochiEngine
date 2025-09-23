@@ -68,6 +68,27 @@ namespace Mochi::Graphics
         return newRect;
     }
 
+    Vector2f Camera::WorldToScreen(const Vector2f &position) const
+    {
+        Vector2f newPos = position;
+        newPos.x = (newPos.x - mPosition.x) * CONST_PIXEL_PER_METER;
+        newPos.y = (-newPos.y + mPosition.y) * CONST_PIXEL_PER_METER;
+
+        newPos.x += mLogicalPresentation.x / 2; // Move local size to camera!
+        newPos.y += mLogicalPresentation.y / 2;
+        return newPos;
+    }
+
+    Vector2f Camera::ScreenToWorld(const Vector2f &position) const
+    {
+        Vector2f newPos = position;
+        newPos.x -= mLogicalPresentation.x / 2;
+        newPos.y -= mLogicalPresentation.y / 2;
+        newPos.x = newPos.x / CONST_PIXEL_PER_METER + mPosition.x;
+        newPos.y = -newPos.y / CONST_PIXEL_PER_METER + mPosition.y;
+        return newPos;
+    }
+
     bool Camera::IsOnScreen(const Rectf &dstRect) const
     {
         Rectf newRect = WorldToScreen(dstRect);
@@ -82,5 +103,10 @@ namespace Mochi::Graphics
         if (newRect.y > mLogicalPresentation.y)
             return false;
         return true;
+    }
+
+    Vector2f Camera::GetLogicalPresentation() const
+    {
+        return {(float)mLogicalPresentation.x, (float)mLogicalPresentation.y};
     }
 }

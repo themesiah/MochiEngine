@@ -3,6 +3,8 @@
 
 #include <SDL3/SDL.h>
 #include <math.h>
+#include <string>
+#include <format>
 
 namespace Mochi
 {
@@ -101,6 +103,11 @@ namespace Mochi
         {
             lhs /= rhs;
             return lhs;
+        }
+
+        inline std::string ToString() const
+        {
+            return std::format("{}x, {}y", x, y);
         }
 
         // Operations

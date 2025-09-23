@@ -4,8 +4,9 @@
 
 #include "../Graphics/Camera.h"
 #include <SDL3/SDL.h>
+#include "Types/Types.hpp"
 
-TEST_CASE("Camera init")
+TEST_CASE("Camera::1- Camera init")
 {
     Mochi::Graphics::Camera cam((SDL_FPoint){0, 0}, 1, (SDL_Point){1, 1});
     CHECK(cam.GetPosition().x == 0);
@@ -13,36 +14,36 @@ TEST_CASE("Camera init")
     CHECK(cam.GetZoom() == 1);
 }
 
-TEST_CASE("World and screen")
+TEST_CASE("Camera::2- World and screen")
 {
     Mochi::Graphics::Camera cam((SDL_FPoint){0, 0}, 1, (SDL_Point){1, 1});
 
-    SDL_FRect destRect;
+    Mochi::Rectf destRect;
     destRect.x = 0;
     destRect.y = 0;
     destRect.w = 50;
     destRect.h = 50;
 
     auto result = cam.WorldToScreen(destRect);
-    CHECK_EQ(-result.x, 25);
-    CHECK_EQ(-result.y, 25);
+    CHECK_EQ(result.x, -25);
+    CHECK_EQ(result.y, -25);
 
     auto result2 = cam.ScreenToWorld(result);
     CHECK_EQ(result2.x, 0);
     CHECK_EQ(result2.y, 0);
 }
 
-TEST_CASE("Is on screen")
+TEST_CASE("Camera::3- Is on screen")
 {
     Mochi::Graphics::Camera cam((SDL_FPoint){0, 0}, 1, (SDL_Point){100, 100});
-    SDL_FRect rect1{0, 0, 50, 50};
-    SDL_FRect rect2{-1, 0, 50, 50};
-    SDL_FRect rect3{-10, 0, 50, 50};
-    SDL_FRect rect4{-1, -1, 50, 50};
-    SDL_FRect rect5{10, 0, 50, 50};
-    SDL_FRect rect6{0, -10, 50, 50};
-    SDL_FRect rect7{1, 1, 50, 50};
-    SDL_FRect rect8{0, 1, 50, 50};
+    Mochi::Rectf rect1{0, 0, 50, 50};
+    Mochi::Rectf rect2{-1, 0, 50, 50};
+    Mochi::Rectf rect3{-10, 0, 50, 50};
+    Mochi::Rectf rect4{-1, -1, 50, 50};
+    Mochi::Rectf rect5{10, 0, 50, 50};
+    Mochi::Rectf rect6{0, -10, 50, 50};
+    Mochi::Rectf rect7{1, 1, 50, 50};
+    Mochi::Rectf rect8{0, 1, 50, 50};
 
     CHECK(cam.IsOnScreen(rect1));
     CHECK(cam.IsOnScreen(rect2));
@@ -52,4 +53,28 @@ TEST_CASE("Is on screen")
     CHECK_FALSE(cam.IsOnScreen(rect6));
     CHECK(cam.IsOnScreen(rect7));
     CHECK(cam.IsOnScreen(rect8));
+}
+
+TEST_CASE("Camera::4- World and screen (point)")
+{
+    Mochi::Graphics::Camera cam((SDL_FPoint){0, 0}, 1, (SDL_Point){320, 180});
+
+    Mochi::Vector2f pos;
+    pos.x = 0;
+    pos.y = 0;
+
+    auto result = cam.WorldToScreen(pos);
+    CHECK_EQ(result.x, 160);
+    CHECK_EQ(result.y, 90);
+
+    auto result2 = cam.ScreenToWorld(result);
+    CHECK_EQ(result2.x, 0);
+    CHECK_EQ(result2.y, 0);
+
+    Mochi::Vector2f pos2{1, 2};
+
+    result = cam.WorldToScreen(pos2);
+    result2 = cam.ScreenToWorld(result);
+    CHECK_EQ(result2.x, 1);
+    CHECK_EQ(result2.y, 2);
 }
