@@ -32,15 +32,7 @@
 *.app
 
 /[Bb]uild
-Includes/SDL3_ttf/external/freetype/
-Includes/SDL3_ttf/external/harfbuzz/
-Includes/SDL3_ttf/external/plutosvg/
-Includes/SDL3_ttf/external/plutovg/
-src/Core/Includes/SDL3_ttf/external/plutovg/
-src/Core/Includes/SDL3_ttf/external/plutosvg/
-src/Core/Includes/SDL3_ttf/external/harfbuzz/
-src/Core/Includes/SDL3_ttf/external/freetype/
-Engine/Includes/SDL3_ttf/external/freetype/
-Engine/Includes/SDL3_ttf/external/harfbuzz/
-Engine/Includes/SDL3_ttf/external/plutosvg/
-Engine/Includes/SDL3_ttf/external/plutovg/
+!Engine/Includes/FMOD/win/core/lib/x64/*.dll
+!Engine/Includes/FMOD/win/core/lib/x64/*.lib
+!Engine/Includes/FMOD/win/studio/lib/x64/*.dll
+!Engine/Includes/FMOD/win/studio/lib/x64/*.lib
