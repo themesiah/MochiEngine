@@ -112,7 +112,7 @@ namespace Mochi::Shooter
             mBulletPool->AddBullet(pos + Vector2f(0.0f, -0.1f));
             mShotTimer = 0.0f;
         }
-        LOG_INFO(std::format("Player bullet count: {}", mBulletPool->GetBulletCount()));
+        mBulletPool->Update(dt);
     }
 
     std::shared_ptr<PlayerBulletPool> Player::GetBulletPool() const

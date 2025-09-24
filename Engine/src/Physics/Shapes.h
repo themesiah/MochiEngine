@@ -4,12 +4,10 @@
 #include <array>
 
 #include "../Types/Types.hpp"
-#include "../Entity/IEntity.h"
 #include "../Exception.hpp"
 
 namespace Mochi::Physics
 {
-    using PhysicsLayer = int8_t;
     struct Point;
     struct Line;
     struct Circle;
@@ -18,21 +16,19 @@ namespace Mochi::Physics
     {
     protected:
     public:
-        Shape(const Vector2f &position, const EntityHandler &entity, const PhysicsLayer &layer) : Position(position), Entity(entity), Layer(layer) {}
+        Shape(const Vector2f &position) : Position(position) {}
         virtual ~Shape() {}
         virtual bool Collides(Point p) const = 0;
         virtual bool Collides(Line l) const = 0;
         virtual bool Collides(Circle c) const = 0;
         virtual bool Collides(Rectangle r) const = 0;
         Vector2f Position;
-        EntityHandler Entity;
-        PhysicsLayer Layer;
     };
 
     struct Point : public Shape
     {
     public:
-        Point(const Vector2f &position, const EntityHandler &entity, const PhysicsLayer &layer) : Shape(position, entity, layer) {}
+        Point(const Vector2f &position) : Shape(position) {}
         virtual ~Point() {}
         virtual bool Collides(Point p) const;
         virtual bool Collides(Line l) const;
@@ -44,7 +40,7 @@ namespace Mochi::Physics
     {
     private:
     public:
-        Line(const Vector2f &position, const EntityHandler &entity, const PhysicsLayer &layer, const Vector2f &end) : Shape(position, entity, layer), End(end) {}
+        Line(const Vector2f &position, const Vector2f &end) : Shape(position), End(end) {}
         virtual ~Line() {}
         virtual bool Collides(Point p) const;
         virtual bool Collides(Line l) const;
@@ -56,7 +52,7 @@ namespace Mochi::Physics
     struct Circle : public Shape
     {
     public:
-        Circle(const Vector2f &position, const EntityHandler &entity, const PhysicsLayer &layer, const float &radius) : Shape(position, entity, layer), Radius(radius)
+        Circle(const Vector2f &position, const float &radius) : Shape(position), Radius(radius)
         {
             if (Radius <= 0.0f)
                 throw EngineError("Circles require a radius greater than 0");
@@ -73,7 +69,7 @@ namespace Mochi::Physics
     {
     private:
     public:
-        Rectangle(const Vector2f &position, const EntityHandler &entity, const PhysicsLayer &layer, const Vector2f &extents) : Shape(position, entity, layer), Extents(extents) {}
+        Rectangle(const Vector2f &position, const Vector2f &extents) : Shape(position), Extents(extents) {}
         virtual ~Rectangle() {}
         virtual bool Collides(Point p) const;
         virtual bool Collides(Line l) const;

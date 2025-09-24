@@ -29,7 +29,6 @@
 		]},
 		{"Name":"Shot", "Cases":[
 			{"Type":"Keyboard", "Trigger":1, "Keycode":29, "Value":1},
-			{"Type":"Mouse", "Trigger":1, "Button":0, "Value":1},
 			{"Type":"Gamepad", "Trigger":1, "Button":0, "Value":1}
 		]},
 		{"Name":"Horizontal", "Cases":[

@@ -1,11 +1,12 @@
 #include "AbstractBulletPool.h"
 
 #include <vector>
-#include "Entity/IRenderable.h"
+
+#include "Graphics/Sprite.h"
 
 namespace Mochi::Shooter
 {
-    AbstractBulletPool::AbstractBulletPool(std::shared_ptr<IRenderable> renderable, const int &capacity, const float &lifetime)
+    AbstractBulletPool::AbstractBulletPool(std::shared_ptr<Graphics::Sprite> renderable, const int &capacity, const float &lifetime)
         : mRenderable(renderable), mLifetime(lifetime), mActiveCount(0)
     {
         mBulletActives.resize(capacity);
@@ -18,7 +19,7 @@ namespace Mochi::Shooter
     {
     }
 
-    void AbstractBulletPool::Update(const float &dt, std::shared_ptr<Input::ActionManager> _)
+    void AbstractBulletPool::Update(const float &dt)
     {
         for (size_t i = 0; i < mBulletActives.size(); ++i)
         {

@@ -3,6 +3,10 @@
 
 #include "AbstractBulletPool.h"
 
+namespace Mochi::Graphics
+{
+    class Sprite;
+}
 namespace Mochi::Shooter
 {
     class PlayerBulletPool : public AbstractBulletPool
@@ -11,7 +15,7 @@ namespace Mochi::Shooter
         float mHorizontalSpeed;
 
     public:
-        PlayerBulletPool(std::shared_ptr<IRenderable> renderable, const int &capacity, const float &lifetime, const float &horizontalSpeed);
+        PlayerBulletPool(std::shared_ptr<Graphics::Sprite> renderable, const int &capacity, const float &lifetime, const float &horizontalSpeed);
         ~PlayerBulletPool();
         virtual void OnUpdate(const float &dt) override;
     };

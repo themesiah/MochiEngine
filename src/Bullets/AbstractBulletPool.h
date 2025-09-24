@@ -5,16 +5,18 @@
 #include <memory>
 
 #include "Types/Types.hpp"
-#include "Entity/IEntity.h"
-#include "Entity/IUpdateable.h"
-#include "Entity/IRenderable.h"
+#include "Graphics/RenderCommand.h"
 
+namespace Mochi::Graphics
+{
+    class Sprite;
+}
 namespace Mochi::Shooter
 {
-    class AbstractBulletPool : public IEntity, public IUpdateable, public IRenderable
+    class AbstractBulletPool
     {
     private:
-        std::shared_ptr<IRenderable> mRenderable;
+        std::shared_ptr<Graphics::Sprite> mRenderable;
         float mLifetime;
         size_t mActiveCount;
 
@@ -24,11 +26,11 @@ namespace Mochi::Shooter
         std::vector<float> mBulletTimers;
 
     public:
-        AbstractBulletPool(std::shared_ptr<IRenderable> renderable, const int &capacity, const float &lifetime);
+        AbstractBulletPool(std::shared_ptr<Graphics::Sprite> renderable, const int &capacity, const float &lifetime);
         ~AbstractBulletPool();
-        virtual void Update(const float &dt, std::shared_ptr<Input::ActionManager>) override;
+        void Update(const float &dt);
         virtual void OnUpdate(const float &dt) = 0;
-        virtual std::vector<Graphics::RenderCommand> GetRenderData() const override;
+        std::vector<Graphics::RenderCommand> GetRenderData() const;
         void ReleaseAllBullets();
         bool AddBullet(const Vector2f &pos);
         size_t GetBulletCount() const;

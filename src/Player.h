@@ -2,7 +2,6 @@
 #define HDEF_PLAYER
 
 #include <memory>
-#include "Entity/IUpdateable.h"
 #include "Graphics/RenderCommand.h"
 #include "Graphics/Spritesheet.h"
 #include "Types/Types.hpp"
@@ -18,7 +17,7 @@ namespace Mochi::Graphics
 namespace Mochi::Shooter
 {
     class PlayerBulletPool;
-    class Player : public Mochi::Graphics::Spritesheet, public Mochi::IUpdateable
+    class Player : public Mochi::Graphics::Spritesheet
     {
     private:
         float mSpeed;

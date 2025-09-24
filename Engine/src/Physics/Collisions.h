@@ -50,16 +50,16 @@ namespace Mochi::Physics
         }
         else
         {
-            Point start(l1.Position, 0, 0);
-            Point end(l1.End, 0, 0);
+            Point start(l1.Position);
+            Point end(l1.End);
             return l2.Collides(start) || l2.Collides(end);
         }
     }
 
     inline bool CollidesLineAndCircle(const Line &l, const Circle &c)
     {
-        Point lStart = Point(l.Position, 0, 0);
-        Point lEnd = Point(l.End, 0, 0);
+        Point lStart = Point(l.Position);
+        Point lEnd = Point(l.End);
         if (c.Collides(lStart) || c.Collides(lEnd))
             return true;
 
@@ -67,22 +67,22 @@ namespace Mochi::Physics
         float lineLength = lineVector.Distance();
         float dot = Vector2f::Dot(c.Position - l.Position, lineVector) / (lineLength * lineLength);
         dot = Math::Clamp01(dot);
-        Point closestPoint = Point(l.Position + (lineVector * dot), 0, 0);
+        Point closestPoint = Point(l.Position + (lineVector * dot));
         return c.Collides(closestPoint);
     }
 
     inline bool CollidesLineAndRectangle(const Line &l, const Rectangle &r)
     {
-        Line other = Line(r.Position + Vector2f(r.Extents.x, r.Extents.y), 0, 0, r.Position + Vector2f(r.Extents.x, -r.Extents.y));
+        Line other = Line(r.Position + Vector2f(r.Extents.x, r.Extents.y), r.Position + Vector2f(r.Extents.x, -r.Extents.y));
         if (l.Collides(other))
             return true;
-        other = Line(r.Position + Vector2f(-r.Extents.x, r.Extents.y), 0, 0, r.Position + Vector2f(r.Extents.x, r.Extents.y));
+        other = Line(r.Position + Vector2f(-r.Extents.x, r.Extents.y), r.Position + Vector2f(r.Extents.x, r.Extents.y));
         if (l.Collides(other))
             return true;
-        other = Line(r.Position + Vector2f(-r.Extents.x, r.Extents.y), 0, 0, r.Position + Vector2f(-r.Extents.x, -r.Extents.y));
+        other = Line(r.Position + Vector2f(-r.Extents.x, r.Extents.y), r.Position + Vector2f(-r.Extents.x, -r.Extents.y));
         if (l.Collides(other))
             return true;
-        other = Line(r.Position + Vector2f(-r.Extents.x, -r.Extents.y), 0, 0, r.Position + Vector2f(r.Extents.x, -r.Extents.y));
+        other = Line(r.Position + Vector2f(-r.Extents.x, -r.Extents.y), r.Position + Vector2f(r.Extents.x, -r.Extents.y));
         if (l.Collides(other))
             return true;
 

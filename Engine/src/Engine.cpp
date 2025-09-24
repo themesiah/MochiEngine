@@ -31,11 +31,6 @@
 #include "Utils/Logger.h"
 #include "Utils/Assert.h"
 
-#include "Entity/IEntity.h"
-#include "Entity/IRenderable.h"
-#include "Entity/IUpdateable.h"
-#include "Entity/IAnimatable.h"
-
 #include "Event/EventBus.h"
 
 #include "ScriptingManager.h"
@@ -43,7 +38,7 @@
 namespace Mochi
 {
 
-    Engine::Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName) : mTargetFPS(60), mLastDeltaTime(0.016f), mLastEntityHandler(1)
+    Engine::Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName) : mTargetFPS(60), mLastDeltaTime(0.016f), mLastRealDelta(0.0f)
     {
         try
         {
@@ -59,6 +54,7 @@ namespace Mochi
             LOG_OK("LUA Initialized");
 
             mRenderer = std::make_shared<Graphics::Renderer>(appName, appVersion, appId, windowName);
+            mRenderQueue.clear();
             LOG_OK("SDL Initialized");
 
             mEventBus = std::make_shared<Event::EventBus>();
@@ -106,6 +102,7 @@ namespace Mochi
     {
         try
         {
+            auto frameStart = std::chrono::steady_clock::now();
             // Time
             Time::TimeSystem::GetInstance().Tick(mLastDeltaTime);
 
@@ -126,16 +123,6 @@ namespace Mochi
             // Audio
             mFmod->Update();
 
-            // Entities
-            for (auto updatable : mUpdateables)
-            {
-                updatable->Update(Time::TimeSystem::GetDeltaTime(), mActionManager);
-            }
-            for (auto animatable : mAnimatables)
-            {
-                animatable->UpdateAnimation(Time::TimeSystem::GetDeltaTime());
-            }
-
             // USER DEFINED
             if (!OnUpdate(Time::TimeSystem::GetDeltaTime()))
             {
@@ -146,6 +133,7 @@ namespace Mochi
 
             const auto target = std::chrono::nanoseconds(1'000'000'000 / mTargetFPS);
             auto work = std::chrono::steady_clock::now() - mFrameStart;
+            mLastRealDelta = std::chrono::duration<float>((std::chrono::steady_clock::now() - frameStart)).count();
 
             if (work < target)
             {
@@ -176,22 +164,13 @@ namespace Mochi
         }
     }
 
-    void Engine::Render() const
+    void Engine::Render()
     {
         mRenderer->StartFrameRendering();
         ///////////////////////////////
 
-        std::vector<Graphics::RenderCommand> renderQueue;
-        for (auto &renderable : mRenderables)
-        {
-            auto commands = renderable->GetRenderData();
-            for (auto &command : commands)
-            {
-                renderQueue.push_back(command);
-            }
-        }
-
-        mRenderer->Render(renderQueue, mCamera);
+        mRenderer->Render(mRenderQueue, mCamera);
+        mRenderQueue.clear();
 
 #ifdef DEBUG
         // Dev build message
@@ -201,65 +180,20 @@ namespace Mochi
 
         SDL_SetRenderScale(mRenderer->GetRenderer().get(), 1, 1);
         mGUI->Text(CONST_DEVBUILD_TEXT, 8, {0, (float)logicalH - 8}, {255, 255, 255, SDL_ALPHA_OPAQUE});
-        mGUI->Text(std::format("{} fps", 1.0f / mLastDeltaTime).c_str(), 8, {0, 0}, {255, 255, 255, SDL_ALPHA_OPAQUE});
+        mGUI->Text(std::format("{} fps", (int)(1.0f / mLastRealDelta)).c_str(), 8, {0, 0}, {255, 255, 255, SDL_ALPHA_OPAQUE});
 #endif
         ///////////////////////////////
         mRenderer->FinishRendering(); /* put it all on the screen! */
     }
 
-    EntityHandler Engine::AddEntity(std::shared_ptr<IEntity> e)
+    void Engine::AddRenderCommand(const Graphics::RenderCommand &command)
     {
-        if (std::shared_ptr<IUpdateable> updateable = dynamic_pointer_cast<IUpdateable>(e))
-        {
-            mUpdateables.push_back(updateable);
-        }
-        if (std::shared_ptr<IRenderable> renderable = dynamic_pointer_cast<IRenderable>(e))
-        {
-            mRenderables.push_back(renderable);
-        }
-        if (std::shared_ptr<IAnimatable> animatable = dynamic_pointer_cast<IAnimatable>(e))
-        {
-            mAnimatables.push_back(animatable);
-        }
-
-        EntityHandler handler;
-        if (mFreeEntityHandlers.size() > 0)
-        {
-            handler = mFreeEntityHandlers.back();
-            mFreeEntityHandlers.pop_back();
-        }
-        else
-        {
-            handler = mLastEntityHandler;
-            mLastEntityHandler++;
-        }
-
-        mEntities[handler] = e;
-
-        return handler;
+        mRenderQueue.push_back(command);
     }
 
-    bool Engine::RemoveEntity(EntityHandler entityHandler)
+    void Engine::AddRenderCommands(const std::vector<Graphics::RenderCommand> &commands)
     {
-        auto it = mEntities.find(entityHandler);
-        if (it == mEntities.end())
-            return false;
-        auto e = mEntities[entityHandler];
-        mEntities.erase(it);
-
-        if (std::shared_ptr<IUpdateable> updateable = dynamic_pointer_cast<IUpdateable>(e))
-        {
-            mUpdateables.erase(std::remove(mUpdateables.begin(), mUpdateables.end(), updateable), mUpdateables.end());
-        }
-        if (std::shared_ptr<IRenderable> renderable = dynamic_pointer_cast<IRenderable>(e))
-        {
-            mRenderables.erase(std::remove(mRenderables.begin(), mRenderables.end(), renderable), mRenderables.end());
-        }
-        if (std::shared_ptr<IAnimatable> animatable = dynamic_pointer_cast<IAnimatable>(e))
-        {
-            mAnimatables.erase(std::remove(mAnimatables.begin(), mAnimatables.end(), animatable), mAnimatables.end());
-        }
-        return true;
+        mRenderQueue.insert(mRenderQueue.end(), commands.begin(), commands.end());
     }
 
     Engine::~Engine()

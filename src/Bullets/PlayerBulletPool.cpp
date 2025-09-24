@@ -1,18 +1,20 @@
 #include "PlayerBulletPool.h"
 #include "AbstractBulletPool.h"
 
+#include "Graphics/Sprite.h"
+
 #include <memory>
 
 namespace Mochi::Shooter
 {
-    PlayerBulletPool::PlayerBulletPool(std::shared_ptr<IRenderable> renderable, const int &capacity, const float &lifetime, const float &horizontalSpeed)
+    PlayerBulletPool::PlayerBulletPool(std::shared_ptr<Graphics::Sprite> renderable, const int &capacity, const float &lifetime, const float &horizontalSpeed)
         : AbstractBulletPool(renderable, capacity, lifetime), mHorizontalSpeed(horizontalSpeed)
     {
     }
 
     PlayerBulletPool::~PlayerBulletPool()
     {
-        }
+    }
 
     void PlayerBulletPool::OnUpdate(const float &dt)
     {

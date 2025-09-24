@@ -23,8 +23,6 @@ namespace Mochi::Shooter
         mScripting->ExecuteFile("Script/FMODCallbackDefinitionAlternative.lua");
 
         mPlayer = std::make_shared<Player>(mAnimationFactory, mTextureFactory, mCamera);
-        mPlayerHandler = AddEntity(mPlayer);
-        AddEntity(mPlayer->GetBulletPool());
     }
 
     SpaceShooterEngine::~SpaceShooterEngine()
@@ -33,6 +31,9 @@ namespace Mochi::Shooter
 
     bool SpaceShooterEngine::OnUpdate(const float &dt)
     {
+        mPlayer->Update(dt, mActionManager);
+        AddRenderCommands(mPlayer->GetRenderData());
+        AddRenderCommands(mPlayer->GetBulletPool()->GetRenderData());
         // mCamera->Move(mActionManager->Value("Horizontal") * dt * 1,
         //               mActionManager->Value("Vertical") * dt * 1);
 

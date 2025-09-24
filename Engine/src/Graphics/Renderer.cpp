@@ -37,10 +37,10 @@ namespace Mochi::Graphics
             throw SystemInitializationError("Graphics", SDL_GetError());
         }
 
-        if (!SDL_SetRenderVSync(mRenderer.get(), 1))
-        {
-            throw SystemInitializationError("Graphics", SDL_GetError());
-        }
+        // if (!SDL_SetRenderVSync(mRenderer.get(), 1))
+        // {
+        //     throw SystemInitializationError("Graphics", SDL_GetError());
+        // }
     }
 
     Renderer::~Renderer()

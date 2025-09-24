@@ -10,7 +10,6 @@
 #include <sol/sol.hpp>
 
 #include "Time/TimeSystem.h"
-#include "Entity/IEntity.h"
 
 struct TTF_Font;
 struct TTF_TextEngine;
@@ -18,9 +17,6 @@ struct TTF_Text;
 
 namespace Mochi
 {
-    struct IUpdateable;
-    struct IRenderable;
-    struct IAnimatable;
     namespace Graphics
     {
         class Sprite;
@@ -30,6 +26,7 @@ namespace Mochi
         class Renderer;
         class AnimationFactory;
         class GUI;
+        struct RenderCommand;
     }
     namespace Audio
     {
@@ -57,14 +54,10 @@ namespace Mochi
         int mTargetFPS;
         std::chrono::steady_clock::time_point mFrameStart;
         float mLastDeltaTime;
+        float mLastRealDelta;
 
-        void Render() const;
-        EntityHandler mLastEntityHandler;
-        std::vector<EntityHandler> mFreeEntityHandlers;
-        std::unordered_map<EntityHandler, std::shared_ptr<IEntity>> mEntities;
-        std::vector<std::shared_ptr<IUpdateable>> mUpdateables;
-        std::vector<std::shared_ptr<IRenderable>> mRenderables;
-        std::vector<std::shared_ptr<IAnimatable>> mAnimatables;
+        void Render();
+        std::vector<Graphics::RenderCommand> mRenderQueue;
 
     protected:
         std::shared_ptr<Graphics::Renderer> mRenderer;
@@ -78,8 +71,9 @@ namespace Mochi
         std::shared_ptr<Event::EventBus> mEventBus;
         std::shared_ptr<Scripting::ScriptingManager> mScripting;
         virtual bool OnUpdate(const float &dt) = 0;
-        EntityHandler AddEntity(std::shared_ptr<IEntity>);
-        bool RemoveEntity(EntityHandler);
+
+        void AddRenderCommand(const Graphics::RenderCommand &command);
+        void AddRenderCommands(const std::vector<Graphics::RenderCommand> &commands);
 
     public:
         Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName);
