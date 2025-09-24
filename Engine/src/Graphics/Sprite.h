@@ -26,6 +26,8 @@ namespace Mochi::Graphics
         Sprite(std::shared_ptr<TextureFactory>, const std::string &filename);
         virtual ~Sprite();
         virtual std::vector<RenderCommand> GetRenderData() const;
+        void SetScale(const float &scale);
+        float GetScale() const;
     };
 }
 

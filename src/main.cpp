@@ -9,7 +9,7 @@ int main()
     const char *appVersion = "0.1";
     const char *appId = "com.magicmochi.spaceshooter";
     const char *windowName = "Space Shooter";
-    SpaceShooterEngine engine(appName, appVersion, appId, windowName);
+    Mochi::Shooter::SpaceShooterEngine engine(appName, appVersion, appId, windowName);
 
     while (engine.Update())
     {

@@ -1,0 +1,28 @@
+#include "PlayerBulletPool.h"
+#include "AbstractBulletPool.h"
+
+#include <memory>
+
+namespace Mochi::Shooter
+{
+    PlayerBulletPool::PlayerBulletPool(std::shared_ptr<IRenderable> renderable, const int &capacity, const float &lifetime, const float &horizontalSpeed)
+        : AbstractBulletPool(renderable, capacity, lifetime), mHorizontalSpeed(horizontalSpeed)
+    {
+    }
+
+    PlayerBulletPool::~PlayerBulletPool()
+    {
+        }
+
+    void PlayerBulletPool::OnUpdate(const float &dt)
+    {
+        Vector2f speed(mHorizontalSpeed * dt, 0.0f);
+        for (size_t i = 0; i < mBulletActives.size(); ++i)
+        {
+            if (mBulletActives[i])
+            {
+                mBulletPositions[i] += speed;
+            }
+        }
+    }
+}

@@ -6,25 +6,28 @@
 
 #include <memory>
 
-class Player;
-class SpaceShooterEngine : public Mochi::Engine
+namespace Mochi::Shooter
 {
-private:
-    // TEMP
-    std::shared_ptr<Mochi::Graphics::Sprite> mSampleSprite;
-    std::shared_ptr<Mochi::Graphics::AnimatedSprite> mAnimatedSprite;
-    Mochi::EntityHandler mSpriteHandler;
-    Mochi::EntityHandler mAnimatedSpriteHandler;
-    // END TEMP
-    std::shared_ptr<Player> mPlayer;
-    Mochi::EntityHandler mPlayerHandler;
+    class Player;
+    class SpaceShooterEngine : public Engine
+    {
+    private:
+        // TEMP
+        std::shared_ptr<Mochi::Graphics::Sprite> mSampleSprite;
+        std::shared_ptr<Mochi::Graphics::AnimatedSprite> mAnimatedSprite;
+        Mochi::EntityHandler mSpriteHandler;
+        Mochi::EntityHandler mAnimatedSpriteHandler;
+        // END TEMP
+        std::shared_ptr<Player> mPlayer;
+        Mochi::EntityHandler mPlayerHandler;
 
-public:
-    SpaceShooterEngine(const char *appName, const char *appVersion, const char *appId, const char *windowName);
-    virtual ~SpaceShooterEngine();
+    public:
+        SpaceShooterEngine(const char *appName, const char *appVersion, const char *appId, const char *windowName);
+        virtual ~SpaceShooterEngine();
 
-protected:
-    virtual bool OnUpdate(const float &dt);
-};
+    protected:
+        virtual bool OnUpdate(const float &dt);
+    };
+}
 
 #endif

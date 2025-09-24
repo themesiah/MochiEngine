@@ -16,7 +16,7 @@ namespace Mochi::Graphics
     {
         mTexture = textureFactory->GetTexture(filename);
 
-        mScale = 2;
+        mScale = 1;
         float w, h;
         SDL_GetTextureSize(mTexture.get(), &w, &h);
 
@@ -25,8 +25,8 @@ namespace Mochi::Graphics
         mSrcRect.w = w;
         mSrcRect.h = h;
 
-        mDestRect.w = w * mScale;
-        mDestRect.h = h * mScale;
+        mDestRect.w = w;
+        mDestRect.h = h;
         mDestRect.x = 0;
         mDestRect.y = 0;
     }
@@ -37,11 +37,23 @@ namespace Mochi::Graphics
         rc.texture = mTexture;
         rc.sourceRect = mSrcRect;
         rc.destRect = mDestRect;
+        rc.destRect.w *= mScale;
+        rc.destRect.h *= mScale;
         rc.zindex = 1; // TEMP
         return {rc};
     }
 
     Sprite::~Sprite()
     {
+    }
+
+    void Sprite::SetScale(const float &scale)
+    {
+        mScale = scale;
+    }
+
+    float Sprite::GetScale() const
+    {
+        return mScale;
     }
 }

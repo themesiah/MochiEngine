@@ -6,6 +6,7 @@
 #include <iostream>
 #include <filesystem>
 #include <chrono>
+#include <format>
 
 #include "Packer/PackCatalog.h"
 
@@ -200,6 +201,7 @@ namespace Mochi
 
         SDL_SetRenderScale(mRenderer->GetRenderer().get(), 1, 1);
         mGUI->Text(CONST_DEVBUILD_TEXT, 8, {0, (float)logicalH - 8}, {255, 255, 255, SDL_ALPHA_OPAQUE});
+        mGUI->Text(std::format("{} fps", 1.0f / mLastDeltaTime).c_str(), 8, {0, 0}, {255, 255, 255, SDL_ALPHA_OPAQUE});
 #endif
         ///////////////////////////////
         mRenderer->FinishRendering(); /* put it all on the screen! */
