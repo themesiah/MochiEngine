@@ -42,7 +42,7 @@ namespace Mochi::Shooter
         auto logicalPresentation = mCamera->GetLogicalPresentation();
         mBounds = Rectf(10.0f, 10.0f, logicalPresentation.x - 20.0f, logicalPresentation.y - 20.0f);
 
-        auto playerBulletRenderable = std::make_shared<Graphics::Sprite>(textureFactory, BULLET_PATH);
+        auto playerBulletRenderable = std::make_shared<Graphics::SpriteBase>(textureFactory, BULLET_PATH);
         mBulletPool = std::make_shared<PlayerBulletPool>(playerBulletRenderable, MAX_BULLETS, BULLETS_LIFETIME, BULLETS_SPEED);
     }
 

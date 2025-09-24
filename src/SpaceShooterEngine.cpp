@@ -32,7 +32,7 @@ namespace Mochi::Shooter
     bool SpaceShooterEngine::OnUpdate(const float &dt)
     {
         mPlayer->Update(dt, mActionManager);
-        AddRenderCommands(mPlayer->GetRenderData());
+        AddRenderCommand(mPlayer->GetRenderData());
         AddRenderCommands(mPlayer->GetBulletPool()->GetRenderData());
         // mCamera->Move(mActionManager->Value("Horizontal") * dt * 1,
         //               mActionManager->Value("Vertical") * dt * 1);

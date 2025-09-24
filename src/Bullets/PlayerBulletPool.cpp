@@ -7,8 +7,8 @@
 
 namespace Mochi::Shooter
 {
-    PlayerBulletPool::PlayerBulletPool(std::shared_ptr<Graphics::Sprite> renderable, const int &capacity, const float &lifetime, const float &horizontalSpeed)
-        : AbstractBulletPool(renderable, capacity, lifetime), mHorizontalSpeed(horizontalSpeed)
+    PlayerBulletPool::PlayerBulletPool(std::shared_ptr<Graphics::SpriteBase> sprite, const int &capacity, const float &lifetime, const float &horizontalSpeed)
+        : AbstractBulletPool(sprite, capacity, lifetime), mHorizontalSpeed(horizontalSpeed)
     {
     }
 

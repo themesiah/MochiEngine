@@ -9,14 +9,14 @@
 
 namespace Mochi::Graphics
 {
-    class Sprite;
+    class SpriteBase;
 }
 namespace Mochi::Shooter
 {
     class AbstractBulletPool
     {
     private:
-        std::shared_ptr<Graphics::Sprite> mRenderable;
+        std::shared_ptr<Graphics::SpriteBase> mSprite;
         float mLifetime;
         size_t mActiveCount;
 
@@ -26,7 +26,7 @@ namespace Mochi::Shooter
         std::vector<float> mBulletTimers;
 
     public:
-        AbstractBulletPool(std::shared_ptr<Graphics::Sprite> renderable, const int &capacity, const float &lifetime);
+        AbstractBulletPool(std::shared_ptr<Graphics::SpriteBase> sprite, const int &capacity, const float &lifetime);
         ~AbstractBulletPool();
         void Update(const float &dt);
         virtual void OnUpdate(const float &dt) = 0;

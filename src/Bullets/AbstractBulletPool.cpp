@@ -6,8 +6,8 @@
 
 namespace Mochi::Shooter
 {
-    AbstractBulletPool::AbstractBulletPool(std::shared_ptr<Graphics::Sprite> renderable, const int &capacity, const float &lifetime)
-        : mRenderable(renderable), mLifetime(lifetime), mActiveCount(0)
+    AbstractBulletPool::AbstractBulletPool(std::shared_ptr<Graphics::SpriteBase> sprite, const int &capacity, const float &lifetime)
+        : mSprite(sprite), mLifetime(lifetime), mActiveCount(0)
     {
         mBulletActives.resize(capacity);
         mBulletPositions.resize(capacity);
@@ -35,7 +35,7 @@ namespace Mochi::Shooter
 
     std::vector<Graphics::RenderCommand> AbstractBulletPool::GetRenderData() const
     {
-        auto command = mRenderable->GetRenderData()[0];
+        auto command = mSprite->GetRenderData();
         std::vector<Graphics::RenderCommand> commands;
         for (size_t i = 0; i < mBulletActives.size(); ++i)
         {

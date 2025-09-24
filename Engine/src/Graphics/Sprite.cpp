@@ -9,51 +9,75 @@
 #include "../Utils/Logger.h"
 #include "../Packer/PackCatalog.h"
 #include "TextureFactory.h"
+#include "../Exception.hpp"
+#include "../Utils/Assert.h"
 
 namespace Mochi::Graphics
 {
-    Sprite::Sprite(std::shared_ptr<TextureFactory> textureFactory, const std::string &filename)
+    SpriteBase::SpriteBase(std::shared_ptr<TextureFactory> textureFactory, const std::string &filename) : mScale(1.0f), mPosition(0.0f, 0.0f)
+    {
+        LoadTexture(textureFactory, filename);
+    }
+
+    SpriteBase::SpriteBase() : mScale(1.0f)
+    {
+        mSrcRect.SetPosition({0.0f, 0.0f});
+    }
+
+    void SpriteBase::LoadTexture(std::shared_ptr<TextureFactory> textureFactory, const std::string &filename)
     {
         mTexture = textureFactory->GetTexture(filename);
 
-        mScale = 1;
+        ASSERT("Texture data was not loaded", mTexture != nullptr);
+
         float w, h;
         SDL_GetTextureSize(mTexture.get(), &w, &h);
+        mSize = Vector2f(w, h);
 
-        mSrcRect.x = 0;
-        mSrcRect.y = 0;
         mSrcRect.w = w;
         mSrcRect.h = h;
-
-        mDestRect.w = w;
-        mDestRect.h = h;
-        mDestRect.x = 0;
-        mDestRect.y = 0;
     }
 
-    std::vector<RenderCommand> Sprite::GetRenderData() const
+    RenderCommand SpriteBase::GetRenderData() const
     {
+        if (!mTexture)
+            throw EngineError("A texture was not initialized");
         RenderCommand rc;
         rc.texture = mTexture;
         rc.sourceRect = mSrcRect;
-        rc.destRect = mDestRect;
-        rc.destRect.w *= mScale;
-        rc.destRect.h *= mScale;
+        rc.destRect.SetPosition(mPosition);
+        rc.destRect.w = mSize.x * mScale;
+        rc.destRect.h = mSize.y * mScale;
         rc.zindex = 1; // TEMP
-        return {rc};
+        return rc;
     }
 
-    Sprite::~Sprite()
+    void SpriteBase::SetSrcRect(const Rectf &srcRect)
+    {
+        mSrcRect = srcRect;
+    }
+
+    SpriteBase::~SpriteBase()
     {
     }
 
-    void Sprite::SetScale(const float &scale)
+    void SpriteBase::SetScale(const float &scale)
     {
         mScale = scale;
     }
 
-    float Sprite::GetScale() const
+    float SpriteBase::GetScale() const
     {
         return mScale;
+    }
+
+    void SpriteBase::SetPosition(const Vector2f &position)
+    {
+        mPosition = position;
+    }
+
+    Vector2f SpriteBase::GetPosition() const
+    {
+        return mPosition;
     }
 }

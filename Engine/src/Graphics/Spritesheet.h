@@ -7,6 +7,7 @@
 
 #include "../Types/Types.hpp"
 #include "RenderCommand.h"
+#include "Sprite.h"
 
 struct SDL_Texture;
 namespace Mochi::Graphics
@@ -14,13 +15,9 @@ namespace Mochi::Graphics
     struct AnimationsData;
     class TextureFactory;
     class AnimationFactory;
-    class Spritesheet
+    class Spritesheet : public SpriteBase
     {
     private:
-        std::shared_ptr<SDL_Texture> mTexture;
-        Rectf mDestRect;
-        Rectf mSrcRect;
-        float mScale;
         void ApplyFrameData();
         int mFrameIndex;
 
@@ -30,13 +27,8 @@ namespace Mochi::Graphics
     public:
         Spritesheet(std::shared_ptr<AnimationFactory> animationFactory, std::shared_ptr<TextureFactory> textureFactory, const std::string &animationPath, const int &startingFrame);
         ~Spritesheet();
-        std::vector<RenderCommand> GetRenderData() const;
         void SetFrame(const int &frameIndex);
         int GetFrame() const;
-        void SetScale(const float &scale);
-        float GetScale() const;
-        void SetPosition(const Vector2f &position);
-        Vector2f GetPosition() const;
     };
 }
 

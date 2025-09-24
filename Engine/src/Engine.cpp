@@ -47,7 +47,7 @@ namespace Mochi
 #else
             mCatalog = std::make_shared<FS::PackCatalog>(FS::PackCatalog::FileLoaderType::Packfile);
 #endif
-            mCatalog->OpenPack("Data");
+            mCatalog->OpenPack("Data/Core");
             LOG_OK("Catalog Initialized");
 
             mScripting = std::make_shared<Scripting::ScriptingManager>(mCatalog);

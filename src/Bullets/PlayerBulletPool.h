@@ -15,7 +15,7 @@ namespace Mochi::Shooter
         float mHorizontalSpeed;
 
     public:
-        PlayerBulletPool(std::shared_ptr<Graphics::Sprite> renderable, const int &capacity, const float &lifetime, const float &horizontalSpeed);
+        PlayerBulletPool(std::shared_ptr<Graphics::SpriteBase> sprite, const int &capacity, const float &lifetime, const float &horizontalSpeed);
         ~PlayerBulletPool();
         virtual void OnUpdate(const float &dt) override;
     };
