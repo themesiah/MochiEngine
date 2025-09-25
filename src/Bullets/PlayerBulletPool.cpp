@@ -2,6 +2,7 @@
 #include "AbstractBulletPool.h"
 
 #include "Graphics/Sprite.h"
+#include "../ZIndexEnum.h"
 
 #include <memory>
 
@@ -10,6 +11,7 @@ namespace Mochi::Shooter
     PlayerBulletPool::PlayerBulletPool(std::shared_ptr<Graphics::SpriteBase> sprite, const int &capacity, const float &lifetime, const float &horizontalSpeed)
         : AbstractBulletPool(sprite, capacity, lifetime), mHorizontalSpeed(horizontalSpeed)
     {
+        sprite->SetZIndex(ZINDEX_PLAYERBULLET);
     }
 
     PlayerBulletPool::~PlayerBulletPool()

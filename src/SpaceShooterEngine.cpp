@@ -12,6 +12,7 @@
 
 #include "Bullets/PlayerBulletPool.h"
 #include "Player.h"
+#include "ZIndexEnum.h"
 
 namespace Mochi::Shooter
 {
@@ -23,6 +24,7 @@ namespace Mochi::Shooter
         mScripting->ExecuteFile("Script/FMODCallbackDefinitionAlternative.lua");
 
         mPlayer = std::make_shared<Player>(mAnimationFactory, mTextureFactory, mCamera);
+        mPlayer->SetZIndex(ZINDEX_PLAYER);
     }
 
     SpaceShooterEngine::~SpaceShooterEngine()

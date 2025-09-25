@@ -14,12 +14,12 @@
 
 namespace Mochi::Graphics
 {
-    SpriteBase::SpriteBase(std::shared_ptr<TextureFactory> textureFactory, const std::string &filename) : mScale(1.0f), mPosition(0.0f, 0.0f)
+    SpriteBase::SpriteBase(std::shared_ptr<TextureFactory> textureFactory, const std::string &filename) : mScale(1.0f), mPosition(0.0f, 0.0f), mZindex(0)
     {
         LoadTexture(textureFactory, filename);
     }
 
-    SpriteBase::SpriteBase() : mScale(1.0f)
+    SpriteBase::SpriteBase() : mScale(1.0f), mZindex(0)
     {
         mSrcRect.SetPosition({0.0f, 0.0f});
     }
@@ -48,7 +48,7 @@ namespace Mochi::Graphics
         rc.destRect.SetPosition(mPosition);
         rc.destRect.w = mSize.x * mScale;
         rc.destRect.h = mSize.y * mScale;
-        rc.zindex = 1; // TEMP
+        rc.zindex = mZindex;
         return rc;
     }
 
@@ -79,5 +79,15 @@ namespace Mochi::Graphics
     Vector2f SpriteBase::GetPosition() const
     {
         return mPosition;
+    }
+
+    void SpriteBase::SetZIndex(const uint16_t &zIndex)
+    {
+        mZindex = zIndex;
+    }
+
+    uint16_t SpriteBase::GetZIndex() const
+    {
+        return mZindex;
     }
 }

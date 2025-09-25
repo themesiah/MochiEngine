@@ -19,6 +19,7 @@ namespace Mochi::Graphics
         Rectf mSrcRect;
         float mScale;
         Vector2f mPosition;
+        uint16_t mZindex;
 
     protected:
         Vector2f mSize;
@@ -34,6 +35,8 @@ namespace Mochi::Graphics
         float GetScale() const;
         void SetPosition(const Vector2f &position);
         Vector2f GetPosition() const;
+        void SetZIndex(const uint16_t &zIndex);
+        uint16_t GetZIndex() const;
     };
 }
 
