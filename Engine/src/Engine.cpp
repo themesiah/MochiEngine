@@ -14,8 +14,6 @@
 #include "Graphics/TextureFactory.h"
 #include "Graphics/Renderer.h"
 #include "Graphics/Camera.h"
-#include "Graphics/Sprite.h"
-#include "Graphics/AnimatedSprite.h"
 #include "GUI/GUI.h"
 
 #include "Input/InputManager.h"

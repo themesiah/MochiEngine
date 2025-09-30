@@ -5,7 +5,7 @@
 #include "Graphics/AnimationFactory.h"
 #include "Graphics/TextureFactory.h"
 #include "Graphics/Camera.h"
-#include "Graphics/Sprite.h"
+#include "Graphics/SpriteBase.h"
 
 #include "Bullets/PlayerBulletPool.h"
 

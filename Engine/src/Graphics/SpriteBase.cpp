@@ -1,4 +1,4 @@
-#include "Sprite.h"
+#include "SpriteBase.h"
 
 #include <memory>
 #include <string>

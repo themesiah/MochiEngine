@@ -7,7 +7,7 @@
 
 #include "../Types/Types.hpp"
 #include "RenderCommand.h"
-#include "Sprite.h"
+#include "SpriteBase.h"
 
 struct SDL_Texture;
 namespace Mochi::Graphics

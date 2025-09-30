@@ -32,7 +32,7 @@ if(WIN32)
     endif()
 endif()
 
-file(GLOB Game_src CONFIGURE_DEPENDS "src/*.cpp" "src/Bullets/*.cpp")
+file(GLOB Game_src CONFIGURE_DEPENDS "src/*.cpp" "src/Bullets/*.cpp" "src/Enemies/*.cpp")
 add_executable(Game ${GAME_WIN32_FLAG} ${Game_src})
 target_link_libraries(Game
                       PRIVATE

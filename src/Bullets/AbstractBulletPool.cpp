@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "Graphics/Sprite.h"
+#include "Graphics/SpriteBase.h"
 
 namespace Mochi::Shooter
 {

@@ -1,7 +1,7 @@
 #include "PlayerBulletPool.h"
 #include "AbstractBulletPool.h"
 
-#include "Graphics/Sprite.h"
+#include "Graphics/SpriteBase.h"
 #include "../ZIndexEnum.h"
 
 #include <memory>

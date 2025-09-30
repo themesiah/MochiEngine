@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "Graphics/Camera.h"
-#include "Graphics/Sprite.h"
+#include "Graphics/SpriteBase.h"
 
 #include "Input/ActionManager.h"
 #include "Audio/FMODWrapper.h"
@@ -16,6 +16,8 @@
 
 #include "ShooterEvents.h"
 #include "PointsSystem.h"
+
+#include "Enemies/Enemy.h"
 
 namespace Mochi::Shooter
 {
@@ -30,6 +32,10 @@ namespace Mochi::Shooter
         mPlayer->SetZIndex(ZINDEX_PLAYER);
 
         mPointsSystem = std::make_unique<PointsSystem>(mEventBus, mGUI);
+
+        mEnemy = std::make_shared<Enemy>(mEventBus, mTextureFactory);
+        mEnemy->SetZIndex(ZINDEX_ENEMY);
+        mEnemy->SetPosition({2.0f, 0.0f});
     }
 
     SpaceShooterEngine::~SpaceShooterEngine()
@@ -41,15 +47,8 @@ namespace Mochi::Shooter
         mPlayer->Update(dt, mActionManager);
         AddRenderCommand(mPlayer->GetRenderData());
         AddRenderCommands(mPlayer->GetBulletPool()->GetRenderData());
+        AddRenderCommand(mEnemy->GetRenderData());
 
-        if (mActionManager->Performed("Debug1"))
-        {
-            mEventBus->Publish<EnemyDestroyedEvent>({40});
-        }
-        if (mActionManager->Performed("Debug2"))
-        {
-            mEventBus->Publish<PlayerDamageReceivedEvent>({});
-        }
         // mCamera->Move(mActionManager->Value("Horizontal") * dt * 1,
         //               mActionManager->Value("Vertical") * dt * 1);
 
