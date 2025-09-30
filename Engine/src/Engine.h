@@ -71,6 +71,7 @@ namespace Mochi
         std::shared_ptr<Event::EventBus> mEventBus;
         std::shared_ptr<Scripting::ScriptingManager> mScripting;
         virtual bool OnUpdate(const float &dt) = 0;
+        virtual void OnRender() const = 0;
 
         void AddRenderCommand(const Graphics::RenderCommand &command);
         void AddRenderCommands(const std::vector<Graphics::RenderCommand> &commands);

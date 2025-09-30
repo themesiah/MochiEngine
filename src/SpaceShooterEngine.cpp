@@ -14,6 +14,9 @@
 #include "Player.h"
 #include "ZIndexEnum.h"
 
+#include "ShooterEvents.h"
+#include "PointsSystem.h"
+
 namespace Mochi::Shooter
 {
     SpaceShooterEngine::SpaceShooterEngine(const char *appName, const char *appVersion, const char *appId, const char *windowName)
@@ -25,6 +28,8 @@ namespace Mochi::Shooter
 
         mPlayer = std::make_shared<Player>(mAnimationFactory, mTextureFactory, mCamera);
         mPlayer->SetZIndex(ZINDEX_PLAYER);
+
+        mPointsSystem = std::make_unique<PointsSystem>(mEventBus, mGUI);
     }
 
     SpaceShooterEngine::~SpaceShooterEngine()
@@ -36,6 +41,15 @@ namespace Mochi::Shooter
         mPlayer->Update(dt, mActionManager);
         AddRenderCommand(mPlayer->GetRenderData());
         AddRenderCommands(mPlayer->GetBulletPool()->GetRenderData());
+
+        if (mActionManager->Performed("Debug1"))
+        {
+            mEventBus->Publish<EnemyDestroyedEvent>({40});
+        }
+        if (mActionManager->Performed("Debug2"))
+        {
+            mEventBus->Publish<PlayerDamageReceivedEvent>({});
+        }
         // mCamera->Move(mActionManager->Value("Horizontal") * dt * 1,
         //               mActionManager->Value("Vertical") * dt * 1);
 
@@ -61,5 +75,10 @@ namespace Mochi::Shooter
         // }
 
         return true;
+    }
+
+    void SpaceShooterEngine::OnRender() const
+    {
+        mPointsSystem->Draw();
     }
 }

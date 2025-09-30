@@ -172,6 +172,7 @@ namespace Mochi
         mRenderer->Render(mRenderQueue, mCamera);
         mRenderQueue.clear();
 
+        OnRender();
 #ifdef DEBUG
         // Dev build message
         SDL_RendererLogicalPresentation *rlp{NULL};
