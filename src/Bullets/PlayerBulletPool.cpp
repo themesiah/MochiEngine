@@ -3,13 +3,16 @@
 
 #include "Graphics/SpriteBase.h"
 #include "../ZIndexEnum.h"
+#include "Physics/Shapes.h"
 
 #include <memory>
 
 namespace Mochi::Shooter
 {
+    const Physics::Rectangle SHAPE = Physics::Rectangle({0.0f, 0.0f}, {0.3f, 0.1f});
+
     PlayerBulletPool::PlayerBulletPool(std::shared_ptr<Graphics::SpriteBase> sprite, const int &capacity, const float &lifetime, const float &horizontalSpeed)
-        : AbstractBulletPool(sprite, capacity, lifetime), mHorizontalSpeed(horizontalSpeed)
+        : AbstractBulletPool(sprite, capacity, lifetime, SHAPE), mHorizontalSpeed(horizontalSpeed)
     {
         sprite->SetZIndex(ZINDEX_PLAYERBULLET);
     }

@@ -45,6 +45,16 @@ namespace Mochi::Shooter
     bool SpaceShooterEngine::OnUpdate(const float &dt)
     {
         mPlayer->Update(dt, mActionManager);
+
+        auto playerBulletPool = mPlayer->GetBulletPool();
+        auto enemyShape = mEnemy->GetCollider();
+        std::vector<int> collisions = playerBulletPool->CheckAgainst(enemyShape);
+        for (size_t i = 0; i < collisions.size(); ++i)
+        {
+            playerBulletPool->ReleaseBullet(collisions[i]);
+            mEnemy->ReceiveDamage(1);
+        }
+
         AddRenderCommand(mPlayer->GetRenderData());
         AddRenderCommands(mPlayer->GetBulletPool()->GetRenderData());
         AddRenderCommand(mEnemy->GetRenderData());

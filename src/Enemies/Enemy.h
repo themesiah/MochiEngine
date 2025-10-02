@@ -29,7 +29,7 @@ namespace Mochi::Shooter
         Enemy(std::shared_ptr<Event::EventBus> eventBus, std::shared_ptr<Graphics::TextureFactory> textureFactory);
         ~Enemy();
         void ReceiveDamage(const int &damage);
-        bool CheckCollision(const Physics::Shape &shape) const;
+        Physics::Rectangle GetCollider() const;
     };
 }
 

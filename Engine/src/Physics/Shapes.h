@@ -2,6 +2,7 @@
 #define HDEF_SHAPES
 
 #include <array>
+#include <memory>
 
 #include "../Types/Types.hpp"
 #include "../Exception.hpp"
@@ -18,10 +19,12 @@ namespace Mochi::Physics
     public:
         Shape(const Vector2f &position) : Position(position) {}
         virtual ~Shape() {}
-        virtual bool Collides(Point p) const = 0;
-        virtual bool Collides(Line l) const = 0;
-        virtual bool Collides(Circle c) const = 0;
-        virtual bool Collides(Rectangle r) const = 0;
+        virtual std::unique_ptr<Shape> Clone() const = 0;
+        virtual bool IsColliding(const Shape &other) const = 0;
+        virtual bool Collides(const Point &p) const = 0;
+        virtual bool Collides(const Line &l) const = 0;
+        virtual bool Collides(const Circle &c) const = 0;
+        virtual bool Collides(const Rectangle &r) const = 0;
         Vector2f Position;
     };
 
@@ -30,10 +33,12 @@ namespace Mochi::Physics
     public:
         Point(const Vector2f &position) : Shape(position) {}
         virtual ~Point() {}
-        virtual bool Collides(Point p) const;
-        virtual bool Collides(Line l) const;
-        virtual bool Collides(Circle c) const;
-        virtual bool Collides(Rectangle r) const;
+        virtual std::unique_ptr<Shape> Clone() const;
+        virtual bool IsColliding(const Shape &other) const override;
+        virtual bool Collides(const Point &p) const override;
+        virtual bool Collides(const Line &l) const override;
+        virtual bool Collides(const Circle &c) const override;
+        virtual bool Collides(const Rectangle &r) const override;
     };
 
     struct Line : public Shape
@@ -42,10 +47,12 @@ namespace Mochi::Physics
     public:
         Line(const Vector2f &position, const Vector2f &end) : Shape(position), End(end) {}
         virtual ~Line() {}
-        virtual bool Collides(Point p) const;
-        virtual bool Collides(Line l) const;
-        virtual bool Collides(Circle c) const;
-        virtual bool Collides(Rectangle r) const;
+        virtual std::unique_ptr<Shape> Clone() const;
+        virtual bool IsColliding(const Shape &other) const override;
+        virtual bool Collides(const Point &p) const override;
+        virtual bool Collides(const Line &l) const override;
+        virtual bool Collides(const Circle &c) const override;
+        virtual bool Collides(const Rectangle &r) const override;
         Vector2f End;
     };
 
@@ -58,10 +65,12 @@ namespace Mochi::Physics
                 throw EngineError("Circles require a radius greater than 0");
         }
         virtual ~Circle() {}
-        virtual bool Collides(Point p) const;
-        virtual bool Collides(Line l) const;
-        virtual bool Collides(Circle c) const;
-        virtual bool Collides(Rectangle r) const;
+        virtual std::unique_ptr<Shape> Clone() const override;
+        virtual bool IsColliding(const Shape &other) const override;
+        virtual bool Collides(const Point &p) const override;
+        virtual bool Collides(const Line &l) const override;
+        virtual bool Collides(const Circle &c) const override;
+        virtual bool Collides(const Rectangle &r) const override;
         float Radius;
     };
 
@@ -71,10 +80,12 @@ namespace Mochi::Physics
     public:
         Rectangle(const Vector2f &position, const Vector2f &extents) : Shape(position), Extents(extents) {}
         virtual ~Rectangle() {}
-        virtual bool Collides(Point p) const;
-        virtual bool Collides(Line l) const;
-        virtual bool Collides(Circle c) const;
-        virtual bool Collides(Rectangle r) const;
+        virtual std::unique_ptr<Shape> Clone() const override;
+        virtual bool IsColliding(const Shape &other) const override;
+        virtual bool Collides(const Point &p) const override;
+        virtual bool Collides(const Line &l) const override;
+        virtual bool Collides(const Circle &c) const override;
+        virtual bool Collides(const Rectangle &r) const override;
         Vector2f Extents;
     };
 }

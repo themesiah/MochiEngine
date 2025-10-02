@@ -6,8 +6,8 @@
 
 namespace Mochi::Shooter
 {
-    AbstractBulletPool::AbstractBulletPool(std::shared_ptr<Graphics::SpriteBase> sprite, const int &capacity, const float &lifetime)
-        : mSprite(sprite), mLifetime(lifetime), mActiveCount(0)
+    AbstractBulletPool::AbstractBulletPool(std::shared_ptr<Graphics::SpriteBase> sprite, const int &capacity, const float &lifetime, const Physics::Shape &shape)
+        : mSprite(sprite), mLifetime(lifetime), mActiveCount(0), mBulletShape(shape.Clone())
     {
         mBulletActives.resize(capacity);
         mBulletPositions.resize(capacity);
@@ -77,5 +77,25 @@ namespace Mochi::Shooter
     size_t AbstractBulletPool::GetBulletCount() const
     {
         return mActiveCount;
+    }
+
+    std::vector<int> AbstractBulletPool::CheckAgainst(const Physics::Shape &shape) const
+    {
+        std::vector<int> collidedBullets;
+        for (size_t i = 0; i < mBulletActives.size(); ++i)
+        {
+            if (mBulletActives[i])
+            {
+                mBulletShape->Position = mBulletPositions[i];
+                if (mBulletShape->IsColliding(shape))
+                    collidedBullets.push_back(i);
+            }
+        }
+        return collidedBullets;
+    }
+
+    void AbstractBulletPool::ReleaseBullet(const int &index)
+    {
+        mBulletActives[index] = false;
     }
 }

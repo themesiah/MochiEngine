@@ -10,7 +10,7 @@ namespace Mochi::Shooter
     inline const std::string ENEMY_SPRITE_PATH = "Enemy1.png";
 
     Enemy::Enemy(std::shared_ptr<Event::EventBus> eventBus, std::shared_ptr<Graphics::TextureFactory> textureFactory)
-        : mHealth(10), mPoints(40), mEventBus(eventBus), mCollider({0.0f, 0.0f}, {1.0f, 1.0f}), Graphics::SpriteBase(textureFactory, ENEMY_SPRITE_PATH)
+        : Graphics::SpriteBase(textureFactory, ENEMY_SPRITE_PATH), mHealth(10), mPoints(40), mEventBus(eventBus), mCollider({0.0f, 0.0f}, {0.6f, 0.45f})
     {
     }
 
@@ -27,9 +27,11 @@ namespace Mochi::Shooter
         }
     }
 
-    bool Enemy::CheckCollision(const Physics::Shape &shape) const
+    Physics::Rectangle Enemy::GetCollider() const
     {
-        return false;
+        auto collider = mCollider;
+        collider.Position = GetPosition();
+        return collider;
     }
 
     void Enemy::Die()

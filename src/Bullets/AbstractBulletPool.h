@@ -3,9 +3,11 @@
 
 #include <vector>
 #include <memory>
+#include <span>
 
 #include "Types/Types.hpp"
 #include "Graphics/RenderCommand.h"
+#include "Physics/Shapes.h"
 
 namespace Mochi::Graphics
 {
@@ -25,8 +27,10 @@ namespace Mochi::Shooter
         std::vector<bool> mBulletActives;
         std::vector<float> mBulletTimers;
 
+        std::unique_ptr<Physics::Shape> mBulletShape;
+
     public:
-        AbstractBulletPool(std::shared_ptr<Graphics::SpriteBase> sprite, const int &capacity, const float &lifetime);
+        AbstractBulletPool(std::shared_ptr<Graphics::SpriteBase> sprite, const int &capacity, const float &lifetime, const Physics::Shape &shape);
         ~AbstractBulletPool();
         void Update(const float &dt);
         virtual void OnUpdate(const float &dt) = 0;
@@ -34,6 +38,8 @@ namespace Mochi::Shooter
         void ReleaseAllBullets();
         bool AddBullet(const Vector2f &pos);
         size_t GetBulletCount() const;
+        std::vector<int> CheckAgainst(const Physics::Shape &shape) const;
+        void ReleaseBullet(const int &index);
     };
 }
 
