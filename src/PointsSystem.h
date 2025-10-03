@@ -1,8 +1,6 @@
 #ifndef HDEF_POINTSSYSTEM
 #define HDEF_POINTSSYSTEM
 
-#include <memory>
-
 #include "Event/EventBus.h"
 
 namespace Mochi::Graphics
@@ -17,8 +15,8 @@ namespace Mochi::Shooter
         unsigned int mPoints;
         unsigned int mMultiplier;
         unsigned int mMaxMultiplier;
-        std::shared_ptr<Event::EventBus> mEventBus;
-        std::shared_ptr<Graphics::GUI> mGUI;
+        Event::EventBus *mEventBus;
+        Graphics::GUI *mGUI;
 
         Event::SubscriptionHandler mDeadEnemyHandler;
         Event::SubscriptionHandler mPlayerDamageHandler;
@@ -26,7 +24,7 @@ namespace Mochi::Shooter
         void OnEnemyDestroyed(unsigned int points);
 
     public:
-        PointsSystem(std::shared_ptr<Event::EventBus> eventBus, std::shared_ptr<Graphics::GUI> gui);
+        PointsSystem(Event::EventBus *eventBus, Graphics::GUI *gui);
         ~PointsSystem();
         void Draw() const;
     };

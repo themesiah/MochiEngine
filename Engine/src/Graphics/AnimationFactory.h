@@ -17,10 +17,10 @@ namespace Mochi::Graphics
     {
     private:
         std::unordered_map<std::string, std::shared_ptr<AnimationsData>> mAnimationDataMap;
-        std::shared_ptr<FS::PackCatalog> mCatalog;
+        FS::PackCatalog *mCatalog;
 
     public:
-        AnimationFactory(std::shared_ptr<FS::PackCatalog>);
+        AnimationFactory(FS::PackCatalog *);
         ~AnimationFactory();
         std::shared_ptr<AnimationsData> GetAnimationsData(const std::string &animationDataPath);
         void DeleteCache();

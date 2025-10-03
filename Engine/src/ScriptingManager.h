@@ -2,7 +2,6 @@
 #define HDEF_SCRIPTINGMANAGER
 
 #include <sol/sol.hpp>
-#include <memory>
 
 namespace Mochi::FS
 {
@@ -13,10 +12,10 @@ namespace Mochi::Scripting
     class ScriptingManager
     {
     private:
-        std::shared_ptr<FS::PackCatalog> mCatalog;
+        FS::PackCatalog *mCatalog;
 
     public:
-        ScriptingManager(std::shared_ptr<FS::PackCatalog> packCatalog);
+        ScriptingManager(FS::PackCatalog *packCatalog);
         ~ScriptingManager();
         void Execute(const std::string &code);
         void ExecuteFile(const std::string &path);

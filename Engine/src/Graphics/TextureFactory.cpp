@@ -12,7 +12,7 @@
 
 namespace Mochi::Graphics
 {
-    TextureFactory::TextureFactory(std::shared_ptr<FS::PackCatalog> catalog, std::shared_ptr<SDL_Renderer> renderer) : mTexturesMap(), mCatalog(catalog), mRenderer(renderer)
+    TextureFactory::TextureFactory(FS::PackCatalog *catalog, std::shared_ptr<SDL_Renderer> renderer) : mTexturesMap(), mCatalog(catalog), mRenderer(renderer)
     {
     }
 

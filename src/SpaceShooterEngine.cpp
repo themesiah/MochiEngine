@@ -31,9 +31,9 @@ namespace Mochi::Shooter
         mPlayer = std::make_shared<Player>(mAnimationFactory, mTextureFactory, mCamera);
         mPlayer->SetZIndex(ZINDEX_PLAYER);
 
-        mPointsSystem = std::make_unique<PointsSystem>(mEventBus, mGUI);
+        mPointsSystem = std::make_unique<PointsSystem>(mEventBus.get(), mGUI.get());
 
-        mEnemy = std::make_shared<Enemy>(mEventBus, mTextureFactory);
+        mEnemy = std::make_shared<Enemy>(mEventBus.get(), mTextureFactory);
         mEnemy->SetZIndex(ZINDEX_ENEMY);
         mEnemy->SetPosition({2.0f, 0.0f});
     }

@@ -55,44 +55,44 @@ namespace Mochi
         try
         {
 #ifdef DEBUG
-            mCatalog = std::make_shared<FS::PackCatalog>(FS::PackCatalog::FileLoaderType::FileSystem);
+            mCatalog = std::make_unique<FS::PackCatalog>(FS::PackCatalog::FileLoaderType::FileSystem);
 #else
-            mCatalog = std::make_shared<FS::PackCatalog>(FS::PackCatalog::FileLoaderType::Packfile);
+            mCatalog = std::make_unique<FS::PackCatalog>(FS::PackCatalog::FileLoaderType::Packfile);
 #endif
             mCatalog->OpenPack("Data/Core");
             LOG_OK("Catalog Initialized");
 
-            mScripting = std::make_shared<Scripting::ScriptingManager>(mCatalog);
+            mScripting = std::make_unique<Scripting::ScriptingManager>(mCatalog.get());
             LOG_OK("LUA Initialized");
 
             mRenderer = std::make_unique<Graphics::Renderer>(appName, appVersion, appId, windowName);
             mRenderQueue.clear();
             LOG_OK("SDL Initialized");
 
-            mEventBus = std::make_shared<Event::EventBus>();
+            mEventBus = std::make_unique<Event::EventBus>();
             LOG_OK("Event bus Initialized");
 
             mCamera = mRenderer->CreateCamera();
             LOG_OK("Camera Initialized");
 
-            mTextureFactory = std::make_shared<Graphics::TextureFactory>(mCatalog, mRenderer->GetRenderer());
+            mTextureFactory = std::make_shared<Graphics::TextureFactory>(mCatalog.get(), mRenderer->GetRenderer());
             LOG_OK("Main texture factory Initialized");
 
-            mAnimationFactory = std::make_shared<Graphics::AnimationFactory>(mCatalog);
+            mAnimationFactory = std::make_shared<Graphics::AnimationFactory>(mCatalog.get());
             LOG_OK("Main animation factory Initialized");
 
-            mFmod = std::make_unique<Audio::FMODWrapper>(mCatalog, mScripting);
+            mFmod = std::make_unique<Audio::FMODWrapper>(mCatalog.get(), mScripting.get());
             mFmod->LoadBank(CONST_MASTER_BANK);
             LOG_OK("FMOD Initialized");
 
             mActionManager = std::make_unique<Input::ActionManager>(new Input::InputManager(std::make_unique<Input::SDLKeyboardProvider>(),
                                                                                             std::make_unique<Input::SDLMouseProvider>(mRenderer.get()),
-                                                                                            std::make_unique<Input::SDLGamepadProvider>(mEventBus)));
+                                                                                            std::make_unique<Input::SDLGamepadProvider>(mEventBus.get())));
             auto actionsBuffer = mCatalog->GetFile(CONST_ACTIONS_FILE);
             bool success = mActionManager->LoadActions(actionsBuffer);
             LOG_OK("Action manager Initialized");
 
-            mGUI = std::make_shared<Graphics::GUI>(mCatalog, mRenderer.get(), mActionManager.get());
+            mGUI = std::make_unique<Graphics::GUI>(mCatalog.get(), mRenderer.get(), mActionManager.get());
             LOG_OK("GUI Initialized");
 
             mFrameStart = std::chrono::steady_clock::now();

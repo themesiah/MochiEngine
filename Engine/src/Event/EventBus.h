@@ -2,6 +2,7 @@
 #define HDEF_EVENTBUS
 
 #include <vector>
+#include <algorithm>
 #include <functional>
 #include <utility>
 #include <unordered_map>

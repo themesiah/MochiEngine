@@ -9,7 +9,7 @@
 
 namespace Mochi::Shooter
 {
-    PointsSystem::PointsSystem(std::shared_ptr<Event::EventBus> eventBus, std::shared_ptr<Graphics::GUI> gui)
+    PointsSystem::PointsSystem(Event::EventBus *eventBus, Graphics::GUI *gui)
         : mPoints(0),
           mMultiplier(1),
           mMaxMultiplier(60),

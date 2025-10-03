@@ -11,7 +11,7 @@
 
 namespace Mochi::Graphics
 {
-    AnimationFactory::AnimationFactory(std::shared_ptr<FS::PackCatalog> catalog) : mCatalog(catalog)
+    AnimationFactory::AnimationFactory(FS::PackCatalog *catalog) : mCatalog(catalog)
     {
     }
 

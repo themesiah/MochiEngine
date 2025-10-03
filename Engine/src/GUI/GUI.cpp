@@ -14,7 +14,7 @@
 
 namespace Mochi::Graphics
 {
-    GUI::GUI(std::shared_ptr<FS::PackCatalog> catalog, Renderer *renderer, Input::ActionManager *actionManager)
+    GUI::GUI(FS::PackCatalog *catalog, Renderer *renderer, Input::ActionManager *actionManager)
         : mCurrentId(0), mFocusId(0), mRenderer(renderer), mActionManager(actionManager)
     {
         mTextureFactory = std::make_unique<TextureFactory>(catalog, renderer->GetRenderer());

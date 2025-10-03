@@ -3,8 +3,6 @@
 
 #include "Graphics/SpriteBase.h"
 
-#include <memory>
-
 #include "Event/EventBus.h"
 #include "Physics/Shapes.h"
 
@@ -20,13 +18,13 @@ namespace Mochi::Shooter
         int mHealth;
         unsigned int mPoints;
 
-        std::shared_ptr<Event::EventBus> mEventBus;
+        Event::EventBus *mEventBus;
         Physics::Rectangle mCollider;
 
         void Die();
 
     public:
-        Enemy(std::shared_ptr<Event::EventBus> eventBus, std::shared_ptr<Graphics::TextureFactory> textureFactory);
+        Enemy(Event::EventBus *eventBus, std::shared_ptr<Graphics::TextureFactory> textureFactory);
         ~Enemy();
         void ReceiveDamage(const int &damage);
         Physics::Rectangle GetCollider() const;

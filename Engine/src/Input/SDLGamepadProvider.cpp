@@ -7,7 +7,7 @@
 
 namespace Mochi::Input
 {
-    SDLGamepadProvider::SDLGamepadProvider(std::shared_ptr<Event::EventBus> eventBus) : mEventBus(eventBus), mSDLEventSubscriptionHandler(0)
+    SDLGamepadProvider::SDLGamepadProvider(Event::EventBus *eventBus) : mEventBus(eventBus), mSDLEventSubscriptionHandler(0)
     {
         mSDLEventSubscriptionHandler = mEventBus->Subscribe<SDL_Event>([&](const SDL_Event &e)
                                                                        {

@@ -14,12 +14,12 @@ namespace Mochi::Input
     class SDLGamepadProvider : public IGamepadProvider
     {
     private:
-        std::shared_ptr<Event::EventBus> mEventBus;
+        Event::EventBus *mEventBus;
         Event::SubscriptionHandler mSDLEventSubscriptionHandler;
         std::vector<std::shared_ptr<SDL_Gamepad>> mGamepads;
 
     public:
-        SDLGamepadProvider(std::shared_ptr<Event::EventBus> eventBus);
+        SDLGamepadProvider(Event::EventBus *eventBus);
         virtual ~SDLGamepadProvider();
         virtual GamepadData GetData(const unsigned int &player) const;
         virtual bool HasGamepad(const unsigned int &player) const;

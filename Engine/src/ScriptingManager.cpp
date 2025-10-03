@@ -8,7 +8,7 @@
 namespace Mochi::Scripting
 {
 
-    ScriptingManager::ScriptingManager(std::shared_ptr<FS::PackCatalog> packCatalog) : mCatalog(packCatalog), State()
+    ScriptingManager::ScriptingManager(FS::PackCatalog *packCatalog) : mCatalog(packCatalog), State()
     {
         State.open_libraries();
         State.set_function("LogOk", [](const std::string &str)

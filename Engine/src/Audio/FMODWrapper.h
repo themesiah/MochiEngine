@@ -40,13 +40,13 @@ namespace Mochi::Audio
         std::unordered_map<std::string, FMOD_Bank_Pair> mBankPairsMap;
         static FMOD_RESULT F_CALL EventCallback(FMOD_STUDIO_EVENT_CALLBACK_TYPE type, FMOD_STUDIO_EVENTINSTANCE *event, void *parameters);
         void OnEventCallback(FMOD_STUDIO_EVENT_CALLBACK_TYPE type, FMOD_STUDIO_EVENTINSTANCE *event, void *parameters);
-        std::shared_ptr<FS::PackCatalog> mCatalog;
-        std::shared_ptr<Scripting::ScriptingManager> mScripting;
+        FS::PackCatalog *mCatalog;
+        Scripting::ScriptingManager *mScripting;
         std::unordered_map<std::string, FMOD_STUDIO_EVENTDESCRIPTION *> mSoundCache;
         std::unordered_map<std::string, FMOD_STUDIO_BUS *> mBusesCache;
 
     public:
-        FMODWrapper(std::shared_ptr<FS::PackCatalog>, std::shared_ptr<Scripting::ScriptingManager>);
+        FMODWrapper(FS::PackCatalog *, Scripting::ScriptingManager *);
         ~FMODWrapper();
         void Update() const;
         void LoadBank(const std::string &bankName);

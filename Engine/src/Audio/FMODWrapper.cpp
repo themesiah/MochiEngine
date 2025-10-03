@@ -14,7 +14,7 @@
 
 namespace Mochi::Audio
 {
-    FMODWrapper::FMODWrapper(std::shared_ptr<FS::PackCatalog> catalog, std::shared_ptr<Scripting::ScriptingManager> scriptingManager) : mCatalog(catalog), mScripting(scriptingManager)
+    FMODWrapper::FMODWrapper(FS::PackCatalog *catalog, Scripting::ScriptingManager *scriptingManager) : mCatalog(catalog), mScripting(scriptingManager)
     {
         mFmodSystem = NULL;
         mBgmEventDescription = NULL;

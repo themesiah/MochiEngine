@@ -36,7 +36,7 @@ namespace Mochi::Graphics
         GUIElementId GetNextId();
 
     public:
-        GUI(std::shared_ptr<FS::PackCatalog> catalog, Renderer *renderer, Input::ActionManager *actionManager);
+        GUI(FS::PackCatalog *catalog, Renderer *renderer, Input::ActionManager *actionManager);
         ~GUI();
         void ResetFrame();
         bool Button(const char *label, const float &textSize, Rectf dstRect, const std::string &texturePath);

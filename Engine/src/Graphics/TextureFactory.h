@@ -17,11 +17,11 @@ namespace Mochi::Graphics
     {
     private:
         std::unordered_map<std::string, std::shared_ptr<SDL_Texture>> mTexturesMap;
-        std::shared_ptr<FS::PackCatalog> mCatalog;
+        FS::PackCatalog *mCatalog;
         std::shared_ptr<SDL_Renderer> mRenderer;
 
     public:
-        TextureFactory(std::shared_ptr<FS::PackCatalog>, std::shared_ptr<SDL_Renderer>);
+        TextureFactory(FS::PackCatalog *, std::shared_ptr<SDL_Renderer>);
         ~TextureFactory();
         std::shared_ptr<SDL_Texture> GetTexture(const std::string &texturePath);
         void DeleteCache();
