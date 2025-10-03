@@ -32,7 +32,7 @@ namespace Mochi::Input
     {
     }
 
-    bool PerformableActionKeyboard::IsPerformed(std::shared_ptr<InputManager> input) const
+    bool PerformableActionKeyboard::IsPerformed(InputManager *input) const
     {
         switch (mTrigger)
         {
@@ -47,7 +47,7 @@ namespace Mochi::Input
         }
     }
 
-    float PerformableActionKeyboard::GetValue(std::shared_ptr<InputManager> input) const
+    float PerformableActionKeyboard::GetValue(InputManager *input) const
     {
         if (IsPerformed(input))
             return mValue;
@@ -76,7 +76,7 @@ namespace Mochi::Input
     PerformableActionMouse::~PerformableActionMouse()
     {
     }
-    bool PerformableActionMouse::IsPerformed(std::shared_ptr<InputManager> input) const
+    bool PerformableActionMouse::IsPerformed(InputManager *input) const
     {
         switch (mTrigger)
         {
@@ -90,7 +90,7 @@ namespace Mochi::Input
             return false;
         }
     }
-    float PerformableActionMouse::GetValue(std::shared_ptr<InputManager> input) const
+    float PerformableActionMouse::GetValue(InputManager *input) const
     {
         if (IsPerformed(input))
             return mValue;
@@ -115,11 +115,11 @@ namespace Mochi::Input
     PerformableActionMouseAxis::~PerformableActionMouseAxis()
     {
     }
-    bool PerformableActionMouseAxis::IsPerformed(std::shared_ptr<InputManager> input) const
+    bool PerformableActionMouseAxis::IsPerformed(InputManager *input) const
     {
         return true;
     }
-    float PerformableActionMouseAxis::GetValue(std::shared_ptr<InputManager> input) const
+    float PerformableActionMouseAxis::GetValue(InputManager *input) const
     {
         switch (mAxis)
         {
@@ -157,7 +157,7 @@ namespace Mochi::Input
     PerformableActionGamepad::~PerformableActionGamepad()
     {
     }
-    bool PerformableActionGamepad::IsPerformed(std::shared_ptr<InputManager> input) const
+    bool PerformableActionGamepad::IsPerformed(InputManager *input) const
     {
         switch (mTrigger)
         {
@@ -171,7 +171,7 @@ namespace Mochi::Input
             return false;
         }
     }
-    float PerformableActionGamepad::GetValue(std::shared_ptr<InputManager> input) const
+    float PerformableActionGamepad::GetValue(InputManager *input) const
     {
         if (IsPerformed(input))
             return mValue;
@@ -202,11 +202,11 @@ namespace Mochi::Input
     PerformableActionGamepadAxis::~PerformableActionGamepadAxis()
     {
     }
-    bool PerformableActionGamepadAxis::IsPerformed(std::shared_ptr<InputManager> input) const
+    bool PerformableActionGamepadAxis::IsPerformed(InputManager *input) const
     {
         return std::fabs(GetValue(input)) >= mThreshold;
     }
-    float PerformableActionGamepadAxis::GetValue(std::shared_ptr<InputManager> input) const
+    float PerformableActionGamepadAxis::GetValue(InputManager *input) const
     {
         return input->GetGamepadAxis(mAxis) * mScale;
     }

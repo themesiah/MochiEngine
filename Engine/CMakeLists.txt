@@ -14,6 +14,7 @@ file(GLOB Engine_src CONFIGURE_DEPENDS
         "src/*.hpp"
         "src/*.cpp")
 
+file(GLOB Debug_src CONFIGURE_DEPENDS "src/Debug/*.cpp")
 
 set(LUA_VERSION "lua-5.4.7")
 add_subdirectory(Includes)
@@ -21,7 +22,7 @@ add_subdirectory(Includes)
 add_subdirectory(Includes/FMOD EXCLUDE_FROM_ALL)
 add_subdirectory(src/Packer)
 
-add_library(Engine ${Engine_src})
+add_library(Engine ${Engine_src} $<$<CONFIG:Debug>:${Debug_src}>)
 target_compile_features(Engine PUBLIC cxx_std_23)
 target_compile_definitions(Engine PUBLIC $<$<CONFIG:Debug>:DEBUG>)
 

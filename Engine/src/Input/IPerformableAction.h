@@ -10,8 +10,8 @@ namespace Mochi::Input
     {
     public:
         virtual ~IPerformableAction() {}
-        virtual bool IsPerformed(std::shared_ptr<InputManager> input) const = 0;
-        virtual float GetValue(std::shared_ptr<InputManager> input) const = 0;
+        virtual bool IsPerformed(InputManager *input) const = 0;
+        virtual float GetValue(InputManager *input) const = 0;
     };
 }
 

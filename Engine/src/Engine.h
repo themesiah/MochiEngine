@@ -48,6 +48,7 @@ namespace Mochi
     {
         class ScriptingManager;
     }
+    class Layer;
     class Engine
     {
     private:
@@ -60,9 +61,12 @@ namespace Mochi
         std::vector<Graphics::RenderCommand> mRenderQueue;
 
     protected:
-        std::shared_ptr<Graphics::Renderer> mRenderer;
-        std::shared_ptr<Audio::FMODWrapper> mFmod;
-        std::shared_ptr<Input::ActionManager> mActionManager;
+        std::vector<std::unique_ptr<Layer>> mLayers;
+        std::vector<Layer *> mPopLayerQueue;
+        std::vector<Layer *> mPushLayerQueue;
+        std::unique_ptr<Graphics::Renderer> mRenderer;
+        std::unique_ptr<Audio::FMODWrapper> mFmod;
+        std::unique_ptr<Input::ActionManager> mActionManager;
         std::shared_ptr<FS::PackCatalog> mCatalog;
         std::shared_ptr<Graphics::TextureFactory> mTextureFactory;
         std::shared_ptr<Graphics::AnimationFactory> mAnimationFactory;
@@ -80,6 +84,22 @@ namespace Mochi
         Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName);
         bool Update();
         virtual ~Engine();
+
+        static Engine &Get();
+        void PushLayer(Layer *layer);
+        void PopLayer(Layer *layer);
+
+        float GetLastRealDelta() const { return mLastRealDelta; }
+
+        // Access subsystems
+        Graphics::Renderer *GetRenderer() const { return mRenderer.get(); }
+        Audio::FMODWrapper *GetAudio() const { return mFmod.get(); }
+        Input::ActionManager *GetActionManager() const { return mActionManager.get(); }
+        FS::PackCatalog *GetCatalog() const { return mCatalog.get(); }
+        Graphics::Camera *GetCamera() const { return mCamera.get(); }
+        Graphics::GUI *GetGUI() const { return mGUI.get(); }
+        Event::EventBus *GetEventBus() const { return mEventBus.get(); }
+        Scripting::ScriptingManager *GetScriptingManager() const { return mScripting.get(); }
     };
 }
 #endif

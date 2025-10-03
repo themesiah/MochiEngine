@@ -34,7 +34,7 @@ namespace Mochi::Shooter
                std::shared_ptr<Mochi::Graphics::TextureFactory> textureFactory,
                std::shared_ptr<Mochi::Graphics::Camera> camera);
         ~Player();
-        virtual void Update(const float &dt, std::shared_ptr<Mochi::Input::ActionManager>);
+        virtual void Update(const float &dt, Mochi::Input::ActionManager *actionManager);
         std::shared_ptr<PlayerBulletPool> GetBulletPool() const;
     };
 }

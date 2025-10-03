@@ -32,12 +32,26 @@
 #include "Event/EventBus.h"
 
 #include "ScriptingManager.h"
+#include "Layer.h"
+
+#ifdef DEBUG
+#include "Debug/DebugLayer.h"
+#endif
 
 namespace Mochi
 {
 
-    Engine::Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName) : mTargetFPS(60), mLastDeltaTime(0.016f), mLastRealDelta(0.0f)
+    static std::unique_ptr<Engine> gEngine = nullptr;
+
+    Engine &Engine::Get()
     {
+        return *gEngine.get();
+    }
+
+    Engine::Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName)
+        : mTargetFPS(60), mLastDeltaTime(0.016f), mLastRealDelta(0.0f), mLayers(), mPopLayerQueue(), mPushLayerQueue()
+    {
+        gEngine.reset(this);
         try
         {
 #ifdef DEBUG
@@ -51,7 +65,7 @@ namespace Mochi
             mScripting = std::make_shared<Scripting::ScriptingManager>(mCatalog);
             LOG_OK("LUA Initialized");
 
-            mRenderer = std::make_shared<Graphics::Renderer>(appName, appVersion, appId, windowName);
+            mRenderer = std::make_unique<Graphics::Renderer>(appName, appVersion, appId, windowName);
             mRenderQueue.clear();
             LOG_OK("SDL Initialized");
 
@@ -67,22 +81,25 @@ namespace Mochi
             mAnimationFactory = std::make_shared<Graphics::AnimationFactory>(mCatalog);
             LOG_OK("Main animation factory Initialized");
 
-            mFmod = std::make_shared<Audio::FMODWrapper>(mCatalog, mScripting);
+            mFmod = std::make_unique<Audio::FMODWrapper>(mCatalog, mScripting);
             mFmod->LoadBank(CONST_MASTER_BANK);
             LOG_OK("FMOD Initialized");
 
-            auto inputManager = std::make_shared<Input::InputManager>(std::make_shared<Input::SDLKeyboardProvider>(),
-                                                                      std::make_shared<Input::SDLMouseProvider>(mRenderer),
-                                                                      std::make_shared<Input::SDLGamepadProvider>(mEventBus));
-            mActionManager = std::make_shared<Input::ActionManager>(inputManager);
+            mActionManager = std::make_unique<Input::ActionManager>(new Input::InputManager(std::make_unique<Input::SDLKeyboardProvider>(),
+                                                                                            std::make_unique<Input::SDLMouseProvider>(mRenderer.get()),
+                                                                                            std::make_unique<Input::SDLGamepadProvider>(mEventBus)));
             auto actionsBuffer = mCatalog->GetFile(CONST_ACTIONS_FILE);
             bool success = mActionManager->LoadActions(actionsBuffer);
             LOG_OK("Action manager Initialized");
 
-            mGUI = std::make_shared<Graphics::GUI>(mCatalog, mRenderer, mActionManager);
+            mGUI = std::make_shared<Graphics::GUI>(mCatalog, mRenderer.get(), mActionManager.get());
             LOG_OK("GUI Initialized");
 
             mFrameStart = std::chrono::steady_clock::now();
+
+#ifdef DEBUG
+            PushLayer(new DebugLayer(mRenderer.get(), mGUI.get()));
+#endif
         }
         catch (const SystemInitializationError &e)
         {
@@ -126,8 +143,29 @@ namespace Mochi
             {
                 return 0;
             }
+            float dt = Time::TimeSystem::GetDeltaTime();
+            for (const std::unique_ptr<Layer> &layer : mLayers)
+            {
+                layer->Update(dt);
+            }
 
             Render();
+
+            for (const auto &outLayer : mPopLayerQueue)
+            {
+                mLayers.erase(
+                    std::remove_if(mLayers.begin(), mLayers.end(),
+                                   [&](const std::unique_ptr<Layer> &layer)
+                                   { return layer.get() == outLayer; }),
+                    mLayers.end());
+            }
+            mPopLayerQueue.clear();
+
+            for (const auto &inLayer : mPushLayerQueue)
+            {
+                mLayers.push_back(std::unique_ptr<Layer>(inLayer));
+            }
+            mPushLayerQueue.clear();
 
             const auto target = std::chrono::nanoseconds(1'000'000'000 / mTargetFPS);
             auto work = std::chrono::steady_clock::now() - mFrameStart;
@@ -171,16 +209,11 @@ namespace Mochi
         mRenderQueue.clear();
 
         OnRender();
-#ifdef DEBUG
-        // Dev build message
-        SDL_RendererLogicalPresentation *rlp{NULL};
-        int logicalW, logicalH;
-        SDL_GetRenderLogicalPresentation(mRenderer->GetRenderer().get(), &logicalW, &logicalH, rlp);
 
-        SDL_SetRenderScale(mRenderer->GetRenderer().get(), 1, 1);
-        mGUI->Text(CONST_DEVBUILD_TEXT, 8, {0, (float)logicalH - 8}, {255, 255, 255, SDL_ALPHA_OPAQUE});
-        mGUI->Text(std::format("{} fps", (int)(1.0f / mLastRealDelta)).c_str(), 8, {0, 0}, {255, 255, 255, SDL_ALPHA_OPAQUE});
-#endif
+        for (const std::unique_ptr<Layer> &layer : mLayers)
+        {
+            layer->Render();
+        }
         ///////////////////////////////
         mRenderer->FinishRendering(); /* put it all on the screen! */
     }
@@ -193,6 +226,16 @@ namespace Mochi
     void Engine::AddRenderCommands(const std::vector<Graphics::RenderCommand> &commands)
     {
         mRenderQueue.insert(mRenderQueue.end(), commands.begin(), commands.end());
+    }
+
+    void Engine::PushLayer(Layer *inLayer)
+    {
+        mPushLayerQueue.push_back(inLayer);
+    }
+
+    void Engine::PopLayer(Layer *outLayer)
+    {
+        mPopLayerQueue.push_back(outLayer);
     }
 
     Engine::~Engine()

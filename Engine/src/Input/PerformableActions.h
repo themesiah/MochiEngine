@@ -19,8 +19,8 @@ namespace Mochi::Input
     public:
         PerformableActionKeyboard(const nlohmann::json &json);
         virtual ~PerformableActionKeyboard();
-        virtual bool IsPerformed(std::shared_ptr<InputManager> input) const;
-        virtual float GetValue(std::shared_ptr<InputManager> input) const;
+        virtual bool IsPerformed(InputManager *input) const;
+        virtual float GetValue(InputManager *input) const;
     };
 
     struct PerformableActionMouse : public IPerformableAction
@@ -33,8 +33,8 @@ namespace Mochi::Input
     public:
         PerformableActionMouse(const nlohmann::json &json);
         virtual ~PerformableActionMouse();
-        virtual bool IsPerformed(std::shared_ptr<InputManager> input) const;
-        virtual float GetValue(std::shared_ptr<InputManager> input) const;
+        virtual bool IsPerformed(InputManager *input) const;
+        virtual float GetValue(InputManager *input) const;
     };
     struct PerformableActionMouseAxis : public IPerformableAction
     {
@@ -45,8 +45,8 @@ namespace Mochi::Input
     public:
         PerformableActionMouseAxis(const nlohmann::json &json);
         virtual ~PerformableActionMouseAxis();
-        virtual bool IsPerformed(std::shared_ptr<InputManager> input) const;
-        virtual float GetValue(std::shared_ptr<InputManager> input) const;
+        virtual bool IsPerformed(InputManager *input) const;
+        virtual float GetValue(InputManager *input) const;
     };
     struct PerformableActionGamepad : public IPerformableAction
     {
@@ -58,8 +58,8 @@ namespace Mochi::Input
     public:
         PerformableActionGamepad(const nlohmann::json &json);
         virtual ~PerformableActionGamepad();
-        virtual bool IsPerformed(std::shared_ptr<InputManager> input) const;
-        virtual float GetValue(std::shared_ptr<InputManager> input) const;
+        virtual bool IsPerformed(InputManager *input) const;
+        virtual float GetValue(InputManager *input) const;
     };
     struct PerformableActionGamepadAxis : public IPerformableAction
     {
@@ -71,8 +71,8 @@ namespace Mochi::Input
     public:
         PerformableActionGamepadAxis(const nlohmann::json &json);
         virtual ~PerformableActionGamepadAxis();
-        virtual bool IsPerformed(std::shared_ptr<InputManager> input) const;
-        virtual float GetValue(std::shared_ptr<InputManager> input) const;
+        virtual bool IsPerformed(InputManager *input) const;
+        virtual float GetValue(InputManager *input) const;
     };
 }
 

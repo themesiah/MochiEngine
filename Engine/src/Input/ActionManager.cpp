@@ -15,7 +15,7 @@
 
 namespace Mochi::Input
 {
-    ActionManager::ActionManager(std::shared_ptr<InputManager> inputManager) : mInputManager(inputManager)
+    ActionManager::ActionManager(InputManager *inputManager) : mInputManager(std::unique_ptr<InputManager>(inputManager))
     {
     }
 
@@ -130,7 +130,7 @@ namespace Mochi::Input
         Action action = mActions.at(actionName);
         for (auto performableAction : action.PerformableActions)
         {
-            if (performableAction->IsPerformed(mInputManager))
+            if (performableAction->IsPerformed(mInputManager.get()))
                 return true;
         }
         return false;
@@ -147,7 +147,7 @@ namespace Mochi::Input
         float value = 0.0f;
         for (auto performableAction : action.PerformableActions)
         {
-            value += performableAction->GetValue(mInputManager);
+            value += performableAction->GetValue(mInputManager.get());
         }
         if (Math::Approx(value, 0.0f))
             return 0.0f;

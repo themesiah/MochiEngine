@@ -29,14 +29,14 @@ namespace Mochi::Graphics
         GUIElementId mCurrentId;
         GUIElementId mFocusId;
         std::unique_ptr<TextureFactory> mTextureFactory;
-        std::shared_ptr<Renderer> mRenderer;
-        std::shared_ptr<Input::ActionManager> mActionManager;
+        Renderer *mRenderer;
+        Input::ActionManager *mActionManager;
 
         std::shared_ptr<TTF_Font> mFont;
         GUIElementId GetNextId();
 
     public:
-        GUI(std::shared_ptr<FS::PackCatalog> catalog, std::shared_ptr<Renderer> renderer, std::shared_ptr<Input::ActionManager> actionManager);
+        GUI(std::shared_ptr<FS::PackCatalog> catalog, Renderer *renderer, Input::ActionManager *actionManager);
         ~GUI();
         void ResetFrame();
         bool Button(const char *label, const float &textSize, Rectf dstRect, const std::string &texturePath);

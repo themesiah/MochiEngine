@@ -23,11 +23,11 @@ namespace Mochi::Input
     class ActionManager
     {
     private:
-        std::shared_ptr<InputManager> mInputManager;
+        std::unique_ptr<InputManager> mInputManager;
         std::map<std::string, Action> mActions;
 
     public:
-        ActionManager(std::shared_ptr<InputManager> inputManager);
+        ActionManager(InputManager *inputManager);
         bool LoadActions(std::vector<char>);
         bool LoadActionsFromFile(const std::string &path);
         bool HasAction(const std::string &) const;

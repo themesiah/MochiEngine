@@ -50,7 +50,7 @@ namespace Mochi::Shooter
     {
     }
 
-    void Player::Update(const float &dt, std::shared_ptr<Input::ActionManager> actionManager)
+    void Player::Update(const float &dt, Input::ActionManager *actionManager)
     {
 
         //////////////////////

@@ -5,7 +5,7 @@
 
 namespace Mochi::Input
 {
-    SDLMouseProvider::SDLMouseProvider(std::shared_ptr<Graphics::Renderer> renderer) : mRenderer(renderer)
+    SDLMouseProvider::SDLMouseProvider(Graphics::Renderer *renderer) : mRenderer(renderer)
     {
     }
 

@@ -44,7 +44,7 @@ namespace Mochi::Shooter
 
     bool SpaceShooterEngine::OnUpdate(const float &dt)
     {
-        mPlayer->Update(dt, mActionManager);
+        mPlayer->Update(dt, mActionManager.get());
 
         auto playerBulletPool = mPlayer->GetBulletPool();
         auto enemyShape = mEnemy->GetCollider();
