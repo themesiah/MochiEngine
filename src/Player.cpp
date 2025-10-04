@@ -20,12 +20,12 @@ namespace Mochi::Shooter
     inline const std::string PLAYER_IDLE_ANIM = "Idle";
     inline const std::string PLAYER_DOWN_ANIM = "Down";
     inline const std::string PLAYER_UP_ANIM = "Up";
-    inline constexpr float MOVEMENT_SPEED = 3.0f;
+    inline constexpr float MOVEMENT_SPEED = 15.0f;
     inline constexpr float TILT_SPEED = 10.0f;
     inline constexpr float SHOT_DELAY = 0.05f;
     inline constexpr int MAX_BULLETS = 100;
     inline constexpr float BULLETS_LIFETIME = 1.0f;
-    inline constexpr float BULLETS_SPEED = 15.0f;
+    inline constexpr float BULLETS_SPEED = 48.0f;
 
     Player::Player(
         Graphics::AnimationFactory *animationFactory,
@@ -44,10 +44,17 @@ namespace Mochi::Shooter
 
         auto playerBulletRenderable = std::make_shared<Graphics::SpriteBase>(textureFactory, BULLET_PATH);
         mBulletPool = std::make_shared<PlayerBulletPool>(playerBulletRenderable, MAX_BULLETS, BULLETS_LIFETIME, BULLETS_SPEED);
+        playerBulletRenderable->SetScale(GetScale());
     }
 
     Player::~Player()
     {
+    }
+
+    void Player::SetScale(const float &scale)
+    {
+        Graphics::Spritesheet::SetScale(scale);
+        mBulletPool->GetRenderable()->SetScale(scale);
     }
 
     void Player::Update(const float &dt, Input::ActionManager *actionManager)
@@ -107,9 +114,9 @@ namespace Mochi::Shooter
         mShotTimer += dt;
         if (actionManager->Performed("Shot") && mShotTimer >= mShotDelay)
         {
-            auto pos = GetPosition() + Vector2f(0.5f, 0.0f);
-            mBulletPool->AddBullet(pos + Vector2f(0.0f, 0.1f));
-            mBulletPool->AddBullet(pos + Vector2f(0.0f, -0.1f));
+            auto pos = GetPosition() + Vector2f(1.0f, 0.0f);
+            mBulletPool->AddBullet(pos + Vector2f(0.0f, 0.2f));
+            mBulletPool->AddBullet(pos + Vector2f(0.0f, -0.2f));
             mShotTimer = 0.0f;
         }
         mBulletPool->Update(dt);

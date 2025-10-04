@@ -6,6 +6,7 @@
 #include "GUI/GUI.h"
 #include "Event/EventBus.h"
 #include "ShooterEvents.h"
+#include "Constants.h"
 
 namespace Mochi::Shooter
 {
@@ -50,7 +51,7 @@ namespace Mochi::Shooter
         pointsString = std::string(numberOfZeroes - std::min(numberOfZeroes, pointsString.length()), '0') + pointsString;
         auto multiplierString = std::format("x{}", std::to_string(mMultiplier));
 
-        mGUI->Text(pointsString.c_str(), 10.0f, {260.0f, 0.0f}, {255, 255, 255, 255});
-        mGUI->Text(multiplierString.c_str(), 10.0f, {300.0f, 12.0f}, {255, 255, 255, 255});
+        mGUI->Text(pointsString.c_str(), 20.0f, {CONST_RENDER_LOGICAL_X - 112.0f, 0.0f}, {255, 255, 255, 255});
+        mGUI->Text(multiplierString.c_str(), 20.0f, {CONST_RENDER_LOGICAL_X - 40.0f, 24.0f}, {255, 255, 255, 255});
     }
 }

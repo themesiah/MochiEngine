@@ -6,6 +6,8 @@
 #include <string>
 #include <format>
 
+#include "../Exception.hpp"
+
 namespace Mochi
 {
 
@@ -75,6 +77,15 @@ namespace Mochi
             return *this;
         }
 
+        inline Vector2f &operator/=(const float &rhs)
+        {
+            if (rhs == 0.0f)
+                throw EngineError("Cannot divide a vector by 0");
+            this->x /= rhs;
+            this->y /= rhs;
+            return *this;
+        }
+
         friend Vector2f operator+(Vector2f lhs, const Vector2f &rhs)
         {
             lhs += rhs;
@@ -101,6 +112,14 @@ namespace Mochi
 
         friend Vector2f operator/(Vector2f lhs, const Vector2f &rhs)
         {
+            lhs /= rhs;
+            return lhs;
+        }
+
+        friend Vector2f operator/(Vector2f lhs, const float &rhs)
+        {
+            if (rhs == 0.0f)
+                throw EngineError("Cannot divide a vector by 0");
             lhs /= rhs;
             return lhs;
         }

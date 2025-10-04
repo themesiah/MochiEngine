@@ -4,8 +4,6 @@
 #include <SDL3/SDL.h>
 #include "../Types/Types.hpp"
 
-inline constexpr float CONST_PIXEL_PER_METER = 32.0f;
-
 namespace Mochi::Graphics
 {
     class Camera

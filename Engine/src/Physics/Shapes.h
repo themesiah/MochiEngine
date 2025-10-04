@@ -79,6 +79,7 @@ namespace Mochi::Physics
     private:
     public:
         Rectangle(const Vector2f &position, const Vector2f &extents) : Shape(position), Extents(extents) {}
+        Rectangle(const Rectf &rect) : Shape(rect.GetPosition()), Extents(rect.GetSize() / 2.0f) {}
         virtual ~Rectangle() {}
         virtual std::unique_ptr<Shape> Clone() const override;
         virtual bool IsColliding(const Shape &other) const override;

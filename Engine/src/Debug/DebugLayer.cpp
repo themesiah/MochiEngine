@@ -11,6 +11,9 @@
 #include "../Graphics/Renderer.h"
 #include "../GUI/GUI.h"
 
+#include "../Physics/Shapes.h"
+#include "Gizmos.hpp"
+
 namespace Mochi
 {
     DebugLayer::DebugLayer(Graphics::Renderer *renderer, Graphics::GUI *gui)
@@ -40,6 +43,28 @@ namespace Mochi
 
         SDL_SetRenderScale(mRenderer->GetRenderer(), 1, 1);
         mGUI->Text(CONST_DEVBUILD_TEXT, 8, {0, (float)logicalH - 8}, {255, 255, 255, SDL_ALPHA_OPAQUE});
-        mGUI->Text(std::format("{} fps", (int)(1.0f / Engine::Get().GetLastRealDelta())).c_str(), 8, {0, 0}, {255, 255, 255, SDL_ALPHA_OPAQUE});
+        mGUI->Text(std::format("{} fps", (int)(1.0f / Engine::Get().GetLastRealDelta())).c_str(), 16, {0, 0}, {255, 255, 255, SDL_ALPHA_OPAQUE});
+    }
+
+    void DebugLayer::Debug() const
+    {
+        Engine &e = Engine::Get();
+        auto renderer = e.GetRenderer()->GetRenderer();
+
+        /*int w, h;
+        SDL_RendererLogicalPresentation *pres = nullptr;
+        SDL_GetRenderLogicalPresentation(renderer, &w, &h, pres);
+        SDL_SetRenderDrawColor(renderer, 255, 0, 255, SDL_ALPHA_OPAQUE);
+        SDL_RenderLine(renderer, 0.0f, h / 2, w, h / 2);
+        SDL_RenderLine(renderer, w / 2, 0.0f, w / 2, h);
+
+        Physics::Circle c({-5, -5}, 2);
+        DrawCircle(renderer, &c, {255, 0, 255, 255});
+
+        Physics::Point p({-5, -5});
+        DrawPoint(renderer, &p, {255, 0, 255, 255});
+
+        Physics::Line l({-1, 1}, {1, -1});
+        DrawLine(renderer, &l, {255, 0, 255, 255});*/
     }
 }

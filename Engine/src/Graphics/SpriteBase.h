@@ -31,7 +31,7 @@ namespace Mochi::Graphics
         virtual ~SpriteBase();
         void LoadTexture(TextureFactory *textureFactory, const std::string &filename);
         RenderCommand GetRenderData() const;
-        void SetScale(const float &scale);
+        virtual void SetScale(const float &scale);
         float GetScale() const;
         void SetPosition(const Vector2f &position);
         Vector2f GetPosition() const;

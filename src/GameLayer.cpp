@@ -28,6 +28,10 @@
 
 #include "Enemies/Enemy.h"
 
+#if DEBUG
+#include "Debug/Gizmos.hpp"
+#endif
+
 namespace Mochi::Shooter
 {
     GameLayer::GameLayer(FS::PackCatalog *catalog, Scripting::ScriptingManager *scripting, Graphics::Renderer *renderer, Graphics::Camera *camera, Event::EventBus *eventBus, Graphics::GUI *gui, Input::ActionManager *actionManager)
@@ -42,12 +46,15 @@ namespace Mochi::Shooter
 
         mPlayer = std::make_shared<Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera);
         mPlayer->SetZIndex(ZINDEX_PLAYER);
+        mPlayer->SetPosition({-2.0f, 0.0f});
+        mPlayer->SetScale(2.0f);
 
         mPointsSystem = std::make_unique<PointsSystem>(mEventBus, mGUI);
 
         mEnemy = std::make_shared<Enemy>(mEventBus, mTextureFactory.get());
         mEnemy->SetZIndex(ZINDEX_ENEMY);
-        mEnemy->SetPosition({2.0f, 0.0f});
+        mEnemy->SetPosition({6.0f, 1.0f});
+        mEnemy->SetScale(2.0f);
     }
 
     GameLayer::~GameLayer()
@@ -113,13 +120,19 @@ namespace Mochi::Shooter
         Engine &e = Engine::Get();
         auto renderer = e.GetRenderer()->GetRenderer();
         auto camera = e.GetCamera();
+
         auto enemyCollider = mEnemy->GetCollider();
-        Rectf r(mEnemy->GetPosition(), enemyCollider.Extents);
-        r = camera->WorldToScreen(r);
-        r.SetSize(camera->WorldToScreen(r.GetSize()));
-        SDL_FRect sdl_r = r;
-        SDL_SetRenderDrawColor(renderer, 255, 255, 0, SDL_ALPHA_OPAQUE);
-        SDL_RenderRect(renderer, &sdl_r);
+        DrawRectangle(renderer, &enemyCollider, {255, 255, 0, SDL_ALPHA_OPAQUE});
+
+                auto playerBullets = mPlayer->GetBulletPool();
+        auto bulletPositions = playerBullets->GetPositions();
+        Physics::Rectangle rect({0.0f, 0.0f}, PixelsToMeters(Vector2f{24.0f, 6.0f}));
+
+        for (size_t i = 0; i < bulletPositions.size(); ++i)
+        {
+            rect.Position = bulletPositions[i];
+            DrawRectangle(renderer, &rect, {255, 0, 0, SDL_ALPHA_OPAQUE});
+        }
     }
 #endif
 

@@ -12,6 +12,9 @@ namespace Mochi
 
     inline const std::string CONST_ACTIONS_FILE = "Actions.json";
     inline const std::string CONST_MASTER_BANK = "Audiobanks/Master";
+
+    inline constexpr int CONST_RENDER_LOGICAL_X = 640;
+    inline constexpr int CONST_RENDER_LOGICAL_Y = 360;
 }
 
 #endif

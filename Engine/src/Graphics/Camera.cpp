@@ -1,7 +1,10 @@
 #include "Camera.h"
 
-#include "../Utils/Logger.h"
 #include <format>
+
+#include "../Utils/Logger.h"
+#include "../Constants.h"
+#include "../Utils/Conversion.hpp"
 
 namespace Mochi::Graphics
 {
@@ -50,8 +53,8 @@ namespace Mochi::Graphics
     Rectf Camera::WorldToScreen(const Rectf &dstRect) const
     {
         Rectf newRect = dstRect;
-        newRect.x = (newRect.x - mPosition.x) * CONST_PIXEL_PER_METER - dstRect.w / 2;
-        newRect.y = (-newRect.y + mPosition.y) * CONST_PIXEL_PER_METER - dstRect.h / 2;
+        newRect.x = MetersToPixels(newRect.x - mPosition.x) - dstRect.w / 2;
+        newRect.y = MetersToPixels(-newRect.y + mPosition.y) - dstRect.h / 2;
 
         newRect.x += mLogicalPresentation.x / 2; // Move local size to camera!
         newRect.y += mLogicalPresentation.y / 2;
@@ -63,16 +66,16 @@ namespace Mochi::Graphics
         Rectf newRect = dstRect;
         newRect.x -= mLogicalPresentation.x / 2;
         newRect.y -= mLogicalPresentation.y / 2;
-        newRect.x = (newRect.x + dstRect.w / 2) / CONST_PIXEL_PER_METER + mPosition.x;
-        newRect.y = (newRect.y + dstRect.h / 2) / CONST_PIXEL_PER_METER + mPosition.y;
+        newRect.x = PixelsToMeters(newRect.x + dstRect.w / 2) + mPosition.x;
+        newRect.y = PixelsToMeters(newRect.y + dstRect.h / 2) + mPosition.y;
         return newRect;
     }
 
     Vector2f Camera::WorldToScreen(const Vector2f &position) const
     {
         Vector2f newPos = position;
-        newPos.x = (newPos.x - mPosition.x) * CONST_PIXEL_PER_METER;
-        newPos.y = (-newPos.y + mPosition.y) * CONST_PIXEL_PER_METER;
+        newPos.x = MetersToPixels(newPos.x - mPosition.x);
+        newPos.y = MetersToPixels(-newPos.y + mPosition.y);
 
         newPos.x += mLogicalPresentation.x / 2; // Move local size to camera!
         newPos.y += mLogicalPresentation.y / 2;
@@ -84,8 +87,8 @@ namespace Mochi::Graphics
         Vector2f newPos = position;
         newPos.x -= mLogicalPresentation.x / 2;
         newPos.y -= mLogicalPresentation.y / 2;
-        newPos.x = newPos.x / CONST_PIXEL_PER_METER + mPosition.x;
-        newPos.y = -newPos.y / CONST_PIXEL_PER_METER + mPosition.y;
+        newPos.x = PixelsToMeters(newPos.x) + mPosition.x;
+        newPos.y = PixelsToMeters(-newPos.y) + mPosition.y;
         return newPos;
     }
 

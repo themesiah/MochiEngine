@@ -36,6 +36,7 @@ namespace Mochi::Shooter
         ~Player();
         virtual void Update(const float &dt, Mochi::Input::ActionManager *actionManager);
         std::shared_ptr<PlayerBulletPool> GetBulletPool() const;
+        virtual void SetScale(const float &scale) override;
     };
 }
 

@@ -4,12 +4,13 @@
 #include "Graphics/SpriteBase.h"
 #include "../ZIndexEnum.h"
 #include "Physics/Shapes.h"
+#include "../Utils/Conversion.hpp"
 
 #include <memory>
 
 namespace Mochi::Shooter
 {
-    const Physics::Rectangle SHAPE = Physics::Rectangle({0.0f, 0.0f}, {0.3f, 0.1f});
+    const Physics::Rectangle SHAPE = Physics::Rectangle({0.0f, 0.0f}, PixelsToMeters(Vector2f{24.0f, 6.0f}));
 
     PlayerBulletPool::PlayerBulletPool(std::shared_ptr<Graphics::SpriteBase> sprite, const int &capacity, const float &lifetime, const float &horizontalSpeed)
         : AbstractBulletPool(sprite, capacity, lifetime, SHAPE), mHorizontalSpeed(horizontalSpeed)

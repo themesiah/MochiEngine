@@ -7,6 +7,7 @@
 #include "Camera.h"
 #include "../Types/Types.hpp"
 #include "../Exception.hpp"
+#include "../Constants.h"
 
 namespace Mochi::Graphics
 {
@@ -32,7 +33,7 @@ namespace Mochi::Graphics
         mRenderer.reset(renderer);
         mWindow.reset(window);
 
-        if (!SDL_SetRenderLogicalPresentation(mRenderer.get(), 320, 180, SDL_RendererLogicalPresentation::SDL_LOGICAL_PRESENTATION_INTEGER_SCALE))
+        if (!SDL_SetRenderLogicalPresentation(mRenderer.get(), CONST_RENDER_LOGICAL_X, CONST_RENDER_LOGICAL_Y, SDL_RendererLogicalPresentation::SDL_LOGICAL_PRESENTATION_INTEGER_SCALE))
         {
             throw SystemInitializationError("Graphics", SDL_GetError());
         }

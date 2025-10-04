@@ -40,6 +40,18 @@ namespace Mochi::Shooter
         size_t GetBulletCount() const;
         std::vector<int> CheckAgainst(const Physics::Shape &shape) const;
         void ReleaseBullet(const int &index);
+        Graphics::SpriteBase *GetRenderable() const { return mSprite.get(); }
+
+        std::vector<Vector2f> GetPositions() const
+        {
+            std::vector<Vector2f> positions;
+            for (size_t i = 0; i < mBulletActives.size(); ++i)
+            {
+                if (mBulletActives[i])
+                    positions.push_back(mBulletPositions[i]);
+            }
+            return positions;
+        }
     };
 }
 
