@@ -86,7 +86,7 @@ TEST_CASE("Input::2- Action manager")
     std::shared_ptr<MockKeyboardProvider> mockKeyboard = std::make_shared<MockKeyboardProvider>();
     std::shared_ptr<MockMouseProvider> mockMouse = std::make_shared<MockMouseProvider>();
     std::shared_ptr<MockGamepadProvider> mockGamepad = std::make_shared<MockGamepadProvider>();
-    std::shared_ptr<Mochi::Input::InputManager> inputManager = std::make_shared<Mochi::Input::InputManager>(mockKeyboard, mockMouse, mockGamepad);
+    Mochi::Input::InputManager *inputManager = new Mochi::Input::InputManager(mockKeyboard, mockMouse, mockGamepad);
     memset(mockKeyboard->state, false, sizeof(mockKeyboard->state));
 
     ActionManager actionManager(inputManager);
