@@ -11,6 +11,9 @@ namespace Mochi
         virtual bool Update(const float &dt) = 0;
         virtual void Render() const = 0;
         virtual void GUI() const = 0;
+#if DEBUG
+        virtual void Debug() const {}
+#endif
     };
 }
 

@@ -107,4 +107,20 @@ namespace Mochi::Shooter
         mPointsSystem->Draw();
     }
 
+#if DEBUG
+    void GameLayer::Debug() const
+    {
+        Engine &e = Engine::Get();
+        auto renderer = e.GetRenderer()->GetRenderer();
+        auto camera = e.GetCamera();
+        auto enemyCollider = mEnemy->GetCollider();
+        Rectf r(mEnemy->GetPosition(), enemyCollider.Extents);
+        r = camera->WorldToScreen(r);
+        r.SetSize(camera->WorldToScreen(r.GetSize()));
+        SDL_FRect sdl_r = r;
+        SDL_SetRenderDrawColor(renderer, 255, 255, 0, SDL_ALPHA_OPAQUE);
+        SDL_RenderRect(renderer, &sdl_r);
+    }
+#endif
+
 }

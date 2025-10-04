@@ -277,6 +277,18 @@ namespace Mochi
             return {w, h};
         }
 
+        inline void SetSize(const Vector2f &size)
+        {
+            w = size.x;
+            h = size.y;
+        }
+
+        inline void SetSize(const float &newW, const float &newH)
+        {
+            w = newW;
+            h = newH;
+        }
+
         inline void Scale(const float &scale)
         {
             w *= scale;

@@ -218,6 +218,13 @@ namespace Mochi
         {
             layer->GUI();
         }
+
+#if DEBUG
+        for (const std::unique_ptr<Layer> &layer : mLayers)
+        {
+            layer->Debug();
+        }
+#endif
         ///////////////////////////////
         mRenderer->FinishRendering(); /* put it all on the screen! */
     }
