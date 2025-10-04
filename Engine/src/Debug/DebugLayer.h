@@ -21,6 +21,7 @@ namespace Mochi
         ~DebugLayer();
         virtual bool Update(const float &dt) override;
         virtual void Render() const override;
+        virtual void GUI() const override;
     };
 }
 

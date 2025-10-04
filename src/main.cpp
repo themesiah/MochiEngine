@@ -1,7 +1,9 @@
-#include "SpaceShooterEngine.h"
 #ifdef _MSC_VER
 #include <Windows.h>
 #endif
+
+#include "Engine.h"
+#include "GameLayer.h"
 
 int main()
 {
@@ -9,11 +11,12 @@ int main()
     const char *appVersion = "0.1";
     const char *appId = "com.magicmochi.spaceshooter";
     const char *windowName = "Space Shooter";
-    Mochi::Shooter::SpaceShooterEngine engine(appName, appVersion, appId, windowName);
+    Mochi::Engine engine(appName, appVersion, appId, windowName);
+    Mochi::Shooter::GameLayer *gameLayer = new Mochi::Shooter::GameLayer(engine.GetCatalog(), engine.GetScriptingManager(), engine.GetRenderer(), engine.GetCamera(),
+                                                                         engine.GetEventBus(), engine.GetGUI(), engine.GetActionManager());
+    engine.PushLayer(gameLayer);
 
-    while (engine.Update())
-    {
-    }
+    engine.Run();
 }
 
 #ifdef _MSC_VER

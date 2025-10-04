@@ -15,16 +15,16 @@ namespace Mochi::Graphics
     class Renderer
     {
     private:
-        std::shared_ptr<SDL_Renderer> mRenderer;
-        std::shared_ptr<SDL_Window> mWindow;
+        std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer *)> mRenderer;
+        std::unique_ptr<SDL_Window, void (*)(SDL_Window *)> mWindow;
 
     public:
         Renderer(const char *appName, const char *appVersion, const char *appId, const char *windowName);
         ~Renderer();
-        std::shared_ptr<SDL_Renderer> GetRenderer() const { return mRenderer; }
-        std::shared_ptr<SDL_Window> GetWindow() const { return mWindow; }
+        SDL_Renderer *GetRenderer() const { return mRenderer.get(); }
+        SDL_Window *GetWindow() const { return mWindow.get(); }
         void StartFrameRendering() const;
-        void Render(std::vector<RenderCommand> renderQueue, std::shared_ptr<Camera> camera) const;
+        void Render(std::vector<RenderCommand> renderQueue, Camera *camera) const;
         void FinishRendering() const;
         std::shared_ptr<Camera> CreateCamera() const;
     };

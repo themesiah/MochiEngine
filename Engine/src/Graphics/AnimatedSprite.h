@@ -22,7 +22,7 @@ namespace Mochi::Graphics
         std::string mCurrentAnimation;
 
     public:
-        AnimatedSprite(std::shared_ptr<AnimationFactory>, std::shared_ptr<TextureFactory>, const std::string &animationPath, const std::string &mainAnimation);
+        AnimatedSprite(AnimationFactory *, TextureFactory *, const std::string &animationPath, const std::string &mainAnimation);
         virtual ~AnimatedSprite();
         void UpdateAnimation(const float &dt);
         void PlayAnimation(const std::string &animationName);

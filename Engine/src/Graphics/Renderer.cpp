@@ -11,7 +11,7 @@
 namespace Mochi::Graphics
 {
 
-    Renderer::Renderer(const char *appName, const char *appVersion, const char *appId, const char *windowName)
+    Renderer::Renderer(const char *appName, const char *appVersion, const char *appId, const char *windowName) : mRenderer({nullptr, SDL_DestroyRenderer}), mWindow({nullptr, SDL_DestroyWindow})
     {
         SDL_Renderer *renderer;
         SDL_Window *window;
@@ -29,8 +29,8 @@ namespace Mochi::Graphics
             throw SystemInitializationError("Graphics", SDL_GetError());
         }
 
-        mRenderer = std::shared_ptr<SDL_Renderer>(renderer, SDL_DestroyRenderer);
-        mWindow = std::shared_ptr<SDL_Window>(window, SDL_DestroyWindow);
+        mRenderer.reset(renderer);
+        mWindow.reset(window);
 
         if (!SDL_SetRenderLogicalPresentation(mRenderer.get(), 320, 180, SDL_RendererLogicalPresentation::SDL_LOGICAL_PRESENTATION_INTEGER_SCALE))
         {
@@ -53,7 +53,7 @@ namespace Mochi::Graphics
         SDL_RenderClear(mRenderer.get());
     }
 
-    void Renderer::Render(std::vector<RenderCommand> renderQueue, std::shared_ptr<Camera> camera) const
+    void Renderer::Render(std::vector<RenderCommand> renderQueue, Camera *camera) const
     {
         std::sort(renderQueue.begin(), renderQueue.end(),
                   [](RenderCommand &a, RenderCommand &b)

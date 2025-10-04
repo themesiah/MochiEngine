@@ -54,7 +54,7 @@ namespace Mochi::Graphics
         auto tex = mTextureFactory->GetTexture(texturePath);
 
         SDL_FRect dst = dstRect;
-        SDL_RenderTexture9Grid(mRenderer->GetRenderer().get(), tex.get(), NULL, 10, 10, 10, 10, 0, &dst);
+        SDL_RenderTexture9Grid(mRenderer->GetRenderer(), tex.get(), NULL, 10, 10, 10, 10, 0, &dst);
         GUI::Text(label, textSize, {dstRect.x + dstRect.w / 2 - (textSize * strlen(label) / 4), dstRect.y + dstRect.h / 2 - textSize / 2}, {255, 255, 255, 255});
 
         if (mActionManager->Performed("UISelect"))
@@ -71,20 +71,21 @@ namespace Mochi::Graphics
 
     void GUI::Text(const char *label, const float &textSize, Vector2f position, const SDL_Color &color)
     {
+        auto renderer = mRenderer->GetRenderer();
         SDL_Surface *surface = TTF_RenderText_Solid(mFont.get(), label, 0, color);
         ASSERT(std::format("Surface is null: {}", SDL_GetError()), surface != NULL);
-        SDL_Texture *texture = SDL_CreateTextureFromSurface(mRenderer->GetRenderer().get(), surface);
+        SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
         ASSERT("Texture is null", texture != NULL);
         SDL_SetTextureScaleMode(texture, SDL_ScaleMode::SDL_SCALEMODE_NEAREST); // SUPER IMPORTANT!
 
         SDL_RendererLogicalPresentation *rlp{NULL};
         int logicalW, logicalH;
-        SDL_GetRenderLogicalPresentation(mRenderer->GetRenderer().get(), &logicalW, &logicalH, rlp);
+        SDL_GetRenderLogicalPresentation(renderer, &logicalW, &logicalH, rlp);
 
         float w, h;
         SDL_GetTextureSize(texture, &w, &h);
         SDL_FRect dstRect{position.x, position.y, w / h * textSize, textSize};
-        SDL_RenderTexture(mRenderer->GetRenderer().get(), texture, NULL, &dstRect);
+        SDL_RenderTexture(renderer, texture, NULL, &dstRect);
         SDL_DestroySurface(surface);
         SDL_DestroyTexture(texture);
     }

@@ -9,7 +9,7 @@ namespace Mochi::Shooter
 {
     inline const std::string ENEMY_SPRITE_PATH = "Enemy1.png";
 
-    Enemy::Enemy(Event::EventBus *eventBus, std::shared_ptr<Graphics::TextureFactory> textureFactory)
+    Enemy::Enemy(Event::EventBus *eventBus, Graphics::TextureFactory *textureFactory)
         : Graphics::SpriteBase(textureFactory, ENEMY_SPRITE_PATH), mHealth(10), mPoints(40), mEventBus(eventBus), mCollider({0.0f, 0.0f}, {0.6f, 0.45f})
     {
     }

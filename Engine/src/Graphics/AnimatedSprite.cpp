@@ -17,8 +17,8 @@
 namespace Mochi::Graphics
 {
     AnimatedSprite::AnimatedSprite(
-        std::shared_ptr<AnimationFactory> animationFactory,
-        std::shared_ptr<TextureFactory> textureFactory,
+        AnimationFactory *animationFactory,
+        TextureFactory *textureFactory,
         const std::string &animationPath,
         const std::string &mainAnimation)
         : Spritesheet(animationFactory, textureFactory, animationPath, 0),

@@ -14,7 +14,7 @@
 
 namespace Mochi::Graphics
 {
-    SpriteBase::SpriteBase(std::shared_ptr<TextureFactory> textureFactory, const std::string &filename) : mScale(1.0f), mPosition(0.0f, 0.0f), mZindex(0)
+    SpriteBase::SpriteBase(TextureFactory *textureFactory, const std::string &filename) : mScale(1.0f), mPosition(0.0f, 0.0f), mZindex(0)
     {
         LoadTexture(textureFactory, filename);
     }
@@ -24,7 +24,7 @@ namespace Mochi::Graphics
         mSrcRect.SetPosition({0.0f, 0.0f});
     }
 
-    void SpriteBase::LoadTexture(std::shared_ptr<TextureFactory> textureFactory, const std::string &filename)
+    void SpriteBase::LoadTexture(TextureFactory *textureFactory, const std::string &filename)
     {
         mTexture = textureFactory->GetTexture(filename);
 

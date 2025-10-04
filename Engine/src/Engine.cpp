@@ -113,6 +113,13 @@ namespace Mochi
         }
     }
 
+    void Engine::Run()
+    {
+        while (Update())
+        {
+        }
+    }
+
     bool Engine::Update()
     {
         try
@@ -132,18 +139,13 @@ namespace Mochi
                 mEventBus->Publish<SDL_Event>(event);
             }
 
+            float dt = Time::TimeSystem::GetDeltaTime();
             // Input
-            mActionManager->Update(Time::TimeSystem::GetDeltaTime());
+            mActionManager->Update(dt);
 
             // Audio
             mFmod->Update();
 
-            // USER DEFINED
-            if (!OnUpdate(Time::TimeSystem::GetDeltaTime()))
-            {
-                return 0;
-            }
-            float dt = Time::TimeSystem::GetDeltaTime();
             for (const std::unique_ptr<Layer> &layer : mLayers)
             {
                 layer->Update(dt);
@@ -205,14 +207,16 @@ namespace Mochi
         mRenderer->StartFrameRendering();
         ///////////////////////////////
 
-        mRenderer->Render(mRenderQueue, mCamera);
-        mRenderQueue.clear();
-
-        OnRender();
-
         for (const std::unique_ptr<Layer> &layer : mLayers)
         {
             layer->Render();
+        }
+        mRenderer->Render(mRenderQueue, mCamera.get());
+        mRenderQueue.clear();
+
+        for (const std::unique_ptr<Layer> &layer : mLayers)
+        {
+            layer->GUI();
         }
         ///////////////////////////////
         mRenderer->FinishRendering(); /* put it all on the screen! */

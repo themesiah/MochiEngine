@@ -7,8 +7,8 @@
 namespace Mochi::Graphics
 {
     Spritesheet::Spritesheet(
-        std::shared_ptr<AnimationFactory> animationFactory,
-        std::shared_ptr<TextureFactory> textureFactory,
+        AnimationFactory *animationFactory,
+        TextureFactory *textureFactory,
         const std::string &animationPath,
         const int &startingFrame)
         : SpriteBase()

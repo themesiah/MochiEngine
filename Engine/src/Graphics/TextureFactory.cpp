@@ -12,7 +12,7 @@
 
 namespace Mochi::Graphics
 {
-    TextureFactory::TextureFactory(FS::PackCatalog *catalog, std::shared_ptr<SDL_Renderer> renderer) : mTexturesMap(), mCatalog(catalog), mRenderer(renderer)
+    TextureFactory::TextureFactory(FS::PackCatalog *catalog, SDL_Renderer *renderer) : mTexturesMap(), mCatalog(catalog), mRenderer(renderer)
     {
     }
 
@@ -32,7 +32,7 @@ namespace Mochi::Graphics
         }
 
         auto textureBuffer = mCatalog->GetFile(normalizedPath);
-        auto tex = std::shared_ptr<SDL_Texture>(IMG_LoadTexture_IO(mRenderer.get(), SDL_IOFromConstMem(textureBuffer.data(), textureBuffer.size()), true), SDL_DestroyTexture);
+        auto tex = std::shared_ptr<SDL_Texture>(IMG_LoadTexture_IO(mRenderer, SDL_IOFromConstMem(textureBuffer.data(), textureBuffer.size()), true), SDL_DestroyTexture);
         ASSERT("Failed loading texture from the catalog", tex != nullptr);
         if (tex == nullptr)
             throw EngineError(std::format("Texture {} was not loaded, but was found on the system", texturePath));

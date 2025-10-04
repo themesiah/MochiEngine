@@ -58,9 +58,8 @@ namespace Mochi
         float mLastRealDelta;
 
         void Render();
+        bool Update();
         std::vector<Graphics::RenderCommand> mRenderQueue;
-
-    protected:
         std::vector<std::unique_ptr<Layer>> mLayers;
         std::vector<Layer *> mPopLayerQueue;
         std::vector<Layer *> mPushLayerQueue;
@@ -74,22 +73,19 @@ namespace Mochi
         std::unique_ptr<Graphics::GUI> mGUI;
         std::unique_ptr<Event::EventBus> mEventBus;
         std::unique_ptr<Scripting::ScriptingManager> mScripting;
-        virtual bool OnUpdate(const float &dt) = 0;
-        virtual void OnRender() const = 0;
-
-        void AddRenderCommand(const Graphics::RenderCommand &command);
-        void AddRenderCommands(const std::vector<Graphics::RenderCommand> &commands);
 
     public:
         Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName);
-        bool Update();
         virtual ~Engine();
+        void Run();
 
         static Engine &Get();
         void PushLayer(Layer *layer);
         void PopLayer(Layer *layer);
 
         float GetLastRealDelta() const { return mLastRealDelta; }
+        void AddRenderCommand(const Graphics::RenderCommand &command);
+        void AddRenderCommands(const std::vector<Graphics::RenderCommand> &commands);
 
         // Access subsystems
         Graphics::Renderer *GetRenderer() const { return mRenderer.get(); }

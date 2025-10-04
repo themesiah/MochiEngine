@@ -25,7 +25,7 @@ namespace Mochi::Graphics
         std::shared_ptr<AnimationsData> mAnimationsData;
 
     public:
-        Spritesheet(std::shared_ptr<AnimationFactory> animationFactory, std::shared_ptr<TextureFactory> textureFactory, const std::string &animationPath, const int &startingFrame);
+        Spritesheet(AnimationFactory *animationFactory, TextureFactory *textureFactory, const std::string &animationPath, const int &startingFrame);
         ~Spritesheet();
         void SetFrame(const int &frameIndex);
         int GetFrame() const;

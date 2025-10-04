@@ -26,10 +26,10 @@ namespace Mochi::Graphics
         void SetSrcRect(const Rectf &srcRect);
 
     public:
-        SpriteBase(std::shared_ptr<TextureFactory>, const std::string &filename);
+        SpriteBase(TextureFactory *, const std::string &filename);
         SpriteBase();
         virtual ~SpriteBase();
-        void LoadTexture(std::shared_ptr<TextureFactory> textureFactory, const std::string &filename);
+        void LoadTexture(TextureFactory *textureFactory, const std::string &filename);
         RenderCommand GetRenderData() const;
         void SetScale(const float &scale);
         float GetScale() const;

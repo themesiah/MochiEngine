@@ -28,9 +28,9 @@ namespace Mochi::Shooter
     inline constexpr float BULLETS_SPEED = 15.0f;
 
     Player::Player(
-        std::shared_ptr<Graphics::AnimationFactory> animationFactory,
-        std::shared_ptr<Graphics::TextureFactory> textureFactory,
-        std::shared_ptr<Graphics::Camera> camera)
+        Graphics::AnimationFactory *animationFactory,
+        Graphics::TextureFactory *textureFactory,
+        Graphics::Camera *camera)
         : Graphics::Spritesheet(animationFactory, textureFactory, PLAYER_ANIM_PATH, 0),
           mSpeed(MOVEMENT_SPEED),
           mTilt(0.0f),

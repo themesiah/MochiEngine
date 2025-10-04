@@ -23,16 +23,16 @@ namespace Mochi::Shooter
         float mSpeed;
         float mTilt;
         float mTiltSpeed;
-        std::shared_ptr<Mochi::Graphics::Camera> mCamera;
+        Mochi::Graphics::Camera *mCamera;
         Mochi::Rectf mBounds;
         std::shared_ptr<PlayerBulletPool> mBulletPool;
         float mShotDelay;
         float mShotTimer;
 
     public:
-        Player(std::shared_ptr<Mochi::Graphics::AnimationFactory> animationFactory,
-               std::shared_ptr<Mochi::Graphics::TextureFactory> textureFactory,
-               std::shared_ptr<Mochi::Graphics::Camera> camera);
+        Player(Mochi::Graphics::AnimationFactory *animationFactory,
+               Mochi::Graphics::TextureFactory *textureFactory,
+               Mochi::Graphics::Camera *camera);
         ~Player();
         virtual void Update(const float &dt, Mochi::Input::ActionManager *actionManager);
         std::shared_ptr<PlayerBulletPool> GetBulletPool() const;
