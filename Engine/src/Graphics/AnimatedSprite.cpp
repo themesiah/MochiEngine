@@ -22,6 +22,7 @@ namespace Mochi::Graphics
         const std::string &animationPath,
         const std::string &mainAnimation)
         : Spritesheet(animationFactory, textureFactory, animationPath, 0),
+          mPlaying(true),
           mTimer(0.0f),
           mLoops(0)
     {
@@ -35,6 +36,8 @@ namespace Mochi::Graphics
 
     void AnimatedSprite::UpdateAnimation(const float &dt)
     {
+        if (!mPlaying)
+            return;
         mTimer += dt;
         int currentFrame = GetFrame();
         int lastFrame = currentFrame;
@@ -118,6 +121,12 @@ namespace Mochi::Graphics
             mForward = false;
         }
         mLoops = 0;
+        mPlaying = true;
+    }
+
+    void AnimatedSprite::StopAnimation()
+    {
+        mPlaying = false;
     }
 
     std::string AnimatedSprite::GetCurrentAnimation() const

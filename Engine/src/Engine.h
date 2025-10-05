@@ -67,9 +67,7 @@ namespace Mochi
         std::unique_ptr<Audio::FMODWrapper> mFmod;
         std::unique_ptr<Input::ActionManager> mActionManager;
         std::unique_ptr<FS::PackCatalog> mCatalog;
-        std::shared_ptr<Graphics::TextureFactory> mTextureFactory;
-        std::shared_ptr<Graphics::AnimationFactory> mAnimationFactory;
-        std::shared_ptr<Graphics::Camera> mCamera;
+        std::unique_ptr<Graphics::Camera> mCamera;
         std::unique_ptr<Graphics::GUI> mGUI;
         std::unique_ptr<Event::EventBus> mEventBus;
         std::unique_ptr<Scripting::ScriptingManager> mScripting;

@@ -20,12 +20,14 @@ namespace Mochi::Graphics
         int mLoops;
         bool mForward;
         std::string mCurrentAnimation;
+        bool mPlaying;
 
     public:
         AnimatedSprite(AnimationFactory *, TextureFactory *, const std::string &animationPath, const std::string &mainAnimation);
         virtual ~AnimatedSprite();
-        void UpdateAnimation(const float &dt);
-        void PlayAnimation(const std::string &animationName);
+        virtual void UpdateAnimation(const float &dt);
+        virtual void PlayAnimation(const std::string &animationName);
+        void StopAnimation();
         std::string GetCurrentAnimation() const;
     };
 }

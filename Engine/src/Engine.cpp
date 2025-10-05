@@ -75,12 +75,6 @@ namespace Mochi
             mCamera = mRenderer->CreateCamera();
             LOG_OK("Camera Initialized");
 
-            mTextureFactory = std::make_shared<Graphics::TextureFactory>(mCatalog.get(), mRenderer->GetRenderer());
-            LOG_OK("Main texture factory Initialized");
-
-            mAnimationFactory = std::make_shared<Graphics::AnimationFactory>(mCatalog.get());
-            LOG_OK("Main animation factory Initialized");
-
             mFmod = std::make_unique<Audio::FMODWrapper>(mCatalog.get(), mScripting.get());
             mFmod->LoadBank(CONST_MASTER_BANK);
             LOG_OK("FMOD Initialized");
@@ -115,80 +109,12 @@ namespace Mochi
 
     void Engine::Run()
     {
-        while (Update())
-        {
-        }
-    }
 
-    bool Engine::Update()
-    {
         try
         {
-            auto frameStart = std::chrono::steady_clock::now();
-            // Time
-            Time::TimeSystem::GetInstance().Tick(mLastDeltaTime);
-
-            // SDL Events
-            SDL_Event event;
-            while (SDL_PollEvent(&event))
+            while (Update())
             {
-                if (event.type == SDL_EVENT_QUIT)
-                {
-                    return 0;
-                }
-                mEventBus->Publish<SDL_Event>(event);
             }
-
-            float dt = Time::TimeSystem::GetDeltaTime();
-            // Input
-            mActionManager->Update(dt);
-
-            // Audio
-            mFmod->Update();
-
-            for (const std::unique_ptr<Layer> &layer : mLayers)
-            {
-                layer->Update(dt);
-            }
-
-            Render();
-
-            for (const auto &outLayer : mPopLayerQueue)
-            {
-                mLayers.erase(
-                    std::remove_if(mLayers.begin(), mLayers.end(),
-                                   [&](const std::unique_ptr<Layer> &layer)
-                                   { return layer.get() == outLayer; }),
-                    mLayers.end());
-            }
-            mPopLayerQueue.clear();
-
-            for (const auto &inLayer : mPushLayerQueue)
-            {
-                mLayers.push_back(std::unique_ptr<Layer>(inLayer));
-            }
-            mPushLayerQueue.clear();
-
-            const auto target = std::chrono::nanoseconds(1'000'000'000 / mTargetFPS);
-            auto work = std::chrono::steady_clock::now() - mFrameStart;
-            mLastRealDelta = std::chrono::duration<float>((std::chrono::steady_clock::now() - frameStart)).count();
-
-            if (work < target)
-            {
-                SDL_DelayNS((target - work).count());
-            }
-
-            auto frameEnd = std::chrono::steady_clock::now();
-            auto frameDur = frameEnd - mFrameStart;
-            mFrameStart = frameEnd;
-
-            mLastDeltaTime = std::chrono::duration<float>(frameDur).count();
-
-            ASSERT(std::format("Delta time should not be less than the target, as we waited for it: Last {} target {}", mLastDeltaTime, 1.f / mTargetFPS), mLastDeltaTime >= 1.f / mTargetFPS);
-            if (mLastDeltaTime > 0.25f)
-                mLastDeltaTime = 0.25f; // Cap at 250ms
-
-            return true;
         }
         catch (const EngineError &e)
         {
@@ -200,6 +126,75 @@ namespace Mochi
             LOG_PANIC(e.what());
             exit(-1);
         }
+    }
+
+    bool Engine::Update()
+    {
+        auto frameStart = std::chrono::steady_clock::now();
+        // Time
+        Time::TimeSystem::GetInstance().Tick(mLastDeltaTime);
+
+        // SDL Events
+        SDL_Event event;
+        while (SDL_PollEvent(&event))
+        {
+            if (event.type == SDL_EVENT_QUIT)
+            {
+                return 0;
+            }
+            mEventBus->Publish<SDL_Event>(event);
+        }
+
+        float dt = Time::TimeSystem::GetDeltaTime();
+        // Input
+        mActionManager->Update(dt);
+
+        // Audio
+        mFmod->Update();
+
+        for (const std::unique_ptr<Layer> &layer : mLayers)
+        {
+            layer->Update(dt);
+        }
+
+        Render();
+
+        for (const auto &outLayer : mPopLayerQueue)
+        {
+            mLayers.erase(
+                std::remove_if(mLayers.begin(), mLayers.end(),
+                               [&](const std::unique_ptr<Layer> &layer)
+                               { return layer.get() == outLayer; }),
+                mLayers.end());
+        }
+        mPopLayerQueue.clear();
+
+        for (const auto &inLayer : mPushLayerQueue)
+        {
+            mLayers.push_back(std::unique_ptr<Layer>(inLayer));
+        }
+        mPushLayerQueue.clear();
+
+        const auto target = std::chrono::nanoseconds(1'000'000'000 / mTargetFPS);
+        auto work = std::chrono::steady_clock::now() - mFrameStart;
+        mLastRealDelta = std::chrono::duration<float>((std::chrono::steady_clock::now() - frameStart)).count();
+
+        if (work < target)
+        {
+            SDL_DelayNS((target - work).count());
+        }
+
+        auto frameEnd = std::chrono::steady_clock::now();
+        auto frameDur = frameEnd - mFrameStart;
+        mFrameStart = frameEnd;
+
+        mLastDeltaTime = std::chrono::duration<float>(frameDur).count();
+
+        ASSERT(std::format("Delta time should not be less than the target, as we waited for it: Last {} target {}", mLastDeltaTime, 1.f / mTargetFPS), mLastDeltaTime >= 1.f / mTargetFPS);
+        if (mLastDeltaTime > 0.25f)
+            mLastDeltaTime = 0.25f; // Cap at 250ms
+
+        return true;
     }
 
     void Engine::Render()

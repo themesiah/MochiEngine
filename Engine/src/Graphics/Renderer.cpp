@@ -79,14 +79,14 @@ namespace Mochi::Graphics
         SDL_RenderPresent(mRenderer.get());
     }
 
-    std::shared_ptr<Camera> Renderer::CreateCamera() const
+    std::unique_ptr<Camera> Renderer::CreateCamera() const
     {
         int w, h;
         SDL_RendererLogicalPresentation *rlp = NULL;
         SDL_GetRenderLogicalPresentation(mRenderer.get(), &w, &h, rlp);
         Vector2f pos{0, 0};
         SDL_Point lsize{w, h};
-        return std::make_shared<Camera>(pos, 1, lsize);
+        return std::make_unique<Camera>(pos, 1, lsize);
     }
 
 }

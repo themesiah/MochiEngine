@@ -121,7 +121,7 @@ namespace Mochi::Graphics
         }
         catch (const std::runtime_error &e)
         {
-            throw new EngineError(e.what());
+            throw EngineError(e.what());
         }
     }
 

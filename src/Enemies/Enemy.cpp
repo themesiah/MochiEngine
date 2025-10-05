@@ -19,13 +19,17 @@ namespace Mochi::Shooter
     {
     }
 
-    void Enemy::ReceiveDamage(const int &damage)
+    bool Enemy::ReceiveDamage(const int &damage)
     {
+        if (mHealth <= 0)
+            return false; // Already dead, don't trigger things again. Probably marked for destruction already
         mHealth -= damage;
         if (mHealth <= 0)
         {
             Die();
+            return true;
         }
+        return false;
     }
 
     Physics::Rectangle Enemy::GetCollider() const
@@ -37,7 +41,7 @@ namespace Mochi::Shooter
 
     void Enemy::Die()
     {
-        mEventBus->Publish<EnemyDestroyedEvent>({mPoints});
+        mEventBus->Publish<EnemyDestroyedEvent>({mPoints, this});
     }
 
 }

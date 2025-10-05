@@ -5,6 +5,8 @@
 
 #include <memory>
 
+#include "Event/EventBus.h"
+
 namespace Mochi::FS
 {
     class PackCatalog;
@@ -20,10 +22,7 @@ namespace Mochi::Graphics
     class TextureFactory;
     class AnimationFactory;
     class Renderer;
-}
-namespace Mochi::Event
-{
-    class EventBus;
+    class OneshotAnimation;
 }
 namespace Mochi::Input
 {
@@ -46,10 +45,16 @@ namespace Mochi::Shooter
 
         std::shared_ptr<Player> mPlayer;
         std::unique_ptr<PointsSystem> mPointsSystem;
-        std::shared_ptr<Enemy> mEnemy;
+        std::vector<std::unique_ptr<Enemy>> mEnemies;
+        std::vector<Enemy *> mEnemiesMarkedForDestruction;
+        std::vector<std::unique_ptr<Graphics::OneshotAnimation>> mVFXList;
+        std::vector<Graphics::OneshotAnimation *> mVFXMarkedForDestruction;
 
         std::shared_ptr<Graphics::TextureFactory> mTextureFactory;
         std::shared_ptr<Graphics::AnimationFactory> mAnimationFactory;
+
+        // Subscriptions
+        Event::SubscriptionHandler mEnemyDestroyedSubscription;
 
     public:
         GameLayer(FS::PackCatalog *, Scripting::ScriptingManager *, Graphics::Renderer *, Graphics::Camera *, Event::EventBus *, Graphics::GUI *, Input::ActionManager *);

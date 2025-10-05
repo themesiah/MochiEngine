@@ -10,10 +10,10 @@
 #include "Graphics/SpriteBase.h"
 #include "Graphics/TextureFactory.h"
 #include "Graphics/AnimationFactory.h"
+#include "Graphics/OneshotAnimation.h"
 #include "Graphics/Renderer.h"
 #include "GUI/GUI.h"
 #include "Event/EventBus.h"
-
 #include "Input/ActionManager.h"
 #include "Packer/PackCatalog.h"
 #include "ScriptingManager.h"
@@ -34,8 +34,12 @@
 
 namespace Mochi::Shooter
 {
+    constexpr std::string EXPLOSION_ANIMATION_PATH = "Explosion.json";
+    constexpr std::string EXPLOSION_ANIMATION_MAIN = "Explosion";
+
     GameLayer::GameLayer(FS::PackCatalog *catalog, Scripting::ScriptingManager *scripting, Graphics::Renderer *renderer, Graphics::Camera *camera, Event::EventBus *eventBus, Graphics::GUI *gui, Input::ActionManager *actionManager)
-        : Layer(), mCatalog(catalog), mScripting(scripting), mCamera(camera), mEventBus(eventBus), mGUI(gui), mActionManager(actionManager)
+        : Layer(), mCatalog(catalog), mScripting(scripting), mCamera(camera), mEventBus(eventBus), mGUI(gui), mActionManager(actionManager),
+          mEnemies(), mEnemiesMarkedForDestruction(), mVFXList(), mVFXMarkedForDestruction()
     {
         mCatalog->OpenPack("Data/Game");
 
@@ -51,14 +55,42 @@ namespace Mochi::Shooter
 
         mPointsSystem = std::make_unique<PointsSystem>(mEventBus, mGUI);
 
-        mEnemy = std::make_shared<Enemy>(mEventBus, mTextureFactory.get());
-        mEnemy->SetZIndex(ZINDEX_ENEMY);
-        mEnemy->SetPosition({6.0f, 1.0f});
-        mEnemy->SetScale(2.0f);
+        mEnemies.push_back(std::make_unique<Enemy>(mEventBus, mTextureFactory.get()));
+        mEnemies[0]->SetZIndex(ZINDEX_ENEMY);
+        mEnemies[0]->SetPosition({6.0f, 1.0f});
+        mEnemies[0]->SetScale(2.0f);
+        mEnemies.push_back(std::make_unique<Enemy>(mEventBus, mTextureFactory.get()));
+        mEnemies[1]->SetZIndex(ZINDEX_ENEMY);
+        mEnemies[1]->SetPosition({7.0f, -2.0f});
+        mEnemies[1]->SetScale(2.0f);
+        mEnemies.push_back(std::make_unique<Enemy>(mEventBus, mTextureFactory.get()));
+        mEnemies[2]->SetZIndex(ZINDEX_ENEMY);
+        mEnemies[2]->SetPosition({3.0f, 3.0f});
+        mEnemies[2]->SetScale(2.0f);
+
+        mEnemyDestroyedSubscription = mEventBus->Subscribe<EnemyDestroyedEvent>(
+            [&](const EnemyDestroyedEvent &e)
+            {
+                mEnemiesMarkedForDestruction.push_back(e.Enemy);
+                std::unique_ptr<Graphics::OneshotAnimation> destructionVfx = std::make_unique<Graphics::OneshotAnimation>(
+                    mAnimationFactory.get(),
+                    mTextureFactory.get(),
+                    EXPLOSION_ANIMATION_PATH,
+                    EXPLOSION_ANIMATION_MAIN);
+
+                destructionVfx->SetPosition(e.Enemy->GetPosition());
+                destructionVfx->SetScale(e.Enemy->GetScale() * 2);
+
+                auto ptr = destructionVfx.get();
+                destructionVfx->SetFinishCallback([&, ptr]()
+                                                  { mVFXMarkedForDestruction.push_back(ptr); });
+                mVFXList.push_back(std::move(destructionVfx));
+            });
     }
 
     GameLayer::~GameLayer()
     {
+        mEventBus->Unsubscribe<EnemyDestroyedEvent>(mEnemyDestroyedSubscription);
     }
 
     bool GameLayer::Update(const float &dt)
@@ -66,13 +98,45 @@ namespace Mochi::Shooter
         mPlayer->Update(dt, mActionManager);
 
         auto playerBulletPool = mPlayer->GetBulletPool();
-        auto enemyShape = mEnemy->GetCollider();
-        std::vector<int> collisions = playerBulletPool->CheckAgainst(enemyShape);
-        for (size_t i = 0; i < collisions.size(); ++i)
+
+        for (auto &enemy : mEnemies)
         {
-            playerBulletPool->ReleaseBullet(collisions[i]);
-            mEnemy->ReceiveDamage(1);
+            auto enemyShape = enemy->GetCollider();
+            std::vector<int> collisions = playerBulletPool->CheckAgainst(enemyShape);
+            for (size_t i = 0; i < collisions.size(); ++i)
+            {
+                playerBulletPool->ReleaseBullet(collisions[i]);
+                if (enemy->ReceiveDamage(1))
+                {
+                }
+            }
         }
+
+        for (auto &vfx : mVFXList)
+        {
+            vfx->UpdateAnimation(dt);
+        }
+
+        for (auto &enemyToDestroy : mEnemiesMarkedForDestruction)
+        {
+            mEnemies.erase(
+                std::remove_if(mEnemies.begin(), mEnemies.end(),
+                               [&](const std::unique_ptr<Enemy> &enemy)
+                               { return enemy.get() == enemyToDestroy; }),
+                mEnemies.end());
+        }
+
+        for (auto &vfxToDestroy : mVFXMarkedForDestruction)
+        {
+            mVFXList.erase(
+                std::remove_if(mVFXList.begin(), mVFXList.end(),
+                               [&](const std::unique_ptr<Graphics::OneshotAnimation> &vfx)
+                               { return vfx.get() == vfxToDestroy; }),
+                mVFXList.end());
+        }
+
+        mEnemiesMarkedForDestruction.clear();
+        mVFXMarkedForDestruction.clear();
 
         // mCamera->Move(mActionManager->Value("Horizontal") * dt * 1,
         //               mActionManager->Value("Vertical") * dt * 1);
@@ -106,7 +170,14 @@ namespace Mochi::Shooter
         auto &engine = Engine::Get();
         engine.AddRenderCommand(mPlayer->GetRenderData());
         engine.AddRenderCommands(mPlayer->GetBulletPool()->GetRenderData());
-        engine.AddRenderCommand(mEnemy->GetRenderData());
+        for (auto &enemy : mEnemies)
+        {
+            engine.AddRenderCommand(enemy->GetRenderData());
+        }
+        for (auto &vfx : mVFXList)
+        {
+            engine.AddRenderCommand(vfx->GetRenderData());
+        }
     }
 
     void GameLayer::GUI() const
@@ -121,10 +192,13 @@ namespace Mochi::Shooter
         auto renderer = e.GetRenderer()->GetRenderer();
         auto camera = e.GetCamera();
 
-        auto enemyCollider = mEnemy->GetCollider();
-        DrawRectangle(renderer, &enemyCollider, {255, 255, 0, SDL_ALPHA_OPAQUE});
+        for (auto &enemy : mEnemies)
+        {
+            auto enemyCollider = enemy->GetCollider();
+            DrawRectangle(renderer, &enemyCollider, {255, 255, 0, SDL_ALPHA_OPAQUE});
+        }
 
-                auto playerBullets = mPlayer->GetBulletPool();
+        auto playerBullets = mPlayer->GetBulletPool();
         auto bulletPositions = playerBullets->GetPositions();
         Physics::Rectangle rect({0.0f, 0.0f}, PixelsToMeters(Vector2f{24.0f, 6.0f}));
 
@@ -135,5 +209,4 @@ namespace Mochi::Shooter
         }
     }
 #endif
-
 }

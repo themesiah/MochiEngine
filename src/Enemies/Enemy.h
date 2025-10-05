@@ -26,7 +26,7 @@ namespace Mochi::Shooter
     public:
         Enemy(Event::EventBus *eventBus, Graphics::TextureFactory *textureFactory);
         ~Enemy();
-        void ReceiveDamage(const int &damage);
+        bool ReceiveDamage(const int &damage);
         Physics::Rectangle GetCollider() const;
     };
 }
