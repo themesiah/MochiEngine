@@ -7,6 +7,7 @@ using namespace Mochi;
 
 #include "../Physics/Shapes.h"
 #include "../Utils/Conversion.hpp"
+#include "../Utils/MathUtils.h"
 
 inline void DrawPoint(SDL_Renderer *renderer, const Physics::Point *point, const SDL_Color &color)
 {
@@ -34,12 +35,12 @@ inline void DrawCircle(SDL_Renderer *renderer, const Physics::Circle *circle, co
 
     for (int i = 0; i <= resolution; i++)
     {
-        float theta = (float)i / resolution * 2.0f * M_PI;
+        float theta = (float)i / resolution * 2.0f * F_PI;
         points[i].x = center.x + radius * cosf(theta) + CONST_RENDER_LOGICAL_X / 2;
         points[i].y = center.y - radius * sinf(theta) + CONST_RENDER_LOGICAL_Y / 2;
     }
 
-    SDL_RenderLines(renderer, points.data(), points.size());
+    SDL_RenderLines(renderer, points.data(), (int)points.size());
 }
 
 inline void DrawRectangle(SDL_Renderer *renderer, const Physics::Rectangle *rectangle, const SDL_Color &color)

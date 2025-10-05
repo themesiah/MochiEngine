@@ -59,13 +59,13 @@ namespace Mochi::Audio
         FMOD_Bank_Pair bankPair;
 
         auto bankBuffer = mCatalog->GetFile(std::format("{}.bank", bankName));
-        result = FMOD_Studio_System_LoadBankMemory(mFmodSystem, bankBuffer.data(), bankBuffer.size(), FMOD_STUDIO_LOAD_MEMORY_MODE::FMOD_STUDIO_LOAD_MEMORY, 0, &bankPair.bank);
+        result = FMOD_Studio_System_LoadBankMemory(mFmodSystem, bankBuffer.data(), (int)bankBuffer.size(), FMOD_STUDIO_LOAD_MEMORY_MODE::FMOD_STUDIO_LOAD_MEMORY, 0, &bankPair.bank);
         if (result != FMOD_OK)
         {
             throw ResourceNotFoundError("Audio bank", FMOD_ErrorString(result));
         }
         auto stringsBankBuffer = mCatalog->GetFile(std::format("{}.strings.bank", bankName));
-        result = FMOD_Studio_System_LoadBankMemory(mFmodSystem, stringsBankBuffer.data(), stringsBankBuffer.size(), FMOD_STUDIO_LOAD_MEMORY_MODE::FMOD_STUDIO_LOAD_MEMORY, 0, &bankPair.stringsBank);
+        result = FMOD_Studio_System_LoadBankMemory(mFmodSystem, stringsBankBuffer.data(), (int)stringsBankBuffer.size(), FMOD_STUDIO_LOAD_MEMORY_MODE::FMOD_STUDIO_LOAD_MEMORY, 0, &bankPair.stringsBank);
         if (result != FMOD_OK)
         {
             result = FMOD_Studio_Bank_Unload(bankPair.bank);

@@ -88,7 +88,7 @@ namespace Mochi::Shooter
             {
                 mBulletShape->Position = mBulletPositions[i];
                 if (mBulletShape->IsColliding(shape))
-                    collidedBullets.push_back(i);
+                    collidedBullets.push_back((int)i);
             }
         }
         return collidedBullets;

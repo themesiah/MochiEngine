@@ -34,8 +34,8 @@
 
 namespace Mochi::Shooter
 {
-    constexpr std::string EXPLOSION_ANIMATION_PATH = "Explosion.json";
-    constexpr std::string EXPLOSION_ANIMATION_MAIN = "Explosion";
+    const std::string EXPLOSION_ANIMATION_PATH = "Explosion.json";
+    const std::string EXPLOSION_ANIMATION_MAIN = "Explosion";
 
     GameLayer::GameLayer(FS::PackCatalog *catalog, Scripting::ScriptingManager *scripting, Graphics::Renderer *renderer, Graphics::Camera *camera, Event::EventBus *eventBus, Graphics::GUI *gui, Input::ActionManager *actionManager)
         : Layer(), mCatalog(catalog), mScripting(scripting), mCamera(camera), mEventBus(eventBus), mGUI(gui), mActionManager(actionManager),

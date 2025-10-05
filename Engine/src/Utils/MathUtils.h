@@ -2,6 +2,7 @@
 #define HDEF_MATHUTILS
 
 #define F_EPSILON 0.00001f
+#define F_PI 3.14159265359f
 
 namespace Mochi::Math
 {
