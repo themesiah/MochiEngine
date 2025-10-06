@@ -8,7 +8,7 @@
 
 TEST_CASE("Camera::1- Camera init")
 {
-    Mochi::Graphics::Camera cam((SDL_FPoint){0, 0}, 1, (SDL_Point){1, 1});
+    Mochi::Graphics::Camera cam({0, 0}, 1, {1, 1});
     CHECK(cam.GetPosition().x == 0);
     CHECK(cam.GetPosition().y == 0);
     CHECK(cam.GetZoom() == 1);
@@ -16,7 +16,7 @@ TEST_CASE("Camera::1- Camera init")
 
 TEST_CASE("Camera::2- World and screen")
 {
-    Mochi::Graphics::Camera cam((SDL_FPoint){0, 0}, 1, (SDL_Point){1, 1});
+    Mochi::Graphics::Camera cam({0, 0}, 1, {1, 1});
 
     Mochi::Rectf destRect;
     destRect.x = 0;
@@ -35,7 +35,7 @@ TEST_CASE("Camera::2- World and screen")
 
 TEST_CASE("Camera::3- Is on screen")
 {
-    Mochi::Graphics::Camera cam((SDL_FPoint){0, 0}, 1, (SDL_Point){100, 100});
+    Mochi::Graphics::Camera cam({0, 0}, 1, {100, 100});
     Mochi::Rectf rect1{0, 0, 50, 50};
     Mochi::Rectf rect2{-1, 0, 50, 50};
     Mochi::Rectf rect3{-10, 0, 50, 50};
@@ -57,7 +57,7 @@ TEST_CASE("Camera::3- Is on screen")
 
 TEST_CASE("Camera::4- World and screen (point)")
 {
-    Mochi::Graphics::Camera cam((SDL_FPoint){0, 0}, 1, (SDL_Point){320, 180});
+    Mochi::Graphics::Camera cam({0, 0}, 1, {320, 180});
 
     Mochi::Vector2f pos;
     pos.x = 0;
