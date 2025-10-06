@@ -57,8 +57,6 @@ namespace Mochi
         float mLastDeltaTime;
         float mLastRealDelta;
 
-        void Render();
-        bool Update();
         std::vector<Graphics::RenderCommand> mRenderQueue;
         std::vector<std::unique_ptr<Layer>> mLayers;
         std::vector<Layer *> mPopLayerQueue;
@@ -76,6 +74,8 @@ namespace Mochi
         Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName);
         virtual ~Engine();
         void Run();
+        void Render();
+        bool Update(const float &dt);
 
         static Engine &Get();
         void PushLayer(Layer *layer);

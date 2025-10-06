@@ -109,11 +109,30 @@ namespace Mochi
 
     void Engine::Run()
     {
-
         try
         {
-            while (Update())
+            while (1)
             {
+                auto frameStart = std::chrono::steady_clock::now();
+                if (!Update(mLastDeltaTime))
+                {
+                    break;
+                }
+                Render();
+                const auto target = std::chrono::nanoseconds(1'000'000'000 / mTargetFPS);
+                auto work = std::chrono::steady_clock::now() - mFrameStart;
+                mLastRealDelta = std::chrono::duration<float>((std::chrono::steady_clock::now() - frameStart)).count();
+
+                if (work < target)
+                {
+                    SDL_DelayNS((target - work).count());
+                }
+
+                auto frameEnd = std::chrono::steady_clock::now();
+                auto frameDur = frameEnd - mFrameStart;
+                mFrameStart = frameEnd;
+
+                mLastDeltaTime = std::chrono::duration<float>(frameDur).count();
             }
         }
         catch (const EngineError &e)
@@ -128,12 +147,10 @@ namespace Mochi
         }
     }
 
-    bool Engine::Update()
+    bool Engine::Update(const float &dt)
     {
-        auto frameStart = std::chrono::steady_clock::now();
         // Time
         Time::TimeSystem::GetInstance().Tick(mLastDeltaTime);
-
         // SDL Events
         SDL_Event event;
         while (SDL_PollEvent(&event))
@@ -145,7 +162,6 @@ namespace Mochi
             mEventBus->Publish<SDL_Event>(event);
         }
 
-        float dt = Time::TimeSystem::GetDeltaTime();
         // Input
         mActionManager->Update(dt);
 
@@ -156,8 +172,6 @@ namespace Mochi
         {
             layer->Update(dt);
         }
-
-        Render();
 
         for (const auto &outLayer : mPopLayerQueue)
         {
@@ -174,25 +188,6 @@ namespace Mochi
             mLayers.push_back(std::unique_ptr<Layer>(inLayer));
         }
         mPushLayerQueue.clear();
-
-        const auto target = std::chrono::nanoseconds(1'000'000'000 / mTargetFPS);
-        auto work = std::chrono::steady_clock::now() - mFrameStart;
-        mLastRealDelta = std::chrono::duration<float>((std::chrono::steady_clock::now() - frameStart)).count();
-
-        if (work < target)
-        {
-            SDL_DelayNS((target - work).count());
-        }
-
-        auto frameEnd = std::chrono::steady_clock::now();
-        auto frameDur = frameEnd - mFrameStart;
-        mFrameStart = frameEnd;
-
-        mLastDeltaTime = std::chrono::duration<float>(frameDur).count();
-
-        ASSERT(std::format("Delta time should not be less than the target, as we waited for it: Last {} target {}", mLastDeltaTime, 1.f / mTargetFPS), mLastDeltaTime >= 1.f / mTargetFPS);
-        if (mLastDeltaTime > 0.25f)
-            mLastDeltaTime = 0.25f; // Cap at 250ms
 
         return true;
     }
