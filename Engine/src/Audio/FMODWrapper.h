@@ -1,6 +1,8 @@
 #ifndef HDEF_FMODWRAPPER
 #define HDEF_FMODWRAPPER
 
+#include "IAudioManager.h"
+
 #include <fmod_common.h>
 #include <fmod_studio_common.h>
 #include <vector>
@@ -24,7 +26,7 @@ namespace Mochi::Scripting
 }
 namespace Mochi::Audio
 {
-    class FMODWrapper
+    class FMODWrapper : public IAudioManager
     {
     private:
         struct FMOD_Bank_Pair
@@ -45,22 +47,26 @@ namespace Mochi::Audio
         std::unordered_map<std::string, FMOD_STUDIO_EVENTDESCRIPTION *> mSoundCache;
         std::unordered_map<std::string, FMOD_STUDIO_BUS *> mBusesCache;
 
-    public:
-        FMODWrapper(FS::PackCatalog *, Scripting::ScriptingManager *);
-        ~FMODWrapper();
-        void Update() const;
         void LoadBank(const std::string &bankName);
         void UnloadBank(const std::string &bankName);
-        void PlayBGM(const std::string &eventName);
-        void PauseBGM();
-        void ResumeBGM();
-        void StopBGM();
-        void SkipToTimelinePosition(const int &ms);
-        void PlayOneShot(const std::string &eventName);
+        void SetBusVolume(const std::string &busGroupName, const float &value);
+
+    public:
+        FMODWrapper(FS::PackCatalog *, Scripting::ScriptingManager *);
+        virtual ~FMODWrapper();
+        virtual void Update(const float &dt) override;
+        virtual void LoadAudio(const std::string &path) override { LoadBank(path); }
+        virtual void UnloadAudio(const std::string &path) override { UnloadBank(path); };
+        virtual void PlayBGM(const std::string &eventName) override;
+        virtual void PauseBGM() override;
+        virtual void ResumeBGM() override;
+        virtual void StopBGM() override;
+        virtual void SkipToTimelinePosition(const int &ms) override;
+        virtual void PlayOneShot(const std::string &eventName) override;
         void ClearSoundCache() { mSoundCache.clear(); }
         void ClearBusCache() { mBusesCache.clear(); }
-        void SetParameter(const std::string &parameterName, float value);
-        void SetBusVolume(const std::string &busGroupName, float value);
+        virtual void SetParameter(const std::string &parameterName, const float &value) override;
+        virtual void SetMixerVolume(const std::string &busGroupName, const float &value) override { SetBusVolume(busGroupName, value); };
     };
 }
 

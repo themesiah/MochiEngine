@@ -3,7 +3,7 @@
 #include "../Packer/PackCatalog.h"
 #include "../Graphics/Renderer.h"
 
-#include "../Input/ActionManager.h"
+#include "../Input/IActionManager.h"
 #include "../Input/InputManager.h"
 
 #include "../Constants.h"
@@ -14,7 +14,7 @@
 
 namespace Mochi::Graphics
 {
-    GUI::GUI(FS::PackCatalog *catalog, Renderer *renderer, Input::ActionManager *actionManager)
+    GUI::GUI(FS::PackCatalog *catalog, Renderer *renderer, Input::IActionManager *actionManager)
         : mCurrentId(0), mFocusId(0), mRenderer(renderer), mActionManager(actionManager)
     {
         mTextureFactory = std::make_unique<TextureFactory>(catalog, renderer->GetRenderer());

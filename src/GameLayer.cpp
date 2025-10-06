@@ -17,7 +17,7 @@
 #include "Input/ActionManager.h"
 #include "Packer/PackCatalog.h"
 #include "ScriptingManager.h"
-#include "Audio/FMODWrapper.h"
+#include "Audio/IAudioManager.h"
 
 #include "Bullets/PlayerBulletPool.h"
 #include "Player.h"
@@ -37,15 +37,14 @@ namespace Mochi::Shooter
     const std::string EXPLOSION_ANIMATION_PATH = "Explosion.json";
     const std::string EXPLOSION_ANIMATION_MAIN = "Explosion";
 
-    GameLayer::GameLayer(FS::PackCatalog *catalog, Scripting::ScriptingManager *scripting, Graphics::Renderer *renderer, Graphics::Camera *camera, Event::EventBus *eventBus, Graphics::GUI *gui, Input::ActionManager *actionManager)
-        : Layer(), mCatalog(catalog), mScripting(scripting), mCamera(camera), mEventBus(eventBus), mGUI(gui), mActionManager(actionManager),
-          mEnemies(), mEnemiesMarkedForDestruction(), mVFXList(), mVFXMarkedForDestruction()
+    GameLayer::GameLayer()
+        : Layer(), mEnemies(), mEnemiesMarkedForDestruction(), mVFXList(), mVFXMarkedForDestruction()
     {
         mCatalog->OpenPack("Data/Game");
 
         mScripting->ExecuteFile("Script/FMODCallbackDefinitionAlternative.lua");
 
-        mTextureFactory = std::make_shared<Graphics::TextureFactory>(mCatalog, renderer->GetRenderer());
+        mTextureFactory = std::make_shared<Graphics::TextureFactory>(mCatalog, mRenderer->GetRenderer());
         mAnimationFactory = std::make_shared<Graphics::AnimationFactory>(mCatalog);
 
         mPlayer = std::make_shared<Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera);

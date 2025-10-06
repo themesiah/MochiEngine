@@ -1,6 +1,6 @@
 #include "Player.h"
 
-#include "Input/ActionManager.h"
+#include "Input/IActionManager.h"
 #include "Graphics/AnimatedSprite.h"
 #include "Graphics/AnimationFactory.h"
 #include "Graphics/TextureFactory.h"
@@ -57,7 +57,7 @@ namespace Mochi::Shooter
         mBulletPool->GetRenderable()->SetScale(scale);
     }
 
-    void Player::Update(const float &dt, Input::ActionManager *actionManager)
+    void Player::Update(const float &dt, Input::IActionManager *actionManager)
     {
 
         //////////////////////

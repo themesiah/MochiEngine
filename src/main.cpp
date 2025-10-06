@@ -12,8 +12,7 @@ int main()
     const char *appId = "com.magicmochi.spaceshooter";
     const char *windowName = "Space Shooter";
     Mochi::Engine engine(appName, appVersion, appId, windowName);
-    Mochi::Shooter::GameLayer *gameLayer = new Mochi::Shooter::GameLayer(engine.GetCatalog(), engine.GetScriptingManager(), engine.GetRenderer(), engine.GetCamera(),
-                                                                         engine.GetEventBus(), engine.GetGUI(), engine.GetActionManager());
+    Mochi::Shooter::GameLayer *gameLayer = new Mochi::Shooter::GameLayer();
     engine.PushLayer(gameLayer);
 
     engine.Run();

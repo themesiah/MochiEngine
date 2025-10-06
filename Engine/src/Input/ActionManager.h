@@ -1,6 +1,8 @@
 #ifndef HDEF_ACTIONMANAGER
 #define HDEF_ACTIONMANAGER
 
+#include "IActionManager.h"
+
 #include <string>
 #include <memory>
 #include <map>
@@ -20,7 +22,7 @@ namespace Mochi::Input
     void from_json(const nlohmann::json &j, Action &action);
 
     class InputManager;
-    class ActionManager
+    class ActionManager : public IActionManager
     {
     private:
         std::unique_ptr<InputManager> mInputManager;
@@ -28,13 +30,14 @@ namespace Mochi::Input
 
     public:
         ActionManager(InputManager *inputManager);
-        bool LoadActions(std::vector<char>);
-        bool LoadActionsFromFile(const std::string &path);
-        bool HasAction(const std::string &) const;
-        void Update(const float &delta);
-        bool Performed(const std::string &actionName) const;
-        float Value(const std::string &actionName) const;
-        Vector2f CompoundValue(const std::string &action1, const std::string &action2) const;
+        virtual ~ActionManager();
+        bool LoadActions(std::vector<char>) override;
+        bool LoadActionsFromFile(const std::string &path) override;
+        bool HasAction(const std::string &) const override;
+        void Update(const float &delta) override;
+        bool Performed(const std::string &actionName) const override;
+        float Value(const std::string &actionName) const override;
+        Vector2f CompoundValue(const std::string &action1, const std::string &action2) const override;
     };
 }
 

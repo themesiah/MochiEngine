@@ -8,7 +8,7 @@
 
 namespace Mochi::Input
 {
-    class ActionManager;
+    class IActionManager;
 }
 namespace Mochi::Graphics
 {
@@ -34,7 +34,7 @@ namespace Mochi::Shooter
                Mochi::Graphics::TextureFactory *textureFactory,
                Mochi::Graphics::Camera *camera);
         ~Player();
-        virtual void Update(const float &dt, Mochi::Input::ActionManager *actionManager);
+        virtual void Update(const float &dt, Mochi::Input::IActionManager *actionManager);
         std::shared_ptr<PlayerBulletPool> GetBulletPool() const;
         virtual void SetScale(const float &scale) override;
     };

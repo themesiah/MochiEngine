@@ -34,7 +34,7 @@ namespace Mochi::Audio
         }
     }
 
-    void FMODWrapper::Update() const
+    void FMODWrapper::Update(const float &dt)
     {
         FMOD_RESULT result = FMOD_Studio_System_Update(mFmodSystem);
         if (result != FMOD_OK)
@@ -261,7 +261,7 @@ namespace Mochi::Audio
         }
     }
 
-    void FMODWrapper::SetParameter(const std::string &parameterName, float value)
+    void FMODWrapper::SetParameter(const std::string &parameterName, const float &value)
     {
         FMOD_RESULT result = FMOD_Studio_System_SetParameterByName(mFmodSystem, parameterName.c_str(), value, false);
         if (result != FMOD_OK)
@@ -270,7 +270,7 @@ namespace Mochi::Audio
         }
     }
 
-    void FMODWrapper::SetBusVolume(const std::string &busGroupName, float value)
+    void FMODWrapper::SetBusVolume(const std::string &busGroupName, const float &value)
     {
         FMOD_STUDIO_BUS *bus;
         FMOD_RESULT result;

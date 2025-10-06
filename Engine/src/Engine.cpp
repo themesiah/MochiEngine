@@ -22,6 +22,7 @@
 #include "Input/SDLMouseProvider.h"
 #include "Input/SDLGamepadProvider.h"
 
+#include "Audio/IAudioManager.h"
 #include "Audio/FMODWrapper.h"
 
 #include "Constants.h"
@@ -30,6 +31,7 @@
 #include "Utils/Assert.h"
 
 #include "Event/EventBus.h"
+#include "Event/EngineEvents.h"
 
 #include "ScriptingManager.h"
 #include "Layer.h"
@@ -75,8 +77,8 @@ namespace Mochi
             mCamera = mRenderer->CreateCamera();
             LOG_OK("Camera Initialized");
 
-            mFmod = std::make_unique<Audio::FMODWrapper>(mCatalog.get(), mScripting.get());
-            mFmod->LoadBank(CONST_MASTER_BANK);
+            mAudio = std::make_unique<Audio::FMODWrapper>(mCatalog.get(), mScripting.get());
+            mAudio->LoadAudio(CONST_MASTER_BANK);
             LOG_OK("FMOD Initialized");
 
             mActionManager = std::make_unique<Input::ActionManager>(new Input::InputManager(std::make_unique<Input::SDLKeyboardProvider>(),
@@ -166,7 +168,7 @@ namespace Mochi
         mActionManager->Update(dt);
 
         // Audio
-        mFmod->Update();
+        mAudio->Update(dt);
 
         for (const std::unique_ptr<Layer> &layer : mLayers)
         {
@@ -241,5 +243,23 @@ namespace Mochi
 
     Engine::~Engine()
     {
+    }
+
+    void Engine::SwapAudioManager(std::unique_ptr<Audio::IAudioManager> &&audioManager)
+    {
+        mEventBus->Publish<AudioManagerSwappedEvent>({audioManager.get()});
+        mAudio = std::move(audioManager);
+    }
+
+    void Engine::SwapActionManager(std::unique_ptr<Input::IActionManager> &&actionManager)
+    {
+        mEventBus->Publish<ActionManagerSwappedEvent>({actionManager.get()});
+        mActionManager = std::move(actionManager);
+    }
+
+    void Engine::SwapCamera(std::unique_ptr<Graphics::Camera> &&camera)
+    {
+        mEventBus->Publish<CameraSwappedEvent>({camera.get()});
+        mCamera = std::move(camera);
     }
 }

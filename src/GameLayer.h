@@ -28,6 +28,10 @@ namespace Mochi::Input
 {
     class ActionManager;
 }
+namespace Mochi::Audio
+{
+    class IAudioManager;
+}
 namespace Mochi::Shooter
 {
     class Player;
@@ -36,14 +40,7 @@ namespace Mochi::Shooter
     class GameLayer : public Layer
     {
     private:
-        FS::PackCatalog *mCatalog;
-        Scripting::ScriptingManager *mScripting;
-        Graphics::Camera *mCamera;
-        Event::EventBus *mEventBus;
-        Graphics::GUI *mGUI;
-        Input::ActionManager *mActionManager;
-
-        std::shared_ptr<Player> mPlayer;
+                std::shared_ptr<Player> mPlayer;
         std::unique_ptr<PointsSystem> mPointsSystem;
         std::vector<std::unique_ptr<Enemy>> mEnemies;
         std::vector<Enemy *> mEnemiesMarkedForDestruction;
@@ -57,7 +54,7 @@ namespace Mochi::Shooter
         Event::SubscriptionHandler mEnemyDestroyedSubscription;
 
     public:
-        GameLayer(FS::PackCatalog *, Scripting::ScriptingManager *, Graphics::Renderer *, Graphics::Camera *, Event::EventBus *, Graphics::GUI *, Input::ActionManager *);
+        GameLayer();
         ~GameLayer();
         virtual bool Update(const float &dt) override;
         virtual void Render() const override;

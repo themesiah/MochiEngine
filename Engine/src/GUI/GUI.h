@@ -16,7 +16,7 @@ namespace Mochi::FS
 }
 namespace Mochi::Input
 {
-    class ActionManager;
+    class IActionManager;
 }
 namespace Mochi::Graphics
 {
@@ -30,13 +30,13 @@ namespace Mochi::Graphics
         GUIElementId mFocusId;
         std::unique_ptr<TextureFactory> mTextureFactory;
         Renderer *mRenderer;
-        Input::ActionManager *mActionManager;
+        Input::IActionManager *mActionManager;
 
         std::shared_ptr<TTF_Font> mFont;
         GUIElementId GetNextId();
 
     public:
-        GUI(FS::PackCatalog *catalog, Renderer *renderer, Input::ActionManager *actionManager);
+        GUI(FS::PackCatalog *catalog, Renderer *renderer, Input::IActionManager *actionManager);
         ~GUI();
         void ResetFrame();
         bool Button(const char *label, const float &textSize, Rectf dstRect, const std::string &texturePath);

@@ -19,6 +19,10 @@ namespace Mochi::Input
     {
     }
 
+    ActionManager::~ActionManager()
+    {
+    }
+
     bool ActionManager::LoadActions(std::vector<char> jsonContent)
     {
         try

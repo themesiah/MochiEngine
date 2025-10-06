@@ -30,11 +30,11 @@ namespace Mochi
     }
     namespace Audio
     {
-        class FMODWrapper;
+        class IAudioManager;
     }
     namespace Input
     {
-        class ActionManager;
+        class IActionManager;
     }
     namespace FS
     {
@@ -62,8 +62,8 @@ namespace Mochi
         std::vector<Layer *> mPopLayerQueue;
         std::vector<Layer *> mPushLayerQueue;
         std::unique_ptr<Graphics::Renderer> mRenderer;
-        std::unique_ptr<Audio::FMODWrapper> mFmod;
-        std::unique_ptr<Input::ActionManager> mActionManager;
+        std::unique_ptr<Audio::IAudioManager> mAudio;
+        std::unique_ptr<Input::IActionManager> mActionManager;
         std::unique_ptr<FS::PackCatalog> mCatalog;
         std::unique_ptr<Graphics::Camera> mCamera;
         std::unique_ptr<Graphics::GUI> mGUI;
@@ -87,13 +87,17 @@ namespace Mochi
 
         // Access subsystems
         Graphics::Renderer *GetRenderer() const { return mRenderer.get(); }
-        Audio::FMODWrapper *GetAudio() const { return mFmod.get(); }
-        Input::ActionManager *GetActionManager() const { return mActionManager.get(); }
+        Audio::IAudioManager *GetAudio() const { return mAudio.get(); }
+        Input::IActionManager *GetActionManager() const { return mActionManager.get(); }
         FS::PackCatalog *GetCatalog() const { return mCatalog.get(); }
         Graphics::Camera *GetCamera() const { return mCamera.get(); }
         Graphics::GUI *GetGUI() const { return mGUI.get(); }
         Event::EventBus *GetEventBus() const { return mEventBus.get(); }
         Scripting::ScriptingManager *GetScriptingManager() const { return mScripting.get(); }
+
+        void SwapAudioManager(std::unique_ptr<Audio::IAudioManager> &&);
+        void SwapActionManager(std::unique_ptr<Input::IActionManager> &&);
+        void SwapCamera(std::unique_ptr<Graphics::Camera> &&);
     };
 }
 #endif

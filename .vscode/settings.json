@@ -97,7 +97,8 @@
         "source_location": "cpp",
         "complex": "cpp",
         "future": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "queue": "cpp"
     },
 	"editor.suggest.insertMode": "insert"
 }
