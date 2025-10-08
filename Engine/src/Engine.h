@@ -62,7 +62,6 @@ namespace Mochi
         float mLastRealDelta;
 
         std::vector<Graphics::RenderCommand> mRenderQueue;
-        std::vector<std::unique_ptr<Layer>> mLayers;
         std::vector<Layer *> mPopLayerQueue;
         std::vector<Layer *> mPushLayerQueue;
         std::unique_ptr<Graphics::IRenderer> mRenderer;
@@ -74,6 +73,7 @@ namespace Mochi
         std::unique_ptr<Event::EventBus> mEventBus;
         std::unique_ptr<Scripting::ScriptingManager> mScripting;
         std::unique_ptr<Debug::IGizmos> mGizmos;
+        std::vector<std::unique_ptr<Layer>> mLayers;
 
     public:
         Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName);

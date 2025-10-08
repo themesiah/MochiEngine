@@ -45,17 +45,17 @@
 namespace Mochi
 {
 
-    static std::unique_ptr<Engine> gEngine = nullptr;
+    static Engine *gEngine = nullptr;
 
     Engine &Engine::Get()
     {
-        return *gEngine.get();
+        return *gEngine;
     }
 
     Engine::Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName)
         : mTargetFPS(60), mLastDeltaTime(0.016f), mLastRealDelta(0.0f), mLayers(), mPopLayerQueue(), mPushLayerQueue()
     {
-        gEngine.reset(this);
+        gEngine = this;
         try
         {
 #ifdef DEBUG
@@ -248,6 +248,7 @@ namespace Mochi
 
     Engine::~Engine()
     {
+        gEngine = nullptr;
     }
 
     void Engine::SwapAudioManager(std::unique_ptr<Audio::IAudioManager> &&audioManager)

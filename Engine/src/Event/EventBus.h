@@ -49,7 +49,11 @@ namespace Mochi::Event
         template <typename EventType>
         void Unsubscribe(SubscriptionHandler handler)
         {
-            auto &subscribers = mSubscribersMap[typeid(EventType)];
+            auto it = mSubscribersMap.find(typeid(EventType));
+            if (it == mSubscribersMap.end())
+                return; // There was not an event of that type
+
+            auto &subscribers = it->second;
             auto was = subscribers.size();
             subscribers.erase(
                 std::remove_if(subscribers.begin(), subscribers.end(),
