@@ -8,7 +8,7 @@
 
 namespace Mochi::Graphics
 {
-    class TextureFactory;
+    class AbstractTextureFactory;
 }
 namespace Mochi::Shooter
 {
@@ -24,7 +24,7 @@ namespace Mochi::Shooter
         void Die();
 
     public:
-        Enemy(Event::EventBus *eventBus, Graphics::TextureFactory *textureFactory);
+        Enemy(Event::EventBus *eventBus, Graphics::AbstractTextureFactory *textureFactory);
         ~Enemy();
         bool ReceiveDamage(const int &damage);
         Physics::Rectangle GetCollider() const;

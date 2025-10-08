@@ -6,10 +6,10 @@
 #include "ScriptingManager.h"
 #include "Graphics/Camera.h"
 #include "Event/EventBus.h"
-#include "GUI/GUI.h"
+#include "GUI/AbstractGUI.h"
 #include "Input/IActionManager.h"
 #include "Audio/IAudioManager.h"
-#include "Graphics/Renderer.h"
+#include "Graphics/IRenderer.h"
 
 namespace Mochi
 {
@@ -19,16 +19,17 @@ namespace Mochi
         Event::SubscriptionHandler mAudioSwapHandle;
         Event::SubscriptionHandler mCameraSwapHandle;
         Event::SubscriptionHandler mActionManagerSwapHandle;
+        Event::SubscriptionHandler mRendererSwapHandle;
 
     protected:
         FS::PackCatalog *mCatalog;
         Scripting::ScriptingManager *mScripting;
         Graphics::Camera *mCamera;
         Event::EventBus *mEventBus;
-        Graphics::GUI *mGUI;
+        Graphics::AbstractGUI *mGUI;
         Input::IActionManager *mActionManager;
         Audio::IAudioManager *mAudioManager;
-        Graphics::Renderer *mRenderer;
+        Graphics::IRenderer *mRenderer;
 
     public:
         Layer();

@@ -8,16 +8,17 @@
 
 #include "../Constants.h"
 
-#include "../Graphics/Renderer.h"
-#include "../GUI/GUI.h"
+#include "../Graphics/IRenderer.h"
+#include "../Graphics/SDL/SDLRenderer.h"
+#include "../GUI/AbstractGUI.h"
 
 #include "../Physics/Shapes.h"
 #include "Gizmos.hpp"
 
 namespace Mochi
 {
-    DebugLayer::DebugLayer(Graphics::Renderer *renderer, Graphics::GUI *gui)
-        : Layer(), mRenderer(renderer), mGUI(gui)
+    DebugLayer::DebugLayer()
+        : Layer()
     {
     }
 
@@ -37,19 +38,25 @@ namespace Mochi
     void DebugLayer::GUI() const
     {
         // Dev build message
+        Graphics::SDLRenderer *sdlrenderer = dynamic_cast<Graphics::SDLRenderer *>(mRenderer);
+        if (!sdlrenderer)
+            return;
+
         SDL_RendererLogicalPresentation *rlp{NULL};
         int logicalW, logicalH;
-        SDL_GetRenderLogicalPresentation(mRenderer->GetRenderer(), &logicalW, &logicalH, rlp);
+        SDL_GetRenderLogicalPresentation(sdlrenderer->GetRenderer(), &logicalW, &logicalH, rlp);
 
-        SDL_SetRenderScale(mRenderer->GetRenderer(), 1, 1);
+        SDL_SetRenderScale(sdlrenderer->GetRenderer(), 1, 1);
         mGUI->Text(CONST_DEVBUILD_TEXT, 8, {0, (float)logicalH - 8}, {255, 255, 255, SDL_ALPHA_OPAQUE});
         mGUI->Text(std::format("{} fps", (int)(1.0f / Engine::Get().GetLastRealDelta())).c_str(), 16, {0, 0}, {255, 255, 255, SDL_ALPHA_OPAQUE});
     }
 
     void DebugLayer::Debug() const
     {
-        Engine &e = Engine::Get();
-        auto renderer = e.GetRenderer()->GetRenderer();
+        Graphics::SDLRenderer *sdlrenderer = dynamic_cast<Graphics::SDLRenderer *>(mRenderer);
+        if (!sdlrenderer)
+            return;
+        auto renderer = sdlrenderer->GetRenderer();
 
         /*int w, h;
         SDL_RendererLogicalPresentation *pres = nullptr;

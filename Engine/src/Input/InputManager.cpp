@@ -3,7 +3,6 @@
 #include <iostream>
 #include <SDL3/SDL.h>
 
-#include "../Graphics/Renderer.h" // --> for SDL_RenderCoordinatesFromWindow
 #include "../Event/EventBus.h"
 
 #include "../Utils/Logger.h"

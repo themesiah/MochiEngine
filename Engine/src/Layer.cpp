@@ -27,6 +27,10 @@ namespace Mochi
         mActionManagerSwapHandle = mEventBus->Subscribe<ActionManagerSwappedEvent>(
             [this](const ActionManagerSwappedEvent &ev)
             { mActionManager = ev.newActionManager; });
+
+        mRendererSwapHandle = mEventBus->Subscribe<RendererSwappedEvent>(
+            [this](const RendererSwappedEvent &ev)
+            { mRenderer = ev.newRenderer; });
     }
 
     Layer::~Layer()
@@ -34,5 +38,6 @@ namespace Mochi
         mEventBus->Unsubscribe<AudioManagerSwappedEvent>(mAudioSwapHandle);
         mEventBus->Unsubscribe<CameraSwappedEvent>(mCameraSwapHandle);
         mEventBus->Unsubscribe<ActionManagerSwappedEvent>(mActionManagerSwapHandle);
+        mEventBus->Unsubscribe<RendererSwappedEvent>(mRendererSwapHandle);
     }
 }

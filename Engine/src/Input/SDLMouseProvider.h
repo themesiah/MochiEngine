@@ -6,19 +6,20 @@
 
 namespace Mochi::Graphics
 {
-    class Renderer;
+    class IRenderer;
 }
+struct SDL_Renderer;
 namespace Mochi::Input
 {
     class SDLMouseProvider : public IMouseProvider
     {
     private:
-        Graphics::Renderer *mRenderer;
+        SDL_Renderer *mRenderer;
 
     public:
-        SDLMouseProvider(Graphics::Renderer *renderer);
+        SDLMouseProvider(Graphics::IRenderer *renderer);
         ~SDLMouseProvider();
-        virtual std::array<bool, MouseButton::MouseButtonsCount> GetState(float *x, float *y) const;
+        virtual std::array<bool, MouseButton::MouseButtonsCount> GetState(float *x, float *y) const override;
     };
 }
 

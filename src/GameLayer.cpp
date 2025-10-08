@@ -8,11 +8,12 @@
 
 #include "Graphics/Camera.h"
 #include "Graphics/SpriteBase.h"
-#include "Graphics/TextureFactory.h"
+#include "Graphics/AbstractTextureFactory.h"
 #include "Graphics/AnimationFactory.h"
 #include "Graphics/OneshotAnimation.h"
-#include "Graphics/Renderer.h"
-#include "GUI/GUI.h"
+#include "Graphics/IRenderer.h"
+#include "Graphics/SDL/SDLRenderer.h"
+#include "GUI/AbstractGUI.h"
 #include "Event/EventBus.h"
 #include "Input/ActionManager.h"
 #include "Packer/PackCatalog.h"
@@ -44,7 +45,7 @@ namespace Mochi::Shooter
 
         mScripting->ExecuteFile("Script/FMODCallbackDefinitionAlternative.lua");
 
-        mTextureFactory = std::make_shared<Graphics::TextureFactory>(mCatalog, mRenderer->GetRenderer());
+        mTextureFactory = mRenderer->CreateTextureFactory(mCatalog);
         mAnimationFactory = std::make_shared<Graphics::AnimationFactory>(mCatalog);
 
         mPlayer = std::make_shared<Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera);
@@ -188,7 +189,11 @@ namespace Mochi::Shooter
     void GameLayer::Debug() const
     {
         Engine &e = Engine::Get();
-        auto renderer = e.GetRenderer()->GetRenderer();
+        auto sdlren = dynamic_cast<Graphics::SDLRenderer *>(e.GetRenderer());
+        if (!sdlren)
+            return;
+
+        auto renderer = sdlren->GetRenderer();
         auto camera = e.GetCamera();
 
         for (auto &enemy : mEnemies)

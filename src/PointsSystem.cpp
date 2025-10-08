@@ -3,14 +3,14 @@
 #include <string>
 #include <algorithm>
 
-#include "GUI/GUI.h"
+#include "GUI/AbstractGUI.h"
 #include "Event/EventBus.h"
 #include "ShooterEvents.h"
 #include "Constants.h"
 
 namespace Mochi::Shooter
 {
-    PointsSystem::PointsSystem(Event::EventBus *eventBus, Graphics::GUI *gui)
+    PointsSystem::PointsSystem(Event::EventBus *eventBus, Graphics::AbstractGUI *gui)
         : mPoints(0),
           mMultiplier(1),
           mMaxMultiplier(60),

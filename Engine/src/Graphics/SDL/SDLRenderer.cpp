@@ -1,18 +1,21 @@
-#include "Renderer.h"
+#include "SDLRenderer.h"
 
 #include <SDL3/SDL.h>
 #include <algorithm>
 #include <memory>
 
-#include "Camera.h"
+#include "../Camera.h"
 #include "../Types/Types.hpp"
 #include "../Exception.hpp"
 #include "../Constants.h"
+#include "SDLTexture.h"
+#include "SDLTextureFactory.h"
 
 namespace Mochi::Graphics
 {
 
-    Renderer::Renderer(const char *appName, const char *appVersion, const char *appId, const char *windowName) : mRenderer({nullptr, SDL_DestroyRenderer}), mWindow({nullptr, SDL_DestroyWindow})
+    SDLRenderer::SDLRenderer(const char *appName, const char *appVersion, const char *appId, const char *windowName)
+        : mRenderer({nullptr, SDL_DestroyRenderer}), mWindow({nullptr, SDL_DestroyWindow})
     {
         SDL_Renderer *renderer;
         SDL_Window *window;
@@ -44,17 +47,17 @@ namespace Mochi::Graphics
         // }
     }
 
-    Renderer::~Renderer()
+    SDLRenderer::~SDLRenderer()
     {
     }
 
-    void Renderer::StartFrameRendering() const
+    void SDLRenderer::StartFrameRendering() const
     {
         SDL_SetRenderDrawColor(mRenderer.get(), 154, 192, 193, SDL_ALPHA_OPAQUE);
         SDL_RenderClear(mRenderer.get());
     }
 
-    void Renderer::Render(std::vector<RenderCommand> renderQueue, Camera *camera) const
+    void SDLRenderer::Render(std::vector<RenderCommand> renderQueue, Camera *camera) const
     {
         std::sort(renderQueue.begin(), renderQueue.end(),
                   [](RenderCommand &a, RenderCommand &b)
@@ -70,23 +73,28 @@ namespace Mochi::Graphics
         {
             SDL_FRect dstRect = camera->WorldToScreen(command.destRect);
             SDL_FRect src = command.sourceRect;
-            SDL_RenderTexture(mRenderer.get(), command.texture.get(), &src, &dstRect);
+            SDLTexture *tex = dynamic_cast<SDLTexture *>(command.texture);
+            SDL_RenderTexture(mRenderer.get(), tex->GetTexture(), &src, &dstRect);
         }
     }
 
-    void Renderer::FinishRendering() const
+    void SDLRenderer::FinishRendering() const
     {
         SDL_RenderPresent(mRenderer.get());
     }
 
-    std::unique_ptr<Camera> Renderer::CreateCamera() const
+    std::unique_ptr<Camera> SDLRenderer::CreateCamera() const
     {
         int w, h;
         SDL_RendererLogicalPresentation *rlp = NULL;
         SDL_GetRenderLogicalPresentation(mRenderer.get(), &w, &h, rlp);
         Vector2f pos{0, 0};
         SDL_Point lsize{w, h};
-        return std::make_unique<Camera>(pos, 1, lsize);
+        return std::make_unique<Camera>(pos, 1.0f, lsize);
     }
 
+    std::unique_ptr<AbstractTextureFactory> SDLRenderer::CreateTextureFactory(FS::PackCatalog *catalog)
+    {
+        return std::unique_ptr<AbstractTextureFactory>(new SDLTextureFactory(catalog, mRenderer.get()));
+    }
 }

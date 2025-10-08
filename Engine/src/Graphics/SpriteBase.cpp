@@ -8,13 +8,13 @@
 
 #include "../Utils/Logger.h"
 #include "../Packer/PackCatalog.h"
-#include "TextureFactory.h"
+#include "AbstractTextureFactory.h"
 #include "../Exception.hpp"
 #include "../Utils/Assert.h"
 
 namespace Mochi::Graphics
 {
-    SpriteBase::SpriteBase(TextureFactory *textureFactory, const std::string &filename) : mScale(1.0f), mPosition(0.0f, 0.0f), mZindex(0)
+    SpriteBase::SpriteBase(AbstractTextureFactory *textureFactory, const std::string &filename) : mScale(1.0f), mPosition(0.0f, 0.0f), mZindex(0)
     {
         LoadTexture(textureFactory, filename);
     }
@@ -24,18 +24,16 @@ namespace Mochi::Graphics
         mSrcRect.SetPosition({0.0f, 0.0f});
     }
 
-    void SpriteBase::LoadTexture(TextureFactory *textureFactory, const std::string &filename)
+    void SpriteBase::LoadTexture(AbstractTextureFactory *textureFactory, const std::string &filename)
     {
         mTexture = textureFactory->GetTexture(filename);
 
         ASSERT("Texture data was not loaded", mTexture != nullptr);
 
-        float w, h;
-        SDL_GetTextureSize(mTexture.get(), &w, &h);
-        mSize = Vector2f(w, h);
+        mSize = mTexture->GetSize();
 
-        mSrcRect.w = w;
-        mSrcRect.h = h;
+        mSrcRect.w = mSize.x;
+        mSrcRect.h = mSize.y;
     }
 
     RenderCommand SpriteBase::GetRenderData() const
@@ -43,7 +41,7 @@ namespace Mochi::Graphics
         if (!mTexture)
             throw EngineError("A texture was not initialized");
         RenderCommand rc;
-        rc.texture = mTexture;
+        rc.texture = mTexture.get();
         rc.sourceRect = mSrcRect;
         rc.destRect.SetPosition(mPosition);
         rc.destRect.w = mSize.x * mScale;

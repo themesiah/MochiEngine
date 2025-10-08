@@ -10,11 +10,11 @@
 
 #include "Packer/PackCatalog.h"
 
-#include "Graphics/AnimationFactory.h"
-#include "Graphics/TextureFactory.h"
-#include "Graphics/Renderer.h"
+#include "Graphics/IRenderer.h"
+#include "Graphics/SDL/SDLRenderer.h"
 #include "Graphics/Camera.h"
-#include "GUI/GUI.h"
+#include "GUI/AbstractGUI.h"
+#include "GUI/SDLGUI.h"
 
 #include "Input/InputManager.h"
 #include "Input/ActionManager.h"
@@ -67,7 +67,7 @@ namespace Mochi
             mScripting = std::make_unique<Scripting::ScriptingManager>(mCatalog.get());
             LOG_OK("LUA Initialized");
 
-            mRenderer = std::make_unique<Graphics::Renderer>(appName, appVersion, appId, windowName);
+            mRenderer = std::make_unique<Graphics::SDLRenderer>(appName, appVersion, appId, windowName);
             mRenderQueue.clear();
             LOG_OK("SDL Initialized");
 
@@ -88,13 +88,13 @@ namespace Mochi
             bool success = mActionManager->LoadActions(actionsBuffer);
             LOG_OK("Action manager Initialized");
 
-            mGUI = std::make_unique<Graphics::GUI>(mCatalog.get(), mRenderer.get(), mActionManager.get());
+            mGUI = std::make_unique<Graphics::SDLGUI>(mCatalog.get(), mRenderer.get(), mActionManager.get());
             LOG_OK("GUI Initialized");
 
             mFrameStart = std::chrono::steady_clock::now();
 
 #ifdef DEBUG
-            PushLayer(new DebugLayer(mRenderer.get(), mGUI.get()));
+            PushLayer(new DebugLayer());
 #endif
         }
         catch (const SystemInitializationError &e)
@@ -261,5 +261,11 @@ namespace Mochi
     {
         mEventBus->Publish<CameraSwappedEvent>({camera.get()});
         mCamera = std::move(camera);
+    }
+
+    void Engine::SwapRenderer(std::unique_ptr<Graphics::IRenderer> &&renderer)
+    {
+        mEventBus->Publish<RendererSwappedEvent>({renderer.get()});
+        mRenderer = std::move(renderer);
     }
 }

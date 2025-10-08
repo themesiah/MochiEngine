@@ -7,15 +7,16 @@
 
 #include "../Types/Types.hpp"
 #include "RenderCommand.h"
+#include "ITexture.h"
 
 struct SDL_Texture;
 namespace Mochi::Graphics
 {
-    class TextureFactory;
+    class AbstractTextureFactory;
     class SpriteBase
     {
     private:
-        std::shared_ptr<SDL_Texture> mTexture;
+        std::shared_ptr<ITexture> mTexture;
         Rectf mSrcRect;
         float mScale;
         Vector2f mPosition;
@@ -26,10 +27,10 @@ namespace Mochi::Graphics
         void SetSrcRect(const Rectf &srcRect);
 
     public:
-        SpriteBase(TextureFactory *, const std::string &filename);
+        SpriteBase(AbstractTextureFactory *, const std::string &filename);
         SpriteBase();
         virtual ~SpriteBase();
-        void LoadTexture(TextureFactory *textureFactory, const std::string &filename);
+        void LoadTexture(AbstractTextureFactory *textureFactory, const std::string &filename);
         RenderCommand GetRenderData() const;
         virtual void SetScale(const float &scale);
         float GetScale() const;

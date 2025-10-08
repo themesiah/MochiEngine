@@ -5,7 +5,7 @@
 
 namespace Mochi::Graphics
 {
-    class GUI;
+    class AbstractGUI;
 }
 namespace Mochi::Shooter
 {
@@ -16,7 +16,7 @@ namespace Mochi::Shooter
         unsigned int mMultiplier;
         unsigned int mMaxMultiplier;
         Event::EventBus *mEventBus;
-        Graphics::GUI *mGUI;
+        Graphics::AbstractGUI *mGUI;
 
         Event::SubscriptionHandler mDeadEnemyHandler;
         Event::SubscriptionHandler mPlayerDamageHandler;
@@ -24,7 +24,7 @@ namespace Mochi::Shooter
         void OnEnemyDestroyed(unsigned int points);
 
     public:
-        PointsSystem(Event::EventBus *eventBus, Graphics::GUI *gui);
+        PointsSystem(Event::EventBus *eventBus, Graphics::AbstractGUI *gui);
         ~PointsSystem();
         void Draw() const;
     };

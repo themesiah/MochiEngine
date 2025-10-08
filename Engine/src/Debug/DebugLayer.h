@@ -12,12 +12,8 @@ namespace Mochi
 {
     class DebugLayer : public Layer
     {
-    private:
-        Graphics::Renderer *mRenderer;
-        Graphics::GUI *mGUI;
-
     public:
-        DebugLayer(Graphics::Renderer *renderer, Graphics::GUI *gui);
+        DebugLayer();
         ~DebugLayer();
         virtual bool Update(const float &dt) override;
         virtual void Render() const override;

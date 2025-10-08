@@ -3,7 +3,7 @@
 #include "Input/IActionManager.h"
 #include "Graphics/AnimatedSprite.h"
 #include "Graphics/AnimationFactory.h"
-#include "Graphics/TextureFactory.h"
+#include "Graphics/AbstractTextureFactory.h"
 #include "Graphics/Camera.h"
 #include "Graphics/SpriteBase.h"
 
@@ -29,7 +29,7 @@ namespace Mochi::Shooter
 
     Player::Player(
         Graphics::AnimationFactory *animationFactory,
-        Graphics::TextureFactory *textureFactory,
+        Graphics::AbstractTextureFactory *textureFactory,
         Graphics::Camera *camera)
         : Graphics::Spritesheet(animationFactory, textureFactory, PLAYER_ANIM_PATH, 0),
           mSpeed(MOVEMENT_SPEED),

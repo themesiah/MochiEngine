@@ -8,6 +8,7 @@ namespace Mochi::Audio
 namespace Mochi::Graphics
 {
     class Camera;
+    class Renderer;
 }
 namespace Mochi::Input
 {
@@ -28,6 +29,11 @@ namespace Mochi
     struct ActionManagerSwappedEvent
     {
         Input::IActionManager *newActionManager;
+    };
+
+    struct RendererSwappedEvent
+    {
+        Graphics::IRenderer *newRenderer;
     };
 }
 

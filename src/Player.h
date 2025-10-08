@@ -13,6 +13,8 @@ namespace Mochi::Input
 namespace Mochi::Graphics
 {
     class Camera;
+    class AbstractTextureFactory;
+    class AnimationFactory;
 }
 namespace Mochi::Shooter
 {
@@ -31,7 +33,7 @@ namespace Mochi::Shooter
 
     public:
         Player(Mochi::Graphics::AnimationFactory *animationFactory,
-               Mochi::Graphics::TextureFactory *textureFactory,
+               Mochi::Graphics::AbstractTextureFactory *textureFactory,
                Mochi::Graphics::Camera *camera);
         ~Player();
         virtual void Update(const float &dt, Mochi::Input::IActionManager *actionManager);

@@ -2,13 +2,15 @@
 #define HDEF_RENDERCOMMAND
 
 #include <memory>
+
 #include "../Types/Types.hpp"
+#include "ITexture.h"
 
 namespace Mochi::Graphics
 {
     struct RenderCommand
     {
-        std::shared_ptr<SDL_Texture> texture;
+        ITexture *texture;
         Rectf sourceRect;
         Rectf destRect;
         unsigned int zindex;

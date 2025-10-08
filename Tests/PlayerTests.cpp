@@ -6,7 +6,7 @@
 
 #include "Packer/PackCatalog.h"
 #include "Graphics/AnimationFactory.h"
-#include "Graphics/TextureFactory.h"
+#include "Graphics/AbstractTextureFactory.h"
 #include "../src/Player.h"
 
 using namespace Mochi;

@@ -1,7 +1,7 @@
 #include "Enemy.h"
 
 #include "Graphics/SpriteBase.h"
-#include "Graphics/TextureFactory.h"
+#include "Graphics/AbstractTextureFactory.h"
 
 #include "../ShooterEvents.h"
 #include "../Utils/Conversion.hpp"
@@ -10,7 +10,7 @@ namespace Mochi::Shooter
 {
     inline const std::string ENEMY_SPRITE_PATH = "Enemy1.png";
 
-    Enemy::Enemy(Event::EventBus *eventBus, Graphics::TextureFactory *textureFactory)
+    Enemy::Enemy(Event::EventBus *eventBus, Graphics::AbstractTextureFactory *textureFactory)
         : Graphics::SpriteBase(textureFactory, ENEMY_SPRITE_PATH), mHealth(10), mPoints(40), mEventBus(eventBus), mCollider(PixelsToMeters(Rectf({0.0f, 0.0f}, {32.0f, 32.0f})))
     {
     }

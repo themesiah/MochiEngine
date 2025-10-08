@@ -9,7 +9,7 @@
 #include "../Packer/PackCatalog.h"
 #include "../Utils/Assert.h"
 #include "../Utils/Logger.h"
-#include "TextureFactory.h"
+#include "AbstractTextureFactory.h"
 #include "AnimationFactory.h"
 
 #include "../Input/ActionManager.h"
@@ -18,7 +18,7 @@ namespace Mochi::Graphics
 {
     AnimatedSprite::AnimatedSprite(
         AnimationFactory *animationFactory,
-        TextureFactory *textureFactory,
+        AbstractTextureFactory *textureFactory,
         const std::string &animationPath,
         const std::string &mainAnimation)
         : Spritesheet(animationFactory, textureFactory, animationPath, 0),

@@ -13,7 +13,7 @@ struct SDL_Texture;
 namespace Mochi::Graphics
 {
     struct AnimationsData;
-    class TextureFactory;
+    class AbstractTextureFactory;
     class AnimationFactory;
     class Spritesheet : public SpriteBase
     {
@@ -25,7 +25,7 @@ namespace Mochi::Graphics
         std::shared_ptr<AnimationsData> mAnimationsData;
 
     public:
-        Spritesheet(AnimationFactory *animationFactory, TextureFactory *textureFactory, const std::string &animationPath, const int &startingFrame);
+        Spritesheet(AnimationFactory *animationFactory, AbstractTextureFactory *textureFactory, const std::string &animationPath, const int &startingFrame);
         ~Spritesheet();
         void SetFrame(const int &frameIndex);
         int GetFrame() const;

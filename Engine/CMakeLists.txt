@@ -2,6 +2,7 @@ project(MochiEngine)
 # Get all .cpp files
 file(GLOB Engine_src CONFIGURE_DEPENDS
         "src/Graphics/*.cpp"
+        "src/Graphics/SDL/*.cpp"
         "src/Audio/*.cpp"
         "src/Input/*.cpp"
         "src/Utils/*.cpp"
