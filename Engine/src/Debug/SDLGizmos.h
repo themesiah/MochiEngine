@@ -7,6 +7,10 @@ namespace Mochi::Graphics
 {
     class SDLRenderer;
 }
+namespace Mochi
+{
+    struct Color;
+}
 namespace Mochi::Debug
 {
     class SDLGizmos : public IGizmos
@@ -17,10 +21,10 @@ namespace Mochi::Debug
         SDLGizmos(Graphics::SDLRenderer *renderer);
 
     public:
-        virtual void DrawRectangle(const Physics::Rectangle *rectangle, const SDL_Color &color) const override;
-        virtual void DrawCircle(const Physics::Circle *circle, const SDL_Color &color) const override;
-        virtual void DrawLine(const Physics::Line *line, const SDL_Color &color) const override;
-        virtual void DrawPoint(const Physics::Point *point, const SDL_Color &color) const override;
+        virtual void DrawRectangle(const Physics::Rectangle *rectangle, const Color &color) const override;
+        virtual void DrawCircle(const Physics::Circle *circle, const Color &color) const override;
+        virtual void DrawLine(const Physics::Line *line, const Color &color) const override;
+        virtual void DrawPoint(const Physics::Point *point, const Color &color) const override;
     };
 }
 

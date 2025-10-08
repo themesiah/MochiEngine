@@ -68,7 +68,7 @@ namespace Mochi::Graphics
         return false;
     }
 
-    void SDLGUI::Text(const char *label, const float &textSize, Vector2f position, const SDL_Color &color)
+    void SDLGUI::Text(const char *label, const float &textSize, Vector2f position, const Color &color)
     {
         auto *ren = dynamic_cast<SDLRenderer *>(mRenderer);
         auto renderer = ren->GetRenderer();

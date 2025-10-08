@@ -1,10 +1,13 @@
 #include "IGizmos.h"
 
+#include "../Physics/Shapes.h"
+#include "../Types/Types.hpp"
+
 namespace Mochi::Debug
 {
     IGizmos::~IGizmos() {}
 
-    void IGizmos::DrawShape(const Physics::Shape &shape, const SDL_Color &color) const
+    void IGizmos::DrawShape(const Physics::Shape &shape, const Color &color) const
     {
         if (auto p = dynamic_cast<const Physics::Point *>(&shape))
         {

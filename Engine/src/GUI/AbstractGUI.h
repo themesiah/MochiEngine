@@ -7,7 +7,10 @@
 #include "../Types/Types.hpp"
 // #include "../Graphics/AbstractTextureFactory.h"
 
-struct SDL_Color;
+namespace Mochi
+{
+    struct Color;
+}
 namespace Mochi::FS
 {
     class PackCatalog;
@@ -40,7 +43,7 @@ namespace Mochi::Graphics
 
         // UI Elements
         virtual bool Button(const char *label, const float &textSize, Rectf dstRect, const std::string &texturePath) = 0;
-        virtual void Text(const char *label, const float &textSize, Vector2f position, const SDL_Color &color) = 0;
+        virtual void Text(const char *label, const float &textSize, Vector2f position, const Color &color) = 0;
     };
 }
 

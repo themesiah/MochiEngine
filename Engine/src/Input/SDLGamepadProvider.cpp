@@ -4,35 +4,36 @@
 
 #include "../Utils/Logger.h"
 #include "../Exception.hpp"
+#include "../Event/EngineEvents.h"
 
 namespace Mochi::Input
 {
-    SDLGamepadProvider::SDLGamepadProvider(Event::EventBus *eventBus) : mEventBus(eventBus), mSDLEventSubscriptionHandler(0)
+    SDLGamepadProvider::SDLGamepadProvider(Event::EventBus *eventBus) : mEventBus(eventBus)
     {
-        mSDLEventSubscriptionHandler = mEventBus->Subscribe<SDL_Event>([&](const SDL_Event &e)
-                                                                       {
-            if (e.type == SDL_EVENT_GAMEPAD_ADDED)
+        mGamepadAddedHandler = mEventBus->Subscribe<GamepadAddedEvent>(
+            [&](const GamepadAddedEvent &e)
             {
-                LOG_INFO(std::format("Gamepad with id {} added", e.gdevice.which));
-                auto gamepad = SDL_OpenGamepad(e.gdevice.which);
+                LOG_INFO(std::format("Gamepad with id {} added", e.GamepadID));
+                auto gamepad = SDL_OpenGamepad(e.GamepadID);
                 mGamepads.push_back(std::shared_ptr<SDL_Gamepad>(gamepad, SDL_CloseGamepad));
-            } else if (e.type == SDL_EVENT_GAMEPAD_REMOVED)
+            });
+
+        mGamepadRemovedHandler = mEventBus->Subscribe<GamepadRemovedEvent>(
+            [&](const GamepadRemovedEvent &e)
             {
-                LOG_INFO(std::format("Gamepad with id {} removed", e.gdevice.which));
+                LOG_INFO(std::format("Gamepad with id {} removed", e.GamepadID));
                 mGamepads.erase(
                     std::remove_if(mGamepads.begin(), mGamepads.end(),
-                        [&](std::shared_ptr<SDL_Gamepad> gamepad){ return SDL_GetGamepadID(gamepad.get()) == e.gdevice.which; }),
-                    mGamepads.end()
-                );
-        } });
+                                   [&](std::shared_ptr<SDL_Gamepad> gamepad)
+                                   { return SDL_GetGamepadID(gamepad.get()) == e.GamepadID; }),
+                    mGamepads.end());
+            });
     }
 
     SDLGamepadProvider::~SDLGamepadProvider()
     {
-        if (mSDLEventSubscriptionHandler != 0)
-        {
-            mEventBus->Unsubscribe<SDL_Event>(mSDLEventSubscriptionHandler);
-        }
+        mEventBus->Unsubscribe<SDL_Event>(mGamepadAddedHandler);
+        mEventBus->Unsubscribe<SDL_Event>(mGamepadRemovedHandler);
     }
 
     GamepadData SDLGamepadProvider::GetData(const unsigned int &player) const

@@ -1,7 +1,6 @@
 #ifndef HDEF_CAMERA
 #define HDEF_CAMERA
 
-#include <SDL3/SDL.h>
 #include "../Types/Types.hpp"
 
 namespace Mochi::Graphics
@@ -11,10 +10,10 @@ namespace Mochi::Graphics
     private:
         Vector2f mPosition;
         float mZoom;
-        SDL_Point mLogicalPresentation;
+        Vector2f mLogicalPresentation;
 
     public:
-        Camera(Vector2f startingPosition, float startingZoom, SDL_Point logicalPresentation);
+        Camera(Vector2f startingPosition, float startingZoom, Vector2f logicalPresentation);
         ~Camera();
         void SetPosition(const float &x, const float &y);
         void SetPosition(const Vector2f &point);

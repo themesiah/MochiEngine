@@ -1,11 +1,9 @@
 #include "Engine.h"
 
-#include <SDL3/SDL.h>
-#include <SDL3/SDL_events.h>
-#include <SDL3_ttf/SDL_ttf.h>
 #include <iostream>
 #include <filesystem>
 #include <chrono>
+#include <thread>
 #include <format>
 
 #include "Packer/PackCatalog.h"
@@ -32,6 +30,8 @@
 
 #include "Event/EventBus.h"
 #include "Event/EngineEvents.h"
+#include "Event/ISystemEventDispatcher.h"
+#include "Event/SDLSystemEventDispatcher.h"
 
 #include "Debug/IGizmos.h"
 
@@ -53,7 +53,7 @@ namespace Mochi
     }
 
     Engine::Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName)
-        : mTargetFPS(60), mLastDeltaTime(0.016f), mLastRealDelta(0.0f), mLayers(), mPopLayerQueue(), mPushLayerQueue()
+        : mTargetFPS(60), mLastDeltaTime(0.016f), mLastRealDelta(0.0f), mIsRunning(false), mLayers(), mPopLayerQueue(), mPushLayerQueue()
     {
         gEngine = this;
         try
@@ -96,6 +96,12 @@ namespace Mochi
             mGizmos = mRenderer->CreateGizmos();
             LOG_OK("Gizmos Initialized");
 
+            mEventDispatcher = std::make_unique<Event::SDLSystemEventDispatcher>(mEventBus.get());
+
+            mAppQuitHandler = mEventBus->Subscribe<ApplicationQuitEvent>(
+                [&](const ApplicationQuitEvent &e)
+                { mIsRunning = false; });
+
             mFrameStart = std::chrono::steady_clock::now();
 
 #ifdef DEBUG
@@ -114,8 +120,24 @@ namespace Mochi
         }
     }
 
+    void Engine::PreciseDelay(std::chrono::nanoseconds ns) const
+    {
+        auto start = std::chrono::high_resolution_clock::now();
+        auto end = start + ns;
+
+        // Sleep most of the time
+        if (ns > std::chrono::milliseconds(2))
+            std::this_thread::sleep_for(ns - std::chrono::milliseconds(2));
+
+        // Busy-wait the remainder
+        while (std::chrono::high_resolution_clock::now() < end)
+        {
+        }
+    }
+
     void Engine::Run()
     {
+        mIsRunning = true;
         try
         {
             while (1)
@@ -132,7 +154,7 @@ namespace Mochi
 
                 if (work < target)
                 {
-                    SDL_DelayNS((target - work).count());
+                    PreciseDelay(target - work);
                 }
 
                 auto frameEnd = std::chrono::steady_clock::now();
@@ -158,16 +180,9 @@ namespace Mochi
     {
         // Time
         Time::TimeSystem::GetInstance().Tick(mLastDeltaTime);
-        // SDL Events
-        SDL_Event event;
-        while (SDL_PollEvent(&event))
-        {
-            if (event.type == SDL_EVENT_QUIT)
-            {
-                return false;
-            }
-            mEventBus->Publish<SDL_Event>(event);
-        }
+
+        // System Events
+        mEventDispatcher->PollEvents();
 
         // Input
         mActionManager->Update(dt);
@@ -196,7 +211,7 @@ namespace Mochi
         }
         mPushLayerQueue.clear();
 
-        return true;
+        return mIsRunning;
     }
 
     void Engine::Render()
@@ -248,6 +263,7 @@ namespace Mochi
 
     Engine::~Engine()
     {
+        mEventBus->Unsubscribe<ApplicationQuitEvent>(mAppQuitHandler);
         gEngine = nullptr;
     }
 

@@ -21,6 +21,19 @@ namespace Mochi::Input
 }
 namespace Mochi
 {
+    struct ApplicationQuitEvent
+    {
+    };
+
+    struct GamepadAddedEvent
+    {
+        unsigned int GamepadID;
+    };
+    struct GamepadRemovedEvent
+    {
+        unsigned int GamepadID;
+    };
+
     struct AudioManagerSwappedEvent
     {
         Audio::IAudioManager *newManager;

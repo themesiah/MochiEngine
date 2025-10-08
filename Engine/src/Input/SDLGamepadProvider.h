@@ -15,7 +15,8 @@ namespace Mochi::Input
     {
     private:
         Event::EventBus *mEventBus;
-        Event::SubscriptionHandler mSDLEventSubscriptionHandler;
+        Event::SubscriptionHandler mGamepadAddedHandler;
+        Event::SubscriptionHandler mGamepadRemovedHandler;
         std::vector<std::shared_ptr<SDL_Gamepad>> mGamepads;
 
     public:

@@ -8,6 +8,7 @@ file(GLOB Engine_src CONFIGURE_DEPENDS
         "src/Utils/*.cpp"
         "src/Time/*.cpp"
         "src/Event/EventBus.h"
+        "src/Event/*.cpp"
         "src/GUI/*.cpp"
         "src/Types/Types.hpp"
         "src/Physics/*.cpp"

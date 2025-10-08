@@ -22,7 +22,7 @@ namespace Mochi::Graphics
     public:
         virtual ~SDLGUI();
         virtual bool Button(const char *label, const float &textSize, Rectf dstRect, const std::string &texturePath) override;
-        virtual void Text(const char *label, const float &textSize, Vector2f position, const SDL_Color &color) override;
+        virtual void Text(const char *label, const float &textSize, Vector2f position, const Color &color) override;
     };
 }
 

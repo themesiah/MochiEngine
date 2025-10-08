@@ -2,7 +2,6 @@
 #include "../Engine.h"
 
 #include <format>
-#include "SDL3/SDL.h"
 
 #include "../Utils/Logger.h"
 

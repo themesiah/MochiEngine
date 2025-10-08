@@ -1,7 +1,6 @@
 #include "InputManager.h"
 
 #include <iostream>
-#include <SDL3/SDL.h>
 
 #include "../Event/EventBus.h"
 

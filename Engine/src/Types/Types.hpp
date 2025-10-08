@@ -319,6 +319,44 @@ namespace Mochi
             return w > 0 && h > 0;
         }
     };
+
+    struct Color
+    {
+        unsigned int r;
+        unsigned int g;
+        unsigned int b;
+        unsigned int a;
+
+        Color(unsigned int _r, unsigned int _g, unsigned int _b, unsigned int _a) : r(_r), g(_g), b(_b), a(_a) {}
+        Color(const Color &c) : r(c.r), g(c.g), b(c.b), a(c.a) {}
+        Color(Color &&c) : r(c.r), g(c.g), b(c.b), a(c.a) {}
+
+        // SDL_Color conversion
+        Color(const SDL_Color &c) : r(c.r), g(c.g), b(c.b), a(c.a) {}
+        inline operator SDL_Color() const { return SDL_Color(r, g, b, a); }
+
+        // Overloaded operators
+        inline Color &operator=(const Color &other)
+        {
+            if (this == &other)
+                return *this;
+
+            r = other.r;
+            g = other.g;
+            b = other.b;
+            a = other.a;
+            return *this;
+        }
+
+        inline Color &operator=(const SDL_Color &other)
+        {
+            r = other.r;
+            g = other.g;
+            b = other.b;
+            a = other.a;
+            return *this;
+        }
+    };
 }
 
 #endif

@@ -93,7 +93,7 @@ namespace Mochi::Graphics
         SDL_RendererLogicalPresentation *rlp = NULL;
         SDL_GetRenderLogicalPresentation(mRenderer.get(), &w, &h, rlp);
         Vector2f pos{0, 0};
-        SDL_Point lsize{w, h};
+        Vector2f lsize{static_cast<float>(w), static_cast<float>(h)};
         return std::make_unique<Camera>(pos, 1.0f, lsize);
     }
 

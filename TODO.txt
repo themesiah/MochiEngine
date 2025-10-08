@@ -2,9 +2,9 @@ TODO IMPORTANT
 x SDLRenderer / RenderCommand --> Use ITexture doing a dynamic_cast<SDLTexture>
 x TextureFactory --> Rename to SDLTextureFactory and return an SDLTexture. Add "GetTextureFactory" to IRenderer interface and create specific factories.
 x Make GUI not use SDL_Renderer but IRenderer instead, or create SDLGUIRenderer.
-x- Gizmos per renderer (o igizmos renderer or whatever?)
+x Gizmos per renderer (o igizmos renderer or whatever?)
 - Remove references to SDL_Point (the int one, for logical presentation) and SDL_Color (create my own color)
-- SDL Events to IEventDispatcher
+x SDL Events to IEventDispatcher
 
 
 x Perfect project separation (treat non Space Shooter specifics as the "Game Engine")

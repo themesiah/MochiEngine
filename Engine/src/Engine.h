@@ -4,12 +4,11 @@
 #include <memory>
 #include <vector>
 #include <unordered_map>
-#include <SDL3/SDL_events.h>
-#include <SDL3/SDL.h>
 #include <chrono>
 #include <sol/sol.hpp>
 
 #include "Time/TimeSystem.h"
+#include "Event/EventBus.h"
 
 struct TTF_Font;
 struct TTF_TextEngine;
@@ -42,7 +41,7 @@ namespace Mochi
     }
     namespace Event
     {
-        class EventBus;
+        class ISystemEventDispatcher;
     }
     namespace Scripting
     {
@@ -60,10 +59,13 @@ namespace Mochi
         std::chrono::steady_clock::time_point mFrameStart;
         float mLastDeltaTime;
         float mLastRealDelta;
+        bool mIsRunning;
+        Event::SubscriptionHandler mAppQuitHandler;
 
         std::vector<Graphics::RenderCommand> mRenderQueue;
         std::vector<Layer *> mPopLayerQueue;
         std::vector<Layer *> mPushLayerQueue;
+        std::unique_ptr<Event::ISystemEventDispatcher> mEventDispatcher;
         std::unique_ptr<Graphics::IRenderer> mRenderer;
         std::unique_ptr<Audio::IAudioManager> mAudio;
         std::unique_ptr<Input::IActionManager> mActionManager;
@@ -74,6 +76,8 @@ namespace Mochi
         std::unique_ptr<Scripting::ScriptingManager> mScripting;
         std::unique_ptr<Debug::IGizmos> mGizmos;
         std::vector<std::unique_ptr<Layer>> mLayers;
+
+        void PreciseDelay(std::chrono::nanoseconds ns) const;
 
     public:
         Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName);

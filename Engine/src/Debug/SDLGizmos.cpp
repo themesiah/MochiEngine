@@ -6,6 +6,7 @@
 #include "../Physics/Shapes.h"
 #include "../Utils/Conversion.hpp"
 #include "../Utils/MathUtils.h"
+#include "../Types/Types.hpp"
 
 namespace Mochi::Debug
 {
@@ -13,7 +14,7 @@ namespace Mochi::Debug
     {
     }
 
-    void SDLGizmos::DrawRectangle(const Physics::Rectangle *rectangle, const SDL_Color &color) const
+    void SDLGizmos::DrawRectangle(const Physics::Rectangle *rectangle, const Color &color) const
     {
         SDL_BlendMode lastBlendMode;
         SDL_GetRenderDrawBlendMode(mRenderer->GetRenderer(), &lastBlendMode);
@@ -28,7 +29,7 @@ namespace Mochi::Debug
         SDL_SetRenderDrawBlendMode(mRenderer->GetRenderer(), lastBlendMode);
     }
 
-    void SDLGizmos::DrawCircle(const Physics::Circle *circle, const SDL_Color &color) const
+    void SDLGizmos::DrawCircle(const Physics::Circle *circle, const Color &color) const
     {
         SDL_BlendMode lastBlendMode;
         SDL_GetRenderDrawBlendMode(mRenderer->GetRenderer(), &lastBlendMode);
@@ -51,7 +52,7 @@ namespace Mochi::Debug
         SDL_SetRenderDrawBlendMode(mRenderer->GetRenderer(), lastBlendMode);
     }
 
-    void SDLGizmos::DrawLine(const Physics::Line *line, const SDL_Color &color) const
+    void SDLGizmos::DrawLine(const Physics::Line *line, const Color &color) const
     {
         SDL_BlendMode lastBlendMode;
         SDL_GetRenderDrawBlendMode(mRenderer->GetRenderer(), &lastBlendMode);
@@ -63,7 +64,7 @@ namespace Mochi::Debug
         SDL_SetRenderDrawBlendMode(mRenderer->GetRenderer(), lastBlendMode);
     }
 
-    void SDLGizmos::DrawPoint(const Physics::Point *point, const SDL_Color &color) const
+    void SDLGizmos::DrawPoint(const Physics::Point *point, const Color &color) const
     {
         SDL_BlendMode lastBlendMode;
         SDL_GetRenderDrawBlendMode(mRenderer->GetRenderer(), &lastBlendMode);
