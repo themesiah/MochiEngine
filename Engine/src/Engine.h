@@ -78,11 +78,14 @@ namespace Mochi
         std::vector<std::unique_ptr<Layer>> mLayers;
 
         void PreciseDelay(std::chrono::nanoseconds ns) const;
+        void MinimalSetup();
 
     public:
+        Engine();
         Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName);
         virtual ~Engine();
         void Run();
+        void Setup(std::unique_ptr<Graphics::IRenderer> &&renderer, std::unique_ptr<Input::IActionManager> &&actionManager, std::unique_ptr<Audio::IAudioManager> &&audioManager);
         void Render();
         bool Update(const float &dt);
 

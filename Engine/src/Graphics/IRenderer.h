@@ -31,7 +31,6 @@ namespace Mochi::Graphics
         virtual void StartFrameRendering() const = 0;
         virtual void Render(std::vector<RenderCommand> renderQueue, Camera *camera) const = 0;
         virtual void FinishRendering() const = 0;
-        virtual std::unique_ptr<Camera> CreateCamera() const = 0;
         virtual std::unique_ptr<AbstractTextureFactory> CreateTextureFactory(FS::PackCatalog *) const = 0;
         virtual std::unique_ptr<AbstractGUI> CreateGUI(FS::PackCatalog *catalog, Input::IActionManager *actionManager) = 0;
         virtual std::unique_ptr<Debug::IGizmos> CreateGizmos() = 0;

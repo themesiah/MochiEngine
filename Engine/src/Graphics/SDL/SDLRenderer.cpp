@@ -87,16 +87,6 @@ namespace Mochi::Graphics
         SDL_RenderPresent(mRenderer.get());
     }
 
-    std::unique_ptr<Camera> SDLRenderer::CreateCamera() const
-    {
-        int w, h;
-        SDL_RendererLogicalPresentation *rlp = NULL;
-        SDL_GetRenderLogicalPresentation(mRenderer.get(), &w, &h, rlp);
-        Vector2f pos{0, 0};
-        Vector2f lsize{static_cast<float>(w), static_cast<float>(h)};
-        return std::make_unique<Camera>(pos, 1.0f, lsize);
-    }
-
     std::unique_ptr<AbstractTextureFactory> SDLRenderer::CreateTextureFactory(FS::PackCatalog *catalog) const
     {
         return std::unique_ptr<SDLTextureFactory>(new SDLTextureFactory(catalog, mRenderer.get()));

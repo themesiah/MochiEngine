@@ -52,32 +52,23 @@ namespace Mochi
         return *gEngine;
     }
 
+    Engine::Engine() : mTargetFPS(60), mLastDeltaTime(0.016f), mLastRealDelta(0.0f), mIsRunning(false), mLayers(), mPopLayerQueue(), mPushLayerQueue()
+    {
+        gEngine = this;
+        MinimalSetup();
+    }
+
     Engine::Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName)
         : mTargetFPS(60), mLastDeltaTime(0.016f), mLastRealDelta(0.0f), mIsRunning(false), mLayers(), mPopLayerQueue(), mPushLayerQueue()
     {
         gEngine = this;
         try
         {
-#ifdef DEBUG
-            mCatalog = std::make_unique<FS::PackCatalog>(FS::PackCatalog::FileLoaderType::FileSystem);
-#else
-            mCatalog = std::make_unique<FS::PackCatalog>(FS::PackCatalog::FileLoaderType::Packfile);
-#endif
-            mCatalog->OpenPack("Data/Core");
-            LOG_OK("Catalog Initialized");
-
-            mScripting = std::make_unique<Scripting::ScriptingManager>(mCatalog.get());
-            LOG_OK("LUA Initialized");
+            MinimalSetup();
 
             mRenderer = std::make_unique<Graphics::SDLRenderer>(appName, appVersion, appId, windowName);
             mRenderQueue.clear();
-            LOG_OK("SDL Initialized");
-
-            mEventBus = std::make_unique<Event::EventBus>();
-            LOG_OK("Event bus Initialized");
-
-            mCamera = mRenderer->CreateCamera();
-            LOG_OK("Camera Initialized");
+            LOG_OK("Renderer Initialized");
 
             mAudio = std::make_unique<Audio::FMODWrapper>(mCatalog.get(), mScripting.get());
             mAudio->LoadAudio(CONST_MASTER_BANK);
@@ -96,14 +87,6 @@ namespace Mochi
             mGizmos = mRenderer->CreateGizmos();
             LOG_OK("Gizmos Initialized");
 
-            mEventDispatcher = std::make_unique<Event::SDLSystemEventDispatcher>(mEventBus.get());
-
-            mAppQuitHandler = mEventBus->Subscribe<ApplicationQuitEvent>(
-                [&](const ApplicationQuitEvent &e)
-                { mIsRunning = false; });
-
-            mFrameStart = std::chrono::steady_clock::now();
-
 #ifdef DEBUG
             PushLayer(new DebugLayer());
 #endif
@@ -118,6 +101,61 @@ namespace Mochi
             LOG_PANIC(e.what());
             exit(-1);
         }
+    }
+
+    void Engine::MinimalSetup()
+    {
+        try
+        {
+#ifdef DEBUG
+            mCatalog = std::make_unique<FS::PackCatalog>(FS::PackCatalog::FileLoaderType::FileSystem);
+#else
+            mCatalog = std::make_unique<FS::PackCatalog>(FS::PackCatalog::FileLoaderType::Packfile);
+#endif
+            mCatalog->OpenPack("Data/Core");
+            LOG_OK("Catalog Initialized");
+
+            mScripting = std::make_unique<Scripting::ScriptingManager>(mCatalog.get());
+            LOG_OK("LUA Initialized");
+
+            mEventBus = std::make_unique<Event::EventBus>();
+            LOG_OK("Event bus Initialized");
+
+            mCamera = std::make_unique<Graphics::Camera>(Vector2f(0.0f, 0.0f), 1.0f, Vector2f(static_cast<float>(CONST_RENDER_LOGICAL_X), static_cast<float>(CONST_RENDER_LOGICAL_Y)));
+            LOG_OK("Camera Initialized");
+
+            mEventDispatcher = std::make_unique<Event::SDLSystemEventDispatcher>(mEventBus.get());
+            LOG_OK("Event dispatcher Initialized");
+
+            mAppQuitHandler = mEventBus->Subscribe<ApplicationQuitEvent>(
+                [&](const ApplicationQuitEvent &e)
+                { mIsRunning = false; });
+        }
+        catch (const SystemInitializationError &e)
+        {
+            LOG_ERROR(e.what());
+            exit(-1);
+        }
+        catch (const EngineError &e)
+        {
+            LOG_PANIC(e.what());
+            exit(-1);
+        }
+    }
+
+    void Engine::Setup(std::unique_ptr<Graphics::IRenderer> &&renderer,
+                       std::unique_ptr<Input::IActionManager> &&actionManager,
+                       std::unique_ptr<Audio::IAudioManager> &&audioManager)
+    {
+        mRenderer = std::move(renderer);
+        mGUI = mRenderer->CreateGUI(mCatalog.get(), mActionManager.get());
+        mGizmos = mRenderer->CreateGizmos();
+        mActionManager = std::move(actionManager);
+        mAudio = std::move(audioManager);
+
+#ifdef DEBUG
+        PushLayer(new DebugLayer());
+#endif
     }
 
     void Engine::PreciseDelay(std::chrono::nanoseconds ns) const
