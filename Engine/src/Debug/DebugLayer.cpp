@@ -14,6 +14,7 @@
 
 #include "../Physics/Shapes.h"
 #include "IGizmos.h"
+#include "../Utils/Conversion.hpp"
 
 namespace Mochi
 {
@@ -53,12 +54,9 @@ namespace Mochi
 
     void DebugLayer::Debug() const
     {
-        float w = static_cast<float>(CONST_RENDER_LOGICAL_X);
-        float h = static_cast<float>(CONST_RENDER_LOGICAL_Y);
-
-        Physics::Line l({0.0f, h / 2.0f}, {w, h / 2.0f});
-        mGizmos->DrawLine(&l, {255, 0, 255, 128});
-        Physics::Line l2({w / 22.0f, 0.0f}, {w / 22.0f, h});
-        mGizmos->DrawLine(&l2, {255, 0, 255, 128});
+        Physics::Line l({0.0f, -100.0f}, {0.0f, 100.0f});
+        mGizmos->DrawLine(&l, {255, 0, 255, 50});
+        Physics::Line l2({-100.0f, 0.0f}, {100.0f, 0.0f});
+        mGizmos->DrawLine(&l2, {255, 0, 255, 50});
     }
 }
