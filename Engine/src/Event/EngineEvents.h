@@ -8,7 +8,12 @@ namespace Mochi::Audio
 namespace Mochi::Graphics
 {
     class Camera;
-    class Renderer;
+    class IRenderer;
+    class AbstractGUI;
+}
+namespace Mochi::Debug
+{
+    class IGizmos;
 }
 namespace Mochi::Input
 {
@@ -34,6 +39,8 @@ namespace Mochi
     struct RendererSwappedEvent
     {
         Graphics::IRenderer *newRenderer;
+        Graphics::AbstractGUI *newGui;
+        Debug::IGizmos *newGizmos;
     };
 }
 

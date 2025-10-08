@@ -1,0 +1,21 @@
+#ifndef HDEF_IGIZMOS
+#define HDEF_IGIZMOS
+
+#include "../Physics/Shapes.h"
+
+struct SDL_Color;
+namespace Mochi::Debug
+{
+    class IGizmos
+    {
+    public:
+        virtual ~IGizmos();
+        void DrawShape(const Physics::Shape &shape, const SDL_Color &color) const;
+        virtual void DrawRectangle(const Physics::Rectangle *rectangle, const SDL_Color &color) const = 0;
+        virtual void DrawCircle(const Physics::Circle *circle, const SDL_Color &color) const = 0;
+        virtual void DrawLine(const Physics::Line *line, const SDL_Color &color) const = 0;
+        virtual void DrawPoint(const Physics::Point *point, const SDL_Color &color) const = 0;
+    };
+}
+
+#endif

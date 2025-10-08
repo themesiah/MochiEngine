@@ -19,6 +19,7 @@
 #include "Packer/PackCatalog.h"
 #include "ScriptingManager.h"
 #include "Audio/IAudioManager.h"
+#include "Utils/Conversion.hpp"
 
 #include "Bullets/PlayerBulletPool.h"
 #include "Player.h"
@@ -30,7 +31,7 @@
 #include "Enemies/Enemy.h"
 
 #if DEBUG
-#include "Debug/Gizmos.hpp"
+#include "Debug/IGizmos.h"
 #endif
 
 namespace Mochi::Shooter
@@ -189,17 +190,12 @@ namespace Mochi::Shooter
     void GameLayer::Debug() const
     {
         Engine &e = Engine::Get();
-        auto sdlren = dynamic_cast<Graphics::SDLRenderer *>(e.GetRenderer());
-        if (!sdlren)
-            return;
-
-        auto renderer = sdlren->GetRenderer();
         auto camera = e.GetCamera();
 
         for (auto &enemy : mEnemies)
         {
             auto enemyCollider = enemy->GetCollider();
-            DrawRectangle(renderer, &enemyCollider, {255, 255, 0, SDL_ALPHA_OPAQUE});
+            mGizmos->DrawRectangle(&enemyCollider, {255, 255, 0, 255});
         }
 
         auto playerBullets = mPlayer->GetBulletPool();
@@ -209,7 +205,7 @@ namespace Mochi::Shooter
         for (size_t i = 0; i < bulletPositions.size(); ++i)
         {
             rect.Position = bulletPositions[i];
-            DrawRectangle(renderer, &rect, {255, 0, 0, SDL_ALPHA_OPAQUE});
+            mGizmos->DrawRectangle(&rect, {255, 0, 0, 255});
         }
     }
 #endif

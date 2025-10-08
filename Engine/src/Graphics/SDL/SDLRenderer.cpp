@@ -4,12 +4,16 @@
 #include <algorithm>
 #include <memory>
 
+#include "../IRenderer.h"
 #include "../Camera.h"
 #include "../Types/Types.hpp"
 #include "../Exception.hpp"
 #include "../Constants.h"
 #include "SDLTexture.h"
 #include "SDLTextureFactory.h"
+#include "../../Debug/SDLGizmos.h"
+#include "../../GUI/SDLGUI.h"
+#include "../../Input/IActionManager.h"
 
 namespace Mochi::Graphics
 {
@@ -93,8 +97,18 @@ namespace Mochi::Graphics
         return std::make_unique<Camera>(pos, 1.0f, lsize);
     }
 
-    std::unique_ptr<AbstractTextureFactory> SDLRenderer::CreateTextureFactory(FS::PackCatalog *catalog)
+    std::unique_ptr<AbstractTextureFactory> SDLRenderer::CreateTextureFactory(FS::PackCatalog *catalog) const
     {
-        return std::unique_ptr<AbstractTextureFactory>(new SDLTextureFactory(catalog, mRenderer.get()));
+        return std::unique_ptr<SDLTextureFactory>(new SDLTextureFactory(catalog, mRenderer.get()));
+    }
+
+    std::unique_ptr<AbstractGUI> SDLRenderer::CreateGUI(FS::PackCatalog *catalog, Input::IActionManager *actionManager)
+    {
+        return std::unique_ptr<SDLGUI>(new SDLGUI(catalog, this, actionManager));
+    }
+
+    std::unique_ptr<Debug::IGizmos> SDLRenderer::CreateGizmos()
+    {
+        return std::unique_ptr<Debug::SDLGizmos>(new Debug::SDLGizmos(this));
     }
 }

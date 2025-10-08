@@ -12,6 +12,10 @@ namespace Mochi::FS
 {
     class PackCatalog;
 }
+namespace Mochi::Debug
+{
+    class IGizmos;
+}
 struct SDL_Renderer;
 struct SDL_Window;
 
@@ -34,7 +38,9 @@ namespace Mochi::Graphics
         virtual void Render(std::vector<RenderCommand> renderQueue, Camera *camera) const override;
         virtual void FinishRendering() const override;
         virtual std::unique_ptr<Camera> CreateCamera() const override;
-        virtual std::unique_ptr<AbstractTextureFactory> CreateTextureFactory(FS::PackCatalog *catalog);
+        virtual std::unique_ptr<AbstractTextureFactory> CreateTextureFactory(FS::PackCatalog *catalog) const;
+        virtual std::unique_ptr<AbstractGUI> CreateGUI(FS::PackCatalog *catalog, Input::IActionManager *actionManager);
+        virtual std::unique_ptr<Debug::IGizmos> CreateGizmos();
     };
 }
 

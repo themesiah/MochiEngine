@@ -48,6 +48,10 @@ namespace Mochi
     {
         class ScriptingManager;
     }
+    namespace Debug
+    {
+        class IGizmos;
+    }
     class Layer;
     class Engine
     {
@@ -69,6 +73,7 @@ namespace Mochi
         std::unique_ptr<Graphics::AbstractGUI> mGUI;
         std::unique_ptr<Event::EventBus> mEventBus;
         std::unique_ptr<Scripting::ScriptingManager> mScripting;
+        std::unique_ptr<Debug::IGizmos> mGizmos;
 
     public:
         Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName);
@@ -94,6 +99,7 @@ namespace Mochi
         Graphics::AbstractGUI *GetGUI() const { return mGUI.get(); }
         Event::EventBus *GetEventBus() const { return mEventBus.get(); }
         Scripting::ScriptingManager *GetScriptingManager() const { return mScripting.get(); }
+        Debug::IGizmos *GetGizmos() const { return mGizmos.get(); }
 
         void SwapAudioManager(std::unique_ptr<Audio::IAudioManager> &&);
         void SwapActionManager(std::unique_ptr<Input::IActionManager> &&);

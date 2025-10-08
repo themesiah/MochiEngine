@@ -33,6 +33,8 @@
 #include "Event/EventBus.h"
 #include "Event/EngineEvents.h"
 
+#include "Debug/IGizmos.h"
+
 #include "ScriptingManager.h"
 #include "Layer.h"
 
@@ -88,8 +90,11 @@ namespace Mochi
             bool success = mActionManager->LoadActions(actionsBuffer);
             LOG_OK("Action manager Initialized");
 
-            mGUI = std::make_unique<Graphics::SDLGUI>(mCatalog.get(), mRenderer.get(), mActionManager.get());
+            mGUI = mRenderer->CreateGUI(mCatalog.get(), mActionManager.get());
             LOG_OK("GUI Initialized");
+
+            mGizmos = mRenderer->CreateGizmos();
+            LOG_OK("Gizmos Initialized");
 
             mFrameStart = std::chrono::steady_clock::now();
 
@@ -159,7 +164,7 @@ namespace Mochi
         {
             if (event.type == SDL_EVENT_QUIT)
             {
-                return 0;
+                return false;
             }
             mEventBus->Publish<SDL_Event>(event);
         }
@@ -211,7 +216,7 @@ namespace Mochi
             layer->GUI();
         }
 
-#if DEBUG
+#if DEBUG && !CTEST
         for (const std::unique_ptr<Layer> &layer : mLayers)
         {
             layer->Debug();
@@ -265,7 +270,9 @@ namespace Mochi
 
     void Engine::SwapRenderer(std::unique_ptr<Graphics::IRenderer> &&renderer)
     {
-        mEventBus->Publish<RendererSwappedEvent>({renderer.get()});
+        mGUI = renderer->CreateGUI(mCatalog.get(), mActionManager.get());
+        mGizmos = renderer->CreateGizmos();
+        mEventBus->Publish<RendererSwappedEvent>({renderer.get(), mGUI.get(), mGizmos.get()});
         mRenderer = std::move(renderer);
     }
 }

@@ -13,7 +13,7 @@
 #include "../GUI/AbstractGUI.h"
 
 #include "../Physics/Shapes.h"
-#include "Gizmos.hpp"
+#include "IGizmos.h"
 
 namespace Mochi
 {
@@ -53,25 +53,12 @@ namespace Mochi
 
     void DebugLayer::Debug() const
     {
-        Graphics::SDLRenderer *sdlrenderer = dynamic_cast<Graphics::SDLRenderer *>(mRenderer);
-        if (!sdlrenderer)
-            return;
-        auto renderer = sdlrenderer->GetRenderer();
+        float w = static_cast<float>(CONST_RENDER_LOGICAL_X);
+        float h = static_cast<float>(CONST_RENDER_LOGICAL_Y);
 
-        /*int w, h;
-        SDL_RendererLogicalPresentation *pres = nullptr;
-        SDL_GetRenderLogicalPresentation(renderer, &w, &h, pres);
-        SDL_SetRenderDrawColor(renderer, 255, 0, 255, SDL_ALPHA_OPAQUE);
-        SDL_RenderLine(renderer, 0.0f, h / 2, w, h / 2);
-        SDL_RenderLine(renderer, w / 2, 0.0f, w / 2, h);
-
-        Physics::Circle c({-5, -5}, 2);
-        DrawCircle(renderer, &c, {255, 0, 255, 255});
-
-        Physics::Point p({-5, -5});
-        DrawPoint(renderer, &p, {255, 0, 255, 255});
-
-        Physics::Line l({-1, 1}, {1, -1});
-        DrawLine(renderer, &l, {255, 0, 255, 255});*/
+        Physics::Line l({0.0f, h / 2.0f}, {w, h / 2.0f});
+        mGizmos->DrawLine(&l, {255, 0, 255, 128});
+        Physics::Line l2({w / 22.0f, 0.0f}, {w / 22.0f, h});
+        mGizmos->DrawLine(&l2, {255, 0, 255, 128});
     }
 }
