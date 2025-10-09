@@ -52,10 +52,10 @@ public:
 
 TEST_CASE("Input::1- Input Manager")
 {
-    std::shared_ptr<MockKeyboardProvider> mockKeyboard = std::make_shared<MockKeyboardProvider>();
-    std::shared_ptr<MockMouseProvider> mockMouse = std::make_shared<MockMouseProvider>();
-    std::shared_ptr<MockGamepadProvider> mockGamepad = std::make_shared<MockGamepadProvider>();
-    InputManager input(mockKeyboard, mockMouse, mockGamepad);
+    MockKeyboardProvider *mockKeyboard = new MockKeyboardProvider();
+    MockMouseProvider *mockMouse = new MockMouseProvider();
+    MockGamepadProvider *mockGamepad = new MockGamepadProvider();
+    InputManager input{std::unique_ptr<MockKeyboardProvider>(mockKeyboard), std::unique_ptr<MockMouseProvider>(mockMouse), std::unique_ptr<MockGamepadProvider>(mockGamepad)};
     memset(mockKeyboard->state, false, sizeof(mockKeyboard->state));
 
     input.Update();
@@ -83,13 +83,12 @@ TEST_CASE("Input::1- Input Manager")
 
 TEST_CASE("Input::2- Action manager")
 {
-    std::shared_ptr<MockKeyboardProvider> mockKeyboard = std::make_shared<MockKeyboardProvider>();
-    std::shared_ptr<MockMouseProvider> mockMouse = std::make_shared<MockMouseProvider>();
-    std::shared_ptr<MockGamepadProvider> mockGamepad = std::make_shared<MockGamepadProvider>();
-    Mochi::Input::InputManager *inputManager = new Mochi::Input::InputManager(mockKeyboard, mockMouse, mockGamepad);
+    MockKeyboardProvider *mockKeyboard = new MockKeyboardProvider();
+    MockMouseProvider *mockMouse = new MockMouseProvider();
+    MockGamepadProvider *mockGamepad = new MockGamepadProvider();
     memset(mockKeyboard->state, false, sizeof(mockKeyboard->state));
 
-    ActionManager actionManager(inputManager);
+    ActionManager actionManager(std::make_unique<InputManager>(std::unique_ptr<MockKeyboardProvider>(mockKeyboard), std::unique_ptr<MockMouseProvider>(mockMouse), std::unique_ptr<MockGamepadProvider>(mockGamepad)));
     bool success = actionManager.LoadActionsFromFile("TestData/Actions.json");
     REQUIRE(success);
     REQUIRE(actionManager.HasAction("Shot"));

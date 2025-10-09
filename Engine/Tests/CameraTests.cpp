@@ -21,8 +21,8 @@ TEST_CASE("Camera::2- World and screen")
     Mochi::Rectf destRect;
     destRect.x = 0;
     destRect.y = 0;
-    destRect.w = 50;
-    destRect.h = 50;
+    destRect.w = 51;
+    destRect.h = 51;
 
     auto result = cam.WorldToScreen(destRect);
     CHECK_EQ(result.x, -25);
