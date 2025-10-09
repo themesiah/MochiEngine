@@ -15,7 +15,7 @@
 
 namespace Mochi::Input
 {
-    ActionManager::ActionManager(InputManager *inputManager) : mInputManager(std::unique_ptr<InputManager>(inputManager))
+    ActionManager::ActionManager(std::unique_ptr<InputManager> inputManager) : mInputManager(std::move(inputManager)), mActions()
     {
     }
 

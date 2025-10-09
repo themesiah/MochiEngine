@@ -1,3 +1,5 @@
+#define SOL_NO_MEMORY_ALIGNMENT 1
+
 #include "ScriptingManager.h"
 
 #include <sol/sol.hpp>
@@ -21,6 +23,7 @@ namespace Mochi::Scripting
                            { LOG_ERROR(str); });
 
         ExecuteFile("Script/LuaInit.lua");
+        State.script("return 5");
     }
 
     ScriptingManager::~ScriptingManager()
@@ -41,7 +44,7 @@ namespace Mochi::Scripting
 
     void ScriptingManager::ExecuteFile(const std::string &path)
     {
-        auto data = mCatalog->GetFile(path);
+        std::vector<char> data = mCatalog->GetFile(path);
         std::string code(data.begin(), data.end());
         State.script(code);
     }

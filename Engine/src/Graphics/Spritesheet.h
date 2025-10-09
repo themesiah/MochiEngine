@@ -26,7 +26,7 @@ namespace Mochi::Graphics
 
     public:
         Spritesheet(AnimationFactory *animationFactory, AbstractTextureFactory *textureFactory, const std::string &animationPath, const int &startingFrame);
-        ~Spritesheet();
+        virtual ~Spritesheet();
         void SetFrame(const int &frameIndex);
         int GetFrame() const;
     };

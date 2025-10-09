@@ -1,6 +1,7 @@
 #include "SDLRenderer.h"
 
-#include <SDL3/SDL.h>
+#include "SDL3/SDL.h"
+#include "SDL3_ttf/SDL_ttf.h"
 #include <algorithm>
 #include <memory>
 
@@ -53,6 +54,12 @@ namespace Mochi::Graphics
 
     SDLRenderer::~SDLRenderer()
     {
+        mRenderer.reset();
+        mWindow.reset();
+        SDL_QuitSubSystem(SDL_INIT_VIDEO);
+        SDL_QuitSubSystem(SDL_INIT_GAMEPAD);
+        TTF_Quit();
+        SDL_Quit();
     }
 
     void SDLRenderer::StartFrameRendering() const

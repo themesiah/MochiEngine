@@ -19,6 +19,7 @@
 #include "Input/SDLKeyboardProvider.h"
 #include "Input/SDLMouseProvider.h"
 #include "Input/SDLGamepadProvider.h"
+#include "Input/DummyInputProviders.h"
 
 #include "Audio/IAudioManager.h"
 #include "Audio/FMODWrapper.h"
@@ -74,9 +75,10 @@ namespace Mochi
             mAudio->LoadAudio(CONST_MASTER_BANK);
             LOG_OK("FMOD Initialized");
 
-            mActionManager = std::make_unique<Input::ActionManager>(new Input::InputManager(std::make_unique<Input::SDLKeyboardProvider>(),
-                                                                                            std::make_unique<Input::SDLMouseProvider>(mRenderer.get()),
-                                                                                            std::make_unique<Input::SDLGamepadProvider>(mEventBus.get())));
+            mActionManager = std::make_unique<Input::ActionManager>(std::make_unique<Input::InputManager>(std::make_unique<Input::SDLKeyboardProvider>(),
+                                                                                                          std::make_unique<Input::SDLMouseProvider>(mRenderer.get()),
+                                                                                                          std::make_unique<Input::SDLGamepadProvider>(mEventBus.get())));
+
             auto actionsBuffer = mCatalog->GetFile(CONST_ACTIONS_FILE);
             bool success = mActionManager->LoadActions(actionsBuffer);
             LOG_OK("Action manager Initialized");

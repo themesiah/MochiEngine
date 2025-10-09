@@ -35,7 +35,7 @@ namespace Mochi::Shooter
         Player(Mochi::Graphics::AnimationFactory *animationFactory,
                Mochi::Graphics::AbstractTextureFactory *textureFactory,
                Mochi::Graphics::Camera *camera);
-        ~Player();
+        virtual ~Player();
         virtual void Update(const float &dt, Mochi::Input::IActionManager *actionManager);
         std::shared_ptr<PlayerBulletPool> GetBulletPool() const;
         virtual void SetScale(const float &scale) override;

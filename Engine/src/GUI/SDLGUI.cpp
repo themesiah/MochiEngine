@@ -25,11 +25,8 @@ namespace Mochi::Graphics
             throw SystemInitializationError("GUI", SDL_GetError());
         }
 
-        auto fontBuffer = mCatalog->GetFile(CONST_MAIN_FONT_PATH);
-        void *fontCopy = SDL_malloc(fontBuffer.size());
-        SDL_memcpy(fontCopy, fontBuffer.data(), fontBuffer.size());
-        SDL_IOStream *rw = SDL_IOFromMem(fontCopy, fontBuffer.size());
-        auto font = TTF_OpenFontIO(rw, true, CONST_DEVBUILD_TEXT_SIZE);
+        mFontRaw = mCatalog->GetFile(CONST_MAIN_FONT_PATH);
+        auto font = TTF_OpenFontIO(SDL_IOFromConstMem(mFontRaw.data(), mFontRaw.size()), true, CONST_DEVBUILD_TEXT_SIZE);
         if (!font)
         {
             throw SystemInitializationError("GUI", SDL_GetError());

@@ -11,7 +11,7 @@ namespace Mochi::Input
     class IActionManager
     {
     public:
-        ~IActionManager() {}
+        virtual ~IActionManager() {}
         virtual bool LoadActions(std::vector<char> buffer) = 0;
         virtual bool LoadActionsFromFile(const std::string &path) = 0;
         virtual bool HasAction(const std::string &) const = 0;

@@ -45,12 +45,12 @@ namespace Mochi::Audio
 
     FMODWrapper::~FMODWrapper()
     {
-        FMOD_Studio_System_Release(mFmodSystem);
         for (auto bankPair : mBankPairs)
         {
             FMOD_Studio_Bank_Unload(bankPair.bank);
             FMOD_Studio_Bank_Unload(bankPair.stringsBank);
         }
+        FMOD_Studio_System_Release(mFmodSystem);
     }
 
     void FMODWrapper::LoadBank(const std::string &bankName)

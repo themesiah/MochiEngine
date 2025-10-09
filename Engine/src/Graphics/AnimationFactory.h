@@ -21,7 +21,7 @@ namespace Mochi::Graphics
 
     public:
         AnimationFactory(FS::PackCatalog *);
-        ~AnimationFactory();
+        virtual ~AnimationFactory();
         std::shared_ptr<AnimationsData> GetAnimationsData(const std::string &animationDataPath);
         void DeleteCache();
         void DeleteAnimation(const std::string &texturePath);

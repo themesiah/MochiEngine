@@ -4,6 +4,7 @@
 #include "AbstractGUI.h"
 
 #include <memory>
+#include <vector>
 
 #include "../Types/Types.hpp"
 
@@ -17,6 +18,7 @@ namespace Mochi::Graphics
     private:
         friend class SDLRenderer;
         std::unique_ptr<TTF_Font, void (*)(TTF_Font *)> mFont;
+        std::vector<char> mFontRaw;
         SDLGUI(FS::PackCatalog *catalog, IRenderer *renderer, Input::IActionManager *actionManager);
 
     public:

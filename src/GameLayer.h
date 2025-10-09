@@ -55,7 +55,7 @@ namespace Mochi::Shooter
 
     public:
         GameLayer();
-        ~GameLayer();
+        virtual ~GameLayer();
         virtual bool Update(const float &dt) override;
         virtual void Render() const override;
         virtual void GUI() const override;

@@ -19,9 +19,9 @@ namespace Mochi::Input
     class InputManager
     {
     private:
-        std::shared_ptr<IKeyboardProvider> mKeyboardProvider;
-        std::shared_ptr<IMouseProvider> mMouseProvider;
-        std::shared_ptr<IGamepadProvider> mGamepadProvider;
+        std::unique_ptr<IKeyboardProvider> mKeyboardProvider;
+        std::unique_ptr<IMouseProvider> mMouseProvider;
+        std::unique_ptr<IGamepadProvider> mGamepadProvider;
 
         bool mKeyboardState[SDL_SCANCODE_COUNT];
         bool mKeyboardLastState[SDL_SCANCODE_COUNT];
@@ -37,7 +37,7 @@ namespace Mochi::Input
         GamepadData mLastGamepadData;
 
     public:
-        InputManager(std::shared_ptr<IKeyboardProvider> keyboardProvider, std::shared_ptr<IMouseProvider> mouseProvider, std::shared_ptr<IGamepadProvider> mGamepadProvider);
+        InputManager(std::unique_ptr<IKeyboardProvider> keyboardProvider, std::unique_ptr<IMouseProvider> mouseProvider, std::unique_ptr<IGamepadProvider> mGamepadProvider);
         virtual ~InputManager();
         bool IsDown(const int &key) const;
         bool WasPressed(const int &key) const;

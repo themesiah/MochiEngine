@@ -14,11 +14,11 @@
 
 namespace Mochi::Input
 {
-    InputManager::InputManager(std::shared_ptr<IKeyboardProvider> keyboardProvider,
-                               std::shared_ptr<IMouseProvider> mouseProvider,
-                               std::shared_ptr<IGamepadProvider> gamepadProvider) : mKeyboardProvider(keyboardProvider),
-                                                                                    mMouseProvider(mouseProvider),
-                                                                                    mGamepadProvider(gamepadProvider)
+    InputManager::InputManager(std::unique_ptr<IKeyboardProvider> keyboardProvider,
+                               std::unique_ptr<IMouseProvider> mouseProvider,
+                               std::unique_ptr<IGamepadProvider> gamepadProvider) : mKeyboardProvider(std::move(keyboardProvider)),
+                                                                                    mMouseProvider(std::move(mouseProvider)),
+                                                                                    mGamepadProvider(std::move(gamepadProvider))
     {
         memset(mKeyboardState, false, sizeof(mKeyboardState));
         memset(mKeyboardLastState, false, sizeof(mKeyboardLastState));

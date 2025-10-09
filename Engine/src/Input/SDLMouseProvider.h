@@ -17,8 +17,8 @@ namespace Mochi::Input
         SDL_Renderer *mRenderer;
 
     public:
-        SDLMouseProvider(Graphics::IRenderer *renderer);
-        ~SDLMouseProvider();
+        SDLMouseProvider(const Graphics::IRenderer *renderer);
+        virtual ~SDLMouseProvider();
         virtual std::array<bool, MouseButton::MouseButtonsCount> GetState(float *x, float *y) const override;
     };
 }

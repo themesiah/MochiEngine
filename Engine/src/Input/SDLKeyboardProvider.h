@@ -10,8 +10,8 @@ namespace Mochi::Input
     public:
         SDLKeyboardProvider();
         virtual ~SDLKeyboardProvider();
-        virtual const bool *GetState() const;
-        virtual size_t GetMaxKeys() const;
+        virtual const bool *GetState() const override;
+        virtual size_t GetMaxKeys() const override;
     };
 }
 #endif

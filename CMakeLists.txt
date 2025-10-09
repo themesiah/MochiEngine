@@ -27,9 +27,9 @@ if(WIN32)
     # Only add the WIN32 flag in Release builds
     if(CMAKE_BUILD_TYPE STREQUAL "Release") # Single-config generators (Makefiles, Ninja)
         set(GAME_WIN32_FLAG "WIN32")
-    elseif(CMAKE_CONFIGURATION_TYPES) # Multi-config generators (Visual Studio, Xcode)
-        # For MSVC / multi-config, WIN32 is a target property so we set it after creation
-        set(GAME_WIN32_FLAG "WIN32")
+    # elseif(CMAKE_CONFIGURATION_TYPES) # Multi-config generators (Visual Studio, Xcode)
+    #     # For MSVC / multi-config, WIN32 is a target property so we set it after creation
+    #     set(GAME_WIN32_FLAG "WIN32")
     endif()
 endif()
 

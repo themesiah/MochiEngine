@@ -62,6 +62,7 @@ namespace Mochi
         bool mIsRunning;
         Event::SubscriptionHandler mAppQuitHandler;
 
+        std::unique_ptr<Event::EventBus> mEventBus;
         std::vector<Graphics::RenderCommand> mRenderQueue;
         std::vector<Layer *> mPopLayerQueue;
         std::vector<Layer *> mPushLayerQueue;
@@ -72,7 +73,6 @@ namespace Mochi
         std::unique_ptr<FS::PackCatalog> mCatalog;
         std::unique_ptr<Graphics::Camera> mCamera;
         std::unique_ptr<Graphics::AbstractGUI> mGUI;
-        std::unique_ptr<Event::EventBus> mEventBus;
         std::unique_ptr<Scripting::ScriptingManager> mScripting;
         std::unique_ptr<Debug::IGizmos> mGizmos;
         std::vector<std::unique_ptr<Layer>> mLayers;

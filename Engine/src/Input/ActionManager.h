@@ -5,7 +5,7 @@
 
 #include <string>
 #include <memory>
-#include <map>
+#include <unordered_map>
 #include <vector>
 #include <nlohmann/json_fwd.hpp>
 
@@ -26,10 +26,10 @@ namespace Mochi::Input
     {
     private:
         std::unique_ptr<InputManager> mInputManager;
-        std::map<std::string, Action> mActions;
+        std::unordered_map<std::string, Action> mActions;
 
     public:
-        ActionManager(InputManager *inputManager);
+        ActionManager(std::unique_ptr<InputManager> inputManager);
         virtual ~ActionManager();
         bool LoadActions(std::vector<char>) override;
         bool LoadActionsFromFile(const std::string &path) override;

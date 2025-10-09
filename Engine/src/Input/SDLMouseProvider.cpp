@@ -7,9 +7,9 @@
 
 namespace Mochi::Input
 {
-    SDLMouseProvider::SDLMouseProvider(Graphics::IRenderer *renderer)
+    SDLMouseProvider::SDLMouseProvider(const Graphics::IRenderer *renderer)
     {
-        auto ren = dynamic_cast<Graphics::SDLRenderer *>(renderer);
+        auto ren = dynamic_cast<const Graphics::SDLRenderer *>(renderer);
         mRenderer = ren->GetRenderer();
     }
 

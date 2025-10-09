@@ -35,7 +35,7 @@ namespace Mochi
 
     public:
         Layer();
-        ~Layer();
+        virtual ~Layer();
         virtual bool Update(const float &dt) = 0;
         virtual void Render() const = 0;
         virtual void GUI() const = 0;

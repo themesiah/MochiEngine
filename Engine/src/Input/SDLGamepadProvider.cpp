@@ -32,8 +32,8 @@ namespace Mochi::Input
 
     SDLGamepadProvider::~SDLGamepadProvider()
     {
-        mEventBus->Unsubscribe<SDL_Event>(mGamepadAddedHandler);
-        mEventBus->Unsubscribe<SDL_Event>(mGamepadRemovedHandler);
+        mEventBus->Unsubscribe<GamepadAddedEvent>(mGamepadAddedHandler);
+        mEventBus->Unsubscribe<GamepadRemovedEvent>(mGamepadRemovedHandler);
     }
 
     GamepadData SDLGamepadProvider::GetData(const unsigned int &player) const

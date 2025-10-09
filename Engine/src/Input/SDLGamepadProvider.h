@@ -22,8 +22,8 @@ namespace Mochi::Input
     public:
         SDLGamepadProvider(Event::EventBus *eventBus);
         virtual ~SDLGamepadProvider();
-        virtual GamepadData GetData(const unsigned int &player) const;
-        virtual bool HasGamepad(const unsigned int &player) const;
+        virtual GamepadData GetData(const unsigned int &player) const override;
+        virtual bool HasGamepad(const unsigned int &player) const override;
     };
 }
 

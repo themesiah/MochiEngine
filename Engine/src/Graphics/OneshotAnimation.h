@@ -17,7 +17,7 @@ namespace Mochi::Graphics
 
     public:
         OneshotAnimation(AnimationFactory *, AbstractTextureFactory *, const std::string &animationPath, const std::string &mainAnimation);
-        ~OneshotAnimation();
+        virtual ~OneshotAnimation();
         virtual void UpdateAnimation(const float &dt) override;
         void SetFinishCallback(std::function<void()> onFinishedCallback);
     };

@@ -39,6 +39,7 @@ namespace Mochi::FS
         std::ifstream file(filepath, std::ios::binary);
 
         std::vector<char> data((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+        file.close();
 
         return data;
     }
