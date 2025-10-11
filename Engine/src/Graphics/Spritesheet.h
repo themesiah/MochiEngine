@@ -14,7 +14,7 @@ namespace Mochi::Graphics
 {
     struct AnimationsData;
     class AbstractTextureFactory;
-    class AnimationFactory;
+    class IAnimationFactory;
     class Spritesheet : public SpriteBase
     {
     private:
@@ -25,7 +25,7 @@ namespace Mochi::Graphics
         std::shared_ptr<AnimationsData> mAnimationsData;
 
     public:
-        Spritesheet(AnimationFactory *animationFactory, AbstractTextureFactory *textureFactory, const std::string &animationPath, const int &startingFrame);
+        Spritesheet(IAnimationFactory *animationFactory, AbstractTextureFactory *textureFactory, const std::string &animationPath, const int &startingFrame);
         virtual ~Spritesheet();
         void SetFrame(const int &frameIndex);
         int GetFrame() const;

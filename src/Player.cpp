@@ -2,7 +2,7 @@
 
 #include "Input/IActionManager.h"
 #include "Graphics/AnimatedSprite.h"
-#include "Graphics/AnimationFactory.h"
+#include "Graphics/IAnimationFactory.h"
 #include "Graphics/AbstractTextureFactory.h"
 #include "Graphics/Camera.h"
 #include "Graphics/SpriteBase.h"
@@ -28,7 +28,7 @@ namespace Mochi::Shooter
     inline constexpr float BULLETS_SPEED = 48.0f;
 
     Player::Player(
-        Graphics::AnimationFactory *animationFactory,
+        Graphics::IAnimationFactory *animationFactory,
         Graphics::AbstractTextureFactory *textureFactory,
         Graphics::Camera *camera)
         : Graphics::Spritesheet(animationFactory, textureFactory, PLAYER_ANIM_PATH, 0),

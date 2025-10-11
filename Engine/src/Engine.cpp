@@ -53,7 +53,7 @@ namespace Mochi
         return *gEngine;
     }
 
-    Engine::Engine() : mTargetFPS(60), mLastDeltaTime(0.016f), mLastRealDelta(0.0f), mIsRunning(false), mLayers(), mPopLayerQueue(), mPushLayerQueue()
+    Engine::Engine() : mTargetFPS(60), mLastDeltaTime(1.0f / mTargetFPS), mLastRealDelta(0.0f), mIsRunning(false), mLayers(), mPopLayerQueue(), mPushLayerQueue()
     {
         gEngine = this;
         MinimalSetup();
@@ -178,19 +178,20 @@ namespace Mochi
     void Engine::Run()
     {
         mIsRunning = true;
+        mFrameStart = std::chrono::steady_clock::now();
         try
         {
-            while (1)
+            while (mIsRunning)
             {
-                auto frameStart = std::chrono::steady_clock::now();
-                if (!Update(mLastDeltaTime))
-                {
-                    break;
-                }
+
+                // Time
+                Time::TimeSystem::GetInstance().Tick(mLastDeltaTime);
+
+                Update(Time::TimeSystem::GetInstance().GetDeltaTime()); // Get delta time from TimeSystem to use time scale
                 Render();
                 const auto target = std::chrono::nanoseconds(1'000'000'000 / mTargetFPS);
                 auto work = std::chrono::steady_clock::now() - mFrameStart;
-                mLastRealDelta = std::chrono::duration<float>((std::chrono::steady_clock::now() - frameStart)).count();
+                mLastRealDelta = std::chrono::duration<float>((std::chrono::steady_clock::now() - mFrameStart)).count();
 
                 if (work < target)
                 {
@@ -218,8 +219,6 @@ namespace Mochi
 
     bool Engine::Update(const float &dt)
     {
-        // Time
-        Time::TimeSystem::GetInstance().Tick(mLastDeltaTime);
 
         // System Events
         mEventDispatcher->PollEvents();
@@ -232,7 +231,8 @@ namespace Mochi
 
         for (const std::unique_ptr<Layer> &layer : mLayers)
         {
-            layer->Update(dt);
+            if (!layer->Update(dt))
+                mIsRunning = false;
         }
 
         for (const auto &outLayer : mPopLayerQueue)

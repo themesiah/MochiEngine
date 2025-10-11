@@ -1,13 +1,13 @@
 #include "Spritesheet.h"
 
 #include "../Utils/Assert.h"
-#include "AnimationFactory.h"
+#include "IAnimationFactory.h"
 #include "AbstractTextureFactory.h"
 
 namespace Mochi::Graphics
 {
     Spritesheet::Spritesheet(
-        AnimationFactory *animationFactory,
+        IAnimationFactory *animationFactory,
         AbstractTextureFactory *textureFactory,
         const std::string &animationPath,
         const int &startingFrame)

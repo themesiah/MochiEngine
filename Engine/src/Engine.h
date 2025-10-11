@@ -64,6 +64,7 @@ namespace Mochi
 
         std::unique_ptr<Event::EventBus> mEventBus;
         std::vector<Graphics::RenderCommand> mRenderQueue;
+        std::vector<std::unique_ptr<Layer>> mLayers;
         std::vector<Layer *> mPopLayerQueue;
         std::vector<Layer *> mPushLayerQueue;
         std::unique_ptr<Event::ISystemEventDispatcher> mEventDispatcher;
@@ -75,7 +76,6 @@ namespace Mochi
         std::unique_ptr<Graphics::AbstractGUI> mGUI;
         std::unique_ptr<Scripting::ScriptingManager> mScripting;
         std::unique_ptr<Debug::IGizmos> mGizmos;
-        std::vector<std::unique_ptr<Layer>> mLayers;
 
         void PreciseDelay(std::chrono::nanoseconds ns) const;
         void MinimalSetup();

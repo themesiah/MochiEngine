@@ -9,7 +9,7 @@
 #include "Graphics/Camera.h"
 #include "Graphics/SpriteBase.h"
 #include "Graphics/AbstractTextureFactory.h"
-#include "Graphics/AnimationFactory.h"
+#include "Graphics/AsepriteAnimationFactory.h"
 #include "Graphics/OneshotAnimation.h"
 #include "Graphics/IRenderer.h"
 #include "Graphics/SDL/SDLRenderer.h"
@@ -47,7 +47,7 @@ namespace Mochi::Shooter
         mScripting->ExecuteFile("Script/FMODCallbackDefinitionAlternative.lua");
 
         mTextureFactory = mRenderer->CreateTextureFactory(mCatalog);
-        mAnimationFactory = std::make_shared<Graphics::AnimationFactory>(mCatalog);
+        mAnimationFactory = std::make_shared<Graphics::AsepriteAnimationFactory>(mCatalog);
 
         mPlayer = std::make_shared<Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera);
         mPlayer->SetZIndex(ZINDEX_PLAYER);
@@ -72,7 +72,6 @@ namespace Mochi::Shooter
         mEnemyDestroyedSubscription = mEventBus->Subscribe<EnemyDestroyedEvent>(
             [&](const EnemyDestroyedEvent &e)
             {
-                mEnemiesMarkedForDestruction.push_back(e.Enemy);
                 std::unique_ptr<Graphics::OneshotAnimation> destructionVfx = std::make_unique<Graphics::OneshotAnimation>(
                     mAnimationFactory.get(),
                     mTextureFactory.get(),
@@ -109,6 +108,7 @@ namespace Mochi::Shooter
                 playerBulletPool->ReleaseBullet(collisions[i]);
                 if (enemy->ReceiveDamage(1))
                 {
+                    mEnemiesMarkedForDestruction.push_back(enemy.get());
                 }
             }
         }

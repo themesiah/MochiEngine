@@ -1,4 +1,4 @@
-#include "AnimationFactory.h"
+#include "AsepriteAnimationFactory.h"
 
 #include <nlohmann/json.hpp>
 
@@ -11,15 +11,15 @@
 
 namespace Mochi::Graphics
 {
-    AnimationFactory::AnimationFactory(FS::PackCatalog *catalog) : mCatalog(catalog)
+    AsepriteAnimationFactory::AsepriteAnimationFactory(FS::PackCatalog *catalog) : mCatalog(catalog)
     {
     }
 
-    AnimationFactory::~AnimationFactory()
+    AsepriteAnimationFactory::~AsepriteAnimationFactory()
     {
     }
 
-    std::shared_ptr<AnimationsData> AnimationFactory::GetAnimationsData(const std::string &animationDataPath)
+    std::shared_ptr<AnimationsData> AsepriteAnimationFactory::GetAnimationsData(const std::string &animationDataPath)
     {
         try
         {
@@ -125,12 +125,12 @@ namespace Mochi::Graphics
         }
     }
 
-    void AnimationFactory::DeleteCache()
+    void AsepriteAnimationFactory::DeleteCache()
     {
         mAnimationDataMap.clear();
     }
 
-    void AnimationFactory::DeleteAnimation(const std::string &animationPath)
+    void AsepriteAnimationFactory::DeleteAnimation(const std::string &animationPath)
     {
         std::string normalizedPath = Utils::NormalizePath(animationPath);
         if (mAnimationDataMap.find(normalizedPath) != mAnimationDataMap.end())

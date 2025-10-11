@@ -9,14 +9,14 @@
 namespace Mochi::Graphics
 {
     class AbstractTextureFactory;
-    class AnimationFactory;
+    class IAnimationFactory;
     class OneshotAnimation : public AnimatedSprite
     {
     private:
         std::function<void()> mOnFinished;
 
     public:
-        OneshotAnimation(AnimationFactory *, AbstractTextureFactory *, const std::string &animationPath, const std::string &mainAnimation);
+        OneshotAnimation(IAnimationFactory *, AbstractTextureFactory *, const std::string &animationPath, const std::string &mainAnimation);
         virtual ~OneshotAnimation();
         virtual void UpdateAnimation(const float &dt) override;
         void SetFinishCallback(std::function<void()> onFinishedCallback);

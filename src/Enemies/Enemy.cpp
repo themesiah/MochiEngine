@@ -21,7 +21,7 @@ namespace Mochi::Shooter
 
     bool Enemy::ReceiveDamage(const int &damage)
     {
-        if (mHealth <= 0)
+        if (IsDead())
             return false; // Already dead, don't trigger things again. Probably marked for destruction already
         mHealth -= damage;
         if (mHealth <= 0)
@@ -44,4 +44,8 @@ namespace Mochi::Shooter
         mEventBus->Publish<EnemyDestroyedEvent>({mPoints, this});
     }
 
+    bool Enemy::IsDead() const
+    {
+        return mHealth <= 0;
+    }
 }

@@ -12,18 +12,18 @@
 namespace Mochi::Graphics
 {
     class AbstractTextureFactory;
-    class AnimationFactory;
+    class IAnimationFactory;
     class AnimatedSprite : public Spritesheet
     {
     protected:
+        bool mPlaying;
         float mTimer;
         int mLoops;
         bool mForward;
         std::string mCurrentAnimation;
-        bool mPlaying;
 
     public:
-        AnimatedSprite(AnimationFactory *, AbstractTextureFactory *, const std::string &animationPath, const std::string &mainAnimation);
+        AnimatedSprite(IAnimationFactory *, AbstractTextureFactory *, const std::string &animationPath, const std::string &mainAnimation);
         virtual ~AnimatedSprite();
         virtual void UpdateAnimation(const float &dt);
         virtual void PlayAnimation(const std::string &animationName);

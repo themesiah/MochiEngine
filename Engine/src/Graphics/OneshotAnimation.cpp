@@ -2,11 +2,11 @@
 #include "AnimatedSprite.h"
 
 #include "AbstractTextureFactory.h"
-#include "AnimationFactory.h"
+#include "IAnimationFactory.h"
 
 namespace Mochi::Graphics
 {
-    OneshotAnimation::OneshotAnimation(AnimationFactory *animationFactory, AbstractTextureFactory *textureFactory, const std::string &animationPath, const std::string &mainAnimation)
+    OneshotAnimation::OneshotAnimation(IAnimationFactory *animationFactory, AbstractTextureFactory *textureFactory, const std::string &animationPath, const std::string &mainAnimation)
         : AnimatedSprite(animationFactory, textureFactory, animationPath, mainAnimation), mOnFinished()
     {
     }

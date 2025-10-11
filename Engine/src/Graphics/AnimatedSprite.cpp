@@ -10,14 +10,14 @@
 #include "../Utils/Assert.h"
 #include "../Utils/Logger.h"
 #include "AbstractTextureFactory.h"
-#include "AnimationFactory.h"
+#include "IAnimationFactory.h"
 
 #include "../Input/ActionManager.h"
 
 namespace Mochi::Graphics
 {
     AnimatedSprite::AnimatedSprite(
-        AnimationFactory *animationFactory,
+        IAnimationFactory *animationFactory,
         AbstractTextureFactory *textureFactory,
         const std::string &animationPath,
         const std::string &mainAnimation)

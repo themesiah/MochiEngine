@@ -14,7 +14,7 @@ namespace Mochi::Graphics
 {
     class Camera;
     class AbstractTextureFactory;
-    class AnimationFactory;
+    class IAnimationFactory;
 }
 namespace Mochi::Shooter
 {
@@ -32,7 +32,7 @@ namespace Mochi::Shooter
         float mShotTimer;
 
     public:
-        Player(Mochi::Graphics::AnimationFactory *animationFactory,
+        Player(Mochi::Graphics::IAnimationFactory *animationFactory,
                Mochi::Graphics::AbstractTextureFactory *textureFactory,
                Mochi::Graphics::Camera *camera);
         virtual ~Player();

@@ -8,7 +8,7 @@ set(DOCTEST_INCLUDE_DIR Includes/doctest CACHE INTERNAL "Path to include folder 
 
 set(
   GameTestList
-  PlayerTests
+  GameTests
 )
 
 
@@ -23,7 +23,7 @@ foreach(name IN LISTS GameTestList)
   add_executable("TEST_${name}" "${name}.cpp")
   
   set_target_properties("TEST_${name}" PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/test/$<CONFIG>")
-  target_link_libraries("TEST_${name}" PUBLIC Engine)
+  target_link_libraries("TEST_${name}" PUBLIC GameLib)
   target_compile_definitions("TEST_${name}" PUBLIC "CTEST")
   doctest_discover_tests("TEST_${name}"
                         WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/bin/$<CONFIG>"

@@ -28,6 +28,7 @@ namespace Mochi::Shooter
         virtual ~Enemy();
         bool ReceiveDamage(const int &damage);
         Physics::Rectangle GetCollider() const;
+        bool IsDead() const;
     };
 }
 

@@ -21,20 +21,16 @@ namespace Mochi::Graphics
 
     class DummyTextureFactory : public AbstractTextureFactory
     {
-    private:
-        DummyTextureFactory() {}
-
     public:
+        DummyTextureFactory() {}
         virtual ~DummyTextureFactory() {}
         virtual std::shared_ptr<ITexture> LoadTexture(const std::string &texturePath) override { return std::make_shared<DummyTexture>(); };
     };
 
     class DummyGUI : public AbstractGUI
     {
-    private:
-        DummyGUI(FS::PackCatalog *catalog, IRenderer *renderer, Input::IActionManager *actionManager) : AbstractGUI(catalog, renderer, actionManager) {}
-
     public:
+        DummyGUI(FS::PackCatalog *catalog, IRenderer *renderer, Input::IActionManager *actionManager) : AbstractGUI(catalog, renderer, actionManager) {}
         virtual ~DummyGUI() {}
         virtual bool Button(const char *label, const float &textSize, Rectf dstRect, const std::string &texturePath) override { return false; }
         virtual void Text(const char *label, const float &textSize, Vector2f position, const Color &color) override {}
@@ -42,10 +38,8 @@ namespace Mochi::Graphics
 
     class DummyGizmos : public Debug::IGizmos
     {
-    private:
-        DummyGizmos() {}
-
     public:
+        DummyGizmos() {}
         virtual ~DummyGizmos() {}
         virtual void DrawRectangle(const Physics::Rectangle *rectangle, const Color &color) const override {};
         virtual void DrawCircle(const Physics::Circle *circle, const Color &color) const override {};

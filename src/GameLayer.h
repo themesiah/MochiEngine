@@ -20,7 +20,7 @@ namespace Mochi::Graphics
     class Camera;
     class GUI;
     class AbstractTextureFactory;
-    class AnimationFactory;
+    class IAnimationFactory;
     class Renderer;
     class OneshotAnimation;
 }
@@ -48,7 +48,7 @@ namespace Mochi::Shooter
         std::vector<Graphics::OneshotAnimation *> mVFXMarkedForDestruction;
 
         std::shared_ptr<Graphics::AbstractTextureFactory> mTextureFactory;
-        std::shared_ptr<Graphics::AnimationFactory> mAnimationFactory;
+        std::shared_ptr<Graphics::IAnimationFactory> mAnimationFactory;
 
         // Subscriptions
         Event::SubscriptionHandler mEnemyDestroyedSubscription;

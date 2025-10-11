@@ -18,6 +18,7 @@ set(
   EventBusTests
   TypesTests
   PhysicsTests
+  FullEngineTests
 )
 
 

@@ -34,10 +34,13 @@ if(WIN32)
 endif()
 
 file(GLOB Game_src CONFIGURE_DEPENDS "src/*.cpp" "src/Bullets/*.cpp" "src/Enemies/*.cpp")
-add_executable(Game ${GAME_WIN32_FLAG} ${Game_src})
+add_library(GameLib ${Game_src})
+add_executable(Game ${GAME_WIN32_FLAG} src/main.cpp)
+target_include_directories(GameLib INTERFACE "src")
+target_link_libraries(GameLib PUBLIC Engine)
 target_link_libraries(Game
                       PRIVATE
-                      Engine
+                      GameLib
 )
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<CONFIG>)
