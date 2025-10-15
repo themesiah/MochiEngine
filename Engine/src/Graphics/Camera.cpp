@@ -92,7 +92,6 @@ namespace Mochi::Graphics
     bool Camera::IsOnScreen(const Rectf &dstRect) const
     {
         Rectf newRect = WorldToScreen(dstRect);
-        LOG_INFO(std::format("Pos was {}x {}y and size was {}w {}h and logical presentation is {}x {}y", newRect.x, newRect.y, newRect.w, newRect.h, mLogicalPresentation.x, mLogicalPresentation.y));
 
         if (newRect.x + newRect.w < 0)
             return false;

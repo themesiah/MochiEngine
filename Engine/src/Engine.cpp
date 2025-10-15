@@ -72,7 +72,6 @@ namespace Mochi
             LOG_OK("Renderer Initialized");
 
             mAudio = std::make_unique<Audio::FMODWrapper>(mCatalog.get(), mScripting.get());
-            mAudio->LoadAudio(CONST_MASTER_BANK);
             LOG_OK("FMOD Initialized");
 
             mActionManager = std::make_unique<Input::ActionManager>(std::make_unique<Input::InputManager>(std::make_unique<Input::SDLKeyboardProvider>(),

@@ -44,6 +44,9 @@ namespace Mochi::Shooter
     {
         mCatalog->OpenPack("Data/Game");
 
+        mAudioManager->LoadAudio("Master");
+        mAudioManager->PlayBGM("Level1BGM");
+
         mScripting->ExecuteFile("Script/FMODCallbackDefinitionAlternative.lua");
 
         mTextureFactory = mRenderer->CreateTextureFactory(mCatalog);
