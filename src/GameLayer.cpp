@@ -17,7 +17,7 @@
 #include "Event/EventBus.h"
 #include "Input/ActionManager.h"
 #include "Packer/PackCatalog.h"
-#include "ScriptingManager.h"
+#include "Scripting/ScriptingManager.h"
 #include "Audio/IAudioManager.h"
 #include "Utils/Conversion.hpp"
 
@@ -52,7 +52,7 @@ namespace Mochi::Shooter
         mTextureFactory = mRenderer->CreateTextureFactory(mCatalog);
         mAnimationFactory = std::make_shared<Graphics::AsepriteAnimationFactory>(mCatalog);
 
-        mPlayer = std::make_shared<Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera);
+        mPlayer = std::make_shared<Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera, mActionManager);
         mPlayer->SetZIndex(ZINDEX_PLAYER);
         mPlayer->SetPosition({-2.0f, 0.0f});
         mPlayer->SetScale(2.0f);
@@ -98,7 +98,7 @@ namespace Mochi::Shooter
 
     bool GameLayer::Update(const float &dt)
     {
-        mPlayer->Update(dt, mActionManager);
+        mPlayer->Update(dt);
 
         auto playerBulletPool = mPlayer->GetBulletPool();
 
@@ -118,7 +118,7 @@ namespace Mochi::Shooter
 
         for (auto &vfx : mVFXList)
         {
-            vfx->UpdateAnimation(dt);
+            vfx->Update(dt);
         }
 
         for (auto &enemyToDestroy : mEnemiesMarkedForDestruction)

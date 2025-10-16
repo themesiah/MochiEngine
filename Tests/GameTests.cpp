@@ -27,7 +27,7 @@ public:
         mTextureFactory = mRenderer->CreateTextureFactory(mCatalog);
         mAnimationFactory = std::make_unique<Graphics::AsepriteAnimationFactory>(mCatalog);
         mEnemy = std::make_unique<Shooter::Enemy>(mEventBus, mTextureFactory.get());
-        mPlayer = std::make_unique<Shooter::Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera);
+        mPlayer = std::make_unique<Shooter::Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera, mActionManager);
         mEnemy->SetScale(2.0f);
         mPlayer->SetScale(2.0f);
     }
@@ -35,7 +35,7 @@ public:
     virtual ~TestLayer() {}
     virtual bool Update(const float &dt)
     {
-        mPlayer->Update(dt, mActionManager);
+        mPlayer->Update(dt);
         auto playerBulletPool = mPlayer->GetBulletPool();
         auto enemyShape = mEnemy->GetCollider();
         std::vector<int> collisions = playerBulletPool->CheckAgainst(enemyShape);

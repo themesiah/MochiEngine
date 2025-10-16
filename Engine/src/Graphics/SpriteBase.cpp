@@ -50,6 +50,8 @@ namespace Mochi::Graphics
         return rc;
     }
 
+    void SpriteBase::Update(const float &dt) {}
+
     void SpriteBase::SetSrcRect(const Rectf &srcRect)
     {
         mSrcRect = srcRect;

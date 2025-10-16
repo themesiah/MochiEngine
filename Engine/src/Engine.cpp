@@ -36,8 +36,9 @@
 
 #include "Debug/IGizmos.h"
 
-#include "ScriptingManager.h"
+#include "Scripting/ScriptingManager.h"
 #include "Layer.h"
+#include "Scripting/ScriptingLayer.h"
 
 #ifdef DEBUG
 #include "Debug/DebugLayer.h"
@@ -88,6 +89,7 @@ namespace Mochi
             mGizmos = mRenderer->CreateGizmos();
             LOG_OK("Gizmos Initialized");
 
+            PushLayer(new Scripting::ScriptingLayer());
 #ifdef DEBUG
             PushLayer(new DebugLayer());
 #endif
@@ -154,6 +156,7 @@ namespace Mochi
         mActionManager = std::move(actionManager);
         mAudio = std::move(audioManager);
 
+        PushLayer(new Scripting::ScriptingLayer());
 #ifdef DEBUG
         PushLayer(new DebugLayer());
 #endif

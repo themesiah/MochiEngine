@@ -10,7 +10,7 @@
 #include "Audio/FmodWrapper.h"
 #include "Packer/PackCatalog.h"
 #include "DoctestUtils.h"
-#include "ScriptingManager.h"
+#include "Scripting/ScriptingManager.h"
 
 TEST_CASE("Audio::1- Init FMOD")
 {

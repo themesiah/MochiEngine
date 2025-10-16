@@ -5,7 +5,6 @@
 #include <vector>
 #include <unordered_map>
 #include <chrono>
-#include <sol/sol.hpp>
 
 #include "Time/TimeSystem.h"
 #include "Event/EventBus.h"

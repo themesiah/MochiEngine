@@ -4,8 +4,8 @@
 
 #include <sol/sol.hpp>
 
-#include "Packer/PackCatalog.h"
-#include "Utils/Logger.h"
+#include "../Packer/PackCatalog.h"
+#include "../Utils/Logger.h"
 
 namespace Mochi::Scripting
 {

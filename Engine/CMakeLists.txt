@@ -13,6 +13,7 @@ file(GLOB Engine_src CONFIGURE_DEPENDS
         "src/Types/Types.hpp"
         "src/Physics/*.cpp"
         "src/Physics/*.hpp"
+        "src/Scripting/*.cpp"
         "src/*.hpp"
         "src/*.cpp")
 

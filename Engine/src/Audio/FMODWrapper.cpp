@@ -10,7 +10,7 @@
 #include "../Packer/PackCatalog.h"
 #include "../Exception.hpp"
 
-#include "../ScriptingManager.h"
+#include "../Scripting/ScriptingManager.h"
 
 namespace Mochi::Audio
 {

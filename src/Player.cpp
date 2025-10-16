@@ -30,14 +30,16 @@ namespace Mochi::Shooter
     Player::Player(
         Graphics::IAnimationFactory *animationFactory,
         Graphics::AbstractTextureFactory *textureFactory,
-        Graphics::Camera *camera)
+        Graphics::Camera *camera,
+        Input::IActionManager *actionManager)
         : Graphics::Spritesheet(animationFactory, textureFactory, PLAYER_ANIM_PATH, 0),
           mSpeed(MOVEMENT_SPEED),
           mTilt(0.0f),
           mTiltSpeed(TILT_SPEED),
           mCamera(camera),
           mShotDelay(SHOT_DELAY),
-          mShotTimer(0.0f)
+          mShotTimer(0.0f),
+          mActionManager(actionManager)
     {
         auto logicalPresentation = mCamera->GetLogicalPresentation();
         mBounds = Rectf(10.0f, 10.0f, logicalPresentation.x - 20.0f, logicalPresentation.y - 20.0f);
@@ -57,14 +59,14 @@ namespace Mochi::Shooter
         mBulletPool->GetRenderable()->SetScale(scale);
     }
 
-    void Player::Update(const float &dt, Input::IActionManager *actionManager)
+    void Player::Update(const float &dt)
     {
-
+        Graphics::Spritesheet::Update(dt);
         //////////////////////
         ////// MOVEMENT //////
         //////////////////////
-        float horizontal = actionManager->Value("Horizontal");
-        float vertical = actionManager->Value("Vertical");
+        float horizontal = mActionManager->Value("Horizontal");
+        float vertical = mActionManager->Value("Vertical");
         Vector2f movement = {horizontal, vertical};
         movement *= (dt * mSpeed);
         auto lastPosition = GetPosition();
@@ -112,7 +114,7 @@ namespace Mochi::Shooter
         //////// SHOT ////////
         //////////////////////
         mShotTimer += dt;
-        if (actionManager->Performed("Shot") && mShotTimer >= mShotDelay)
+        if (mActionManager->Performed("Shot") && mShotTimer >= mShotDelay)
         {
             auto pos = GetPosition() + Vector2f(1.0f, 0.0f);
             mBulletPool->AddBullet(pos + Vector2f(0.0f, 0.2f));

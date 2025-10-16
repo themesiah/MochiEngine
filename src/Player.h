@@ -30,13 +30,15 @@ namespace Mochi::Shooter
         std::shared_ptr<PlayerBulletPool> mBulletPool;
         float mShotDelay;
         float mShotTimer;
+        Input::IActionManager *mActionManager;
 
     public:
         Player(Mochi::Graphics::IAnimationFactory *animationFactory,
                Mochi::Graphics::AbstractTextureFactory *textureFactory,
-               Mochi::Graphics::Camera *camera);
+               Mochi::Graphics::Camera *camera,
+               Input::IActionManager *actionManager);
         virtual ~Player();
-        virtual void Update(const float &dt, Mochi::Input::IActionManager *actionManager);
+        virtual void Update(const float &dt) override;
         std::shared_ptr<PlayerBulletPool> GetBulletPool() const;
         virtual void SetScale(const float &scale) override;
     };

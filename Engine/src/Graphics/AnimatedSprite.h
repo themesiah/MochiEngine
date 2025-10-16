@@ -25,7 +25,7 @@ namespace Mochi::Graphics
     public:
         AnimatedSprite(IAnimationFactory *, AbstractTextureFactory *, const std::string &animationPath, const std::string &mainAnimation);
         virtual ~AnimatedSprite();
-        virtual void UpdateAnimation(const float &dt);
+        virtual void Update(const float &dt) override;
         virtual void PlayAnimation(const std::string &animationName);
         void StopAnimation();
         std::string GetCurrentAnimation() const;

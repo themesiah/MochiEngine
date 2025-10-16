@@ -34,7 +34,7 @@ namespace Mochi::Graphics
     {
     }
 
-    void AnimatedSprite::UpdateAnimation(const float &dt)
+    void AnimatedSprite::Update(const float &dt)
     {
         if (!mPlaying)
             return;

@@ -13,9 +13,9 @@ namespace Mochi::Graphics
 
     OneshotAnimation::~OneshotAnimation() {}
 
-    void OneshotAnimation::UpdateAnimation(const float &dt)
+    void OneshotAnimation::Update(const float &dt)
     {
-        AnimatedSprite::UpdateAnimation(dt);
+        AnimatedSprite::Update(dt);
         if (!mPlaying)
             return;
         if (mLoops > 0)

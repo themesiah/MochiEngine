@@ -3,7 +3,7 @@
 
 #include "Engine.h"
 #include "Packer/PackCatalog.h"
-#include "ScriptingManager.h"
+#include "Scripting/ScriptingManager.h"
 #include "Graphics/Camera.h"
 #include "Event/EventBus.h"
 #include "GUI/AbstractGUI.h"
