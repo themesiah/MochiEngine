@@ -8,6 +8,7 @@
 #include "Graphics/SpriteBase.h"
 
 #include "Bullets/PlayerBulletPool.h"
+#include "ZIndexEnum.h"
 
 #include "Utils/MathUtils.h"
 
@@ -46,7 +47,11 @@ namespace Mochi::Shooter
 
         auto playerBulletRenderable = std::make_shared<Graphics::SpriteBase>(textureFactory, BULLET_PATH);
         mBulletPool = std::make_shared<PlayerBulletPool>(playerBulletRenderable, MAX_BULLETS, BULLETS_LIFETIME, BULLETS_SPEED);
+
+        SetScale(2.0f);
         playerBulletRenderable->SetScale(GetScale());
+
+        SetZIndex(ZINDEX_PLAYER);
     }
 
     Player::~Player()

@@ -1,18 +1,19 @@
 #define SOL_NO_MEMORY_ALIGNMENT 1
+#define SOL_ALL_SAFETIES_ON 1
 
 #include "ScriptingManager.h"
 
 #include <sol/sol.hpp>
+#include <string_view>
 
 #include "../Packer/PackCatalog.h"
 #include "../Utils/Logger.h"
 
 namespace Mochi::Scripting
 {
-
-    ScriptingManager::ScriptingManager(FS::PackCatalog *packCatalog) : mCatalog(packCatalog), State()
+    ScriptingManager::ScriptingManager(FS::PackCatalog *packCatalog) : mCatalog(packCatalog), mTasks(), State()
     {
-        State.open_libraries();
+        State.open_libraries(sol::lib::base, sol::lib::coroutine, sol::lib::table);
         State.set_function("LogOk", [](const std::string &str)
                            { LOG_OK(str); });
         State.set_function("LogInfo", [](const std::string &str)
@@ -23,7 +24,16 @@ namespace Mochi::Scripting
                            { LOG_ERROR(str); });
 
         ExecuteFile("Script/LuaInit.lua");
-        State.script("return 5");
+
+        State.set_function("start_task",
+                           [this](sol::function func)
+                           {
+                               sol::coroutine co = func;
+                               if (co.valid())
+                               {
+                                   mTasks.push_back({co, 0.0f});
+                               }
+                           });
     }
 
     ScriptingManager::~ScriptingManager()
@@ -34,7 +44,7 @@ namespace Mochi::Scripting
     {
         try
         {
-            State.script(code);
+            State.script(code, sol::script_throw_on_error);
         }
         catch (const sol::error &e)
         {
@@ -46,6 +56,37 @@ namespace Mochi::Scripting
     {
         std::vector<char> data = mCatalog->GetFile(path);
         std::string code(data.begin(), data.end());
-        State.script(code);
+        Execute(code);
+    }
+
+    void ScriptingManager::Update(const float &dt)
+    {
+        auto it = mTasks.begin();
+        while (it != mTasks.end())
+        {
+            auto &task = *it;
+            if (task.WaitTime > 0.0f)
+            {
+                task.WaitTime -= dt;
+                ++it;
+                continue;
+            }
+
+            sol::protected_function_result result = task.Coroutine();
+            if (result.valid() && result.get_type() == sol::type::number)
+            {
+                task.WaitTime = result.get<float>();
+                ++it;
+            }
+            else if (result.valid())
+            {
+                task.WaitTime = 0.0f;
+                ++it;
+            }
+            else
+            {
+                it = mTasks.erase(it);
+            }
+        }
     }
 }

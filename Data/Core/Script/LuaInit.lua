@@ -25,5 +25,9 @@ function GetEvent(name)
     return Events[name]
 end
 
+function Wait(s)
+    coroutine.yield(s)
+end
+
 
 LogOk("Lua starting scripts initialized")

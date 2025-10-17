@@ -5,6 +5,7 @@
 
 #include "../ShooterEvents.h"
 #include "../Utils/Conversion.hpp"
+#include "../ZIndexEnum.h"
 
 namespace Mochi::Shooter
 {
@@ -13,6 +14,8 @@ namespace Mochi::Shooter
     Enemy::Enemy(Event::EventBus *eventBus, Graphics::AbstractTextureFactory *textureFactory)
         : Graphics::SpriteBase(textureFactory, ENEMY_SPRITE_PATH), mHealth(10), mPoints(40), mEventBus(eventBus), mCollider(PixelsToMeters(Rectf({0.0f, 0.0f}, {32.0f, 32.0f})))
     {
+        SetZIndex(ZINDEX_ENEMY);
+        SetScale(2.0f);
     }
 
     Enemy::~Enemy()

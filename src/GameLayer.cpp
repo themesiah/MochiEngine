@@ -53,24 +53,18 @@ namespace Mochi::Shooter
         mAnimationFactory = std::make_shared<Graphics::AsepriteAnimationFactory>(mCatalog);
 
         mPlayer = std::make_shared<Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera, mActionManager);
-        mPlayer->SetZIndex(ZINDEX_PLAYER);
         mPlayer->SetPosition({-2.0f, 0.0f});
-        mPlayer->SetScale(2.0f);
 
         mPointsSystem = std::make_unique<PointsSystem>(mEventBus, mGUI);
 
-        mEnemies.push_back(std::make_unique<Enemy>(mEventBus, mTextureFactory.get()));
-        mEnemies[0]->SetZIndex(ZINDEX_ENEMY);
+        /*mEnemies.push_back(std::make_unique<Enemy>(mEventBus, mTextureFactory.get()));
         mEnemies[0]->SetPosition({6.0f, 1.0f});
-        mEnemies[0]->SetScale(2.0f);
         mEnemies.push_back(std::make_unique<Enemy>(mEventBus, mTextureFactory.get()));
-        mEnemies[1]->SetZIndex(ZINDEX_ENEMY);
         mEnemies[1]->SetPosition({7.0f, -2.0f});
-        mEnemies[1]->SetScale(2.0f);
         mEnemies.push_back(std::make_unique<Enemy>(mEventBus, mTextureFactory.get()));
-        mEnemies[2]->SetZIndex(ZINDEX_ENEMY);
-        mEnemies[2]->SetPosition({3.0f, 3.0f});
-        mEnemies[2]->SetScale(2.0f);
+        mEnemies[2]->SetPosition({3.0f, 3.0f});*/
+
+        mScripting->ExecuteFile("Level1Setup.lua");
 
         mEnemyDestroyedSubscription = mEventBus->Subscribe<EnemyDestroyedEvent>(
             [&](const EnemyDestroyedEvent &e)

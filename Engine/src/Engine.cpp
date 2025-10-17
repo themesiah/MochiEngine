@@ -231,6 +231,9 @@ namespace Mochi
         // Audio
         mAudio->Update(dt);
 
+        // Scripting coroutines
+        mScripting->Update(dt);
+
         for (const std::unique_ptr<Layer> &layer : mLayers)
         {
             if (!layer->Update(dt))
