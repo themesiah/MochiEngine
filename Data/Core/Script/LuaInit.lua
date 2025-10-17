@@ -29,5 +29,9 @@ function Wait(s)
     coroutine.yield(s)
 end
 
+function Yield()
+    coroutine.yield()
+end
+
 
 LogOk("Lua starting scripts initialized")

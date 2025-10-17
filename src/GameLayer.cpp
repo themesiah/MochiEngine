@@ -43,11 +43,13 @@ namespace Mochi::Shooter
         : Layer(), mEnemies(), mEnemiesMarkedForDestruction(), mVFXList(), mVFXMarkedForDestruction()
     {
         mCatalog->OpenPack("Data/Game");
+        BindLuaTypesAndFunctions();
 
         mAudioManager->LoadAudio("Master");
         mAudioManager->PlayBGM("Level1BGM");
 
-        mScripting->ExecuteFile("Script/FMODCallbackDefinitionAlternative.lua");
+        mScripting->ExecuteFile("Level1Setup.lua");
+        mScripting->ExecuteFile("FMODCallback.lua");
 
         mTextureFactory = mRenderer->CreateTextureFactory(mCatalog);
         mAnimationFactory = std::make_shared<Graphics::AsepriteAnimationFactory>(mCatalog);
@@ -56,15 +58,6 @@ namespace Mochi::Shooter
         mPlayer->SetPosition({-2.0f, 0.0f});
 
         mPointsSystem = std::make_unique<PointsSystem>(mEventBus, mGUI);
-
-        /*mEnemies.push_back(std::make_unique<Enemy>(mEventBus, mTextureFactory.get()));
-        mEnemies[0]->SetPosition({6.0f, 1.0f});
-        mEnemies.push_back(std::make_unique<Enemy>(mEventBus, mTextureFactory.get()));
-        mEnemies[1]->SetPosition({7.0f, -2.0f});
-        mEnemies.push_back(std::make_unique<Enemy>(mEventBus, mTextureFactory.get()));
-        mEnemies[2]->SetPosition({3.0f, 3.0f});*/
-
-        mScripting->ExecuteFile("Level1Setup.lua");
 
         mEnemyDestroyedSubscription = mEventBus->Subscribe<EnemyDestroyedEvent>(
             [&](const EnemyDestroyedEvent &e)
@@ -119,7 +112,7 @@ namespace Mochi::Shooter
         {
             mEnemies.erase(
                 std::remove_if(mEnemies.begin(), mEnemies.end(),
-                               [&](const std::unique_ptr<Enemy> &enemy)
+                               [&](const std::shared_ptr<Enemy> &enemy)
                                { return enemy.get() == enemyToDestroy; }),
                 mEnemies.end());
         }
@@ -128,7 +121,7 @@ namespace Mochi::Shooter
         {
             mVFXList.erase(
                 std::remove_if(mVFXList.begin(), mVFXList.end(),
-                               [&](const std::unique_ptr<Graphics::OneshotAnimation> &vfx)
+                               [&](const std::shared_ptr<Graphics::OneshotAnimation> &vfx)
                                { return vfx.get() == vfxToDestroy; }),
                 mVFXList.end());
         }
@@ -206,4 +199,27 @@ namespace Mochi::Shooter
         }
     }
 #endif
+
+    void GameLayer::BindLuaTypesAndFunctions()
+    {
+        mScripting->State.new_usertype<Enemy>(
+            "Enemy",
+            sol::base_classes, sol::bases<Graphics::SpriteBase>());
+
+        mScripting->State.set_function(
+            "CreateEnemy",
+            [this]()
+            {
+                std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>(mEventBus, mTextureFactory.get());
+                mEnemies.push_back(enemy);
+                return enemy;
+            });
+
+        mScripting->State.set_function(
+            "DeleteEnemy",
+            [this](std::shared_ptr<Enemy> deletableElement)
+            {
+                mEnemiesMarkedForDestruction.push_back(deletableElement.get());
+            });
+    }
 }

@@ -42,9 +42,9 @@ namespace Mochi::Shooter
     private:
         std::shared_ptr<Player> mPlayer;
         std::unique_ptr<PointsSystem> mPointsSystem;
-        std::vector<std::unique_ptr<Enemy>> mEnemies;
+        std::vector<std::shared_ptr<Enemy>> mEnemies;
         std::vector<Enemy *> mEnemiesMarkedForDestruction;
-        std::vector<std::unique_ptr<Graphics::OneshotAnimation>> mVFXList;
+        std::vector<std::shared_ptr<Graphics::OneshotAnimation>> mVFXList;
         std::vector<Graphics::OneshotAnimation *> mVFXMarkedForDestruction;
 
         std::shared_ptr<Graphics::AbstractTextureFactory> mTextureFactory;
@@ -52,6 +52,8 @@ namespace Mochi::Shooter
 
         // Subscriptions
         Event::SubscriptionHandler mEnemyDestroyedSubscription;
+
+        void BindLuaTypesAndFunctions();
 
     public:
         GameLayer();

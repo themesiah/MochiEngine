@@ -73,12 +73,14 @@ namespace Mochi::Scripting
             }
 
             sol::protected_function_result result = task.Coroutine();
+
+            auto status = result.status();
             if (result.valid() && result.get_type() == sol::type::number)
             {
                 task.WaitTime = result.get<float>();
                 ++it;
             }
-            else if (result.valid())
+            else if (result.valid() && status == sol::call_status::yielded && result.get_type() == sol::type::none)
             {
                 task.WaitTime = 0.0f;
                 ++it;
