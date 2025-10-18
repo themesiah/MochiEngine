@@ -35,6 +35,7 @@
 #include "Event/SDLSystemEventDispatcher.h"
 
 #include "Debug/IGizmos.h"
+#include "Debug/Profiler.hpp"
 
 #include "Scripting/ScriptingManager.h"
 #include "Layer.h"
@@ -130,6 +131,9 @@ namespace Mochi
             mEventDispatcher = std::make_unique<Event::SDLSystemEventDispatcher>(mEventBus.get());
             LOG_OK("Event dispatcher Initialized");
 
+            mProfiler = std::make_unique<Mochi::Debug::FrameProfiler>();
+            LOG_OK("Profiler initialized");
+
             mAppQuitHandler = mEventBus->Subscribe<ApplicationQuitEvent>(
                 [&](const ApplicationQuitEvent &e)
                 { mIsRunning = false; });
@@ -222,26 +226,44 @@ namespace Mochi
     bool Engine::Update(const float &dt)
     {
         if (dt > 0.03f)
+        {
             LOG_WARNING(std::format("Dangerous delta time of {}!", dt));
+            auto report = mProfiler->Report();
+            LOG_WARNING(report);
+        }
+        mProfiler->NewFrame();
 
         // System Events
+        mProfiler->BeginSection("PollEvents");
         mEventDispatcher->PollEvents();
+        mProfiler->EndSection("PollEvents");
 
         // Input
+        mProfiler->BeginSection("ActionManager");
         mActionManager->Update(dt);
+        mProfiler->EndSection("ActionManager");
 
         // Audio
+        mProfiler->BeginSection("AudioManager");
         mAudio->Update(dt);
+        mProfiler->EndSection("AudioManager");
 
         // Scripting coroutines
+        mProfiler->BeginSection("Scripting");
         mScripting->Update(dt);
+        mProfiler->EndSection("Scripting");
 
+        int layerIndex = 0;
         for (const std::unique_ptr<Layer> &layer : mLayers)
         {
+            mProfiler->BeginSection(std::format("Layer{}", layerIndex));
             if (!layer->Update(dt))
                 mIsRunning = false;
+            mProfiler->EndSection(std::format("Layer{}", layerIndex));
+            layerIndex++;
         }
 
+        mProfiler->BeginSection("Layer removal");
         for (const auto &outLayer : mPopLayerQueue)
         {
             mLayers.erase(
@@ -251,41 +273,58 @@ namespace Mochi
                 mLayers.end());
         }
         mPopLayerQueue.clear();
+        mProfiler->EndSection("Layer removal");
 
+        mProfiler->BeginSection("Layer push");
         for (const auto &inLayer : mPushLayerQueue)
         {
             mLayers.push_back(std::unique_ptr<Layer>(inLayer));
         }
         mPushLayerQueue.clear();
+        mProfiler->BeginSection("Layer push");
 
         return mIsRunning;
     }
 
     void Engine::Render()
     {
+        mProfiler->BeginSection("Rendering");
+        mProfiler->BeginSection("Start rendering");
         mRenderer->StartFrameRendering();
+        mProfiler->EndSection("Start rendering");
         ///////////////////////////////
 
+        mProfiler->BeginSection("Layers render");
         for (const std::unique_ptr<Layer> &layer : mLayers)
         {
             layer->Render();
         }
+        mProfiler->EndSection("Layers render");
+        mProfiler->BeginSection("Render commands");
         mRenderer->Render(mRenderQueue, mCamera.get());
         mRenderQueue.clear();
+        mProfiler->EndSection("Render commands");
 
+        mProfiler->BeginSection("Layers gui");
         for (const std::unique_ptr<Layer> &layer : mLayers)
         {
             layer->GUI();
         }
+        mProfiler->EndSection("Layers gui");
 
 #if DEBUG && !CTEST
+        mProfiler->BeginSection("Layers debug");
         for (const std::unique_ptr<Layer> &layer : mLayers)
         {
             layer->Debug();
         }
+        mProfiler->EndSection("Layers debug");
 #endif
         ///////////////////////////////
+        mProfiler->BeginSection("Finish rendering");
         mRenderer->FinishRendering(); /* put it all on the screen! */
+        mProfiler->EndSection("Finish rendering");
+        mProfiler->EndSection("Rendering");
     }
 
     void Engine::AddRenderCommand(const Graphics::RenderCommand &command)

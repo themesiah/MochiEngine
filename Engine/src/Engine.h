@@ -49,6 +49,7 @@ namespace Mochi
     namespace Debug
     {
         class IGizmos;
+        class FrameProfiler;
     }
     class Layer;
     class Engine
@@ -75,6 +76,7 @@ namespace Mochi
         std::unique_ptr<Graphics::AbstractGUI> mGUI;
         std::unique_ptr<Scripting::ScriptingManager> mScripting;
         std::unique_ptr<Debug::IGizmos> mGizmos;
+        std::unique_ptr<Debug::FrameProfiler> mProfiler;
 
         void PreciseDelay(std::chrono::nanoseconds ns) const;
         void MinimalSetup();
