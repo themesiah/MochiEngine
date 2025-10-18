@@ -14,12 +14,12 @@
 		{"Name":"UINavigateHorizontal", "Cases":[
 			{"Type":"Keyboard", "Trigger":1, "Keycode":79, "Value":1},
 			{"Type":"Keyboard", "Trigger":1, "Keycode":80, "Value":-1},
-			{"Type":"GamepadAxis", "Axis":0}
+			{"Type":"GamepadAxis", "Axis":0, "Threshold":0.5}
 		]},
 		{"Name":"UINavigateVertical", "Cases":[
 			{"Type":"Keyboard", "Trigger":1, "Keycode":82, "Value":1},
 			{"Type":"Keyboard", "Trigger":1, "Keycode":81, "Value":-1},
-			{"Type":"GamepadAxis", "Axis":1}
+			{"Type":"GamepadAxis", "Axis":1, "Threshold":0.5}
 		]},
 		{"Name":"MousePosX", "Cases":[
 			{"Type":"MouseAxis", "Axis":0}
@@ -34,12 +34,12 @@
 		{"Name":"Horizontal", "Cases":[
 			{"Type":"Keyboard", "Trigger":1, "Keycode":79, "Value":1},
 			{"Type":"Keyboard", "Trigger":1, "Keycode":80, "Value":-1},
-			{"Type":"GamepadAxis", "Axis":0}
+			{"Type":"GamepadAxis", "Axis":0, "Threshold":0.5}
 		]},
 		{"Name":"Vertical", "Cases":[
 			{"Type":"Keyboard", "Trigger":1, "Keycode":82, "Value":1},
 			{"Type":"Keyboard", "Trigger":1, "Keycode":81, "Value":-1},
-			{"Type":"GamepadAxis", "Axis":1}
+			{"Type":"GamepadAxis", "Axis":1, "Threshold":0.5}
 		]},
 		{"Name":"Debug1", "Cases":[
 			{"Type":"Keyboard", "Trigger":2, "Keycode":58, "Value":1}

@@ -6,6 +6,7 @@
 #include "../Utils/Assert.h"
 #include "../Exception.hpp"
 #include "../Utils/Logger.h"
+#include "../Utils/MathUtils.h"
 
 namespace Mochi::Input
 {
@@ -204,11 +205,15 @@ namespace Mochi::Input
     }
     bool PerformableActionGamepadAxis::IsPerformed(InputManager *input) const
     {
-        return std::fabs(GetValue(input)) >= mThreshold;
+        return !Math::Approx(GetValue(input), 0.0f);
     }
+
     float PerformableActionGamepadAxis::GetValue(InputManager *input) const
     {
-        return input->GetGamepadAxis(mAxis) * mScale;
+        float value = input->GetGamepadAxis(mAxis);
+        if (std::fabs(value) < mThreshold)
+            return 0.0f;
+        return value * mScale;
     }
 
 }
