@@ -27,6 +27,8 @@ namespace Mochi::Graphics
         SDL_SetAppMetadata(appName, appVersion, appId);
 
         SDL_SetHint(SDL_HINT_JOYSTICK_ALLOW_BACKGROUND_EVENTS, "1");
+        SDL_SetHint(SDL_HINT_HIDAPI_LIBUSB, "0");
+        SDL_SetHint(SDL_HINT_HIDAPI_UDEV, "0");
 
         if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD))
         {
