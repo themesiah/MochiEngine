@@ -2,28 +2,35 @@
 TimeMarkerEvents.Events = {}
 
 TimeMarkerEvents.Events["IntroStart"] = function()
-    local enemy1 = CreateEnemy()
-    local enemy2 = CreateEnemy()
-    local enemy3 = CreateEnemy()
 
-    enemy1:SetPosition(Vector2f.new(1000,1000))
-    enemy2:SetPosition(Vector2f.new(1000,1000))
-    enemy3:SetPosition(Vector2f.new(1000,1000))
-    enemy1:SetScale(2)
-    enemy2:SetScale(2)
-    enemy3:SetScale(2)
+    EnemyGroup(CreateEnemy, 2, 3, 5, 0.3, 5)
+    Wait(2)
+    EnemyGroup(CreateEnemy, 2, -4, 5, 0.3, 5)
+    Wait(3)
+    EnemyGroup(CreateEnemy, 2, 0, 5, 0.3, 5)
 
-    Tween(
-    function(t, dt)
-        enemy1:SetPosition(Vector2f.new(Lerp(18,-24, t), 3))
-        enemy2:SetPosition(Vector2f.new(Lerp(21,-21, t), 3))
-        enemy3:SetPosition(Vector2f.new(Lerp(24,-18, t), 3))
-    end,
-    function()
-        DeleteEnemy(enemy1)
-        DeleteEnemy(enemy2)
-        DeleteEnemy(enemy3)
-    end, 5)
+    -- local enemy1 = CreateEnemy()
+    -- local enemy2 = CreateEnemy()
+    -- local enemy3 = CreateEnemy()
+
+    -- enemy1:SetPosition(Vector2f.new(1000,1000))
+    -- enemy2:SetPosition(Vector2f.new(1000,1000))
+    -- enemy3:SetPosition(Vector2f.new(1000,1000))
+    -- enemy1:SetScale(2)
+    -- enemy2:SetScale(2)
+    -- enemy3:SetScale(2)
+
+    -- Tween(
+    -- function(t, dt)
+    --     enemy1:SetPosition(Vector2f.new(Lerp(18,-24, t), 3))
+    --     enemy2:SetPosition(Vector2f.new(Lerp(21,-21, t), 3))
+    --     enemy3:SetPosition(Vector2f.new(Lerp(24,-18, t), 3))
+    -- end,
+    -- function()
+    --     DeleteEnemy(enemy1)
+    --     DeleteEnemy(enemy2)
+    --     DeleteEnemy(enemy3)
+    -- end, 5)
 end
 
 Audio_LoadAudio("Master")

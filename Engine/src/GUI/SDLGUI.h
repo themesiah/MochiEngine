@@ -20,6 +20,7 @@ namespace Mochi::Graphics
         std::unique_ptr<TTF_Font, void (*)(TTF_Font *)> mFont;
         std::vector<char> mFontRaw;
         SDLGUI(FS::PackCatalog *catalog, IRenderer *renderer, Input::IActionManager *actionManager);
+        SDLRenderer *mSDLRenderer;
 
     public:
         virtual ~SDLGUI();

@@ -197,7 +197,7 @@ namespace Mochi
 
                 if (work < target)
                 {
-                    PreciseDelay(target - work);
+                    // PreciseDelay(target - work);
                 }
 
                 auto frameEnd = std::chrono::steady_clock::now();
@@ -221,6 +221,8 @@ namespace Mochi
 
     bool Engine::Update(const float &dt)
     {
+        if (dt > 0.03f)
+            LOG_WARNING(std::format("Dangerous delta time of {}!", dt));
 
         // System Events
         mEventDispatcher->PollEvents();
@@ -308,6 +310,7 @@ namespace Mochi
 
     Engine::~Engine()
     {
+        mLayers.clear(); // Clear layers first, so layers resources are freed BEFORE the renderer is destroyed, avoiding weird leaks
         mEventBus->Unsubscribe<ApplicationQuitEvent>(mAppQuitHandler);
         gEngine = nullptr;
     }

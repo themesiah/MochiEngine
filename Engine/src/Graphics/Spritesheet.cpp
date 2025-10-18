@@ -37,7 +37,7 @@ namespace Mochi::Graphics
 
     void Spritesheet::ApplyFrameData()
     {
-        auto frame = mAnimationsData->Frames[mFrameIndex];
+        auto &frame = mAnimationsData->Frames[mFrameIndex];
         SetSrcRect(frame.Frame);
 
         mSize = Vector2f(frame.Frame.w, frame.Frame.h);

@@ -45,7 +45,7 @@ namespace Mochi::Shooter
         mCatalog->OpenPack("Data/Game");
 
         mTextureFactory = mRenderer->CreateTextureFactory(mCatalog);
-        mAnimationFactory = std::make_shared<Graphics::AsepriteAnimationFactory>(mCatalog);
+        mAnimationFactory = std::make_unique<Graphics::AsepriteAnimationFactory>(mCatalog);
 
         BindLuaTypesAndFunctions();
         mScripting->ExecuteFileGlobal("ShooterCore.lua");

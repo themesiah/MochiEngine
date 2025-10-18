@@ -20,6 +20,7 @@ namespace Mochi::Graphics
     SDLGUI::SDLGUI(FS::PackCatalog *catalog, IRenderer *renderer, Input::IActionManager *actionManager)
         : AbstractGUI(catalog, renderer, actionManager), mFont({nullptr, TTF_CloseFont})
     {
+        mSDLRenderer = static_cast<SDLRenderer *>(renderer);
         if (!TTF_Init())
         {
             throw SystemInitializationError("GUI", SDL_GetError());
@@ -67,17 +68,12 @@ namespace Mochi::Graphics
 
     void SDLGUI::Text(const char *label, const float &textSize, Vector2f position, const Color &color)
     {
-        auto *ren = dynamic_cast<SDLRenderer *>(mRenderer);
-        auto renderer = ren->GetRenderer();
+        auto renderer = mSDLRenderer->GetRenderer();
         SDL_Surface *surface = TTF_RenderText_Solid(mFont.get(), label, 0, color);
         ASSERT(std::format("Surface is null: {}", SDL_GetError()), surface != NULL);
         SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
         ASSERT("Texture is null", texture != NULL);
         SDL_SetTextureScaleMode(texture, SDL_ScaleMode::SDL_SCALEMODE_NEAREST); // SUPER IMPORTANT!
-
-        SDL_RendererLogicalPresentation *rlp{NULL};
-        int logicalW, logicalH;
-        SDL_GetRenderLogicalPresentation(renderer, &logicalW, &logicalH, rlp);
 
         float w, h;
         SDL_GetTextureSize(texture, &w, &h);

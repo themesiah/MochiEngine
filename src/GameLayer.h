@@ -47,8 +47,8 @@ namespace Mochi::Shooter
         std::vector<std::shared_ptr<Graphics::OneshotAnimation>> mVFXList;
         std::vector<Graphics::OneshotAnimation *> mVFXMarkedForDestruction;
 
-        std::shared_ptr<Graphics::AbstractTextureFactory> mTextureFactory;
-        std::shared_ptr<Graphics::IAnimationFactory> mAnimationFactory;
+        std::unique_ptr<Graphics::AbstractTextureFactory> mTextureFactory;
+        std::unique_ptr<Graphics::IAnimationFactory> mAnimationFactory;
 
         // Subscriptions
         Event::SubscriptionHandler mEnemyDestroyedSubscription;

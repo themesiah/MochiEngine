@@ -26,8 +26,8 @@ namespace Mochi::Graphics
         }
         else
         {
-            auto newTexture = LoadTexture(texturePath);
-            mTexturesMap[texturePath] = newTexture;
+            auto newTexture = LoadTexture(normalizedPath);
+            mTexturesMap[normalizedPath] = newTexture;
             return newTexture;
         }
     }
@@ -49,7 +49,7 @@ namespace Mochi::Graphics
         }
         else
         {
-            LOG_WARNING(std::format("Trying to delete texture with path {} that was not cached.", texturePath));
+            LOG_WARNING(std::format("Trying to delete texture with path {} that was not cached.", normalizedPath));
         }
     }
 }

@@ -19,7 +19,9 @@ int main()
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
     _CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDOUT);
-//_CrtSetBreakAlloc(4596);
+    //_CrtSetBreakAlloc(333206);
+    //_CrtSetBreakAlloc(333207);
+    //_CrtSetBreakAlloc(333209);
 #endif
     const char *appName = "Space Shooter";
     const char *appVersion = "0.1";
