@@ -81,6 +81,11 @@ namespace Mochi::Graphics
         return mPosition;
     }
 
+    void SpriteBase::Move(const Vector2f &movement)
+    {
+        mPosition += movement;
+    }
+
     void SpriteBase::SetZIndex(const uint16_t &zIndex)
     {
         mZindex = zIndex;

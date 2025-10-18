@@ -37,6 +37,7 @@ namespace Mochi::Graphics
         float GetScale() const;
         void SetPosition(const Vector2f &position);
         Vector2f GetPosition() const;
+        void Move(const Vector2f &movement);
         void SetZIndex(const uint16_t &zIndex);
         uint16_t GetZIndex() const;
     };

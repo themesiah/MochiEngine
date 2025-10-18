@@ -10,17 +10,10 @@ namespace Mochi::FS
 }
 namespace Mochi::Scripting
 {
-    struct LuaTask
-    {
-        sol::coroutine Coroutine;
-        float WaitTime;
-    };
-
     class ScriptingManager
     {
     private:
         FS::PackCatalog *mCatalog;
-        std::vector<LuaTask> mTasks;
 
     public:
         ScriptingManager(FS::PackCatalog *packCatalog);

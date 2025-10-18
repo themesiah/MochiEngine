@@ -43,16 +43,16 @@ namespace Mochi::Shooter
         : Layer(), mEnemies(), mEnemiesMarkedForDestruction(), mVFXList(), mVFXMarkedForDestruction()
     {
         mCatalog->OpenPack("Data/Game");
-        BindLuaTypesAndFunctions();
-
-        mAudioManager->LoadAudio("Master");
-        mAudioManager->PlayBGM("Level1BGM");
-
-        mScripting->ExecuteFile("Level1Setup.lua");
-        mScripting->ExecuteFile("FMODCallback.lua");
 
         mTextureFactory = mRenderer->CreateTextureFactory(mCatalog);
         mAnimationFactory = std::make_shared<Graphics::AsepriteAnimationFactory>(mCatalog);
+
+        BindLuaTypesAndFunctions();
+        mScripting->ExecuteFile("Level1Setup.lua");
+        mScripting->ExecuteFile("FMODCallback.lua");
+
+        // mAudioManager->LoadAudio("Master");
+        // mAudioManager->PlayBGM("Level1BGM");
 
         mPlayer = std::make_shared<Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera, mActionManager);
         mPlayer->SetPosition({-2.0f, 0.0f});

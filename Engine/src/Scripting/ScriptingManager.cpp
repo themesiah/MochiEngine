@@ -11,9 +11,9 @@
 
 namespace Mochi::Scripting
 {
-    ScriptingManager::ScriptingManager(FS::PackCatalog *packCatalog) : mCatalog(packCatalog), mTasks(), State()
+    ScriptingManager::ScriptingManager(FS::PackCatalog *packCatalog) : mCatalog(packCatalog), State()
     {
-        State.open_libraries(sol::lib::base, sol::lib::coroutine, sol::lib::table);
+        State.open_libraries(sol::lib::base, sol::lib::coroutine, sol::lib::table, sol::lib::debug, sol::lib::math);
         State.set_function("LogOk", [](const std::string &str)
                            { LOG_OK(str); });
         State.set_function("LogInfo", [](const std::string &str)
@@ -24,16 +24,8 @@ namespace Mochi::Scripting
                            { LOG_ERROR(str); });
 
         ExecuteFile("Script/LuaInit.lua");
-
-        State.set_function("start_task",
-                           [this](sol::function func)
-                           {
-                               sol::coroutine co = func;
-                               if (co.valid())
-                               {
-                                   mTasks.push_back({co, 0.0f});
-                               }
-                           });
+        ExecuteFile("Script/Coroutines.lua");
+        ExecuteFile("Script/Math.lua");
     }
 
     ScriptingManager::~ScriptingManager()
@@ -61,34 +53,6 @@ namespace Mochi::Scripting
 
     void ScriptingManager::Update(const float &dt)
     {
-        auto it = mTasks.begin();
-        while (it != mTasks.end())
-        {
-            auto &task = *it;
-            if (task.WaitTime > 0.0f)
-            {
-                task.WaitTime -= dt;
-                ++it;
-                continue;
-            }
-
-            sol::protected_function_result result = task.Coroutine();
-
-            auto status = result.status();
-            if (result.valid() && result.get_type() == sol::type::number)
-            {
-                task.WaitTime = result.get<float>();
-                ++it;
-            }
-            else if (result.valid() && status == sol::call_status::yielded && result.get_type() == sol::type::none)
-            {
-                task.WaitTime = 0.0f;
-                ++it;
-            }
-            else
-            {
-                it = mTasks.erase(it);
-            }
-        }
+        State["UpdateCoroutines"](dt);
     }
 }

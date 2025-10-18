@@ -11,6 +11,7 @@
 
 #include "../Input/IActionManager.h"
 #include "../Types/Types.hpp"
+#include "../Time/TimeSystem.h"
 
 #include "../Utils/Logger.h"
 
@@ -23,6 +24,7 @@ namespace Mochi::Scripting::Bindings
         manager->State.new_usertype<Graphics::SpriteBase>("SpriteBase",
                                                           "GetPosition", &Graphics::SpriteBase::GetPosition,
                                                           "SetPosition", &Graphics::SpriteBase::SetPosition,
+                                                          "Move", &Graphics::SpriteBase::Move,
                                                           "GetScale", &Graphics::SpriteBase::GetScale,
                                                           "SetScale", &Graphics::SpriteBase::SetScale,
                                                           "GetZIndex", &Graphics::SpriteBase::GetZIndex,
@@ -70,10 +72,14 @@ namespace Mochi::Scripting::Bindings
                                            { return a + b; }),
             sol::meta_function::subtraction, ([](const Vector2f &a, const Vector2f &b)
                                               { return a - b; }),
-            sol::meta_function::multiplication, ([](const Vector2f &a, const Vector2f &b)
-                                                 { return a * b; }),
-            sol::meta_function::division, ([](const Vector2f &a, const Vector2f &b)
-                                           { return a / b; }));
+            sol::meta_function::multiplication, sol::overload(([](const Vector2f &a, const Vector2f &b)
+                                                               { return a * b; }),
+                                                              ([](const Vector2f &a, const float &b)
+                                                               { return a * b; })),
+            sol::meta_function::division, sol::overload(([](const Vector2f &a, const Vector2f &b)
+                                                         { return a / b; }),
+                                                        ([](const Vector2f &a, const float &b)
+                                                         { return a / b; })));
 
         manager->State.set_function("Action_Performed", [actionManager](const std::string &actionName)
                                     { return actionManager->Performed(actionName); });
@@ -81,6 +87,15 @@ namespace Mochi::Scripting::Bindings
                                     { return actionManager->Value(actionName); });
         manager->State.set_function("Action_CompoundValue", [actionManager](const std::string &actionName1, const std::string &actionName2)
                                     { return actionManager->CompoundValue(actionName1, actionName2); });
+
+        manager->State.set_function("GetDeltaTime", []()
+                                    { return Time::TimeSystem::GetDeltaTime(); });
+        manager->State.set_function("GetUnscaledDeltaTime", []()
+                                    { return Time::TimeSystem::GetUnscaledDeltaTime(); });
+        manager->State.set_function("GetGameTime", []()
+                                    { return Time::TimeSystem::GetGameTime(); });
+        manager->State.set_function("GetUnscaledGameTime", []()
+                                    { return Time::TimeSystem::GetUnscaledGameTime(); });
         LOG_OK("LUA Logic methods and classes Binded");
     }
 
