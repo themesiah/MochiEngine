@@ -123,9 +123,9 @@ namespace Mochi::Audio
         {
             FMOD_STUDIO_TIMELINE_MARKER_PROPERTIES *marker = (FMOD_STUDIO_TIMELINE_MARKER_PROPERTIES *)parameters;
             std::cout << "Marker with name " << marker->name << " triggered at millisecond " << marker->position << std::endl;
-            sol::table e = mScripting->State["GetEvent"]("AudioMarkerEvent");
-            sol::function fireFunc = e["fire"];
-            fireFunc(e, marker->name, marker->position);
+
+            std::string code = std::format("GetEvent(\"AudioMarkerEvent\"):fire(\"{}\", {})", marker->name, marker->position);
+            mScripting->Execute(code);
         }
     }
 

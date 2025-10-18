@@ -14,13 +14,17 @@ namespace Mochi::Scripting
     {
     private:
         FS::PackCatalog *mCatalog;
+        sol::environment mEnvironment;
 
     public:
         ScriptingManager(FS::PackCatalog *packCatalog);
         ~ScriptingManager();
         void Execute(const std::string &code);
         void ExecuteFile(const std::string &path);
+        void ExecuteGlobal(const std::string &code);
+        void ExecuteFileGlobal(const std::string &path);
         void Update(const float &dt);
+        void CleanEnvironment();
         sol::state State;
     };
 }

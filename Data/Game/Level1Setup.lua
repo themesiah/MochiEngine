@@ -1,16 +1,14 @@
-TimeMarkerEvents = {}
+-- Clear the events table
+TimeMarkerEvents.Events = {}
 
--- x: -16~+16
--- y: -9~+9
-
-function IntroStart()
+TimeMarkerEvents.Events["IntroStart"] = function()
     local enemy1 = CreateEnemy()
     local enemy2 = CreateEnemy()
     local enemy3 = CreateEnemy()
 
-    enemy1:SetPosition(Vector2f.new(15,50))
-    enemy2:SetPosition(Vector2f.new(15,50))
-    enemy3:SetPosition(Vector2f.new(15,50))
+    enemy1:SetPosition(Vector2f.new(1000,1000))
+    enemy2:SetPosition(Vector2f.new(1000,1000))
+    enemy3:SetPosition(Vector2f.new(1000,1000))
     enemy1:SetScale(2)
     enemy2:SetScale(2)
     enemy3:SetScale(2)
@@ -27,10 +25,6 @@ function IntroStart()
         DeleteEnemy(enemy3)
     end, 5)
 end
-
-
-
-TimeMarkerEvents["IntroStart"] = IntroStart
 
 Audio_LoadAudio("Master")
 Audio_PlayBGM("Level1BGM")

@@ -163,3 +163,37 @@ TEST_CASE("LUA Class pointer")
     CHECK(cat2->GetName() == "Cafe");
     CHECK(cat2ptr->GetName() == "Cafe");
 }
+
+TEST_CASE("LUA environment")
+{
+    sol::state lua;
+    lua["a"] = 1;
+    CHECK(lua["a"] == 1);
+
+    sol::table globals = lua.globals();
+    sol::environment environment(lua, sol::create, lua.globals());
+    environment[sol::metatable_key] = lua.create_table_with("__index", globals);
+
+    CHECK(environment["a"] == 1); // Environment copies globals correctly
+    lua["a"] = 2;
+    CHECK(lua["a"] == 2);
+    CHECK(environment["a"] == 2); // Environment auto updates existing globals
+    environment["a"] = 3;
+    CHECK(lua["a"] == 2);
+    CHECK(environment["a"] == 3); // Environment can override existing globals
+    lua["a"] = 4;
+    CHECK(lua["a"] == 4);
+    CHECK(environment["a"] == 3); // Once overriden, changes on globals are not auto updated
+
+    lua["b"] = 5;
+    CHECK(lua["b"] == 5);
+    CHECK(environment["b"] == 5); // New globals are auto updated
+
+    lua.script("c = {}");
+    lua.script("c[\"d\"] = 6");
+    CHECK(lua["c"]["d"] == 6);
+    CHECK(environment["c"]["d"] == 6);
+    lua.script("c[\"e\"] = 7", environment);
+    CHECK(lua["c"]["e"] == 7);
+    CHECK(environment["c"]["e"] == 7);
+}

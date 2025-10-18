@@ -48,11 +48,8 @@ namespace Mochi::Shooter
         mAnimationFactory = std::make_shared<Graphics::AsepriteAnimationFactory>(mCatalog);
 
         BindLuaTypesAndFunctions();
+        mScripting->ExecuteFileGlobal("ShooterCore.lua");
         mScripting->ExecuteFile("Level1Setup.lua");
-        mScripting->ExecuteFile("FMODCallback.lua");
-
-        // mAudioManager->LoadAudio("Master");
-        // mAudioManager->PlayBGM("Level1BGM");
 
         mPlayer = std::make_shared<Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera, mActionManager);
         mPlayer->SetPosition({-2.0f, 0.0f});
