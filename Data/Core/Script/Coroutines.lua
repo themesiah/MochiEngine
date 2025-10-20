@@ -53,7 +53,7 @@ function UpdateCoroutines(dt)
         else
             local ok, err = coroutine.resume(co, dt)
             if not ok then
-                LogError("Coroutine error:", err)
+                LogError("Coroutine error:" .. err)
                 table.remove(CoroutineSystem.active, i)
             elseif coroutine.status(co) == "dead" then
                 table.remove(CoroutineSystem.active, i)

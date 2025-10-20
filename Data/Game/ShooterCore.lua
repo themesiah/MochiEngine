@@ -10,16 +10,20 @@ GetEvent("AudioMarkerEvent"):addListener(function(name, time)
     end
 end)
 
-function EnemyGroup(CreateFunction, scale, height, duration, delay, amount)
+function EnemyGroup(CreateFunction, scale, start_y, end_y, duration, delay, amount, sub_t)
     StartCoroutine(function()
         for i=1, amount, 1 do
             local enemy = CreateFunction()
             enemy:SetPosition(Vector2f.new(1000,1000))
             enemy:SetScale(scale)
+            local sub_t_val = sub_t / 2
             
             Tween(
             function(t, dt)
-                enemy:SetPosition(Vector2f.new(Lerp(18, -18, t), height))
+                local new_x = Lerp(18, -18, t)
+                local t2 = InverseLerp(sub_t_val, 1-sub_t_val, t)
+                local new_y = Lerp(start_y, end_y, t2)
+                enemy:SetPosition(Vector2f.new(new_x, new_y))
             end,
             function()
                 DeleteEnemy(enemy)

@@ -88,6 +88,7 @@ namespace Mochi::Shooter
 
         for (auto &enemy : mEnemies)
         {
+            enemy->Update(dt);
             auto enemyShape = enemy->GetCollider();
             std::vector<int> collisions = playerBulletPool->CheckAgainst(enemyShape);
             for (size_t i = 0; i < collisions.size(); ++i)
@@ -207,7 +208,7 @@ namespace Mochi::Shooter
             "CreateEnemy",
             [this]()
             {
-                std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>(mEventBus, mTextureFactory.get());
+                std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>(mEventBus, mTextureFactory.get(), mAnimationFactory.get());
                 mEnemies.push_back(enemy);
                 return enemy;
             });

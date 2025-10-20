@@ -26,7 +26,7 @@ public:
     {
         mTextureFactory = mRenderer->CreateTextureFactory(mCatalog);
         mAnimationFactory = std::make_unique<Graphics::AsepriteAnimationFactory>(mCatalog);
-        mEnemy = std::make_unique<Shooter::Enemy>(mEventBus, mTextureFactory.get());
+        mEnemy = std::make_unique<Shooter::Enemy>(mEventBus, mTextureFactory.get(), mAnimationFactory.get());
         mPlayer = std::make_unique<Shooter::Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera, mActionManager);
         mEnemy->SetScale(2.0f);
         mPlayer->SetScale(2.0f);
