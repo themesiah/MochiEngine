@@ -39,7 +39,9 @@ namespace Mochi::Graphics
         virtual void FinishRendering() const override;
         virtual std::unique_ptr<AbstractTextureFactory> CreateTextureFactory(FS::PackCatalog *catalog) const;
         virtual std::unique_ptr<AbstractGUI> CreateGUI(FS::PackCatalog *catalog, Input::IActionManager *actionManager);
+#if DEBUG
         virtual std::unique_ptr<Debug::IGizmos> CreateGizmos();
+#endif
     };
 }
 

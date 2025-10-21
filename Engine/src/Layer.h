@@ -31,7 +31,9 @@ namespace Mochi
         Input::IActionManager *mActionManager;
         Audio::IAudioManager *mAudioManager;
         Graphics::IRenderer *mRenderer;
+#if DEBUG
         Debug::IGizmos *mGizmos;
+#endif
 
     public:
         Layer();

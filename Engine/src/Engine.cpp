@@ -87,11 +87,10 @@ namespace Mochi
             mGUI = mRenderer->CreateGUI(mCatalog.get(), mActionManager.get());
             LOG_OK("GUI Initialized");
 
-            mGizmos = mRenderer->CreateGizmos();
-            LOG_OK("Gizmos Initialized");
-
             PushLayer(new Scripting::ScriptingLayer());
 #ifdef DEBUG
+            mGizmos = mRenderer->CreateGizmos();
+            LOG_OK("Gizmos Initialized");
             PushLayer(new DebugLayer());
 #endif
         }
@@ -156,12 +155,13 @@ namespace Mochi
     {
         mRenderer = std::move(renderer);
         mGUI = mRenderer->CreateGUI(mCatalog.get(), mActionManager.get());
-        mGizmos = mRenderer->CreateGizmos();
         mActionManager = std::move(actionManager);
         mAudio = std::move(audioManager);
 
         PushLayer(new Scripting::ScriptingLayer());
+
 #ifdef DEBUG
+        mGizmos = mRenderer->CreateGizmos();
         PushLayer(new DebugLayer());
 #endif
     }
@@ -375,8 +375,10 @@ namespace Mochi
     void Engine::SwapRenderer(std::unique_ptr<Graphics::IRenderer> &&renderer)
     {
         mGUI = renderer->CreateGUI(mCatalog.get(), mActionManager.get());
-        mGizmos = renderer->CreateGizmos();
         mEventBus->Publish<RendererSwappedEvent>({renderer.get(), mGUI.get(), mGizmos.get()});
         mRenderer = std::move(renderer);
+#if DEBUG
+        mGizmos = renderer->CreateGizmos();
+#endif
     }
 }

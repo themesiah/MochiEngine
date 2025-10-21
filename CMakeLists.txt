@@ -20,22 +20,11 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<CONFIG>)
 add_subdirectory("Engine")
 add_subdirectory("Tests")
 
-# Win32 mode (no console) or not
-set(GAME_WIN32_FLAG "")
-
-if(WIN32)
-    # Only add the WIN32 flag in Release builds
-    if(CMAKE_BUILD_TYPE STREQUAL "Release") # Single-config generators (Makefiles, Ninja)
-        set(GAME_WIN32_FLAG "WIN32")
-    # elseif(CMAKE_CONFIGURATION_TYPES) # Multi-config generators (Visual Studio, Xcode)
-    #     # For MSVC / multi-config, WIN32 is a target property so we set it after creation
-    #     set(GAME_WIN32_FLAG "WIN32")
-    endif()
-endif()
-
 file(GLOB Game_src CONFIGURE_DEPENDS "src/*.cpp" "src/Bullets/*.cpp" "src/Enemies/*.cpp")
 add_library(GameLib ${Game_src})
-add_executable(Game ${GAME_WIN32_FLAG} src/main.cpp)
+add_executable(Game src/main.cpp)
+set_target_properties(Game PROPERTIES
+    WIN32_EXECUTABLE $<CONFIG:Release>) # Sets the WIN32_EXECUTABLE property ONLY on release
 target_include_directories(GameLib INTERFACE "src")
 target_link_libraries(GameLib PUBLIC Engine)
 target_link_libraries(Game

@@ -15,7 +15,9 @@ namespace Mochi
         mActionManager = e.GetActionManager();
         mAudioManager = e.GetAudio();
         mRenderer = e.GetRenderer();
+#if DEBUG
         mGizmos = e.GetGizmos();
+#endif
 
         mAudioSwapHandle = mEventBus->Subscribe<AudioManagerSwappedEvent>(
             [this](const AudioManagerSwappedEvent &ev)
@@ -34,7 +36,9 @@ namespace Mochi
             {
                 mRenderer = ev.newRenderer;
                 mGUI = ev.newGui;
+#if DEBUG
                 mGizmos = ev.newGizmos;
+#endif
             });
     }
 

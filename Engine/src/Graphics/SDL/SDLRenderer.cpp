@@ -108,8 +108,10 @@ namespace Mochi::Graphics
         return std::unique_ptr<SDLGUI>(new SDLGUI(catalog, this, actionManager));
     }
 
+#if DEBUG
     std::unique_ptr<Debug::IGizmos> SDLRenderer::CreateGizmos()
     {
         return std::unique_ptr<Debug::SDLGizmos>(new Debug::SDLGizmos(this));
     }
+#endif
 }
