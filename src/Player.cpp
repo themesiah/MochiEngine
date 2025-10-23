@@ -9,10 +9,12 @@
 
 #include "Bullets/PlayerBulletPool.h"
 #include "ZIndexEnum.h"
+#include "ShooterEvents.h"
 
 #include "Utils/MathUtils.h"
 
 #include "Utils/Logger.h"
+#include "Utils/Conversion.hpp"
 
 namespace Mochi::Shooter
 {
@@ -27,12 +29,15 @@ namespace Mochi::Shooter
     inline constexpr int MAX_BULLETS = 100;
     inline constexpr float BULLETS_LIFETIME = 1.0f;
     inline constexpr float BULLETS_SPEED = 48.0f;
+    inline constexpr int MAX_HEALTH = 3;
+    inline constexpr float DAMAGE_DELAY = 2.0f;
 
     Player::Player(
         Graphics::IAnimationFactory *animationFactory,
         Graphics::AbstractTextureFactory *textureFactory,
         Graphics::Camera *camera,
-        Input::IActionManager *actionManager)
+        Input::IActionManager *actionManager,
+        Event::EventBus *eventBus)
         : Graphics::Spritesheet(animationFactory, textureFactory, PLAYER_ANIM_PATH, 0),
           mSpeed(MOVEMENT_SPEED),
           mTilt(0.0f),
@@ -40,7 +45,14 @@ namespace Mochi::Shooter
           mCamera(camera),
           mShotDelay(SHOT_DELAY),
           mShotTimer(0.0f),
-          mActionManager(actionManager)
+          mActionManager(actionManager),
+          mEventBus(eventBus),
+          mCollider(PixelsToMeters(Rectf({0.0f, 0.0f}, {32.0f, 32.0f}))),
+          mMaxHealth(MAX_HEALTH),
+          mHealth(mMaxHealth),
+          mDamageDelay(DAMAGE_DELAY),
+          mDamageTimer(mDamageDelay),
+          mIsAlive(true)
     {
         auto logicalPresentation = mCamera->GetLogicalPresentation();
         mBounds = Rectf(10.0f, 10.0f, logicalPresentation.x - 20.0f, logicalPresentation.y - 20.0f);
@@ -67,6 +79,8 @@ namespace Mochi::Shooter
     void Player::Update(const float &dt)
     {
         Graphics::Spritesheet::Update(dt);
+
+        mDamageTimer += dt;
         //////////////////////
         ////// MOVEMENT //////
         //////////////////////
@@ -132,5 +146,36 @@ namespace Mochi::Shooter
     std::shared_ptr<PlayerBulletPool> Player::GetBulletPool() const
     {
         return mBulletPool;
+    }
+
+    Physics::Rectangle Player::GetCollider() const
+    {
+        auto collider = mCollider;
+        collider.Position = GetPosition();
+        return collider;
+    }
+
+    void Player::ReceiveDamage()
+    {
+        if (mDamageTimer > mDamageDelay)
+        {
+            mHealth--;
+            mDamageTimer = 0.0f;
+            mEventBus->Publish<PlayerDamageReceivedEvent>({});
+
+            LOG_INFO("Player received damage");
+
+            if (mHealth <= 0)
+            {
+                Die();
+            }
+        }
+    }
+
+    void Player::Die()
+    {
+        mIsAlive = false;
+        mEventBus->Publish<PlayerDeadEvent>({});
+        LOG_INFO("Player died");
     }
 }

@@ -18,11 +18,17 @@ namespace Mochi::Shooter
           mGUI(gui)
     {
 
-        mDeadEnemyHandler = mEventBus->Subscribe<EnemyDestroyedEvent>([&](const EnemyDestroyedEvent &e)
-                                                                      { OnEnemyDestroyed(e.Points); });
+        mDeadEnemyHandler = mEventBus->Subscribe<EnemyDestroyedEvent>(
+            [&](const EnemyDestroyedEvent &e)
+            { OnEnemyDestroyed(e.Points); });
 
-        mPlayerDamageHandler = mEventBus->Subscribe<PlayerDamageReceivedEvent>([&](const PlayerDamageReceivedEvent &e)
-                                                                               { mMultiplier = 1; });
+        mPlayerDamageHandler = mEventBus->Subscribe<PlayerDamageReceivedEvent>(
+            [&](const PlayerDamageReceivedEvent &e)
+            { mMultiplier = 1; });
+
+        mPlayerDeadHandler = mEventBus->Subscribe<PlayerDeadEvent>(
+            [&](const PlayerDeadEvent &e)
+            { mPoints = 0; });
     }
 
     PointsSystem::~PointsSystem()

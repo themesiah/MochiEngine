@@ -13,6 +13,10 @@ namespace Mochi::Shooter
     struct PlayerDamageReceivedEvent
     {
     };
+
+    struct PlayerDeadEvent
+    {
+    };
 }
 
 #endif

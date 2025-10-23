@@ -5,6 +5,8 @@
 #include "Graphics/RenderCommand.h"
 #include "Graphics/Spritesheet.h"
 #include "Types/Types.hpp"
+#include "Physics/Shapes.h"
+#include "Event/EventBus.h"
 
 namespace Mochi::Input
 {
@@ -31,16 +33,28 @@ namespace Mochi::Shooter
         float mShotDelay;
         float mShotTimer;
         Input::IActionManager *mActionManager;
+        Event::EventBus *mEventBus;
+        Physics::Rectangle mCollider;
+
+        int mMaxHealth;
+        int mHealth;
+        float mDamageDelay;
+        float mDamageTimer;
+        bool mIsAlive;
+        void Die();
 
     public:
         Player(Mochi::Graphics::IAnimationFactory *animationFactory,
                Mochi::Graphics::AbstractTextureFactory *textureFactory,
                Mochi::Graphics::Camera *camera,
-               Input::IActionManager *actionManager);
+               Input::IActionManager *actionManager,
+               Event::EventBus *eventBus);
         virtual ~Player();
         virtual void Update(const float &dt) override;
         std::shared_ptr<PlayerBulletPool> GetBulletPool() const;
         virtual void SetScale(const float &scale) override;
+        Physics::Rectangle GetCollider() const;
+        void ReceiveDamage();
     };
 }
 

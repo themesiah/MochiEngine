@@ -51,7 +51,7 @@ namespace Mochi::Shooter
         mScripting->ExecuteFileGlobal("ShooterCore.lua");
         mScripting->ExecuteFile("Level1Setup.lua");
 
-        mPlayer = std::make_shared<Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera, mActionManager);
+        mPlayer = std::make_shared<Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera, mActionManager, mEventBus);
         mPlayer->SetPosition({-2.0f, 0.0f});
 
         mPointsSystem = std::make_unique<PointsSystem>(mEventBus, mGUI);
@@ -83,6 +83,15 @@ namespace Mochi::Shooter
     bool GameLayer::Update(const float &dt)
     {
         mPlayer->Update(dt);
+
+        auto playerCollider = mPlayer->GetCollider();
+        for (auto &enemy : mEnemies)
+        {
+            if (playerCollider.Collides(enemy->GetCollider()))
+            {
+                mPlayer->ReceiveDamage();
+            }
+        }
 
         auto playerBulletPool = mPlayer->GetBulletPool();
 
@@ -180,10 +189,13 @@ namespace Mochi::Shooter
         Engine &e = Engine::Get();
         auto camera = e.GetCamera();
 
+        auto collider = mPlayer->GetCollider();
+        mGizmos->DrawRectangle(&collider, {255, 255, 0, 255});
+
         for (auto &enemy : mEnemies)
         {
             auto enemyCollider = enemy->GetCollider();
-            mGizmos->DrawRectangle(&enemyCollider, {255, 255, 0, 255});
+            mGizmos->DrawRectangle(&enemyCollider, {255, 0, 0, 255});
         }
 
         auto playerBullets = mPlayer->GetBulletPool();
@@ -193,7 +205,7 @@ namespace Mochi::Shooter
         for (size_t i = 0; i < bulletPositions.size(); ++i)
         {
             rect.Position = bulletPositions[i];
-            mGizmos->DrawRectangle(&rect, {255, 0, 0, 255});
+            mGizmos->DrawRectangle(&rect, {255, 255, 0, 255});
         }
     }
 #endif

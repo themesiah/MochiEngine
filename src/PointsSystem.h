@@ -20,6 +20,7 @@ namespace Mochi::Shooter
 
         Event::SubscriptionHandler mDeadEnemyHandler;
         Event::SubscriptionHandler mPlayerDamageHandler;
+        Event::SubscriptionHandler mPlayerDeadHandler;
 
         void OnEnemyDestroyed(unsigned int points);
 
