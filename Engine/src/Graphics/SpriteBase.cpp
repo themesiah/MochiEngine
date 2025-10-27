@@ -14,12 +14,13 @@
 
 namespace Mochi::Graphics
 {
-    SpriteBase::SpriteBase(AbstractTextureFactory *textureFactory, const std::string &filename) : mScale(1.0f), mPosition(0.0f, 0.0f), mZindex(0)
+    SpriteBase::SpriteBase(AbstractTextureFactory *textureFactory, const std::string &filename)
+        : mScale(1.0f), mPosition(0.0f, 0.0f), mZindex(0), mVisible(true), mAlpha(255)
     {
         LoadTexture(textureFactory, filename);
     }
 
-    SpriteBase::SpriteBase() : mScale(1.0f), mZindex(0)
+    SpriteBase::SpriteBase() : mScale(1.0f), mZindex(0), mVisible(true), mAlpha(255)
     {
         mSrcRect.SetPosition({0.0f, 0.0f});
     }
@@ -36,10 +37,12 @@ namespace Mochi::Graphics
         mSrcRect.h = mSize.y;
     }
 
-    RenderCommand SpriteBase::GetRenderData() const
+    std::vector<RenderCommand> SpriteBase::GetRenderData() const
     {
         if (!mTexture)
             throw EngineError("A texture was not initialized");
+        if (!mVisible)
+            return {};
         RenderCommand rc;
         rc.texture = mTexture.get();
         rc.sourceRect = mSrcRect;
@@ -47,7 +50,7 @@ namespace Mochi::Graphics
         rc.destRect.w = mSize.x * mScale;
         rc.destRect.h = mSize.y * mScale;
         rc.zindex = mZindex;
-        return rc;
+        return {rc};
     }
 
     void SpriteBase::Update(const float &dt) {}
@@ -94,5 +97,26 @@ namespace Mochi::Graphics
     uint16_t SpriteBase::GetZIndex() const
     {
         return mZindex;
+    }
+
+    bool SpriteBase::IsVisible() const
+    {
+        return mVisible;
+    }
+
+    void SpriteBase::SetVisible(const bool &visible)
+    {
+        mVisible = visible;
+    }
+
+    uint8_t SpriteBase::GetAlpha() const
+    {
+        return mAlpha;
+    }
+
+    void SpriteBase::SetAlpha(const uint8_t &alpha)
+    {
+        mAlpha = alpha;
+        mTexture->SetAlpha(alpha);
     }
 }

@@ -80,7 +80,7 @@ namespace Mochi::Scripting
         auto &engine = Engine::Get();
         for (auto &sprite : mSprites)
         {
-            engine.AddRenderCommand(sprite->GetRenderData());
+            engine.AddRenderCommands(sprite->GetRenderData());
         }
     }
 

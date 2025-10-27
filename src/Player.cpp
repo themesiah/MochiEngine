@@ -19,6 +19,7 @@
 namespace Mochi::Shooter
 {
     inline const std::string PLAYER_ANIM_PATH = "Player/PlayerShip.json";
+    inline const std::string SHIELD_ANIM_PATH = "Player/PlayerShield.json";
     inline const std::string BULLET_PATH = "Player/Bullet.png";
     inline const std::string PLAYER_IDLE_ANIM = "Idle";
     inline const std::string PLAYER_DOWN_ANIM = "Down";
@@ -31,6 +32,7 @@ namespace Mochi::Shooter
     inline constexpr float BULLETS_SPEED = 48.0f;
     inline constexpr int MAX_HEALTH = 3;
     inline constexpr float DAMAGE_DELAY = 2.0f;
+    inline constexpr float DAMAGED_BLINK_RATE = 0.4f;
 
     Player::Player(
         Graphics::IAnimationFactory *animationFactory,
@@ -52,6 +54,7 @@ namespace Mochi::Shooter
           mHealth(mMaxHealth),
           mDamageDelay(DAMAGE_DELAY),
           mDamageTimer(mDamageDelay),
+          mDamagedState(false),
           mIsAlive(true)
     {
         auto logicalPresentation = mCamera->GetLogicalPresentation();
@@ -64,6 +67,11 @@ namespace Mochi::Shooter
         playerBulletRenderable->SetScale(GetScale());
 
         SetZIndex(ZINDEX_PLAYER);
+
+        mShield = std::make_unique<Graphics::Spritesheet>(animationFactory, textureFactory, SHIELD_ANIM_PATH, 0);
+        mShield->SetScale(GetScale());
+        mShield->SetZIndex(GetZIndex() + 1);
+        mShield->SetAlpha(100);
     }
 
     Player::~Player()
@@ -80,7 +88,28 @@ namespace Mochi::Shooter
     {
         Graphics::Spritesheet::Update(dt);
 
-        mDamageTimer += dt;
+        //////////////////////////
+        //// DAMAGE FEEDBACK /////
+        //////////////////////////
+        if (mDamagedState)
+        {
+            mDamageTimer += dt;
+            float remainder = Math::Repeat(mDamageTimer, DAMAGED_BLINK_RATE);
+            if (remainder < DAMAGED_BLINK_RATE / 2.0f)
+            {
+                SetAlpha(10);
+            }
+            else
+            {
+                SetAlpha(255);
+            }
+            if (mDamageTimer >= mDamageDelay)
+            {
+                mDamagedState = false;
+                SetAlpha(255);
+            }
+        }
+
         //////////////////////
         ////// MOVEMENT //////
         //////////////////////
@@ -141,6 +170,8 @@ namespace Mochi::Shooter
             mShotTimer = 0.0f;
         }
         mBulletPool->Update(dt);
+
+        mShield->SetPosition(GetPosition());
     }
 
     std::shared_ptr<PlayerBulletPool> Player::GetBulletPool() const
@@ -157,7 +188,7 @@ namespace Mochi::Shooter
 
     void Player::ReceiveDamage()
     {
-        if (mDamageTimer > mDamageDelay)
+        if (!mDamagedState)
         {
             mHealth--;
             mDamageTimer = 0.0f;
@@ -165,9 +196,18 @@ namespace Mochi::Shooter
 
             LOG_INFO("Player received damage");
 
+            if (mHealth == 1)
+            {
+                mShield->SetVisible(false);
+            }
             if (mHealth <= 0)
             {
                 Die();
+            }
+            else
+            {
+                mDamagedState = true;
+                mShield->SetFrame(mMaxHealth - mHealth);
             }
         }
     }
@@ -177,5 +217,13 @@ namespace Mochi::Shooter
         mIsAlive = false;
         mEventBus->Publish<PlayerDeadEvent>({});
         LOG_INFO("Player died");
+    }
+
+    std::vector<Graphics::RenderCommand> Player::GetRenderData() const
+    {
+        auto data = Graphics::Spritesheet::GetRenderData();
+        auto shieldData = mShield->GetRenderData();
+        data.insert(data.end(), shieldData.begin(), shieldData.end());
+        return data;
     }
 }

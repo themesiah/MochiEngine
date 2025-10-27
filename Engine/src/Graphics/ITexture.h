@@ -10,6 +10,7 @@ namespace Mochi::Graphics
     public:
         virtual ~ITexture() {}
         virtual Vector2f GetSize() const = 0;
+        virtual void SetAlpha(const uint8_t &alpha) = 0;
     };
 }
 

@@ -166,15 +166,15 @@ namespace Mochi::Shooter
     void GameLayer::Render() const
     {
         auto &engine = Engine::Get();
-        engine.AddRenderCommand(mPlayer->GetRenderData());
+        engine.AddRenderCommands(mPlayer->GetRenderData());
         engine.AddRenderCommands(mPlayer->GetBulletPool()->GetRenderData());
         for (auto &enemy : mEnemies)
         {
-            engine.AddRenderCommand(enemy->GetRenderData());
+            engine.AddRenderCommands(enemy->GetRenderData());
         }
         for (auto &vfx : mVFXList)
         {
-            engine.AddRenderCommand(vfx->GetRenderData());
+            engine.AddRenderCommands(vfx->GetRenderData());
         }
     }
 

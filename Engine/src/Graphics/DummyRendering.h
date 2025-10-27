@@ -16,7 +16,8 @@ namespace Mochi::Graphics
     public:
         DummyTexture() {}
         virtual ~DummyTexture() {}
-        virtual Vector2f GetSize() const override { return {0.0f, 0.0f}; };
+        virtual Vector2f GetSize() const override { return {0.0f, 0.0f}; }
+        virtual void SetAlpha(const uint8_t &alpha) {}
     };
 
     class DummyTextureFactory : public AbstractTextureFactory
@@ -24,7 +25,7 @@ namespace Mochi::Graphics
     public:
         DummyTextureFactory() {}
         virtual ~DummyTextureFactory() {}
-        virtual std::shared_ptr<ITexture> LoadTexture(const std::string &texturePath) override { return std::make_shared<DummyTexture>(); };
+        virtual std::shared_ptr<ITexture> LoadTexture(const std::string &texturePath) override { return std::make_shared<DummyTexture>(); }
     };
 
     class DummyGUI : public AbstractGUI

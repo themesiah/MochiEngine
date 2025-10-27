@@ -21,6 +21,8 @@ namespace Mochi::Graphics
         float mScale;
         Vector2f mPosition;
         uint16_t mZindex;
+        bool mVisible;
+        uint8_t mAlpha;
 
     protected:
         Vector2f mSize;
@@ -31,7 +33,7 @@ namespace Mochi::Graphics
         SpriteBase();
         virtual ~SpriteBase();
         void LoadTexture(AbstractTextureFactory *textureFactory, const std::string &filename);
-        RenderCommand GetRenderData() const;
+        virtual std::vector<RenderCommand> GetRenderData() const;
         virtual void Update(const float &dt);
         virtual void SetScale(const float &scale);
         float GetScale() const;
@@ -40,6 +42,10 @@ namespace Mochi::Graphics
         void Move(const Vector2f &movement);
         void SetZIndex(const uint16_t &zIndex);
         uint16_t GetZIndex() const;
+        bool IsVisible() const;
+        void SetVisible(const bool &visible);
+        uint8_t GetAlpha() const;
+        void SetAlpha(const uint8_t &alpha);
     };
 }
 

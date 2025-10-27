@@ -41,7 +41,7 @@ namespace Mochi::Shooter
         {
             if (mBulletActives[i])
             {
-                Graphics::RenderCommand newCommand = command;
+                Graphics::RenderCommand newCommand = command[0];
                 newCommand.destRect.SetPosition(mBulletPositions[i]);
                 commands.push_back(newCommand);
             }

@@ -14,8 +14,9 @@ namespace Mochi::Graphics
     public:
         SDLTexture(SDL_Texture *texture);
         virtual ~SDLTexture();
-        virtual Vector2f GetSize() const;
+        virtual Vector2f GetSize() const override;
         SDL_Texture *GetTexture() const;
+        virtual void SetAlpha(const uint8_t &alpha) override;
 
     private:
         SDL_Texture *mTexture;

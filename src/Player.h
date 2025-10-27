@@ -2,6 +2,8 @@
 #define HDEF_PLAYER
 
 #include <memory>
+#include <vector>
+
 #include "Graphics/RenderCommand.h"
 #include "Graphics/Spritesheet.h"
 #include "Types/Types.hpp"
@@ -35,11 +37,13 @@ namespace Mochi::Shooter
         Input::IActionManager *mActionManager;
         Event::EventBus *mEventBus;
         Physics::Rectangle mCollider;
+        std::unique_ptr<Graphics::Spritesheet> mShield;
 
         int mMaxHealth;
         int mHealth;
         float mDamageDelay;
         float mDamageTimer;
+        bool mDamagedState;
         bool mIsAlive;
         void Die();
 
@@ -55,6 +59,7 @@ namespace Mochi::Shooter
         virtual void SetScale(const float &scale) override;
         Physics::Rectangle GetCollider() const;
         void ReceiveDamage();
+        virtual std::vector<Graphics::RenderCommand> GetRenderData() const override;
     };
 }
 

@@ -57,5 +57,13 @@ namespace Mochi::Math
             return a;
         }
     }
+
+    inline float Repeat(const float &t, const float &length)
+    {
+        if (length == 0)
+            return t;
+        float div = static_cast<int>(t / length);
+        return t - (length * div);
+    }
 }
 #endif

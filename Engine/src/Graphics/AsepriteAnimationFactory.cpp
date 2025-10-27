@@ -49,7 +49,7 @@ namespace Mochi::Graphics
             animationsData->Size.y = meta["size"]["h"];
             animationsData->TexturePath = texturePath;
 
-            ASSERT("Frame tags inside \"meta\" should be an array with at least a tag (animation)", meta.contains("frameTags") && meta["frameTags"].is_array() && !meta["frameTags"].empty());
+            ASSERT("Frame tags inside \"meta\" should be an array with at least a tag (animation)", meta.contains("frameTags") && meta["frameTags"].is_array());
             for (auto &frameTag : meta["frameTags"])
             {
                 ASSERT("A frametag requires at least a name, from, to and a direction",

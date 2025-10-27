@@ -24,4 +24,9 @@ namespace Mochi::Graphics
         SDL_GetTextureSize(mTexture, &result.x, &result.y);
         return result;
     }
+
+    void SDLTexture::SetAlpha(const uint8_t &alpha)
+    {
+        SDL_SetTextureAlphaMod(mTexture, alpha);
+    }
 }

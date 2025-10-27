@@ -35,6 +35,7 @@ namespace Mochi::Shooter
     {
         mEventBus->Unsubscribe<EnemyDestroyedEvent>(mDeadEnemyHandler);
         mEventBus->Unsubscribe<PlayerDamageReceivedEvent>(mPlayerDamageHandler);
+        mEventBus->Unsubscribe<PlayerDeadEvent>(mPlayerDeadHandler);
     }
 
     void PointsSystem::OnEnemyDestroyed(unsigned int points)

@@ -76,10 +76,6 @@ namespace Mochi::Graphics
                   [](RenderCommand &a, RenderCommand &b)
                   { return a.zindex < b.zindex; });
 
-        SDL_RendererLogicalPresentation *rlp{NULL};
-        int logicalW, logicalH;
-        SDL_GetRenderLogicalPresentation(mRenderer.get(), &logicalW, &logicalH, rlp);
-
         float cameraZoom = camera->GetZoom();
         SDL_SetRenderScale(mRenderer.get(), cameraZoom, cameraZoom);
         for (auto &command : renderQueue)
