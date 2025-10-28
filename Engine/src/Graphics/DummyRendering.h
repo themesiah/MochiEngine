@@ -33,8 +33,6 @@ namespace Mochi::Graphics
     public:
         DummyGUI(FS::PackCatalog *catalog, IRenderer *renderer, Input::IActionManager *actionManager) : AbstractGUI(catalog, renderer, actionManager) {}
         virtual ~DummyGUI() {}
-        virtual bool Button(const char *label, const float &textSize, Rectf dstRect, const std::string &texturePath) override { return false; }
-        virtual void Text(const char *label, const float &textSize, Vector2f position, const Color &color) override {}
     };
 
     class DummyGizmos : public Debug::IGizmos

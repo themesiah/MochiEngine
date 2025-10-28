@@ -5,7 +5,7 @@
 #include <memory>
 
 #include "../Types/Types.hpp"
-// #include "../Graphics/AbstractTextureFactory.h"
+#include "GUIUtils.hpp"
 
 namespace Mochi
 {
@@ -42,8 +42,9 @@ namespace Mochi::Graphics
         void ResetFrame();
 
         // UI Elements
-        virtual bool Button(const char *label, const float &textSize, Rectf dstRect, const std::string &texturePath) = 0;
-        virtual void Text(const char *label, const float &textSize, Vector2f position, const Color &color) = 0;
+        virtual bool Button(const char *label, const float &textSize, Rectf dstRect, const std::string &texturePath) { return false; }
+        virtual void Text(const char *label, const float &textSize, Vector2f position, const Color &color) {}
+        virtual void Sprite(const std::string &texturePath, const GUIOptions &options) {}
     };
 }
 

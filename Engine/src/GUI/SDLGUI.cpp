@@ -14,6 +14,8 @@
 #include "../Input/IActionManager.h"
 #include "../Utils/Assert.h"
 #include "../Types/Types.hpp"
+#include "GUIUtils.hpp"
+#include "../Utils/MathUtils.h"
 
 namespace Mochi::Graphics
 {
@@ -81,6 +83,34 @@ namespace Mochi::Graphics
         SDL_RenderTexture(renderer, texture, NULL, &dstRect);
         SDL_DestroySurface(surface);
         SDL_DestroyTexture(texture);
+    }
+
+    void SDLGUI::Sprite(const std::string &texturePath, const GUIOptions &options)
+    {
+        auto tempOptions = options;
+        auto tex = mTextureFactory->GetTexture(texturePath);
+        SDLTexture *sdltex = dynamic_cast<SDLTexture *>(tex.get());
+        auto texSize = sdltex->GetSize();
+
+        auto srcSize = tempOptions.SrcRect.GetSize();
+        if (Math::Approx(srcSize.x, 0.0f) || Math::Approx(srcSize.y, 0.0f))
+        {
+            tempOptions.SrcRect.SetSize(texSize);
+            tempOptions.SrcRect.SetPosition({0.0f, 0.0f});
+        }
+        auto dstSize = tempOptions.DstRect.GetSize();
+        if (Math::Approx(dstSize.x, 0.0f) || Math::Approx(dstSize.y, 0.0f))
+        {
+            tempOptions.DstRect.SetSize(tempOptions.SrcRect.GetSize());
+        }
+
+        tempOptions.DstRect = AnchoredPosition(tempOptions.DstRect, tempOptions.ScreenAnchor, tempOptions.SpritePivot);
+        SDL_FRect dst = tempOptions.DstRect;
+        SDL_FRect src = tempOptions.SrcRect;
+
+        SDL_SetTextureColorMod(sdltex->GetTexture(), tempOptions.Color.r, tempOptions.Color.g, tempOptions.Color.b);
+        SDL_SetTextureAlphaMod(sdltex->GetTexture(), tempOptions.Color.a);
+        SDL_RenderTexture(mSDLRenderer->GetRenderer(), sdltex->GetTexture(), &src, &dst);
     }
 
 }
