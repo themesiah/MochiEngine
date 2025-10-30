@@ -26,8 +26,8 @@ namespace Mochi::Shooter
             [&](const PlayerDamageReceivedEvent &e)
             { mMultiplier = 1; });
 
-        mPlayerDeadHandler = mEventBus->Subscribe<PlayerDeadEvent>(
-            [&](const PlayerDeadEvent &e)
+        mPlayerDeadHandler = mEventBus->Subscribe<PlayerContinueEvent>(
+            [&](const PlayerContinueEvent &e)
             { mPoints = 0; });
     }
 
