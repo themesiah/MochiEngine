@@ -73,11 +73,30 @@ namespace Mochi::Shooter
                                                   { mVFXMarkedForDestruction.push_back(ptr); });
                 mVFXList.push_back(std::move(destructionVfx));
             });
+
+        mPlayerDestroyedSubscription = mEventBus->Subscribe<PlayerDeadEvent>(
+            [&](const PlayerDeadEvent &e)
+            {
+                std::unique_ptr<Graphics::OneshotAnimation> destructionVfx = std::make_unique<Graphics::OneshotAnimation>(
+                    mAnimationFactory.get(),
+                    mTextureFactory.get(),
+                    EXPLOSION_ANIMATION_PATH,
+                    EXPLOSION_ANIMATION_MAIN);
+
+                destructionVfx->SetPosition(e.Player->GetPosition());
+                destructionVfx->SetScale(e.Player->GetScale() * 2);
+
+                auto ptr = destructionVfx.get();
+                destructionVfx->SetFinishCallback([&, ptr]()
+                                                  { mVFXMarkedForDestruction.push_back(ptr); });
+                mVFXList.push_back(std::move(destructionVfx));
+            });
     }
 
     GameLayer::~GameLayer()
     {
         mEventBus->Unsubscribe<EnemyDestroyedEvent>(mEnemyDestroyedSubscription);
+        mEventBus->Unsubscribe<EnemyDestroyedEvent>(mPlayerDestroyedSubscription);
     }
 
     bool GameLayer::Update(const float &dt)

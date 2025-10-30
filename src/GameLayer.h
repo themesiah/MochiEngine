@@ -52,6 +52,7 @@ namespace Mochi::Shooter
 
         // Subscriptions
         Event::SubscriptionHandler mEnemyDestroyedSubscription;
+        Event::SubscriptionHandler mPlayerDestroyedSubscription;
 
         void BindLuaTypesAndFunctions();
 

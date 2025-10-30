@@ -14,8 +14,10 @@ namespace Mochi::Shooter
     {
     };
 
+    class Player;
     struct PlayerDeadEvent
     {
+        Player *Player;
     };
 
     struct PlayerContinueEvent

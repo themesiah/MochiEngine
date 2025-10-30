@@ -48,6 +48,9 @@ namespace Mochi::Shooter
         float mDamageTimer;
         bool mDamagedState;
         bool mIsAlive;
+        bool mIsControllable;
+        float mReespawnTime;
+        float mReespawnTimer;
         void Die();
 
     public:

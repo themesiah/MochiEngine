@@ -174,6 +174,15 @@ namespace Mochi
             return lhs.CosineProximity(rhs);
         }
 
+        static Vector2f MoveTowards(const Vector2f source, const Vector2f target, const float &maxMagnitude)
+        {
+            if ((source - target).Distance() <= maxMagnitude)
+                return target;
+
+            auto dir = (target - source).Normalized();
+            return source + dir * maxMagnitude;
+        }
+
         static const Vector2f Zero;
         static const Vector2f One;
         static const Vector2f Right;

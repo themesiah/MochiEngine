@@ -37,6 +37,7 @@ namespace Mochi::Shooter
     inline constexpr float DAMAGE_DELAY = 2.0f;
     inline constexpr float DAMAGED_BLINK_RATE = 0.4f;
     inline constexpr int MAX_LIVES = 3;
+    inline constexpr float REESPAWN_TIME = 1.0f;
 
     Player::Player(
         Graphics::IAnimationFactory *animationFactory,
@@ -62,7 +63,10 @@ namespace Mochi::Shooter
           mDamageDelay(DAMAGE_DELAY),
           mDamageTimer(mDamageDelay),
           mDamagedState(false),
-          mIsAlive(true)
+          mIsAlive(true),
+          mIsControllable(true),
+          mReespawnTime(REESPAWN_TIME),
+          mReespawnTimer(0.0f)
     {
         auto logicalPresentation = mCamera->GetLogicalPresentation();
         mBounds = Rectf(10.0f, 10.0f, logicalPresentation.x - 20.0f, logicalPresentation.y - 20.0f);
@@ -98,7 +102,7 @@ namespace Mochi::Shooter
         //////////////////////////
         //// DAMAGE FEEDBACK /////
         //////////////////////////
-        if (mDamagedState)
+        if (mDamagedState || !mIsControllable)
         {
             mDamageTimer += dt;
             float remainder = Math::Repeat(mDamageTimer, DAMAGED_BLINK_RATE);
@@ -117,11 +121,29 @@ namespace Mochi::Shooter
             }
         }
 
+        float horizontal = 0.0f;
+        float vertical = 0.0f;
+        bool shot = false;
+        if (mIsControllable)
+        {
+            horizontal = mActionManager->Value("Horizontal");
+            vertical = mActionManager->Value("Vertical");
+            shot = mActionManager->Performed("Shot");
+        }
+        else
+        {
+            mReespawnTimer += dt;
+            SetPosition(Vector2f::MoveTowards(GetPosition(), {-10.0f, 0.0f}, mSpeed * dt));
+            if (mReespawnTimer >= mReespawnTime)
+            {
+                mIsControllable = true;
+                mDamagedState = true;
+                mDamageTimer = 0.0f;
+            }
+        }
         //////////////////////
         ////// MOVEMENT //////
         //////////////////////
-        float horizontal = mActionManager->Value("Horizontal");
-        float vertical = mActionManager->Value("Vertical");
         Vector2f movement = {horizontal, vertical};
         movement *= (dt * mSpeed);
         auto lastPosition = GetPosition();
@@ -130,11 +152,14 @@ namespace Mochi::Shooter
         // Camera world to screen with vector2f
         auto screenNewPosition = mCamera->WorldToScreen(newPosition);
 
-        screenNewPosition.x = Math::Clamp(screenNewPosition.x, mBounds.x, mBounds.x + mBounds.w);
-        screenNewPosition.y = Math::Clamp(screenNewPosition.y, mBounds.y, mBounds.y + mBounds.h);
-        newPosition = mCamera->ScreenToWorld(screenNewPosition);
+        if (mIsControllable)
+        {
+            screenNewPosition.x = Math::Clamp(screenNewPosition.x, mBounds.x, mBounds.x + mBounds.w);
+            screenNewPosition.y = Math::Clamp(screenNewPosition.y, mBounds.y, mBounds.y + mBounds.h);
+            newPosition = mCamera->ScreenToWorld(screenNewPosition);
 
-        SetPosition(newPosition);
+            SetPosition(newPosition);
+        }
 
         auto delta = newPosition - lastPosition;
         float tiltDirection = 0.0f;
@@ -169,7 +194,7 @@ namespace Mochi::Shooter
         //////// SHOT ////////
         //////////////////////
         mShotTimer += dt;
-        if (mActionManager->Performed("Shot") && mShotTimer >= mShotDelay)
+        if (shot && mShotTimer >= mShotDelay)
         {
             auto pos = GetPosition() + Vector2f(1.0f, 0.0f);
             mBulletPool->AddBullet(pos + Vector2f(0.0f, 0.2f));
@@ -195,7 +220,7 @@ namespace Mochi::Shooter
 
     void Player::ReceiveDamage()
     {
-        if (!mDamagedState)
+        if (!mDamagedState && mIsControllable)
         {
             mHealth--;
             mDamageTimer = 0.0f;
@@ -223,7 +248,7 @@ namespace Mochi::Shooter
     void Player::Die()
     {
         mIsAlive = false;
-        mEventBus->Publish<PlayerDeadEvent>({});
+        mEventBus->Publish<PlayerDeadEvent>({this});
         mLives--;
         LOG_INFO("Player died");
         if (mLives == 0)
@@ -233,6 +258,9 @@ namespace Mochi::Shooter
         else
         {
             mHealth = mMaxHealth;
+            mReespawnTimer = 0.0f;
+            mIsControllable = false;
+            SetPosition({-19.0f, 0.0f});
         }
     }
 
@@ -246,7 +274,7 @@ namespace Mochi::Shooter
 
     void Player::GUI() const
     {
-        // Shields base
+        // Shields
         for (int i = 0; i < mMaxHealth - 1; ++i)
         {
             Graphics::GUIOptions options{
@@ -256,18 +284,20 @@ namespace Mochi::Shooter
                 Graphics::GUI_TOP_LEFT,              // pivot
                 {255, 255, 255, 255}                 // color
             };
-            mGUI->Sprite("UIElements.png", options);
 
             if (mHealth > i + 1)
             {
                 options.SrcRect.SetPosition({16.0f, 0.0f});
-                mGUI->Sprite("UIElements.png", options);
             }
+            else
+            {
+                options.SrcRect.SetPosition({0.0f, 0.0f});
+            }
+            mGUI->Sprite("UIElements.png", options);
         }
-        // Remaining shields
 
         // Lives
-        for (int i = 0; i < mLives; ++i)
+        for (int i = 0; i < mLives - 1; ++i)
         {
             Graphics::GUIOptions options{
                 {{0.0f, 16.0f}, {16.0f, 16.0f}},      // src
