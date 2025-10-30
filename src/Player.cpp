@@ -7,6 +7,8 @@
 #include "Graphics/Camera.h"
 #include "Graphics/SpriteBase.h"
 
+#include "GUI/AbstractGUI.h"
+
 #include "Bullets/PlayerBulletPool.h"
 #include "ZIndexEnum.h"
 #include "ShooterEvents.h"
@@ -15,6 +17,7 @@
 
 #include "Utils/Logger.h"
 #include "Utils/Conversion.hpp"
+#include "GUI/GUIUtils.hpp"
 
 namespace Mochi::Shooter
 {
@@ -33,13 +36,15 @@ namespace Mochi::Shooter
     inline constexpr int MAX_HEALTH = 3;
     inline constexpr float DAMAGE_DELAY = 2.0f;
     inline constexpr float DAMAGED_BLINK_RATE = 0.4f;
+    inline constexpr int MAX_LIVES = 3;
 
     Player::Player(
         Graphics::IAnimationFactory *animationFactory,
         Graphics::AbstractTextureFactory *textureFactory,
         Graphics::Camera *camera,
         Input::IActionManager *actionManager,
-        Event::EventBus *eventBus)
+        Event::EventBus *eventBus,
+        Graphics::AbstractGUI *gui)
         : Graphics::Spritesheet(animationFactory, textureFactory, PLAYER_ANIM_PATH, 0),
           mSpeed(MOVEMENT_SPEED),
           mTilt(0.0f),
@@ -49,9 +54,11 @@ namespace Mochi::Shooter
           mShotTimer(0.0f),
           mActionManager(actionManager),
           mEventBus(eventBus),
+          mGUI(gui),
           mCollider(PixelsToMeters(Rectf({0.0f, 0.0f}, {32.0f, 32.0f}))),
           mMaxHealth(MAX_HEALTH),
           mHealth(mMaxHealth),
+          mLives(MAX_LIVES),
           mDamageDelay(DAMAGE_DELAY),
           mDamageTimer(mDamageDelay),
           mDamagedState(false),
@@ -203,12 +210,13 @@ namespace Mochi::Shooter
             if (mHealth <= 0)
             {
                 Die();
+                if (mLives > 0)
+                {
+                    mShield->SetVisible(true);
+                }
             }
-            else
-            {
-                mDamagedState = true;
-                mShield->SetFrame(mMaxHealth - mHealth);
-            }
+            mDamagedState = true;
+            mShield->SetFrame(mMaxHealth - mHealth);
         }
     }
 
@@ -216,7 +224,16 @@ namespace Mochi::Shooter
     {
         mIsAlive = false;
         mEventBus->Publish<PlayerDeadEvent>({});
+        mLives--;
         LOG_INFO("Player died");
+        if (mLives == 0)
+        {
+            mEventBus->Publish<PlayerContinueEvent>({});
+        }
+        else
+        {
+            mHealth = mMaxHealth;
+        }
     }
 
     std::vector<Graphics::RenderCommand> Player::GetRenderData() const
@@ -225,5 +242,41 @@ namespace Mochi::Shooter
         auto shieldData = mShield->GetRenderData();
         data.insert(data.end(), shieldData.begin(), shieldData.end());
         return data;
+    }
+
+    void Player::GUI() const
+    {
+        // Shields base
+        for (int i = 0; i < mMaxHealth - 1; ++i)
+        {
+            Graphics::GUIOptions options{
+                {{0.0f, 0.0f}, {16.0f, 16.0f}},      // src
+                {{32.0f * i, 0.0f}, {32.0f, 32.0f}}, // dst
+                Graphics::GUI_TOP_LEFT,              // anchor
+                Graphics::GUI_TOP_LEFT,              // pivot
+                {255, 255, 255, 255}                 // color
+            };
+            mGUI->Sprite("UIElements.png", options);
+
+            if (mHealth > i + 1)
+            {
+                options.SrcRect.SetPosition({16.0f, 0.0f});
+                mGUI->Sprite("UIElements.png", options);
+            }
+        }
+        // Remaining shields
+
+        // Lives
+        for (int i = 0; i < mLives; ++i)
+        {
+            Graphics::GUIOptions options{
+                {{0.0f, 16.0f}, {16.0f, 16.0f}},      // src
+                {{32.0f * i, 32.0f}, {32.0f, 32.0f}}, // dst
+                Graphics::GUI_TOP_LEFT,               // anchor
+                Graphics::GUI_TOP_LEFT,               // pivot
+                {255, 255, 255, 255}                  // color
+            };
+            mGUI->Sprite("UIElements.png", options);
+        }
     }
 }

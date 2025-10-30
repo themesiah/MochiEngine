@@ -62,7 +62,7 @@ namespace Mochi::Math
     {
         if (length == 0)
             return t;
-        float div = static_cast<int>(t / length);
+        float div = static_cast<float>(static_cast<int>(t / length));
         return t - (length * div);
     }
 }

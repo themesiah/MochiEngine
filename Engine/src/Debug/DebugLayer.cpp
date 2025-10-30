@@ -44,13 +44,13 @@ namespace Mochi
         mGUI->Text(std::format("{} fps", (int)(1.0f / Engine::Get().GetLastRealDelta())).c_str(), 16, {0, 0}, {255, 255, 255, SDL_ALPHA_OPAQUE});
 
         /*Graphics::GUIOptions options{
-            {},                      // src
-            {},                      // dst
-            Graphics::GUI_TOP_RIGHT, // anchor
-            Graphics::GUI_TOP_RIGHT, // pivot
-            {255, 255, 255, 255}     // color
+            {{0.0f, 16.0f}, {16.0f, 16.0f}}, // src
+            {},                              // dst
+            Graphics::GUI_TOP_LEFT,          // anchor
+            Graphics::GUI_TOP_LEFT,          // pivot
+            {255, 255, 255, 255}             // color
         };
-        mGUI->Sprite("PlayerLife.png", options);*/
+        mGUI->Sprite("UIElements.png", options);*/
     }
 
     void DebugLayer::Debug() const

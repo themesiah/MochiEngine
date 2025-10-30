@@ -19,6 +19,7 @@ namespace Mochi::Graphics
     class Camera;
     class AbstractTextureFactory;
     class IAnimationFactory;
+    class AbstractGUI;
 }
 namespace Mochi::Shooter
 {
@@ -36,11 +37,13 @@ namespace Mochi::Shooter
         float mShotTimer;
         Input::IActionManager *mActionManager;
         Event::EventBus *mEventBus;
+        Graphics::AbstractGUI *mGUI;
         Physics::Rectangle mCollider;
         std::unique_ptr<Graphics::Spritesheet> mShield;
 
         int mMaxHealth;
         int mHealth;
+        int mLives;
         float mDamageDelay;
         float mDamageTimer;
         bool mDamagedState;
@@ -52,7 +55,8 @@ namespace Mochi::Shooter
                Mochi::Graphics::AbstractTextureFactory *textureFactory,
                Mochi::Graphics::Camera *camera,
                Input::IActionManager *actionManager,
-               Event::EventBus *eventBus);
+               Event::EventBus *eventBus,
+               Graphics::AbstractGUI *gui);
         virtual ~Player();
         virtual void Update(const float &dt) override;
         std::shared_ptr<PlayerBulletPool> GetBulletPool() const;
@@ -60,6 +64,7 @@ namespace Mochi::Shooter
         Physics::Rectangle GetCollider() const;
         void ReceiveDamage();
         virtual std::vector<Graphics::RenderCommand> GetRenderData() const override;
+        void GUI() const;
     };
 }
 

@@ -51,7 +51,7 @@ namespace Mochi::Shooter
         mScripting->ExecuteFileGlobal("ShooterCore.lua");
         mScripting->ExecuteFile("Level1Setup.lua");
 
-        mPlayer = std::make_shared<Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera, mActionManager, mEventBus);
+        mPlayer = std::make_shared<Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera, mActionManager, mEventBus, mGUI);
         mPlayer->SetPosition({-2.0f, 0.0f});
 
         mPointsSystem = std::make_unique<PointsSystem>(mEventBus, mGUI);
@@ -181,6 +181,7 @@ namespace Mochi::Shooter
     void GameLayer::GUI() const
     {
         mPointsSystem->Draw();
+        mPlayer->GUI();
     }
 
 #if DEBUG
