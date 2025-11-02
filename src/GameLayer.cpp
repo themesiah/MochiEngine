@@ -270,7 +270,8 @@ namespace Mochi::Shooter
     {
         mScripting->State.new_usertype<Enemy>(
             "Enemy",
-            sol::base_classes, sol::bases<Graphics::SpriteBase>());
+            sol::base_classes, sol::bases<Graphics::SpriteBase>(),
+            "IsDead", &Enemy::IsDead);
 
         mScripting->State.set_function(
             "CreateEnemy",
@@ -286,6 +287,20 @@ namespace Mochi::Shooter
             [this](std::shared_ptr<Enemy> deletableElement)
             {
                 mEnemiesMarkedForDestruction.push_back(deletableElement.get());
+            });
+
+        mScripting->State.set_function(
+            "ShotBullet",
+            [this](const int &bulletPoolIndex, const Vector2f &bulletPosition)
+            {
+                if (mEnemyBulletPools.size() < bulletPoolIndex)
+                {
+                    throw EngineError(std::format("There are not {} enemy bullet pools. Max is {}", bulletPoolIndex, mEnemyBulletPools.size()));
+                }
+                else
+                {
+                    mEnemyBulletPools[bulletPoolIndex]->AddBullet(bulletPosition);
+                }
             });
     }
 }

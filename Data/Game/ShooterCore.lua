@@ -28,6 +28,23 @@ function EnemyGroup(CreateFunction, scale, start_y, end_y, duration, delay, amou
             function()
                 DeleteEnemy(enemy)
             end, duration)
+
+            if i == 1 then
+                local timesToShot = 3
+                local timesShot = 0
+                local bulletPoolIndex = 0
+                Tween(
+                    function(t, dt)
+                        local expectedShots = t / (1 / (timesToShot+1))
+                        if timesShot < expectedShots and not enemy:IsDead() then
+                            ShotBullet(bulletPoolIndex, enemy:GetPosition())
+                            timesShot = timesShot + 1
+                        end
+                    end,
+                    function()
+                        -- Nothing
+                    end, duration)
+            end
             
             Wait(delay)
         end
