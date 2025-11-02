@@ -28,6 +28,7 @@ namespace Mochi::Shooter
         std::vector<float> mBulletTimers;
 
         std::unique_ptr<Physics::Shape> mBulletShape;
+        virtual void OnBulletAdded(const size_t &index) {};
 
     public:
         AbstractBulletPool(std::shared_ptr<Graphics::SpriteBase> sprite, const int &capacity, const float &lifetime, const Physics::Shape &shape);

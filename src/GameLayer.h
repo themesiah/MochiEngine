@@ -37,6 +37,7 @@ namespace Mochi::Shooter
     class Player;
     class PointsSystem;
     class Enemy;
+    class AbstractBulletPool;
     class GameLayer : public Layer
     {
     private:
@@ -49,6 +50,7 @@ namespace Mochi::Shooter
 
         std::unique_ptr<Graphics::AbstractTextureFactory> mTextureFactory;
         std::unique_ptr<Graphics::IAnimationFactory> mAnimationFactory;
+        std::vector<std::unique_ptr<AbstractBulletPool>> mEnemyBulletPools;
 
         // Subscriptions
         Event::SubscriptionHandler mEnemyDestroyedSubscription;

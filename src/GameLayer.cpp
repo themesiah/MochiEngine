@@ -21,6 +21,7 @@
 #include "Audio/IAudioManager.h"
 #include "Utils/Conversion.hpp"
 
+#include "Bullets/AbstractBulletPool.h"
 #include "Bullets/PlayerBulletPool.h"
 #include "Player.h"
 #include "ZIndexEnum.h"
@@ -29,6 +30,7 @@
 #include "PointsSystem.h"
 
 #include "Enemies/Enemy.h"
+#include "Bullets/EnemyBulletPoolFollow.h"
 
 #if DEBUG
 #include "Debug/IGizmos.h"
@@ -40,7 +42,7 @@ namespace Mochi::Shooter
     const std::string EXPLOSION_ANIMATION_MAIN = "Explosion";
 
     GameLayer::GameLayer()
-        : Layer(), mEnemies(), mEnemiesMarkedForDestruction(), mVFXList(), mVFXMarkedForDestruction()
+        : Layer(), mEnemies(), mEnemiesMarkedForDestruction(), mVFXList(), mVFXMarkedForDestruction(), mEnemyBulletPools()
     {
         mCatalog->OpenPack("Data/Game");
 
@@ -55,6 +57,9 @@ namespace Mochi::Shooter
         mPlayer->SetPosition({-2.0f, 0.0f});
 
         mPointsSystem = std::make_unique<PointsSystem>(mEventBus, mGUI);
+
+        mEnemyBulletPools.push_back(std::make_unique<EnemyBulletPoolFollow>(
+            std::make_shared<Graphics::SpriteBase>(mTextureFactory.get(), "EnemyBullets.png"), 1000, 5.0f, 15.0f, mPlayer));
 
         mEnemyDestroyedSubscription = mEventBus->Subscribe<EnemyDestroyedEvent>(
             [&](const EnemyDestroyedEvent &e)
@@ -129,6 +134,22 @@ namespace Mochi::Shooter
             }
         }
 
+        for (auto &bulletPool : mEnemyBulletPools)
+        {
+            bulletPool->Update(dt);
+            std::vector<int> collisions = bulletPool->CheckAgainst(playerCollider);
+            for (size_t i = 0; i < collisions.size(); ++i)
+            {
+                playerBulletPool->ReleaseBullet(collisions[i]);
+                mPlayer->ReceiveDamage();
+            }
+        }
+
+        if (mActionManager->Performed("Debug3"))
+        {
+            mEnemyBulletPools[0]->AddBullet({0.0f, 0.0f});
+        }
+
         for (auto &vfx : mVFXList)
         {
             vfx->Update(dt);
@@ -191,6 +212,10 @@ namespace Mochi::Shooter
         {
             engine.AddRenderCommands(enemy->GetRenderData());
         }
+        for (auto &pool : mEnemyBulletPools)
+        {
+            engine.AddRenderCommands(pool->GetRenderData());
+        }
         for (auto &vfx : mVFXList)
         {
             engine.AddRenderCommands(vfx->GetRenderData());
@@ -226,6 +251,17 @@ namespace Mochi::Shooter
         {
             rect.Position = bulletPositions[i];
             mGizmos->DrawRectangle(&rect, {255, 255, 0, 255});
+        }
+
+        Physics::Circle circle({0.0f, 0.0f}, PixelsToMeters(6.0f));
+        for (auto &pool : mEnemyBulletPools)
+        {
+            auto enemyBulletPositions = pool->GetPositions();
+            for (size_t i = 0; i < enemyBulletPositions.size(); ++i)
+            {
+                circle.Position = enemyBulletPositions[i];
+                mGizmos->DrawCircle(&circle, {255, 0, 0, 255});
+            }
         }
     }
 #endif
