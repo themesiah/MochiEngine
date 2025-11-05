@@ -43,11 +43,13 @@ namespace Mochi::Shooter
 
         int mMaxHealth;
         int mHealth;
+        int mStartingLives;
         int mLives;
         float mDamageDelay;
         float mDamageTimer;
         bool mDamagedState;
         bool mIsAlive;
+        bool mAwaitingContinue;
         bool mIsControllable;
         float mReespawnTime;
         float mReespawnTimer;
@@ -68,6 +70,7 @@ namespace Mochi::Shooter
         void ReceiveDamage();
         virtual std::vector<Graphics::RenderCommand> GetRenderData() const override;
         void GUI() const;
+        void Reespawn();
     };
 }
 

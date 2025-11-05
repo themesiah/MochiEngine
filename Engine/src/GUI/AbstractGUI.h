@@ -5,7 +5,7 @@
 #include <memory>
 
 #include "../Types/Types.hpp"
-#include "GUIUtils.hpp"
+#include "GUICommon.hpp"
 
 namespace Mochi
 {
@@ -42,9 +42,9 @@ namespace Mochi::Graphics
         void ResetFrame();
 
         // UI Elements
-        virtual bool Button(const char *label, const float &textSize, Rectf dstRect, const std::string &texturePath) { return false; }
-        virtual void Text(const char *label, const float &textSize, Vector2f position, const Color &color) {}
-        virtual void Sprite(const std::string &texturePath, const GUIOptions &options) {}
+        virtual GUIResultButton Button(const std::string &texturePath, const GUIOptions &options, const char *label, const GUITextOptions &textOptions) { return {{}, false}; }
+        virtual GUIResult Text(const char *label, const GUITextOptions &options) { return {}; }
+        virtual GUIResult Sprite(const std::string &texturePath, const GUIOptions &options) { return {}; }
     };
 }
 

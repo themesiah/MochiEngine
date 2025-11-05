@@ -4,6 +4,7 @@
 #include <algorithm>
 
 #include "GUI/AbstractGUI.h"
+#include "GUI/GUICommon.hpp"
 #include "Event/EventBus.h"
 #include "ShooterEvents.h"
 #include "Constants.h"
@@ -53,12 +54,23 @@ namespace Mochi::Shooter
 
     void PointsSystem::Draw() const
     {
+        const Graphics::GUITextOptions pointsTextOptions{
+            .DstRect = {Rectf({-5.0f, 5.0f}, {})},
+            .ScreenAnchor = Graphics::GUI_TOP_RIGHT,
+            .TextPivot = Graphics::GUI_TOP_RIGHT,
+            .TextSize = 20.0f};
+        const Graphics::GUITextOptions multiplierTextOptions{
+            .DstRect = {Rectf({-5.0f, 25.0f}, {})},
+            .ScreenAnchor = Graphics::GUI_TOP_RIGHT,
+            .TextPivot = Graphics::GUI_TOP_RIGHT,
+            .TextSize = 20.0f};
+
         auto pointsString = std::to_string(mPoints);
         const size_t numberOfZeroes = 9;
         pointsString = std::string(numberOfZeroes - std::min(numberOfZeroes, pointsString.length()), '0') + pointsString;
         auto multiplierString = std::format("x{}", std::to_string(mMultiplier));
 
-        mGUI->Text(pointsString.c_str(), 20.0f, {CONST_RENDER_LOGICAL_X - 112.0f, 0.0f}, {255, 255, 255, 255});
-        mGUI->Text(multiplierString.c_str(), 20.0f, {CONST_RENDER_LOGICAL_X - 40.0f, 24.0f}, {255, 255, 255, 255});
+        mGUI->Text(pointsString.c_str(), pointsTextOptions);
+        mGUI->Text(multiplierString.c_str(), multiplierTextOptions);
     }
 }

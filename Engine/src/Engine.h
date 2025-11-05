@@ -60,6 +60,8 @@ namespace Mochi
         float mLastDeltaTime;
         float mLastRealDelta;
         bool mIsRunning;
+        bool mIsPaused;
+        float mUnpausedTimeScale;
         Event::SubscriptionHandler mAppQuitHandler;
 
         std::unique_ptr<Event::EventBus> mEventBus;
@@ -113,6 +115,9 @@ namespace Mochi
         void SwapActionManager(std::unique_ptr<Input::IActionManager> &&);
         void SwapCamera(std::unique_ptr<Graphics::Camera> &&);
         void SwapRenderer(std::unique_ptr<Graphics::IRenderer> &&);
+
+        void Pause();
+        void Resume();
     };
 }
 #endif

@@ -7,7 +7,7 @@
 #include <vector>
 
 #include "../Types/Types.hpp"
-#include "GUIUtils.hpp"
+#include "GUICommon.hpp"
 
 struct TTF_Font;
 namespace Mochi::Graphics
@@ -25,9 +25,9 @@ namespace Mochi::Graphics
 
     public:
         virtual ~SDLGUI();
-        virtual bool Button(const char *label, const float &textSize, Rectf dstRect, const std::string &texturePath) override;
-        virtual void Text(const char *label, const float &textSize, Vector2f position, const Color &color) override;
-        virtual void Sprite(const std::string &texturePath, const GUIOptions &options) override;
+        virtual GUIResult Sprite(const std::string &texturePath, const GUIOptions &options) override;
+        virtual GUIResultButton Button(const std::string &texturePath, const GUIOptions &options, const char *label, const GUITextOptions &textOptions) override;
+        virtual GUIResult Text(const char *label, const GUITextOptions &options) override;
     };
 }
 

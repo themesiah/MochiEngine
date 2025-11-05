@@ -55,14 +55,23 @@ namespace Mochi
         return *gEngine;
     }
 
-    Engine::Engine() : mTargetFPS(60), mLastDeltaTime(1.0f / mTargetFPS), mLastRealDelta(0.0f), mIsRunning(false), mLayers(), mPopLayerQueue(), mPushLayerQueue()
+    Engine::Engine()
+        : mTargetFPS(60),
+          mLastDeltaTime(1.0f / mTargetFPS),
+          mLastRealDelta(0.0f),
+          mIsRunning(false),
+          mIsPaused(false),
+          mUnpausedTimeScale(1.0f),
+          mLayers(),
+          mPopLayerQueue(),
+          mPushLayerQueue()
     {
         gEngine = this;
         MinimalSetup();
     }
 
     Engine::Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName)
-        : mTargetFPS(60), mLastDeltaTime(0.016f), mLastRealDelta(0.0f), mIsRunning(false), mLayers(), mPopLayerQueue(), mPushLayerQueue()
+        : mTargetFPS(60), mLastDeltaTime(0.016f), mLastRealDelta(0.0f), mIsRunning(false), mIsPaused(false), mUnpausedTimeScale(1.0f), mLayers(), mPopLayerQueue(), mPushLayerQueue()
     {
         gEngine = this;
         try
@@ -380,5 +389,30 @@ namespace Mochi
 #if DEBUG
         mGizmos = renderer->CreateGizmos();
 #endif
+    }
+
+    void Engine::Pause()
+    {
+        if (mIsPaused)
+        {
+            LOG_WARNING("Trying to pause the engine: it was already paused");
+            return;
+        }
+        mIsPaused = true;
+        mUnpausedTimeScale = Time::TimeSystem::GetTimeScale();
+        Time::TimeSystem::SetTimeScale(0.0f);
+        mAudio->PauseBGM();
+    }
+
+    void Engine::Resume()
+    {
+        if (!mIsPaused)
+        {
+            LOG_WARNING("Trying to resume the engine: it was not paused");
+            return;
+        }
+        mIsPaused = false;
+        Time::TimeSystem::SetTimeScale(mUnpausedTimeScale);
+        mAudio->ResumeBGM();
     }
 }

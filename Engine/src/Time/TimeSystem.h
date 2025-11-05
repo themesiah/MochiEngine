@@ -22,6 +22,7 @@ namespace Mochi::Time
         float InternalGetGameTime() const;
         float InternalGetUnscaledGameTime() const;
         void InternalSetTimeScale(const float &scale);
+        float InternalGetTimeScale() const;
 
     public:
         static TimeSystem &GetInstance();
@@ -35,6 +36,7 @@ namespace Mochi::Time
         static float GetGameTime();
         static float GetUnscaledGameTime();
         static void SetTimeScale(const float &scale);
+        static float GetTimeScale();
     };
 
 }

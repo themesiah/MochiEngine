@@ -18,6 +18,7 @@ namespace Mochi::Time
             throw EngineError("Time scale time can't be negative");
         mTimeScale = scale;
     }
+    float TimeSystem::InternalGetTimeScale() const { return mTimeScale; }
 
     TimeSystem &TimeSystem::GetInstance()
     {
@@ -40,4 +41,5 @@ namespace Mochi::Time
     float TimeSystem::GetGameTime() { return TimeSystem::GetInstance().InternalGetGameTime(); }
     float TimeSystem::GetUnscaledGameTime() { return TimeSystem::GetInstance().InternalGetUnscaledGameTime(); }
     void TimeSystem::SetTimeScale(const float &scale) { TimeSystem::GetInstance().InternalSetTimeScale(scale); }
+    float TimeSystem::GetTimeScale() { return TimeSystem::GetInstance().InternalGetTimeScale(); }
 }

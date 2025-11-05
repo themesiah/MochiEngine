@@ -14,7 +14,7 @@
 #include "../Input/IActionManager.h"
 #include "../Utils/Assert.h"
 #include "../Types/Types.hpp"
-#include "GUIUtils.hpp"
+#include "GUICommon.hpp"
 #include "../Utils/MathUtils.h"
 
 namespace Mochi::Graphics
@@ -41,37 +41,60 @@ namespace Mochi::Graphics
     {
     }
 
-    bool SDLGUI::Button(const char *label, const float &textSize, Rectf dstRect, const std::string &texturePath)
+    GUIResult SDLGUI::Sprite(const std::string &texturePath, const GUIOptions &options)
     {
+        auto tempOptions = options;
         auto tex = mTextureFactory->GetTexture(texturePath);
         SDLTexture *sdltex = dynamic_cast<SDLTexture *>(tex.get());
-        if (!sdltex)
+        auto texSize = sdltex->GetSize();
+
+        if (!tempOptions.SrcRect)
         {
-            return false;
+            tempOptions.SrcRect = {{0.0f, 0.0f}, texSize};
+        }
+        if (!tempOptions.DstRect)
+        {
+            tempOptions.DstRect = {{0.0f, 0.0f}, texSize};
         }
 
-        auto *ren = dynamic_cast<SDLRenderer *>(mRenderer);
+        auto finalRect = AnchoredPosition(tempOptions.ParentRect, tempOptions.DstRect.value(), tempOptions.ScreenAnchor, tempOptions.SpritePivot);
+        SDL_FRect dst = finalRect;
+        SDL_FRect src = tempOptions.SrcRect.value();
 
-        SDL_FRect dst = dstRect;
-        SDL_RenderTexture9Grid(ren->GetRenderer(), sdltex->GetTexture(), NULL, 10, 10, 10, 10, 0, &dst);
-        Text(label, textSize, {dstRect.x + dstRect.w / 2 - (textSize * strlen(label) / 4), dstRect.y + dstRect.h / 2 - textSize / 2}, {255, 255, 255, 255});
+        auto const &color = tempOptions.Color.value_or(GUI_DEFAULT_COLOR);
+        SDL_SetTextureColorMod(sdltex->GetTexture(), color.r, color.g, color.b);
+        SDL_SetTextureAlphaMod(sdltex->GetTexture(), color.a);
+        SDL_RenderTexture(mSDLRenderer->GetRenderer(), sdltex->GetTexture(), &src, &dst);
+        return {finalRect};
+    }
+
+    GUIResultButton SDLGUI::Button(const std::string &texturePath, const GUIOptions &options, const char *label, const GUITextOptions &textOptions)
+    {
+        auto guiResult = Sprite(texturePath, options);
+        auto tempTextOptions = textOptions;
+        tempTextOptions.ParentRect = guiResult.FinalRect;
+        Text(label, tempTextOptions);
 
         if (mActionManager->Performed("UISelect"))
         {
             auto mousePos = mActionManager->CompoundValue("MousePosX", "MousePosY");
-            if (mousePos.x > dstRect.x && mousePos.x < dstRect.x + dstRect.w && mousePos.y > dstRect.y && mousePos.y < dstRect.y + dstRect.h)
+            if (mousePos.x > guiResult.FinalRect.x &&
+                mousePos.x < guiResult.FinalRect.x + guiResult.FinalRect.w &&
+                mousePos.y > guiResult.FinalRect.y &&
+                mousePos.y < guiResult.FinalRect.y + guiResult.FinalRect.h)
             {
-                return true;
+                return {{guiResult.FinalRect}, true};
             }
         }
-
-        return false;
+        return {{guiResult.FinalRect}, false};
     }
 
-    void SDLGUI::Text(const char *label, const float &textSize, Vector2f position, const Color &color)
+    GUIResult SDLGUI::Text(const char *label, const GUITextOptions &options)
     {
+        auto tempOptions = options;
         auto renderer = mSDLRenderer->GetRenderer();
-        SDL_Surface *surface = TTF_RenderText_Solid(mFont.get(), label, 0, color);
+        auto const &color = tempOptions.Color.value_or(GUI_DEFAULT_COLOR);
+        SDL_Surface *surface = TTF_RenderText_Solid_Wrapped(mFont.get(), label, 0, color, 0);
         ASSERT(std::format("Surface is null: {}", SDL_GetError()), surface != NULL);
         SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
         ASSERT("Texture is null", texture != NULL);
@@ -79,38 +102,22 @@ namespace Mochi::Graphics
 
         float w, h;
         SDL_GetTextureSize(texture, &w, &h);
-        SDL_FRect dstRect{position.x, position.y, w / h * textSize, textSize};
-        SDL_RenderTexture(renderer, texture, NULL, &dstRect);
+        // Make the dest rect bigger depending on our text size.
+        // Our text size defines the HEIGHT of the text.
+        // "h" is the height of the font in this case, and w the width of the full text
+        // So we do a factor from our text size and font size and multiply it by the original width
+        if (!tempOptions.DstRect)
+        {
+            tempOptions.DstRect = std::make_optional<Rectf>({});
+        }
+        tempOptions.DstRect.value().w = w * options.TextSize / h;
+        tempOptions.DstRect.value().h = options.TextSize;
+        auto finalRect = AnchoredPosition(tempOptions.ParentRect, tempOptions.DstRect.value(), tempOptions.ScreenAnchor, tempOptions.TextPivot);
+        SDL_FRect sdlDstRect = finalRect;
+        SDL_RenderTexture(renderer, texture, NULL, &sdlDstRect);
         SDL_DestroySurface(surface);
         SDL_DestroyTexture(texture);
-    }
-
-    void SDLGUI::Sprite(const std::string &texturePath, const GUIOptions &options)
-    {
-        auto tempOptions = options;
-        auto tex = mTextureFactory->GetTexture(texturePath);
-        SDLTexture *sdltex = dynamic_cast<SDLTexture *>(tex.get());
-        auto texSize = sdltex->GetSize();
-
-        auto srcSize = tempOptions.SrcRect.GetSize();
-        if (Math::Approx(srcSize.x, 0.0f) || Math::Approx(srcSize.y, 0.0f))
-        {
-            tempOptions.SrcRect.SetSize(texSize);
-            tempOptions.SrcRect.SetPosition({0.0f, 0.0f});
-        }
-        auto dstSize = tempOptions.DstRect.GetSize();
-        if (Math::Approx(dstSize.x, 0.0f) || Math::Approx(dstSize.y, 0.0f))
-        {
-            tempOptions.DstRect.SetSize(tempOptions.SrcRect.GetSize());
-        }
-
-        tempOptions.DstRect = AnchoredPosition(tempOptions.DstRect, tempOptions.ScreenAnchor, tempOptions.SpritePivot);
-        SDL_FRect dst = tempOptions.DstRect;
-        SDL_FRect src = tempOptions.SrcRect;
-
-        SDL_SetTextureColorMod(sdltex->GetTexture(), tempOptions.Color.r, tempOptions.Color.g, tempOptions.Color.b);
-        SDL_SetTextureAlphaMod(sdltex->GetTexture(), tempOptions.Color.a);
-        SDL_RenderTexture(mSDLRenderer->GetRenderer(), sdltex->GetTexture(), &src, &dst);
+        return {finalRect};
     }
 
 }

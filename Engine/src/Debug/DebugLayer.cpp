@@ -15,7 +15,7 @@
 #include "IGizmos.h"
 #include "../Utils/Conversion.hpp"
 
-#include "../GUI/GUIUtils.hpp"
+#include "../GUI/GUICommon.hpp"
 
 namespace Mochi
 {
@@ -40,17 +40,16 @@ namespace Mochi
     void DebugLayer::GUI() const
     {
         // Dev build message
-        mGUI->Text(CONST_DEVBUILD_TEXT, 16, {0, (float)CONST_RENDER_LOGICAL_Y - 16.0f}, {255, 255, 255, SDL_ALPHA_OPAQUE});
-        mGUI->Text(std::format("{} fps", (int)(1.0f / Engine::Get().GetLastRealDelta())).c_str(), 16, {0, 0}, {255, 255, 255, SDL_ALPHA_OPAQUE});
-
-        /*Graphics::GUIOptions options{
-            {{0.0f, 16.0f}, {16.0f, 16.0f}}, // src
-            {},                              // dst
-            Graphics::GUI_TOP_LEFT,          // anchor
-            Graphics::GUI_TOP_LEFT,          // pivot
-            {255, 255, 255, 255}             // color
-        };
-        mGUI->Sprite("UIElements.png", options);*/
+        const Graphics::GUITextOptions devBuildTextOptions{
+            .ScreenAnchor = Graphics::GUI_BOTTOM_RIGHT,
+            .TextPivot = Graphics::GUI_BOTTOM_RIGHT,
+            .TextSize = 16.0f};
+        const Graphics::GUITextOptions fpsTextOptions{
+            .ScreenAnchor = Graphics::GUI_TOP_LEFT,
+            .TextPivot = Graphics::GUI_TOP_LEFT,
+            .TextSize = 16.0f};
+        mGUI->Text(CONST_DEVBUILD_TEXT, devBuildTextOptions);
+        mGUI->Text(std::format("{} fps", (int)(1.0f / Engine::Get().GetLastRealDelta())).c_str(), fpsTextOptions);
     }
 
     void DebugLayer::Debug() const

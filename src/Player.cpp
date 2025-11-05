@@ -1,5 +1,6 @@
 #include "Player.h"
 
+#include "Engine.h"
 #include "Input/IActionManager.h"
 #include "Graphics/AnimatedSprite.h"
 #include "Graphics/IAnimationFactory.h"
@@ -17,7 +18,7 @@
 
 #include "Utils/Logger.h"
 #include "Utils/Conversion.hpp"
-#include "GUI/GUIUtils.hpp"
+#include "GUI/GUICommon.hpp"
 
 namespace Mochi::Shooter
 {
@@ -36,7 +37,7 @@ namespace Mochi::Shooter
     inline constexpr int MAX_HEALTH = 3;
     inline constexpr float DAMAGE_DELAY = 2.0f;
     inline constexpr float DAMAGED_BLINK_RATE = 0.4f;
-    inline constexpr int MAX_LIVES = 3;
+    inline constexpr int MAX_LIVES = 1;
     inline constexpr float REESPAWN_TIME = 1.0f;
 
     Player::Player(
@@ -59,11 +60,13 @@ namespace Mochi::Shooter
           mCollider(PixelsToMeters(Rectf({0.0f, 0.0f}, {32.0f, 32.0f}))),
           mMaxHealth(MAX_HEALTH),
           mHealth(mMaxHealth),
-          mLives(MAX_LIVES),
+          mStartingLives(MAX_LIVES),
+          mLives(mStartingLives),
           mDamageDelay(DAMAGE_DELAY),
           mDamageTimer(mDamageDelay),
           mDamagedState(false),
           mIsAlive(true),
+          mAwaitingContinue(false),
           mIsControllable(true),
           mReespawnTime(REESPAWN_TIME),
           mReespawnTimer(0.0f)
@@ -240,8 +243,11 @@ namespace Mochi::Shooter
                     mShield->SetVisible(true);
                 }
             }
-            mDamagedState = true;
-            mShield->SetFrame(mMaxHealth - mHealth);
+            if (!mAwaitingContinue)
+            {
+                mDamagedState = true;
+                mShield->SetFrame(mMaxHealth - mHealth);
+            }
         }
     }
 
@@ -253,7 +259,8 @@ namespace Mochi::Shooter
         LOG_INFO("Player died");
         if (mLives == 0)
         {
-            mEventBus->Publish<PlayerContinueEvent>({});
+            mAwaitingContinue = true;
+            Engine::Get().Pause();
         }
         else
         {
@@ -278,20 +285,18 @@ namespace Mochi::Shooter
         for (int i = 0; i < mMaxHealth - 1; ++i)
         {
             Graphics::GUIOptions options{
-                {{0.0f, 0.0f}, {16.0f, 16.0f}},      // src
-                {{32.0f * i, 0.0f}, {32.0f, 32.0f}}, // dst
-                Graphics::GUI_TOP_LEFT,              // anchor
-                Graphics::GUI_TOP_LEFT,              // pivot
-                {255, 255, 255, 255}                 // color
-            };
+                .SrcRect = {Rectf({0.0f, 0.0f}, {16.0f, 16.0f})},
+                .DstRect = {Rectf({32.0f * i, 0.0f}, {32.0f, 32.0f})},
+                .ScreenAnchor = Graphics::GUI_TOP_LEFT,
+                .SpritePivot = Graphics::GUI_TOP_LEFT};
 
             if (mHealth > i + 1)
             {
-                options.SrcRect.SetPosition({16.0f, 0.0f});
+                options.SrcRect.value().SetPosition({16.0f, 0.0f});
             }
             else
             {
-                options.SrcRect.SetPosition({0.0f, 0.0f});
+                options.SrcRect.value().SetPosition({0.0f, 0.0f});
             }
             mGUI->Sprite("UIElements.png", options);
         }
@@ -300,13 +305,36 @@ namespace Mochi::Shooter
         for (int i = 0; i < mLives - 1; ++i)
         {
             Graphics::GUIOptions options{
-                {{0.0f, 16.0f}, {16.0f, 16.0f}},      // src
-                {{32.0f * i, 32.0f}, {32.0f, 32.0f}}, // dst
-                Graphics::GUI_TOP_LEFT,               // anchor
-                Graphics::GUI_TOP_LEFT,               // pivot
-                {255, 255, 255, 255}                  // color
-            };
+                .SrcRect = {Rectf({0.0f, 16.0f}, {16.0f, 16.0f})},
+                .DstRect = {Rectf({32.0f * i, 32.0f}, {32.0f, 32.0f})},
+                .ScreenAnchor = Graphics::GUI_TOP_LEFT,
+                .SpritePivot = Graphics::GUI_TOP_LEFT};
             mGUI->Sprite("UIElements.png", options);
         }
+
+        if (mAwaitingContinue)
+        {
+            const Graphics::GUITextOptions titleTextOptions{
+                .DstRect = {Rectf({0.0f, -50.0f}, {})},
+                .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,
+                .TextPivot = Graphics::GUI_MIDDLE_CENTER,
+                .TextSize = 96.0f};
+            // Show continue title
+            mGUI->Text("CONTINUE?", titleTextOptions);
+            // Show button YES. if yes, Reespawn
+            // Show button NO. If no, publish close game event
+        }
+    }
+
+    void Player::Reespawn()
+    {
+        mEventBus->Publish<PlayerContinueEvent>({});
+        mLives = mStartingLives;
+        mIsAlive = true;
+        mHealth = mMaxHealth;
+        mReespawnTimer = 0.0f;
+        mIsControllable = false;
+        mShield->SetFrame(0);
+        SetPosition({-19.0f, 0.0f});
     }
 }
