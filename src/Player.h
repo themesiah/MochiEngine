@@ -69,7 +69,7 @@ namespace Mochi::Shooter
         Physics::Rectangle GetCollider() const;
         void ReceiveDamage();
         virtual std::vector<Graphics::RenderCommand> GetRenderData() const override;
-        void GUI() const;
+        void GUI();
         void Reespawn();
     };
 }

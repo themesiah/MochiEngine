@@ -19,9 +19,6 @@ int main()
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
     _CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDOUT);
-    //_CrtSetBreakAlloc(333206);
-    //_CrtSetBreakAlloc(333207);
-    //_CrtSetBreakAlloc(333209);
 #endif
     const char *appName = "Space Shooter";
     const char *appVersion = "0.1";
@@ -30,6 +27,12 @@ int main()
     Mochi::Engine engine(appName, appVersion, appId, windowName);
     Mochi::Shooter::GameLayer *gameLayer = new Mochi::Shooter::GameLayer();
     engine.PushLayer(gameLayer);
+
+#if DEBUG
+    //_CrtSetBreakAlloc(12638);
+    //_CrtSetBreakAlloc(12637);
+    _CrtSetBreakAlloc(10458);
+#endif
 
     engine.Run();
     return 0;

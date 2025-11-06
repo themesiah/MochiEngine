@@ -7,6 +7,7 @@
 #include "Graphics/AbstractTextureFactory.h"
 #include "Graphics/Camera.h"
 #include "Graphics/SpriteBase.h"
+#include "Event/EngineEvents.h"
 
 #include "GUI/AbstractGUI.h"
 
@@ -279,7 +280,7 @@ namespace Mochi::Shooter
         return data;
     }
 
-    void Player::GUI() const
+    void Player::GUI()
     {
         // Shields
         for (int i = 0; i < mMaxHealth - 1; ++i)
@@ -319,10 +320,35 @@ namespace Mochi::Shooter
                 .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,
                 .TextPivot = Graphics::GUI_MIDDLE_CENTER,
                 .TextSize = 96.0f};
-            // Show continue title
+
+            const Graphics::GUIOptions button1Options{
+                .SrcRect = {Rectf({0.0f, 0.0f}, {32.0f, 32.0f})},
+                .DstRect = {Rectf({0.0f, 0.0f}, {100.0f, 25.0f})},
+                .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,
+                .SpritePivot = Graphics::GUI_MIDDLE_CENTER};
+
+            const Graphics::GUIOptions button2Options{
+                .SrcRect = {Rectf({0.0f, 0.0f}, {32.0f, 32.0f})},
+                .DstRect = {Rectf({0.0f, 50.0f}, {100.0f, 25.0f})},
+                .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,
+                .SpritePivot = Graphics::GUI_MIDDLE_CENTER};
+
+            const Graphics::GUITextOptions buttonTextOptions{
+                .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,
+                .TextPivot = Graphics::GUI_MIDDLE_CENTER,
+            };
+            //  Show continue title
             mGUI->Text("CONTINUE?", titleTextOptions);
             // Show button YES. if yes, Reespawn
+            if (mGUI->Button("Interface.png", button1Options, "CONTINUE", buttonTextOptions).Pressed)
+            {
+                Reespawn();
+            }
             // Show button NO. If no, publish close game event
+            if (mGUI->Button("Interface.png", button2Options, "EXIT", buttonTextOptions).Pressed)
+            {
+                mEventBus->Publish<ApplicationQuitEvent>({});
+            }
         }
     }
 
@@ -331,10 +357,12 @@ namespace Mochi::Shooter
         mEventBus->Publish<PlayerContinueEvent>({});
         mLives = mStartingLives;
         mIsAlive = true;
+        mAwaitingContinue = false;
         mHealth = mMaxHealth;
         mReespawnTimer = 0.0f;
         mIsControllable = false;
         mShield->SetFrame(0);
         SetPosition({-19.0f, 0.0f});
+        Engine::Get().Resume();
     }
 }

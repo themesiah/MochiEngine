@@ -145,11 +145,6 @@ namespace Mochi::Shooter
             }
         }
 
-        if (mActionManager->Performed("Debug3"))
-        {
-            mEnemyBulletPools[0]->AddBullet({0.0f, 0.0f});
-        }
-
         for (auto &vfx : mVFXList)
         {
             vfx->Update(dt);
@@ -175,30 +170,6 @@ namespace Mochi::Shooter
 
         mEnemiesMarkedForDestruction.clear();
         mVFXMarkedForDestruction.clear();
-
-        // mCamera->Move(mActionManager->Value("Horizontal") * dt * 1,
-        //               mActionManager->Value("Vertical") * dt * 1);
-
-        // if (mActionManager->Performed("Debug1"))
-        // {
-        //     mFmod->PlayOneShot("WilhelmScream");
-        // }
-        // if (mActionManager->Performed("Debug2"))
-        // {
-        //     mFmod->SetBusVolume("SFX", 0.1f);
-        // }
-        // if (mActionManager->Performed("Debug3"))
-        // {
-        //     mFmod->PlayBGM("TestMusic");
-        // }
-        // if (mActionManager->Performed("Debug4"))
-        // {
-        //     mFmod->SkipToTimelinePosition(30000);
-        // }
-        // if (mActionManager->Performed("Debug5"))
-        // {
-        //     mScripting->ExecuteFile("Script/TestScript.lua");
-        // }
 
         return true;
     }
@@ -231,6 +202,12 @@ namespace Mochi::Shooter
 #if DEBUG
     void GameLayer::Debug() const
     {
+
+        if (mActionManager->Performed("Debug3"))
+        {
+            mEnemyBulletPools[0]->AddBullet({0.0f, 0.0f});
+        }
+
         Engine &e = Engine::Get();
         auto camera = e.GetCamera();
 
