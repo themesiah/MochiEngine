@@ -31,7 +31,7 @@ int main()
 #if DEBUG
     //_CrtSetBreakAlloc(12638);
     //_CrtSetBreakAlloc(12637);
-    _CrtSetBreakAlloc(10458);
+    //_CrtSetBreakAlloc(10458);
 #endif
 
     engine.Run();
