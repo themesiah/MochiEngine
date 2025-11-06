@@ -32,7 +32,7 @@ namespace Mochi::Shooter
 
     public:
         AbstractBulletPool(std::shared_ptr<Graphics::SpriteBase> sprite, const int &capacity, const float &lifetime, const Physics::Shape &shape);
-        ~AbstractBulletPool();
+        virtual ~AbstractBulletPool();
         void Update(const float &dt);
         virtual void OnUpdate(const float &dt) = 0;
         std::vector<Graphics::RenderCommand> GetRenderData() const;

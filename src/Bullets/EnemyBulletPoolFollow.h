@@ -24,7 +24,7 @@ namespace Mochi::Shooter
 
     public:
         EnemyBulletPoolFollow(std::shared_ptr<Graphics::SpriteBase> sprite, const int &capacity, const float &lifetime, const float &speed, std::weak_ptr<Player> player);
-        ~EnemyBulletPoolFollow();
+        virtual ~EnemyBulletPoolFollow();
         virtual void OnUpdate(const float &dt) override;
     };
 }
