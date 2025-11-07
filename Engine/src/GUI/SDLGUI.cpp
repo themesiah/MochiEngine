@@ -64,7 +64,16 @@ namespace Mochi::Graphics
         auto const &color = tempOptions.Color.value_or(GUI_DEFAULT_COLOR);
         SDL_SetTextureColorMod(sdltex->GetTexture(), color.r, color.g, color.b);
         SDL_SetTextureAlphaMod(sdltex->GetTexture(), color.a);
-        SDL_RenderTexture(mSDLRenderer->GetRenderer(), sdltex->GetTexture(), &src, &dst);
+
+        if (tempOptions.Slice.has_value())
+        {
+            auto const &slice = tempOptions.Slice.value();
+            SDL_RenderTexture9Grid(mSDLRenderer->GetRenderer(), sdltex->GetTexture(), &src, slice.x, slice.w, slice.y, slice.h, 1.0f, &dst);
+        }
+        else
+        {
+            SDL_RenderTexture(mSDLRenderer->GetRenderer(), sdltex->GetTexture(), &src, &dst);
+        }
         return {finalRect};
     }
 

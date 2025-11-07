@@ -319,24 +319,26 @@ namespace Mochi::Shooter
                 .DstRect = {Rectf({0.0f, -50.0f}, {})},
                 .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,
                 .TextPivot = Graphics::GUI_MIDDLE_CENTER,
-                .TextSize = 96.0f};
+                .TextSize = 82.0f};
 
             const Graphics::GUIOptions button1Options{
                 .SrcRect = {Rectf({0.0f, 0.0f}, {32.0f, 32.0f})},
-                .DstRect = {Rectf({0.0f, 0.0f}, {100.0f, 25.0f})},
+                .DstRect = {Rectf({0.0f, 0.0f}, {200.0f, 50.0f})},
+                .Slice = {Rectf(9.0f, 9.0f, 9.0f, 9.0f)},
                 .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,
                 .SpritePivot = Graphics::GUI_MIDDLE_CENTER};
 
             const Graphics::GUIOptions button2Options{
                 .SrcRect = {Rectf({0.0f, 0.0f}, {32.0f, 32.0f})},
-                .DstRect = {Rectf({0.0f, 50.0f}, {100.0f, 25.0f})},
+                .DstRect = {Rectf({0.0f, 80.0f}, {200.0f, 50.0f})},
+                .Slice = {Rectf(9.0f, 9.0f, 9.0f, 9.0f)},
                 .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,
                 .SpritePivot = Graphics::GUI_MIDDLE_CENTER};
 
             const Graphics::GUITextOptions buttonTextOptions{
                 .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,
                 .TextPivot = Graphics::GUI_MIDDLE_CENTER,
-            };
+                .TextSize = 32.0f};
             //  Show continue title
             mGUI->Text("CONTINUE?", titleTextOptions);
             // Show button YES. if yes, Reespawn

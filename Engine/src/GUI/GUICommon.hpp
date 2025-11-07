@@ -27,6 +27,7 @@ namespace Mochi::Graphics
         std::optional<Rectf> ParentRect;
         std::optional<Rectf> SrcRect;
         std::optional<Rectf> DstRect;
+        std::optional<Rectf> Slice;
         Vector2f ScreenAnchor;
         Vector2f SpritePivot;
         std::optional<Color> Color;
@@ -58,6 +59,7 @@ namespace Mochi::Graphics
         if (parentRect)
         {
             parent = parentRect.value();
+            parent.SetPosition(parent.GetPosition() + parent.GetSize() / 2.0f);
         }
         else
         {
