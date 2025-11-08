@@ -10,7 +10,7 @@
 namespace Mochi::Graphics
 {
     AbstractGUI::AbstractGUI(FS::PackCatalog *catalog, IRenderer *renderer, Input::IActionManager *actionManager)
-        : mRenderer(renderer), mCatalog(catalog), mActionManager(actionManager)
+        : mRenderer(renderer), mCatalog(catalog), mActionManager(actionManager), mCurrentId(0), mFocusId(-1), mPressedId(-1)
     {
         mTextureFactory = mRenderer->CreateTextureFactory(catalog);
     }

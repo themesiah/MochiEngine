@@ -16,6 +16,7 @@
 #include "../Types/Types.hpp"
 #include "GUICommon.hpp"
 #include "../Utils/MathUtils.h"
+#include "../Utils/Logger.h"
 
 namespace Mochi::Graphics
 {
@@ -96,28 +97,41 @@ namespace Mochi::Graphics
         Text(label, tempTextOptions);
 
         bool focus = false;
-        auto mousePos = mActionManager->CompoundValue("MousePosX", "MousePosY");
-        if (id == mFocusId ||
-            (mousePos.x > guiResult.FinalRect.x &&
-             mousePos.x < guiResult.FinalRect.x + guiResult.FinalRect.w &&
-             mousePos.y > guiResult.FinalRect.y &&
-             mousePos.y < guiResult.FinalRect.y + guiResult.FinalRect.h))
+        if (id == mFocusId)
         {
             focus = true;
+        }
+        bool mouseFocus = false;
+        auto mousePos = mActionManager->CompoundValue("MousePosX", "MousePosY");
+        if (mousePos.x > guiResult.FinalRect.x &&
+            mousePos.x < guiResult.FinalRect.x + guiResult.FinalRect.w &&
+            mousePos.y > guiResult.FinalRect.y &&
+            mousePos.y < guiResult.FinalRect.y + guiResult.FinalRect.h)
+        {
+            mouseFocus = true;
             mFocusId = id;
         }
 
         bool pressed = false;
-        if ((focus && mActionManager->Performed("UISelect")) || (mFocusId == id && mActionManager->Performed("UIConfirm")))
+        if ((mouseFocus && mActionManager->Performed("UISelect")) || (focus && mActionManager->Performed("UIConfirm")))
         {
             pressed = true;
             mPressedId = id;
         }
+        else if (!mouseFocus && mActionManager->Performed("UISelect") && id == mPressedId)
+        {
+            mPressedId = -1;
+        }
 
         bool released = false;
-        if (mPressedId == id && !pressed && mFocusId == id)
+        if (mPressedId == id && focus && !mActionManager->Performed("UIConfirm"))
         {
             released = true;
+        }
+        if (mPressedId == id && mouseFocus && !mActionManager->Performed("UISelect"))
+        {
+            released = true;
+            mPressedId = -1;
         }
 
         return GUIResultButton{
