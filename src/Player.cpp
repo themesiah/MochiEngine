@@ -208,6 +208,11 @@ namespace Mochi::Shooter
         mBulletPool->Update(dt);
 
         mShield->SetPosition(GetPosition());
+
+        if (mActionManager->Performed("Debug2"))
+        {
+            Die();
+        }
     }
 
     std::shared_ptr<PlayerBulletPool> Player::GetBulletPool() const
@@ -286,6 +291,7 @@ namespace Mochi::Shooter
         for (int i = 0; i < mMaxHealth - 1; ++i)
         {
             Graphics::GUIOptions options{
+                .TexturePath = "UIElements.png",
                 .SrcRect = {Rectf({0.0f, 0.0f}, {16.0f, 16.0f})},
                 .DstRect = {Rectf({32.0f * i, 0.0f}, {32.0f, 32.0f})},
                 .ScreenAnchor = Graphics::GUI_TOP_LEFT,
@@ -299,18 +305,19 @@ namespace Mochi::Shooter
             {
                 options.SrcRect.value().SetPosition({0.0f, 0.0f});
             }
-            mGUI->Sprite("UIElements.png", options);
+            mGUI->Sprite(options);
         }
 
         // Lives
         for (int i = 0; i < mLives - 1; ++i)
         {
             Graphics::GUIOptions options{
+                .TexturePath = "UIElements.png",
                 .SrcRect = {Rectf({0.0f, 16.0f}, {16.0f, 16.0f})},
                 .DstRect = {Rectf({32.0f * i, 32.0f}, {32.0f, 32.0f})},
                 .ScreenAnchor = Graphics::GUI_TOP_LEFT,
                 .SpritePivot = Graphics::GUI_TOP_LEFT};
-            mGUI->Sprite("UIElements.png", options);
+            mGUI->Sprite(options);
         }
 
         if (mAwaitingContinue)
@@ -321,19 +328,35 @@ namespace Mochi::Shooter
                 .TextPivot = Graphics::GUI_MIDDLE_CENTER,
                 .TextSize = 82.0f};
 
-            const Graphics::GUIOptions button1Options{
+            const Graphics::GUIOptions button1OptionsBase{
+                .TexturePath = "Interface.png",
                 .SrcRect = {Rectf({0.0f, 0.0f}, {32.0f, 32.0f})},
                 .DstRect = {Rectf({0.0f, 0.0f}, {200.0f, 50.0f})},
                 .Slice = {Rectf(9.0f, 9.0f, 9.0f, 9.0f)},
                 .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,
                 .SpritePivot = Graphics::GUI_MIDDLE_CENTER};
 
-            const Graphics::GUIOptions button2Options{
+            const Graphics::GUIOptions button2OptionsBase{
+                .TexturePath = "Interface.png",
                 .SrcRect = {Rectf({0.0f, 0.0f}, {32.0f, 32.0f})},
                 .DstRect = {Rectf({0.0f, 80.0f}, {200.0f, 50.0f})},
                 .Slice = {Rectf(9.0f, 9.0f, 9.0f, 9.0f)},
                 .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,
                 .SpritePivot = Graphics::GUI_MIDDLE_CENTER};
+
+            Graphics::GUIButtonOptions button1Options{
+                .BaseOptions = button1OptionsBase,
+                .FocusedOptions = button1OptionsBase,
+                .PressedOptions = button1OptionsBase};
+            button1Options.FocusedOptions.SrcRect.value().SetPosition({32.0f, 0.0f});
+            button1Options.PressedOptions.SrcRect.value().SetPosition({0.0f, 32.0f});
+
+            Graphics::GUIButtonOptions button2Options{
+                .BaseOptions = button2OptionsBase,
+                .FocusedOptions = button2OptionsBase,
+                .PressedOptions = button2OptionsBase};
+            button2Options.FocusedOptions.SrcRect.value().SetPosition({32.0f, 0.0f});
+            button2Options.PressedOptions.SrcRect.value().SetPosition({0.0f, 32.0f});
 
             const Graphics::GUITextOptions buttonTextOptions{
                 .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,
@@ -342,12 +365,12 @@ namespace Mochi::Shooter
             //  Show continue title
             mGUI->Text("CONTINUE?", titleTextOptions);
             // Show button YES. if yes, Reespawn
-            if (mGUI->Button("Interface.png", button1Options, "CONTINUE", buttonTextOptions).Pressed)
+            if (mGUI->Button(button1Options, "CONTINUE", buttonTextOptions).Released)
             {
                 Reespawn();
             }
             // Show button NO. If no, publish close game event
-            if (mGUI->Button("Interface.png", button2Options, "EXIT", buttonTextOptions).Pressed)
+            if (mGUI->Button(button2Options, "EXIT", buttonTextOptions).Released)
             {
                 mEventBus->Publish<ApplicationQuitEvent>({});
             }

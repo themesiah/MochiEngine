@@ -262,6 +262,11 @@ namespace Mochi
         mScripting->Update(dt);
         mProfiler->EndSection("Scripting");
 
+        // UI
+        mProfiler->BeginSection("GUIUpdate");
+        mGUI->Update(dt);
+        mProfiler->EndSection("GUIUpdate");
+
         int layerIndex = 0;
         for (const std::unique_ptr<Layer> &layer : mLayers)
         {

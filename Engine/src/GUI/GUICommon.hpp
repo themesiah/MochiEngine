@@ -24,6 +24,7 @@ namespace Mochi::Graphics
 
     struct GUIOptions
     {
+        std::string TexturePath;
         std::optional<Rectf> ParentRect;
         std::optional<Rectf> SrcRect;
         std::optional<Rectf> DstRect;
@@ -43,14 +44,24 @@ namespace Mochi::Graphics
         std::optional<Color> Color;
     };
 
+    struct GUIButtonOptions
+    {
+        GUIOptions BaseOptions;
+        GUIOptions FocusedOptions;
+        GUIOptions PressedOptions;
+    };
+
     struct GUIResult
     {
         Rectf FinalRect;
     };
 
-    struct GUIResultButton : public GUIResult
+    struct GUIResultButton
     {
+        Rectf FinalRect;
+        bool Focus;
         bool Pressed;
+        bool Released;
     };
 
     inline Rectf AnchoredPosition(const std::optional<Rectf> &parentRect, const Rectf &dstRect, const Vector2f &screenAnchor, const Vector2f &spritePivot)

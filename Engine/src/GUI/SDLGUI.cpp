@@ -41,10 +41,10 @@ namespace Mochi::Graphics
     {
     }
 
-    GUIResult SDLGUI::Sprite(const std::string &texturePath, const GUIOptions &options)
+    GUIResult SDLGUI::Sprite(const GUIOptions &options)
     {
         auto tempOptions = options;
-        auto tex = mTextureFactory->GetTexture(texturePath);
+        auto tex = mTextureFactory->GetTexture(options.TexturePath);
         SDLTexture *sdltex = dynamic_cast<SDLTexture *>(tex.get());
         auto texSize = sdltex->GetSize();
 
@@ -77,25 +77,54 @@ namespace Mochi::Graphics
         return {finalRect};
     }
 
-    GUIResultButton SDLGUI::Button(const std::string &texturePath, const GUIOptions &options, const char *label, const GUITextOptions &textOptions)
+    GUIResultButton SDLGUI::Button(const GUIButtonOptions &options, const char *label, const GUITextOptions &textOptions)
     {
-        auto guiResult = Sprite(texturePath, options);
+        auto id = GetNextId();
+        GUIOptions tempOptions = options.BaseOptions;
+        // Depending on the button state, select a different path
+        if (id == mFocusId)
+        {
+            tempOptions = options.FocusedOptions;
+        }
+        if (id == mPressedId)
+        {
+            tempOptions = options.PressedOptions;
+        }
+        auto guiResult = Sprite(tempOptions);
         auto tempTextOptions = textOptions;
         tempTextOptions.ParentRect = guiResult.FinalRect;
         Text(label, tempTextOptions);
 
-        if (mActionManager->Performed("UISelect"))
+        bool focus = false;
+        auto mousePos = mActionManager->CompoundValue("MousePosX", "MousePosY");
+        if (id == mFocusId ||
+            (mousePos.x > guiResult.FinalRect.x &&
+             mousePos.x < guiResult.FinalRect.x + guiResult.FinalRect.w &&
+             mousePos.y > guiResult.FinalRect.y &&
+             mousePos.y < guiResult.FinalRect.y + guiResult.FinalRect.h))
         {
-            auto mousePos = mActionManager->CompoundValue("MousePosX", "MousePosY");
-            if (mousePos.x > guiResult.FinalRect.x &&
-                mousePos.x < guiResult.FinalRect.x + guiResult.FinalRect.w &&
-                mousePos.y > guiResult.FinalRect.y &&
-                mousePos.y < guiResult.FinalRect.y + guiResult.FinalRect.h)
-            {
-                return {{guiResult.FinalRect}, true};
-            }
+            focus = true;
+            mFocusId = id;
         }
-        return {{guiResult.FinalRect}, false};
+
+        bool pressed = false;
+        if ((focus && mActionManager->Performed("UISelect")) || (mFocusId == id && mActionManager->Performed("UIConfirm")))
+        {
+            pressed = true;
+            mPressedId = id;
+        }
+
+        bool released = false;
+        if (mPressedId == id && !pressed && mFocusId == id)
+        {
+            released = true;
+        }
+
+        return GUIResultButton{
+            .FinalRect = guiResult.FinalRect,
+            .Focus = focus,
+            .Pressed = pressed,
+            .Released = released};
     }
 
     GUIResult SDLGUI::Text(const char *label, const GUITextOptions &options)

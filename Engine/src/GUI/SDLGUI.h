@@ -25,8 +25,8 @@ namespace Mochi::Graphics
 
     public:
         virtual ~SDLGUI();
-        virtual GUIResult Sprite(const std::string &texturePath, const GUIOptions &options) override;
-        virtual GUIResultButton Button(const std::string &texturePath, const GUIOptions &options, const char *label, const GUITextOptions &textOptions) override;
+        virtual GUIResult Sprite(const GUIOptions &options) override;
+        virtual GUIResultButton Button(const GUIButtonOptions &options, const char *label, const GUITextOptions &textOptions) override;
         virtual GUIResult Text(const char *label, const GUITextOptions &options) override;
     };
 }

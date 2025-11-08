@@ -21,30 +21,35 @@ namespace Mochi::Input
 }
 namespace Mochi::Graphics
 {
-    using GUIElementId = unsigned int;
+    using GUIElementId = int;
 
     class IRenderer;
     class AbstractTextureFactory;
     class AbstractGUI
     {
-    protected:
+    private:
         GUIElementId mCurrentId;
+        void ResetFrame();
+
+    protected:
         GUIElementId mFocusId;
+        GUIElementId mPressedId;
         std::unique_ptr<AbstractTextureFactory> mTextureFactory;
         IRenderer *mRenderer;
         FS::PackCatalog *mCatalog;
         Input::IActionManager *mActionManager;
         GUIElementId GetNextId();
+        virtual void OnUpdate() {}
 
     public:
         AbstractGUI(FS::PackCatalog *catalog, IRenderer *renderer, Input::IActionManager *actionManager);
         virtual ~AbstractGUI();
-        void ResetFrame();
+        void Update(const float &dt);
 
         // UI Elements
-        virtual GUIResultButton Button(const std::string &texturePath, const GUIOptions &options, const char *label, const GUITextOptions &textOptions) { return {{}, false}; }
+        virtual GUIResultButton Button(const GUIButtonOptions &options, const char *label, const GUITextOptions &textOptions) { return {{}, false, false}; }
         virtual GUIResult Text(const char *label, const GUITextOptions &options) { return {}; }
-        virtual GUIResult Sprite(const std::string &texturePath, const GUIOptions &options) { return {}; }
+        virtual GUIResult Sprite(const GUIOptions &options) { return {}; }
     };
 }
 
