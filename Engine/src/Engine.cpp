@@ -163,9 +163,9 @@ namespace Mochi
                        std::unique_ptr<Audio::IAudioManager> &&audioManager)
     {
         mRenderer = std::move(renderer);
-        mGUI = mRenderer->CreateGUI(mCatalog.get(), mActionManager.get());
         mActionManager = std::move(actionManager);
         mAudio = std::move(audioManager);
+        mGUI = mRenderer->CreateGUI(mCatalog.get(), mActionManager.get());
 
         PushLayer(new Scripting::ScriptingLayer());
 
