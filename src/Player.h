@@ -23,6 +23,16 @@ namespace Mochi::Graphics
 }
 namespace Mochi::Shooter
 {
+    enum PlayerState
+    {
+        None,        // Starting state, so we can change states at the start
+        Cutscene,    // Non controllable, just moving on the cutscene
+        Playing,     // Playing as normal
+        Damaged,     // Playing but non damageable (and blinking with alpa)
+        Reespawning, // Non damageable, non controllable, will appear from the left
+        Dead         // Waiting for UI confirmation to continue (and reespawn)
+    };
+
     class PlayerBulletPool;
     class Player : public Mochi::Graphics::Spritesheet
     {
@@ -47,13 +57,15 @@ namespace Mochi::Shooter
         int mLives;
         float mDamageDelay;
         float mDamageTimer;
-        bool mDamagedState;
-        bool mIsAlive;
-        bool mAwaitingContinue;
-        bool mIsControllable;
         float mReespawnTime;
         float mReespawnTimer;
+        PlayerState mState;
         void Die();
+        void OnStateEnter(const PlayerState &state);
+        void OnStateExit(const PlayerState &state);
+
+        void DamageBlink(const float &dt);
+        void Movement(const float &dt, const Vector2f &movement);
 
     public:
         Player(Mochi::Graphics::IAnimationFactory *animationFactory,
@@ -70,7 +82,7 @@ namespace Mochi::Shooter
         void ReceiveDamage();
         virtual std::vector<Graphics::RenderCommand> GetRenderData() const override;
         void GUI();
-        void Reespawn();
+        void ChangeState(const PlayerState &state);
     };
 }
 

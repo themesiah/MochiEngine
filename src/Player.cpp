@@ -65,12 +65,9 @@ namespace Mochi::Shooter
           mLives(mStartingLives),
           mDamageDelay(DAMAGE_DELAY),
           mDamageTimer(mDamageDelay),
-          mDamagedState(false),
-          mIsAlive(true),
-          mAwaitingContinue(false),
-          mIsControllable(true),
           mReespawnTime(REESPAWN_TIME),
-          mReespawnTimer(0.0f)
+          mReespawnTimer(0.0f),
+          mState(PlayerState::None)
     {
         auto logicalPresentation = mCamera->GetLogicalPresentation();
         mBounds = Rectf(10.0f, 10.0f, logicalPresentation.x - 20.0f, logicalPresentation.y - 20.0f);
@@ -87,6 +84,8 @@ namespace Mochi::Shooter
         mShield->SetScale(GetScale());
         mShield->SetZIndex(GetZIndex() + 1);
         mShield->SetAlpha(100);
+
+        ChangeState(PlayerState::Playing);
     }
 
     Player::~Player()
@@ -103,96 +102,34 @@ namespace Mochi::Shooter
     {
         Graphics::Spritesheet::Update(dt);
 
-        //////////////////////////
-        //// DAMAGE FEEDBACK /////
-        //////////////////////////
-        if (mDamagedState || !mIsControllable)
+        if (mState == PlayerState::Damaged || mState == PlayerState::Reespawning)
         {
-            mDamageTimer += dt;
-            float remainder = Math::Repeat(mDamageTimer, DAMAGED_BLINK_RATE);
-            if (remainder < DAMAGED_BLINK_RATE / 2.0f)
-            {
-                SetAlpha(10);
-            }
-            else
-            {
-                SetAlpha(255);
-            }
-            if (mDamageTimer >= mDamageDelay)
-            {
-                mDamagedState = false;
-                SetAlpha(255);
-            }
+            DamageBlink(dt);
         }
 
-        float horizontal = 0.0f;
-        float vertical = 0.0f;
+        Vector2f movement{0.0f, 0.0f};
         bool shot = false;
-        if (mIsControllable)
+        if (mState == PlayerState::Playing || mState == PlayerState::Damaged)
         {
-            horizontal = mActionManager->Value("Horizontal");
-            vertical = mActionManager->Value("Vertical");
+            movement.x = mActionManager->Value("Horizontal");
+            movement.y = mActionManager->Value("Vertical");
             shot = mActionManager->Performed("Shot");
         }
-        else
+
+        if (mState == PlayerState::Reespawning)
         {
             mReespawnTimer += dt;
             SetPosition(Vector2f::MoveTowards(GetPosition(), {-10.0f, 0.0f}, mSpeed * dt));
             if (mReespawnTimer >= mReespawnTime)
             {
-                mIsControllable = true;
-                mDamagedState = true;
-                mDamageTimer = 0.0f;
+                ChangeState(PlayerState::Playing);
             }
         }
+
         //////////////////////
         ////// MOVEMENT //////
         //////////////////////
-        Vector2f movement = {horizontal, vertical};
-        movement *= (dt * mSpeed);
-        auto lastPosition = GetPosition();
-        auto newPosition = GetPosition() + movement;
-
-        // Camera world to screen with vector2f
-        auto screenNewPosition = mCamera->WorldToScreen(newPosition);
-
-        if (mIsControllable)
-        {
-            screenNewPosition.x = Math::Clamp(screenNewPosition.x, mBounds.x, mBounds.x + mBounds.w);
-            screenNewPosition.y = Math::Clamp(screenNewPosition.y, mBounds.y, mBounds.y + mBounds.h);
-            newPosition = mCamera->ScreenToWorld(screenNewPosition);
-
-            SetPosition(newPosition);
-        }
-
-        auto delta = newPosition - lastPosition;
-        float tiltDirection = 0.0f;
-        if (delta.y > 0.0f)
-            tiltDirection = 1.0f;
-        else if (delta.y < 0.0f)
-            tiltDirection = -1.0f;
-        mTilt = Math::MoveTowards(mTilt, tiltDirection, dt, mTiltSpeed);
-
-        if (mTilt == 0)
-        {
-            SetFrame(0);
-        }
-        else if (mTilt == 1.0f)
-        {
-            SetFrame(4);
-        }
-        else if (mTilt == -1.0f)
-        {
-            SetFrame(2);
-        }
-        else if (mTilt > 0.0f)
-        {
-            SetFrame(3);
-        }
-        else if (mTilt < 0.0f)
-        {
-            SetFrame(1);
-        }
+        Movement(dt, movement);
 
         //////////////////////
         //////// SHOT ////////
@@ -229,18 +166,13 @@ namespace Mochi::Shooter
 
     void Player::ReceiveDamage()
     {
-        if (!mDamagedState && mIsControllable)
+        if (mState == PlayerState::Playing)
         {
             mHealth--;
-            mDamageTimer = 0.0f;
             mEventBus->Publish<PlayerDamageReceivedEvent>({});
 
             LOG_INFO("Player received damage");
 
-            if (mHealth == 1)
-            {
-                mShield->SetVisible(false);
-            }
             if (mHealth <= 0)
             {
                 Die();
@@ -249,31 +181,25 @@ namespace Mochi::Shooter
                     mShield->SetVisible(true);
                 }
             }
-            if (!mAwaitingContinue)
+            else
             {
-                mDamagedState = true;
-                mShield->SetFrame(mMaxHealth - mHealth);
+                ChangeState(PlayerState::Damaged);
             }
         }
     }
 
     void Player::Die()
     {
-        mIsAlive = false;
         mEventBus->Publish<PlayerDeadEvent>({this});
         mLives--;
         LOG_INFO("Player died");
         if (mLives == 0)
         {
-            mAwaitingContinue = true;
-            Engine::Get().Pause();
+            ChangeState(PlayerState::Dead);
         }
         else
         {
-            mHealth = mMaxHealth;
-            mReespawnTimer = 0.0f;
-            mIsControllable = false;
-            SetPosition({-19.0f, 0.0f});
+            ChangeState(PlayerState::Reespawning);
         }
     }
 
@@ -320,7 +246,7 @@ namespace Mochi::Shooter
             mGUI->Sprite(options);
         }
 
-        if (mAwaitingContinue)
+        if (mState == PlayerState::Dead)
         {
             const Graphics::GUITextOptions titleTextOptions{
                 .DstRect = {Rectf({0.0f, -50.0f}, {})},
@@ -367,7 +293,7 @@ namespace Mochi::Shooter
             // Show button YES. if yes, Reespawn
             if (mGUI->Button(button1Options, "CONTINUE", buttonTextOptions).Released)
             {
-                Reespawn();
+                ChangeState(PlayerState::Reespawning);
             }
             // Show button NO. If no, publish close game event
             if (mGUI->Button(button2Options, "EXIT", buttonTextOptions).Released)
@@ -377,17 +303,130 @@ namespace Mochi::Shooter
         }
     }
 
-    void Player::Reespawn()
+    void Player::OnStateEnter(const PlayerState &state)
     {
-        mEventBus->Publish<PlayerContinueEvent>({});
-        mLives = mStartingLives;
-        mIsAlive = true;
-        mAwaitingContinue = false;
-        mHealth = mMaxHealth;
-        mReespawnTimer = 0.0f;
-        mIsControllable = false;
-        mShield->SetFrame(0);
-        SetPosition({-19.0f, 0.0f});
-        Engine::Get().Resume();
+        if (state == PlayerState::Dead)
+        {
+            SetVisible(false);
+            Engine::Get().Pause();
+        }
+        else if (state == PlayerState::Reespawning)
+        {
+            mHealth = mMaxHealth;
+            mReespawnTimer = 0.0f;
+            SetPosition({-19.0f, 0.0f});
+        }
+        else if (state == PlayerState::Damaged)
+        {
+            if (mHealth == 1)
+            {
+                mShield->SetVisible(false);
+            }
+            else
+            {
+                mShield->SetFrame(mMaxHealth - mHealth);
+            }
+
+            mDamageTimer = 0.0f;
+        }
+        else if (state == PlayerState::Playing)
+        {
+            mDamageTimer = 0.0f;
+        }
+    }
+
+    void Player::OnStateExit(const PlayerState &state)
+    {
+        if (state == PlayerState::Dead)
+        {
+            mEventBus->Publish<PlayerContinueEvent>({});
+            mLives = mStartingLives;
+            mHealth = mMaxHealth;
+            mReespawnTimer = 0.0f;
+            mShield->SetFrame(0);
+            SetPosition({-19.0f, 0.0f});
+            SetVisible(true);
+            Engine::Get().Resume();
+        }
+    }
+
+    void Player::ChangeState(const PlayerState &state)
+    {
+        if (state == mState)
+        {
+            LOG_WARNING("Trying to change state to the same state!");
+            return;
+        }
+
+        OnStateExit(mState);
+        mState = state;
+        OnStateEnter(mState);
+    }
+
+    void Player::DamageBlink(const float &dt)
+    {
+        mDamageTimer += dt;
+        float remainder = Math::Repeat(mDamageTimer, DAMAGED_BLINK_RATE);
+        if (remainder < DAMAGED_BLINK_RATE / 2.0f)
+        {
+            SetAlpha(10);
+        }
+        else
+        {
+            SetAlpha(255);
+        }
+        if (mDamageTimer >= mDamageDelay)
+        {
+            ChangeState(PlayerState::Playing);
+            SetAlpha(255);
+        }
+    }
+
+    void Player::Movement(const float &dt, const Vector2f &movement)
+    {
+        auto const &deltaMovement = (movement * dt * mSpeed);
+        auto lastPosition = GetPosition();
+        auto newPosition = GetPosition() + deltaMovement;
+
+        // Camera world to screen with vector2f
+        auto screenNewPosition = mCamera->WorldToScreen(newPosition);
+
+        if (mState == PlayerState::Playing || mState == PlayerState::Damaged)
+        {
+            screenNewPosition.x = Math::Clamp(screenNewPosition.x, mBounds.x, mBounds.x + mBounds.w);
+            screenNewPosition.y = Math::Clamp(screenNewPosition.y, mBounds.y, mBounds.y + mBounds.h);
+            newPosition = mCamera->ScreenToWorld(screenNewPosition);
+
+            SetPosition(newPosition);
+        }
+
+        auto delta = newPosition - lastPosition;
+        float tiltDirection = 0.0f;
+        if (delta.y > 0.0f)
+            tiltDirection = 1.0f;
+        else if (delta.y < 0.0f)
+            tiltDirection = -1.0f;
+        mTilt = Math::MoveTowards(mTilt, tiltDirection, dt, mTiltSpeed);
+
+        if (mTilt == 0)
+        {
+            SetFrame(0);
+        }
+        else if (mTilt == 1.0f)
+        {
+            SetFrame(4);
+        }
+        else if (mTilt == -1.0f)
+        {
+            SetFrame(2);
+        }
+        else if (mTilt > 0.0f)
+        {
+            SetFrame(3);
+        }
+        else if (mTilt < 0.0f)
+        {
+            SetFrame(1);
+        }
     }
 }
