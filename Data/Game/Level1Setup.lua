@@ -2,13 +2,11 @@
 TimeMarkerEvents.Events = {}
 
 TimeMarkerEvents.Events["IntroStart"] = function()
-    EnemyGroup(CreateEnemy, 2, 3, -3, 5, 0.3, 5, 0.5)
+    EnemyGroup:new(CreateEnemy):WithScale(2):WithDelay(0.3):WithAmount(5):WithDuration(5):WithYMovement(3,-3,0.5):WithShot(3, 0):Execute()
     Wait(2)
-    EnemyGroup(CreateEnemy, 2, -4, 4, 5, 0.3, 5, 0.5)
+    EnemyGroup:new(CreateEnemy):WithScale(2):WithDelay(0.3):WithAmount(5):WithDuration(5):WithYMovement(-3,3,0.5):WithShot(3, 0):Execute()
     Wait(3)
-    EnemyGroup(CreateEnemy, 2, 0, 0, 5, 0.3, 5, 0)
-
-    -- EnemyGroupBuilder:WithEnemy(CreateEnemy):WithVerticalTravel(start_y, end_y):WithTime(start, delay, amount):Build()
+    EnemyGroup:new(CreateEnemy):WithScale(2):WithDelay(0.3):WithAmount(5):WithDuration(5):WithShot(3, 0):Execute()
 end
 
 Audio_LoadAudio("Master")
