@@ -28,6 +28,10 @@ namespace Mochi
     {
     }
 
+    void DebugLayer::InitLayer()
+    {
+        }
+
     bool DebugLayer::Update(const float &dt)
     {
         return true;

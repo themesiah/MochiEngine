@@ -26,6 +26,7 @@ namespace Mochi::Scripting
     public:
         ScriptingLayer();
         virtual ~ScriptingLayer();
+        virtual void InitLayer() override;
         virtual bool Update(const float &dt) override;
         virtual void Render() const override;
         virtual void GUI() const override;

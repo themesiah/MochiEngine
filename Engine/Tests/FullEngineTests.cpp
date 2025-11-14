@@ -27,6 +27,7 @@ public:
         return true;
     }
 
+    virtual void InitLayer() override {}
     virtual void Render() const {}
     virtual void GUI() const {}
     float mTimer;

@@ -49,10 +49,6 @@ namespace Mochi::Shooter
         mTextureFactory = mRenderer->CreateTextureFactory(mCatalog);
         mAnimationFactory = std::make_unique<Graphics::AsepriteAnimationFactory>(mCatalog);
 
-        BindLuaTypesAndFunctions();
-        mScripting->ExecuteFileGlobal("ShooterCore.lua");
-        mScripting->ExecuteFile("Level1Setup.lua");
-
         mPlayer = std::make_shared<Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera, mActionManager, mEventBus, mGUI);
         mPlayer->SetPosition({-2.0f, 0.0f});
 
@@ -98,10 +94,19 @@ namespace Mochi::Shooter
             });
     }
 
+    void GameLayer::InitLayer()
+    {
+        BindLuaTypesAndFunctions();
+        mScripting->ExecuteFileGlobal("ShooterCore.lua");
+        mScripting->ExecuteFile("Level1Setup.lua");
+    }
+
     GameLayer::~GameLayer()
     {
         mEventBus->Unsubscribe<EnemyDestroyedEvent>(mEnemyDestroyedSubscription);
         mEventBus->Unsubscribe<EnemyDestroyedEvent>(mPlayerDestroyedSubscription);
+
+        mCatalog->ClosePack("Data/Game");
     }
 
     bool GameLayer::Update(const float &dt)
@@ -250,34 +255,35 @@ namespace Mochi::Shooter
             sol::base_classes, sol::bases<Graphics::SpriteBase>(),
             "IsDead", &Enemy::IsDead);
 
-        mScripting->State.set_function(
-            "CreateEnemy",
-            [this]()
-            {
-                std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>(mEventBus, mTextureFactory.get(), mAnimationFactory.get());
-                mEnemies.push_back(enemy);
-                return enemy;
-            });
+        mScripting->State.set_function("CreateEnemy", &GameLayer::CreateEnemy, this);
 
-        mScripting->State.set_function(
-            "DeleteEnemy",
-            [this](std::shared_ptr<Enemy> deletableElement)
-            {
-                mEnemiesMarkedForDestruction.push_back(deletableElement.get());
-            });
+        mScripting->State.set_function("DeleteEnemy", &GameLayer::DeleteEnemy, this);
 
-        mScripting->State.set_function(
-            "ShotBullet",
-            [this](const int &bulletPoolIndex, const Vector2f &bulletPosition)
-            {
-                if (mEnemyBulletPools.size() < bulletPoolIndex)
-                {
-                    throw EngineError(std::format("There are not {} enemy bullet pools. Max is {}", bulletPoolIndex, mEnemyBulletPools.size()));
-                }
-                else
-                {
-                    mEnemyBulletPools[bulletPoolIndex]->AddBullet(bulletPosition);
-                }
-            });
+        mScripting->State.set_function("ShotBullet", &GameLayer::ShotBullet, this);
+    }
+
+    std::shared_ptr<Enemy> GameLayer::CreateEnemy()
+    {
+        std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>(mEventBus, mTextureFactory.get(), mAnimationFactory.get());
+        mEnemies.push_back(enemy);
+        return enemy;
+    }
+
+    void GameLayer::DeleteEnemy(std::shared_ptr<Enemy> enemyToDelete)
+    {
+        mEnemiesMarkedForDestruction.push_back(enemyToDelete.get());
+    }
+
+    void GameLayer::ShotBullet(const int &bulletPoolIndex, const Vector2f &bulletPosition)
+    {
+        LOG_INFO("Bullet shot!");
+        if (mEnemyBulletPools.size() < bulletPoolIndex)
+        {
+            throw EngineError(std::format("There are not {} enemy bullet pools. Max is {}", bulletPoolIndex, mEnemyBulletPools.size()));
+        }
+        else
+        {
+            mEnemyBulletPools[bulletPoolIndex]->AddBullet(bulletPosition);
+        }
     }
 }

@@ -15,6 +15,7 @@ namespace Mochi
     public:
         DebugLayer();
         ~DebugLayer();
+        virtual void InitLayer() override;
         virtual bool Update(const float &dt) override;
         virtual void Render() const override;
         virtual void GUI() const override;

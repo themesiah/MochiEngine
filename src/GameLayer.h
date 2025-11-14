@@ -40,7 +40,7 @@ namespace Mochi::Shooter
     class AbstractBulletPool;
     class GameLayer : public Layer
     {
-    private:
+    protected:
         std::shared_ptr<Player> mPlayer;
         std::unique_ptr<PointsSystem> mPointsSystem;
         std::vector<std::shared_ptr<Enemy>> mEnemies;
@@ -61,12 +61,18 @@ namespace Mochi::Shooter
     public:
         GameLayer();
         virtual ~GameLayer();
+        virtual void InitLayer() override;
         virtual bool Update(const float &dt) override;
         virtual void Render() const override;
         virtual void GUI() const override;
 #if DEBUG
         virtual void Debug() const override;
 #endif
+
+        // Game specific
+        std::shared_ptr<Enemy> CreateEnemy();
+        void DeleteEnemy(std::shared_ptr<Enemy> enemyToDelete);
+        void ShotBullet(const int &bulletPoolIndex, const Vector2f &bulletPosition);
     };
 }
 

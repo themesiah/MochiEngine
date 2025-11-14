@@ -292,6 +292,7 @@ namespace Mochi
         mProfiler->BeginSection("Layer push");
         for (const auto &inLayer : mPushLayerQueue)
         {
+            inLayer->InitLayer();
             mLayers.push_back(std::unique_ptr<Layer>(inLayer));
         }
         mPushLayerQueue.clear();

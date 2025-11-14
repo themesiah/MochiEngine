@@ -21,7 +21,10 @@ namespace Mochi::Scripting
     {
         mTextureFactory = mRenderer->CreateTextureFactory(mCatalog);
         mAnimationFactory = std::make_unique<Graphics::AsepriteAnimationFactory>(mCatalog);
+    }
 
+    void ScriptingLayer::InitLayer()
+    {
         Bindings::BindLogic(mScripting, mActionManager);
         Bindings::BindGraphics(mScripting, mCamera);
         Bindings::BindAudio(mScripting, mAudioManager);

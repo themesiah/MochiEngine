@@ -293,7 +293,7 @@ namespace Mochi::Shooter
             // Show button YES. if yes, Reespawn
             if (mGUI->Button(button1Options, "CONTINUE", buttonTextOptions).Released)
             {
-                ChangeState(PlayerState::Reespawning);
+                Reespawn();
             }
             // Show button NO. If no, publish close game event
             if (mGUI->Button(button2Options, "EXIT", buttonTextOptions).Released)
@@ -428,5 +428,42 @@ namespace Mochi::Shooter
         {
             SetFrame(1);
         }
+    }
+
+    int Player::GetCurrentHealth() const
+    {
+        return mHealth;
+    }
+
+    void Player::SetHealth(const int &health)
+    {
+        if (health <= 0)
+        {
+            SetLives(mLives - 1);
+        }
+        else
+        {
+            mHealth = health;
+        }
+    }
+
+    int Player::GetCurrentLives() const
+    {
+        return mLives;
+    }
+
+    void Player::SetLives(const int &lives)
+    {
+        mLives = lives;
+    }
+
+    PlayerState Player::GetCurrentState() const
+    {
+        return mState;
+    }
+
+    void Player::Reespawn()
+    {
+        ChangeState(PlayerState::Reespawning);
     }
 }

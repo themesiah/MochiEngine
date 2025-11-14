@@ -83,6 +83,12 @@ namespace Mochi::Shooter
         virtual std::vector<Graphics::RenderCommand> GetRenderData() const override;
         void GUI();
         void ChangeState(const PlayerState &state);
+        int GetCurrentHealth() const;
+        void SetHealth(const int &newHealth);
+        int GetCurrentLives() const;
+        void SetLives(const int &lives);
+        PlayerState GetCurrentState() const;
+        void Reespawn();
     };
 }
 
