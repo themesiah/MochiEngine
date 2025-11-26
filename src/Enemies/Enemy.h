@@ -1,10 +1,7 @@
 #ifndef HDEF_ENEMY
 #define HDEF_ENEMY
 
-#include "Graphics/Spritesheet.h"
-
-#include "Event/EventBus.h"
-#include "Physics/Shapes.h"
+#include "AbstractEnemy.h"
 
 namespace Mochi::Graphics
 {
@@ -13,28 +10,16 @@ namespace Mochi::Graphics
 }
 namespace Mochi::Shooter
 {
-    class Enemy : public Mochi::Graphics::Spritesheet
+    class Enemy : public AbstractEnemy
     {
-    protected:
-        int mHealth;
-        unsigned int mPoints;
-
-        Event::EventBus *mEventBus;
-        Physics::Rectangle mCollider;
-
-        Vector2f mLastPosition;
+    private:
         float mTilt;
         float mTiltSpeed;
-
-        void Die();
 
     public:
         Enemy(Event::EventBus *eventBus, Graphics::AbstractTextureFactory *textureFactory, Graphics::IAnimationFactory *animationFactory);
         virtual ~Enemy();
-        bool ReceiveDamage(const int &damage);
-        Physics::Rectangle GetCollider() const;
         virtual void Update(const float &dt) override;
-        bool IsDead() const;
     };
 }
 

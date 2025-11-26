@@ -15,52 +15,23 @@ namespace Mochi::Shooter
     inline const float ENEMY_TILT_SPEED = 5.0f;
 
     Enemy::Enemy(Event::EventBus *eventBus, Graphics::AbstractTextureFactory *textureFactory, Graphics::IAnimationFactory *animationFactory)
-        : Graphics::Spritesheet(animationFactory, textureFactory, ENEMY_ANIMATION_PATH, 0), mHealth(10), mPoints(40), mEventBus(eventBus),
-          mCollider(PixelsToMeters(Rectf({0.0f, 0.0f}, {32.0f, 32.0f}))), mLastPosition({0.0f, 0.0f}), mTilt(0.0f), mTiltSpeed(ENEMY_TILT_SPEED)
+        : AbstractEnemy(eventBus, 10, 40), mTilt(0.0f), mTiltSpeed(ENEMY_TILT_SPEED)
     {
-        SetZIndex(ZINDEX_ENEMY);
-        SetScale(2.0f);
+        mGraphic = std::make_unique<Graphics::Spritesheet>(animationFactory, textureFactory, ENEMY_ANIMATION_PATH, 0);
+        mGraphic->SetZIndex(ZINDEX_ENEMY);
+        mGraphic->SetScale(2.0f);
+        mCollider = Physics::Rectangle(PixelsToMeters(Rectf({0.0f, 0.0f}, {32.0f, 32.0f})));
     }
 
     Enemy::~Enemy()
     {
     }
 
-    bool Enemy::ReceiveDamage(const int &damage)
-    {
-        if (IsDead())
-            return false; // Already dead, don't trigger things again. Probably marked for destruction already
-        mHealth -= damage;
-        if (mHealth <= 0)
-        {
-            Die();
-            return true;
-        }
-        return false;
-    }
-
-    Physics::Rectangle Enemy::GetCollider() const
-    {
-        auto collider = mCollider;
-        collider.Position = GetPosition();
-        return collider;
-    }
-
-    void Enemy::Die()
-    {
-        mEventBus->Publish<EnemyDestroyedEvent>({mPoints, this});
-    }
-
-    bool Enemy::IsDead() const
-    {
-        return mHealth <= 0;
-    }
-
     void Enemy::Update(const float &dt)
     {
-        Graphics::Spritesheet::Update(dt);
+        AbstractEnemy::Update(dt);
 
-        auto delta = GetPosition() - mLastPosition;
+        auto delta = mGraphic->GetPosition() - mLastPosition;
         float tiltDirection = 0.0f;
         if (delta.y > 0.0f)
             tiltDirection = 1.0f;
@@ -70,25 +41,25 @@ namespace Mochi::Shooter
 
         if (mTilt == 0)
         {
-            SetFrame(0);
+            mGraphic->SetFrame(0);
         }
         else if (mTilt == 1.0f)
         {
-            SetFrame(4);
+            mGraphic->SetFrame(4);
         }
         else if (mTilt == -1.0f)
         {
-            SetFrame(2);
+            mGraphic->SetFrame(2);
         }
         else if (mTilt > 0.0f)
         {
-            SetFrame(3);
+            mGraphic->SetFrame(3);
         }
         else if (mTilt < 0.0f)
         {
-            SetFrame(1);
+            mGraphic->SetFrame(1);
         }
 
-        mLastPosition = GetPosition();
+        mLastPosition = mGraphic->GetPosition();
     }
 }

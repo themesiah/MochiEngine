@@ -3,11 +3,11 @@
 
 namespace Mochi::Shooter
 {
-    class Enemy;
+    class AbstractEnemy;
     struct EnemyDestroyedEvent
     {
         unsigned int Points;
-        Enemy *Enemy;
+        AbstractEnemy *Enemy;
     };
 
     struct PlayerDamageReceivedEvent

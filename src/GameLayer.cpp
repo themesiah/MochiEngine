@@ -250,10 +250,17 @@ namespace Mochi::Shooter
 
     void GameLayer::BindLuaTypesAndFunctions()
     {
+        mScripting->State.new_usertype<AbstractEnemy>(
+            "AbstractEnemy",
+            "GetPosition", &AbstractEnemy::GetPosition,
+            "SetPosition", &AbstractEnemy::SetPosition,
+            "GetScale", &AbstractEnemy::GetScale,
+            "SetScale", &AbstractEnemy::SetScale,
+            "IsDead", &AbstractEnemy::IsDead);
+
         mScripting->State.new_usertype<Enemy>(
             "Enemy",
-            sol::base_classes, sol::bases<Graphics::SpriteBase>(),
-            "IsDead", &Enemy::IsDead);
+            sol::base_classes, sol::bases<AbstractEnemy>());
 
         mScripting->State.set_function("CreateEnemy", &GameLayer::CreateEnemy, this);
 
