@@ -9,10 +9,10 @@
 
 namespace Mochi::Shooter
 {
-    const Physics::Circle SHAPE = Physics::Circle({0.0f, 0.0f}, PixelsToMeters(16.0f));
+    const Physics::Circle EnemyBulletPoolFollow_SHAPE = Physics::Circle({0.0f, 0.0f}, PixelsToMeters(16.0f));
 
     EnemyBulletPoolFollow::EnemyBulletPoolFollow(std::shared_ptr<Graphics::SpriteBase> sprite, const int &capacity, const float &lifetime, const float &speed, std::weak_ptr<Player> player)
-        : AbstractBulletPool(sprite, capacity, lifetime, SHAPE), mSpeed(speed), mPlayer(player)
+        : AbstractBulletPool(sprite, capacity, lifetime, EnemyBulletPoolFollow_SHAPE), mSpeed(speed), mPlayer(player)
     {
         sprite->SetZIndex(ZINDEX_ENEMYBULLET);
         mBulletDirections.resize(capacity);

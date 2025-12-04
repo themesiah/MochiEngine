@@ -29,8 +29,11 @@
 #include "ShooterEvents.h"
 #include "PointsSystem.h"
 
+#include "Enemies/AbstractEnemy.h"
 #include "Enemies/Enemy.h"
+#include "Enemies/Enemy2.h"
 #include "Bullets/EnemyBulletPoolFollow.h"
+#include "Bullets/EnemyBulletPoolDirection.h"
 
 #if DEBUG
 #include "Debug/IGizmos.h"
@@ -55,6 +58,8 @@ namespace Mochi::Shooter
         mPointsSystem = std::make_unique<PointsSystem>(mEventBus, mGUI);
 
         mEnemyBulletPools.push_back(std::make_unique<EnemyBulletPoolFollow>(
+            std::make_shared<Graphics::SpriteBase>(mTextureFactory.get(), "EnemyBullets.png"), 1000, 5.0f, 15.0f, mPlayer));
+        mEnemyBulletPools.push_back(std::make_unique<EnemyBulletPoolDirection>(
             std::make_shared<Graphics::SpriteBase>(mTextureFactory.get(), "EnemyBullets.png"), 1000, 5.0f, 15.0f, mPlayer));
 
         mEnemyDestroyedSubscription = mEventBus->Subscribe<EnemyDestroyedEvent>(
@@ -159,7 +164,7 @@ namespace Mochi::Shooter
         {
             mEnemies.erase(
                 std::remove_if(mEnemies.begin(), mEnemies.end(),
-                               [&](const std::shared_ptr<Enemy> &enemy)
+                               [&](const std::shared_ptr<AbstractEnemy> &enemy)
                                { return enemy.get() == enemyToDestroy; }),
                 mEnemies.end());
         }
@@ -261,27 +266,42 @@ namespace Mochi::Shooter
         mScripting->State.new_usertype<Enemy>(
             "Enemy",
             sol::base_classes, sol::bases<AbstractEnemy>());
+        mScripting->State.new_usertype<Enemy2>(
+            "Enemy2",
+            sol::base_classes, sol::bases<AbstractEnemy>());
 
         mScripting->State.set_function("CreateEnemy", &GameLayer::CreateEnemy, this);
 
         mScripting->State.set_function("DeleteEnemy", &GameLayer::DeleteEnemy, this);
 
         mScripting->State.set_function("ShotBullet", &GameLayer::ShotBullet, this);
+        mScripting->State.set_function("SetBulletDirection", &GameLayer::SetBulletDirection, this);
     }
 
-    std::shared_ptr<Enemy> GameLayer::CreateEnemy()
+    std::shared_ptr<AbstractEnemy> GameLayer::CreateEnemy(const int &enemyType)
     {
-        std::shared_ptr<Enemy> enemy = std::make_shared<Enemy>(mEventBus, mTextureFactory.get(), mAnimationFactory.get());
+        std::shared_ptr<AbstractEnemy> enemy;
+        switch (enemyType)
+        {
+        case 0:
+            enemy = std::make_shared<Enemy>(mEventBus, mTextureFactory.get(), mAnimationFactory.get());
+            break;
+        case 1:
+            enemy = std::make_shared<Enemy2>(mEventBus, mTextureFactory.get(), mAnimationFactory.get());
+            break;
+        default:
+            throw EngineError(std::format("Enemy type {} does not exist. Can't create.", enemyType));
+        }
         mEnemies.push_back(enemy);
         return enemy;
     }
 
-    void GameLayer::DeleteEnemy(std::shared_ptr<Enemy> enemyToDelete)
+    void GameLayer::DeleteEnemy(std::shared_ptr<AbstractEnemy> enemyToDelete)
     {
         mEnemiesMarkedForDestruction.push_back(enemyToDelete.get());
     }
 
-    void GameLayer::ShotBullet(const int &bulletPoolIndex, const Vector2f &bulletPosition)
+    int GameLayer::ShotBullet(const int &bulletPoolIndex, const Vector2f &bulletPosition)
     {
         LOG_INFO("Bullet shot!");
         if (mEnemyBulletPools.size() < bulletPoolIndex)
@@ -290,7 +310,19 @@ namespace Mochi::Shooter
         }
         else
         {
-            mEnemyBulletPools[bulletPoolIndex]->AddBullet(bulletPosition);
+            return mEnemyBulletPools[bulletPoolIndex]->AddBullet(bulletPosition);
+        }
+    }
+
+    void GameLayer::SetBulletDirection(const int &bulletPoolIndex, const int &bulletIndex, const Vector2f &bulletDirection)
+    {
+        if (auto bulletPoolDirection = dynamic_cast<EnemyBulletPoolDirection *>(mEnemyBulletPools[bulletPoolIndex].get()))
+        {
+            bulletPoolDirection->SetBulletDirection(bulletIndex, bulletDirection);
+        }
+        else
+        {
+            throw EngineError(std::format("Bullet pool with index {} is not directionable", bulletPoolIndex));
         }
     }
 }

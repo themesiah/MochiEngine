@@ -121,4 +121,14 @@ TEST_CASE("Input::2- Action manager")
     actionManager.Update(0.1f);
     CHECK_FALSE(actionManager.Performed("Shot"));
     CHECK_EQ(actionManager.Value("Horizontal"), 0.0f);
+
+    mockMouse->state = {true, false, false, false, false};
+    actionManager.Update(0.1f);
+    CHECK(actionManager.Performed("MouseLeftClickDown"));
+    mockMouse->state = {true, false, false, false, false};
+    actionManager.Update(0.1f);
+    CHECK(actionManager.Performed("MouseLeftClickDown"));
+    mockMouse->state = {false, false, false, false, false};
+    actionManager.Update(0.1f);
+    CHECK_FALSE(actionManager.Performed("MouseLeftClickDown"));
 }

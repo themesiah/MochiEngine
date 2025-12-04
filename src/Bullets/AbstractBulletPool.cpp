@@ -58,7 +58,7 @@ namespace Mochi::Shooter
         mActiveCount = 0;
     }
 
-    bool AbstractBulletPool::AddBullet(const Vector2f &pos)
+    int AbstractBulletPool::AddBullet(const Vector2f &pos)
     {
         for (size_t i = 0; i < mBulletActives.size(); ++i)
         {
@@ -69,10 +69,10 @@ namespace Mochi::Shooter
                 mBulletTimers[i] = 0.0f;
                 mActiveCount++;
                 OnBulletAdded(i);
-                return true;
+                return i;
             }
         }
-        return false;
+        return -1;
     }
 
     size_t AbstractBulletPool::GetBulletCount() const

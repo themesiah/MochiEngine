@@ -27,6 +27,9 @@
 		{"Name":"MousePosY", "Cases":[
 			{"Type":"MouseAxis", "Axis":1}
 		]},
+		{"Name":"MouseLeftClickDown", "Cases":[
+			{"Type":"Mouse", "Trigger":1, "Button":0, "Value":1}
+		]},
 		{"Name":"Shot", "Cases":[
 			{"Type":"Keyboard", "Trigger":1, "Keycode":29, "Value":1},
 			{"Type":"Mouse", "Trigger":1, "Button":0, "Value":1},

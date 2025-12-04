@@ -36,6 +36,7 @@ namespace Mochi::Graphics
             throw EngineError(std::format("Texture {} was not loaded, but was found on the system", texturePath));
 
         SDL_SetTextureScaleMode(tex, SDL_ScaleMode::SDL_SCALEMODE_NEAREST); // SUPER IMPORTANT!
+        SDL_SetTextureBlendMode(tex, SDL_BLENDMODE_BLEND);
 
         return std::make_shared<SDLTexture>(tex);
     }

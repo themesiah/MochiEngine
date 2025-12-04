@@ -12,9 +12,10 @@ end)
 
 EnemyGroup = {}
 EnemyGroup.__index = EnemyGroup
-function EnemyGroup:new(createFunctionCallback)
+function EnemyGroup:new(createFunctionCallback, enemyType)
     local obj = {
         CreateFunction = createFunctionCallback,
+        EnemyType = enemyType,
         Scale = 1,
         StartY = 0,
         EndY = 0,
@@ -66,7 +67,8 @@ end
 function EnemyGroup:Execute()
     StartCoroutine(function()
         for i=1, self.Amount, 1 do
-            local enemy = self:CreateFunction()
+            LogInfo("Enemy type is " .. self.EnemyType)
+            local enemy = self.CreateFunction(self.EnemyType)
             enemy:SetPosition(Vector2f.new(1000,1000))
             enemy:SetScale(self.Scale)
             local sub_t_val = self.MovementYT / 2
@@ -105,45 +107,79 @@ function EnemyGroup:Execute()
 end
 
 
--- function EnemyGroup(CreateFunction, scale, start_y, end_y, duration, delay, amount, sub_t)
---     StartCoroutine(function()
---         for i=1, amount, 1 do
---             local enemy = CreateFunction()
---             enemy:SetPosition(Vector2f.new(1000,1000))
---             enemy:SetScale(scale)
---             local sub_t_val = sub_t / 2
-            
---             Tween(
---             function(t, dt)
---                 local new_x = Lerp(18, -18, t)
---                 local t2 = InverseLerp(sub_t_val, 1-sub_t_val, t)
---                 local new_y = Lerp(start_y, end_y, t2)
---                 enemy:SetPosition(Vector2f.new(new_x, new_y))
---             end,
---             function()
---                 DeleteEnemy(enemy)
---             end, duration)
+EnemyAngel = {}
+EnemyAngel.__index = EnemyAngel
+function EnemyAngel:new(createFunctionCallback, enemyType)
+    local obj = {
+        CreateFunction = createFunctionCallback,
+        EnemyType = enemyType,
+        Scale = 1,
+        Positions = {},
+        Duration = 5,
+        StopTime = 0,
+        TimesToShot = 0,
+        BulletPoolIndex = 0,
+        DelayBeforeShot = 0
+    }
+    setmetatable(obj, self)
+    self.__index = self
+    return obj
+end
 
---             if i == 1 then
---                 local timesToShot = 3
---                 local timesShot = 0
---                 local bulletPoolIndex = 0
---                 Tween(
---                     function(t, dt)
---                         local expectedShots = t / (1 / (timesToShot+1))
---                         if timesShot < expectedShots and not enemy:IsDead() then
---                             ShotBullet(bulletPoolIndex, enemy:GetPosition())
---                             timesShot = timesShot + 1
---                         end
---                     end,
---                     function()
---                         -- Nothing
---                     end, duration)
---             end
-            
---             Wait(delay)
---         end
---     end)
--- end
+function EnemyAngel:WithScale(scale)
+    self.Scale = scale
+    return self
+end
 
--- Create here functions and types to manage enemies and such
+function EnemyAngel:WithPosition(position, duration, stopTime)
+    table.insert(self.Positions, {Pos = position, Duration = duration, StopTime = stopTime})
+    return self
+end
+
+function EnemyAngel:Execute()
+    StartCoroutine(function()
+        local enemy = self.CreateFunction(self.EnemyType)
+        enemy:SetPosition(Vector2f.new(1000,1000))
+        enemy:SetScale(self.Scale)
+        
+        local lastPosition = self.Positions[1].Pos
+        for i=2, #self.Positions, 1 do
+            Tween(
+            function(t, dt)
+                local newPosition = self.Positions[i].Pos
+                local new_x = Lerp(lastPosition.x, newPosition.x, t)
+                local new_y = Lerp(lastPosition.y, newPosition.y, t)
+                enemy:SetPosition(Vector2f.new(new_x, new_y))
+
+            end,
+            function()
+                lastPosition = self.Positions[i].Pos
+
+                if i ~= #self.Positions then
+                    Wait(1)
+                    local bulletPoolIndex = 1
+                    local delayBetweenShots = 0.2
+                    local directions = {Vector2f:new(-2, 1), Vector2f:new(-3, 1), Vector2f:new(-1, 0), Vector2f:new(-3, -1), Vector2f:new(-2, -1)}
+
+                    for j=1, #directions, 1 do
+                        if not enemy:IsDead() then
+                            local bulletIndex = ShotBullet(bulletPoolIndex, enemy:GetPosition())
+                            SetBulletDirection(bulletPoolIndex, bulletIndex, directions[j])
+                            Wait(delayBetweenShots)
+                        end
+                    end
+                    
+                    for j=#directions, 1, -1 do
+                        if not enemy:IsDead() then
+                            local bulletIndex = ShotBullet(bulletPoolIndex, enemy:GetPosition())
+                            SetBulletDirection(bulletPoolIndex, bulletIndex, directions[j])
+                            Wait(delayBetweenShots)
+                        end
+                    end
+                end
+            end, self.Positions[i].Duration)
+            Wait(self.Positions[i].Duration + self.Positions[i].StopTime)
+        end
+        DeleteEnemy(enemy)
+    end)
+end

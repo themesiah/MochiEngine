@@ -22,6 +22,8 @@ namespace Mochi::Graphics
 
     inline const Color GUI_DEFAULT_COLOR{255, 255, 255, 255};
 
+    inline const Rectf FULL_SCREEN_DST{{0.0f, 0.0f}, {CONST_RENDER_LOGICAL_X, CONST_RENDER_LOGICAL_Y}};
+
     struct GUIOptions
     {
         std::string TexturePath;

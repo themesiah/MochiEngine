@@ -8,6 +8,7 @@
 #include "Graphics/Camera.h"
 #include "Graphics/SpriteBase.h"
 #include "Event/EngineEvents.h"
+#include "Constants.h"
 
 #include "GUI/AbstractGUI.h"
 
@@ -248,6 +249,15 @@ namespace Mochi::Shooter
 
         if (mState == PlayerState::Dead)
         {
+            const Graphics::GUIOptions backgroundOptions{
+                .TexturePath = "Sprites/Black.png",
+                .DstRect = Graphics::FULL_SCREEN_DST,
+                .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,
+                .SpritePivot = Graphics::GUI_MIDDLE_CENTER,
+                .Color = Color(0, 0, 0, 70)};
+
+            mGUI->Sprite(backgroundOptions);
+
             const Graphics::GUITextOptions titleTextOptions{
                 .DstRect = {Rectf({0.0f, -50.0f}, {})},
                 .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,

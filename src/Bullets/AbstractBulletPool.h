@@ -37,7 +37,7 @@ namespace Mochi::Shooter
         virtual void OnUpdate(const float &dt) = 0;
         std::vector<Graphics::RenderCommand> GetRenderData() const;
         void ReleaseAllBullets();
-        bool AddBullet(const Vector2f &pos);
+        int AddBullet(const Vector2f &pos);
         size_t GetBulletCount() const;
         std::vector<int> CheckAgainst(const Physics::Shape &shape) const;
         void ReleaseBullet(const int &index);

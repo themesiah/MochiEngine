@@ -63,6 +63,7 @@ namespace Mochi::Graphics
         SDL_FRect src = tempOptions.SrcRect.value();
 
         auto const &color = tempOptions.Color.value_or(GUI_DEFAULT_COLOR);
+        SDL_SetTextureBlendMode(sdltex->GetTexture(), SDL_BLENDMODE_BLEND);
         SDL_SetTextureColorMod(sdltex->GetTexture(), color.r, color.g, color.b);
         SDL_SetTextureAlphaMod(sdltex->GetTexture(), color.a);
 
@@ -117,6 +118,7 @@ namespace Mochi::Graphics
         {
             pressed = true;
             mPressedId = id;
+            focus = false;
         }
         else if (!mouseFocus && mActionManager->Performed("UISelect") && id == mPressedId)
         {

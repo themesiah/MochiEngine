@@ -36,15 +36,15 @@ namespace Mochi::Shooter
 {
     class Player;
     class PointsSystem;
-    class Enemy;
+    class AbstractEnemy;
     class AbstractBulletPool;
     class GameLayer : public Layer
     {
     protected:
         std::shared_ptr<Player> mPlayer;
         std::unique_ptr<PointsSystem> mPointsSystem;
-        std::vector<std::shared_ptr<Enemy>> mEnemies;
-        std::vector<Enemy *> mEnemiesMarkedForDestruction;
+        std::vector<std::shared_ptr<AbstractEnemy>> mEnemies;
+        std::vector<AbstractEnemy *> mEnemiesMarkedForDestruction;
         std::vector<std::shared_ptr<Graphics::OneshotAnimation>> mVFXList;
         std::vector<Graphics::OneshotAnimation *> mVFXMarkedForDestruction;
 
@@ -70,9 +70,10 @@ namespace Mochi::Shooter
 #endif
 
         // Game specific
-        std::shared_ptr<Enemy> CreateEnemy();
-        void DeleteEnemy(std::shared_ptr<Enemy> enemyToDelete);
-        void ShotBullet(const int &bulletPoolIndex, const Vector2f &bulletPosition);
+        std::shared_ptr<AbstractEnemy> CreateEnemy(const int &enemyType);
+        void DeleteEnemy(std::shared_ptr<AbstractEnemy> enemyToDelete);
+        int ShotBullet(const int &bulletPoolIndex, const Vector2f &bulletPosition);
+        void SetBulletDirection(const int &bulletPoolIndex, const int &bulletIndex, const Vector2f &direction);
     };
 }
 
