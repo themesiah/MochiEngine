@@ -77,7 +77,6 @@ namespace Mochi::Shooter
         virtual ~Player();
         virtual void Update(const float &dt) override;
         std::shared_ptr<PlayerBulletPool> GetBulletPool() const;
-        virtual void SetScale(const float &scale) override;
         Physics::Rectangle GetCollider() const;
         void ReceiveDamage();
         virtual std::vector<Graphics::RenderCommand> GetRenderData() const override;

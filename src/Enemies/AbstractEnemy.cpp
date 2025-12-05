@@ -13,7 +13,8 @@ namespace Mochi::Shooter
           mHealth(health),
           mPoints(points),
           mLastPosition({0.0f, 0.0f}),
-          mCollider({})
+          mCollider({}),
+          mTransform(std::make_shared<Transform>())
     {
     }
 
@@ -37,7 +38,7 @@ namespace Mochi::Shooter
     Physics::Rectangle AbstractEnemy::GetCollider() const
     {
         auto collider = mCollider;
-        collider.Position = mGraphic->GetPosition();
+        collider.Position = mTransform->GetPosition();
         return collider;
     }
 
@@ -61,8 +62,13 @@ namespace Mochi::Shooter
         return mGraphic->GetRenderData();
     }
 
-    Vector2f AbstractEnemy::GetPosition() const { return mGraphic->GetPosition(); }
-    void AbstractEnemy::SetPosition(const Vector2f &position) { mGraphic->SetPosition(position); }
-    float AbstractEnemy::GetScale() const { return mGraphic->GetScale(); }
-    void AbstractEnemy::SetScale(const float &scale) { mGraphic->SetScale(scale); }
+    std::shared_ptr<Transform> AbstractEnemy::GetTransform() const
+    {
+        return mTransform;
+    }
+
+    void AbstractEnemy::SetTransform(std::shared_ptr<Transform> tr)
+    {
+        mTransform = tr;
+    }
 }

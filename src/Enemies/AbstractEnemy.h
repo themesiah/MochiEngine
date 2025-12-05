@@ -5,6 +5,7 @@
 
 #include "Event/EventBus.h"
 #include "Physics/Shapes.h"
+#include "Types/Transform.hpp"
 
 namespace Mochi::Graphics
 {
@@ -18,6 +19,7 @@ namespace Mochi::Shooter
     protected:
         int mHealth;
         unsigned int mPoints;
+        std::shared_ptr<Transform> mTransform;
 
         Event::EventBus *mEventBus;
         Physics::Rectangle mCollider;
@@ -35,10 +37,8 @@ namespace Mochi::Shooter
         bool IsDead() const;
         virtual void Update(const float &dt);
         virtual std::vector<Graphics::RenderCommand> GetRenderData() const;
-        Vector2f GetPosition() const;
-        void SetPosition(const Vector2f &position);
-        float GetScale() const;
-        void SetScale(const float &scale);
+        std::shared_ptr<Transform> GetTransform() const;
+        void SetTransform(std::shared_ptr<Transform> tr);
     };
 }
 

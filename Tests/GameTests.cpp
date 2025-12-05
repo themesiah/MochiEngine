@@ -61,21 +61,21 @@ public:
 
     void SetPlayerPosition(const Vector2f &pos)
     {
-        mPlayer->SetPosition(pos);
+        mPlayer->GetTransform()->SetPosition(pos);
     }
 
     std::shared_ptr<Shooter::Enemy> AddEnemy(const Vector2f &pos, const float &scale)
     {
         std::shared_ptr<Shooter::Enemy> enemy = std::make_shared<Shooter::Enemy>(mEventBus, mTextureFactory.get(), mAnimationFactory.get());
-        enemy->SetPosition(pos);
-        enemy->SetScale(scale);
+        enemy->GetTransform()->SetPosition(pos);
+        enemy->GetTransform()->SetScale(scale);
         mEnemies.push_back(enemy);
         return enemy;
     }
 
     void SetEnemyPosition(const Vector2f &pos, int index)
     {
-        mEnemies[index]->SetPosition(pos);
+        mEnemies[index]->GetTransform()->SetPosition(pos);
     }
 
     size_t EnemiesCount() const

@@ -15,12 +15,12 @@
 namespace Mochi::Graphics
 {
     SpriteBase::SpriteBase(AbstractTextureFactory *textureFactory, const std::string &filename)
-        : mScale(1.0f), mPosition(0.0f, 0.0f), mZindex(0), mVisible(true), mAlpha(255)
+        : mZindex(0), mVisible(true), mAlpha(255), mTransform(std::make_shared<Transform>())
     {
         LoadTexture(textureFactory, filename);
     }
 
-    SpriteBase::SpriteBase() : mScale(1.0f), mZindex(0), mVisible(true), mAlpha(255)
+    SpriteBase::SpriteBase() : mZindex(0), mVisible(true), mAlpha(255), mTransform(std::make_shared<Transform>())
     {
         mSrcRect.SetPosition({0.0f, 0.0f});
     }
@@ -46,9 +46,9 @@ namespace Mochi::Graphics
         RenderCommand rc;
         rc.texture = mTexture.get();
         rc.sourceRect = mSrcRect;
-        rc.destRect.SetPosition(mPosition);
-        rc.destRect.w = mSize.x * mScale;
-        rc.destRect.h = mSize.y * mScale;
+        rc.destRect.SetPosition(mTransform->GetPosition());
+        rc.destRect.w = mSize.x * mTransform->GetScale();
+        rc.destRect.h = mSize.y * mTransform->GetScale();
         rc.zindex = mZindex;
         return {rc};
     }
@@ -62,31 +62,6 @@ namespace Mochi::Graphics
 
     SpriteBase::~SpriteBase()
     {
-    }
-
-    void SpriteBase::SetScale(const float &scale)
-    {
-        mScale = scale;
-    }
-
-    float SpriteBase::GetScale() const
-    {
-        return mScale;
-    }
-
-    void SpriteBase::SetPosition(const Vector2f &position)
-    {
-        mPosition = position;
-    }
-
-    Vector2f SpriteBase::GetPosition() const
-    {
-        return mPosition;
-    }
-
-    void SpriteBase::Move(const Vector2f &movement)
-    {
-        mPosition += movement;
     }
 
     void SpriteBase::SetZIndex(const uint16_t &zIndex)
@@ -118,5 +93,15 @@ namespace Mochi::Graphics
     {
         mAlpha = alpha;
         mTexture->SetAlpha(alpha);
+    }
+
+    std::shared_ptr<Transform> SpriteBase::GetTransform() const
+    {
+        return mTransform;
+    }
+
+    void SpriteBase::SetTransform(std::shared_ptr<Transform> tr)
+    {
+        mTransform = tr;
     }
 }

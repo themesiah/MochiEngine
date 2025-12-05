@@ -53,7 +53,7 @@ namespace Mochi::Shooter
         mAnimationFactory = std::make_unique<Graphics::AsepriteAnimationFactory>(mCatalog);
 
         mPlayer = std::make_shared<Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera, mActionManager, mEventBus, mGUI);
-        mPlayer->SetPosition({-2.0f, 0.0f});
+        mPlayer->GetTransform()->SetPosition({-2.0f, 0.0f});
 
         mPointsSystem = std::make_unique<PointsSystem>(mEventBus, mGUI);
 
@@ -71,8 +71,8 @@ namespace Mochi::Shooter
                     EXPLOSION_ANIMATION_PATH,
                     EXPLOSION_ANIMATION_MAIN);
 
-                destructionVfx->SetPosition(e.Enemy->GetPosition());
-                destructionVfx->SetScale(e.Enemy->GetScale() * 2);
+                destructionVfx->GetTransform()->SetPosition(e.Enemy->GetTransform()->GetPosition());
+                destructionVfx->GetTransform()->SetScale(e.Enemy->GetTransform()->GetScale() * 2);
 
                 auto ptr = destructionVfx.get();
                 destructionVfx->SetFinishCallback([&, ptr]()
@@ -89,8 +89,8 @@ namespace Mochi::Shooter
                     EXPLOSION_ANIMATION_PATH,
                     EXPLOSION_ANIMATION_MAIN);
 
-                destructionVfx->SetPosition(e.Player->GetPosition());
-                destructionVfx->SetScale(e.Player->GetScale() * 2);
+                destructionVfx->GetTransform()->SetPosition(e.Player->GetTransform()->GetPosition());
+                destructionVfx->GetTransform()->SetScale(e.Player->GetTransform()->GetScale() * 2);
 
                 auto ptr = destructionVfx.get();
                 destructionVfx->SetFinishCallback([&, ptr]()
@@ -257,10 +257,8 @@ namespace Mochi::Shooter
     {
         mScripting->State.new_usertype<AbstractEnemy>(
             "AbstractEnemy",
-            "GetPosition", &AbstractEnemy::GetPosition,
-            "SetPosition", &AbstractEnemy::SetPosition,
-            "GetScale", &AbstractEnemy::GetScale,
-            "SetScale", &AbstractEnemy::SetScale,
+            "GetTransform", &AbstractEnemy::GetTransform,
+            "SetTransform", &AbstractEnemy::SetTransform,
             "IsDead", &AbstractEnemy::IsDead);
 
         mScripting->State.new_usertype<Enemy>(
@@ -303,7 +301,6 @@ namespace Mochi::Shooter
 
     int GameLayer::ShotBullet(const int &bulletPoolIndex, const Vector2f &bulletPosition)
     {
-        LOG_INFO("Bullet shot!");
         if (mEnemyBulletPools.size() < bulletPoolIndex)
         {
             throw EngineError(std::format("There are not {} enemy bullet pools. Max is {}", bulletPoolIndex, mEnemyBulletPools.size()));

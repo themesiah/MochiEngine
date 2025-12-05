@@ -67,10 +67,9 @@ end
 function EnemyGroup:Execute()
     StartCoroutine(function()
         for i=1, self.Amount, 1 do
-            LogInfo("Enemy type is " .. self.EnemyType)
             local enemy = self.CreateFunction(self.EnemyType)
-            enemy:SetPosition(Vector2f.new(1000,1000))
-            enemy:SetScale(self.Scale)
+            enemy:GetTransform():SetPosition(Vector2f.new(1000,1000))
+            enemy:GetTransform():SetScale(self.Scale)
             local sub_t_val = self.MovementYT / 2
             
             Tween(
@@ -78,7 +77,7 @@ function EnemyGroup:Execute()
                 local new_x = Lerp(18, -18, t)
                 local t2 = InverseLerp(sub_t_val, 1-sub_t_val, t)
                 local new_y = Lerp(self.StartY, self.EndY, t2)
-                enemy:SetPosition(Vector2f.new(new_x, new_y))
+                enemy:GetTransform():SetPosition(Vector2f.new(new_x, new_y))
             end,
             function()
                 DeleteEnemy(enemy)
@@ -92,7 +91,7 @@ function EnemyGroup:Execute()
                     function(t, dt)
                         local expectedShots = t / (1 / (timesToShot+1))
                         if timesShot < expectedShots and not enemy:IsDead() then
-                            ShotBullet(bulletPoolIndex, enemy:GetPosition())
+                            ShotBullet(bulletPoolIndex, enemy:GetTransform():GetPosition())
                             timesShot = timesShot + 1
                         end
                     end,
@@ -139,8 +138,8 @@ end
 function EnemyAngel:Execute()
     StartCoroutine(function()
         local enemy = self.CreateFunction(self.EnemyType)
-        enemy:SetPosition(Vector2f.new(1000,1000))
-        enemy:SetScale(self.Scale)
+        enemy:GetTransform():SetPosition(Vector2f.new(1000,1000))
+        enemy:GetTransform():SetScale(self.Scale)
         
         local lastPosition = self.Positions[1].Pos
         for i=2, #self.Positions, 1 do
@@ -149,7 +148,7 @@ function EnemyAngel:Execute()
                 local newPosition = self.Positions[i].Pos
                 local new_x = Lerp(lastPosition.x, newPosition.x, t)
                 local new_y = Lerp(lastPosition.y, newPosition.y, t)
-                enemy:SetPosition(Vector2f.new(new_x, new_y))
+                enemy:GetTransform():SetPosition(Vector2f.new(new_x, new_y))
 
             end,
             function()
@@ -163,7 +162,7 @@ function EnemyAngel:Execute()
 
                     for j=1, #directions, 1 do
                         if not enemy:IsDead() then
-                            local bulletIndex = ShotBullet(bulletPoolIndex, enemy:GetPosition())
+                            local bulletIndex = ShotBullet(bulletPoolIndex, enemy:GetTransform():GetPosition())
                             SetBulletDirection(bulletPoolIndex, bulletIndex, directions[j])
                             Wait(delayBetweenShots)
                         end
@@ -171,7 +170,7 @@ function EnemyAngel:Execute()
                     
                     for j=#directions, 1, -1 do
                         if not enemy:IsDead() then
-                            local bulletIndex = ShotBullet(bulletPoolIndex, enemy:GetPosition())
+                            local bulletIndex = ShotBullet(bulletPoolIndex, enemy:GetTransform():GetPosition())
                             SetBulletDirection(bulletPoolIndex, bulletIndex, directions[j])
                             Wait(delayBetweenShots)
                         end

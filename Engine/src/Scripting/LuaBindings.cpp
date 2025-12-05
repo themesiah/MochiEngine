@@ -11,6 +11,7 @@
 
 #include "../Input/IActionManager.h"
 #include "../Types/Types.hpp"
+#include "../Types/Transform.hpp"
 #include "../Time/TimeSystem.h"
 
 #include "../Utils/Logger.h"
@@ -21,12 +22,16 @@ namespace Mochi::Scripting::Bindings
 {
     void BindGraphics(ScriptingManager *manager, Graphics::Camera *camera)
     {
+        manager->State.new_usertype<Transform>("Transform",
+                                               "GetPosition", &Transform::GetPosition,
+                                               "SetPosition", &Transform::SetPosition,
+                                               "GetScale", &Transform::GetScale,
+                                               "SetScale", &Transform::SetScale,
+                                               "Move", &Transform::Move);
+
         manager->State.new_usertype<Graphics::SpriteBase>("SpriteBase",
-                                                          "GetPosition", &Graphics::SpriteBase::GetPosition,
-                                                          "SetPosition", &Graphics::SpriteBase::SetPosition,
-                                                          "Move", &Graphics::SpriteBase::Move,
-                                                          "GetScale", &Graphics::SpriteBase::GetScale,
-                                                          "SetScale", &Graphics::SpriteBase::SetScale,
+                                                          "GetTransform", &Graphics::SpriteBase::GetTransform,
+                                                          "SetTransform", &Graphics::SpriteBase::SetTransform,
                                                           "GetZIndex", &Graphics::SpriteBase::GetZIndex,
                                                           "SetZIndex", &Graphics::SpriteBase::SetZIndex);
 
