@@ -24,7 +24,8 @@ function EnemyGroup:new(createFunctionCallback, enemyType)
         Amount = 1,
         MovementYT = 0,
         TimesToShot = 0,
-        BulletPoolIndex = 0
+        BulletPoolIndex = 0,
+        Health = 10
     }
     setmetatable(obj, self)
     self.__index = self
@@ -64,12 +65,18 @@ function EnemyGroup:WithShot(timesToShot, bulletPool)
     return self
 end
 
+function EnemyGroup:WithHealth(health)
+    self.Health = health
+    return self
+end
+
 function EnemyGroup:Execute()
     StartCoroutine(function()
         for i=1, self.Amount, 1 do
             local enemy = self.CreateFunction(self.EnemyType)
-            enemy:GetTransform():SetPosition(Vector2f.new(1000,1000))
-            enemy:GetTransform():SetScale(self.Scale)
+            enemy:GetTransform().Position = Vector2f.new(1000,1000)
+            enemy:SetHealth(self.Health)
+            enemy:GetTransform().Scale = self.Scale
             local sub_t_val = self.MovementYT / 2
             
             Tween(
@@ -77,7 +84,7 @@ function EnemyGroup:Execute()
                 local new_x = Lerp(18, -18, t)
                 local t2 = InverseLerp(sub_t_val, 1-sub_t_val, t)
                 local new_y = Lerp(self.StartY, self.EndY, t2)
-                enemy:GetTransform():SetPosition(Vector2f.new(new_x, new_y))
+                enemy:GetTransform().Position = Vector2f.new(new_x, new_y)
             end,
             function()
                 DeleteEnemy(enemy)
@@ -91,7 +98,7 @@ function EnemyGroup:Execute()
                     function(t, dt)
                         local expectedShots = t / (1 / (timesToShot+1))
                         if timesShot < expectedShots and not enemy:IsDead() then
-                            ShotBullet(bulletPoolIndex, enemy:GetTransform():GetPosition())
+                            ShotBullet(bulletPoolIndex, enemy:GetTransform().Position)
                             timesShot = timesShot + 1
                         end
                     end,
@@ -118,7 +125,8 @@ function EnemyAngel:new(createFunctionCallback, enemyType)
         StopTime = 0,
         TimesToShot = 0,
         BulletPoolIndex = 0,
-        DelayBeforeShot = 0
+        DelayBeforeShot = 0,
+        Health = 50
     }
     setmetatable(obj, self)
     self.__index = self
@@ -135,11 +143,17 @@ function EnemyAngel:WithPosition(position, duration, stopTime)
     return self
 end
 
+function EnemyAngel:WithHealth(health)
+    self.Health = health
+    return self
+end
+
 function EnemyAngel:Execute()
     StartCoroutine(function()
         local enemy = self.CreateFunction(self.EnemyType)
-        enemy:GetTransform():SetPosition(Vector2f.new(1000,1000))
-        enemy:GetTransform():SetScale(self.Scale)
+        enemy:GetTransform().Position = Vector2f.new(1000,1000)
+        enemy:SetHealth(self.Health)
+        enemy:GetTransform().Scale = self.Scale
         
         local lastPosition = self.Positions[1].Pos
         for i=2, #self.Positions, 1 do
@@ -148,7 +162,7 @@ function EnemyAngel:Execute()
                 local newPosition = self.Positions[i].Pos
                 local new_x = Lerp(lastPosition.x, newPosition.x, t)
                 local new_y = Lerp(lastPosition.y, newPosition.y, t)
-                enemy:GetTransform():SetPosition(Vector2f.new(new_x, new_y))
+                enemy:GetTransform().Position = Vector2f.new(new_x, new_y)
 
             end,
             function()
@@ -162,7 +176,7 @@ function EnemyAngel:Execute()
 
                     for j=1, #directions, 1 do
                         if not enemy:IsDead() then
-                            local bulletIndex = ShotBullet(bulletPoolIndex, enemy:GetTransform():GetPosition())
+                            local bulletIndex = ShotBullet(bulletPoolIndex, enemy:GetTransform().Position)
                             SetBulletDirection(bulletPoolIndex, bulletIndex, directions[j])
                             Wait(delayBetweenShots)
                         end
@@ -170,7 +184,7 @@ function EnemyAngel:Execute()
                     
                     for j=#directions, 1, -1 do
                         if not enemy:IsDead() then
-                            local bulletIndex = ShotBullet(bulletPoolIndex, enemy:GetTransform():GetPosition())
+                            local bulletIndex = ShotBullet(bulletPoolIndex, enemy:GetTransform().Position)
                             SetBulletDirection(bulletPoolIndex, bulletIndex, directions[j])
                             Wait(delayBetweenShots)
                         end

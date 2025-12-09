@@ -12,13 +12,12 @@ namespace Mochi::Shooter
     inline const float ENEMY_TILT_SPEED = 5.0f;
 
     Enemy2::Enemy2(Event::EventBus *eventBus, Graphics::AbstractTextureFactory *textureFactory, Graphics::IAnimationFactory *animationFactory)
-        : AbstractEnemy(eventBus, 50, 40), mTilt(0.0f), mTiltSpeed(ENEMY_TILT_SPEED)
+        : AbstractEnemy(eventBus, 50, 150), mTilt(0.0f), mTiltSpeed(ENEMY_TILT_SPEED)
     {
         mGraphic = std::make_unique<Graphics::Spritesheet>(animationFactory, textureFactory, ENEMY2_ANIMATION_PATH, 0);
         mGraphic->SetTransform(mTransform);
         mGraphic->SetZIndex(ZINDEX_ENEMY);
-        mTransform->SetScale(2.0f);
-        mCollider = Physics::Rectangle(PixelsToMeters(Rectf({-12.0f, 0.0f}, {48.0f, 80.0f})));
+        mCollider = Physics::Rectangle(PixelsToMeters(Rectf({-6.0f, 0.0f}, {24.0f, 40.0f})));
     }
 
     Enemy2::~Enemy2()
@@ -29,7 +28,7 @@ namespace Mochi::Shooter
     {
         AbstractEnemy::Update(dt);
 
-        auto deltaDistance = (mTransform->GetPosition() - mLastPosition).Distance();
+        auto deltaDistance = (mTransform->Position - mLastPosition).Distance();
         float tiltDirection = 0.0f;
         if (deltaDistance > 0.0f)
             tiltDirection = 1.0f;
@@ -50,6 +49,6 @@ namespace Mochi::Shooter
             mGraphic->SetFrame(1);
         }
 
-        mLastPosition = mTransform->GetPosition();
+        mLastPosition = mTransform->Position;
     }
 }

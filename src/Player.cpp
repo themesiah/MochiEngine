@@ -76,8 +76,8 @@ namespace Mochi::Shooter
         auto playerBulletRenderable = std::make_shared<Graphics::SpriteBase>(textureFactory, BULLET_PATH);
         mBulletPool = std::make_shared<PlayerBulletPool>(playerBulletRenderable, MAX_BULLETS, BULLETS_LIFETIME, BULLETS_SPEED);
 
-        mTransform->SetScale(2.0f);
-        playerBulletRenderable->GetTransform()->SetScale(mTransform->GetScale());
+        mTransform->Scale = 2.0f;
+        playerBulletRenderable->GetTransform()->Scale = mTransform->Scale;
 
         SetZIndex(ZINDEX_PLAYER);
 
@@ -114,7 +114,7 @@ namespace Mochi::Shooter
         if (mState == PlayerState::Reespawning)
         {
             mReespawnTimer += dt;
-            mTransform->SetPosition(Vector2f::MoveTowards(mTransform->GetPosition(), {-10.0f, 0.0f}, mSpeed * dt));
+            mTransform->Position = Vector2f::MoveTowards(mTransform->Position, {-10.0f, 0.0f}, mSpeed * dt);
             if (mReespawnTimer >= mReespawnTime)
             {
                 ChangeState(PlayerState::Playing);
@@ -132,7 +132,7 @@ namespace Mochi::Shooter
         mShotTimer += dt;
         if (shot && mShotTimer >= mShotDelay)
         {
-            auto pos = mTransform->GetPosition() + Vector2f(1.0f, 0.0f);
+            auto pos = mTransform->Position + Vector2f(1.0f, 0.0f);
             mBulletPool->AddBullet(pos + Vector2f(0.0f, 0.2f));
             mBulletPool->AddBullet(pos + Vector2f(0.0f, -0.2f));
             mShotTimer = 0.0f;
@@ -153,7 +153,7 @@ namespace Mochi::Shooter
     Physics::Rectangle Player::GetCollider() const
     {
         auto collider = mCollider;
-        collider.Position = mTransform->GetPosition();
+        collider.Position = mTransform->Position;
         return collider;
     }
 
@@ -316,7 +316,7 @@ namespace Mochi::Shooter
         {
             mHealth = mMaxHealth;
             mReespawnTimer = 0.0f;
-            mTransform->SetPosition({-19.0f, 0.0f});
+            mTransform->Position = Vector2f({-19.0f, 0.0f});
         }
         else if (state == PlayerState::Damaged)
         {
@@ -346,7 +346,7 @@ namespace Mochi::Shooter
             mHealth = mMaxHealth;
             mReespawnTimer = 0.0f;
             mShield->SetFrame(0);
-            mTransform->SetPosition({-19.0f, 0.0f});
+            mTransform->Position = Vector2f({-19.0f, 0.0f});
             SetVisible(true);
             Engine::Get().Resume();
         }
@@ -387,8 +387,8 @@ namespace Mochi::Shooter
     void Player::Movement(const float &dt, const Vector2f &movement)
     {
         auto const &deltaMovement = (movement * dt * mSpeed);
-        auto lastPosition = mTransform->GetPosition();
-        auto newPosition = mTransform->GetPosition() + deltaMovement;
+        auto lastPosition = mTransform->Position;
+        auto newPosition = mTransform->Position + deltaMovement;
 
         // Camera world to screen with vector2f
         auto screenNewPosition = mCamera->WorldToScreen(newPosition);
@@ -399,7 +399,7 @@ namespace Mochi::Shooter
             screenNewPosition.y = Math::Clamp(screenNewPosition.y, mBounds.y, mBounds.y + mBounds.h);
             newPosition = mCamera->ScreenToWorld(screenNewPosition);
 
-            mTransform->SetPosition(newPosition);
+            mTransform->Position = newPosition;
         }
 
         auto delta = newPosition - lastPosition;

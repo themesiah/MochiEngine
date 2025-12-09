@@ -23,10 +23,8 @@ namespace Mochi::Scripting::Bindings
     void BindGraphics(ScriptingManager *manager, Graphics::Camera *camera)
     {
         manager->State.new_usertype<Transform>("Transform",
-                                               "GetPosition", &Transform::GetPosition,
-                                               "SetPosition", &Transform::SetPosition,
-                                               "GetScale", &Transform::GetScale,
-                                               "SetScale", &Transform::SetScale,
+                                               "Position", &Transform::Position,
+                                               "Scale", &Transform::Scale,
                                                "Move", &Transform::Move);
 
         manager->State.new_usertype<Graphics::SpriteBase>("SpriteBase",

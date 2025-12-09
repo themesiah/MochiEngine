@@ -46,9 +46,9 @@ namespace Mochi::Graphics
         RenderCommand rc;
         rc.texture = mTexture.get();
         rc.sourceRect = mSrcRect;
-        rc.destRect.SetPosition(mTransform->GetPosition());
-        rc.destRect.w = mSize.x * mTransform->GetScale();
-        rc.destRect.h = mSize.y * mTransform->GetScale();
+        rc.destRect.SetPosition(mTransform->Position);
+        rc.destRect.w = mSize.x * mTransform->Scale;
+        rc.destRect.h = mSize.y * mTransform->Scale;
         rc.zindex = mZindex;
         return {rc};
     }

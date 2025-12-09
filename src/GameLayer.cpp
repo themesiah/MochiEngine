@@ -53,7 +53,7 @@ namespace Mochi::Shooter
         mAnimationFactory = std::make_unique<Graphics::AsepriteAnimationFactory>(mCatalog);
 
         mPlayer = std::make_shared<Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera, mActionManager, mEventBus, mGUI);
-        mPlayer->GetTransform()->SetPosition({-2.0f, 0.0f});
+        mPlayer->GetTransform()->Position = Vector2f({-2.0f, 0.0f});
 
         mPointsSystem = std::make_unique<PointsSystem>(mEventBus, mGUI);
 
@@ -71,8 +71,8 @@ namespace Mochi::Shooter
                     EXPLOSION_ANIMATION_PATH,
                     EXPLOSION_ANIMATION_MAIN);
 
-                destructionVfx->GetTransform()->SetPosition(e.Enemy->GetTransform()->GetPosition());
-                destructionVfx->GetTransform()->SetScale(e.Enemy->GetTransform()->GetScale() * 2);
+                destructionVfx->GetTransform()->Position = e.Enemy->GetTransform()->Position;
+                destructionVfx->GetTransform()->Scale = e.Enemy->GetTransform()->Scale * 2;
 
                 auto ptr = destructionVfx.get();
                 destructionVfx->SetFinishCallback([&, ptr]()
@@ -89,8 +89,8 @@ namespace Mochi::Shooter
                     EXPLOSION_ANIMATION_PATH,
                     EXPLOSION_ANIMATION_MAIN);
 
-                destructionVfx->GetTransform()->SetPosition(e.Player->GetTransform()->GetPosition());
-                destructionVfx->GetTransform()->SetScale(e.Player->GetTransform()->GetScale() * 2);
+                destructionVfx->GetTransform()->Position = e.Player->GetTransform()->Position;
+                destructionVfx->GetTransform()->Scale = e.Player->GetTransform()->Scale * 2.0f;
 
                 auto ptr = destructionVfx.get();
                 destructionVfx->SetFinishCallback([&, ptr]()
@@ -259,7 +259,8 @@ namespace Mochi::Shooter
             "AbstractEnemy",
             "GetTransform", &AbstractEnemy::GetTransform,
             "SetTransform", &AbstractEnemy::SetTransform,
-            "IsDead", &AbstractEnemy::IsDead);
+            "IsDead", &AbstractEnemy::IsDead,
+            "SetHealth", &AbstractEnemy::SetHealth);
 
         mScripting->State.new_usertype<Enemy>(
             "Enemy",

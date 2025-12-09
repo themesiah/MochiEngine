@@ -20,8 +20,7 @@ namespace Mochi::Shooter
         mGraphic = std::make_unique<Graphics::Spritesheet>(animationFactory, textureFactory, ENEMY_ANIMATION_PATH, 0);
         mGraphic->SetTransform(mTransform);
         mGraphic->SetZIndex(ZINDEX_ENEMY);
-        mTransform->SetScale(2.0f);
-        mCollider = Physics::Rectangle(PixelsToMeters(Rectf({0.0f, 0.0f}, {32.0f, 32.0f})));
+        mCollider = Physics::Rectangle(PixelsToMeters(Rectf({0.0f, 0.0f}, {16.0f, 16.0f})));
     }
 
     Enemy::~Enemy()
@@ -32,7 +31,7 @@ namespace Mochi::Shooter
     {
         AbstractEnemy::Update(dt);
 
-        auto delta = mTransform->GetPosition() - mLastPosition;
+        auto delta = mTransform->Position - mLastPosition;
         float tiltDirection = 0.0f;
         if (delta.y > 0.0f)
             tiltDirection = 1.0f;
@@ -61,6 +60,6 @@ namespace Mochi::Shooter
             mGraphic->SetFrame(1);
         }
 
-        mLastPosition = mTransform->GetPosition();
+        mLastPosition = mTransform->Position;
     }
 }

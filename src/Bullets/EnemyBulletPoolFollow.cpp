@@ -38,7 +38,7 @@ namespace Mochi::Shooter
     {
         if (std::shared_ptr<Player> player = mPlayer.lock())
         {
-            mBulletDirections[index] = (player->GetTransform()->GetPosition() - mBulletPositions[index]).Normalized();
+            mBulletDirections[index] = (player->GetTransform()->Position - mBulletPositions[index]).Normalized();
         }
     }
 }

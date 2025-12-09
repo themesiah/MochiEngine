@@ -39,6 +39,7 @@ namespace Mochi::Shooter
         virtual std::vector<Graphics::RenderCommand> GetRenderData() const;
         std::shared_ptr<Transform> GetTransform() const;
         void SetTransform(std::shared_ptr<Transform> tr);
+        void SetHealth(const int &health);
     };
 }
 

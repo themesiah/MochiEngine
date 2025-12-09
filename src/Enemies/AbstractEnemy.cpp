@@ -38,7 +38,8 @@ namespace Mochi::Shooter
     Physics::Rectangle AbstractEnemy::GetCollider() const
     {
         auto collider = mCollider;
-        collider.Position = mTransform->GetPosition();
+        collider.Position = collider.Position * mTransform->Scale + mTransform->Position;
+        collider.Extents = collider.Extents * mTransform->Scale;
         return collider;
     }
 
@@ -70,5 +71,10 @@ namespace Mochi::Shooter
     void AbstractEnemy::SetTransform(std::shared_ptr<Transform> tr)
     {
         mTransform = tr;
+    }
+
+    void AbstractEnemy::SetHealth(const int &health)
+    {
+        mHealth = health;
     }
 }
