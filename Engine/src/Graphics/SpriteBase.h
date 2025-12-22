@@ -16,14 +16,12 @@ namespace Mochi::Graphics
     class AbstractTextureFactory;
     class SpriteBase
     {
-    private:
+    protected:
         std::shared_ptr<ITexture> mTexture;
         Rectf mSrcRect;
         uint16_t mZindex;
         bool mVisible;
         uint8_t mAlpha;
-
-    protected:
         Vector2f mSize;
         void SetSrcRect(const Rectf &srcRect);
         std::shared_ptr<Transform> mTransform;

@@ -35,6 +35,8 @@
 #include "Bullets/EnemyBulletPoolFollow.h"
 #include "Bullets/EnemyBulletPoolDirection.h"
 
+#include "Background.h"
+
 #if DEBUG
 #include "Debug/IGizmos.h"
 #endif
@@ -54,6 +56,8 @@ namespace Mochi::Shooter
 
         mPlayer = std::make_shared<Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera, mActionManager, mEventBus, mGUI);
         mPlayer->GetTransform()->Position = Vector2f({-2.0f, 0.0f});
+
+        mBackground = std::make_unique<Background>(mTextureFactory.get());
 
         mPointsSystem = std::make_unique<PointsSystem>(mEventBus, mGUI);
 
@@ -201,6 +205,8 @@ namespace Mochi::Shooter
         {
             engine.AddRenderCommands(vfx->GetRenderData());
         }
+
+        engine.AddRenderCommands(mBackground->GetRenderData());
     }
 
     void GameLayer::GUI() const

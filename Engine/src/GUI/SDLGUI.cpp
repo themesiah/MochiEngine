@@ -129,6 +129,7 @@ namespace Mochi::Graphics
         if (mPressedId == id && focus && !mActionManager->Performed("UIConfirm"))
         {
             released = true;
+            mPressedId = -1;
         }
         if (mPressedId == id && mouseFocus && !mActionManager->Performed("UISelect"))
         {

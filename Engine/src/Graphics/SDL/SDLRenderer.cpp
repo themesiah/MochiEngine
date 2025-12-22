@@ -80,12 +80,23 @@ namespace Mochi::Graphics
         SDL_SetRenderScale(mRenderer.get(), cameraZoom, cameraZoom);
         for (auto &command : renderQueue)
         {
-            if (!camera->IsOnScreen(command.destRect)) // Offscreen culling
-                continue;
-            SDL_FRect dstRect = camera->WorldToScreen(command.destRect);
+            SDL_FRect dstRect = command.destRect;
             SDL_FRect src = command.sourceRect;
+            if (command.PositionType == RenderCommandPositionType::RenderCommandPositionWorld)
+            {
+                if (!camera->IsOnScreen(command.destRect)) // Offscreen culling
+                    continue;
+                dstRect = camera->WorldToScreen(command.destRect);
+            }
             SDLTexture *tex = dynamic_cast<SDLTexture *>(command.texture);
-            SDL_RenderTexture(mRenderer.get(), tex->GetTexture(), &src, &dstRect);
+            if (command.TiledRenderOptions.has_value())
+            {
+                SDL_RenderTextureTiled(mRenderer.get(), tex->GetTexture(), &src, command.TiledRenderOptions.value().Scale, &dstRect);
+            }
+            else
+            {
+                SDL_RenderTexture(mRenderer.get(), tex->GetTexture(), &src, &dstRect);
+            }
         }
     }
 

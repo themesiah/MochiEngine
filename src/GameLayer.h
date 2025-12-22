@@ -38,11 +38,13 @@ namespace Mochi::Shooter
     class PointsSystem;
     class AbstractEnemy;
     class AbstractBulletPool;
+    class Background;
     class GameLayer : public Layer
     {
     protected:
         std::shared_ptr<Player> mPlayer;
         std::unique_ptr<PointsSystem> mPointsSystem;
+        std::unique_ptr<Background> mBackground;
         std::vector<std::shared_ptr<AbstractEnemy>> mEnemies;
         std::vector<AbstractEnemy *> mEnemiesMarkedForDestruction;
         std::vector<std::shared_ptr<Graphics::OneshotAnimation>> mVFXList;

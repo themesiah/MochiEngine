@@ -2,6 +2,9 @@
 TimeMarkerEvents.Events = {}
 
 TimeMarkerEvents.Events["IntroStart"] = function()
+    -- local cloud = CreateSprite("Clouds.png")
+    -- cloud:GetTransform().Position = Vector2f:new(0,0)
+    -- cloud:SetZIndex(6)
 end
 
 TimeMarkerEvents.Events["Level1-M1"] = function()
@@ -147,4 +150,4 @@ Audio_PlayBGM("Level1BGM")
 -- Audio_SkipToPosition(71000)
 -- Audio_SkipToPosition(95000)
 
---Audio_SetMixerVolume("", 0)
+Audio_SetMixerVolume("", 0)
