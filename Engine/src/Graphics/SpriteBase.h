@@ -23,7 +23,6 @@ namespace Mochi::Graphics
         bool mVisible;
         uint8_t mAlpha;
         Vector2f mSize;
-        void SetSrcRect(const Rectf &srcRect);
         std::shared_ptr<Transform> mTransform;
 
     public:
@@ -41,6 +40,7 @@ namespace Mochi::Graphics
         void SetAlpha(const uint8_t &alpha);
         std::shared_ptr<Transform> GetTransform() const;
         void SetTransform(std::shared_ptr<Transform> tr);
+        void SetSrcRect(const Rectf &src);
     };
 }
 

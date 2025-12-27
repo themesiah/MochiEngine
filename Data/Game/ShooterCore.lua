@@ -10,6 +10,105 @@ GetEvent("AudioMarkerEvent"):addListener(function(name, time)
     end
 end)
 
+Cloud = {}
+Cloud.__index = Cloud
+math.randomseed(GetOSTime())
+
+function Cloud:new()
+    local index = math.random(1, 4)
+    local posPerIndex = {
+        [1] = Vector2f:new(0,0),
+        [2] = Vector2f:new(128,0),
+        [3] = Vector2f:new(0,128),
+        [4] = Vector2f:new(128,128)
+    }
+    local pos = posPerIndex[index]
+    local rect = Rectf:new(pos.x,pos.y,128,128)
+    local obj = {
+        Rect = rect,
+        Scale = 0.5,
+        Duration = math.random() * 3 + 3,
+        YPos = math.random() * 18 - 9,
+        ZIndex = 6,
+        Limit = 20
+    }
+    setmetatable(obj, self)
+    self.__index = self
+    return obj
+end
+
+function Cloud:Foreground()
+    self.ZIndex = 94
+    self.Scale = 2
+    self.Duration = math.random() + 1
+    self.Limit = 30
+    return self
+end
+
+function Cloud:Execute()
+    local cloud = CreateSprite("Clouds.png")
+    cloud:GetTransform().Position = Vector2f:new(self.Limit,self.YPos)
+    cloud:SetZIndex(self.ZIndex)
+    cloud:SetSrcRect(self.Rect)
+    cloud:GetTransform().Scale = self.Scale
+
+    Tween(
+        function(t, dt)
+            local new_x = Lerp(self.Limit, -self.Limit, t)
+            cloud:GetTransform().Position = Vector2f.new(new_x, self.YPos)
+        end,
+        function()
+            DeleteSprite(cloud)
+        end,
+        self.Duration
+    )
+end
+
+CloudGenerator = {}
+CloudGenerator.__index = CloudGenerator
+function CloudGenerator:new()
+    local obj = {
+        Running = false,
+        MinTimeBetweenClouds = 0.2,
+        MaxTimeBetweenClouds = 3,
+        ForegroundChance = 0.1,
+        NextIsForeground = false
+    }
+    setmetatable(obj, self)
+    self.__index = self
+    return obj
+end
+
+function CloudGenerator:SetMinTimeBetweenClouds(minTime)
+    self.MinTimeBetweenClouds = minTime
+end
+function CloudGenerator:SetMaxTimeBetweenClouds(maxTime)
+    self.MaxTimeBetweenClouds = maxTime
+end
+function CloudGenerator:ForceNextForeground()
+    self.NextIsForeground = true
+end
+
+function CloudGenerator:Start()
+    self.Running = true
+
+    StartCoroutine(function()
+        while self.Running == true do
+            local cloud = Cloud:new()
+            if self.NextIsForeground or math.random() < self.ForegroundChance then
+                cloud:Foreground()
+                self.NextIsForeground = false
+            end
+            cloud:Execute()
+            Wait(math.random() * (self.MaxTimeBetweenClouds-self.MinTimeBetweenClouds) + self.MinTimeBetweenClouds)
+        end
+    end)
+end
+
+function CloudGenerator:Stop()
+    self.Running = false
+end
+
 EnemyGroup = {}
 EnemyGroup.__index = EnemyGroup
 function EnemyGroup:new(createFunctionCallback, enemyType)

@@ -1,10 +1,12 @@
 -- Clear the events table
 TimeMarkerEvents.Events = {}
 
+local cloudGenerator = CloudGenerator:new()
+
 TimeMarkerEvents.Events["IntroStart"] = function()
-    -- local cloud = CreateSprite("Clouds.png")
-    -- cloud:GetTransform().Position = Vector2f:new(0,0)
-    -- cloud:SetZIndex(6)
+    cloudGenerator:Start()
+    Wait(3)
+    cloudGenerator:ForceNextForeground()
 end
 
 TimeMarkerEvents.Events["Level1-M1"] = function()
@@ -125,6 +127,12 @@ TimeMarkerEvents.Events["Level1-M7"] = function()
 end
 
 TimeMarkerEvents.Events["Level1-BossIntro"] = function()
+    StartCoroutine(function()
+        for i=0, 6, 0.1 do
+            cloudGenerator:ForceNextForeground()
+            Wait(0.1)
+        end
+    end)
     Wait(6)
     --EnemyGroup:new(CreateEnemy, 0):WithScale(1):WithHealth(2):WithDelay(0.08):WithAmount(30):WithDuration(5):WithYMovement(0,0,0):Execute();
     EnemyGroup:new(CreateEnemy, 0):WithScale(1):WithHealth(2):WithDelay(0.08):WithAmount(30):WithDuration(5):WithYMovement(0.5,0.5,0):Execute();
@@ -147,7 +155,8 @@ Audio_PlayBGM("Level1BGM")
 -- Audio_SkipToPosition(34000)
 -- Audio_SkipToPosition(47000)
 -- Audio_SkipToPosition(59000)
--- Audio_SkipToPosition(71000)
+--Audio_SkipToPosition(71000)
 -- Audio_SkipToPosition(95000)
+--cloudGenerator:Start()
 
-Audio_SetMixerVolume("", 0)
+--Audio_SetMixerVolume("", 0)

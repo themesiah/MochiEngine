@@ -75,6 +75,7 @@ namespace Mochi::Shooter
                     EXPLOSION_ANIMATION_PATH,
                     EXPLOSION_ANIMATION_MAIN);
 
+                destructionVfx->SetZIndex(ZINDEX_ENEMYVFX);
                 destructionVfx->GetTransform()->Position = e.Enemy->GetTransform()->Position;
                 destructionVfx->GetTransform()->Scale = e.Enemy->GetTransform()->Scale * 2;
 

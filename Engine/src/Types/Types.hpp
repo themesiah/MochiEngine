@@ -86,6 +86,11 @@ namespace Mochi
             return *this;
         }
 
+        inline bool operator==(const Vector2f &rhs)
+        {
+            return this->x == rhs.x && this->y == rhs.y;
+        }
+
         friend Vector2f operator+(Vector2f lhs, const Vector2f &rhs)
         {
             lhs += rhs;
@@ -264,6 +269,11 @@ namespace Mochi
             return *this;
         }
 
+        inline bool operator==(const Rectf &rhs)
+        {
+            return this->x == rhs.x && this->y == rhs.y && this->w == rhs.w && this->h == rhs.h;
+        }
+
         /// @brief Moves the position of the rect adding a vector
         /// @param rhs The movement vector
         /// @return Resulting rect
@@ -280,6 +290,11 @@ namespace Mochi
         {
             lhs -= rhs;
             return lhs;
+        }
+
+        friend bool operator==(const Rectf &lhs, const Rectf &rhs)
+        {
+            return lhs == rhs;
         }
 
         // Utilities
@@ -336,6 +351,7 @@ namespace Mochi
         unsigned int b;
         unsigned int a;
 
+        Color() : r(255), g(255), b(255), a(255) {}
         Color(unsigned int _r, unsigned int _g, unsigned int _b, unsigned int _a) : r(_r), g(_g), b(_b), a(_a) {}
         Color(const Color &c) : r(c.r), g(c.g), b(c.b), a(c.a) {}
         Color(Color &&c) : r(c.r), g(c.g), b(c.b), a(c.a) {}

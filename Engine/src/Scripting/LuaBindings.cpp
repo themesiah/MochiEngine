@@ -1,5 +1,7 @@
 #include "LuaBindings.h"
 
+#include <chrono>
+
 #include "ScriptingManager.h"
 #include <sol/sol.hpp>
 
@@ -31,7 +33,8 @@ namespace Mochi::Scripting::Bindings
                                                           "GetTransform", &Graphics::SpriteBase::GetTransform,
                                                           "SetTransform", &Graphics::SpriteBase::SetTransform,
                                                           "GetZIndex", &Graphics::SpriteBase::GetZIndex,
-                                                          "SetZIndex", &Graphics::SpriteBase::SetZIndex);
+                                                          "SetZIndex", &Graphics::SpriteBase::SetZIndex,
+                                                          "SetSrcRect", &Graphics::SpriteBase::SetSrcRect);
 
         manager->State.new_usertype<Graphics::Spritesheet>("Spritesheet",
                                                            sol::base_classes, sol::bases<Graphics::SpriteBase>(),
@@ -82,7 +85,33 @@ namespace Mochi::Scripting::Bindings
             sol::meta_function::division, sol::overload(([](const Vector2f &a, const Vector2f &b)
                                                          { return a / b; }),
                                                         ([](const Vector2f &a, const float &b)
-                                                         { return a / b; })));
+                                                         { return a / b; })),
+            sol::meta_function::equal_to, ([](const Vector2f &a, const Vector2f &b)
+                                           { return a == b; }));
+
+        manager->State.new_usertype<Rectf>(
+            "Rectf",
+            sol::constructors<Rectf(), Rectf(float, float, float, float), Rectf(Vector2f, Vector2f)>(),
+            "x", &Rectf::x,
+            "y", &Rectf::y,
+            "w", &Rectf::w,
+            "h", &Rectf::h,
+            "GetPosition", &Rectf::GetPosition,
+            "SetPosition", sol::overload(static_cast<void (Rectf::*)(const float &, const float &)>(&Rectf::SetPosition), static_cast<void (Rectf::*)(const Vector2f &)>(&Rectf::SetPosition)),
+            "GetSize", &Rectf::GetSize,
+            "SetSize", sol::overload(static_cast<void (Rectf::*)(const float &, const float &)>(&Rectf::SetSize), static_cast<void (Rectf::*)(const Vector2f &)>(&Rectf::SetSize)),
+            "Scale", &Rectf::Scale,
+            "IsTextureValid", &Rectf::IsTextureValid,
+            sol::meta_function::equal_to, ([](const Rectf &a, const Rectf &b)
+                                           { return a == b; }));
+
+        manager->State.new_usertype<Color>(
+            "Color",
+            sol::constructors<Color(), Color(unsigned int, unsigned int, unsigned int, unsigned int)>(),
+            "r", &Color::r,
+            "g", &Color::g,
+            "b", &Color::b,
+            "a", &Color::a);
 
         manager->State.set_function("Action_Performed", [actionManager](const std::string &actionName)
                                     { return actionManager->Performed(actionName); });
@@ -99,6 +128,8 @@ namespace Mochi::Scripting::Bindings
                                     { return Time::TimeSystem::GetGameTime(); });
         manager->State.set_function("GetUnscaledGameTime", []()
                                     { return Time::TimeSystem::GetUnscaledGameTime(); });
+        manager->State.set_function("GetOSTime", []()
+                                    { return std::chrono::system_clock::now().time_since_epoch().count(); });
         LOG_OK("LUA Logic methods and classes Binded");
     }
 
