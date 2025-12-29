@@ -57,7 +57,7 @@ namespace Mochi::Shooter
         mPlayer = std::make_shared<Player>(mAnimationFactory.get(), mTextureFactory.get(), mCamera, mActionManager, mEventBus, mGUI);
         mPlayer->GetTransform()->Position = Vector2f({-2.0f, 0.0f});
 
-        mBackground = std::make_unique<Background>(mTextureFactory.get());
+        mBackground = std::make_shared<Background>(mTextureFactory.get());
 
         mPointsSystem = std::make_unique<PointsSystem>(mEventBus, mGUI);
 
@@ -109,6 +109,7 @@ namespace Mochi::Shooter
         BindLuaTypesAndFunctions();
         mScripting->ExecuteFileGlobal("ShooterCore.lua");
         mScripting->ExecuteFile("Level1Setup.lua");
+        mScripting->State["bg"] = mBackground;
     }
 
     GameLayer::~GameLayer()
@@ -275,6 +276,12 @@ namespace Mochi::Shooter
         mScripting->State.new_usertype<Enemy2>(
             "Enemy2",
             sol::base_classes, sol::bases<AbstractEnemy>());
+
+        mScripting->State.new_usertype<Background>(
+            "Background",
+            sol::base_classes, sol::bases<Graphics::SpriteBase>(),
+            "GetXPosition", &Background::GetXPosition,
+            "SetXPosition", &Background::SetXPosition);
 
         mScripting->State.set_function("CreateEnemy", &GameLayer::CreateEnemy, this);
 

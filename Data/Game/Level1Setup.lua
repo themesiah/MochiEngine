@@ -133,6 +133,14 @@ TimeMarkerEvents.Events["Level1-BossIntro"] = function()
             Wait(0.1)
         end
     end)
+    
+    Tween(function(t, dt)
+        bg:SetXPosition(t)
+    end,
+    function()
+        bg:SetXPosition(1)
+    end,
+    3)
     Wait(6)
     --EnemyGroup:new(CreateEnemy, 0):WithScale(1):WithHealth(2):WithDelay(0.08):WithAmount(30):WithDuration(5):WithYMovement(0,0,0):Execute();
     EnemyGroup:new(CreateEnemy, 0):WithScale(1):WithHealth(2):WithDelay(0.08):WithAmount(30):WithDuration(5):WithYMovement(0.5,0.5,0):Execute();
@@ -155,8 +163,8 @@ Audio_PlayBGM("Level1BGM")
 -- Audio_SkipToPosition(34000)
 -- Audio_SkipToPosition(47000)
 -- Audio_SkipToPosition(59000)
---Audio_SkipToPosition(71000)
+-- Audio_SkipToPosition(71000)
 -- Audio_SkipToPosition(95000)
---cloudGenerator:Start()
+-- cloudGenerator:Start()
 
 --Audio_SetMixerVolume("", 0)

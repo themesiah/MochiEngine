@@ -65,5 +65,21 @@ namespace Mochi::Math
         float div = static_cast<float>(static_cast<int>(t / length));
         return t - (length * div);
     }
+
+    inline float Lerp(const float &a, const float &b, const float &t)
+    {
+        return (b - a) * t + a;
+    }
+
+    inline float InverseLerp(const float &a, const float &b, const float &val)
+    {
+        if (a == b)
+            return val;
+        if (val < a)
+            return 0;
+        if (val > b)
+            return 1;
+        return (val - a) / (b - a);
+    }
 }
 #endif

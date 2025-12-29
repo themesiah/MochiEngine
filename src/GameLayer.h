@@ -44,7 +44,7 @@ namespace Mochi::Shooter
     protected:
         std::shared_ptr<Player> mPlayer;
         std::unique_ptr<PointsSystem> mPointsSystem;
-        std::unique_ptr<Background> mBackground;
+        std::shared_ptr<Background> mBackground;
         std::vector<std::shared_ptr<AbstractEnemy>> mEnemies;
         std::vector<AbstractEnemy *> mEnemiesMarkedForDestruction;
         std::vector<std::shared_ptr<Graphics::OneshotAnimation>> mVFXList;
