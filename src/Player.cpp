@@ -87,6 +87,7 @@ namespace Mochi::Shooter
         mShield->SetAlpha(100);
 
         ChangeState(PlayerState::Playing);
+        mLastPosition = mTransform->Position;
     }
 
     Player::~Player()
@@ -387,7 +388,6 @@ namespace Mochi::Shooter
     void Player::Movement(const float &dt, const Vector2f &movement)
     {
         auto const &deltaMovement = (movement * dt * mSpeed);
-        auto lastPosition = mTransform->Position;
         auto newPosition = mTransform->Position + deltaMovement;
 
         // Camera world to screen with vector2f
@@ -402,7 +402,7 @@ namespace Mochi::Shooter
             mTransform->Position = newPosition;
         }
 
-        auto delta = newPosition - lastPosition;
+        auto delta = newPosition - mLastPosition;
         float tiltDirection = 0.0f;
         if (delta.y > 0.0f)
             tiltDirection = 1.0f;
@@ -430,6 +430,8 @@ namespace Mochi::Shooter
         {
             SetFrame(1);
         }
+
+        mLastPosition = mTransform->Position;
     }
 
     int Player::GetCurrentHealth() const

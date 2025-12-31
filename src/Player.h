@@ -59,6 +59,7 @@ namespace Mochi::Shooter
         float mDamageTimer;
         float mReespawnTime;
         float mReespawnTimer;
+        Vector2f mLastPosition;
         PlayerState mState;
         void Die();
         void OnStateEnter(const PlayerState &state);

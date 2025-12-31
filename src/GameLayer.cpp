@@ -107,9 +107,10 @@ namespace Mochi::Shooter
     void GameLayer::InitLayer()
     {
         BindLuaTypesAndFunctions();
+        mScripting->State["player"] = mPlayer;
+        mScripting->State["bg"] = mBackground;
         mScripting->ExecuteFileGlobal("ShooterCore.lua");
         mScripting->ExecuteFile("Level1Setup.lua");
-        mScripting->State["bg"] = mBackground;
     }
 
     GameLayer::~GameLayer()
@@ -276,6 +277,18 @@ namespace Mochi::Shooter
         mScripting->State.new_usertype<Enemy2>(
             "Enemy2",
             sol::base_classes, sol::bases<AbstractEnemy>());
+
+        mScripting->State.new_enum<PlayerState>("PlayerState", {{"None", PlayerState::None},
+                                                                {"Cutscene", PlayerState::Cutscene},
+                                                                {"Damaged", PlayerState::Damaged},
+                                                                {"Dead", PlayerState::Dead},
+                                                                {"Playing", PlayerState::Playing},
+                                                                {"Reespawning", PlayerState::Reespawning}});
+
+        mScripting->State.new_usertype<Player>(
+            "Player",
+            sol::base_classes, sol::bases<Graphics::Spritesheet, Graphics::SpriteBase>(),
+            "ChangeState", &Player::ChangeState);
 
         mScripting->State.new_usertype<Background>(
             "Background",

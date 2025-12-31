@@ -3,9 +3,78 @@ TimeMarkerEvents.Events = {}
 
 local cloudGenerator = CloudGenerator:new()
 
+function GameStart()
+    LogInfo("GAME START")
+    local hangarFront = CreateSprite("HangarFront.png")
+    local hangarBack = CreateSprite("HangarBack.png")
+    local hangarGround = CreateSprite("HangarGround.png")
+
+    hangarFront:SetZIndex(90)
+    hangarBack:SetZIndex(79)
+    hangarGround:SetZIndex(78)
+
+    hangarFront:GetTransform().Scale = 2
+    hangarBack:GetTransform().Scale = 2
+    hangarGround:GetTransform().Scale = 2
+
+    local startingYPos = -2.6
+    local hangarXPosition = -10
+    local groundXPosition = 16
+
+    local playerStartingYPos = -7
+    local playerStartingXPos = -14
+
+    hangarFront:GetTransform().Position = Vector2f:new(hangarXPosition,startingYPos)
+    hangarBack:GetTransform().Position = Vector2f:new(hangarXPosition,startingYPos)
+    hangarGround:GetTransform().Position = Vector2f:new(groundXPosition,startingYPos)
+
+    player:GetTransform().Position = Vector2f:new(playerStartingXPos, playerStartingYPos)
+
+    local playerXPositions = {-14, 4, 4, 8, -10}
+    local playerYPositions = {-7, -7, 1, 0, 0}
+    local scenarioXOffsets = {0, 0, -10, -18, -18}
+    local scenarioYOffsets = {0, 0, -5, -10, -10}
+    local durations = {2, 2, 4, 3}
+
+    local animationTween
+
+    player:ChangeState(PlayerState["Cutscene"])
+    animationTween = function(index, endCallback)
+        Tween(function(t, dt)
+            player:GetTransform().Position.x = Lerp(playerXPositions[index], playerXPositions[index+1], t)
+            player:GetTransform().Position.y = Lerp(playerYPositions[index], playerYPositions[index+1], t)
+            hangarFront:GetTransform().Position.x = Lerp(scenarioXOffsets[index]+hangarXPosition, scenarioXOffsets[index+1]+hangarXPosition, t)
+            hangarFront:GetTransform().Position.y = Lerp(scenarioYOffsets[index]+startingYPos, scenarioYOffsets[index+1]+startingYPos, t)
+            hangarBack:GetTransform().Position.x = Lerp(scenarioXOffsets[index]+hangarXPosition, scenarioXOffsets[index+1]+hangarXPosition, t)
+            hangarBack:GetTransform().Position.y = Lerp(scenarioYOffsets[index]+startingYPos, scenarioYOffsets[index+1]+startingYPos, t)
+            hangarGround:GetTransform().Position.x = Lerp(scenarioXOffsets[index]+groundXPosition, scenarioXOffsets[index+1]+groundXPosition, t)
+            hangarGround:GetTransform().Position.y = Lerp(scenarioYOffsets[index]+startingYPos, scenarioYOffsets[index+1]+startingYPos, t)
+        end,
+        function()
+            if #durations > index then
+                animationTween(index+1, endCallback)
+            else
+                endCallback()
+            end
+        end,
+        durations[index])
+    end
+
+    local onAnimationFinish = function()
+        DeleteSprite(hangarFront)
+        DeleteSprite(hangarBack)
+        DeleteSprite(hangarGround)
+        player:ChangeState(PlayerState["Playing"])
+    end
+
+    animationTween(1, onAnimationFinish)
+end
+
+GameStart()
+
 TimeMarkerEvents.Events["IntroStart"] = function()
-    cloudGenerator:Start()
     Wait(3)
+    cloudGenerator:Start()
     cloudGenerator:ForceNextForeground()
 end
 
@@ -167,4 +236,4 @@ Audio_PlayBGM("Level1BGM")
 -- Audio_SkipToPosition(95000)
 -- cloudGenerator:Start()
 
---Audio_SetMixerVolume("", 0)
+Audio_SetMixerVolume("", 0)

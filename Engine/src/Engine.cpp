@@ -236,9 +236,9 @@ namespace Mochi
     {
         if (dt > 0.03f)
         {
-            LOG_WARNING(std::format("Dangerous delta time of {}!", dt));
+            // LOG_WARNING(std::format("Dangerous delta time of {}!", dt));
             auto report = mProfiler->Report();
-            LOG_WARNING(report);
+            // LOG_WARNING(report);
         }
         mProfiler->NewFrame();
 
