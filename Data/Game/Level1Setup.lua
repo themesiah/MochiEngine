@@ -236,4 +236,4 @@ Audio_PlayBGM("Level1BGM")
 -- Audio_SkipToPosition(95000)
 -- cloudGenerator:Start()
 
-Audio_SetMixerVolume("", 0)
+-- Audio_SetMixerVolume("", 0)

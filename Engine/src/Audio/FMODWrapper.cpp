@@ -41,6 +41,15 @@ namespace Mochi::Audio
         {
             LOG_ERROR(std::format("Couldn't update FMOD system: {}", FMOD_ErrorString(result)));
         }
+
+        for (size_t i = 0; i < mEventQueue.size(); ++i)
+        {
+            std::cout << "Marker with name " << mEventQueue[i].MarkerName << " triggered at millisecond " << mEventQueue[i].MarkerPosition << std::endl;
+
+            std::string code = std::format("GetEvent(\"AudioMarkerEvent\"):fire(\"{}\", {})", mEventQueue[i].MarkerName, mEventQueue[i].MarkerPosition);
+            mScripting->Execute(code);
+        }
+        mEventQueue.clear();
     }
 
     FMODWrapper::~FMODWrapper()
@@ -122,10 +131,7 @@ namespace Mochi::Audio
         if (type == FMOD_STUDIO_EVENT_CALLBACK_TIMELINE_MARKER)
         {
             FMOD_STUDIO_TIMELINE_MARKER_PROPERTIES *marker = (FMOD_STUDIO_TIMELINE_MARKER_PROPERTIES *)parameters;
-            std::cout << "Marker with name " << marker->name << " triggered at millisecond " << marker->position << std::endl;
-
-            std::string code = std::format("GetEvent(\"AudioMarkerEvent\"):fire(\"{}\", {})", marker->name, marker->position);
-            mScripting->Execute(code);
+            mEventQueue.push_back({marker->name, marker->position});
         }
     }
 

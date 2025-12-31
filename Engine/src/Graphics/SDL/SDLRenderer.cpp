@@ -48,6 +48,8 @@ namespace Mochi::Graphics
             throw SystemInitializationError("Graphics", SDL_GetError());
         }
 
+        SDL_SetWindowFullscreen(mWindow.get(), true);
+
         // if (!SDL_SetRenderVSync(mRenderer.get(), 1))
         // {
         //     throw SystemInitializationError("Graphics", SDL_GetError());
@@ -74,7 +76,20 @@ namespace Mochi::Graphics
     {
         std::sort(renderQueue.begin(), renderQueue.end(),
                   [](RenderCommand &a, RenderCommand &b)
-                  { return a.zindex < b.zindex; });
+                  {
+                      if (a.zindex != b.zindex)
+                      {
+                          return a.zindex < b.zindex;
+                      }
+                      else if (a.destRect.x != b.destRect.x)
+                      {
+                          return a.destRect.x < b.destRect.x;
+                      }
+                      else
+                      {
+                          return a.destRect.y < b.destRect.y;
+                      }
+                  });
 
         float cameraZoom = camera->GetZoom();
         SDL_SetRenderScale(mRenderer.get(), cameraZoom, cameraZoom);

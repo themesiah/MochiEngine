@@ -26,6 +26,11 @@ namespace Mochi::Scripting
 }
 namespace Mochi::Audio
 {
+    struct FMODMarkerEvent
+    {
+        const char *MarkerName;
+        int MarkerPosition;
+    };
     class FMODWrapper : public IAudioManager
     {
     private:
@@ -50,6 +55,8 @@ namespace Mochi::Audio
         void LoadBank(const std::string &bankName);
         void UnloadBank(const std::string &bankName);
         void SetBusVolume(const std::string &busGroupName, const float &value);
+
+        std::vector<FMODMarkerEvent> mEventQueue;
 
     public:
         FMODWrapper(FS::PackCatalog *, Scripting::ScriptingManager *);
