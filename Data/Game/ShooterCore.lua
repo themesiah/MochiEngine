@@ -29,7 +29,7 @@ function Cloud:new()
         Scale = 0.5,
         Duration = math.random() * 3 + 3,
         YPos = math.random() * 18 - 9,
-        ZIndex = 6,
+        ZIndex = 7,
         Limit = 20
     }
     setmetatable(obj, self)

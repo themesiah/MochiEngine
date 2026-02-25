@@ -28,6 +28,7 @@ namespace Mochi::Shooter
         PointsSystem(Event::EventBus *eventBus, Graphics::AbstractGUI *gui);
         virtual ~PointsSystem();
         void Draw() const;
+        unsigned int GetPoints() const;
     };
 }
 

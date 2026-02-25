@@ -19,6 +19,8 @@ namespace Mochi::Shooter
     protected:
         int mHealth;
         unsigned int mPoints;
+        int mExplosionScale;
+        bool mInvincible;
         std::shared_ptr<Transform> mTransform;
 
         Event::EventBus *mEventBus;
@@ -40,6 +42,8 @@ namespace Mochi::Shooter
         std::shared_ptr<Transform> GetTransform() const;
         void SetTransform(std::shared_ptr<Transform> tr);
         void SetHealth(const int &health);
+        void SetExplosionScale(const int &explosionScale);
+        void SetInvincible(const bool &invincible);
     };
 }
 

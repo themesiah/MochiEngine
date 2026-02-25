@@ -12,6 +12,8 @@ namespace Mochi::Shooter
         : mEventBus(eventBus),
           mHealth(health),
           mPoints(points),
+          mExplosionScale(1),
+          mInvincible(false),
           mLastPosition({0.0f, 0.0f}),
           mCollider({}),
           mTransform(std::make_shared<Transform>())
@@ -29,8 +31,15 @@ namespace Mochi::Shooter
         mHealth -= damage;
         if (mHealth <= 0)
         {
-            Die();
-            return true;
+            if (mInvincible)
+            {
+                mHealth = 1;
+            }
+            else
+            {
+                Die();
+                return true;
+            }
         }
         return false;
     }
@@ -45,7 +54,7 @@ namespace Mochi::Shooter
 
     void AbstractEnemy::Die()
     {
-        mEventBus->Publish<EnemyDestroyedEvent>({mPoints, this});
+        mEventBus->Publish<EnemyDestroyedEvent>({mPoints, this, mExplosionScale});
     }
 
     bool AbstractEnemy::IsDead() const
@@ -76,5 +85,15 @@ namespace Mochi::Shooter
     void AbstractEnemy::SetHealth(const int &health)
     {
         mHealth = health;
+    }
+
+    void AbstractEnemy::SetExplosionScale(const int &explosionScale)
+    {
+        mExplosionScale = explosionScale;
+    }
+
+    void AbstractEnemy::SetInvincible(const bool &invincible)
+    {
+        mInvincible = invincible;
     }
 }

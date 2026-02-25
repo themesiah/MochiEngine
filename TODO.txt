@@ -1,38 +1,4 @@
-TODO IMPORTANT
-x SDLRenderer / RenderCommand --> Use ITexture doing a dynamic_cast<SDLTexture>
-x TextureFactory --> Rename to SDLTextureFactory and return an SDLTexture. Add "GetTextureFactory" to IRenderer interface and create specific factories.
-x Make GUI not use SDL_Renderer but IRenderer instead, or create SDLGUIRenderer.
-x Gizmos per renderer (o igizmos renderer or whatever?)
-x Remove references to SDL_Point (the int one, for logical presentation) and SDL_Color (create my own color)
-x SDL Events to IEventDispatcher
-
-
-x Perfect project separation (treat non Space Shooter specifics as the "Game Engine")
-x Time manager (delta time, time scale, fixed time...)
-x Namespaces
-x Camera IsOffscreen
-x Animation directions
-x Event Bus
-x Define my own Vector2 and Rect structs.
-x Robust error handling
-x Support gamepad and mouse with actions
-x More FMOD Api methods (move to part of the song, play sound, change volume, change parameter...)
-x Check export to WebGL (DISCARDED. Requires no external libraries. That means no FMOD.)
-x Add FMOD callback to LUA
-x Physics system (collision with shapes)
-
-Requires art:
-- Parallax effect
-- Particle system
-~ GUI class with button, image, text, toggle, slider... (with focus, anchors and pivots!)
-
-
-Might?:
-- Profiler / Performance metrics
-
-As needed:
-- Math utils (lerp, easing)
-- Animation events
-- Options and save
-- Debug ImGUI (onscreen info and more)
-- Scene system
+- SDL Mixer
+- EnTT
+- Document and comment
+- Automatize packer

@@ -39,7 +39,7 @@ namespace Mochi::Shooter
     inline constexpr int MAX_HEALTH = 3;
     inline constexpr float DAMAGE_DELAY = 2.0f;
     inline constexpr float DAMAGED_BLINK_RATE = 0.4f;
-    inline constexpr int MAX_LIVES = 1;
+    inline constexpr int MAX_LIVES = 2;
     inline constexpr float REESPAWN_TIME = 1.0f;
 
     Player::Player(
@@ -139,11 +139,6 @@ namespace Mochi::Shooter
             mShotTimer = 0.0f;
         }
         mBulletPool->Update(dt);
-
-        if (mActionManager->Performed("Debug2"))
-        {
-            Die();
-        }
     }
 
     std::shared_ptr<PlayerBulletPool> Player::GetBulletPool() const
@@ -335,6 +330,7 @@ namespace Mochi::Shooter
         else if (state == PlayerState::Playing)
         {
             mDamageTimer = 0.0f;
+            mShield->SetFrame(0);
         }
     }
 

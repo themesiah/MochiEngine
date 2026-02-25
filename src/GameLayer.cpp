@@ -19,6 +19,7 @@
 #include "Packer/PackCatalog.h"
 #include "Scripting/ScriptingManager.h"
 #include "Audio/IAudioManager.h"
+#include "Event/EngineEvents.h"
 #include "Utils/Conversion.hpp"
 
 #include "Bullets/AbstractBulletPool.h"
@@ -34,8 +35,10 @@
 #include "Enemies/Enemy2.h"
 #include "Bullets/EnemyBulletPoolFollow.h"
 #include "Bullets/EnemyBulletPoolDirection.h"
+#include "Enemies/Boss.h"
 
 #include "Background.h"
+#include "Config.hpp"
 
 #if DEBUG
 #include "Debug/IGizmos.h"
@@ -47,9 +50,10 @@ namespace Mochi::Shooter
     const std::string EXPLOSION_ANIMATION_MAIN = "Explosion";
 
     GameLayer::GameLayer()
-        : Layer(), mEnemies(), mEnemiesMarkedForDestruction(), mVFXList(), mVFXMarkedForDestruction(), mEnemyBulletPools()
+        : Layer(), mLevelCompleted(false), mEnemies(), mEnemiesMarkedForDestruction(), mVFXList(), mVFXMarkedForDestruction(), mEnemyBulletPools()
     {
         mCatalog->OpenPack("Data/Game");
+        mConfig = std::make_unique<Config>(mAudioManager);
 
         mTextureFactory = mRenderer->CreateTextureFactory(mCatalog);
         mAnimationFactory = std::make_unique<Graphics::AsepriteAnimationFactory>(mCatalog);
@@ -77,12 +81,20 @@ namespace Mochi::Shooter
 
                 destructionVfx->SetZIndex(ZINDEX_ENEMYVFX);
                 destructionVfx->GetTransform()->Position = e.Enemy->GetTransform()->Position;
-                destructionVfx->GetTransform()->Scale = e.Enemy->GetTransform()->Scale * 2;
+                destructionVfx->GetTransform()->Scale = e.Enemy->GetTransform()->Scale * 2 * e.ExplosionScale;
 
                 auto ptr = destructionVfx.get();
                 destructionVfx->SetFinishCallback([&, ptr]()
                                                   { mVFXMarkedForDestruction.push_back(ptr); });
                 mVFXList.push_back(std::move(destructionVfx));
+
+                // mAudioManager->PlayOneShot("Explosion");
+
+                if (auto boss = dynamic_cast<Boss *>(e.Enemy))
+                {
+                    LOG_INFO("BOSS DESTROYED!");
+                    mLevelCompleted = true;
+                }
             });
 
         mPlayerDestroyedSubscription = mEventBus->Subscribe<PlayerDeadEvent>(
@@ -111,6 +123,8 @@ namespace Mochi::Shooter
         mScripting->State["bg"] = mBackground;
         mScripting->ExecuteFileGlobal("ShooterCore.lua");
         mScripting->ExecuteFile("Level1Setup.lua");
+
+        mConfig->Init();
     }
 
     GameLayer::~GameLayer()
@@ -123,6 +137,8 @@ namespace Mochi::Shooter
 
     bool GameLayer::Update(const float &dt)
     {
+        mConfig->Update(dt, mActionManager);
+
         mPlayer->Update(dt);
 
         auto playerCollider = mPlayer->GetCollider();
@@ -153,6 +169,10 @@ namespace Mochi::Shooter
 
         for (auto &bulletPool : mEnemyBulletPools)
         {
+            if (mLevelCompleted)
+            {
+                bulletPool->ReleaseAllBullets();
+            }
             bulletPool->Update(dt);
             std::vector<int> collisions = bulletPool->CheckAgainst(playerCollider);
             for (size_t i = 0; i < collisions.size(); ++i)
@@ -214,8 +234,62 @@ namespace Mochi::Shooter
 
     void GameLayer::GUI() const
     {
-        mPointsSystem->Draw();
-        mPlayer->GUI();
+        if (mLevelCompleted)
+        {
+            const Graphics::GUIOptions backgroundOptions{
+                .TexturePath = "Sprites/Black.png",
+                .DstRect = Graphics::FULL_SCREEN_DST,
+                .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,
+                .SpritePivot = Graphics::GUI_MIDDLE_CENTER,
+                .Color = Color(0, 0, 0, 70)};
+
+            mGUI->Sprite(backgroundOptions);
+
+            const Graphics::GUITextOptions titleTextOptions{
+                .DstRect = {Rectf({0.0f, -50.0f}, {})},
+                .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,
+                .TextPivot = Graphics::GUI_MIDDLE_CENTER,
+                .TextSize = 82.0f};
+
+            const Graphics::GUITextOptions pointsTextOptions{
+                .DstRect = {Rectf({0.0f, 50.0f}, {})},
+                .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,
+                .TextPivot = Graphics::GUI_MIDDLE_CENTER,
+                .TextSize = 64.0f};
+
+            const Graphics::GUIOptions button1OptionsBase{
+                .TexturePath = "Interface.png",
+                .SrcRect = {Rectf({0.0f, 0.0f}, {32.0f, 32.0f})},
+                .DstRect = {Rectf({0.0f, 100.0f}, {200.0f, 50.0f})},
+                .Slice = {Rectf(9.0f, 9.0f, 9.0f, 9.0f)},
+                .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,
+                .SpritePivot = Graphics::GUI_MIDDLE_CENTER};
+
+            Graphics::GUIButtonOptions button1Options{
+                .BaseOptions = button1OptionsBase,
+                .FocusedOptions = button1OptionsBase,
+                .PressedOptions = button1OptionsBase};
+            button1Options.FocusedOptions.SrcRect.value().SetPosition({32.0f, 0.0f});
+            button1Options.PressedOptions.SrcRect.value().SetPosition({0.0f, 32.0f});
+
+            const Graphics::GUITextOptions buttonTextOptions{
+                .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,
+                .TextPivot = Graphics::GUI_MIDDLE_CENTER,
+                .TextSize = 32.0f};
+
+            mGUI->Text("YOU WON!", titleTextOptions);
+            mGUI->Text(std::format("FINAL SCORE: {}", mPointsSystem->GetPoints()).c_str(), pointsTextOptions);
+
+            if (mGUI->Button(button1Options, "EXIT", buttonTextOptions).Released)
+            {
+                mEventBus->Publish<ApplicationQuitEvent>({});
+            }
+        }
+        else
+        {
+            mPointsSystem->Draw();
+            mPlayer->GUI();
+        }
     }
 
 #if DEBUG
@@ -269,7 +343,9 @@ namespace Mochi::Shooter
             "GetTransform", &AbstractEnemy::GetTransform,
             "SetTransform", &AbstractEnemy::SetTransform,
             "IsDead", &AbstractEnemy::IsDead,
-            "SetHealth", &AbstractEnemy::SetHealth);
+            "SetHealth", &AbstractEnemy::SetHealth,
+            "SetExplosionScale", &AbstractEnemy::SetExplosionScale,
+            "SetInvincible", &AbstractEnemy::SetInvincible);
 
         mScripting->State.new_usertype<Enemy>(
             "Enemy",
@@ -296,7 +372,17 @@ namespace Mochi::Shooter
             "GetXPosition", &Background::GetXPosition,
             "SetXPosition", &Background::SetXPosition);
 
+        mScripting->State.new_enum<BossState>("BossState", {{"Vertical", BossState::BossState_Vertical},
+                                                            {"Horizontal", BossState::BossState_Horizontal},
+                                                            {"Background", BossState::BossState_Background}});
+
+        mScripting->State.new_usertype<Boss>(
+            "Boss",
+            sol::base_classes, sol::bases<AbstractEnemy>(),
+            "SetState", &Boss::SetState);
+
         mScripting->State.set_function("CreateEnemy", &GameLayer::CreateEnemy, this);
+        mScripting->State.set_function("CreateBoss", &GameLayer::CreateBoss, this);
 
         mScripting->State.set_function("DeleteEnemy", &GameLayer::DeleteEnemy, this);
 
@@ -315,11 +401,21 @@ namespace Mochi::Shooter
         case 1:
             enemy = std::make_shared<Enemy2>(mEventBus, mTextureFactory.get(), mAnimationFactory.get());
             break;
+        case 2:
+            enemy = std::make_shared<Boss>(mEventBus, mTextureFactory.get(), mAnimationFactory.get());
+            break;
         default:
             throw EngineError(std::format("Enemy type {} does not exist. Can't create.", enemyType));
         }
         mEnemies.push_back(enemy);
         return enemy;
+    }
+
+    std::shared_ptr<Boss> GameLayer::CreateBoss()
+    {
+        auto boss = std::make_shared<Boss>(mEventBus, mTextureFactory.get(), mAnimationFactory.get());
+        mEnemies.push_back(boss);
+        return boss;
     }
 
     void GameLayer::DeleteEnemy(std::shared_ptr<AbstractEnemy> enemyToDelete)

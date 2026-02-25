@@ -7,6 +7,7 @@ namespace Mochi::Shooter
     {
         ZINDEX_BACK = 0,
         ZINDEX_BACKGROUND = 5,
+        ZINDEX_BOSSBACKGROUND = 6,
 
         ZINDEX_PLAYERVFX = 20,
         ZINDEX_ENEMYVFX = 25,

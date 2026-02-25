@@ -73,4 +73,9 @@ namespace Mochi::Shooter
         mGUI->Text(pointsString.c_str(), pointsTextOptions);
         mGUI->Text(multiplierString.c_str(), multiplierTextOptions);
     }
+
+    unsigned int PointsSystem::GetPoints() const
+    {
+        return mPoints;
+    }
 }

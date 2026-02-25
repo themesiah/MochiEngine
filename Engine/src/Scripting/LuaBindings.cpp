@@ -55,7 +55,8 @@ namespace Mochi::Scripting::Bindings
                                                       "GetZoom", &Graphics::Camera::GetZoom,
                                                       "SetZoom", &Graphics::Camera::SetZoom,
                                                       "GetPosition", &Graphics::Camera::GetPosition,
-                                                      "SetPosition", sol::overload(static_cast<void (Graphics::Camera::*)(const Vector2f &)>(&Graphics::Camera::SetPosition), static_cast<void (Graphics::Camera::*)(const float &, const float &)>(&Graphics::Camera::SetPosition)));
+                                                      "SetPosition", sol::overload(static_cast<void (Graphics::Camera::*)(const Vector2f &)>(&Graphics::Camera::SetPosition), static_cast<void (Graphics::Camera::*)(const float &, const float &)>(&Graphics::Camera::SetPosition)),
+                                                      "IsOnScreen", &Graphics::Camera::IsOnScreen);
 
         manager->State["Camera"] = camera;
 

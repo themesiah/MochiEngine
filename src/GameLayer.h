@@ -37,10 +37,15 @@ namespace Mochi::Shooter
     class Player;
     class PointsSystem;
     class AbstractEnemy;
+    class Boss;
     class AbstractBulletPool;
     class Background;
+    class Config;
     class GameLayer : public Layer
     {
+    private:
+        bool mLevelCompleted;
+
     protected:
         std::shared_ptr<Player> mPlayer;
         std::unique_ptr<PointsSystem> mPointsSystem;
@@ -49,6 +54,7 @@ namespace Mochi::Shooter
         std::vector<AbstractEnemy *> mEnemiesMarkedForDestruction;
         std::vector<std::shared_ptr<Graphics::OneshotAnimation>> mVFXList;
         std::vector<Graphics::OneshotAnimation *> mVFXMarkedForDestruction;
+        std::unique_ptr<Config> mConfig;
 
         std::unique_ptr<Graphics::AbstractTextureFactory> mTextureFactory;
         std::unique_ptr<Graphics::IAnimationFactory> mAnimationFactory;
@@ -73,6 +79,7 @@ namespace Mochi::Shooter
 
         // Game specific
         std::shared_ptr<AbstractEnemy> CreateEnemy(const int &enemyType);
+        std::shared_ptr<Boss> CreateBoss();
         void DeleteEnemy(std::shared_ptr<AbstractEnemy> enemyToDelete);
         int ShotBullet(const int &bulletPoolIndex, const Vector2f &bulletPosition);
         void SetBulletDirection(const int &bulletPoolIndex, const int &bulletIndex, const Vector2f &direction);

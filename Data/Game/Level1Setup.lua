@@ -70,8 +70,6 @@ function GameStart()
     animationTween(1, onAnimationFinish)
 end
 
-GameStart()
-
 TimeMarkerEvents.Events["IntroStart"] = function()
     Wait(3)
     cloudGenerator:Start()
@@ -211,17 +209,132 @@ TimeMarkerEvents.Events["Level1-BossIntro"] = function()
     end,
     3)
     Wait(6)
-    --EnemyGroup:new(CreateEnemy, 0):WithScale(1):WithHealth(2):WithDelay(0.08):WithAmount(30):WithDuration(5):WithYMovement(0,0,0):Execute();
     EnemyGroup:new(CreateEnemy, 0):WithScale(1):WithHealth(2):WithDelay(0.08):WithAmount(30):WithDuration(5):WithYMovement(0.5,0.5,0):Execute();
     EnemyGroup:new(CreateEnemy, 0):WithScale(1):WithHealth(2):WithDelay(0.08):WithAmount(30):WithDuration(5):WithYMovement(-0.5,-0.5,0):Execute();
     Wait(6)
-    --EnemyGroup:new(CreateEnemy, 0):WithScale(1):WithHealth(2):WithDelay(0.08):WithAmount(30):WithDuration(5):WithYMovement(3,3,0):Execute();
     EnemyGroup:new(CreateEnemy, 0):WithScale(1):WithHealth(2):WithDelay(0.08):WithAmount(30):WithDuration(5):WithYMovement(3.5,3.5,0):Execute();
     EnemyGroup:new(CreateEnemy, 0):WithScale(1):WithHealth(2):WithDelay(0.08):WithAmount(30):WithDuration(5):WithYMovement(2.5,2.5,0):Execute();
-    Wait(6)
-    --EnemyGroup:new(CreateEnemy, 0):WithScale(1):WithHealth(2):WithDelay(0.08):WithAmount(30):WithDuration(5):WithYMovement(-2,-2,0):Execute();
-    EnemyGroup:new(CreateEnemy, 0):WithScale(1):WithHealth(2):WithDelay(0.08):WithAmount(30):WithDuration(5):WithYMovement(-2.5,-2.5,0):Execute();
-    EnemyGroup:new(CreateEnemy, 0):WithScale(1):WithHealth(2):WithDelay(0.08):WithAmount(30):WithDuration(5):WithYMovement(-1.5,-1.5,0):Execute();
+    --Wait(6)
+    --EnemyGroup:new(CreateEnemy, 0):WithScale(1):WithHealth(2):WithDelay(0.08):WithAmount(30):WithDuration(5):WithYMovement(-2.5,-2.5,0):Execute();
+    --EnemyGroup:new(CreateEnemy, 0):WithScale(1):WithHealth(2):WithDelay(0.08):WithAmount(30):WithDuration(5):WithYMovement(-1.5,-1.5,0):Execute();
+end
+
+local boss = CreateBoss()
+boss:GetTransform().Position = Vector2f:new(1000,1000)
+boss:SetState(BossState["Background"])
+
+TimeMarkerEvents.Events["Boss1"] = function()
+    boss:SetInvincible(true)
+    boss:SetState(BossState["Vertical"])
+
+    boss:GetTransform().Position = Vector2f:new(20,0)
+    local timeToAppear = 3
+    local timeUpDown = 38
+    local freq = 20
+    Wait(3)
+    Tween(function(t, dt)
+        local newx = Lerp(20, 14, t)
+        boss:GetTransform().Position = Vector2f:new(newx, 0)
+    end,
+    function()
+    end,
+    timeToAppear)
+
+    Wait(timeToAppear)
+    boss:SetInvincible(false)
+
+    local timeBetweenShots = 0.5
+    local positionOffsets = {Vector2f:new(0,6.5), Vector2f:new(0,-3), Vector2f:new(0,-6)}
+    local separations = {Vector2f:new(0, 0.3), Vector2f:new(0, 0), Vector2f:new(0, -0.3)}
+    StartCoroutine(function()
+        for i = 1,timeUpDown, timeBetweenShots do
+            for j = 1,#positionOffsets,1 do
+                for k = 1,#separations,1 do
+                    if not boss:IsDead() then
+                        local bulletIndex = ShotBullet(1, boss:GetTransform().Position + positionOffsets[j] + separations[k])
+                        SetBulletDirection(1, bulletIndex, Vector2f:new(-1, 0))
+                    end
+                end
+            end
+            Wait(timeBetweenShots)
+        end
+    end)
+
+    Tween(function(t, dt)
+        local newy = Lerp(4, -4, math.sin(t*freq)+0.5)
+        boss:GetTransform().Position = Vector2f:new(boss:GetTransform().Position.x, newy)
+    end,
+    function()
+    end,
+    timeUpDown)
+
+    Wait(timeUpDown)
+    
+    boss:SetInvincible(true)
+    Tween(function(t, dt)
+        local newx = Lerp(14, 20, t)
+        boss:GetTransform().Position = Vector2f:new(newx, boss:GetTransform().Position.y)
+    end,
+    function()
+    end,
+    timeToAppear)
+
+    -- move up and down back and forth until need to disappear
+end
+
+TimeMarkerEvents.Events["Boss2"] = function()
+    boss:SetState(BossState["Background"])
+    boss:GetTransform().Position = Vector2f:new(22, 3)
+
+    local backgroundTime = 10
+    local waitTime = 9
+    local enemyGroups = 10
+    local lowGroundTime = 10
+
+    StartCoroutine(function()
+        for i = 1, enemyGroups, 1 do
+            local randomy = math.random() * 16 - 8
+            EnemyGroup:new(CreateEnemy, 0):WithScale(2):WithDelay(0.3):WithAmount(3):WithDuration(5):WithYMovement(randomy,randomy,0):WithShot(3,0):Execute()
+            Wait((waitTime+backgroundTime+lowGroundTime) / enemyGroups)
+        end
+    end)
+    Tween(function(t, dt)
+        local newx = Lerp(22,-22,t)
+        boss:GetTransform().Position = Vector2f:new(newx, 3)
+    end,
+    function()
+    end,
+    backgroundTime)
+    Wait(backgroundTime+waitTime)
+    -- move from 22 to -22
+    -- after that:
+    boss:SetState(BossState["Horizontal"])
+    boss:GetTransform().Position = Vector2f:new(-26, -8)
+
+    local timeBetweenShots = 0.5
+    local positionOffsets = {Vector2f:new(6.5,0), Vector2f:new(-3,0), Vector2f:new(-6,0)}
+    local separations = {Vector2f:new(0.3, 0), Vector2f:new(0, 0), Vector2f:new(-0.3, 0)}
+    StartCoroutine(function()
+        for i = 1,lowGroundTime, timeBetweenShots do
+            for j = 1,#positionOffsets,1 do
+                for k = 1,#separations,1 do
+                    if not boss:IsDead() then
+                        local bulletIndex = ShotBullet(1, boss:GetTransform().Position + positionOffsets[j] + separations[k])
+                        SetBulletDirection(1, bulletIndex, Vector2f:new(0, 1))
+                    end
+                end
+            end
+            Wait(timeBetweenShots)
+        end
+    end)
+
+    Tween(function(t, dt)
+        local newx = Lerp(-26,26,t)
+        boss:GetTransform().Position = Vector2f:new(newx, -8)
+    end,
+    function()
+    end,
+    lowGroundTime)
 end
 
 Audio_LoadAudio("Master")
@@ -234,6 +347,10 @@ Audio_PlayBGM("Level1BGM")
 -- Audio_SkipToPosition(59000)
 -- Audio_SkipToPosition(71000)
 -- Audio_SkipToPosition(95000)
--- cloudGenerator:Start()
+--Audio_SkipToPosition(112000)
+--Audio_SkipToPosition(160000)
+--cloudGenerator:Start()
 
--- Audio_SetMixerVolume("", 0)
+--Audio_SetMixerVolume("", 0)
+
+GameStart()

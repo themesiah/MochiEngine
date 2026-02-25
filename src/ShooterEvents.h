@@ -8,6 +8,7 @@ namespace Mochi::Shooter
     {
         unsigned int Points;
         AbstractEnemy *Enemy;
+        int ExplosionScale;
     };
 
     struct PlayerDamageReceivedEvent
