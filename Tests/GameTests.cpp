@@ -16,6 +16,7 @@
 #include "Player.h"
 #include "Bullets/PlayerBulletPool.h"
 #include "Bullets/EnemyBulletPoolFollow.h"
+#include "Background.h"
 
 #include <iostream>
 
@@ -32,7 +33,11 @@ public:
 
     virtual void InitLayer() override
     {
-        Shooter::GameLayer::InitLayer();
+        BindLuaTypesAndFunctions();
+        mScripting->State["player"] = mPlayer;
+        mScripting->State["bg"] = mBackground;
+        mScripting->ExecuteFileGlobal("ShooterCore.lua");
+
         for (auto &code : mExecutableCode)
         {
             mScripting->Execute(code);

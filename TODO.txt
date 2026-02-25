@@ -1,4 +1,9 @@
+- Prepare github as engine+samples
 - SDL Mixer
 - EnTT
 - Document and comment
 - Automatize packer
+- Raw pointers to weak ptr?
+- Platformer sample
+- Puzzle sample
+- Remove pixel-perfect?
