@@ -1,0 +1,76 @@
+{
+	"TriggerNotes":"0 is never, 1 is down, 2 is pressed, 3 is released",
+	"KeycodeNotes":"https://wiki.libsdl.org/SDL3/SDL_Scancode use 1 for unused keycodes",
+	"Actions":[
+		{"Name":"UISelect", "Cases":[
+			{"Type":"Keyboard", "Trigger":2, "Keycode":88, "Value":1},
+			{"Type":"Gamepad", "Trigger":2, "Button":0, "Value":1},
+			{"Type":"Mouse", "Trigger":2, "Button":0, "Value":1}
+		]},
+		{"Name":"UICancel", "Cases":[
+			{"Type":"Keyboard", "Trigger":2, "Keycode":41, "Value":1},
+			{"Type":"Gamepad", "Trigger":2, "Button":1, "Value":1}
+		]},
+		{"Name":"UINavigateHorizontal", "Cases":[
+			{"Type":"Keyboard", "Trigger":1, "Keycode":79, "Value":1},
+			{"Type":"Keyboard", "Trigger":1, "Keycode":80, "Value":-1},
+			{"Type":"GamepadAxis", "Axis":0}
+		]},
+		{"Name":"UINavigateVertical", "Cases":[
+			{"Type":"Keyboard", "Trigger":1, "Keycode":82, "Value":1},
+			{"Type":"Keyboard", "Trigger":1, "Keycode":81, "Value":-1},
+			{"Type":"GamepadAxis", "Axis":1}
+		]},
+		{"Name":"MousePosX", "Cases":[
+			{"Type":"MouseAxis", "Axis":0}
+		]},
+		{"Name":"MousePosY", "Cases":[
+			{"Type":"MouseAxis", "Axis":1}
+		]},
+		{"Name":"MouseLeftClickDown", "Cases":[
+			{"Type":"Mouse", "Trigger":1, "Button":0, "Value":1}
+		]},
+		{"Name":"Shot", "Cases":[
+			{"Type":"Keyboard", "Trigger":1, "Keycode":29, "Value":1},
+			{"Type":"Mouse", "Trigger":1, "Button":0, "Value":1},
+			{"Type":"Gamepad", "Trigger":1, "Button":0, "Value":1}
+		]},
+		{"Name":"Horizontal", "Cases":[
+			{"Type":"Keyboard", "Trigger":1, "Keycode":79, "Value":1},
+			{"Type":"Keyboard", "Trigger":1, "Keycode":80, "Value":-1},
+			{"Type":"GamepadAxis", "Axis":0}
+		]},
+		{"Name":"Vertical", "Cases":[
+			{"Type":"Keyboard", "Trigger":1, "Keycode":82, "Value":1},
+			{"Type":"Keyboard", "Trigger":1, "Keycode":81, "Value":-1},
+			{"Type":"GamepadAxis", "Axis":1}
+		]},
+		{"Name":"Debug1", "Cases":[
+			{"Type":"Keyboard", "Trigger":2, "Keycode":58, "Value":1}
+		]},
+		{"Name":"Debug2", "Cases":[
+			{"Type":"Keyboard", "Trigger":2, "Keycode":59, "Value":1}
+		]},
+		{"Name":"Debug3", "Cases":[
+			{"Type":"Keyboard", "Trigger":2, "Keycode":60, "Value":1}
+		]},
+		{"Name":"Debug4", "Cases":[
+			{"Type":"Keyboard", "Trigger":2, "Keycode":61, "Value":1}
+		]},
+		{"Name":"Debug5", "Cases":[
+			{"Type":"Keyboard", "Trigger":2, "Keycode":62, "Value":1}
+		]},
+		{"Name":"Debug6", "Cases":[
+			{"Type":"Keyboard", "Trigger":2, "Keycode":63, "Value":1}
+		]},
+		{"Name":"Debug7", "Cases":[
+			{"Type":"Keyboard", "Trigger":2, "Keycode":64, "Value":1}
+		]},
+		{"Name":"Debug8", "Cases":[
+			{"Type":"Keyboard", "Trigger":2, "Keycode":65, "Value":1}
+		]},
+		{"Name":"Debug9", "Cases":[
+			{"Type":"Keyboard", "Trigger":2, "Keycode":66, "Value":1}
+		]}
+	]
+}

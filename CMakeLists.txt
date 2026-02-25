@@ -2,55 +2,15 @@ cmake_minimum_required(VERSION 4.0)
 
 
 # Set the project name and version
-project(SpaceShooter VERSION 0.1)
-
+project(MochiEngineSamples VERSION 0.1)
 
 
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libgcc -static-libstdc++")
 # set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -static-libgcc -static-libstdc++") # <-- Only for release!
 
 enable_testing()
-# Set output directories
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib/$<CONFIG>)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib/$<CONFIG>)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<CONFIG>)
 
 
 # Add all subdirectories
-add_subdirectory("Engine")
-add_subdirectory("Tests")
-
-file(GLOB Game_src CONFIGURE_DEPENDS "src/*.cpp" "src/Bullets/*.cpp" "src/Enemies/*.cpp")
-add_library(GameLib ${Game_src})
-add_executable(Game src/main.cpp)
-set_target_properties(Game PROPERTIES
-    WIN32_EXECUTABLE $<CONFIG:Release>) # Sets the WIN32_EXECUTABLE property ONLY on release
-target_include_directories(GameLib INTERFACE "src")
-target_link_libraries(GameLib PUBLIC Engine)
-target_link_libraries(Game
-                      PRIVATE
-                      GameLib
-)
-
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<CONFIG>)
-# Copy files after building
-add_custom_command(
-  TARGET Game POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy_directory
-  "${PROJECT_SOURCE_DIR}/Data"
-  "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Data"
-  COMMENT "Copying data folder from ${PROJECT_SOURCE_DIR} TO ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
-)
-
-add_custom_target(copy_data_folder
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-        "${PROJECT_SOURCE_DIR}/Data"
-        "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Data"
-    COMMAND ${CMAKE_COMMAND} -E copy
-        "${PROJECT_SOURCE_DIR}/Engine/Includes/FMOD/win/studio/lib/x64/fmodstudio.dll"
-        "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/fmodstudio.dll"
-    COMMAND ${CMAKE_COMMAND} -E copy
-        "${PROJECT_SOURCE_DIR}/Engine/Includes/FMOD/win/core/lib/x64/fmod.dll"
-        "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/fmod.dll"
-        DEPENDS Game
-    )
+add_subdirectory("Samples/SpaceShooter")
+#add_subdirectory("Engine")

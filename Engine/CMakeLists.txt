@@ -60,4 +60,12 @@ add_custom_command(
   COMMENT "Copying fmodstudio.dll and fmod.dll"
 )
 
+add_custom_command(
+  TARGET Engine POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_directory
+  "${PROJECT_SOURCE_DIR}/CoreData"
+  "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Data/Core"
+  COMMENT "Copying data"
+)
+
 add_subdirectory(Tests)
