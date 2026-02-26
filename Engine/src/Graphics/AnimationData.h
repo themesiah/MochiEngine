@@ -56,6 +56,8 @@ namespace Mochi::Graphics
         std::string UserData;
     };
 
+    /// @brief All data needed to represent a set of animations for a sprite.
+    /// It mostly contains a list of frames contained in the spritesheet and the metadata of the animations, which references the indexes.
     struct AnimationsData
     {
         std::filesystem::path TexturePath;

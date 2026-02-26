@@ -5,6 +5,8 @@
 
 namespace Mochi::Graphics
 {
+    /// @brief The Camera class allows conversion between a engine-defined world space and screen space.
+    /// This class doesn't do any special process with the renderer, it just transforms positions of points and rects between world and screen.
     class Camera
     {
     private:

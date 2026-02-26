@@ -10,6 +10,20 @@ namespace Mochi::Graphics
 {
     class AbstractTextureFactory;
     class IAnimationFactory;
+    /**
+     * @brief OneshotAnimation is an AnimatedSprite limited to a single loop of an animation. It features a callback that is called when finishing that animation loop.
+     * This makes the class useful for oneshot effects like explosions, and allows to destroy or hide them after finishing.
+     *
+     * Ownership:
+     *
+     * - It owns the callback assigned with SetFinishCallback.
+     *
+     * Guarantees:
+     *
+     * - The animation will be played once.
+     *
+     * - The callback will be invoked once, when the animation finishes.
+     */
     class OneshotAnimation : public AnimatedSprite
     {
     private:

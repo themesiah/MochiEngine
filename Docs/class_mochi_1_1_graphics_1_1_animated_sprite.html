@@ -91,32 +91,53 @@ $(function(){initNavTree('class_mochi_1_1_graphics_1_1_animated_sprite.html','',
   <div class="headertitle"><div class="title">Mochi::Graphics::AnimatedSprite Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="class_mochi_1_1_graphics_1_1_animated_sprite.html" title="AnimatedSprite does all the Spritesheet does and also provides an easy interface to animate and selec...">AnimatedSprite</a> does all the <a class="el" href="class_mochi_1_1_graphics_1_1_spritesheet.html" title="Spritesheet takes all the functionality of SpriteBase, generates animation data for the texture,...">Spritesheet</a> does and also provides an easy interface to animate and select animations for the sprite.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_animated_sprite_8h_source.html">AnimatedSprite.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for Mochi::Graphics::AnimatedSprite:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_mochi_1_1_graphics_1_1_animated_sprite.png" usemap="#Mochi_3A_3AGraphics_3A_3AAnimatedSprite_map" alt=""/>
+  <map id="Mochi_3A_3AGraphics_3A_3AAnimatedSprite_map" name="Mochi_3A_3AGraphics_3A_3AAnimatedSprite_map">
+<area href="class_mochi_1_1_graphics_1_1_spritesheet.html" title="Spritesheet takes all the functionality of SpriteBase, generates animation data for the texture,..." alt="Mochi::Graphics::Spritesheet" shape="rect" coords="0,56,212,80"/>
+<area href="class_mochi_1_1_graphics_1_1_sprite_base.html" title="This class contains all the necessary data to show textures on screen." alt="Mochi::Graphics::SpriteBase" shape="rect" coords="0,0,212,24"/>
+<area href="class_mochi_1_1_graphics_1_1_oneshot_animation.html" title="OneshotAnimation is an AnimatedSprite limited to a single loop of an animation. It features a callbac..." alt="Mochi::Graphics::OneshotAnimation" shape="rect" coords="0,168,212,192"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a41b69808e30c8220376e9337c96f913b" id="r_a41b69808e30c8220376e9337c96f913b"><td class="memItemLeft"><a id="a41b69808e30c8220376e9337c96f913b" name="a41b69808e30c8220376e9337c96f913b"></a>
-&#160;</td><td class="memItemRight"><b>AnimatedSprite</b> (<a class="el" href="class_mochi_1_1_graphics_1_1_i_animation_factory.html">IAnimationFactory</a> *, <a class="el" href="class_mochi_1_1_graphics_1_1_abstract_texture_factory.html">AbstractTextureFactory</a> *, const std::string &amp;animationPath, const std::string &amp;mainAnimation)</td></tr>
+<tr class="memitem:af1c44abebb72ce37f43e1925eb9b4fae" id="r_af1c44abebb72ce37f43e1925eb9b4fae"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#af1c44abebb72ce37f43e1925eb9b4fae">AnimatedSprite</a> (<a class="el" href="class_mochi_1_1_graphics_1_1_i_animation_factory.html">IAnimationFactory</a> *animationFactory, <a class="el" href="class_mochi_1_1_graphics_1_1_abstract_texture_factory.html">AbstractTextureFactory</a> *textureFactory, const std::string &amp;animationPath, const std::string &amp;mainAnimation)</td></tr>
+<tr class="memdesc:af1c44abebb72ce37f43e1925eb9b4fae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the spritesheet with the default <a class="el" href="class_mochi_1_1_graphics_1_1_sprite_base.html" title="This class contains all the necessary data to show textures on screen.">SpriteBase</a> constructor, internally calling LoadTexture.  <br /></td></tr>
 <tr class="memitem:ac967ba3a2486318bf27a1886f2639914" id="r_ac967ba3a2486318bf27a1886f2639914"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#ac967ba3a2486318bf27a1886f2639914">Update</a> (const float &amp;dt) override</td></tr>
-<tr class="memitem:af586b67fee38d6e27e777ce7d9d70eab" id="r_af586b67fee38d6e27e777ce7d9d70eab"><td class="memItemLeft"><a id="af586b67fee38d6e27e777ce7d9d70eab" name="af586b67fee38d6e27e777ce7d9d70eab"></a>
-virtual void&#160;</td><td class="memItemRight"><b>PlayAnimation</b> (const std::string &amp;animationName)</td></tr>
+<tr class="memdesc:ac967ba3a2486318bf27a1886f2639914"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method updates an internal timer and changes frames when needed, according to the rules defined in the <a class="el" href="struct_mochi_1_1_graphics_1_1_animations_data.html" title="All data needed to represent a set of animations for a sprite. It mostly contains a list of frames co...">AnimationsData</a> metadata. This needs to be called manually to work.  <br /></td></tr>
+<tr class="memitem:af586b67fee38d6e27e777ce7d9d70eab" id="r_af586b67fee38d6e27e777ce7d9d70eab"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#af586b67fee38d6e27e777ce7d9d70eab">PlayAnimation</a> (const std::string &amp;animationName)</td></tr>
+<tr class="memdesc:af586b67fee38d6e27e777ce7d9d70eab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given an existing animation name, it starts that animation. This means immediately changing the frame, resetting the timer and setting the current animation.  <br /></td></tr>
 <tr class="memitem:a70def4bbb56055f6603613594feedabd" id="r_a70def4bbb56055f6603613594feedabd"><td class="memItemLeft"><a id="a70def4bbb56055f6603613594feedabd" name="a70def4bbb56055f6603613594feedabd"></a>
 void&#160;</td><td class="memItemRight"><b>StopAnimation</b> ()</td></tr>
+<tr class="memdesc:a70def4bbb56055f6603613594feedabd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the current animation and the timer, freezing the sprite in the current frame. <br /></td></tr>
 <tr class="memitem:a1b1407d7fb27604a6f8552c7d433cb00" id="r_a1b1407d7fb27604a6f8552c7d433cb00"><td class="memItemLeft"><a id="a1b1407d7fb27604a6f8552c7d433cb00" name="a1b1407d7fb27604a6f8552c7d433cb00"></a>
 std::string&#160;</td><td class="memItemRight"><b>GetCurrentAnimation</b> () const</td></tr>
 <tr class="inherit_header pub_methods_class_mochi_1_1_graphics_1_1_spritesheet"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_mochi_1_1_graphics_1_1_spritesheet')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="class_mochi_1_1_graphics_1_1_spritesheet.html">Mochi::Graphics::Spritesheet</a></td></tr>
-<tr class="memitem:a63ae50598feebd08fa578f3155b70c08 inherit pub_methods_class_mochi_1_1_graphics_1_1_spritesheet" id="r_a63ae50598feebd08fa578f3155b70c08"><td class="memItemLeft">
-&#160;</td><td class="memItemRight"><b>Spritesheet</b> (<a class="el" href="class_mochi_1_1_graphics_1_1_i_animation_factory.html">IAnimationFactory</a> *animationFactory, <a class="el" href="class_mochi_1_1_graphics_1_1_abstract_texture_factory.html">AbstractTextureFactory</a> *textureFactory, const std::string &amp;animationPath, const int &amp;startingFrame)</td></tr>
-<tr class="memitem:af2d5ddfdb3998596f9cfb81e20546361 inherit pub_methods_class_mochi_1_1_graphics_1_1_spritesheet" id="r_af2d5ddfdb3998596f9cfb81e20546361"><td class="memItemLeft">
-void&#160;</td><td class="memItemRight"><b>SetFrame</b> (const int &amp;frameIndex)</td></tr>
-<tr class="memitem:a7854d95ea844e0577646c10479305938 inherit pub_methods_class_mochi_1_1_graphics_1_1_spritesheet" id="r_a7854d95ea844e0577646c10479305938"><td class="memItemLeft">
-int&#160;</td><td class="memItemRight"><b>GetFrame</b> () const</td></tr>
+<tr class="memitem:a63ae50598feebd08fa578f3155b70c08 inherit pub_methods_class_mochi_1_1_graphics_1_1_spritesheet" id="r_a63ae50598feebd08fa578f3155b70c08"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="class_mochi_1_1_graphics_1_1_spritesheet.html#a63ae50598feebd08fa578f3155b70c08">Spritesheet</a> (<a class="el" href="class_mochi_1_1_graphics_1_1_i_animation_factory.html">IAnimationFactory</a> *animationFactory, <a class="el" href="class_mochi_1_1_graphics_1_1_abstract_texture_factory.html">AbstractTextureFactory</a> *textureFactory, const std::string &amp;animationPath, const int &amp;startingFrame)</td></tr>
+<tr class="memdesc:a63ae50598feebd08fa578f3155b70c08 inherit pub_methods_class_mochi_1_1_graphics_1_1_spritesheet"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the spritesheet with the default <a class="el" href="class_mochi_1_1_graphics_1_1_sprite_base.html" title="This class contains all the necessary data to show textures on screen.">SpriteBase</a> constructor, internally calling LoadTexture.  <br /></td></tr>
+<tr class="memitem:af2d5ddfdb3998596f9cfb81e20546361 inherit pub_methods_class_mochi_1_1_graphics_1_1_spritesheet" id="r_af2d5ddfdb3998596f9cfb81e20546361"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_mochi_1_1_graphics_1_1_spritesheet.html#af2d5ddfdb3998596f9cfb81e20546361">SetFrame</a> (const int &amp;frameIndex)</td></tr>
+<tr class="memdesc:af2d5ddfdb3998596f9cfb81e20546361 inherit pub_methods_class_mochi_1_1_graphics_1_1_spritesheet"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current frame for the animation.  <br /></td></tr>
+<tr class="memitem:a7854d95ea844e0577646c10479305938 inherit pub_methods_class_mochi_1_1_graphics_1_1_spritesheet" id="r_a7854d95ea844e0577646c10479305938"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="class_mochi_1_1_graphics_1_1_spritesheet.html#a7854d95ea844e0577646c10479305938">GetFrame</a> () const</td></tr>
+<tr class="memdesc:a7854d95ea844e0577646c10479305938 inherit pub_methods_class_mochi_1_1_graphics_1_1_spritesheet"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current frame index.  <br /></td></tr>
 <tr class="inherit_header pub_methods_class_mochi_1_1_graphics_1_1_sprite_base"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_mochi_1_1_graphics_1_1_sprite_base')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="class_mochi_1_1_graphics_1_1_sprite_base.html">Mochi::Graphics::SpriteBase</a></td></tr>
-<tr class="memitem:a2e791b3688cc89346152f99a19e2d443 inherit pub_methods_class_mochi_1_1_graphics_1_1_sprite_base" id="r_a2e791b3688cc89346152f99a19e2d443"><td class="memItemLeft">
-&#160;</td><td class="memItemRight"><b>SpriteBase</b> (<a class="el" href="class_mochi_1_1_graphics_1_1_abstract_texture_factory.html">AbstractTextureFactory</a> *, const std::string &amp;filename)</td></tr>
-<tr class="memitem:a5955b525d0222435e8f76663046bbeac inherit pub_methods_class_mochi_1_1_graphics_1_1_sprite_base" id="r_a5955b525d0222435e8f76663046bbeac"><td class="memItemLeft">
-void&#160;</td><td class="memItemRight"><b>LoadTexture</b> (<a class="el" href="class_mochi_1_1_graphics_1_1_abstract_texture_factory.html">AbstractTextureFactory</a> *textureFactory, const std::string &amp;filename)</td></tr>
-<tr class="memitem:ab36165858abde58b890a89d526a2e573 inherit pub_methods_class_mochi_1_1_graphics_1_1_sprite_base" id="r_ab36165858abde58b890a89d526a2e573"><td class="memItemLeft">
-virtual std::vector&lt; <a class="el" href="struct_mochi_1_1_graphics_1_1_render_command.html">RenderCommand</a> &gt;&#160;</td><td class="memItemRight"><b>GetRenderData</b> () const</td></tr>
+<tr class="memitem:a8265275798c8e00519589694926d62d9 inherit pub_methods_class_mochi_1_1_graphics_1_1_sprite_base" id="r_a8265275798c8e00519589694926d62d9"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="class_mochi_1_1_graphics_1_1_sprite_base.html#a8265275798c8e00519589694926d62d9">SpriteBase</a> (<a class="el" href="class_mochi_1_1_graphics_1_1_abstract_texture_factory.html">AbstractTextureFactory</a> *factory, const std::string &amp;path)</td></tr>
+<tr class="memdesc:a8265275798c8e00519589694926d62d9 inherit pub_methods_class_mochi_1_1_graphics_1_1_sprite_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor that internally calls <a class="el" href="class_mochi_1_1_graphics_1_1_sprite_base.html#a986d7e4edf8ce3c6665d3b43c50bda66" title="Loads the texture and caches its size for future rendering.">LoadTexture(AbstractTextureFactory *textureFactory, const std::string &amp;filename)</a>.  <br /></td></tr>
+<tr class="memitem:a814a1925fc4e91c7f8cd1f205e0dcc7d inherit pub_methods_class_mochi_1_1_graphics_1_1_sprite_base" id="r_a814a1925fc4e91c7f8cd1f205e0dcc7d"><td class="memItemLeft">
+&#160;</td><td class="memItemRight"><b>SpriteBase</b> ()</td></tr>
+<tr class="memdesc:a814a1925fc4e91c7f8cd1f205e0dcc7d inherit pub_methods_class_mochi_1_1_graphics_1_1_sprite_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">This constructor only initializes a minimal part of the sprite. <a class="el" href="class_mochi_1_1_graphics_1_1_sprite_base.html#a986d7e4edf8ce3c6665d3b43c50bda66" title="Loads the texture and caches its size for future rendering.">LoadTexture(AbstractTextureFactory *textureFactory, const std::string &amp;filename)</a> needs to be called for the sprite to be valid. <br /></td></tr>
+<tr class="memitem:a986d7e4edf8ce3c6665d3b43c50bda66 inherit pub_methods_class_mochi_1_1_graphics_1_1_sprite_base" id="r_a986d7e4edf8ce3c6665d3b43c50bda66"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_mochi_1_1_graphics_1_1_sprite_base.html#a986d7e4edf8ce3c6665d3b43c50bda66">LoadTexture</a> (<a class="el" href="class_mochi_1_1_graphics_1_1_abstract_texture_factory.html">AbstractTextureFactory</a> *textureFactory, const std::string &amp;path)</td></tr>
+<tr class="memdesc:a986d7e4edf8ce3c6665d3b43c50bda66 inherit pub_methods_class_mochi_1_1_graphics_1_1_sprite_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the texture and caches its size for future rendering.  <br /></td></tr>
+<tr class="memitem:ab36165858abde58b890a89d526a2e573 inherit pub_methods_class_mochi_1_1_graphics_1_1_sprite_base" id="r_ab36165858abde58b890a89d526a2e573"><td class="memItemLeft">virtual std::vector&lt; <a class="el" href="struct_mochi_1_1_graphics_1_1_render_command.html">RenderCommand</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="class_mochi_1_1_graphics_1_1_sprite_base.html#ab36165858abde58b890a89d526a2e573">GetRenderData</a> () const</td></tr>
+<tr class="memdesc:ab36165858abde58b890a89d526a2e573 inherit pub_methods_class_mochi_1_1_graphics_1_1_sprite_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the list of render commands that represent this sprite in a format compatible with the renderer.  <br /></td></tr>
 <tr class="memitem:a7f711860bddc0c7f9f97fbb560fb219a inherit pub_methods_class_mochi_1_1_graphics_1_1_sprite_base" id="r_a7f711860bddc0c7f9f97fbb560fb219a"><td class="memItemLeft">
 void&#160;</td><td class="memItemRight"><b>SetZIndex</b> (const uint16_t &amp;zIndex)</td></tr>
 <tr class="memitem:aac331d97ecdef74d0de89c08f5120590 inherit pub_methods_class_mochi_1_1_graphics_1_1_sprite_base" id="r_aac331d97ecdef74d0de89c08f5120590"><td class="memItemLeft">
@@ -167,7 +188,100 @@ uint8_t&#160;</td><td class="memItemRight"><b>mAlpha</b></td></tr>
 <tr class="memitem:a4c1133e7009533fa98241b1a339e5616 inherit pro_attribs_class_mochi_1_1_graphics_1_1_sprite_base" id="r_a4c1133e7009533fa98241b1a339e5616"><td class="memItemLeft">
 std::shared_ptr&lt; <a class="el" href="struct_mochi_1_1_transform.html">Transform</a> &gt;&#160;</td><td class="memItemRight"><b>mTransform</b></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="class_mochi_1_1_graphics_1_1_animated_sprite.html" title="AnimatedSprite does all the Spritesheet does and also provides an easy interface to animate and selec...">AnimatedSprite</a> does all the <a class="el" href="class_mochi_1_1_graphics_1_1_spritesheet.html" title="Spritesheet takes all the functionality of SpriteBase, generates animation data for the texture,...">Spritesheet</a> does and also provides an easy interface to animate and select animations for the sprite. </p>
+<p><a class="el" href="class_mochi_1_1_graphics_1_1_animated_sprite.html" title="AnimatedSprite does all the Spritesheet does and also provides an easy interface to animate and selec...">AnimatedSprite</a> has the same data as <a class="el" href="class_mochi_1_1_graphics_1_1_spritesheet.html" title="Spritesheet takes all the functionality of SpriteBase, generates animation data for the texture,...">Spritesheet</a>, but also uses the <a class="el" href="struct_mochi_1_1_graphics_1_1_animations_data.html" title="All data needed to represent a set of animations for a sprite. It mostly contains a list of frames co...">AnimationsData</a> to internally change the frame shown in the spritesheet.</p>
+<p>Ownership:</p>
+<ul>
+<li>Same as <a class="el" href="class_mochi_1_1_graphics_1_1_spritesheet.html" title="Spritesheet takes all the functionality of SpriteBase, generates animation data for the texture,...">Spritesheet</a>, having a shared ownership of <a class="el" href="struct_mochi_1_1_graphics_1_1_animations_data.html" title="All data needed to represent a set of animations for a sprite. It mostly contains a list of frames co...">AnimationsData</a> and <a class="el" href="class_mochi_1_1_graphics_1_1_i_texture.html" title="A texture interface to be implemented by renderer specific textures.">ITexture</a>.</li>
+</ul>
+<p>Guarantees:</p>
+<ul>
+<li>The sprite will change frames on the time defined by <a class="el" href="struct_mochi_1_1_graphics_1_1_animations_data.html" title="All data needed to represent a set of animations for a sprite. It mostly contains a list of frames co...">AnimationsData</a>, given Update is called with a correct delta time.</li>
+<li>Animations will change the next frame after calling PlayAnimation.</li>
+<li>Animations will stop playing when calling StopAnimation.</li>
+</ul>
+<p>Limitations:</p>
+<ul>
+<li>For now, <a class="el" href="class_mochi_1_1_graphics_1_1_animated_sprite.html" title="AnimatedSprite does all the Spritesheet does and also provides an easy interface to animate and selec...">AnimatedSprite</a> only works as part of a <a class="el" href="class_mochi_1_1_graphics_1_1_spritesheet.html" title="Spritesheet takes all the functionality of SpriteBase, generates animation data for the texture,...">Spritesheet</a>. So animations composed of several sprites are not currently supported. </li>
+</ul>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="af1c44abebb72ce37f43e1925eb9b4fae" name="af1c44abebb72ce37f43e1925eb9b4fae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1c44abebb72ce37f43e1925eb9b4fae">&#9670;&#160;</a></span>AnimatedSprite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Mochi::Graphics::AnimatedSprite::AnimatedSprite </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_mochi_1_1_graphics_1_1_i_animation_factory.html">IAnimationFactory</a> *</td>          <td class="paramname"><span class="paramname"><em>animationFactory</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_mochi_1_1_graphics_1_1_abstract_texture_factory.html">AbstractTextureFactory</a> *</td>          <td class="paramname"><span class="paramname"><em>textureFactory</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>animationPath</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>mainAnimation</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs the spritesheet with the default <a class="el" href="class_mochi_1_1_graphics_1_1_sprite_base.html" title="This class contains all the necessary data to show textures on screen.">SpriteBase</a> constructor, internally calling LoadTexture. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">animationFactory</td><td>The animation factory. </td></tr>
+    <tr><td class="paramname">textureFactory</td><td>The texture factory. </td></tr>
+    <tr><td class="paramname">animationPath</td><td>The path or unique identifier to the animation file in the file system. </td></tr>
+    <tr><td class="paramname">mainAnimation</td><td>The first animation the sprite will show. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="af586b67fee38d6e27e777ce7d9d70eab" name="af586b67fee38d6e27e777ce7d9d70eab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af586b67fee38d6e27e777ce7d9d70eab">&#9670;&#160;</a></span>PlayAnimation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mochi::Graphics::AnimatedSprite::PlayAnimation </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>animationName</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Given an existing animation name, it starts that animation. This means immediately changing the frame, resetting the timer and setting the current animation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">animationName</td><td>The unique name of the desired animation to play. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ac967ba3a2486318bf27a1886f2639914" name="ac967ba3a2486318bf27a1886f2639914"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac967ba3a2486318bf27a1886f2639914">&#9670;&#160;</a></span>Update()</h2>
 
@@ -191,7 +305,17 @@ std::shared_ptr&lt; <a class="el" href="struct_mochi_1_1_transform.html">Transfo
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="class_mochi_1_1_graphics_1_1_sprite_base.html">Mochi::Graphics::SpriteBase</a>.</p>
+<p>This method updates an internal timer and changes frames when needed, according to the rules defined in the <a class="el" href="struct_mochi_1_1_graphics_1_1_animations_data.html" title="All data needed to represent a set of animations for a sprite. It mostly contains a list of frames co...">AnimationsData</a> metadata. This needs to be called manually to work. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dt</td><td>The delta time. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_mochi_1_1_graphics_1_1_sprite_base.html#aca343e7e13008264b83ba1ca632532e6">Mochi::Graphics::SpriteBase</a>.</p>
+
+<p>Reimplemented in <a class="el" href="class_mochi_1_1_graphics_1_1_oneshot_animation.html#af64ef212186185343ce25807a50c99e6">Mochi::Graphics::OneshotAnimation</a>.</p>
 
 </div>
 </div>

@@ -91,12 +91,24 @@ $(function(){initNavTree('class_mochi_1_1_graphics_1_1_dummy_animation_factory.h
   <div class="headertitle"><div class="title">Mochi::Graphics::DummyAnimationFactory Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+<div class="dynheader">
+Inheritance diagram for Mochi::Graphics::DummyAnimationFactory:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_mochi_1_1_graphics_1_1_dummy_animation_factory.png" usemap="#Mochi_3A_3AGraphics_3A_3ADummyAnimationFactory_map" alt=""/>
+  <map id="Mochi_3A_3AGraphics_3A_3ADummyAnimationFactory_map" name="Mochi_3A_3AGraphics_3A_3ADummyAnimationFactory_map">
+<area href="class_mochi_1_1_graphics_1_1_i_animation_factory.html" title="This interface is to implement different ways to generate the animation data depending on the source ..." alt="Mochi::Graphics::IAnimationFactory" shape="rect" coords="0,0,250,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af981185e805e311fff2576619806a842" id="r_af981185e805e311fff2576619806a842"><td class="memItemLeft">virtual std::shared_ptr&lt; <a class="el" href="struct_mochi_1_1_graphics_1_1_animations_data.html">AnimationsData</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#af981185e805e311fff2576619806a842">GetAnimationsData</a> (const std::string &amp;animationDataPath) override</td></tr>
+<tr class="memdesc:af981185e805e311fff2576619806a842"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the processed animation data of the file on the input path.  <br /></td></tr>
 <tr class="memitem:a5667129867c7587dea94b93723e76485" id="r_a5667129867c7587dea94b93723e76485"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a5667129867c7587dea94b93723e76485">DeleteCache</a> () override</td></tr>
+<tr class="memdesc:a5667129867c7587dea94b93723e76485"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the animations cache. This should be safe to call anytime because of the shared pointers.  <br /></td></tr>
 <tr class="memitem:a77cc39a2ece6b1dcd008c15075162eea" id="r_a77cc39a2ece6b1dcd008c15075162eea"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a77cc39a2ece6b1dcd008c15075162eea">DeleteAnimation</a> (const std::string &amp;texturePath) override</td></tr>
+<tr class="memdesc:a77cc39a2ece6b1dcd008c15075162eea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes a specific animation in the cache. This should be safe to call anytime because of the shared pointers.  <br /></td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a77cc39a2ece6b1dcd008c15075162eea" name="a77cc39a2ece6b1dcd008c15075162eea"></a>
@@ -122,7 +134,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_mochi_1_1_graphics_1_1_i_animation_factory.html">Mochi::Graphics::IAnimationFactory</a>.</p>
+<p>Deletes a specific animation in the cache. This should be safe to call anytime because of the shared pointers. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">texturePath</td><td>Path or unique identifier of the file in the file system. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_mochi_1_1_graphics_1_1_i_animation_factory.html#af2e5ecd0526bd83b358f2874f89963d9">Mochi::Graphics::IAnimationFactory</a>.</p>
 
 </div>
 </div>
@@ -149,7 +169,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_mochi_1_1_graphics_1_1_i_animation_factory.html">Mochi::Graphics::IAnimationFactory</a>.</p>
+<p>Deletes the animations cache. This should be safe to call anytime because of the shared pointers. </p>
+
+<p>Implements <a class="el" href="class_mochi_1_1_graphics_1_1_i_animation_factory.html#af5aed432a71a1c16a0d0cb122a5564af">Mochi::Graphics::IAnimationFactory</a>.</p>
 
 </div>
 </div>
@@ -176,7 +198,16 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_mochi_1_1_graphics_1_1_i_animation_factory.html">Mochi::Graphics::IAnimationFactory</a>.</p>
+<p>Gets the processed animation data of the file on the input path. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">animationDataPath</td><td>Path or unique identifier of the file containing the animation data in the file system. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A shared pointer to the data. This is meant to be saved as a cache. </dd></dl>
+
+<p>Implements <a class="el" href="class_mochi_1_1_graphics_1_1_i_animation_factory.html#a67fccf5d1b678410d1170447ac72ef90">Mochi::Graphics::IAnimationFactory</a>.</p>
 
 </div>
 </div>

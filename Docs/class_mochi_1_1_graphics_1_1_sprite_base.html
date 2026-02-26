@@ -91,17 +91,36 @@ $(function(){initNavTree('class_mochi_1_1_graphics_1_1_sprite_base.html','','cla
   <div class="headertitle"><div class="title">Mochi::Graphics::SpriteBase Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>This class contains all the necessary data to show textures on screen.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_sprite_base_8h_source.html">SpriteBase.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for Mochi::Graphics::SpriteBase:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_mochi_1_1_graphics_1_1_sprite_base.png" usemap="#Mochi_3A_3AGraphics_3A_3ASpriteBase_map" alt=""/>
+  <map id="Mochi_3A_3AGraphics_3A_3ASpriteBase_map" name="Mochi_3A_3AGraphics_3A_3ASpriteBase_map">
+<area href="class_mochi_1_1_graphics_1_1_spritesheet.html" title="Spritesheet takes all the functionality of SpriteBase, generates animation data for the texture,..." alt="Mochi::Graphics::Spritesheet" shape="rect" coords="0,56,212,80"/>
+<area href="class_mochi_1_1_graphics_1_1_animated_sprite.html" title="AnimatedSprite does all the Spritesheet does and also provides an easy interface to animate and selec..." alt="Mochi::Graphics::AnimatedSprite" shape="rect" coords="0,112,212,136"/>
+<area href="class_mochi_1_1_graphics_1_1_oneshot_animation.html" title="OneshotAnimation is an AnimatedSprite limited to a single loop of an animation. It features a callbac..." alt="Mochi::Graphics::OneshotAnimation" shape="rect" coords="0,168,212,192"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2e791b3688cc89346152f99a19e2d443" id="r_a2e791b3688cc89346152f99a19e2d443"><td class="memItemLeft"><a id="a2e791b3688cc89346152f99a19e2d443" name="a2e791b3688cc89346152f99a19e2d443"></a>
-&#160;</td><td class="memItemRight"><b>SpriteBase</b> (<a class="el" href="class_mochi_1_1_graphics_1_1_abstract_texture_factory.html">AbstractTextureFactory</a> *, const std::string &amp;filename)</td></tr>
-<tr class="memitem:a5955b525d0222435e8f76663046bbeac" id="r_a5955b525d0222435e8f76663046bbeac"><td class="memItemLeft"><a id="a5955b525d0222435e8f76663046bbeac" name="a5955b525d0222435e8f76663046bbeac"></a>
-void&#160;</td><td class="memItemRight"><b>LoadTexture</b> (<a class="el" href="class_mochi_1_1_graphics_1_1_abstract_texture_factory.html">AbstractTextureFactory</a> *textureFactory, const std::string &amp;filename)</td></tr>
-<tr class="memitem:ab36165858abde58b890a89d526a2e573" id="r_ab36165858abde58b890a89d526a2e573"><td class="memItemLeft"><a id="ab36165858abde58b890a89d526a2e573" name="ab36165858abde58b890a89d526a2e573"></a>
-virtual std::vector&lt; <a class="el" href="struct_mochi_1_1_graphics_1_1_render_command.html">RenderCommand</a> &gt;&#160;</td><td class="memItemRight"><b>GetRenderData</b> () const</td></tr>
-<tr class="memitem:aca343e7e13008264b83ba1ca632532e6" id="r_aca343e7e13008264b83ba1ca632532e6"><td class="memItemLeft"><a id="aca343e7e13008264b83ba1ca632532e6" name="aca343e7e13008264b83ba1ca632532e6"></a>
-virtual void&#160;</td><td class="memItemRight"><b>Update</b> (const float &amp;dt)</td></tr>
+<tr class="memitem:a8265275798c8e00519589694926d62d9" id="r_a8265275798c8e00519589694926d62d9"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a8265275798c8e00519589694926d62d9">SpriteBase</a> (<a class="el" href="class_mochi_1_1_graphics_1_1_abstract_texture_factory.html">AbstractTextureFactory</a> *factory, const std::string &amp;path)</td></tr>
+<tr class="memdesc:a8265275798c8e00519589694926d62d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor that internally calls <a class="el" href="#a986d7e4edf8ce3c6665d3b43c50bda66" title="Loads the texture and caches its size for future rendering.">LoadTexture(AbstractTextureFactory *textureFactory, const std::string &amp;filename)</a>.  <br /></td></tr>
+<tr class="memitem:a814a1925fc4e91c7f8cd1f205e0dcc7d" id="r_a814a1925fc4e91c7f8cd1f205e0dcc7d"><td class="memItemLeft"><a id="a814a1925fc4e91c7f8cd1f205e0dcc7d" name="a814a1925fc4e91c7f8cd1f205e0dcc7d"></a>
+&#160;</td><td class="memItemRight"><b>SpriteBase</b> ()</td></tr>
+<tr class="memdesc:a814a1925fc4e91c7f8cd1f205e0dcc7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This constructor only initializes a minimal part of the sprite. <a class="el" href="#a986d7e4edf8ce3c6665d3b43c50bda66" title="Loads the texture and caches its size for future rendering.">LoadTexture(AbstractTextureFactory *textureFactory, const std::string &amp;filename)</a> needs to be called for the sprite to be valid. <br /></td></tr>
+<tr class="memitem:a986d7e4edf8ce3c6665d3b43c50bda66" id="r_a986d7e4edf8ce3c6665d3b43c50bda66"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a986d7e4edf8ce3c6665d3b43c50bda66">LoadTexture</a> (<a class="el" href="class_mochi_1_1_graphics_1_1_abstract_texture_factory.html">AbstractTextureFactory</a> *textureFactory, const std::string &amp;path)</td></tr>
+<tr class="memdesc:a986d7e4edf8ce3c6665d3b43c50bda66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the texture and caches its size for future rendering.  <br /></td></tr>
+<tr class="memitem:ab36165858abde58b890a89d526a2e573" id="r_ab36165858abde58b890a89d526a2e573"><td class="memItemLeft">virtual std::vector&lt; <a class="el" href="struct_mochi_1_1_graphics_1_1_render_command.html">RenderCommand</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ab36165858abde58b890a89d526a2e573">GetRenderData</a> () const</td></tr>
+<tr class="memdesc:ab36165858abde58b890a89d526a2e573"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the list of render commands that represent this sprite in a format compatible with the renderer.  <br /></td></tr>
+<tr class="memitem:aca343e7e13008264b83ba1ca632532e6" id="r_aca343e7e13008264b83ba1ca632532e6"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#aca343e7e13008264b83ba1ca632532e6">Update</a> (const float &amp;dt)</td></tr>
+<tr class="memdesc:aca343e7e13008264b83ba1ca632532e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overridable api to work with animated sprites.  <br /></td></tr>
 <tr class="memitem:a7f711860bddc0c7f9f97fbb560fb219a" id="r_a7f711860bddc0c7f9f97fbb560fb219a"><td class="memItemLeft"><a id="a7f711860bddc0c7f9f97fbb560fb219a" name="a7f711860bddc0c7f9f97fbb560fb219a"></a>
 void&#160;</td><td class="memItemRight"><b>SetZIndex</b> (const uint16_t &amp;zIndex)</td></tr>
 <tr class="memitem:aac331d97ecdef74d0de89c08f5120590" id="r_aac331d97ecdef74d0de89c08f5120590"><td class="memItemLeft"><a id="aac331d97ecdef74d0de89c08f5120590" name="aac331d97ecdef74d0de89c08f5120590"></a>
@@ -138,6 +157,149 @@ uint8_t&#160;</td><td class="memItemRight"><b>mAlpha</b></td></tr>
 <tr class="memitem:a4c1133e7009533fa98241b1a339e5616" id="r_a4c1133e7009533fa98241b1a339e5616"><td class="memItemLeft"><a id="a4c1133e7009533fa98241b1a339e5616" name="a4c1133e7009533fa98241b1a339e5616"></a>
 std::shared_ptr&lt; <a class="el" href="struct_mochi_1_1_transform.html">Transform</a> &gt;&#160;</td><td class="memItemRight"><b>mTransform</b></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class contains all the necessary data to show textures on screen. </p>
+<p>Ownership:</p>
+<ul>
+<li>The texture is shared between the sprite and the texture factory (and probably other sprites with the same texture identifier)</li>
+<li>The transform is initialized in this class, but is shared and can be obtained and reused on other places, like colliders or debug gizmos.</li>
+</ul>
+<p>Guarantees:</p>
+<ul>
+<li>The render data obtained is always up to date with the texture and transform.</li>
+<li>The texture has its color modified by the alpha value in the class.</li>
+<li>It won't be shown if invisible.</li>
+<li>Texture and transform will exist as long as the sprite exist (unless manually deleted somewhere).</li>
+</ul>
+<p>Not responsible:</p>
+<ul>
+<li>Sending its data to the renderer (user is responsible to send the <a class="el" href="struct_mochi_1_1_graphics_1_1_render_command.html" title="Defines a full rendering unit, which for the purpose of the engine is a texture (or part of it) on a ...">RenderCommand</a> to the renderer). </li>
+</ul>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8265275798c8e00519589694926d62d9" name="a8265275798c8e00519589694926d62d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8265275798c8e00519589694926d62d9">&#9670;&#160;</a></span>SpriteBase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Mochi::Graphics::SpriteBase::SpriteBase </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_mochi_1_1_graphics_1_1_abstract_texture_factory.html">AbstractTextureFactory</a> *</td>          <td class="paramname"><span class="paramname"><em>factory</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor that internally calls <a class="el" href="#a986d7e4edf8ce3c6665d3b43c50bda66" title="Loads the texture and caches its size for future rendering.">LoadTexture(AbstractTextureFactory *textureFactory, const std::string &amp;filename)</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">factory</td><td>The texture factory from which to get the texture. </td></tr>
+    <tr><td class="paramname">path</td><td>The path or unique identifier of the file in the file system. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="ab36165858abde58b890a89d526a2e573" name="ab36165858abde58b890a89d526a2e573"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab36165858abde58b890a89d526a2e573">&#9670;&#160;</a></span>GetRenderData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="struct_mochi_1_1_graphics_1_1_render_command.html">RenderCommand</a> &gt; Mochi::Graphics::SpriteBase::GetRenderData </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the list of render commands that represent this sprite in a format compatible with the renderer. </p>
+<dl class="section return"><dt>Returns</dt><dd>The list of render commands. </dd></dl>
+
+</div>
+</div>
+<a id="a986d7e4edf8ce3c6665d3b43c50bda66" name="a986d7e4edf8ce3c6665d3b43c50bda66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a986d7e4edf8ce3c6665d3b43c50bda66">&#9670;&#160;</a></span>LoadTexture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mochi::Graphics::SpriteBase::LoadTexture </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_mochi_1_1_graphics_1_1_abstract_texture_factory.html">AbstractTextureFactory</a> *</td>          <td class="paramname"><span class="paramname"><em>textureFactory</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Loads the texture and caches its size for future rendering. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">textureFactory</td><td>The texture factory from which to get the texture. </td></tr>
+    <tr><td class="paramname">path</td><td>The path or unique identifier of the file in the file system. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aca343e7e13008264b83ba1ca632532e6" name="aca343e7e13008264b83ba1ca632532e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca343e7e13008264b83ba1ca632532e6">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mochi::Graphics::SpriteBase::Update </td>
+          <td>(</td>
+          <td class="paramtype">const float &amp;</td>          <td class="paramname"><span class="paramname"><em>dt</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Overridable api to work with animated sprites. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dt</td><td>The delta time </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="class_mochi_1_1_graphics_1_1_animated_sprite.html#ac967ba3a2486318bf27a1886f2639914">Mochi::Graphics::AnimatedSprite</a>, and <a class="el" href="class_mochi_1_1_graphics_1_1_oneshot_animation.html#af64ef212186185343ce25807a50c99e6">Mochi::Graphics::OneshotAnimation</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Engine/src/Graphics/<a class="el" href="_sprite_base_8h_source.html">SpriteBase.h</a></li>
 <li>Engine/src/Graphics/<b>SpriteBase.cpp</b></li>

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['deletecache_0',['DeleteCache',['../class_mochi_1_1_graphics_1_1_abstract_texture_factory.html#a311bcb940cfced4ccb69a297e74748f7',1,'Mochi::Graphics::AbstractTextureFactory']]],
-  ['deletetexture_1',['DeleteTexture',['../class_mochi_1_1_graphics_1_1_abstract_texture_factory.html#a456af37bfaf4dcf55ad0df412ed17888',1,'Mochi::Graphics::AbstractTextureFactory']]]
+  ['deleteanimation_0',['DeleteAnimation',['../class_mochi_1_1_graphics_1_1_aseprite_animation_factory.html#ab1cc02ad0b934792bd34f067b162032f',1,'Mochi::Graphics::AsepriteAnimationFactory::DeleteAnimation()'],['../class_mochi_1_1_graphics_1_1_dummy_animation_factory.html#a77cc39a2ece6b1dcd008c15075162eea',1,'Mochi::Graphics::DummyAnimationFactory::DeleteAnimation()'],['../class_mochi_1_1_graphics_1_1_i_animation_factory.html#af2e5ecd0526bd83b358f2874f89963d9',1,'Mochi::Graphics::IAnimationFactory::DeleteAnimation()']]],
+  ['deletecache_1',['DeleteCache',['../class_mochi_1_1_graphics_1_1_abstract_texture_factory.html#a311bcb940cfced4ccb69a297e74748f7',1,'Mochi::Graphics::AbstractTextureFactory::DeleteCache()'],['../class_mochi_1_1_graphics_1_1_aseprite_animation_factory.html#a75f725eb215e793cd0a48f8fd25e3d4f',1,'Mochi::Graphics::AsepriteAnimationFactory::DeleteCache()'],['../class_mochi_1_1_graphics_1_1_dummy_animation_factory.html#a5667129867c7587dea94b93723e76485',1,'Mochi::Graphics::DummyAnimationFactory::DeleteCache()'],['../class_mochi_1_1_graphics_1_1_i_animation_factory.html#af5aed432a71a1c16a0d0cb122a5564af',1,'Mochi::Graphics::IAnimationFactory::DeleteCache()']]],
+  ['deletetexture_2',['DeleteTexture',['../class_mochi_1_1_graphics_1_1_abstract_texture_factory.html#a456af37bfaf4dcf55ad0df412ed17888',1,'Mochi::Graphics::AbstractTextureFactory']]]
 ];

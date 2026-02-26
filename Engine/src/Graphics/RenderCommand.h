@@ -20,6 +20,9 @@ namespace Mochi::Graphics
         float Scale;
     };
 
+    /// @brief Defines a full rendering unit, which for the purpose of the engine is a texture (or part of it) on a specific point in space.
+    /// Additionaly, it allows to present the texture based on the world or the screen position and in a tiled format, if needed.
+    /// If TiledRenderOptions is not set, the texture will not be tiled.
     struct RenderCommand
     {
         ITexture *texture;
