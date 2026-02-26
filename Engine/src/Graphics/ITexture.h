@@ -5,6 +5,7 @@
 
 namespace Mochi::Graphics
 {
+    /// @brief A texture interface to be implemented by renderer specific textures.
     class ITexture
     {
     public:
