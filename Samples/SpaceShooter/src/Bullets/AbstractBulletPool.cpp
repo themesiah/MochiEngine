@@ -69,7 +69,7 @@ namespace Mochi::Shooter
                 mBulletTimers[i] = 0.0f;
                 mActiveCount++;
                 OnBulletAdded(i);
-                return i;
+                return (int)i;
             }
         }
         return -1;
