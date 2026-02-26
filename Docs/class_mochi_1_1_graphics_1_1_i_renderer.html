@@ -92,7 +92,7 @@ $(function(){initNavTree('class_mochi_1_1_graphics_1_1_i_renderer.html','','clas
 </div><!--header-->
 <div class="contents">
 
-<p>This interface provides means to show graphics in the game and create the subsystems needed to create textures for the same renderer and GUI using the same renderer. The interface provides separate methods for rendering to meet the needs of different kind of renderers (initialize, load to gpu, present, for example).  
+<p>This interface provides means to show graphics in the game and create the subsystems needed to create textures for the same renderer and GUI using the same renderer.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_i_renderer_8h_source.html">IRenderer.h</a>&gt;</code></p>
@@ -121,7 +121,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a9fb7e47eec7bd318172e9af56b777d7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates (without ownership) the GUI system compatible with the renderer.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This interface provides means to show graphics in the game and create the subsystems needed to create textures for the same renderer and GUI using the same renderer. The interface provides separate methods for rendering to meet the needs of different kind of renderers (initialize, load to gpu, present, for example). </p>
+<div class="textblock"><p>This interface provides means to show graphics in the game and create the subsystems needed to create textures for the same renderer and GUI using the same renderer. </p>
+<p>The interface provides separate methods for rendering to meet the needs of different kind of renderers (initialize, load to gpu, present, for example).</p>
+<p>Even if a single renderer is only planed to be used (in this case, SDL) this interface is still useful to inject a <a class="el" href="class_mochi_1_1_graphics_1_1_dummy_renderer.html">DummyRenderer</a> on Tests and be able to do integration tests without graphics. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a9fb7e47eec7bd318172e9af56b777d7d" name="a9fb7e47eec7bd318172e9af56b777d7d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9fb7e47eec7bd318172e9af56b777d7d">&#9670;&#160;</a></span>CreateGUI()</h2>
