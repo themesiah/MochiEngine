@@ -30,7 +30,7 @@ namespace Mochi::FS
 
     bool PackFile::IsValid() const
     {
-        return mHandler.is_open();
+        return mHandler && mHandler.is_open();
     }
 
     template <typename T>
@@ -147,10 +147,13 @@ namespace Mochi::FS
     std::vector<char> PackFile::GetFile(const std::string &path)
     {
         std::string normalizedPath = Utils::NormalizePath(path);
-        FileEntry meta = mHeader.HeaderMap[normalizedPath];
-        if (!mHandler)
+        if (!IsValid())
             throw EngineError("Packfile is not opened");
 
+        if (!HasFile(path))
+            throw EngineError("Packfile don't have that file");
+
+        FileEntry meta = mHeader.HeaderMap[normalizedPath];
         mHandler.seekg(mHeader.HeaderLength + meta.offset, std::ios::beg);
 
         std::vector<char> buffer(meta.size);

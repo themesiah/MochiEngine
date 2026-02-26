@@ -8,6 +8,15 @@
 
 #include "PackFile.h"
 
+/**
+ * Entry point of Packer.exe
+ * It parses arguments to pack or unpack folders of data.
+ * Usage:
+ * -h to get help
+ * -pack "path/to/folder" "path/to/pack.pak"
+ * -unpack "path/to/pack.pak" "path/to/output"
+ */
+
 int main(int argc, char *argv[])
 {
     if (argc <= 1)
@@ -53,11 +62,5 @@ int main(int argc, char *argv[])
     {
         throw std::runtime_error("No valid arguments provided. Use -h to show help.");
     }
-
-    /*size_t bytes = PackFile::Pack("Data", "Data.pak");
-    std::cout << "Packed correctly " << bytes << " bytes" << std::endl;
-    PackFile file("Data.pak");
-    file.Unpack("OutData");
-    std::cout << "Unpacked correctly" << std::endl;*/
     return 0;
 }

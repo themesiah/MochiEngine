@@ -1,5 +1,6 @@
 project(MochiEngine)
-# Get all .cpp files
+
+# Get all .cpp files in the engine
 file(GLOB Engine_src CONFIGURE_DEPENDS
         "src/Graphics/*.cpp"
         "src/Graphics/SDL/*.cpp"
@@ -17,16 +18,20 @@ file(GLOB Engine_src CONFIGURE_DEPENDS
         "src/*.hpp"
         "src/*.cpp")
 
+# Get debug .cpp files to use only on debug builds
 file(GLOB Debug_src CONFIGURE_DEPENDS "src/Debug/*.cpp")
 
+# Lua version needed to automatically download lua and use it with sol2
 set(LUA_VERSION "lua-5.4.7")
 add_subdirectory(Includes)
 
 add_subdirectory(Includes/FMOD EXCLUDE_FROM_ALL)
 add_subdirectory(src/Packer)
 
+# Adds source files and debug source files only if in debug
 add_library(Engine ${Engine_src} $<$<CONFIG:Debug>:${Debug_src}>)
 target_compile_features(Engine PUBLIC cxx_std_23)
+# A "DEBUG" definition is created and available in code if the game is in debug
 target_compile_definitions(Engine PUBLIC $<$<CONFIG:Debug>:DEBUG>)
 
 target_include_directories(Engine PUBLIC "Includes/FMOD")
@@ -49,6 +54,7 @@ target_compile_options(Engine PUBLIC
   "$<${msvc_cxx}:$<BUILD_INTERFACE:-W3>>"
 )
 
+# After building the library, copy the fmod dlls to the output folder.
 add_custom_command(
   TARGET Engine POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy
@@ -60,6 +66,7 @@ add_custom_command(
   COMMENT "Copying fmodstudio.dll and fmod.dll"
 )
 
+# After building the library, copy the core data folder to the output folder
 add_custom_command(
   TARGET Engine POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy_directory

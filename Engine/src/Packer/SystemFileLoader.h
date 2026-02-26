@@ -9,6 +9,9 @@
 
 namespace Mochi::FS
 {
+    /// @brief This class creates a very simple virtual file system from a directory.
+    /// This allows read access to all files in that directory referencing them from their path as a unique identifier.
+    /// As this doesn't give the benefits of asset obfuscation, it is only used on debug mode, and can't be configured at the moment.
     class SystemFileLoader : public IFileLoader
     {
     private:

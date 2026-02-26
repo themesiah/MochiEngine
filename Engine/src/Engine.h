@@ -1,32 +1,3 @@
-/*
-Main class of the MochiEngine. It owns and coordinates all subsystems and layers, and drives the application lifecycle.
-
-Ownership:
-- Engine has ownership of most of the subsystems.
-- Layers are created outside of the class and injected into the engine.
-
-Lifecycle:
-- Create with default constructor and call "Setup" after to initialize.
-    - Alternatively, call the constructor Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName) to initialize with default systems.
-- Call Run to start the main loop. Run will end automatically when the game receives an exit signal.
-- When created, Engine is a singleton accessible everywhere, providing centralized access to core subsystems and giving ability to inject layers and render commands.
-
-Guarantees:
-- Full initialization before entering the main loop. Failures in this step are detected early and exit the application.
-- Update is called each frame with a delta time
-- Subsystems are automatically updated
-- Layers are automatically managed and updated
-- Rendering is done once per frame, separated between Graphics and UI
-
-Thread safety:
-- This class is not thread-safe.
-
-Non responsible:
-- Game logic
-- Automatic rendering
-- Entity management
-*/
-
 #ifndef HDEF_ENGINE
 #define HDEF_ENGINE
 
@@ -82,6 +53,32 @@ namespace Mochi
     }
     class Layer;
 
+    /// @brief Main class of the MochiEngine. It owns and coordinates all subsystems and layers, and drives the application lifecycle.
+    ///
+    /// Ownership:
+    /// - Engine has ownership of most of the subsystems.
+    /// - Layers are created outside of the class and injected into the engine.
+    ///
+    /// Lifecycle:
+    /// - Create with default constructor and call "Setup" after to initialize.
+    ///     - Alternatively, call the constructor Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName) to initialize with default systems.
+    /// - Call Run to start the main loop. Run will end automatically when the game receives an exit signal.
+    /// - When created, Engine is a singleton accessible everywhere, providing centralized access to core subsystems and giving ability to inject layers and render commands.
+    ///
+    /// Guarantees:
+    /// - Full initialization before entering the main loop. Failures in this step are detected early and exit the application.
+    /// - Update is called each frame with a delta time
+    /// - Subsystems are automatically updated
+    /// - Layers are automatically managed and updated
+    /// - Rendering is done once per frame, separated between Graphics and UI
+    ///
+    /// Thread safety:
+    /// - This class is not thread-safe.
+    ///
+    /// Non responsible:
+    /// - Game logic
+    /// - Automatic rendering
+    /// - Entity management
     class Engine
     {
     private:
@@ -151,6 +148,7 @@ namespace Mochi
         void Setup(std::unique_ptr<Graphics::IRenderer> &&renderer, std::unique_ptr<Input::IActionManager> &&actionManager, std::unique_ptr<Audio::IAudioManager> &&audioManager);
 
         /// @brief Pushes a layer in the list of layers to initialize. Then initializes it at the end of the frame and gets ownership of it to update it each frame.
+        /// The same layer should only be pushed once. However, several instances of the same layer type can be pushed safely.
         /// @param layer A pointer to the layer. Note that several layers of the same type can be active at a time and is the user responsability to manage which layers to push.
         void PushLayer(Layer *layer);
 
