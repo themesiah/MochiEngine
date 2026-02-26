@@ -30,6 +30,8 @@ namespace Mochi::Graphics
      * Item Filename: {tag}_{tagframe}
      *
      * Item Tagname: {tag}
+     *
+     * Check AsepriteExport.png
      */
     class AsepriteAnimationFactory : public IAnimationFactory
     {

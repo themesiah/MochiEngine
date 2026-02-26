@@ -24,10 +24,15 @@ namespace Mochi::Graphics
     class Camera;
     class AbstractTextureFactory;
     class AbstractGUI;
-
-    /// @brief This interface provides means to show graphics in the game and create the subsystems needed to create textures
-    /// for the same renderer and GUI using the same renderer.
-    /// The interface provides separate methods for rendering to meet the needs of different kind of renderers (initialize, load to gpu, present, for example).
+    /**
+     * @brief This interface provides means to show graphics in the game and create the subsystems needed to create textures
+     * for the same renderer and GUI using the same renderer.
+     *
+     * The interface provides separate methods for rendering to meet the needs of different kind of renderers (initialize, load to gpu, present, for example).
+     *
+     * Even if a single renderer is only planed to be used (in this case, SDL) this interface is still useful to inject a DummyRenderer on Tests and be able to do
+     * integration tests without graphics.
+     */
     class IRenderer
     {
     public:
