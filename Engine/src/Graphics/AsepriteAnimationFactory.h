@@ -17,21 +17,9 @@ namespace Mochi::Graphics
     /**
      * @brief This AnimationFactory takes Aseprites spritesheet export format and automatically generates all needed animation data for that spritesheet.
      *
-     * Animation data is expected as a JSON with specific configuration:
+     * Animation data is expected as a JSON with specific configuration as shown in the image.
      *
-     * Sheet Type: Packed
-     *
-     * Split Layers: False
-     *
-     * Split Tags: False
-     *
-     * Array, Meta Tags
-     *
-     * Item Filename: {tag}_{tagframe}
-     *
-     * Item Tagname: {tag}
-     *
-     * Check AsepriteExport.png
+     * ![img def](@ref ./AsepriteExport.png)
      */
     class AsepriteAnimationFactory : public IAnimationFactory
     {

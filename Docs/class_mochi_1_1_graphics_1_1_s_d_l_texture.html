@@ -17,7 +17,9 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -91,6 +93,11 @@ $(function(){initNavTree('class_mochi_1_1_graphics_1_1_s_d_l_texture.html','','c
   <div class="headertitle"><div class="title">Mochi::Graphics::SDLTexture Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>An implementation of <a class="el" href="class_mochi_1_1_graphics_1_1_i_texture.html" title="A texture interface to be implemented by renderer specific textures.">ITexture</a> used by <a class="el" href="class_mochi_1_1_graphics_1_1_s_d_l_renderer.html" title="This class allows rendering with SDL3 in &quot;the simple way&quot;, that is showing textures with SDL_RenderTe...">SDLRenderer</a>.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_s_d_l_texture_8h_source.html">SDLTexture.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Mochi::Graphics::SDLTexture:</div>
 <div class="dyncontent">
@@ -110,7 +117,18 @@ Public Member Functions</h2></td></tr>
 SDL_Texture *&#160;</td><td class="memItemRight"><b>GetTexture</b> () const</td></tr>
 <tr class="memitem:aa7b6d3cc66304645fb4a0f38db5e67a4" id="r_aa7b6d3cc66304645fb4a0f38db5e67a4"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#aa7b6d3cc66304645fb4a0f38db5e67a4">SetAlpha</a> (const uint8_t &amp;alpha) override</td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>An implementation of <a class="el" href="class_mochi_1_1_graphics_1_1_i_texture.html" title="A texture interface to be implemented by renderer specific textures.">ITexture</a> used by <a class="el" href="class_mochi_1_1_graphics_1_1_s_d_l_renderer.html" title="This class allows rendering with SDL3 in &quot;the simple way&quot;, that is showing textures with SDL_RenderTe...">SDLRenderer</a>. </p>
+<p>NOTE: Do not mistake <a class="el" href="class_mochi_1_1_graphics_1_1_s_d_l_texture.html" title="An implementation of ITexture used by SDLRenderer.">SDLTexture</a> (this) with SDL_Texture (the struct used internally by SDL)</p>
+<p>Ownership:</p>
+<ul>
+<li><a class="el" href="class_mochi_1_1_graphics_1_1_s_d_l_texture.html" title="An implementation of ITexture used by SDLRenderer.">SDLTexture</a> has complete ownership of SDL_Texture. It is <a class="el" href="class_mochi_1_1_graphics_1_1_s_d_l_texture.html" title="An implementation of ITexture used by SDLRenderer.">SDLTexture</a> which is shared between factories and sprites.</li>
+</ul>
+<p>Guarantees:</p>
+<ul>
+<li>The SDL_Texture will be destroyed at the end of <a class="el" href="class_mochi_1_1_graphics_1_1_s_d_l_texture.html" title="An implementation of ITexture used by SDLRenderer.">SDLTexture</a> lifetime. </li>
+</ul>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a8ab1828b8f3336bb0915c4ef50eb5cae" name="a8ab1828b8f3336bb0915c4ef50eb5cae"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8ab1828b8f3336bb0915c4ef50eb5cae">&#9670;&#160;</a></span>GetSize()</h2>
 

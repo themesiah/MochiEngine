@@ -7,7 +7,7 @@ var searchData=
   ['sdlgui_4',['SDLGUI',['../class_mochi_1_1_graphics_1_1_s_d_l_g_u_i.html',1,'Mochi::Graphics']]],
   ['sdlkeyboardprovider_5',['SDLKeyboardProvider',['../class_mochi_1_1_input_1_1_s_d_l_keyboard_provider.html',1,'Mochi::Input']]],
   ['sdlmouseprovider_6',['SDLMouseProvider',['../class_mochi_1_1_input_1_1_s_d_l_mouse_provider.html',1,'Mochi::Input']]],
-  ['sdlrenderer_7',['SDLRenderer',['../class_mochi_1_1_graphics_1_1_s_d_l_renderer.html',1,'Mochi::Graphics']]],
+  ['sdlrenderer_7',['SDLRenderer',['../class_mochi_1_1_graphics_1_1_s_d_l_renderer.html',1,'Mochi::Graphics::SDLRenderer'],['../class_mochi_1_1_graphics_1_1_s_d_l_renderer.html#ab153be5d27814b674bfb7a532bb3fede',1,'Mochi::Graphics::SDLRenderer::SDLRenderer()']]],
   ['sdlsystemeventdispatcher_8',['SDLSystemEventDispatcher',['../class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher.html',1,'Mochi::Event']]],
   ['sdltexture_9',['SDLTexture',['../class_mochi_1_1_graphics_1_1_s_d_l_texture.html',1,'Mochi::Graphics']]],
   ['sdltexturefactory_10',['SDLTextureFactory',['../class_mochi_1_1_graphics_1_1_s_d_l_texture_factory.html',1,'Mochi::Graphics']]],

@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "MochiEngine", "index.html", [
+    [ "MochiEngine Documentation", "index.html", "index" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -44,7 +45,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_abstract_g_u_i_8h_source.html",
-"struct_mochi_1_1_graphics_1_1_g_u_i_text_options.html"
+"struct_mochi_1_1_graphics_1_1_g_u_i_options.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

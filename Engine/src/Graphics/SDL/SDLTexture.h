@@ -9,6 +9,19 @@
 
 namespace Mochi::Graphics
 {
+    /**
+     * @brief An implementation of ITexture used by SDLRenderer.
+     *
+     * NOTE: Do not mistake SDLTexture (this) with SDL_Texture (the struct used internally by SDL)
+     *
+     * Ownership:
+     *
+     * - SDLTexture has complete ownership of SDL_Texture. It is SDLTexture which is shared between factories and sprites.
+     *
+     * Guarantees:
+     *
+     * - The SDL_Texture will be destroyed at the end of SDLTexture lifetime.
+     */
     class SDLTexture : public ITexture
     {
     public:

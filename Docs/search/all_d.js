@@ -7,5 +7,6 @@ var searchData=
   ['rendererswappedevent_4',['RendererSwappedEvent',['../struct_mochi_1_1_renderer_swapped_event.html',1,'Mochi']]],
   ['resourcenotfounderror_5',['ResourceNotFoundError',['../class_mochi_1_1_resource_not_found_error.html',1,'Mochi']]],
   ['resume_6',['Resume',['../class_mochi_1_1_engine.html#a1c4b0466ffb0f2c58cad94dd85413b2b',1,'Mochi::Engine']]],
-  ['run_7',['Run',['../class_mochi_1_1_engine.html#a8607f25ed8f2f147e0392fd6e3f7b3df',1,'Mochi::Engine']]]
+  ['reviewing_7',['Things Worth Reviewing',['../index.html#autotoc_md1',1,'']]],
+  ['run_8',['Run',['../class_mochi_1_1_engine.html#a8607f25ed8f2f147e0392fd6e3f7b3df',1,'Mochi::Engine']]]
 ];
