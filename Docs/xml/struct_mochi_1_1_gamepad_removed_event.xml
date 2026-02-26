@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_mochi_1_1_gamepad_removed_event" kind="struct" language="C++" prot="public">
+    <compoundname>Mochi::GamepadRemovedEvent</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_mochi_1_1_gamepad_removed_event_1a24ddfe2a85020a6443cec9123f460591" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int Mochi::GamepadRemovedEvent::GamepadID</definition>
+        <argsstring></argsstring>
+        <name>GamepadID</name>
+        <qualifiedname>Mochi::GamepadRemovedEvent::GamepadID</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/EngineEvents.h" line="34" column="22" bodyfile="Engine/src/Event/EngineEvents.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Event/EngineEvents.h" line="32" column="5" bodyfile="Engine/src/Event/EngineEvents.h" bodystart="33" bodyend="35"/>
+    <listofallmembers>
+      <member refid="struct_mochi_1_1_gamepad_removed_event_1a24ddfe2a85020a6443cec9123f460591" prot="public" virt="non-virtual"><scope>Mochi::GamepadRemovedEvent</scope><name>GamepadID</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

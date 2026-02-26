@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__s_d_l_texture_factory_8h_source" xml:lang="en-US">
+<title>SDLTextureFactory.h</title>
+<indexterm><primary>Engine/src/Graphics/SDL/SDLTextureFactory.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_TEXTUREFACTORY</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_TEXTUREFACTORY</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;memory&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;unordered_map&gt;</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+7 
+8 <emphasis role="preprocessor">#include&#32;&quot;../AbstractTextureFactory.h&quot;</emphasis>
+9 
+10 <emphasis role="preprocessor">#include&#32;&quot;SDL3/SDL.h&quot;</emphasis>
+11 
+12 <emphasis role="comment">//&#32;struct&#32;SDL_Renderer;</emphasis>
+13 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::FS
+14 {
+15 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">PackCatalog</link>;
+16 }
+17 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Graphics
+18 {
+19 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_s_d_l_renderer">SDLRenderer</link>;
+20 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>SDLTextureFactory&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;AbstractTextureFactory
+21 &#32;&#32;&#32;&#32;{
+22 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">friend</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis>SDLRenderer;
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SDLTextureFactory(<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link>&#32;*catalog,&#32;SDL_Renderer&#32;*renderer);
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link>&#32;*mCatalog;
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SDL_Renderer&#32;*mRenderer;
+27 
+28 &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>:
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;std::shared_ptr&lt;ITexture&gt;&#32;<link linkend="_class_mochi_1_1_graphics_1_1_s_d_l_texture_factory_1aa1f557a049b3a67cca4e0b0e753de739">LoadTexture</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;texturePath)&#32;<emphasis role="keyword">override</emphasis>;
+30 
+31 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;~SDLTextureFactory();
+33 &#32;&#32;&#32;&#32;};
+34 }
+35 
+36 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

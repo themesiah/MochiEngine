@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_mochi_1_1_input_1_1_gamepad_data" xml:lang="en-US">
+<title>Mochi::Input::GamepadData Struct Reference</title>
+<indexterm><primary>Mochi::Input::GamepadData</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_input_1_1_gamepad_data_1a38c54586ae503e15ccd1fe20d90e4fe7"/>std::array&lt; float, GamepadAxis::GAMEPAD_AXIS_COUNT &gt; <emphasis role="strong">AxisData</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_input_1_1_gamepad_data_1aa9cacedfed2fac94a3c57d970ea5b421"/>std::array&lt; bool, GamepadButton::GAMEPAD_BUTTON_COUNT &gt; <emphasis role="strong">ButtonsData</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+Engine/src/Input/InputCommons.h</section>

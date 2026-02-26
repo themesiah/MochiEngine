@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_mochi_1_1_graphics_1_1_g_u_i_button_options" xml:lang="en-US">
+<title>Mochi::Graphics::GUIButtonOptions Struct Reference</title>
+<indexterm><primary>Mochi::Graphics::GUIButtonOptions</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_graphics_1_1_g_u_i_button_options_1a50e8342a13c9ea998e6a63efd039aea7"/><link linkend="_struct_mochi_1_1_graphics_1_1_g_u_i_options">GUIOptions</link> <emphasis role="strong">BaseOptions</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_graphics_1_1_g_u_i_button_options_1a8f28a815e33a440e662e61bbf8bb5765"/><link linkend="_struct_mochi_1_1_graphics_1_1_g_u_i_options">GUIOptions</link> <emphasis role="strong">FocusedOptions</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_graphics_1_1_g_u_i_button_options_1a57a9fce50928074c05951c4e10414088"/><link linkend="_struct_mochi_1_1_graphics_1_1_g_u_i_options">GUIOptions</link> <emphasis role="strong">PressedOptions</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+Engine/src/GUI/GUICommon.hpp</section>

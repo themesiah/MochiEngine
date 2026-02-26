@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_mochi_1_1_f_s_1_1_pack_header" kind="struct" language="C++" prot="public">
+    <compoundname>Mochi::FS::PackHeader</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_mochi_1_1_f_s_1_1_pack_header_1ab8e22d7efc147f47b234a949e667e782" prot="public" static="no" mutable="no">
+        <type>PackHeaderLength_t</type>
+        <definition>PackHeaderLength_t Mochi::FS::PackHeader::HeaderLength</definition>
+        <argsstring></argsstring>
+        <name>HeaderLength</name>
+        <qualifiedname>Mochi::FS::PackHeader::HeaderLength</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/PackFile.h" line="32" column="28" bodyfile="Engine/src/Packer/PackFile.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_f_s_1_1_pack_header_1a4d0d0a84349b74b98038913675885c0b" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Mochi::FS::PackHeader::BlobSize</definition>
+        <argsstring></argsstring>
+        <name>BlobSize</name>
+        <qualifiedname>Mochi::FS::PackHeader::BlobSize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/PackFile.h" line="33" column="16" bodyfile="Engine/src/Packer/PackFile.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_f_s_1_1_pack_header_1a04ae88635aba01d4267515002256f233" prot="public" static="no" mutable="no">
+        <type>Header_t</type>
+        <definition>Header_t Mochi::FS::PackHeader::HeaderMap</definition>
+        <argsstring></argsstring>
+        <name>HeaderMap</name>
+        <qualifiedname>Mochi::FS::PackHeader::HeaderMap</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/PackFile.h" line="34" column="18" bodyfile="Engine/src/Packer/PackFile.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Packer/PackFile.h" line="30" column="5" bodyfile="Engine/src/Packer/PackFile.h" bodystart="31" bodyend="35"/>
+    <listofallmembers>
+      <member refid="struct_mochi_1_1_f_s_1_1_pack_header_1a4d0d0a84349b74b98038913675885c0b" prot="public" virt="non-virtual"><scope>Mochi::FS::PackHeader</scope><name>BlobSize</name></member>
+      <member refid="struct_mochi_1_1_f_s_1_1_pack_header_1ab8e22d7efc147f47b234a949e667e782" prot="public" virt="non-virtual"><scope>Mochi::FS::PackHeader</scope><name>HeaderLength</name></member>
+      <member refid="struct_mochi_1_1_f_s_1_1_pack_header_1a04ae88635aba01d4267515002256f233" prot="public" virt="non-virtual"><scope>Mochi::FS::PackHeader</scope><name>HeaderMap</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

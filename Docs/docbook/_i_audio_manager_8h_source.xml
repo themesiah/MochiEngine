@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__i_audio_manager_8h_source" xml:lang="en-US">
+<title>IAudioManager.h</title>
+<indexterm><primary>Engine/src/Audio/IAudioManager.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_IAUDIOMANAGER</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_IAUDIOMANAGER</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+5 
+6 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Audio
+7 {
+8 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_audio_1_1_i_audio_manager">IAudioManager</link>
+9 &#32;&#32;&#32;&#32;{
+10 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+11 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_mochi_1_1_audio_1_1_i_audio_manager">~IAudioManager</link>()&#32;{};
+12 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Update(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;&amp;dt)&#32;=&#32;0;
+13 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;LoadAudio(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;path)&#32;=&#32;0;
+14 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;UnloadAudio(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;path)&#32;=&#32;0;
+15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;PlayBGM(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;audioName)&#32;=&#32;0;
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;PauseBGM()&#32;=&#32;0;
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;StopBGM()&#32;=&#32;0;
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;ResumeBGM()&#32;=&#32;0;
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SkipToTimelinePosition(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;&amp;ms)&#32;=&#32;0;
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;PlayOneShot(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;audioName)&#32;=&#32;0;
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetParameter(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;parameterName,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;&amp;value)&#32;=&#32;0;
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetMixerVolume(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;mixerGroupName,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;&amp;value)&#32;=&#32;0;
+23 &#32;&#32;&#32;&#32;};
+24 }
+25 
+26 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_2a4ad0145a90bf69bcbcd4f9afa438f9" kind="dir">
+    <compoundname>Engine/src/Scripting</compoundname>
+    <innerfile refid="_lua_bindings_8cpp">LuaBindings.cpp</innerfile>
+    <innerfile refid="_lua_bindings_8h">LuaBindings.h</innerfile>
+    <innerfile refid="_scripting_layer_8cpp">ScriptingLayer.cpp</innerfile>
+    <innerfile refid="_scripting_layer_8h">ScriptingLayer.h</innerfile>
+    <innerfile refid="_scripting_manager_8cpp">ScriptingManager.cpp</innerfile>
+    <innerfile refid="_scripting_manager_8h">ScriptingManager.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Scripting/"/>
+  </compounddef>
+</doxygen>

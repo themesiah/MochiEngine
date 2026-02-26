@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_mochi_1_1_graphics_1_1_g_u_i_result_button" kind="struct" language="C++" prot="public">
+    <compoundname>Mochi::Graphics::GUIResultButton</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_g_u_i_result_button_1a559dac56fad0748d11053b06038eb945" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_mochi_1_1_rectf" kindref="compound">Rectf</ref></type>
+        <definition>Rectf Mochi::Graphics::GUIResultButton::FinalRect</definition>
+        <argsstring></argsstring>
+        <name>FinalRect</name>
+        <qualifiedname>Mochi::Graphics::GUIResultButton::FinalRect</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/GUICommon.hpp" line="63" column="15" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_g_u_i_result_button_1a6bd9e288157dd2e1ed0696e6558ceec9" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Mochi::Graphics::GUIResultButton::Focus</definition>
+        <argsstring></argsstring>
+        <name>Focus</name>
+        <qualifiedname>Mochi::Graphics::GUIResultButton::Focus</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/GUICommon.hpp" line="64" column="14" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_g_u_i_result_button_1ac18749589a71305f495638565fa37bdd" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Mochi::Graphics::GUIResultButton::Pressed</definition>
+        <argsstring></argsstring>
+        <name>Pressed</name>
+        <qualifiedname>Mochi::Graphics::GUIResultButton::Pressed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/GUICommon.hpp" line="65" column="14" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_g_u_i_result_button_1ae2f30dc65ea93e46a002d2648a789bc5" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Mochi::Graphics::GUIResultButton::Released</definition>
+        <argsstring></argsstring>
+        <name>Released</name>
+        <qualifiedname>Mochi::Graphics::GUIResultButton::Released</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/GUICommon.hpp" line="66" column="14" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Mochi::Graphics::GUIResultButton</label>
+        <link refid="struct_mochi_1_1_graphics_1_1_g_u_i_result_button"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>FinalRect</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mochi::Rectf</label>
+        <link refid="struct_mochi_1_1_rectf"/>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/GUI/GUICommon.hpp" line="61" column="5" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="62" bodyend="67"/>
+    <listofallmembers>
+      <member refid="struct_mochi_1_1_graphics_1_1_g_u_i_result_button_1a559dac56fad0748d11053b06038eb945" prot="public" virt="non-virtual"><scope>Mochi::Graphics::GUIResultButton</scope><name>FinalRect</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_g_u_i_result_button_1a6bd9e288157dd2e1ed0696e6558ceec9" prot="public" virt="non-virtual"><scope>Mochi::Graphics::GUIResultButton</scope><name>Focus</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_g_u_i_result_button_1ac18749589a71305f495638565fa37bdd" prot="public" virt="non-virtual"><scope>Mochi::Graphics::GUIResultButton</scope><name>Pressed</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_g_u_i_result_button_1ae2f30dc65ea93e46a002d2648a789bc5" prot="public" virt="non-virtual"><scope>Mochi::Graphics::GUIResultButton</scope><name>Released</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

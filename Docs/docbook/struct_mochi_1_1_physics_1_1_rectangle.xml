@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_mochi_1_1_physics_1_1_rectangle" xml:lang="en-US">
+<title>Mochi::Physics::Rectangle Struct Reference</title>
+<indexterm><primary>Mochi::Physics::Rectangle</primary></indexterm>
+<para>Inheritance diagram for Mochi::Physics::Rectangle:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="struct_mochi_1_1_physics_1_1_rectangle.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_physics_1_1_rectangle_1a200dfb492e85e0deebf8c24f89cddf6a"/><emphasis role="strong">Rectangle</emphasis> (const <link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> &amp;position, const <link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> &amp;extents)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_physics_1_1_rectangle_1a5c42e5611289c73197f6e68b8809534e"/><emphasis role="strong">Rectangle</emphasis> (const <link linkend="_struct_mochi_1_1_rectf">Rectf</link> &amp;rect)</para>
+</listitem>
+            <listitem><para>virtual std::unique_ptr&lt; Shape &gt; <link linkend="_struct_mochi_1_1_physics_1_1_rectangle_1a6411aee4ddb3f605d820be0def59d3f0">Clone</link> () const override</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_struct_mochi_1_1_physics_1_1_rectangle_1aaa371a1b88ffadf4ee9c8df63cdef441">IsColliding</link> (const Shape &amp;other) const override</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_struct_mochi_1_1_physics_1_1_rectangle_1a514a4eafa9522ed0835f933063ef6d15">Collides</link> (const <link linkend="_struct_mochi_1_1_physics_1_1_point">Point</link> &amp;p) const override</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_struct_mochi_1_1_physics_1_1_rectangle_1af409ec9844adb4bf1fe9faf03c42cf51">Collides</link> (const <link linkend="_struct_mochi_1_1_physics_1_1_line">Line</link> &amp;l) const override</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_struct_mochi_1_1_physics_1_1_rectangle_1aa27b617ec142d9f0a412b428e5243ddd">Collides</link> (const <link linkend="_struct_mochi_1_1_physics_1_1_circle">Circle</link> &amp;c) const override</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_struct_mochi_1_1_physics_1_1_rectangle_1a10ac8a032457f120c22e09e07d0e6484">Collides</link> (const Rectangle &amp;r) const override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_struct_mochi_1_1_physics_1_1_shape">Mochi::Physics::Shape</link>        <itemizedlist>
+            <listitem><para><emphasis role="strong">Shape</emphasis> (const <link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> &amp;position)</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_physics_1_1_rectangle_1a1231d03aac99649641d0d1020424e96b"/><link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> <emphasis role="strong">Extents</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Attributes inherited from <link linkend="_struct_mochi_1_1_physics_1_1_shape">Mochi::Physics::Shape</link>        <itemizedlist>
+            <listitem><para><link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> <emphasis role="strong">Position</emphasis></para>
+</listitem>
+        </itemizedlist>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_struct_mochi_1_1_physics_1_1_rectangle_1a6411aee4ddb3f605d820be0def59d3f0"/><section>
+    <title>Clone()</title>
+<indexterm><primary>Clone</primary><secondary>Mochi::Physics::Rectangle</secondary></indexterm>
+<indexterm><primary>Mochi::Physics::Rectangle</primary><secondary>Clone</secondary></indexterm>
+<para><computeroutput>std::unique_ptr&lt; Shape &gt; Mochi::Physics::Rectangle::Clone ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_struct_mochi_1_1_physics_1_1_shape">Mochi::Physics::Shape</link>.</para>
+</section>
+<anchor xml:id="_struct_mochi_1_1_physics_1_1_rectangle_1aa27b617ec142d9f0a412b428e5243ddd"/><section>
+    <title>Collides()<computeroutput>[1/4]</computeroutput></title>
+<indexterm><primary>Collides</primary><secondary>Mochi::Physics::Rectangle</secondary></indexterm>
+<indexterm><primary>Mochi::Physics::Rectangle</primary><secondary>Collides</secondary></indexterm>
+<para><computeroutput>bool Mochi::Physics::Rectangle::Collides (const <link linkend="_struct_mochi_1_1_physics_1_1_circle">Circle</link> &amp; c) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_struct_mochi_1_1_physics_1_1_shape">Mochi::Physics::Shape</link>.</para>
+</section>
+<anchor xml:id="_struct_mochi_1_1_physics_1_1_rectangle_1af409ec9844adb4bf1fe9faf03c42cf51"/><section>
+    <title>Collides()<computeroutput>[2/4]</computeroutput></title>
+<indexterm><primary>Collides</primary><secondary>Mochi::Physics::Rectangle</secondary></indexterm>
+<indexterm><primary>Mochi::Physics::Rectangle</primary><secondary>Collides</secondary></indexterm>
+<para><computeroutput>bool Mochi::Physics::Rectangle::Collides (const <link linkend="_struct_mochi_1_1_physics_1_1_line">Line</link> &amp; l) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_struct_mochi_1_1_physics_1_1_shape">Mochi::Physics::Shape</link>.</para>
+</section>
+<anchor xml:id="_struct_mochi_1_1_physics_1_1_rectangle_1a514a4eafa9522ed0835f933063ef6d15"/><section>
+    <title>Collides()<computeroutput>[3/4]</computeroutput></title>
+<indexterm><primary>Collides</primary><secondary>Mochi::Physics::Rectangle</secondary></indexterm>
+<indexterm><primary>Mochi::Physics::Rectangle</primary><secondary>Collides</secondary></indexterm>
+<para><computeroutput>bool Mochi::Physics::Rectangle::Collides (const <link linkend="_struct_mochi_1_1_physics_1_1_point">Point</link> &amp; p) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_struct_mochi_1_1_physics_1_1_shape">Mochi::Physics::Shape</link>.</para>
+</section>
+<anchor xml:id="_struct_mochi_1_1_physics_1_1_rectangle_1a10ac8a032457f120c22e09e07d0e6484"/><section>
+    <title>Collides()<computeroutput>[4/4]</computeroutput></title>
+<indexterm><primary>Collides</primary><secondary>Mochi::Physics::Rectangle</secondary></indexterm>
+<indexterm><primary>Mochi::Physics::Rectangle</primary><secondary>Collides</secondary></indexterm>
+<para><computeroutput>bool Mochi::Physics::Rectangle::Collides (const Rectangle &amp; r) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_struct_mochi_1_1_physics_1_1_shape">Mochi::Physics::Shape</link>.</para>
+</section>
+<anchor xml:id="_struct_mochi_1_1_physics_1_1_rectangle_1aaa371a1b88ffadf4ee9c8df63cdef441"/><section>
+    <title>IsColliding()</title>
+<indexterm><primary>IsColliding</primary><secondary>Mochi::Physics::Rectangle</secondary></indexterm>
+<indexterm><primary>Mochi::Physics::Rectangle</primary><secondary>IsColliding</secondary></indexterm>
+<para><computeroutput>bool Mochi::Physics::Rectangle::IsColliding (const Shape &amp; other) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_struct_mochi_1_1_physics_1_1_shape">Mochi::Physics::Shape</link>.</para>
+</section>
+<para>
+The documentation for this struct was generated from the following files:</para>
+Engine/src/Physics/Shapes.hEngine/src/Physics/Shapes.cpp</section>
+</section>

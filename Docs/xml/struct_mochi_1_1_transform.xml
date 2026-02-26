@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_mochi_1_1_transform" kind="struct" language="C++" prot="public">
+    <compoundname>Mochi::Transform</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_mochi_1_1_transform_1a1ad3c73859358701e277e4b51173fcf2" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref></type>
+        <definition>Vector2f Mochi::Transform::Position</definition>
+        <argsstring></argsstring>
+        <name>Position</name>
+        <qualifiedname>Mochi::Transform::Position</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Transform.hpp" line="10" column="18" bodyfile="Engine/src/Types/Transform.hpp" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_transform_1a8876b0e710696ab69ee12e4e38a40268" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mochi::Transform::Scale</definition>
+        <argsstring></argsstring>
+        <name>Scale</name>
+        <qualifiedname>Mochi::Transform::Scale</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Transform.hpp" line="11" column="15" bodyfile="Engine/src/Types/Transform.hpp" bodystart="11" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_mochi_1_1_transform_1a993244a270173160fdb4c128ebf1e089" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mochi::Transform::Move</definition>
+        <argsstring>(const Vector2f &amp;delta)</argsstring>
+        <name>Move</name>
+        <qualifiedname>Mochi::Transform::Move</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref> &amp;</type>
+          <declname>delta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Transform.hpp" line="12" column="14" bodyfile="Engine/src/Types/Transform.hpp" bodystart="12" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_transform_1a1e014cbffab637dbf94d550fb37b5f57" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Transform::Transform</definition>
+        <argsstring>()</argsstring>
+        <name>Transform</name>
+        <qualifiedname>Mochi::Transform::Transform</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Transform.hpp" line="13" column="9" bodyfile="Engine/src/Types/Transform.hpp" bodystart="13" bodyend="13"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Mochi::Transform</label>
+        <link refid="struct_mochi_1_1_transform"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>Position</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mochi::Vector2f</label>
+        <link refid="struct_mochi_1_1_vector2f"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>Down</edgelabel>
+          <edgelabel>Left</edgelabel>
+          <edgelabel>One</edgelabel>
+          <edgelabel>Right</edgelabel>
+          <edgelabel>Up</edgelabel>
+          <edgelabel>Zero</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Types/Transform.hpp" line="8" column="5" bodyfile="Engine/src/Types/Transform.hpp" bodystart="9" bodyend="14"/>
+    <listofallmembers>
+      <member refid="struct_mochi_1_1_transform_1a993244a270173160fdb4c128ebf1e089" prot="public" virt="non-virtual"><scope>Mochi::Transform</scope><name>Move</name></member>
+      <member refid="struct_mochi_1_1_transform_1a1ad3c73859358701e277e4b51173fcf2" prot="public" virt="non-virtual"><scope>Mochi::Transform</scope><name>Position</name></member>
+      <member refid="struct_mochi_1_1_transform_1a8876b0e710696ab69ee12e4e38a40268" prot="public" virt="non-virtual"><scope>Mochi::Transform</scope><name>Scale</name></member>
+      <member refid="struct_mochi_1_1_transform_1a1e014cbffab637dbf94d550fb37b5f57" prot="public" virt="non-virtual"><scope>Mochi::Transform</scope><name>Transform</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

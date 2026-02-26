@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_mochi_1_1_application_quit_event" kind="struct" language="C++" prot="public">
+    <compoundname>Mochi::ApplicationQuitEvent</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Event/EngineEvents.h" line="24" column="5" bodyfile="Engine/src/Event/EngineEvents.h" bodystart="25" bodyend="26"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

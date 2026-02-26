@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__abstract_texture_factory_8h_source" xml:lang="en-US">
+<title>AbstractTextureFactory.h</title>
+<indexterm><primary>Engine/src/Graphics/AbstractTextureFactory.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_ABSTRACTTEXTUREFACTORY</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_ABSTRACTTEXTUREFACTORY</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;memory&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&lt;unordered_map&gt;</emphasis>
+7 
+8 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Graphics
+9 {
+10 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_i_texture">ITexture</link>;
+31 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>AbstractTextureFactory
+32 &#32;&#32;&#32;&#32;{
+33 &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>:
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::unordered_map&lt;std::string,&#32;std::shared_ptr&lt;ITexture&gt;&gt;&#32;mTexturesMap;
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;std::shared_ptr&lt;ITexture&gt;&#32;<link linkend="_class_mochi_1_1_graphics_1_1_abstract_texture_factory_1ad5bd8a4ebfa5b8bf0342593e6ab458de">LoadTexture</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;texturePath)&#32;=&#32;0;
+40 
+41 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;AbstractTextureFactory();
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;~AbstractTextureFactory();
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::shared_ptr&lt;ITexture&gt;&#32;<link linkend="_class_mochi_1_1_graphics_1_1_abstract_texture_factory_1aa5071adc90bb9efaeaa749d273d01724">GetTexture</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;texturePath);
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_mochi_1_1_graphics_1_1_abstract_texture_factory_1a311bcb940cfced4ccb69a297e74748f7">DeleteCache</link>();
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_mochi_1_1_graphics_1_1_abstract_texture_factory_1a456af37bfaf4dcf55ad0df412ed17888">DeleteTexture</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;texturePath);
+54 &#32;&#32;&#32;&#32;};
+55 }
+56 
+57 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

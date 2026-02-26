@@ -1,0 +1,277 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_audio_1_1_i_audio_manager" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>Mochi::Audio::IAudioManager</compoundname>
+    <derivedcompoundref refid="class_mochi_1_1_audio_1_1_dummy_audio_manager" prot="public" virt="non-virtual">Mochi::Audio::DummyAudioManager</derivedcompoundref>
+    <derivedcompoundref refid="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper" prot="public" virt="non-virtual">Mochi::Audio::FMODWrapper</derivedcompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_i_audio_manager_1a13465a3b824f28348972037be648507c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Mochi::Audio::IAudioManager::~IAudioManager</definition>
+        <argsstring>()</argsstring>
+        <name>~IAudioManager</name>
+        <qualifiedname>Mochi::Audio::IAudioManager::~IAudioManager</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/IAudioManager.h" line="11" column="17" bodyfile="Engine/src/Audio/IAudioManager.h" bodystart="11" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_i_audio_manager_1a60a100b63a20c4e021403aed76f1a609" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::IAudioManager::Update</definition>
+        <argsstring>(const float &amp;dt)=0</argsstring>
+        <name>Update</name>
+        <qualifiedname>Mochi::Audio::IAudioManager::Update</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a12e1a1d98ea1d32d7c4b23942fbfd04d">Update</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1a49d33aca4f9a6626573e004ca2f06c34">Update</reimplementedby>
+        <param>
+          <type>const float &amp;</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/IAudioManager.h" line="12" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_i_audio_manager_1aa38cd1d9b2654083ca1ed178fa459dfa" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::IAudioManager::LoadAudio</definition>
+        <argsstring>(const std::string &amp;path)=0</argsstring>
+        <name>LoadAudio</name>
+        <qualifiedname>Mochi::Audio::IAudioManager::LoadAudio</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a826ac7b22da3c404349afc7ea7628831">LoadAudio</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1acce9c4f69f92630f6b6eb61738811b69">LoadAudio</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/IAudioManager.h" line="13" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_i_audio_manager_1a6421aef4a91b399c1f05464d980590ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::IAudioManager::UnloadAudio</definition>
+        <argsstring>(const std::string &amp;path)=0</argsstring>
+        <name>UnloadAudio</name>
+        <qualifiedname>Mochi::Audio::IAudioManager::UnloadAudio</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a289736f2b6b0a6e7e32dc53135257d8c">UnloadAudio</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1ad4edd7769e5f9506aceea1876741db04">UnloadAudio</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/IAudioManager.h" line="14" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_i_audio_manager_1a696e2a8c879fd8daa298553cd944720f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::IAudioManager::PlayBGM</definition>
+        <argsstring>(const std::string &amp;audioName)=0</argsstring>
+        <name>PlayBGM</name>
+        <qualifiedname>Mochi::Audio::IAudioManager::PlayBGM</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a5cfe7f47e8aaa30a3f844dfc1f5e7446">PlayBGM</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1a41e22fcb4b06f7aa54f02c376bb26fdc">PlayBGM</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>audioName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/IAudioManager.h" line="15" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_i_audio_manager_1a8b63f8d8da1ce6cc584c123ac04533b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::IAudioManager::PauseBGM</definition>
+        <argsstring>()=0</argsstring>
+        <name>PauseBGM</name>
+        <qualifiedname>Mochi::Audio::IAudioManager::PauseBGM</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a4ddafe8bc8dde96567714dba94e24a2f">PauseBGM</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1ac65626a0a44e59ce60035467d881af49">PauseBGM</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/IAudioManager.h" line="16" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_i_audio_manager_1ab121967b0728a8da3292a597d105cdd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::IAudioManager::StopBGM</definition>
+        <argsstring>()=0</argsstring>
+        <name>StopBGM</name>
+        <qualifiedname>Mochi::Audio::IAudioManager::StopBGM</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a2eaef99492d10c063a293b915505b683">StopBGM</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1a55689529c43248398f3ce32d3d37a303">StopBGM</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/IAudioManager.h" line="17" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_i_audio_manager_1a4cd3c1364a66b18588a7b0cbbf9d95cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::IAudioManager::ResumeBGM</definition>
+        <argsstring>()=0</argsstring>
+        <name>ResumeBGM</name>
+        <qualifiedname>Mochi::Audio::IAudioManager::ResumeBGM</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a85e10e02d121a5a3bf27b62256595c93">ResumeBGM</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1a5ae1a3e67716584e51e139686f20d8ae">ResumeBGM</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/IAudioManager.h" line="18" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_i_audio_manager_1a2a924034d3a7d9887afa64ad444ad147" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::IAudioManager::SkipToTimelinePosition</definition>
+        <argsstring>(const int &amp;ms)=0</argsstring>
+        <name>SkipToTimelinePosition</name>
+        <qualifiedname>Mochi::Audio::IAudioManager::SkipToTimelinePosition</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a92c04efd6e0d5f779ec658ca9e7f17d0">SkipToTimelinePosition</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1ac07e9f7220ea15fce8822b3cf80d545f">SkipToTimelinePosition</reimplementedby>
+        <param>
+          <type>const int &amp;</type>
+          <declname>ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/IAudioManager.h" line="19" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_i_audio_manager_1a0cac77dbfd09f57e769e4c07cedc27bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::IAudioManager::PlayOneShot</definition>
+        <argsstring>(const std::string &amp;audioName)=0</argsstring>
+        <name>PlayOneShot</name>
+        <qualifiedname>Mochi::Audio::IAudioManager::PlayOneShot</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a7048dfd359a830fc05832f6521025704">PlayOneShot</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1a9fba3cbd6a2a943006304382b6c89e4c">PlayOneShot</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>audioName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/IAudioManager.h" line="20" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_i_audio_manager_1adc60851e6a18a6a2de2083c0f37506de" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::IAudioManager::SetParameter</definition>
+        <argsstring>(const std::string &amp;parameterName, const float &amp;value)=0</argsstring>
+        <name>SetParameter</name>
+        <qualifiedname>Mochi::Audio::IAudioManager::SetParameter</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1af7f62259844bddd15b9d388810bea135">SetParameter</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1ab8a3a0c4a5df85eb85277b1760929145">SetParameter</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>parameterName</declname>
+        </param>
+        <param>
+          <type>const float &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/IAudioManager.h" line="21" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_i_audio_manager_1a76a3d620d92c747018540bead9b4832e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::IAudioManager::SetMixerVolume</definition>
+        <argsstring>(const std::string &amp;mixerGroupName, const float &amp;value)=0</argsstring>
+        <name>SetMixerVolume</name>
+        <qualifiedname>Mochi::Audio::IAudioManager::SetMixerVolume</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a616186bbbb7e7e565cf51e8ae2a9e056">SetMixerVolume</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1ac49e67345bfc471a3ae978081fe6eb69">SetMixerVolume</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>mixerGroupName</declname>
+        </param>
+        <param>
+          <type>const float &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/IAudioManager.h" line="22" column="22"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Mochi::Audio::DummyAudioManager</label>
+        <link refid="class_mochi_1_1_audio_1_1_dummy_audio_manager"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Mochi::Audio::FMODWrapper</label>
+        <link refid="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Mochi::Audio::IAudioManager</label>
+        <link refid="class_mochi_1_1_audio_1_1_i_audio_manager"/>
+      </node>
+    </inheritancegraph>
+    <location file="Engine/src/Audio/IAudioManager.h" line="8" column="5" bodyfile="Engine/src/Audio/IAudioManager.h" bodystart="9" bodyend="23"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_audio_1_1_i_audio_manager_1aa38cd1d9b2654083ca1ed178fa459dfa" prot="public" virt="pure-virtual"><scope>Mochi::Audio::IAudioManager</scope><name>LoadAudio</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_i_audio_manager_1a8b63f8d8da1ce6cc584c123ac04533b4" prot="public" virt="pure-virtual"><scope>Mochi::Audio::IAudioManager</scope><name>PauseBGM</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_i_audio_manager_1a696e2a8c879fd8daa298553cd944720f" prot="public" virt="pure-virtual"><scope>Mochi::Audio::IAudioManager</scope><name>PlayBGM</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_i_audio_manager_1a0cac77dbfd09f57e769e4c07cedc27bf" prot="public" virt="pure-virtual"><scope>Mochi::Audio::IAudioManager</scope><name>PlayOneShot</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_i_audio_manager_1a4cd3c1364a66b18588a7b0cbbf9d95cb" prot="public" virt="pure-virtual"><scope>Mochi::Audio::IAudioManager</scope><name>ResumeBGM</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_i_audio_manager_1a76a3d620d92c747018540bead9b4832e" prot="public" virt="pure-virtual"><scope>Mochi::Audio::IAudioManager</scope><name>SetMixerVolume</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_i_audio_manager_1adc60851e6a18a6a2de2083c0f37506de" prot="public" virt="pure-virtual"><scope>Mochi::Audio::IAudioManager</scope><name>SetParameter</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_i_audio_manager_1a2a924034d3a7d9887afa64ad444ad147" prot="public" virt="pure-virtual"><scope>Mochi::Audio::IAudioManager</scope><name>SkipToTimelinePosition</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_i_audio_manager_1ab121967b0728a8da3292a597d105cdd1" prot="public" virt="pure-virtual"><scope>Mochi::Audio::IAudioManager</scope><name>StopBGM</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_i_audio_manager_1a6421aef4a91b399c1f05464d980590ee" prot="public" virt="pure-virtual"><scope>Mochi::Audio::IAudioManager</scope><name>UnloadAudio</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_i_audio_manager_1a60a100b63a20c4e021403aed76f1a609" prot="public" virt="pure-virtual"><scope>Mochi::Audio::IAudioManager</scope><name>Update</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_i_audio_manager_1a13465a3b824f28348972037be648507c" prot="public" virt="virtual"><scope>Mochi::Audio::IAudioManager</scope><name>~IAudioManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

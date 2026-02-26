@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1_1_f_m_o_d___bank___pair" kind="struct" language="C++" prot="private">
+    <compoundname>Mochi::Audio::FMODWrapper::FMOD_Bank_Pair</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1_1_f_m_o_d___bank___pair_1a3575e2a7c2c022013c6dbcb7fefbae27" prot="public" static="no" mutable="no">
+        <type>FMOD_STUDIO_BANK *</type>
+        <definition>FMOD_STUDIO_BANK* Mochi::Audio::FMODWrapper::FMOD_Bank_Pair::bank</definition>
+        <argsstring></argsstring>
+        <name>bank</name>
+        <qualifiedname>Mochi::Audio::FMODWrapper::FMOD_Bank_Pair::bank</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/FMODWrapper.h" line="39" column="30" bodyfile="Engine/src/Audio/FMODWrapper.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1_1_f_m_o_d___bank___pair_1a2ee689e7e62aa674eda790ccad4654dd" prot="public" static="no" mutable="no">
+        <type>FMOD_STUDIO_BANK *</type>
+        <definition>FMOD_STUDIO_BANK* Mochi::Audio::FMODWrapper::FMOD_Bank_Pair::stringsBank</definition>
+        <argsstring></argsstring>
+        <name>stringsBank</name>
+        <qualifiedname>Mochi::Audio::FMODWrapper::FMOD_Bank_Pair::stringsBank</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/FMODWrapper.h" line="40" column="30" bodyfile="Engine/src/Audio/FMODWrapper.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Audio/FMODWrapper.h" line="37" column="9" bodyfile="Engine/src/Audio/FMODWrapper.h" bodystart="38" bodyend="41"/>
+    <listofallmembers>
+      <member refid="struct_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1_1_f_m_o_d___bank___pair_1a3575e2a7c2c022013c6dbcb7fefbae27" prot="public" virt="non-virtual"><scope>Mochi::Audio::FMODWrapper::FMOD_Bank_Pair</scope><name>bank</name></member>
+      <member refid="struct_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1_1_f_m_o_d___bank___pair_1a2ee689e7e62aa674eda790ccad4654dd" prot="public" virt="non-virtual"><scope>Mochi::Audio::FMODWrapper::FMOD_Bank_Pair</scope><name>stringsBank</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

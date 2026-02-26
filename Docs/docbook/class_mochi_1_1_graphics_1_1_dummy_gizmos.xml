@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_graphics_1_1_dummy_gizmos" xml:lang="en-US">
+<title>Mochi::Graphics::DummyGizmos Class Reference</title>
+<indexterm><primary>Mochi::Graphics::DummyGizmos</primary></indexterm>
+<para>Inheritance diagram for Mochi::Graphics::DummyGizmos:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_mochi_1_1_graphics_1_1_dummy_gizmos.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_graphics_1_1_dummy_gizmos_1ab06a7d6c47ae3bcee864c843d81e749a">DrawRectangle</link> (const <link linkend="_struct_mochi_1_1_physics_1_1_rectangle">Physics::Rectangle</link> *rectangle, const <link linkend="_struct_mochi_1_1_color">Color</link> &amp;color) const override</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_graphics_1_1_dummy_gizmos_1aefb37e3c1a21c06d584e32391628e82f">DrawCircle</link> (const <link linkend="_struct_mochi_1_1_physics_1_1_circle">Physics::Circle</link> *circle, const <link linkend="_struct_mochi_1_1_color">Color</link> &amp;color) const override</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_graphics_1_1_dummy_gizmos_1a856d8b1bef6db00f272c174cbf22bc05">DrawLine</link> (const <link linkend="_struct_mochi_1_1_physics_1_1_line">Physics::Line</link> *line, const <link linkend="_struct_mochi_1_1_color">Color</link> &amp;color) const override</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_graphics_1_1_dummy_gizmos_1a6376b189fad781a5f66c7ba2bda1ad9d">DrawPoint</link> (const <link linkend="_struct_mochi_1_1_physics_1_1_point">Physics::Point</link> *point, const <link linkend="_struct_mochi_1_1_color">Color</link> &amp;color) const override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_class_mochi_1_1_debug_1_1_i_gizmos">Mochi::Debug::IGizmos</link>        <itemizedlist>
+            <listitem><para>void <emphasis role="strong">DrawShape</emphasis> (const <link linkend="_struct_mochi_1_1_physics_1_1_shape">Physics::Shape</link> &amp;shape, const <link linkend="_struct_mochi_1_1_color">Color</link> &amp;color) const</para>
+</listitem>
+        </itemizedlist>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_mochi_1_1_graphics_1_1_dummy_gizmos_1aefb37e3c1a21c06d584e32391628e82f"/><section>
+    <title>DrawCircle()</title>
+<indexterm><primary>DrawCircle</primary><secondary>Mochi::Graphics::DummyGizmos</secondary></indexterm>
+<indexterm><primary>Mochi::Graphics::DummyGizmos</primary><secondary>DrawCircle</secondary></indexterm>
+<para><computeroutput>virtual void Mochi::Graphics::DummyGizmos::DrawCircle (const <link linkend="_struct_mochi_1_1_physics_1_1_circle">Physics::Circle</link> * circle, const <link linkend="_struct_mochi_1_1_color">Color</link> &amp; color) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_debug_1_1_i_gizmos">Mochi::Debug::IGizmos</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_graphics_1_1_dummy_gizmos_1a856d8b1bef6db00f272c174cbf22bc05"/><section>
+    <title>DrawLine()</title>
+<indexterm><primary>DrawLine</primary><secondary>Mochi::Graphics::DummyGizmos</secondary></indexterm>
+<indexterm><primary>Mochi::Graphics::DummyGizmos</primary><secondary>DrawLine</secondary></indexterm>
+<para><computeroutput>virtual void Mochi::Graphics::DummyGizmos::DrawLine (const <link linkend="_struct_mochi_1_1_physics_1_1_line">Physics::Line</link> * line, const <link linkend="_struct_mochi_1_1_color">Color</link> &amp; color) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_debug_1_1_i_gizmos">Mochi::Debug::IGizmos</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_graphics_1_1_dummy_gizmos_1a6376b189fad781a5f66c7ba2bda1ad9d"/><section>
+    <title>DrawPoint()</title>
+<indexterm><primary>DrawPoint</primary><secondary>Mochi::Graphics::DummyGizmos</secondary></indexterm>
+<indexterm><primary>Mochi::Graphics::DummyGizmos</primary><secondary>DrawPoint</secondary></indexterm>
+<para><computeroutput>virtual void Mochi::Graphics::DummyGizmos::DrawPoint (const <link linkend="_struct_mochi_1_1_physics_1_1_point">Physics::Point</link> * point, const <link linkend="_struct_mochi_1_1_color">Color</link> &amp; color) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_debug_1_1_i_gizmos">Mochi::Debug::IGizmos</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_graphics_1_1_dummy_gizmos_1ab06a7d6c47ae3bcee864c843d81e749a"/><section>
+    <title>DrawRectangle()</title>
+<indexterm><primary>DrawRectangle</primary><secondary>Mochi::Graphics::DummyGizmos</secondary></indexterm>
+<indexterm><primary>Mochi::Graphics::DummyGizmos</primary><secondary>DrawRectangle</secondary></indexterm>
+<para><computeroutput>virtual void Mochi::Graphics::DummyGizmos::DrawRectangle (const <link linkend="_struct_mochi_1_1_physics_1_1_rectangle">Physics::Rectangle</link> * rectangle, const <link linkend="_struct_mochi_1_1_color">Color</link> &amp; color) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_debug_1_1_i_gizmos">Mochi::Debug::IGizmos</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+Engine/src/Graphics/DummyRendering.h</section>
+</section>

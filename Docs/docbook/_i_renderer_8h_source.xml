@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__i_renderer_8h_source" xml:lang="en-US">
+<title>IRenderer.h</title>
+<indexterm><primary>Engine/src/Graphics/IRenderer.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_IRENDERER</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_IRENDERER</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;memory&gt;</emphasis>
+6 
+7 <emphasis role="preprocessor">#include&#32;&quot;RenderCommand.h&quot;</emphasis>
+8 
+9 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::FS
+10 {
+11 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">PackCatalog</link>;
+12 }
+13 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Debug
+14 {
+15 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_debug_1_1_i_gizmos">IGizmos</link>;
+16 }
+17 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Input
+18 {
+19 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_input_1_1_i_action_manager">IActionManager</link>;
+20 }
+21 <emphasis role="keyword">struct&#32;</emphasis>SDL_Renderer;
+22 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Graphics
+23 {
+24 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_camera">Camera</link>;
+25 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_abstract_texture_factory">AbstractTextureFactory</link>;
+26 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_abstract_g_u_i">AbstractGUI</link>;
+27 
+31 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_i_renderer">IRenderer</link>
+32 &#32;&#32;&#32;&#32;{
+33 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_mochi_1_1_graphics_1_1_i_renderer">~IRenderer</link>()&#32;{}
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_mochi_1_1_graphics_1_1_i_renderer_1a2c54d9c1dcfdd4f8e39ba8b5482ba5e1">StartFrameRendering</link>()&#32;<emphasis role="keyword">const</emphasis>&#32;=&#32;0;
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_mochi_1_1_graphics_1_1_i_renderer_1a76dfd36eaca68224e810c00f71232068">Render</link>(std::vector&lt;RenderCommand&gt;&#32;renderQueue,&#32;<link linkend="_class_mochi_1_1_graphics_1_1_camera">Camera</link>&#32;*camera)&#32;<emphasis role="keyword">const</emphasis>&#32;=&#32;0;
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_mochi_1_1_graphics_1_1_i_renderer_1ac6e3962f22001844df533c8383d9a5fe">FinishRendering</link>()&#32;<emphasis role="keyword">const</emphasis>&#32;=&#32;0;
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;std::unique_ptr&lt;AbstractTextureFactory&gt;&#32;<link linkend="_class_mochi_1_1_graphics_1_1_i_renderer_1ab3fbe362e1d305bd1801f2cebf00754d">CreateTextureFactory</link>(<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link>&#32;*catalog)&#32;<emphasis role="keyword">const</emphasis>&#32;=&#32;0;
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;std::unique_ptr&lt;AbstractGUI&gt;&#32;<link linkend="_class_mochi_1_1_graphics_1_1_i_renderer_1a9fb7e47eec7bd318172e9af56b777d7d">CreateGUI</link>(<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link>&#32;*catalog,&#32;<link linkend="_class_mochi_1_1_input_1_1_i_action_manager">Input::IActionManager</link>&#32;*actionManager)&#32;=&#32;0;
+52 <emphasis role="preprocessor">#if&#32;DEBUG</emphasis>
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;std::unique_ptr&lt;Debug::IGizmos&gt;&#32;CreateGizmos()&#32;=&#32;0;
+57 <emphasis role="preprocessor">#endif</emphasis>
+58 &#32;&#32;&#32;&#32;};
+59 }
+60 
+61 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

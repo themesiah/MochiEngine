@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_mochi_1_1_graphics_1_1_g_u_i_result" xml:lang="en-US">
+<title>Mochi::Graphics::GUIResult Struct Reference</title>
+<indexterm><primary>Mochi::Graphics::GUIResult</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_graphics_1_1_g_u_i_result_1a405d8c251bac55120e3b6ca877d920b3"/><link linkend="_struct_mochi_1_1_rectf">Rectf</link> <emphasis role="strong">FinalRect</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+Engine/src/GUI/GUICommon.hpp</section>

@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_graphics_1_1_aseprite_animation_factory" kind="class" language="C++" prot="public">
+    <compoundname>Mochi::Graphics::AsepriteAnimationFactory</compoundname>
+    <basecompoundref refid="class_mochi_1_1_graphics_1_1_i_animation_factory" prot="public" virt="non-virtual">Mochi::Graphics::IAnimationFactory</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_mochi_1_1_graphics_1_1_aseprite_animation_factory_1a8d9e497da4bfcbea3c1de356bb2a17a1" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, std::shared_ptr&lt; <ref refid="struct_mochi_1_1_graphics_1_1_animations_data" kindref="compound">AnimationsData</ref> &gt; &gt;</type>
+        <definition>std::unordered_map&lt;std::string, std::shared_ptr&lt;AnimationsData&gt; &gt; Mochi::Graphics::AsepriteAnimationFactory::mAnimationDataMap</definition>
+        <argsstring></argsstring>
+        <name>mAnimationDataMap</name>
+        <qualifiedname>Mochi::Graphics::AsepriteAnimationFactory::mAnimationDataMap</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AsepriteAnimationFactory.h" line="20" column="28" bodyfile="Engine/src/Graphics/AsepriteAnimationFactory.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_mochi_1_1_graphics_1_1_aseprite_animation_factory_1a23a6bbc70438c6d8dbbe99e3cb895382" prot="private" static="no" mutable="no">
+        <type><ref refid="class_mochi_1_1_f_s_1_1_pack_catalog" kindref="compound">FS::PackCatalog</ref> *</type>
+        <definition>FS::PackCatalog* Mochi::Graphics::AsepriteAnimationFactory::mCatalog</definition>
+        <argsstring></argsstring>
+        <name>mCatalog</name>
+        <qualifiedname>Mochi::Graphics::AsepriteAnimationFactory::mCatalog</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AsepriteAnimationFactory.h" line="21" column="25" bodyfile="Engine/src/Graphics/AsepriteAnimationFactory.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_aseprite_animation_factory_1adb3ec5a8b8e813279a4f0ca2e792eb4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Graphics::AsepriteAnimationFactory::AsepriteAnimationFactory</definition>
+        <argsstring>(FS::PackCatalog *)</argsstring>
+        <name>AsepriteAnimationFactory</name>
+        <qualifiedname>Mochi::Graphics::AsepriteAnimationFactory::AsepriteAnimationFactory</qualifiedname>
+        <param>
+          <type><ref refid="class_mochi_1_1_f_s_1_1_pack_catalog" kindref="compound">FS::PackCatalog</ref> *</type>
+          <defname>catalog</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AsepriteAnimationFactory.h" line="24" column="9" bodyfile="Engine/src/Graphics/AsepriteAnimationFactory.cpp" bodystart="14" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_aseprite_animation_factory_1abdfc28515367f157f26eca7929cd8503" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>Mochi::Graphics::AsepriteAnimationFactory::~AsepriteAnimationFactory</definition>
+        <argsstring>()</argsstring>
+        <name>~AsepriteAnimationFactory</name>
+        <qualifiedname>Mochi::Graphics::AsepriteAnimationFactory::~AsepriteAnimationFactory</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AsepriteAnimationFactory.h" line="25" column="17" bodyfile="Engine/src/Graphics/AsepriteAnimationFactory.cpp" bodystart="18" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_aseprite_animation_factory_1a9755718e91c1f769e002d3bdf1d0055f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::shared_ptr&lt; <ref refid="struct_mochi_1_1_graphics_1_1_animations_data" kindref="compound">AnimationsData</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; AnimationsData &gt; Mochi::Graphics::AsepriteAnimationFactory::GetAnimationsData</definition>
+        <argsstring>(const std::string &amp;animationDataPath) override</argsstring>
+        <name>GetAnimationsData</name>
+        <qualifiedname>Mochi::Graphics::AsepriteAnimationFactory::GetAnimationsData</qualifiedname>
+        <reimplements refid="class_mochi_1_1_graphics_1_1_i_animation_factory_1a67fccf5d1b678410d1170447ac72ef90">GetAnimationsData</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>animationDataPath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AsepriteAnimationFactory.h" line="26" column="33" bodyfile="Engine/src/Graphics/AsepriteAnimationFactory.cpp" bodystart="22" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_aseprite_animation_factory_1a75f725eb215e793cd0a48f8fd25e3d4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Mochi::Graphics::AsepriteAnimationFactory::DeleteCache</definition>
+        <argsstring>() override</argsstring>
+        <name>DeleteCache</name>
+        <qualifiedname>Mochi::Graphics::AsepriteAnimationFactory::DeleteCache</qualifiedname>
+        <reimplements refid="class_mochi_1_1_graphics_1_1_i_animation_factory_1af5aed432a71a1c16a0d0cb122a5564af">DeleteCache</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AsepriteAnimationFactory.h" line="27" column="22" bodyfile="Engine/src/Graphics/AsepriteAnimationFactory.cpp" bodystart="128" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_aseprite_animation_factory_1ab1cc02ad0b934792bd34f067b162032f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Mochi::Graphics::AsepriteAnimationFactory::DeleteAnimation</definition>
+        <argsstring>(const std::string &amp;texturePath) override</argsstring>
+        <name>DeleteAnimation</name>
+        <qualifiedname>Mochi::Graphics::AsepriteAnimationFactory::DeleteAnimation</qualifiedname>
+        <reimplements refid="class_mochi_1_1_graphics_1_1_i_animation_factory_1af2e5ecd0526bd83b358f2874f89963d9">DeleteAnimation</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>texturePath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AsepriteAnimationFactory.h" line="28" column="22" bodyfile="Engine/src/Graphics/AsepriteAnimationFactory.cpp" bodystart="133" bodyend="144"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Mochi::Graphics::AsepriteAnimationFactory</label>
+        <link refid="class_mochi_1_1_graphics_1_1_aseprite_animation_factory"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mochi::Graphics::IAnimationFactory</label>
+        <link refid="class_mochi_1_1_graphics_1_1_i_animation_factory"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Mochi::Graphics::AsepriteAnimationFactory</label>
+        <link refid="class_mochi_1_1_graphics_1_1_aseprite_animation_factory"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mochi::Graphics::IAnimationFactory</label>
+        <link refid="class_mochi_1_1_graphics_1_1_i_animation_factory"/>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Graphics/AsepriteAnimationFactory.h" line="17" column="5" bodyfile="Engine/src/Graphics/AsepriteAnimationFactory.h" bodystart="18" bodyend="29"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_graphics_1_1_aseprite_animation_factory_1adb3ec5a8b8e813279a4f0ca2e792eb4d" prot="public" virt="non-virtual"><scope>Mochi::Graphics::AsepriteAnimationFactory</scope><name>AsepriteAnimationFactory</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_aseprite_animation_factory_1ab1cc02ad0b934792bd34f067b162032f" prot="public" virt="virtual"><scope>Mochi::Graphics::AsepriteAnimationFactory</scope><name>DeleteAnimation</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_aseprite_animation_factory_1a75f725eb215e793cd0a48f8fd25e3d4f" prot="public" virt="virtual"><scope>Mochi::Graphics::AsepriteAnimationFactory</scope><name>DeleteCache</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_aseprite_animation_factory_1a9755718e91c1f769e002d3bdf1d0055f" prot="public" virt="virtual"><scope>Mochi::Graphics::AsepriteAnimationFactory</scope><name>GetAnimationsData</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_aseprite_animation_factory_1a8d9e497da4bfcbea3c1de356bb2a17a1" prot="private" virt="non-virtual"><scope>Mochi::Graphics::AsepriteAnimationFactory</scope><name>mAnimationDataMap</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_aseprite_animation_factory_1a23a6bbc70438c6d8dbbe99e3cb895382" prot="private" virt="non-virtual"><scope>Mochi::Graphics::AsepriteAnimationFactory</scope><name>mCatalog</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_aseprite_animation_factory_1abdfc28515367f157f26eca7929cd8503" prot="public" virt="virtual"><scope>Mochi::Graphics::AsepriteAnimationFactory</scope><name>~AsepriteAnimationFactory</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_i_animation_factory_1ab2b9a05161643fa57bed2a2e6f3fd044" prot="public" virt="virtual"><scope>Mochi::Graphics::AsepriteAnimationFactory</scope><name>~IAnimationFactory</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

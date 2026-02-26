@@ -1,0 +1,527 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="namespace_mochi_1_1_input" kind="namespace" language="C++">
+    <compoundname>Mochi::Input</compoundname>
+    <innerclass refid="struct_mochi_1_1_input_1_1_action" prot="public">Mochi::Input::Action</innerclass>
+    <innerclass refid="class_mochi_1_1_input_1_1_action_manager" prot="public">Mochi::Input::ActionManager</innerclass>
+    <innerclass refid="class_mochi_1_1_input_1_1_dummy_keyboard_provider" prot="public">Mochi::Input::DummyKeyboardProvider</innerclass>
+    <innerclass refid="class_mochi_1_1_input_1_1_dummy_mouse_provider" prot="public">Mochi::Input::DummyMouseProvider</innerclass>
+    <innerclass refid="class_mochi_1_1_input_1_1_dummy_gamepad_provider" prot="public">Mochi::Input::DummyGamepadProvider</innerclass>
+    <innerclass refid="class_mochi_1_1_input_1_1_i_action_manager" prot="public">Mochi::Input::IActionManager</innerclass>
+    <innerclass refid="class_mochi_1_1_input_1_1_i_gamepad_provider" prot="public">Mochi::Input::IGamepadProvider</innerclass>
+    <innerclass refid="class_mochi_1_1_input_1_1_i_keyboard_provider" prot="public">Mochi::Input::IKeyboardProvider</innerclass>
+    <innerclass refid="class_mochi_1_1_input_1_1_i_mouse_provider" prot="public">Mochi::Input::IMouseProvider</innerclass>
+    <innerclass refid="struct_mochi_1_1_input_1_1_gamepad_data" prot="public">Mochi::Input::GamepadData</innerclass>
+    <innerclass refid="class_mochi_1_1_input_1_1_input_manager" prot="public">Mochi::Input::InputManager</innerclass>
+    <innerclass refid="struct_mochi_1_1_input_1_1_i_performable_action" prot="public">Mochi::Input::IPerformableAction</innerclass>
+    <innerclass refid="struct_mochi_1_1_input_1_1_performable_action_keyboard" prot="public">Mochi::Input::PerformableActionKeyboard</innerclass>
+    <innerclass refid="struct_mochi_1_1_input_1_1_performable_action_mouse" prot="public">Mochi::Input::PerformableActionMouse</innerclass>
+    <innerclass refid="struct_mochi_1_1_input_1_1_performable_action_mouse_axis" prot="public">Mochi::Input::PerformableActionMouseAxis</innerclass>
+    <innerclass refid="struct_mochi_1_1_input_1_1_performable_action_gamepad" prot="public">Mochi::Input::PerformableActionGamepad</innerclass>
+    <innerclass refid="struct_mochi_1_1_input_1_1_performable_action_gamepad_axis" prot="public">Mochi::Input::PerformableActionGamepadAxis</innerclass>
+    <innerclass refid="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider" prot="public">Mochi::Input::SDLGamepadProvider</innerclass>
+    <innerclass refid="class_mochi_1_1_input_1_1_s_d_l_keyboard_provider" prot="public">Mochi::Input::SDLKeyboardProvider</innerclass>
+    <innerclass refid="class_mochi_1_1_input_1_1_s_d_l_mouse_provider" prot="public">Mochi::Input::SDLMouseProvider</innerclass>
+    <innerclass refid="class_mochi_1_1_input_1_1_virtual_action_manager" prot="public">Mochi::Input::VirtualActionManager</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="_input_commons_8h_1a1e48706a4302d7beb2d52bce459fb313" prot="public" static="no" strong="no">
+        <type></type>
+        <name>ActionTrigger</name>
+        <qualifiedname>Mochi::Input::ActionTrigger</qualifiedname>
+        <enumvalue id="_input_commons_8h_1a1e48706a4302d7beb2d52bce459fb313a229a1842f550937913bd2826441ed203" prot="public">
+          <name>Never</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1a1e48706a4302d7beb2d52bce459fb313a3ff7628371b67fd6168a26bbae5a9014" prot="public">
+          <name>Down</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1a1e48706a4302d7beb2d52bce459fb313ae28cba63fe0cef2cf64cb7481cc99e70" prot="public">
+          <name>Pressed</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1a1e48706a4302d7beb2d52bce459fb313a48855950e22c7713d76cd2dad3f13a97" prot="public">
+          <name>Released</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1a1e48706a4302d7beb2d52bce459fb313a1806b4ddcf125a1f951894e827b6a8f9" prot="public">
+          <name>ActionTriggerCount</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/InputCommons.h" line="9" column="5" bodyfile="Engine/src/Input/InputCommons.h" bodystart="10" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="enum" id="_input_commons_8h_1aa418f5c561b8bb005a5b504075883b0f" prot="public" static="no" strong="no">
+        <type></type>
+        <name>MouseButton</name>
+        <qualifiedname>Mochi::Input::MouseButton</qualifiedname>
+        <enumvalue id="_input_commons_8h_1aa418f5c561b8bb005a5b504075883b0fa2691435a8fed46a817962bacdd7637ba" prot="public">
+          <name>MouseButtonInvalid</name>
+          <initializer>= -1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1aa418f5c561b8bb005a5b504075883b0fa8744c131d27a4329d11f218f4d642a6b" prot="public">
+          <name>MouseButtonLeft</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1aa418f5c561b8bb005a5b504075883b0fa17f33b1f317b221645b9e47488cc9627" prot="public">
+          <name>MouseButtonCenter</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1aa418f5c561b8bb005a5b504075883b0fa9811e0b6bd71ef3fae6f35fd27b2f78d" prot="public">
+          <name>MouseButtonRight</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1aa418f5c561b8bb005a5b504075883b0fa1c0958722f89d7632a272100a0462b63" prot="public">
+          <name>MouseButtonSide1</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1aa418f5c561b8bb005a5b504075883b0fafeda8927a765c57ee01fcc0d2c5b5901" prot="public">
+          <name>MouseButtonSide2</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1aa418f5c561b8bb005a5b504075883b0fa8ef7cfb125f3f936d6409838157cfe56" prot="public">
+          <name>MouseButtonsCount</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/InputCommons.h" line="18" column="5" bodyfile="Engine/src/Input/InputCommons.h" bodystart="19" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="enum" id="_input_commons_8h_1af34312df7d6f4854fc081dc3ae139aa0" prot="public" static="no" strong="no">
+        <type></type>
+        <name>MouseAxis</name>
+        <qualifiedname>Mochi::Input::MouseAxis</qualifiedname>
+        <enumvalue id="_input_commons_8h_1af34312df7d6f4854fc081dc3ae139aa0a25063b09bc00cd5654ed5c55f641a491" prot="public">
+          <name>MouseAxisInvalid</name>
+          <initializer>= -1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1af34312df7d6f4854fc081dc3ae139aa0a29a180ccae04f2913c979e53aaf505cf" prot="public">
+          <name>MouseAxisX</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1af34312df7d6f4854fc081dc3ae139aa0aaecbf31dfb107e9444abb98a9dc44855" prot="public">
+          <name>MouseAxisY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1af34312df7d6f4854fc081dc3ae139aa0a0bc6434fd9172f58d90b685b39431656" prot="public">
+          <name>MouseAxisDeltaX</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1af34312df7d6f4854fc081dc3ae139aa0a9ae6d8d4cec9ee3bf792e15b1b27c80d" prot="public">
+          <name>MouseAxisDeltaY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1af34312df7d6f4854fc081dc3ae139aa0a897df9744bfa5cabd4dbc395ba1742fc" prot="public">
+          <name>MouseAxisCount</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/InputCommons.h" line="29" column="5" bodyfile="Engine/src/Input/InputCommons.h" bodystart="30" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="enum" id="_input_commons_8h_1a6be012f8219d3b82303f956a91d39383" prot="public" static="no" strong="no">
+        <type></type>
+        <name>GamepadAxis</name>
+        <qualifiedname>Mochi::Input::GamepadAxis</qualifiedname>
+        <enumvalue id="_input_commons_8h_1a6be012f8219d3b82303f956a91d39383aedb1a6611d53e67e6e20a9fe716d4925" prot="public">
+          <name>GAMEPAD_AXIS_INVALID</name>
+          <initializer>= -1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1a6be012f8219d3b82303f956a91d39383acdaff8c88368d6c54d27d861a42d1d2a" prot="public">
+          <name>GAMEPAD_AXIS_LEFTX</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1a6be012f8219d3b82303f956a91d39383a536eeb8cfce5eff02c82541fd5634bee" prot="public">
+          <name>GAMEPAD_AXIS_LEFTY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1a6be012f8219d3b82303f956a91d39383aa6bd3e40e6ef1ae97d02ee85d4a765f3" prot="public">
+          <name>GAMEPAD_AXIS_RIGHTX</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1a6be012f8219d3b82303f956a91d39383ad0054ac6d8181c092f608cd1710d4fd4" prot="public">
+          <name>GAMEPAD_AXIS_RIGHTY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1a6be012f8219d3b82303f956a91d39383a9c4adb7623227756843fabc0ec7d9bc0" prot="public">
+          <name>GAMEPAD_AXIS_LEFT_TRIGGER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1a6be012f8219d3b82303f956a91d39383ac418dfa2b255bf7e298548e7106a02f7" prot="public">
+          <name>GAMEPAD_AXIS_RIGHT_TRIGGER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1a6be012f8219d3b82303f956a91d39383a21b059ee971c3b7b9935f8a976a406f6" prot="public">
+          <name>GAMEPAD_AXIS_COUNT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/InputCommons.h" line="39" column="5" bodyfile="Engine/src/Input/InputCommons.h" bodystart="40" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="enum" id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4" prot="public" static="no" strong="no">
+        <type></type>
+        <name>GamepadButton</name>
+        <qualifiedname>Mochi::Input::GamepadButton</qualifiedname>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4aac38ba558977ca1c080b5604396dbffe" prot="public">
+          <name>GAMEPAD_BUTTON_INVALID</name>
+          <initializer>= -1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4a53d6e3406fb82983bdac33f3aed50923" prot="public">
+          <name>GAMEPAD_BUTTON_SOUTH</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Bottom face button (e.g. Xbox A button) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4a38bdb910778e92877a7222a89118a742" prot="public">
+          <name>GAMEPAD_BUTTON_EAST</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Right face button (e.g. Xbox B button) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4a7bde3f5c1ffe51f68b04410f3ff44b8f" prot="public">
+          <name>GAMEPAD_BUTTON_WEST</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Left face button (e.g. Xbox X button) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4a556f742b209f9b70c66bec931be33824" prot="public">
+          <name>GAMEPAD_BUTTON_NORTH</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Top face button (e.g. Xbox Y button) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4a8fa5611e18ba79ae365a13b20f4730c3" prot="public">
+          <name>GAMEPAD_BUTTON_BACK</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4aab28f4d5ffd0865cb7282f772516192b" prot="public">
+          <name>GAMEPAD_BUTTON_GUIDE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4a12a4e71fd05d30405c4295408176a4ff" prot="public">
+          <name>GAMEPAD_BUTTON_START</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4afe6f77ddbdc9bed37fbc152a9326510e" prot="public">
+          <name>GAMEPAD_BUTTON_LEFT_STICK</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4a06603688079f9f81ddd18f39190faed1" prot="public">
+          <name>GAMEPAD_BUTTON_RIGHT_STICK</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4a15f9259ae9e343c245866b7b73dbfc32" prot="public">
+          <name>GAMEPAD_BUTTON_LEFT_SHOULDER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4a4553c75f11f70a08816aafd7e9a26eb4" prot="public">
+          <name>GAMEPAD_BUTTON_RIGHT_SHOULDER</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4ab898657f5947326f0b40c56878a880ed" prot="public">
+          <name>GAMEPAD_BUTTON_DPAD_UP</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4a8b027a273d6150033a914e950321a890" prot="public">
+          <name>GAMEPAD_BUTTON_DPAD_DOWN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4ac202203f6c8d17fa0dfc219405b20411" prot="public">
+          <name>GAMEPAD_BUTTON_DPAD_LEFT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4ab35cb12641b485b13cd82b9b8d0cb3a8" prot="public">
+          <name>GAMEPAD_BUTTON_DPAD_RIGHT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4a30b71b2a0815db2307e14216d67ffe6f" prot="public">
+          <name>GAMEPAD_BUTTON_MISC1</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Additional button (e.g. Xbox Series X share button, PS5 microphone button, Nintendo Switch Pro capture button, Amazon Luna microphone button, Google Stadia capture button) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4aa95c88f317d732408f47362532ce92d4" prot="public">
+          <name>GAMEPAD_BUTTON_RIGHT_PADDLE1</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Upper or primary paddle, under your right hand (e.g. Xbox Elite paddle P1) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4a85f98218d55b778866c15abc48bdf138" prot="public">
+          <name>GAMEPAD_BUTTON_LEFT_PADDLE1</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Upper or primary paddle, under your left hand (e.g. Xbox Elite paddle P3) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4a529cd616686432e9e0a2d0f2dc6b5f61" prot="public">
+          <name>GAMEPAD_BUTTON_RIGHT_PADDLE2</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Lower or secondary paddle, under your right hand (e.g. Xbox Elite paddle P2) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4a43b7b404ffa56647233400a6f5247d46" prot="public">
+          <name>GAMEPAD_BUTTON_LEFT_PADDLE2</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Lower or secondary paddle, under your left hand (e.g. Xbox Elite paddle P4) </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4aa5d7abad5b1c3a6c3048bf7a2d174d8f" prot="public">
+          <name>GAMEPAD_BUTTON_TOUCHPAD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>PS4/PS5 touchpad button </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4a2e18554fb952fbb877a2609723104ebe" prot="public">
+          <name>GAMEPAD_BUTTON_MISC2</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Additional button </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4a5912f832e99a7209674e3cf65fce27e6" prot="public">
+          <name>GAMEPAD_BUTTON_MISC3</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Additional button </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4a97309a444a373abe1c41440e48010cb4" prot="public">
+          <name>GAMEPAD_BUTTON_MISC4</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Additional button </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4a617b8709adbb2539db9864c208587cde" prot="public">
+          <name>GAMEPAD_BUTTON_MISC5</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Additional button </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4afbbf40db3d1579aa4f556dded2e36135" prot="public">
+          <name>GAMEPAD_BUTTON_MISC6</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Additional button </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_input_commons_8h_1ac3daba0eeb4fc4961b655b4aa1ee0ba4a4fa89611347610c26a0f6ab7f409d30e" prot="public">
+          <name>GAMEPAD_BUTTON_COUNT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/InputCommons.h" line="51" column="5" bodyfile="Engine/src/Input/InputCommons.h" bodystart="52" bodyend="81"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="_action_manager_8cpp_1aa753fa07d4dc444c04ed8f3cdf7b9e33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mochi::Input::from_json</definition>
+        <argsstring>(const nlohmann::json &amp;entry, Action &amp;action)</argsstring>
+        <name>from_json</name>
+        <qualifiedname>Mochi::Input::from_json</qualifiedname>
+        <param>
+          <type>const nlohmann::json &amp;</type>
+          <declname>entry</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_mochi_1_1_input_1_1_action" kindref="compound">Action</ref> &amp;</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/ActionManager.cpp" line="58" column="10" bodyfile="Engine/src/Input/ActionManager.cpp" bodystart="58" bodyend="105" declfile="Engine/src/Input/ActionManager.h" declline="22" declcolumn="10"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Engine.h" line="33" column="5"/>
+  </compounddef>
+</doxygen>

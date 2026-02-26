@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_f_s_1_1_i_file_loader" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>Mochi::FS::IFileLoader</compoundname>
+    <derivedcompoundref refid="class_mochi_1_1_f_s_1_1_pack_file" prot="public" virt="non-virtual">Mochi::FS::PackFile</derivedcompoundref>
+    <derivedcompoundref refid="class_mochi_1_1_f_s_1_1_system_file_loader" prot="public" virt="non-virtual">Mochi::FS::SystemFileLoader</derivedcompoundref>
+    <includes refid="_i_file_loader_8h" local="no">IFileLoader.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_f_s_1_1_i_file_loader_1a1929fc8b5fbe1e59ca8ecb726474993c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Mochi::FS::IFileLoader::~IFileLoader</definition>
+        <argsstring>()</argsstring>
+        <name>~IFileLoader</name>
+        <qualifiedname>Mochi::FS::IFileLoader::~IFileLoader</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/IFileLoader.h" line="15" column="17" bodyfile="Engine/src/Packer/IFileLoader.h" bodystart="15" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_f_s_1_1_i_file_loader_1ab4f7bc0eb65a6bb1f2908c446fdff870" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool Mochi::FS::IFileLoader::IsValid</definition>
+        <argsstring>() const =0</argsstring>
+        <name>IsValid</name>
+        <qualifiedname>Mochi::FS::IFileLoader::IsValid</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_f_s_1_1_pack_file_1a7a1ba0a39c9c1a316b707d7cfda73db8">IsValid</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_f_s_1_1_system_file_loader_1aff9df4b6e8bf2967c890602922a37f02">IsValid</reimplementedby>
+        <briefdescription>
+<para>Tells us if the file loader can be used at the moment. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if can be used, false if not </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/IFileLoader.h" line="18" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_f_s_1_1_i_file_loader_1a3f9f15a055c5f822fdf50c69426a0a62" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; char &gt;</type>
+        <definition>virtual std::vector&lt; char &gt; Mochi::FS::IFileLoader::GetFile</definition>
+        <argsstring>(const std::string &amp;path)=0</argsstring>
+        <name>GetFile</name>
+        <qualifiedname>Mochi::FS::IFileLoader::GetFile</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_f_s_1_1_pack_file_1af2aff235433779b2e070ba682ee74449">GetFile</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_f_s_1_1_system_file_loader_1a96e9faf7db0ab5a89ddb0693571c2aef">GetFile</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Give us a binary representation of a file in a filesystem. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="class_mochi_1_1_engine_error" kindref="compound">EngineError</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if is not valid or doesn&apos;t have file </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A path, or unique identifier to the file </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A vector of chars, or binary representation of a file. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/IFileLoader.h" line="24" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_f_s_1_1_i_file_loader_1aaadf8aa5e70d40aa8cfcb32738a51932" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool Mochi::FS::IFileLoader::HasFile</definition>
+        <argsstring>(const std::string &amp;path) const =0</argsstring>
+        <name>HasFile</name>
+        <qualifiedname>Mochi::FS::IFileLoader::HasFile</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_f_s_1_1_pack_file_1a57165c9b04f264884149c1cd192cee0d">HasFile</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_f_s_1_1_system_file_loader_1ad5664f22b602ee4f388f8b8d6ef13df2">HasFile</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Tells us if the filesystem has a file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A path, or unique identifier to the file </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if it has the file, false if not </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/IFileLoader.h" line="29" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_f_s_1_1_i_file_loader_1a17f2ad4d0c222921e6e10e167688b67e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>virtual std::vector&lt; std::string &gt; Mochi::FS::IFileLoader::GetAvailableFiles</definition>
+        <argsstring>() const =0</argsstring>
+        <name>GetAvailableFiles</name>
+        <qualifiedname>Mochi::FS::IFileLoader::GetAvailableFiles</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_f_s_1_1_pack_file_1a6b0da814c165dd6ef6ac881268ff9eb9">GetAvailableFiles</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_f_s_1_1_system_file_loader_1a4ca12626122c0506a845ef6fdb1465dc">GetAvailableFiles</reimplementedby>
+        <briefdescription>
+<para>Tells us which files are in the filesystem. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A vector with the unique identifiers of all files </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/IFileLoader.h" line="33" column="29"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Interface to get files that are part of the game data. Note that the interface does not have any save or write function. This is not meant to create persistent file systems, but to create virtual file systems from which to read. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Mochi::FS::IFileLoader</label>
+        <link refid="class_mochi_1_1_f_s_1_1_i_file_loader"/>
+      </node>
+      <node id="2">
+        <label>Mochi::FS::PackFile</label>
+        <link refid="class_mochi_1_1_f_s_1_1_pack_file"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Mochi::FS::SystemFileLoader</label>
+        <link refid="class_mochi_1_1_f_s_1_1_system_file_loader"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="Engine/src/Packer/IFileLoader.h" line="12" column="5" bodyfile="Engine/src/Packer/IFileLoader.h" bodystart="13" bodyend="34"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_f_s_1_1_i_file_loader_1a17f2ad4d0c222921e6e10e167688b67e" prot="public" virt="pure-virtual"><scope>Mochi::FS::IFileLoader</scope><name>GetAvailableFiles</name></member>
+      <member refid="class_mochi_1_1_f_s_1_1_i_file_loader_1a3f9f15a055c5f822fdf50c69426a0a62" prot="public" virt="pure-virtual"><scope>Mochi::FS::IFileLoader</scope><name>GetFile</name></member>
+      <member refid="class_mochi_1_1_f_s_1_1_i_file_loader_1aaadf8aa5e70d40aa8cfcb32738a51932" prot="public" virt="pure-virtual"><scope>Mochi::FS::IFileLoader</scope><name>HasFile</name></member>
+      <member refid="class_mochi_1_1_f_s_1_1_i_file_loader_1ab4f7bc0eb65a6bb1f2908c446fdff870" prot="public" virt="pure-virtual"><scope>Mochi::FS::IFileLoader</scope><name>IsValid</name></member>
+      <member refid="class_mochi_1_1_f_s_1_1_i_file_loader_1a1929fc8b5fbe1e59ca8ecb726474993c" prot="public" virt="virtual"><scope>Mochi::FS::IFileLoader</scope><name>~IFileLoader</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

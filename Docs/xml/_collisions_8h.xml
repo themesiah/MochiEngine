@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="_collisions_8h" kind="file" language="C++">
+    <compoundname>Collisions.h</compoundname>
+    <includes refid="_shapes_8h" local="yes">Shapes.h</includes>
+    <includes refid="_math_utils_8h" local="yes">../Utils/MathUtils.h</includes>
+    <includedby refid="_shapes_8cpp" local="yes">Engine/src/Physics/Shapes.cpp</includedby>
+    <incdepgraph>
+      <node id="10">
+        <label>../Exception.hpp</label>
+        <link refid="_exception_8hpp_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Engine/src/Physics/Collisions.h</label>
+        <link refid="_collisions_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Shapes.h</label>
+        <link refid="_shapes_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>../Types/Types.hpp</label>
+        <link refid="_types_8hpp_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>../Utils/MathUtils.h</label>
+        <link refid="_math_utils_8h_source"/>
+      </node>
+      <node id="6">
+        <label>SDL3/SDL.h</label>
+      </node>
+      <node id="3">
+        <label>array</label>
+      </node>
+      <node id="9">
+        <label>format</label>
+      </node>
+      <node id="7">
+        <label>math.h</label>
+      </node>
+      <node id="4">
+        <label>memory</label>
+      </node>
+      <node id="12">
+        <label>source_location</label>
+      </node>
+      <node id="11">
+        <label>stdexcept</label>
+      </node>
+      <node id="8">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespace_mochi">Mochi</innernamespace>
+    <innernamespace refid="namespace_mochi_1_1_physics">Mochi::Physics</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>HDEF_COLLISIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HDEF_COLLISIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Shapes.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../Utils/MathUtils.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Mochi::Physics</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>CollidesPointAndPoint(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_point" kindref="compound">Point</ref><sp/>&amp;p1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_point" kindref="compound">Point</ref><sp/>&amp;p2)</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>p1.Position<sp/>==<sp/>p2.Position;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>CollidesPointAndLine(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_point" kindref="compound">Point</ref><sp/>&amp;p,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_line" kindref="compound">Line</ref><sp/>&amp;l)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lineLength<sp/>=<sp/>(l.End<sp/>-<sp/>l.Position).Distance();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>d1<sp/>=<sp/>(p.Position<sp/>-<sp/>l.Position).Distance();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>d2<sp/>=<sp/>(p.Position<sp/>-<sp/>l.End).Distance();</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Math::Approx(d1<sp/>+<sp/>d2,<sp/>lineLength);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>CollidesPointAndCircle(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_point" kindref="compound">Point</ref><sp/>&amp;p,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_circle" kindref="compound">Circle</ref><sp/>&amp;c)</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(p.Position<sp/>-<sp/>c.Position).Distance()<sp/>&lt;=<sp/>c.Radius;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>CollidesPointAndRectangle(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_point" kindref="compound">Point</ref><sp/>&amp;p,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_rectangle" kindref="compound">Rectangle</ref><sp/>&amp;r)</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>p.Position.x<sp/>&gt;=<sp/>(r.Position.x<sp/>-<sp/>r.Extents.x)<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.Position.x<sp/>&lt;=<sp/>(r.Position.x<sp/>+<sp/>r.Extents.x)<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.Position.y<sp/>&gt;=<sp/>(r.Position.y<sp/>-<sp/>r.Extents.y)<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.Position.y<sp/>&lt;=<sp/>(r.Position.y<sp/>+<sp/>r.Extents.y);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>CollidesLineAndLine(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_line" kindref="compound">Line</ref><sp/>&amp;l1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_line" kindref="compound">Line</ref><sp/>&amp;l2)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x1<sp/>=<sp/>l1.Position.x;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x2<sp/>=<sp/>l1.End.x;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x3<sp/>=<sp/>l2.Position.x;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x4<sp/>=<sp/>l2.End.x;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y1<sp/>=<sp/>l1.Position.y;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y2<sp/>=<sp/>l1.End.y;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y3<sp/>=<sp/>l2.Position.y;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y4<sp/>=<sp/>l2.End.y;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>uA<sp/>=<sp/>((x4<sp/>-<sp/>x3)<sp/>*<sp/>(y1<sp/>-<sp/>y3)<sp/>-<sp/>(y4<sp/>-<sp/>y3)<sp/>*<sp/>(x1<sp/>-<sp/>x3))<sp/>/<sp/>((y4<sp/>-<sp/>y3)<sp/>*<sp/>(x2<sp/>-<sp/>x1)<sp/>-<sp/>(x4<sp/>-<sp/>x3)<sp/>*<sp/>(y2<sp/>-<sp/>y1));</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>uB<sp/>=<sp/>((x2<sp/>-<sp/>x1)<sp/>*<sp/>(y1<sp/>-<sp/>y3)<sp/>-<sp/>(y2<sp/>-<sp/>y1)<sp/>*<sp/>(x1<sp/>-<sp/>x3))<sp/>/<sp/>((y4<sp/>-<sp/>y3)<sp/>*<sp/>(x2<sp/>-<sp/>x1)<sp/>-<sp/>(x4<sp/>-<sp/>x3)<sp/>*<sp/>(y2<sp/>-<sp/>y1));</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(uA<sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>uA<sp/>&lt;=<sp/>1<sp/>&amp;&amp;<sp/>uB<sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>uB<sp/>&lt;=<sp/>1)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_mochi_1_1_physics_1_1_point" kindref="compound">Point</ref><sp/>start(l1.Position);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_mochi_1_1_physics_1_1_point" kindref="compound">Point</ref><sp/>end(l1.End);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>l2.Collides(start)<sp/>||<sp/>l2.Collides(end);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>CollidesLineAndCircle(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_line" kindref="compound">Line</ref><sp/>&amp;l,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_circle" kindref="compound">Circle</ref><sp/>&amp;c)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_mochi_1_1_physics_1_1_point" kindref="compound">Point</ref><sp/>lStart<sp/>=<sp/><ref refid="struct_mochi_1_1_physics_1_1_point" kindref="compound">Point</ref>(l.Position);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_mochi_1_1_physics_1_1_point" kindref="compound">Point</ref><sp/>lEnd<sp/>=<sp/><ref refid="struct_mochi_1_1_physics_1_1_point" kindref="compound">Point</ref>(l.End);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(c.Collides(lStart)<sp/>||<sp/>c.Collides(lEnd))</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vector2f<sp/>lineVector<sp/>=<sp/>l.End<sp/>-<sp/>l.Position;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lineLength<sp/>=<sp/>lineVector.Distance();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dot<sp/>=<sp/>Vector2f::Dot(c.Position<sp/>-<sp/>l.Position,<sp/>lineVector)<sp/>/<sp/>(lineLength<sp/>*<sp/>lineLength);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dot<sp/>=<sp/>Math::Clamp01(dot);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_mochi_1_1_physics_1_1_point" kindref="compound">Point</ref><sp/>closestPoint<sp/>=<sp/><ref refid="struct_mochi_1_1_physics_1_1_point" kindref="compound">Point</ref>(l.Position<sp/>+<sp/>(lineVector<sp/>*<sp/>dot));</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>c.Collides(closestPoint);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>CollidesLineAndRectangle(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_line" kindref="compound">Line</ref><sp/>&amp;l,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_rectangle" kindref="compound">Rectangle</ref><sp/>&amp;r)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_mochi_1_1_physics_1_1_line" kindref="compound">Line</ref><sp/>other<sp/>=<sp/><ref refid="struct_mochi_1_1_physics_1_1_line" kindref="compound">Line</ref>(r.Position<sp/>+<sp/>Vector2f(r.Extents.x,<sp/>r.Extents.y),<sp/>r.Position<sp/>+<sp/>Vector2f(r.Extents.x,<sp/>-r.Extents.y));</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(l.Collides(other))</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other<sp/>=<sp/><ref refid="struct_mochi_1_1_physics_1_1_line" kindref="compound">Line</ref>(r.Position<sp/>+<sp/>Vector2f(-r.Extents.x,<sp/>r.Extents.y),<sp/>r.Position<sp/>+<sp/>Vector2f(r.Extents.x,<sp/>r.Extents.y));</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(l.Collides(other))</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other<sp/>=<sp/><ref refid="struct_mochi_1_1_physics_1_1_line" kindref="compound">Line</ref>(r.Position<sp/>+<sp/>Vector2f(-r.Extents.x,<sp/>r.Extents.y),<sp/>r.Position<sp/>+<sp/>Vector2f(-r.Extents.x,<sp/>-r.Extents.y));</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(l.Collides(other))</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other<sp/>=<sp/><ref refid="struct_mochi_1_1_physics_1_1_line" kindref="compound">Line</ref>(r.Position<sp/>+<sp/>Vector2f(-r.Extents.x,<sp/>-r.Extents.y),<sp/>r.Position<sp/>+<sp/>Vector2f(r.Extents.x,<sp/>-r.Extents.y));</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(l.Collides(other))</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>CollidesCircleAndCircle(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_circle" kindref="compound">Circle</ref><sp/>&amp;c1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_circle" kindref="compound">Circle</ref><sp/>&amp;c2)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(c1.Position<sp/>-<sp/>c2.Position).Distance()<sp/>&lt;<sp/>c1.Radius<sp/>+<sp/>c2.Radius;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>CollidesCircleAndRectangle(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_circle" kindref="compound">Circle</ref><sp/>&amp;c,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_rectangle" kindref="compound">Rectangle</ref><sp/>&amp;r)</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vector2f<sp/>test<sp/>=<sp/>c.Position;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(c.Position.x<sp/>&lt;<sp/>r.Position.x<sp/>-<sp/>r.Extents.x)</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>test.x<sp/>=<sp/>r.Position.x<sp/>-<sp/>r.Extents.x;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(c.Position.x<sp/>&gt;<sp/>r.Position.x<sp/>+<sp/>r.Extents.x)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>test.x<sp/>=<sp/>r.Position.x<sp/>+<sp/>r.Extents.x;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(c.Position.y<sp/>&lt;<sp/>r.Position.y<sp/>-<sp/>r.Extents.y)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>test.y<sp/>=<sp/>r.Position.y<sp/>-<sp/>r.Extents.y;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(c.Position.y<sp/>&gt;<sp/>r.Position.y<sp/>+<sp/>r.Extents.y)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>test.y<sp/>=<sp/>r.Position.y<sp/>+<sp/>r.Extents.y;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>distance<sp/>=<sp/>(c.Position<sp/>-<sp/>test).Distance();</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>distance<sp/>&lt;=<sp/>c.Radius;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>CollidesRectangleAndRectangle(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_rectangle" kindref="compound">Rectangle</ref><sp/>&amp;r1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_rectangle" kindref="compound">Rectangle</ref><sp/>&amp;r2)</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(r1.Position.x<sp/>+<sp/>r1.Extents.x<sp/>&gt;=<sp/>r2.Position.x<sp/>-<sp/>r2.Extents.x<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r1.Position.x<sp/>-<sp/>r1.Extents.x<sp/>&lt;=<sp/>r2.Position.x<sp/>+<sp/>r2.Extents.x<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r1.Position.y<sp/>+<sp/>r1.Extents.y<sp/>&gt;=<sp/>r2.Position.y<sp/>-<sp/>r2.Extents.y<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r1.Position.y<sp/>-<sp/>r1.Extents.y<sp/>&lt;=<sp/>r2.Position.y<sp/>+<sp/>r2.Extents.y);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Engine/src/Physics/Collisions.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__s_d_l_keyboard_provider_8h_source" xml:lang="en-US">
+<title>SDLKeyboardProvider.h</title>
+<indexterm><primary>Engine/src/Input/SDLKeyboardProvider.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_SDLKEYBOARDPROVIDER</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_SDLKEYBOARDPROVIDER</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&quot;IKeyboardProvider.h&quot;</emphasis>
+5 
+6 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Input
+7 {
+8 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>SDLKeyboardProvider&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_mochi_1_1_input_1_1_i_keyboard_provider">IKeyboardProvider</link>
+9 &#32;&#32;&#32;&#32;{
+10 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+11 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SDLKeyboardProvider();
+12 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;~SDLKeyboardProvider();
+13 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;*GetState()&#32;<emphasis role="keyword">const&#32;override</emphasis>;
+14 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;GetMaxKeys()&#32;<emphasis role="keyword">const&#32;override</emphasis>;
+15 &#32;&#32;&#32;&#32;};
+16 }
+17 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

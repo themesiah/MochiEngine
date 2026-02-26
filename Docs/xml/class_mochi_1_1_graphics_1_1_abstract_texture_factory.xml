@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_graphics_1_1_abstract_texture_factory" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>Mochi::Graphics::AbstractTextureFactory</compoundname>
+    <derivedcompoundref refid="class_mochi_1_1_graphics_1_1_dummy_texture_factory" prot="public" virt="non-virtual">Mochi::Graphics::DummyTextureFactory</derivedcompoundref>
+    <derivedcompoundref refid="class_mochi_1_1_graphics_1_1_s_d_l_texture_factory" prot="public" virt="non-virtual">Mochi::Graphics::SDLTextureFactory</derivedcompoundref>
+    <includes refid="_abstract_texture_factory_8h" local="no">AbstractTextureFactory.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1a41bdbf61766433ee52b9cf540e529b72" prot="protected" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, std::shared_ptr&lt; <ref refid="class_mochi_1_1_graphics_1_1_i_texture" kindref="compound">ITexture</ref> &gt; &gt;</type>
+        <definition>std::unordered_map&lt;std::string, std::shared_ptr&lt;ITexture&gt; &gt; Mochi::Graphics::AbstractTextureFactory::mTexturesMap</definition>
+        <argsstring></argsstring>
+        <name>mTexturesMap</name>
+        <qualifiedname>Mochi::Graphics::AbstractTextureFactory::mTexturesMap</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AbstractTextureFactory.h" line="34" column="28" bodyfile="Engine/src/Graphics/AbstractTextureFactory.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1ad5bd8a4ebfa5b8bf0342593e6ab458de" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="class_mochi_1_1_graphics_1_1_i_texture" kindref="compound">ITexture</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; ITexture &gt; Mochi::Graphics::AbstractTextureFactory::LoadTexture</definition>
+        <argsstring>(const std::string &amp;texturePath)=0</argsstring>
+        <name>LoadTexture</name>
+        <qualifiedname>Mochi::Graphics::AbstractTextureFactory::LoadTexture</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_graphics_1_1_dummy_texture_factory_1a87fe211cfdeea0862404eb5c0b567f0d">LoadTexture</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_graphics_1_1_s_d_l_texture_factory_1aa1f557a049b3a67cca4e0b0e753de739">LoadTexture</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>texturePath</declname>
+        </param>
+        <briefdescription>
+<para>Implement this method to actually load the selected texture from memory onto a format that is compatible with the current renderer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>texturePath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The path of the texture in the virtual file system. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A shared pointer to the texture. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AbstractTextureFactory.h" line="39" column="33"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1a609e68e93633406cc49eaba8b27793b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Graphics::AbstractTextureFactory::AbstractTextureFactory</definition>
+        <argsstring>()</argsstring>
+        <name>AbstractTextureFactory</name>
+        <qualifiedname>Mochi::Graphics::AbstractTextureFactory::AbstractTextureFactory</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AbstractTextureFactory.h" line="42" column="9" bodyfile="Engine/src/Graphics/AbstractTextureFactory.cpp" bodystart="12" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1af35d9f4af7a896d57510110c4ab62564" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>Mochi::Graphics::AbstractTextureFactory::~AbstractTextureFactory</definition>
+        <argsstring>()</argsstring>
+        <name>~AbstractTextureFactory</name>
+        <qualifiedname>Mochi::Graphics::AbstractTextureFactory::~AbstractTextureFactory</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AbstractTextureFactory.h" line="43" column="17" bodyfile="Engine/src/Graphics/AbstractTextureFactory.cpp" bodystart="16" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1aa5071adc90bb9efaeaa749d273d01724" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="class_mochi_1_1_graphics_1_1_i_texture" kindref="compound">ITexture</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; ITexture &gt; Mochi::Graphics::AbstractTextureFactory::GetTexture</definition>
+        <argsstring>(const std::string &amp;texturePath)</argsstring>
+        <name>GetTexture</name>
+        <qualifiedname>Mochi::Graphics::AbstractTextureFactory::GetTexture</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>texturePath</declname>
+        </param>
+        <briefdescription>
+<para>Gets the texture on the specified path on the file system. If the texture is in the cache it returns that one, otherwise it loads the texture from the system. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>texturePath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The path or unique identifier. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A shared pointer to the texture. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AbstractTextureFactory.h" line="48" column="25" bodyfile="Engine/src/Graphics/AbstractTextureFactory.cpp" bodystart="20" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1a311bcb940cfced4ccb69a297e74748f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mochi::Graphics::AbstractTextureFactory::DeleteCache</definition>
+        <argsstring>()</argsstring>
+        <name>DeleteCache</name>
+        <qualifiedname>Mochi::Graphics::AbstractTextureFactory::DeleteCache</qualifiedname>
+        <briefdescription>
+<para>Deletes the texture cache from the factory. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Clears the textures map, releasing all textures that don&apos;t have a reference in any other place. Is safe to call whenever. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AbstractTextureFactory.h" line="50" column="14" bodyfile="Engine/src/Graphics/AbstractTextureFactory.cpp" bodystart="36" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1a456af37bfaf4dcf55ad0df412ed17888" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mochi::Graphics::AbstractTextureFactory::DeleteTexture</definition>
+        <argsstring>(const std::string &amp;texturePath)</argsstring>
+        <name>DeleteTexture</name>
+        <qualifiedname>Mochi::Graphics::AbstractTextureFactory::DeleteTexture</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>texturePath</declname>
+        </param>
+        <briefdescription>
+<para>Deletes a single texture from the cache. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Removes a texture from the cache, releasing it if it doesn&apos;t have any reference in any other place. Is safe to call whenever.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>texturePath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The texture to remove from the cache.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>texturePath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Path to the texture inside the catalog. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AbstractTextureFactory.h" line="53" column="14" bodyfile="Engine/src/Graphics/AbstractTextureFactory.cpp" bodystart="43" bodyend="54"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>This class must be inherited to generate textures of a compatible type with its own renderer. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Ownership:</para>
+<para><itemizedlist>
+<listitem><para>It maintains a cache of the loaded textures as a map.</para>
+</listitem><listitem><para>Clearing the cache is safe anytime, as all the created textures are shared pointers and will only be destroyed when all references are lost.</para>
+</listitem></itemizedlist>
+</para>
+<para>Guarantees:</para>
+<para><itemizedlist>
+<listitem><para>Valid textures will be only loaded once.</para>
+</listitem><listitem><para>Cache will priorize loading from the file system.</para>
+</listitem><listitem><para>Deleting a texture or the full cache is safe </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Mochi::Graphics::AbstractTextureFactory</label>
+        <link refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory"/>
+      </node>
+      <node id="2">
+        <label>Mochi::Graphics::DummyTextureFactory</label>
+        <link refid="class_mochi_1_1_graphics_1_1_dummy_texture_factory"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Mochi::Graphics::SDLTextureFactory</label>
+        <link refid="class_mochi_1_1_graphics_1_1_s_d_l_texture_factory"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="Engine/src/Graphics/AbstractTextureFactory.h" line="31" column="5" bodyfile="Engine/src/Graphics/AbstractTextureFactory.h" bodystart="32" bodyend="54"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1a609e68e93633406cc49eaba8b27793b2" prot="public" virt="non-virtual"><scope>Mochi::Graphics::AbstractTextureFactory</scope><name>AbstractTextureFactory</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1a311bcb940cfced4ccb69a297e74748f7" prot="public" virt="non-virtual"><scope>Mochi::Graphics::AbstractTextureFactory</scope><name>DeleteCache</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1a456af37bfaf4dcf55ad0df412ed17888" prot="public" virt="non-virtual"><scope>Mochi::Graphics::AbstractTextureFactory</scope><name>DeleteTexture</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1aa5071adc90bb9efaeaa749d273d01724" prot="public" virt="non-virtual"><scope>Mochi::Graphics::AbstractTextureFactory</scope><name>GetTexture</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1ad5bd8a4ebfa5b8bf0342593e6ab458de" prot="protected" virt="pure-virtual"><scope>Mochi::Graphics::AbstractTextureFactory</scope><name>LoadTexture</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1a41bdbf61766433ee52b9cf540e529b72" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::AbstractTextureFactory</scope><name>mTexturesMap</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1af35d9f4af7a896d57510110c4ab62564" prot="public" virt="virtual"><scope>Mochi::Graphics::AbstractTextureFactory</scope><name>~AbstractTextureFactory</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

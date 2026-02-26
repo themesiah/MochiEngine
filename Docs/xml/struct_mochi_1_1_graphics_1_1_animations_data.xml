@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_mochi_1_1_graphics_1_1_animations_data" kind="struct" language="C++" prot="public">
+    <compoundname>Mochi::Graphics::AnimationsData</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_animations_data_1aa3395f6999ed7fca6e537a98bcf8e938" prot="public" static="no" mutable="no">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path Mochi::Graphics::AnimationsData::TexturePath</definition>
+        <argsstring></argsstring>
+        <name>TexturePath</name>
+        <qualifiedname>Mochi::Graphics::AnimationsData::TexturePath</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AnimationData.h" line="61" column="31" bodyfile="Engine/src/Graphics/AnimationData.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_animations_data_1ad3c96364bbc6546da1427e0b2caa3f94" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref></type>
+        <definition>Vector2f Mochi::Graphics::AnimationsData::Size</definition>
+        <argsstring></argsstring>
+        <name>Size</name>
+        <qualifiedname>Mochi::Graphics::AnimationsData::Size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AnimationData.h" line="62" column="18" bodyfile="Engine/src/Graphics/AnimationData.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_animations_data_1a3c6a6dbec3000a5a9c26fd4cf3560d98" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="struct_mochi_1_1_graphics_1_1_frame_data" kindref="compound">FrameData</ref> &gt;</type>
+        <definition>std::vector&lt;FrameData&gt; Mochi::Graphics::AnimationsData::Frames</definition>
+        <argsstring></argsstring>
+        <name>Frames</name>
+        <qualifiedname>Mochi::Graphics::AnimationsData::Frames</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AnimationData.h" line="63" column="21" bodyfile="Engine/src/Graphics/AnimationData.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_animations_data_1a46089c045fc450249d6eb9dd91dfe606" prot="public" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="struct_mochi_1_1_graphics_1_1_frame_tag" kindref="compound">FrameTag</ref> &gt;</type>
+        <definition>std::unordered_map&lt;std::string, FrameTag&gt; Mochi::Graphics::AnimationsData::Animations</definition>
+        <argsstring></argsstring>
+        <name>Animations</name>
+        <qualifiedname>Mochi::Graphics::AnimationsData::Animations</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AnimationData.h" line="64" column="28" bodyfile="Engine/src/Graphics/AnimationData.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Mochi::Graphics::AnimationsData</label>
+        <link refid="struct_mochi_1_1_graphics_1_1_animations_data"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>Size</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mochi::Vector2f</label>
+        <link refid="struct_mochi_1_1_vector2f"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>Down</edgelabel>
+          <edgelabel>Left</edgelabel>
+          <edgelabel>One</edgelabel>
+          <edgelabel>Right</edgelabel>
+          <edgelabel>Up</edgelabel>
+          <edgelabel>Zero</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Graphics/AnimationData.h" line="59" column="5" bodyfile="Engine/src/Graphics/AnimationData.h" bodystart="60" bodyend="65"/>
+    <listofallmembers>
+      <member refid="struct_mochi_1_1_graphics_1_1_animations_data_1a46089c045fc450249d6eb9dd91dfe606" prot="public" virt="non-virtual"><scope>Mochi::Graphics::AnimationsData</scope><name>Animations</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_animations_data_1a3c6a6dbec3000a5a9c26fd4cf3560d98" prot="public" virt="non-virtual"><scope>Mochi::Graphics::AnimationsData</scope><name>Frames</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_animations_data_1ad3c96364bbc6546da1427e0b2caa3f94" prot="public" virt="non-virtual"><scope>Mochi::Graphics::AnimationsData</scope><name>Size</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_animations_data_1aa3395f6999ed7fca6e537a98bcf8e938" prot="public" virt="non-virtual"><scope>Mochi::Graphics::AnimationsData</scope><name>TexturePath</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

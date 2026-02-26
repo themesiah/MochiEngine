@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_45f8a0ac378309eb1a8b39c51b927858" kind="dir">
+    <compoundname>Engine/src/Packer</compoundname>
+    <innerfile refid="_i_file_loader_8h">IFileLoader.h</innerfile>
+    <innerfile refid="_pack_catalog_8cpp">PackCatalog.cpp</innerfile>
+    <innerfile refid="_pack_catalog_8h">PackCatalog.h</innerfile>
+    <innerfile refid="packer_8cpp">packer.cpp</innerfile>
+    <innerfile refid="_pack_file_8cpp">PackFile.cpp</innerfile>
+    <innerfile refid="_pack_file_8h">PackFile.h</innerfile>
+    <innerfile refid="_system_file_loader_8cpp">SystemFileLoader.cpp</innerfile>
+    <innerfile refid="_system_file_loader_8h">SystemFileLoader.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Packer/"/>
+  </compounddef>
+</doxygen>

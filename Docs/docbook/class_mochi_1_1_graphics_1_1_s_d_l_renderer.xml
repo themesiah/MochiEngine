@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_graphics_1_1_s_d_l_renderer" xml:lang="en-US">
+<title>Mochi::Graphics::SDLRenderer Class Reference</title>
+<indexterm><primary>Mochi::Graphics::SDLRenderer</primary></indexterm>
+<para>Inheritance diagram for Mochi::Graphics::SDLRenderer:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_mochi_1_1_graphics_1_1_s_d_l_renderer.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_s_d_l_renderer_1ab153be5d27814b674bfb7a532bb3fede"/><emphasis role="strong">SDLRenderer</emphasis> (const char *appName, const char *appVersion, const char *appId, const char *windowName)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_s_d_l_renderer_1a52dc534829695e2e19a96844fc526a0a"/>SDL_Renderer * <emphasis role="strong">GetRenderer</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_s_d_l_renderer_1a62c3b1662f6721254f4574334db7d8c6"/>SDL_Window * <emphasis role="strong">GetWindow</emphasis> () const</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_graphics_1_1_s_d_l_renderer_1ae1479f3b5249457978adc5a7d1f50d83">StartFrameRendering</link> () const override</para>
+
+<para>Initializes a frame. </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_graphics_1_1_s_d_l_renderer_1a93179556c37ed99d69eab1d9a2718081">Render</link> (std::vector&lt; <link linkend="_struct_mochi_1_1_graphics_1_1_render_command">RenderCommand</link> &gt; renderQueue, <link linkend="_class_mochi_1_1_graphics_1_1_camera">Camera</link> *camera) const override</para>
+
+<para>Actually renders the contents of the render queue projected on the camera. </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_graphics_1_1_s_d_l_renderer_1a6006ea13708b362a6c6786f1307554af">FinishRendering</link> () const override</para>
+
+<para>Finishes a frame rendering. </para>
+</listitem>
+            <listitem><para>virtual std::unique_ptr&lt; <link linkend="_class_mochi_1_1_graphics_1_1_abstract_texture_factory">AbstractTextureFactory</link> &gt; <link linkend="_class_mochi_1_1_graphics_1_1_s_d_l_renderer_1ab927fb0f2c37d621dc31a1ea70633596">CreateTextureFactory</link> (<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link> *catalog) const</para>
+
+<para>Creates (without ownership) a texture factory of the type compatible with the renderer. </para>
+</listitem>
+            <listitem><para>virtual std::unique_ptr&lt; <link linkend="_class_mochi_1_1_graphics_1_1_abstract_g_u_i">AbstractGUI</link> &gt; <link linkend="_class_mochi_1_1_graphics_1_1_s_d_l_renderer_1aa7338953146e0f7712ef26b659e3d9f4">CreateGUI</link> (<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link> *catalog, <link linkend="_class_mochi_1_1_input_1_1_i_action_manager">Input::IActionManager</link> *actionManager)</para>
+
+<para>Creates (without ownership) the GUI system compatible with the renderer. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_mochi_1_1_graphics_1_1_s_d_l_renderer_1aa7338953146e0f7712ef26b659e3d9f4"/><section>
+    <title>CreateGUI()</title>
+<indexterm><primary>CreateGUI</primary><secondary>Mochi::Graphics::SDLRenderer</secondary></indexterm>
+<indexterm><primary>Mochi::Graphics::SDLRenderer</primary><secondary>CreateGUI</secondary></indexterm>
+<para><computeroutput>std::unique_ptr&lt; <link linkend="_class_mochi_1_1_graphics_1_1_abstract_g_u_i">AbstractGUI</link> &gt; Mochi::Graphics::SDLRenderer::CreateGUI (<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link> * catalog, <link linkend="_class_mochi_1_1_input_1_1_i_action_manager">Input::IActionManager</link> * actionManager)<computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Creates (without ownership) the GUI system compatible with the renderer. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>catalog</entry><entry>
+<para>The file catalog used for the GUI system to load files from. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>actionManager</entry><entry>
+<para>The action manager, used to manage UI interactions. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>A unique pointer to the created gui system. </para>
+</formalpara>
+</para>
+<para>
+Implements <link linkend="_class_mochi_1_1_graphics_1_1_i_renderer_1a9fb7e47eec7bd318172e9af56b777d7d">Mochi::Graphics::IRenderer</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_graphics_1_1_s_d_l_renderer_1ab927fb0f2c37d621dc31a1ea70633596"/><section>
+    <title>CreateTextureFactory()</title>
+<indexterm><primary>CreateTextureFactory</primary><secondary>Mochi::Graphics::SDLRenderer</secondary></indexterm>
+<indexterm><primary>Mochi::Graphics::SDLRenderer</primary><secondary>CreateTextureFactory</secondary></indexterm>
+<para><computeroutput>std::unique_ptr&lt; <link linkend="_class_mochi_1_1_graphics_1_1_abstract_texture_factory">AbstractTextureFactory</link> &gt; Mochi::Graphics::SDLRenderer::CreateTextureFactory (<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link> * catalog) const<computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Creates (without ownership) a texture factory of the type compatible with the renderer. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>catalog</entry><entry>
+<para>The file catalog used for the factory to load files from. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>A unique pointer to the created texture factory. </para>
+</formalpara>
+</para>
+<para>
+Implements <link linkend="_class_mochi_1_1_graphics_1_1_i_renderer_1ab3fbe362e1d305bd1801f2cebf00754d">Mochi::Graphics::IRenderer</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_graphics_1_1_s_d_l_renderer_1a6006ea13708b362a6c6786f1307554af"/><section>
+    <title>FinishRendering()</title>
+<indexterm><primary>FinishRendering</primary><secondary>Mochi::Graphics::SDLRenderer</secondary></indexterm>
+<indexterm><primary>Mochi::Graphics::SDLRenderer</primary><secondary>FinishRendering</secondary></indexterm>
+<para><computeroutput>void Mochi::Graphics::SDLRenderer::FinishRendering ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Finishes a frame rendering. </para>
+</para>
+<para>
+Implements <link linkend="_class_mochi_1_1_graphics_1_1_i_renderer_1ac6e3962f22001844df533c8383d9a5fe">Mochi::Graphics::IRenderer</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_graphics_1_1_s_d_l_renderer_1a93179556c37ed99d69eab1d9a2718081"/><section>
+    <title>Render()</title>
+<indexterm><primary>Render</primary><secondary>Mochi::Graphics::SDLRenderer</secondary></indexterm>
+<indexterm><primary>Mochi::Graphics::SDLRenderer</primary><secondary>Render</secondary></indexterm>
+<para><computeroutput>void Mochi::Graphics::SDLRenderer::Render (std::vector&lt; <link linkend="_struct_mochi_1_1_graphics_1_1_render_command">RenderCommand</link> &gt; renderQueue, <link linkend="_class_mochi_1_1_graphics_1_1_camera">Camera</link> * camera) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Actually renders the contents of the render queue projected on the camera. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>renderQueue</entry><entry>
+<para>The vector of render commands to be drawn. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>camera</entry><entry>
+<para>The camera on which to project the rendering. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Implements <link linkend="_class_mochi_1_1_graphics_1_1_i_renderer_1a76dfd36eaca68224e810c00f71232068">Mochi::Graphics::IRenderer</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_graphics_1_1_s_d_l_renderer_1ae1479f3b5249457978adc5a7d1f50d83"/><section>
+    <title>StartFrameRendering()</title>
+<indexterm><primary>StartFrameRendering</primary><secondary>Mochi::Graphics::SDLRenderer</secondary></indexterm>
+<indexterm><primary>Mochi::Graphics::SDLRenderer</primary><secondary>StartFrameRendering</secondary></indexterm>
+<para><computeroutput>void Mochi::Graphics::SDLRenderer::StartFrameRendering ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Initializes a frame. </para>
+</para>
+<para>
+Implements <link linkend="_class_mochi_1_1_graphics_1_1_i_renderer_1a2c54d9c1dcfdd4f8e39ba8b5482ba5e1">Mochi::Graphics::IRenderer</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+Engine/src/Graphics/SDL/SDLRenderer.hEngine/src/Graphics/SDL/SDLRenderer.cpp</section>
+</section>

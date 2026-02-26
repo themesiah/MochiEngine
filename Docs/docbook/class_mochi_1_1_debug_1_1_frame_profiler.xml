@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_debug_1_1_frame_profiler" xml:lang="en-US">
+<title>Mochi::Debug::FrameProfiler Class Reference</title>
+<indexterm><primary>Mochi::Debug::FrameProfiler</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_debug_1_1_frame_profiler_1a27deeb085b0df7bc4383d52ad99842f2"/>void <emphasis role="strong">BeginSection</emphasis> (const std::string &amp;name)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_debug_1_1_frame_profiler_1a12f26a7042716048447b6fdd9047a694"/>void <emphasis role="strong">EndSection</emphasis> (const std::string &amp;name)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_debug_1_1_frame_profiler_1adf560fcfff6253925f0c3cc56900b2f3"/>void <emphasis role="strong">NewFrame</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_debug_1_1_frame_profiler_1aac59315d673867a218370e6f60d9938c"/>std::string <emphasis role="strong">Report</emphasis> () const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+Engine/src/Debug/Profiler.hpp</section>

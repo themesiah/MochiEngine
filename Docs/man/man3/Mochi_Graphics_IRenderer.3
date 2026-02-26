@@ -1,0 +1,111 @@
+.TH "Mochi::Graphics::IRenderer" 3 "MochiEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Mochi::Graphics::IRenderer \- This interface provides means to show graphics in the game and create the subsystems needed to create textures for the same renderer and GUI using the same renderer\&. The interface provides separate methods for rendering to meet the needs of different kind of renderers (initialize, load to gpu, present, for example)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <IRenderer\&.h>\fP
+.PP
+Inherited by \fBMochi::Graphics::DummyRenderer\fP, and \fBMochi::Graphics::SDLRenderer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBStartFrameRendering\fP () const =0"
+.br
+.RI "Initializes a frame\&. "
+.ti -1c
+.RI "virtual void \fBRender\fP (std::vector< \fBRenderCommand\fP > renderQueue, \fBCamera\fP *camera) const =0"
+.br
+.RI "Actually renders the contents of the render queue projected on the camera\&. "
+.ti -1c
+.RI "virtual void \fBFinishRendering\fP () const =0"
+.br
+.RI "Finishes a frame rendering\&. "
+.ti -1c
+.RI "virtual std::unique_ptr< \fBAbstractTextureFactory\fP > \fBCreateTextureFactory\fP (\fBFS::PackCatalog\fP *catalog) const =0"
+.br
+.RI "Creates (without ownership) a texture factory of the type compatible with the renderer\&. "
+.ti -1c
+.RI "virtual std::unique_ptr< \fBAbstractGUI\fP > \fBCreateGUI\fP (\fBFS::PackCatalog\fP *catalog, \fBInput::IActionManager\fP *actionManager)=0"
+.br
+.RI "Creates (without ownership) the GUI system compatible with the renderer\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+This interface provides means to show graphics in the game and create the subsystems needed to create textures for the same renderer and GUI using the same renderer\&. The interface provides separate methods for rendering to meet the needs of different kind of renderers (initialize, load to gpu, present, for example)\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual std::unique_ptr< \fBAbstractGUI\fP > Mochi::Graphics::IRenderer::CreateGUI (\fBFS::PackCatalog\fP * catalog, \fBInput::IActionManager\fP * actionManager)\fR [pure virtual]\fP"
+
+.PP
+Creates (without ownership) the GUI system compatible with the renderer\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcatalog\fP The file catalog used for the GUI system to load files from\&. 
+.br
+\fIactionManager\fP The action manager, used to manage UI interactions\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A unique pointer to the created gui system\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBMochi::Graphics::DummyRenderer\fP, and \fBMochi::Graphics::SDLRenderer\fP\&.
+.SS "virtual std::unique_ptr< \fBAbstractTextureFactory\fP > Mochi::Graphics::IRenderer::CreateTextureFactory (\fBFS::PackCatalog\fP * catalog) const\fR [pure virtual]\fP"
+
+.PP
+Creates (without ownership) a texture factory of the type compatible with the renderer\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcatalog\fP The file catalog used for the factory to load files from\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A unique pointer to the created texture factory\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBMochi::Graphics::DummyRenderer\fP, and \fBMochi::Graphics::SDLRenderer\fP\&.
+.SS "virtual void Mochi::Graphics::IRenderer::FinishRendering () const\fR [pure virtual]\fP"
+
+.PP
+Finishes a frame rendering\&. 
+.PP
+Implemented in \fBMochi::Graphics::DummyRenderer\fP, and \fBMochi::Graphics::SDLRenderer\fP\&.
+.SS "virtual void Mochi::Graphics::IRenderer::Render (std::vector< \fBRenderCommand\fP > renderQueue, \fBCamera\fP * camera) const\fR [pure virtual]\fP"
+
+.PP
+Actually renders the contents of the render queue projected on the camera\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIrenderQueue\fP The vector of render commands to be drawn\&. 
+.br
+\fIcamera\fP The camera on which to project the rendering\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBMochi::Graphics::DummyRenderer\fP, and \fBMochi::Graphics::SDLRenderer\fP\&.
+.SS "virtual void Mochi::Graphics::IRenderer::StartFrameRendering () const\fR [pure virtual]\fP"
+
+.PP
+Initializes a frame\&. 
+.PP
+Implemented in \fBMochi::Graphics::DummyRenderer\fP, and \fBMochi::Graphics::SDLRenderer\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MochiEngine from the source code\&.

@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_mochi_1_1_graphics_1_1_g_u_i_options" kind="struct" language="C++" prot="public">
+    <compoundname>Mochi::Graphics::GUIOptions</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_g_u_i_options_1aed050aa3c77ac266beaefa0e78995238" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Mochi::Graphics::GUIOptions::TexturePath</definition>
+        <argsstring></argsstring>
+        <name>TexturePath</name>
+        <qualifiedname>Mochi::Graphics::GUIOptions::TexturePath</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/GUICommon.hpp" line="29" column="21" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_g_u_i_options_1ac065bfe6535054eb068e3b5b4c805a2a" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="struct_mochi_1_1_rectf" kindref="compound">Rectf</ref> &gt;</type>
+        <definition>std::optional&lt;Rectf&gt; Mochi::Graphics::GUIOptions::ParentRect</definition>
+        <argsstring></argsstring>
+        <name>ParentRect</name>
+        <qualifiedname>Mochi::Graphics::GUIOptions::ParentRect</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/GUICommon.hpp" line="30" column="23" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_g_u_i_options_1a334273879761b8b7108658648d39d1fe" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="struct_mochi_1_1_rectf" kindref="compound">Rectf</ref> &gt;</type>
+        <definition>std::optional&lt;Rectf&gt; Mochi::Graphics::GUIOptions::SrcRect</definition>
+        <argsstring></argsstring>
+        <name>SrcRect</name>
+        <qualifiedname>Mochi::Graphics::GUIOptions::SrcRect</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/GUICommon.hpp" line="31" column="23" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_g_u_i_options_1a25a507b11a61b46d1e67e0ac4c346b07" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="struct_mochi_1_1_rectf" kindref="compound">Rectf</ref> &gt;</type>
+        <definition>std::optional&lt;Rectf&gt; Mochi::Graphics::GUIOptions::DstRect</definition>
+        <argsstring></argsstring>
+        <name>DstRect</name>
+        <qualifiedname>Mochi::Graphics::GUIOptions::DstRect</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/GUICommon.hpp" line="32" column="23" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_g_u_i_options_1a05642cbac5fc5f4fffbbcd07e5e92ffa" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="struct_mochi_1_1_rectf" kindref="compound">Rectf</ref> &gt;</type>
+        <definition>std::optional&lt;Rectf&gt; Mochi::Graphics::GUIOptions::Slice</definition>
+        <argsstring></argsstring>
+        <name>Slice</name>
+        <qualifiedname>Mochi::Graphics::GUIOptions::Slice</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/GUICommon.hpp" line="33" column="23" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_g_u_i_options_1a553aa5e5ffa2ec7f09d6f56737627398" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref></type>
+        <definition>Vector2f Mochi::Graphics::GUIOptions::ScreenAnchor</definition>
+        <argsstring></argsstring>
+        <name>ScreenAnchor</name>
+        <qualifiedname>Mochi::Graphics::GUIOptions::ScreenAnchor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/GUICommon.hpp" line="34" column="18" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_g_u_i_options_1ad78d0a5eace9fd1401df060deffd10be" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref></type>
+        <definition>Vector2f Mochi::Graphics::GUIOptions::SpritePivot</definition>
+        <argsstring></argsstring>
+        <name>SpritePivot</name>
+        <qualifiedname>Mochi::Graphics::GUIOptions::SpritePivot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/GUICommon.hpp" line="35" column="18" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_g_u_i_options_1abc77a8c11f150ef056f4d0cb43de8e89" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; Color &gt;</type>
+        <definition>std::optional&lt;Color&gt; Mochi::Graphics::GUIOptions::Color</definition>
+        <argsstring></argsstring>
+        <name>Color</name>
+        <qualifiedname>Mochi::Graphics::GUIOptions::Color</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/GUICommon.hpp" line="36" column="23" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Mochi::Graphics::GUIOptions</label>
+        <link refid="struct_mochi_1_1_graphics_1_1_g_u_i_options"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>ScreenAnchor</edgelabel>
+          <edgelabel>SpritePivot</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mochi::Vector2f</label>
+        <link refid="struct_mochi_1_1_vector2f"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>Down</edgelabel>
+          <edgelabel>Left</edgelabel>
+          <edgelabel>One</edgelabel>
+          <edgelabel>Right</edgelabel>
+          <edgelabel>Up</edgelabel>
+          <edgelabel>Zero</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/GUI/GUICommon.hpp" line="27" column="5" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="28" bodyend="37"/>
+    <listofallmembers>
+      <member refid="struct_mochi_1_1_graphics_1_1_g_u_i_options_1abc77a8c11f150ef056f4d0cb43de8e89" prot="public" virt="non-virtual"><scope>Mochi::Graphics::GUIOptions</scope><name>Color</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_g_u_i_options_1a25a507b11a61b46d1e67e0ac4c346b07" prot="public" virt="non-virtual"><scope>Mochi::Graphics::GUIOptions</scope><name>DstRect</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_g_u_i_options_1ac065bfe6535054eb068e3b5b4c805a2a" prot="public" virt="non-virtual"><scope>Mochi::Graphics::GUIOptions</scope><name>ParentRect</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_g_u_i_options_1a553aa5e5ffa2ec7f09d6f56737627398" prot="public" virt="non-virtual"><scope>Mochi::Graphics::GUIOptions</scope><name>ScreenAnchor</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_g_u_i_options_1a05642cbac5fc5f4fffbbcd07e5e92ffa" prot="public" virt="non-virtual"><scope>Mochi::Graphics::GUIOptions</scope><name>Slice</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_g_u_i_options_1ad78d0a5eace9fd1401df060deffd10be" prot="public" virt="non-virtual"><scope>Mochi::Graphics::GUIOptions</scope><name>SpritePivot</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_g_u_i_options_1a334273879761b8b7108658648d39d1fe" prot="public" virt="non-virtual"><scope>Mochi::Graphics::GUIOptions</scope><name>SrcRect</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_g_u_i_options_1aed050aa3c77ac266beaefa0e78995238" prot="public" virt="non-virtual"><scope>Mochi::Graphics::GUIOptions</scope><name>TexturePath</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

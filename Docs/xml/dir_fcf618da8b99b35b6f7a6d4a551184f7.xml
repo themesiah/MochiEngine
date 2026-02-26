@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_fcf618da8b99b35b6f7a6d4a551184f7" kind="dir">
+    <compoundname>Engine/src/Debug</compoundname>
+    <innerfile refid="_debug_layer_8cpp">DebugLayer.cpp</innerfile>
+    <innerfile refid="_debug_layer_8h">DebugLayer.h</innerfile>
+    <innerfile refid="_i_gizmos_8cpp">IGizmos.cpp</innerfile>
+    <innerfile refid="_i_gizmos_8h">IGizmos.h</innerfile>
+    <innerfile refid="_profiler_8hpp">Profiler.hpp</innerfile>
+    <innerfile refid="_s_d_l_gizmos_8cpp">SDLGizmos.cpp</innerfile>
+    <innerfile refid="_s_d_l_gizmos_8h">SDLGizmos.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Debug/"/>
+  </compounddef>
+</doxygen>

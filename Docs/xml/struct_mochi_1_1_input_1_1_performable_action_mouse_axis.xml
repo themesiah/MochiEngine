@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_mochi_1_1_input_1_1_performable_action_mouse_axis" kind="struct" language="C++" prot="public">
+    <compoundname>Mochi::Input::PerformableActionMouseAxis</compoundname>
+    <basecompoundref refid="struct_mochi_1_1_input_1_1_i_performable_action" prot="public" virt="non-virtual">Mochi::Input::IPerformableAction</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="struct_mochi_1_1_input_1_1_performable_action_mouse_axis_1a75c5fe424a6efe8c2d2e3cf0d647ac75" prot="private" static="no" mutable="no">
+        <type>MouseAxis</type>
+        <definition>MouseAxis Mochi::Input::PerformableActionMouseAxis::mAxis</definition>
+        <argsstring></argsstring>
+        <name>mAxis</name>
+        <qualifiedname>Mochi::Input::PerformableActionMouseAxis::mAxis</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/PerformableActions.h" line="42" column="19" bodyfile="Engine/src/Input/PerformableActions.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_input_1_1_performable_action_mouse_axis_1a46cdd005f08bfa080980d828286e662c" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mochi::Input::PerformableActionMouseAxis::mScale</definition>
+        <argsstring></argsstring>
+        <name>mScale</name>
+        <qualifiedname>Mochi::Input::PerformableActionMouseAxis::mScale</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/PerformableActions.h" line="43" column="15" bodyfile="Engine/src/Input/PerformableActions.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_mochi_1_1_input_1_1_performable_action_mouse_axis_1a626de02aa8a98b41c1eb1b808ce62468" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Input::PerformableActionMouseAxis::PerformableActionMouseAxis</definition>
+        <argsstring>(const nlohmann::json &amp;json)</argsstring>
+        <name>PerformableActionMouseAxis</name>
+        <qualifiedname>Mochi::Input::PerformableActionMouseAxis::PerformableActionMouseAxis</qualifiedname>
+        <param>
+          <type>const nlohmann::json &amp;</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/PerformableActions.h" line="46" column="9" bodyfile="Engine/src/Input/PerformableActions.cpp" bodystart="102" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_input_1_1_performable_action_mouse_axis_1a798d52e5ba4e9e2adedbd39223376eb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>Mochi::Input::PerformableActionMouseAxis::~PerformableActionMouseAxis</definition>
+        <argsstring>()</argsstring>
+        <name>~PerformableActionMouseAxis</name>
+        <qualifiedname>Mochi::Input::PerformableActionMouseAxis::~PerformableActionMouseAxis</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/PerformableActions.h" line="47" column="17" bodyfile="Engine/src/Input/PerformableActions.cpp" bodystart="116" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_input_1_1_performable_action_mouse_axis_1a4b8c829a6bf99e9eb81cc94e8274d57c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mochi::Input::PerformableActionMouseAxis::IsPerformed</definition>
+        <argsstring>(InputManager *input) const</argsstring>
+        <name>IsPerformed</name>
+        <qualifiedname>Mochi::Input::PerformableActionMouseAxis::IsPerformed</qualifiedname>
+        <reimplements refid="struct_mochi_1_1_input_1_1_i_performable_action_1a4582cab1c906143d71df41e0390b6760">IsPerformed</reimplements>
+        <param>
+          <type><ref refid="class_mochi_1_1_input_1_1_input_manager" kindref="compound">InputManager</ref> *</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/PerformableActions.h" line="48" column="22" bodyfile="Engine/src/Input/PerformableActions.cpp" bodystart="119" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_input_1_1_performable_action_mouse_axis_1a7d9b85e67c0c09df49c61b5acaec6f19" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>float</type>
+        <definition>float Mochi::Input::PerformableActionMouseAxis::GetValue</definition>
+        <argsstring>(InputManager *input) const</argsstring>
+        <name>GetValue</name>
+        <qualifiedname>Mochi::Input::PerformableActionMouseAxis::GetValue</qualifiedname>
+        <reimplements refid="struct_mochi_1_1_input_1_1_i_performable_action_1afcaac4df49fd976e1185de49168c7153">GetValue</reimplements>
+        <param>
+          <type><ref refid="class_mochi_1_1_input_1_1_input_manager" kindref="compound">InputManager</ref> *</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/PerformableActions.h" line="49" column="23" bodyfile="Engine/src/Input/PerformableActions.cpp" bodystart="123" bodyend="138"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Mochi::Input::IPerformableAction</label>
+        <link refid="struct_mochi_1_1_input_1_1_i_performable_action"/>
+      </node>
+      <node id="1">
+        <label>Mochi::Input::PerformableActionMouseAxis</label>
+        <link refid="struct_mochi_1_1_input_1_1_performable_action_mouse_axis"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Mochi::Input::IPerformableAction</label>
+        <link refid="struct_mochi_1_1_input_1_1_i_performable_action"/>
+      </node>
+      <node id="1">
+        <label>Mochi::Input::PerformableActionMouseAxis</label>
+        <link refid="struct_mochi_1_1_input_1_1_performable_action_mouse_axis"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Input/PerformableActions.h" line="39" column="5" bodyfile="Engine/src/Input/PerformableActions.h" bodystart="40" bodyend="50"/>
+    <listofallmembers>
+      <member refid="struct_mochi_1_1_input_1_1_performable_action_mouse_axis_1a7d9b85e67c0c09df49c61b5acaec6f19" prot="public" virt="virtual"><scope>Mochi::Input::PerformableActionMouseAxis</scope><name>GetValue</name></member>
+      <member refid="struct_mochi_1_1_input_1_1_performable_action_mouse_axis_1a4b8c829a6bf99e9eb81cc94e8274d57c" prot="public" virt="virtual"><scope>Mochi::Input::PerformableActionMouseAxis</scope><name>IsPerformed</name></member>
+      <member refid="struct_mochi_1_1_input_1_1_performable_action_mouse_axis_1a75c5fe424a6efe8c2d2e3cf0d647ac75" prot="private" virt="non-virtual"><scope>Mochi::Input::PerformableActionMouseAxis</scope><name>mAxis</name></member>
+      <member refid="struct_mochi_1_1_input_1_1_performable_action_mouse_axis_1a46cdd005f08bfa080980d828286e662c" prot="private" virt="non-virtual"><scope>Mochi::Input::PerformableActionMouseAxis</scope><name>mScale</name></member>
+      <member refid="struct_mochi_1_1_input_1_1_performable_action_mouse_axis_1a626de02aa8a98b41c1eb1b808ce62468" prot="public" virt="non-virtual"><scope>Mochi::Input::PerformableActionMouseAxis</scope><name>PerformableActionMouseAxis</name></member>
+      <member refid="struct_mochi_1_1_input_1_1_i_performable_action_1af5a4970d7a9374260aff30751991c725" prot="public" virt="virtual"><scope>Mochi::Input::PerformableActionMouseAxis</scope><name>~IPerformableAction</name></member>
+      <member refid="struct_mochi_1_1_input_1_1_performable_action_mouse_axis_1a798d52e5ba4e9e2adedbd39223376eb4" prot="public" virt="virtual"><scope>Mochi::Input::PerformableActionMouseAxis</scope><name>~PerformableActionMouseAxis</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

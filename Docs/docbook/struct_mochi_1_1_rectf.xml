@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_mochi_1_1_rectf" xml:lang="en-US">
+<title>Mochi::Rectf Struct Reference</title>
+<indexterm><primary>Mochi::Rectf</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1a0889543edf492e97415a33f506a6b07d"/><emphasis role="strong">Rectf</emphasis> (float _x=0, float _y=0, float _w=0, float _h=0)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1a89f7e9825f4275c399d726f96fafc420"/><emphasis role="strong">Rectf</emphasis> (const Rectf &amp;r)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1aef3e335aced130882aa2658ff2c054f8"/><emphasis role="strong">Rectf</emphasis> (Rectf &amp;&amp;r)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1a40041d0b87c0fbcbd375a6d450cc0b2d"/><emphasis role="strong">Rectf</emphasis> (<link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> pos, <link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> size)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1a642774c750d138bf9b7f07f5cf79d3c6"/><emphasis role="strong">Rectf</emphasis> (const SDL_FRect &amp;r)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1af0a85550129a12aa62a06ce272c2d551"/><emphasis role="strong">operator SDL_FRect</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1ac71e16c0af25ba18736270d780ebdbbe"/>Rectf &amp; <emphasis role="strong">operator=</emphasis> (const Rectf &amp;other)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1ab9e24525fa3c563c43c343913029ad7f"/>Rectf &amp; <emphasis role="strong">operator=</emphasis> (const SDL_FRect &amp;other)</para>
+</listitem>
+            <listitem><para>Rectf &amp; <link linkend="_struct_mochi_1_1_rectf_1ab698352ba3fd207a4973fa3a3d60b0da">operator+=</link> (const <link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> &amp;rhs)</para>
+
+<para>Moves the position of the rect adding a vector. </para>
+</listitem>
+            <listitem><para>Rectf &amp; <link linkend="_struct_mochi_1_1_rectf_1a3f8eca0df388421e950b8a8979fdd1c1">operator-=</link> (const <link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> &amp;rhs)</para>
+
+<para>Moves the position of the rect subtracting a vector. </para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1aa3dba1f17920627ddab6745ccec20ff1"/>bool <emphasis role="strong">operator==</emphasis> (const Rectf &amp;rhs)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1ac075fcb0c0d1f99e261b84e030f2a7af"/><link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> <emphasis role="strong">GetPosition</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1ad22b2a22f323a51d63410fc8b5b09c53"/>void <emphasis role="strong">SetPosition</emphasis> (const <link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> &amp;pos)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1aa7aa2b99bafe55fce49689fc68a8b225"/>void <emphasis role="strong">SetPosition</emphasis> (const float &amp;newX, const float &amp;newY)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1a72d57d0257fefcabfb3ed8304aee028c"/><link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> <emphasis role="strong">GetSize</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1a6488924993a2fb0f692913812cd54918"/>void <emphasis role="strong">SetSize</emphasis> (const <link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> &amp;size)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1af208a1dd5f4be6f044f22b8633b6276b"/>void <emphasis role="strong">SetSize</emphasis> (const float &amp;newW, const float &amp;newH)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1adbd7f5794f90ee4a8f6d8c185c1a178b"/>void <emphasis role="strong">Scale</emphasis> (const float &amp;scale)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1a7e5128d468d95263c8c85f50417a708b"/>bool <emphasis role="strong">IsTextureValid</emphasis> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1ac6b39a71e7dc95606154b952875fbe3d"/>float <emphasis role="strong">x</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1aa03228c4919adfaf62e84a530ce83b36"/>float <emphasis role="strong">y</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1aa32d51725d4fba2fe2d97f239ce45c0d"/>float <emphasis role="strong">w</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1a6859b9d6acf9025e7270f199728e5c2b"/>float <emphasis role="strong">h</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Friends    </title>
+        <itemizedlist>
+            <listitem><para>Rectf <link linkend="_struct_mochi_1_1_rectf_1a2f1ba17a8530d31c3bbfb5ad7658850c">operator+</link> (Rectf lhs, const <link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> &amp;rhs)</para>
+
+<para>Moves the position of the rect adding a vector. </para>
+</listitem>
+            <listitem><para>Rectf <link linkend="_struct_mochi_1_1_rectf_1a2853169ea98c469768cd1b623f5234cb">operator-</link> (Rectf lhs, const <link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> &amp;rhs)</para>
+
+<para>Moves the position of the rect subtracting a vector. </para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_rectf_1a1dfe2dde0dfe90176ddc4da2bd0bc86d"/>bool <emphasis role="strong">operator==</emphasis> (const Rectf &amp;lhs, const Rectf &amp;rhs)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_struct_mochi_1_1_rectf_1ab698352ba3fd207a4973fa3a3d60b0da"/><section>
+    <title>operator+=()</title>
+<indexterm><primary>operator+=</primary><secondary>Mochi::Rectf</secondary></indexterm>
+<indexterm><primary>Mochi::Rectf</primary><secondary>operator+=</secondary></indexterm>
+<para><computeroutput>Rectf &amp; Mochi::Rectf::operator+= (const <link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> &amp; rhs)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Moves the position of the rect adding a vector. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>rhs</entry><entry>
+<para>The movement vector </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Modified rect </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_struct_mochi_1_1_rectf_1a3f8eca0df388421e950b8a8979fdd1c1"/><section>
+    <title>operator-=()</title>
+<indexterm><primary>operator-=</primary><secondary>Mochi::Rectf</secondary></indexterm>
+<indexterm><primary>Mochi::Rectf</primary><secondary>operator-=</secondary></indexterm>
+<para><computeroutput>Rectf &amp; Mochi::Rectf::operator-= (const <link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> &amp; rhs)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Moves the position of the rect subtracting a vector. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>rhs</entry><entry>
+<para>The movement vector </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Modified rect </para>
+</formalpara>
+</para>
+</section>
+</section>
+<section>
+<title>Friends And Related Symbol Documentation</title>
+<anchor xml:id="_struct_mochi_1_1_rectf_1a2f1ba17a8530d31c3bbfb5ad7658850c"/><section>
+    <title>operator+</title>
+<indexterm><primary>operator+</primary><secondary>Mochi::Rectf</secondary></indexterm>
+<indexterm><primary>Mochi::Rectf</primary><secondary>operator+</secondary></indexterm>
+<para><computeroutput>Rectf operator+ (Rectf lhs, const <link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> &amp; rhs)<computeroutput>[friend]</computeroutput></computeroutput></para><para>
+
+<para>Moves the position of the rect adding a vector. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>rhs</entry><entry>
+<para>The movement vector </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Resulting rect </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="_struct_mochi_1_1_rectf_1a2853169ea98c469768cd1b623f5234cb"/><section>
+    <title>operator-</title>
+<indexterm><primary>operator-</primary><secondary>Mochi::Rectf</secondary></indexterm>
+<indexterm><primary>Mochi::Rectf</primary><secondary>operator-</secondary></indexterm>
+<para><computeroutput>Rectf operator- (Rectf lhs, const <link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> &amp; rhs)<computeroutput>[friend]</computeroutput></computeroutput></para><para>
+
+<para>Moves the position of the rect subtracting a vector. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>rhs</entry><entry>
+<para>The movement vector </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Resulting rect </para>
+</formalpara>
+</para>
+</section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+Engine/src/Types/Types.hpp</section>
+</section>

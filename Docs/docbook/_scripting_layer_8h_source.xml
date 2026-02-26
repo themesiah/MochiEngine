@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__scripting_layer_8h_source" xml:lang="en-US">
+<title>ScriptingLayer.h</title>
+<indexterm><primary>Engine/src/Scripting/ScriptingLayer.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_SCRIPTINGLAYER</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_SCRIPTINGLAYER</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;memory&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+6 
+7 <emphasis role="preprocessor">#include&#32;&quot;../Layer.h&quot;</emphasis>
+8 
+9 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Graphics
+10 {
+11 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_sprite_base">SpriteBase</link>;
+12 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_abstract_texture_factory">AbstractTextureFactory</link>;
+13 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_i_animation_factory">IAnimationFactory</link>;
+14 }
+15 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Scripting
+16 {
+17 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>ScriptingLayer&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_mochi_1_1_layer_1a3e92d2c73e6a792dcd68fda44b9effcf">Layer</link>
+18 &#32;&#32;&#32;&#32;{
+19 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::unique_ptr&lt;Graphics::AbstractTextureFactory&gt;&#32;mTextureFactory;
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::unique_ptr&lt;Graphics::IAnimationFactory&gt;&#32;mAnimationFactory;
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;std::shared_ptr&lt;Graphics::SpriteBase&gt;&gt;&#32;mSprites;
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;std::shared_ptr&lt;Graphics::SpriteBase&gt;&gt;&#32;mSpritesToDestroy;
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;BindFactoryMethods();
+25 
+26 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ScriptingLayer();
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;~ScriptingLayer();
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_mochi_1_1_scripting_1_1_scripting_layer_1a682807b02043f8b2780d61870550492b">InitLayer</link>()&#32;<emphasis role="keyword">override</emphasis>;
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_mochi_1_1_scripting_1_1_scripting_layer_1a3e099ab8f79429ec0ed6be13deaf3e5c">Update</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;&amp;dt)&#32;<emphasis role="keyword">override</emphasis>;
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_mochi_1_1_scripting_1_1_scripting_layer_1a7a90104ef84516699d72ea97ecf7cfe6">Render</link>()&#32;<emphasis role="keyword">const&#32;override</emphasis>;
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_mochi_1_1_scripting_1_1_scripting_layer_1ae8204c365aec3d6a0a67ef3de021b20f">GUI</link>()&#32;<emphasis role="keyword">const&#32;override</emphasis>;
+33 <emphasis role="preprocessor">#if&#32;DEBUG</emphasis>
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Debug()&#32;<emphasis role="keyword">const&#32;override</emphasis>;
+35 <emphasis role="preprocessor">#endif</emphasis>
+36 &#32;&#32;&#32;&#32;};
+37 }
+38 
+39 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

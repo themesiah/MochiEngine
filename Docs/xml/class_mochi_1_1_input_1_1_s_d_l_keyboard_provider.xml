@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_input_1_1_s_d_l_keyboard_provider" kind="class" language="C++" prot="public">
+    <compoundname>Mochi::Input::SDLKeyboardProvider</compoundname>
+    <basecompoundref refid="class_mochi_1_1_input_1_1_i_keyboard_provider" prot="public" virt="non-virtual">Mochi::Input::IKeyboardProvider</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_input_1_1_s_d_l_keyboard_provider_1aa69f33f7a898a03b1f12eabac9b26cf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Input::SDLKeyboardProvider::SDLKeyboardProvider</definition>
+        <argsstring>()</argsstring>
+        <name>SDLKeyboardProvider</name>
+        <qualifiedname>Mochi::Input::SDLKeyboardProvider::SDLKeyboardProvider</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/SDLKeyboardProvider.h" line="11" column="9" bodyfile="Engine/src/Input/SDLKeyboardProvider.cpp" bodystart="7" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_input_1_1_s_d_l_keyboard_provider_1a84c0c5e0629ff6e82fcd691975c5418c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>Mochi::Input::SDLKeyboardProvider::~SDLKeyboardProvider</definition>
+        <argsstring>()</argsstring>
+        <name>~SDLKeyboardProvider</name>
+        <qualifiedname>Mochi::Input::SDLKeyboardProvider::~SDLKeyboardProvider</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/SDLKeyboardProvider.h" line="12" column="17" bodyfile="Engine/src/Input/SDLKeyboardProvider.cpp" bodystart="11" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_input_1_1_s_d_l_keyboard_provider_1a3fc1fa007248a91edb3735b84400222d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>const bool *</type>
+        <definition>const bool * Mochi::Input::SDLKeyboardProvider::GetState</definition>
+        <argsstring>() const override</argsstring>
+        <name>GetState</name>
+        <qualifiedname>Mochi::Input::SDLKeyboardProvider::GetState</qualifiedname>
+        <reimplements refid="class_mochi_1_1_input_1_1_i_keyboard_provider_1a4532581b11b5c456d9a85e091717bd12">GetState</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/SDLKeyboardProvider.h" line="13" column="28" bodyfile="Engine/src/Input/SDLKeyboardProvider.cpp" bodystart="15" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_input_1_1_s_d_l_keyboard_provider_1ab62afe96d74edbbe10193e69b3b3ed9a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t Mochi::Input::SDLKeyboardProvider::GetMaxKeys</definition>
+        <argsstring>() const override</argsstring>
+        <name>GetMaxKeys</name>
+        <qualifiedname>Mochi::Input::SDLKeyboardProvider::GetMaxKeys</qualifiedname>
+        <reimplements refid="class_mochi_1_1_input_1_1_i_keyboard_provider_1a722c7d3e3961ec344432fbc6ebfd03f3">GetMaxKeys</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/SDLKeyboardProvider.h" line="14" column="24" bodyfile="Engine/src/Input/SDLKeyboardProvider.cpp" bodystart="21" bodyend="24"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Mochi::Input::IKeyboardProvider</label>
+        <link refid="class_mochi_1_1_input_1_1_i_keyboard_provider"/>
+      </node>
+      <node id="1">
+        <label>Mochi::Input::SDLKeyboardProvider</label>
+        <link refid="class_mochi_1_1_input_1_1_s_d_l_keyboard_provider"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Mochi::Input::IKeyboardProvider</label>
+        <link refid="class_mochi_1_1_input_1_1_i_keyboard_provider"/>
+      </node>
+      <node id="1">
+        <label>Mochi::Input::SDLKeyboardProvider</label>
+        <link refid="class_mochi_1_1_input_1_1_s_d_l_keyboard_provider"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Input/SDLKeyboardProvider.h" line="8" column="5" bodyfile="Engine/src/Input/SDLKeyboardProvider.h" bodystart="9" bodyend="15"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_input_1_1_s_d_l_keyboard_provider_1ab62afe96d74edbbe10193e69b3b3ed9a" prot="public" virt="virtual"><scope>Mochi::Input::SDLKeyboardProvider</scope><name>GetMaxKeys</name></member>
+      <member refid="class_mochi_1_1_input_1_1_s_d_l_keyboard_provider_1a3fc1fa007248a91edb3735b84400222d" prot="public" virt="virtual"><scope>Mochi::Input::SDLKeyboardProvider</scope><name>GetState</name></member>
+      <member refid="class_mochi_1_1_input_1_1_s_d_l_keyboard_provider_1aa69f33f7a898a03b1f12eabac9b26cf5" prot="public" virt="non-virtual"><scope>Mochi::Input::SDLKeyboardProvider</scope><name>SDLKeyboardProvider</name></member>
+      <member refid="class_mochi_1_1_input_1_1_i_keyboard_provider_1aeba0663a355c8e09c27b98e87ab6b044" prot="public" virt="virtual"><scope>Mochi::Input::SDLKeyboardProvider</scope><name>~IKeyboardProvider</name></member>
+      <member refid="class_mochi_1_1_input_1_1_s_d_l_keyboard_provider_1a84c0c5e0629ff6e82fcd691975c5418c" prot="public" virt="virtual"><scope>Mochi::Input::SDLKeyboardProvider</scope><name>~SDLKeyboardProvider</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

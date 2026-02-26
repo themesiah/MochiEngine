@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_engine_error" kind="class" language="C++" prot="public">
+    <compoundname>Mochi::EngineError</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::runtime_error</basecompoundref>
+    <derivedcompoundref refid="class_mochi_1_1_audio_operation_error" prot="public" virt="non-virtual">Mochi::AudioOperationError</derivedcompoundref>
+    <derivedcompoundref refid="class_mochi_1_1_malformed_input_action" prot="public" virt="non-virtual">Mochi::MalformedInputAction</derivedcompoundref>
+    <derivedcompoundref refid="class_mochi_1_1_resource_not_found_error" prot="public" virt="non-virtual">Mochi::ResourceNotFoundError</derivedcompoundref>
+    <derivedcompoundref refid="class_mochi_1_1_system_initialization_error" prot="public" virt="non-virtual">Mochi::SystemInitializationError</derivedcompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_engine_error_1a62355e32a40dada9668c1f8322825c25" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::EngineError::EngineError</definition>
+        <argsstring>(const std::string &amp;msg, std::source_location loc=std::source_location::current())</argsstring>
+        <name>EngineError</name>
+        <qualifiedname>Mochi::EngineError::EngineError</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>std::source_location</type>
+          <declname>loc</declname>
+          <defval>std::source_location::current()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Exception.hpp" line="14" column="18" bodyfile="Engine/src/Exception.hpp" bodystart="14" bodyend="15"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>Mochi::AudioOperationError</label>
+        <link refid="class_mochi_1_1_audio_operation_error"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Mochi::EngineError</label>
+        <link refid="class_mochi_1_1_engine_error"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Mochi::MalformedInputAction</label>
+        <link refid="class_mochi_1_1_malformed_input_action"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Mochi::ResourceNotFoundError</label>
+        <link refid="class_mochi_1_1_resource_not_found_error"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Mochi::SystemInitializationError</label>
+        <link refid="class_mochi_1_1_system_initialization_error"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::runtime_error</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Mochi::EngineError</label>
+        <link refid="class_mochi_1_1_engine_error"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::runtime_error</label>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Exception.hpp" line="11" column="5" bodyfile="Engine/src/Exception.hpp" bodystart="12" bodyend="16"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_engine_error_1a62355e32a40dada9668c1f8322825c25" prot="public" virt="non-virtual"><scope>Mochi::EngineError</scope><name>EngineError</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

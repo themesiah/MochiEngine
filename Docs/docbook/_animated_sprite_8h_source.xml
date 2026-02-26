@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__animated_sprite_8h_source" xml:lang="en-US">
+<title>AnimatedSprite.h</title>
+<indexterm><primary>Engine/src/Graphics/AnimatedSprite.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_ANIMATEDSPRITE</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_ANIMATEDSPRITE</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&quot;Spritesheet.h&quot;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&quot;AnimationData.h&quot;</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&quot;../Types/Types.hpp&quot;</emphasis>
+7 
+8 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+9 <emphasis role="preprocessor">#include&#32;&lt;memory&gt;</emphasis>
+10 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+11 
+12 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Graphics
+13 {
+14 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_abstract_texture_factory">AbstractTextureFactory</link>;
+15 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_i_animation_factory">IAnimationFactory</link>;
+16 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>AnimatedSprite&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;Spritesheet
+17 &#32;&#32;&#32;&#32;{
+18 &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>:
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;mPlaying;
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;mTimer;
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;mLoops;
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;mForward;
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;mCurrentAnimation;
+24 
+25 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;AnimatedSprite(<link linkend="_class_mochi_1_1_graphics_1_1_i_animation_factory">IAnimationFactory</link>&#32;*,&#32;<link linkend="_class_mochi_1_1_graphics_1_1_abstract_texture_factory">AbstractTextureFactory</link>&#32;*,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;animationPath,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;mainAnimation);
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;~AnimatedSprite();
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Update(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;&amp;dt)&#32;<emphasis role="keyword">override</emphasis>;
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;PlayAnimation(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;animationName);
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;StopAnimation();
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;GetCurrentAnimation()&#32;<emphasis role="keyword">const</emphasis>;
+32 &#32;&#32;&#32;&#32;};
+33 }
+34 
+35 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

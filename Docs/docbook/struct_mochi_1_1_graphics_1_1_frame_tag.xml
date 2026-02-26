@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_mochi_1_1_graphics_1_1_frame_tag" xml:lang="en-US">
+<title>Mochi::Graphics::FrameTag Struct Reference</title>
+<indexterm><primary>Mochi::Graphics::FrameTag</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_graphics_1_1_frame_tag_1a5cbf60e09cc0fad655fab6a7a68604b6"/>std::string <emphasis role="strong">Name</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_graphics_1_1_frame_tag_1a106ef06cf4d2e6e4d50f0f3bad708bde"/>int <emphasis role="strong">From</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_graphics_1_1_frame_tag_1a13d176c2d15b06517c15d6fdf8210340"/>int <emphasis role="strong">To</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_graphics_1_1_frame_tag_1a9b68080f1984f93788736c90bea6286c"/>AnimationDirection <emphasis role="strong">Direction</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_graphics_1_1_frame_tag_1aa312951fcecf4d59fe11cd4a3164a9a7"/>int <emphasis role="strong">Repeat</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_graphics_1_1_frame_tag_1a37ce871515af72e4a41b481ca625ad28"/>std::string <emphasis role="strong">UserData</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+Engine/src/Graphics/AnimationData.h</section>

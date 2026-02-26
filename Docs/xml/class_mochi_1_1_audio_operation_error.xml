@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_audio_operation_error" kind="class" language="C++" prot="public">
+    <compoundname>Mochi::AudioOperationError</compoundname>
+    <basecompoundref refid="class_mochi_1_1_engine_error" prot="public" virt="non-virtual">Mochi::EngineError</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_audio_operation_error_1af0de2a2ecf5b805f2e8cef4184c1a147" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::AudioOperationError::AudioOperationError</definition>
+        <argsstring>(const std::string &amp;operation, const std::string &amp;msg)</argsstring>
+        <name>AudioOperationError</name>
+        <qualifiedname>Mochi::AudioOperationError::AudioOperationError</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>operation</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Exception.hpp" line="39" column="18" bodyfile="Engine/src/Exception.hpp" bodystart="39" bodyend="39"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Mochi::AudioOperationError</label>
+        <link refid="class_mochi_1_1_audio_operation_error"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mochi::EngineError</label>
+        <link refid="class_mochi_1_1_engine_error"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::runtime_error</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Mochi::AudioOperationError</label>
+        <link refid="class_mochi_1_1_audio_operation_error"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mochi::EngineError</label>
+        <link refid="class_mochi_1_1_engine_error"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::runtime_error</label>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Exception.hpp" line="36" column="5" bodyfile="Engine/src/Exception.hpp" bodystart="37" bodyend="40"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_audio_operation_error_1af0de2a2ecf5b805f2e8cef4184c1a147" prot="public" virt="non-virtual"><scope>Mochi::AudioOperationError</scope><name>AudioOperationError</name></member>
+      <member refid="class_mochi_1_1_engine_error_1a62355e32a40dada9668c1f8322825c25" prot="public" virt="non-virtual"><scope>Mochi::AudioOperationError</scope><name>EngineError</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

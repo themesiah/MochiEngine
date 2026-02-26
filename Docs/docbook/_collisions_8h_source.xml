@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__collisions_8h_source" xml:lang="en-US">
+<title>Collisions.h</title>
+<indexterm><primary>Engine/src/Physics/Collisions.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_COLLISIONS</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_COLLISIONS</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&quot;Shapes.h&quot;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&quot;../Utils/MathUtils.h&quot;</emphasis>
+6 
+7 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Physics
+8 {
+9 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CollidesPointAndPoint(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_point">Point</link>&#32;&amp;p1,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_point">Point</link>&#32;&amp;p2)
+10 &#32;&#32;&#32;&#32;{
+11 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;p1.Position&#32;==&#32;p2.Position;
+12 &#32;&#32;&#32;&#32;}
+13 
+14 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CollidesPointAndLine(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_point">Point</link>&#32;&amp;p,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_line">Line</link>&#32;&amp;l)
+15 &#32;&#32;&#32;&#32;{
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;lineLength&#32;=&#32;(l.End&#32;-&#32;l.Position).Distance();
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;d1&#32;=&#32;(p.Position&#32;-&#32;l.Position).Distance();
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;d2&#32;=&#32;(p.Position&#32;-&#32;l.End).Distance();
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;Math::Approx(d1&#32;+&#32;d2,&#32;lineLength);
+20 &#32;&#32;&#32;&#32;}
+21 
+22 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CollidesPointAndCircle(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_point">Point</link>&#32;&amp;p,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_circle">Circle</link>&#32;&amp;c)
+23 &#32;&#32;&#32;&#32;{
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(p.Position&#32;-&#32;c.Position).Distance()&#32;&lt;=&#32;c.Radius;
+25 &#32;&#32;&#32;&#32;}
+26 
+27 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CollidesPointAndRectangle(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_point">Point</link>&#32;&amp;p,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_rectangle">Rectangle</link>&#32;&amp;r)
+28 &#32;&#32;&#32;&#32;{
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;p.Position.x&#32;&gt;=&#32;(r.Position.x&#32;-&#32;r.Extents.x)&#32;&amp;&amp;
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;p.Position.x&#32;&lt;=&#32;(r.Position.x&#32;+&#32;r.Extents.x)&#32;&amp;&amp;
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;p.Position.y&#32;&gt;=&#32;(r.Position.y&#32;-&#32;r.Extents.y)&#32;&amp;&amp;
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;p.Position.y&#32;&lt;=&#32;(r.Position.y&#32;+&#32;r.Extents.y);
+33 &#32;&#32;&#32;&#32;}
+34 
+35 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CollidesLineAndLine(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_line">Line</link>&#32;&amp;l1,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_line">Line</link>&#32;&amp;l2)
+36 &#32;&#32;&#32;&#32;{
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;x1&#32;=&#32;l1.Position.x;
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;x2&#32;=&#32;l1.End.x;
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;x3&#32;=&#32;l2.Position.x;
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;x4&#32;=&#32;l2.End.x;
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;y1&#32;=&#32;l1.Position.y;
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;y2&#32;=&#32;l1.End.y;
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;y3&#32;=&#32;l2.Position.y;
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;y4&#32;=&#32;l2.End.y;
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;uA&#32;=&#32;((x4&#32;-&#32;x3)&#32;*&#32;(y1&#32;-&#32;y3)&#32;-&#32;(y4&#32;-&#32;y3)&#32;*&#32;(x1&#32;-&#32;x3))&#32;/&#32;((y4&#32;-&#32;y3)&#32;*&#32;(x2&#32;-&#32;x1)&#32;-&#32;(x4&#32;-&#32;x3)&#32;*&#32;(y2&#32;-&#32;y1));
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;uB&#32;=&#32;((x2&#32;-&#32;x1)&#32;*&#32;(y1&#32;-&#32;y3)&#32;-&#32;(y2&#32;-&#32;y1)&#32;*&#32;(x1&#32;-&#32;x3))&#32;/&#32;((y4&#32;-&#32;y3)&#32;*&#32;(x2&#32;-&#32;x1)&#32;-&#32;(x4&#32;-&#32;x3)&#32;*&#32;(y2&#32;-&#32;y1));
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(uA&#32;&gt;=&#32;0&#32;&amp;&amp;&#32;uA&#32;&lt;=&#32;1&#32;&amp;&amp;&#32;uB&#32;&gt;=&#32;0&#32;&amp;&amp;&#32;uB&#32;&lt;=&#32;1)
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_mochi_1_1_physics_1_1_point">Point</link>&#32;start(l1.Position);
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_mochi_1_1_physics_1_1_point">Point</link>&#32;end(l1.End);
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;l2.Collides(start)&#32;||&#32;l2.Collides(end);
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+57 &#32;&#32;&#32;&#32;}
+58 
+59 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CollidesLineAndCircle(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_line">Line</link>&#32;&amp;l,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_circle">Circle</link>&#32;&amp;c)
+60 &#32;&#32;&#32;&#32;{
+61 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_mochi_1_1_physics_1_1_point">Point</link>&#32;lStart&#32;=&#32;<link linkend="_struct_mochi_1_1_physics_1_1_point">Point</link>(l.Position);
+62 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_mochi_1_1_physics_1_1_point">Point</link>&#32;lEnd&#32;=&#32;<link linkend="_struct_mochi_1_1_physics_1_1_point">Point</link>(l.End);
+63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(c.Collides(lStart)&#32;||&#32;c.Collides(lEnd))
+64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+65 
+66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Vector2f&#32;lineVector&#32;=&#32;l.End&#32;-&#32;l.Position;
+67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;lineLength&#32;=&#32;lineVector.Distance();
+68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;dot&#32;=&#32;Vector2f::Dot(c.Position&#32;-&#32;l.Position,&#32;lineVector)&#32;/&#32;(lineLength&#32;*&#32;lineLength);
+69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;dot&#32;=&#32;Math::Clamp01(dot);
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_mochi_1_1_physics_1_1_point">Point</link>&#32;closestPoint&#32;=&#32;<link linkend="_struct_mochi_1_1_physics_1_1_point">Point</link>(l.Position&#32;+&#32;(lineVector&#32;*&#32;dot));
+71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;c.Collides(closestPoint);
+72 &#32;&#32;&#32;&#32;}
+73 
+74 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CollidesLineAndRectangle(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_line">Line</link>&#32;&amp;l,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_rectangle">Rectangle</link>&#32;&amp;r)
+75 &#32;&#32;&#32;&#32;{
+76 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_mochi_1_1_physics_1_1_line">Line</link>&#32;other&#32;=&#32;<link linkend="_struct_mochi_1_1_physics_1_1_line">Line</link>(r.Position&#32;+&#32;Vector2f(r.Extents.x,&#32;r.Extents.y),&#32;r.Position&#32;+&#32;Vector2f(r.Extents.x,&#32;-r.Extents.y));
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(l.Collides(other))
+78 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;other&#32;=&#32;<link linkend="_struct_mochi_1_1_physics_1_1_line">Line</link>(r.Position&#32;+&#32;Vector2f(-r.Extents.x,&#32;r.Extents.y),&#32;r.Position&#32;+&#32;Vector2f(r.Extents.x,&#32;r.Extents.y));
+80 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(l.Collides(other))
+81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+82 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;other&#32;=&#32;<link linkend="_struct_mochi_1_1_physics_1_1_line">Line</link>(r.Position&#32;+&#32;Vector2f(-r.Extents.x,&#32;r.Extents.y),&#32;r.Position&#32;+&#32;Vector2f(-r.Extents.x,&#32;-r.Extents.y));
+83 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(l.Collides(other))
+84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+85 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;other&#32;=&#32;<link linkend="_struct_mochi_1_1_physics_1_1_line">Line</link>(r.Position&#32;+&#32;Vector2f(-r.Extents.x,&#32;-r.Extents.y),&#32;r.Position&#32;+&#32;Vector2f(r.Extents.x,&#32;-r.Extents.y));
+86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(l.Collides(other))
+87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+88 
+89 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+90 &#32;&#32;&#32;&#32;}
+91 
+92 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CollidesCircleAndCircle(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_circle">Circle</link>&#32;&amp;c1,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_circle">Circle</link>&#32;&amp;c2)
+93 &#32;&#32;&#32;&#32;{
+94 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(c1.Position&#32;-&#32;c2.Position).Distance()&#32;&lt;&#32;c1.Radius&#32;+&#32;c2.Radius;
+95 &#32;&#32;&#32;&#32;}
+96 
+97 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CollidesCircleAndRectangle(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_circle">Circle</link>&#32;&amp;c,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_rectangle">Rectangle</link>&#32;&amp;r)
+98 &#32;&#32;&#32;&#32;{
+99 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Vector2f&#32;test&#32;=&#32;c.Position;
+100 
+101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(c.Position.x&#32;&lt;&#32;r.Position.x&#32;-&#32;r.Extents.x)
+102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;test.x&#32;=&#32;r.Position.x&#32;-&#32;r.Extents.x;
+103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(c.Position.x&#32;&gt;&#32;r.Position.x&#32;+&#32;r.Extents.x)
+104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;test.x&#32;=&#32;r.Position.x&#32;+&#32;r.Extents.x;
+105 
+106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(c.Position.y&#32;&lt;&#32;r.Position.y&#32;-&#32;r.Extents.y)
+107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;test.y&#32;=&#32;r.Position.y&#32;-&#32;r.Extents.y;
+108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(c.Position.y&#32;&gt;&#32;r.Position.y&#32;+&#32;r.Extents.y)
+109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;test.y&#32;=&#32;r.Position.y&#32;+&#32;r.Extents.y;
+110 
+111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;distance&#32;=&#32;(c.Position&#32;-&#32;test).Distance();
+112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;distance&#32;&lt;=&#32;c.Radius;
+113 &#32;&#32;&#32;&#32;}
+114 
+115 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CollidesRectangleAndRectangle(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_rectangle">Rectangle</link>&#32;&amp;r1,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_rectangle">Rectangle</link>&#32;&amp;r2)
+116 &#32;&#32;&#32;&#32;{
+117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(r1.Position.x&#32;+&#32;r1.Extents.x&#32;&gt;=&#32;r2.Position.x&#32;-&#32;r2.Extents.x&#32;&amp;&amp;
+118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;r1.Position.x&#32;-&#32;r1.Extents.x&#32;&lt;=&#32;r2.Position.x&#32;+&#32;r2.Extents.x&#32;&amp;&amp;
+119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;r1.Position.y&#32;+&#32;r1.Extents.y&#32;&gt;=&#32;r2.Position.y&#32;-&#32;r2.Extents.y&#32;&amp;&amp;
+120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;r1.Position.y&#32;-&#32;r1.Extents.y&#32;&lt;=&#32;r2.Position.y&#32;+&#32;r2.Extents.y);
+121 &#32;&#32;&#32;&#32;}
+122 }
+123 
+124 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

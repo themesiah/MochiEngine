@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_graphics_1_1_oneshot_animation" kind="class" language="C++" prot="public">
+    <compoundname>Mochi::Graphics::OneshotAnimation</compoundname>
+    <basecompoundref refid="class_mochi_1_1_graphics_1_1_animated_sprite" prot="public" virt="non-virtual">Mochi::Graphics::AnimatedSprite</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_mochi_1_1_graphics_1_1_oneshot_animation_1a16a7e63d3e72a17666ec2848d3eb38df" prot="private" static="no" mutable="no">
+        <type>std::function&lt; void()&gt;</type>
+        <definition>std::function&lt;void()&gt; Mochi::Graphics::OneshotAnimation::mOnFinished</definition>
+        <argsstring></argsstring>
+        <name>mOnFinished</name>
+        <qualifiedname>Mochi::Graphics::OneshotAnimation::mOnFinished</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/OneshotAnimation.h" line="16" column="23" bodyfile="Engine/src/Graphics/OneshotAnimation.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_oneshot_animation_1a43458cf927ec6731545eb42f599acabc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Graphics::OneshotAnimation::OneshotAnimation</definition>
+        <argsstring>(IAnimationFactory *, AbstractTextureFactory *, const std::string &amp;animationPath, const std::string &amp;mainAnimation)</argsstring>
+        <name>OneshotAnimation</name>
+        <qualifiedname>Mochi::Graphics::OneshotAnimation::OneshotAnimation</qualifiedname>
+        <param>
+          <type><ref refid="class_mochi_1_1_graphics_1_1_i_animation_factory" kindref="compound">IAnimationFactory</ref> *</type>
+          <defname>animationFactory</defname>
+        </param>
+        <param>
+          <type><ref refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory" kindref="compound">AbstractTextureFactory</ref> *</type>
+          <defname>textureFactory</defname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>animationPath</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>mainAnimation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/OneshotAnimation.h" line="19" column="9" bodyfile="Engine/src/Graphics/OneshotAnimation.cpp" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_oneshot_animation_1a527c41a2529e0a2849f2d0a64c33c58e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>Mochi::Graphics::OneshotAnimation::~OneshotAnimation</definition>
+        <argsstring>()</argsstring>
+        <name>~OneshotAnimation</name>
+        <qualifiedname>Mochi::Graphics::OneshotAnimation::~OneshotAnimation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/OneshotAnimation.h" line="20" column="17" bodyfile="Engine/src/Graphics/OneshotAnimation.cpp" bodystart="14" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_oneshot_animation_1af64ef212186185343ce25807a50c99e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Mochi::Graphics::OneshotAnimation::Update</definition>
+        <argsstring>(const float &amp;dt) override</argsstring>
+        <name>Update</name>
+        <qualifiedname>Mochi::Graphics::OneshotAnimation::Update</qualifiedname>
+        <reimplements refid="class_mochi_1_1_graphics_1_1_animated_sprite_1ac967ba3a2486318bf27a1886f2639914">Update</reimplements>
+        <param>
+          <type>const float &amp;</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/OneshotAnimation.h" line="21" column="22" bodyfile="Engine/src/Graphics/OneshotAnimation.cpp" bodystart="16" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_oneshot_animation_1ac87994e640b4af219b719e3bcbf8edc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mochi::Graphics::OneshotAnimation::SetFinishCallback</definition>
+        <argsstring>(std::function&lt; void()&gt; onFinishedCallback)</argsstring>
+        <name>SetFinishCallback</name>
+        <qualifiedname>Mochi::Graphics::OneshotAnimation::SetFinishCallback</qualifiedname>
+        <param>
+          <type>std::function&lt; void()&gt;</type>
+          <declname>onFinishedCallback</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/OneshotAnimation.h" line="22" column="14" bodyfile="Engine/src/Graphics/OneshotAnimation.cpp" bodystart="28" bodyend="31"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Mochi::Graphics::AnimatedSprite</label>
+        <link refid="class_mochi_1_1_graphics_1_1_animated_sprite"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Mochi::Graphics::OneshotAnimation</label>
+        <link refid="class_mochi_1_1_graphics_1_1_oneshot_animation"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Mochi::Graphics::SpriteBase</label>
+        <link refid="class_mochi_1_1_graphics_1_1_sprite_base"/>
+      </node>
+      <node id="3">
+        <label>Mochi::Graphics::Spritesheet</label>
+        <link refid="class_mochi_1_1_graphics_1_1_spritesheet"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Mochi::Graphics::AnimatedSprite</label>
+        <link refid="class_mochi_1_1_graphics_1_1_animated_sprite"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Mochi::Graphics::OneshotAnimation</label>
+        <link refid="class_mochi_1_1_graphics_1_1_oneshot_animation"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Mochi::Graphics::SpriteBase</label>
+        <link refid="class_mochi_1_1_graphics_1_1_sprite_base"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>mSrcRect</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>mSize</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Mochi::Graphics::Spritesheet</label>
+        <link refid="class_mochi_1_1_graphics_1_1_spritesheet"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Mochi::Rectf</label>
+        <link refid="struct_mochi_1_1_rectf"/>
+      </node>
+      <node id="6">
+        <label>Mochi::Vector2f</label>
+        <link refid="struct_mochi_1_1_vector2f"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>Down</edgelabel>
+          <edgelabel>Left</edgelabel>
+          <edgelabel>One</edgelabel>
+          <edgelabel>Right</edgelabel>
+          <edgelabel>Up</edgelabel>
+          <edgelabel>Zero</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Graphics/OneshotAnimation.h" line="13" column="5" bodyfile="Engine/src/Graphics/OneshotAnimation.h" bodystart="14" bodyend="23"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_graphics_1_1_animated_sprite_1a41b69808e30c8220376e9337c96f913b" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>AnimatedSprite</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1a34414e24eba838c24fb013a3b672e061" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>GetAlpha</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_animated_sprite_1a1b1407d7fb27604a6f8552c7d433cb00" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>GetCurrentAnimation</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_spritesheet_1a7854d95ea844e0577646c10479305938" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>GetFrame</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1ab36165858abde58b890a89d526a2e573" prot="public" virt="virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>GetRenderData</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1a4a47291cb7a932afbe63de28817589a8" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>GetTransform</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1aac331d97ecdef74d0de89c08f5120590" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>GetZIndex</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1a74c4ce1ba2c1b81d45a0e8c7c7c75d58" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>IsVisible</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1a5955b525d0222435e8f76663046bbeac" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>LoadTexture</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1a86b3313062c41bcb2f633e5514bf550e" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>mAlpha</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_spritesheet_1a1b041c95c5e5900886c317ed7d668d53" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>mAnimationsData</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_animated_sprite_1a9308276a5c5e1f0b37f4bbaf3b40be59" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>mCurrentAnimation</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_animated_sprite_1abce622f2cf9655f54008ece2873b0dff" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>mForward</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_animated_sprite_1a58f1147a2ed85d48afb005b43129388b" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>mLoops</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_oneshot_animation_1a16a7e63d3e72a17666ec2848d3eb38df" prot="private" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>mOnFinished</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_animated_sprite_1ac00c265f64c0aef62a5a3b47127c6480" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>mPlaying</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1a2ea094242833d093a20c3771ac68ef02" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>mSize</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1ab46e1b1b86ce3494a01e14a4266e3c54" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>mSrcRect</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1a17a342d77ac30799a9f162772ecde008" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>mTexture</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_animated_sprite_1ae07ff38a9e54168fc0451432001e1c70" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>mTimer</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1a4c1133e7009533fa98241b1a339e5616" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>mTransform</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1acfa365b97191e7c222c9c8e4cf982943" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>mVisible</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1aad10caaa3866922a6b74076731a4e9ec" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>mZindex</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_oneshot_animation_1a43458cf927ec6731545eb42f599acabc" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>OneshotAnimation</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_animated_sprite_1af586b67fee38d6e27e777ce7d9d70eab" prot="public" virt="virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>PlayAnimation</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1a982922ac08e0087d3ac3db24fd109296" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>SetAlpha</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_oneshot_animation_1ac87994e640b4af219b719e3bcbf8edc4" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>SetFinishCallback</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_spritesheet_1af2d5ddfdb3998596f9cfb81e20546361" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>SetFrame</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1a3a7106da0233f722957d404101843ff9" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>SetSrcRect</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1ad5bc6fca9d82dde5cd027fbb63cd549a" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>SetTransform</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1a38b277b17397023acc00fed3012e1679" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>SetVisible</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1a7f711860bddc0c7f9f97fbb560fb219a" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>SetZIndex</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1a2e791b3688cc89346152f99a19e2d443" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>SpriteBase</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1a814a1925fc4e91c7f8cd1f205e0dcc7d" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>SpriteBase</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_spritesheet_1a63ae50598feebd08fa578f3155b70c08" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>Spritesheet</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_animated_sprite_1a70def4bbb56055f6603613594feedabd" prot="public" virt="non-virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>StopAnimation</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_oneshot_animation_1af64ef212186185343ce25807a50c99e6" prot="public" virt="virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>Update</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_animated_sprite_1a986ab03d82f6045bf3bbfd98e88cfe67" prot="public" virt="virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>~AnimatedSprite</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_oneshot_animation_1a527c41a2529e0a2849f2d0a64c33c58e" prot="public" virt="virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>~OneshotAnimation</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_sprite_base_1aa9f7cd8fc200328b6ca7467f469d1bd4" prot="public" virt="virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>~SpriteBase</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_spritesheet_1a66d988f7bf65c50fa9c674b73aebf26e" prot="public" virt="virtual"><scope>Mochi::Graphics::OneshotAnimation</scope><name>~Spritesheet</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

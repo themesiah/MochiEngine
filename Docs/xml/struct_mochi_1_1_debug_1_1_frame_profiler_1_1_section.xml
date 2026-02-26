@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_mochi_1_1_debug_1_1_frame_profiler_1_1_section" kind="struct" language="C++" prot="private">
+    <compoundname>Mochi::Debug::FrameProfiler::Section</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_mochi_1_1_debug_1_1_frame_profiler_1_1_section_1a46a53c9bea8530535ecfa80aad62c21b" prot="public" static="no" mutable="no">
+        <type>std::chrono::high_resolution_clock::time_point</type>
+        <definition>std::chrono::high_resolution_clock::time_point Mochi::Debug::FrameProfiler::Section::start</definition>
+        <argsstring></argsstring>
+        <name>start</name>
+        <qualifiedname>Mochi::Debug::FrameProfiler::Section::start</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Debug/Profiler.hpp" line="51" column="60" bodyfile="Engine/src/Debug/Profiler.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_debug_1_1_frame_profiler_1_1_section_1a8adfd0d4a3964428f77436128bb80f3a" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Mochi::Debug::FrameProfiler::Section::accum</definition>
+        <argsstring></argsstring>
+        <name>accum</name>
+        <qualifiedname>Mochi::Debug::FrameProfiler::Section::accum</qualifiedname>
+        <initializer>= 0.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Debug/Profiler.hpp" line="52" column="20" bodyfile="Engine/src/Debug/Profiler.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Debug/Profiler.hpp" line="49" column="9" bodyfile="Engine/src/Debug/Profiler.hpp" bodystart="50" bodyend="53"/>
+    <listofallmembers>
+      <member refid="struct_mochi_1_1_debug_1_1_frame_profiler_1_1_section_1a8adfd0d4a3964428f77436128bb80f3a" prot="public" virt="non-virtual"><scope>Mochi::Debug::FrameProfiler::Section</scope><name>accum</name></member>
+      <member refid="struct_mochi_1_1_debug_1_1_frame_profiler_1_1_section_1a46a53c9bea8530535ecfa80aad62c21b" prot="public" virt="non-virtual"><scope>Mochi::Debug::FrameProfiler::Section</scope><name>start</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

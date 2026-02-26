@@ -1,0 +1,109 @@
+.TH "Mochi::FS::IFileLoader" 3 "MochiEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Mochi::FS::IFileLoader \- Interface to get files that are part of the game data\&. Note that the interface does not have any save or write function\&. This is not meant to create persistent file systems, but to create virtual file systems from which to read\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <IFileLoader\&.h>\fP
+.PP
+Inherited by \fBMochi::FS::PackFile\fP, and \fBMochi::FS::SystemFileLoader\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBIsValid\fP () const =0"
+.br
+.RI "Tells us if the file loader can be used at the moment\&. "
+.ti -1c
+.RI "virtual std::vector< char > \fBGetFile\fP (const std::string &path)=0"
+.br
+.RI "Give us a binary representation of a file in a filesystem\&. "
+.ti -1c
+.RI "virtual bool \fBHasFile\fP (const std::string &path) const =0"
+.br
+.RI "Tells us if the filesystem has a file\&. "
+.ti -1c
+.RI "virtual std::vector< std::string > \fBGetAvailableFiles\fP () const =0"
+.br
+.RI "Tells us which files are in the filesystem\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Interface to get files that are part of the game data\&. Note that the interface does not have any save or write function\&. This is not meant to create persistent file systems, but to create virtual file systems from which to read\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual std::vector< std::string > Mochi::FS::IFileLoader::GetAvailableFiles () const\fR [pure virtual]\fP"
+
+.PP
+Tells us which files are in the filesystem\&. 
+.PP
+\fBReturns\fP
+.RS 4
+A vector with the unique identifiers of all files 
+.RE
+.PP
+
+.PP
+Implemented in \fBMochi::FS::PackFile\fP, and \fBMochi::FS::SystemFileLoader\fP\&.
+.SS "virtual std::vector< char > Mochi::FS::IFileLoader::GetFile (const std::string & path)\fR [pure virtual]\fP"
+
+.PP
+Give us a binary representation of a file in a filesystem\&. 
+.PP
+\fBExceptions\fP
+.RS 4
+\fI\fBEngineError\fP\fP if is not valid or doesn't have file 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP A path, or unique identifier to the file 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A vector of chars, or binary representation of a file\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBMochi::FS::PackFile\fP, and \fBMochi::FS::SystemFileLoader\fP\&.
+.SS "virtual bool Mochi::FS::IFileLoader::HasFile (const std::string & path) const\fR [pure virtual]\fP"
+
+.PP
+Tells us if the filesystem has a file\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP A path, or unique identifier to the file 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True if it has the file, false if not 
+.RE
+.PP
+
+.PP
+Implemented in \fBMochi::FS::PackFile\fP, and \fBMochi::FS::SystemFileLoader\fP\&.
+.SS "virtual bool Mochi::FS::IFileLoader::IsValid () const\fR [pure virtual]\fP"
+
+.PP
+Tells us if the file loader can be used at the moment\&. 
+.PP
+\fBReturns\fP
+.RS 4
+True if can be used, false if not 
+.RE
+.PP
+
+.PP
+Implemented in \fBMochi::FS::PackFile\fP, and \fBMochi::FS::SystemFileLoader\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MochiEngine from the source code\&.

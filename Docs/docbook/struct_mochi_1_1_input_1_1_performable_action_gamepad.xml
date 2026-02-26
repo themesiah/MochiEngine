@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_mochi_1_1_input_1_1_performable_action_gamepad" xml:lang="en-US">
+<title>Mochi::Input::PerformableActionGamepad Struct Reference</title>
+<indexterm><primary>Mochi::Input::PerformableActionGamepad</primary></indexterm>
+<para>Inheritance diagram for Mochi::Input::PerformableActionGamepad:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="struct_mochi_1_1_input_1_1_performable_action_gamepad.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_input_1_1_performable_action_gamepad_1a753b654b48c0f979d52912342c4e33f5"/><emphasis role="strong">PerformableActionGamepad</emphasis> (const nlohmann::json &amp;json)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_struct_mochi_1_1_input_1_1_performable_action_gamepad_1a140353a2114d867cc95d0ed7d6662502">IsPerformed</link> (<link linkend="_class_mochi_1_1_input_1_1_input_manager">InputManager</link> *input) const</para>
+</listitem>
+            <listitem><para>virtual float <link linkend="_struct_mochi_1_1_input_1_1_performable_action_gamepad_1a9372bd7eac1173a32c10ca3e71828c49">GetValue</link> (<link linkend="_class_mochi_1_1_input_1_1_input_manager">InputManager</link> *input) const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_struct_mochi_1_1_input_1_1_performable_action_gamepad_1a9372bd7eac1173a32c10ca3e71828c49"/><section>
+    <title>GetValue()</title>
+<indexterm><primary>GetValue</primary><secondary>Mochi::Input::PerformableActionGamepad</secondary></indexterm>
+<indexterm><primary>Mochi::Input::PerformableActionGamepad</primary><secondary>GetValue</secondary></indexterm>
+<para><computeroutput>float Mochi::Input::PerformableActionGamepad::GetValue (<link linkend="_class_mochi_1_1_input_1_1_input_manager">InputManager</link> * input) const<computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_struct_mochi_1_1_input_1_1_i_performable_action">Mochi::Input::IPerformableAction</link>.</para>
+</section>
+<anchor xml:id="_struct_mochi_1_1_input_1_1_performable_action_gamepad_1a140353a2114d867cc95d0ed7d6662502"/><section>
+    <title>IsPerformed()</title>
+<indexterm><primary>IsPerformed</primary><secondary>Mochi::Input::PerformableActionGamepad</secondary></indexterm>
+<indexterm><primary>Mochi::Input::PerformableActionGamepad</primary><secondary>IsPerformed</secondary></indexterm>
+<para><computeroutput>bool Mochi::Input::PerformableActionGamepad::IsPerformed (<link linkend="_class_mochi_1_1_input_1_1_input_manager">InputManager</link> * input) const<computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_struct_mochi_1_1_input_1_1_i_performable_action">Mochi::Input::IPerformableAction</link>.</para>
+</section>
+<para>
+The documentation for this struct was generated from the following files:</para>
+Engine/src/Input/PerformableActions.hEngine/src/Input/PerformableActions.cpp</section>
+</section>

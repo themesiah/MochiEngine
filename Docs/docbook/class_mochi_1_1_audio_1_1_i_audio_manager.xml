@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_audio_1_1_i_audio_manager" xml:lang="en-US">
+<title>Mochi::Audio::IAudioManager Class Reference</title>
+<indexterm><primary>Mochi::Audio::IAudioManager</primary></indexterm>
+<para>Inheritance diagram for Mochi::Audio::IAudioManager:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_mochi_1_1_audio_1_1_i_audio_manager.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_audio_1_1_i_audio_manager_1a60a100b63a20c4e021403aed76f1a609"/>virtual void <emphasis role="strong">Update</emphasis> (const float &amp;dt)=0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_audio_1_1_i_audio_manager_1aa38cd1d9b2654083ca1ed178fa459dfa"/>virtual void <emphasis role="strong">LoadAudio</emphasis> (const std::string &amp;path)=0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_audio_1_1_i_audio_manager_1a6421aef4a91b399c1f05464d980590ee"/>virtual void <emphasis role="strong">UnloadAudio</emphasis> (const std::string &amp;path)=0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_audio_1_1_i_audio_manager_1a696e2a8c879fd8daa298553cd944720f"/>virtual void <emphasis role="strong">PlayBGM</emphasis> (const std::string &amp;audioName)=0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_audio_1_1_i_audio_manager_1a8b63f8d8da1ce6cc584c123ac04533b4"/>virtual void <emphasis role="strong">PauseBGM</emphasis> ()=0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_audio_1_1_i_audio_manager_1ab121967b0728a8da3292a597d105cdd1"/>virtual void <emphasis role="strong">StopBGM</emphasis> ()=0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_audio_1_1_i_audio_manager_1a4cd3c1364a66b18588a7b0cbbf9d95cb"/>virtual void <emphasis role="strong">ResumeBGM</emphasis> ()=0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_audio_1_1_i_audio_manager_1a2a924034d3a7d9887afa64ad444ad147"/>virtual void <emphasis role="strong">SkipToTimelinePosition</emphasis> (const int &amp;ms)=0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_audio_1_1_i_audio_manager_1a0cac77dbfd09f57e769e4c07cedc27bf"/>virtual void <emphasis role="strong">PlayOneShot</emphasis> (const std::string &amp;audioName)=0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_audio_1_1_i_audio_manager_1adc60851e6a18a6a2de2083c0f37506de"/>virtual void <emphasis role="strong">SetParameter</emphasis> (const std::string &amp;parameterName, const float &amp;value)=0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_audio_1_1_i_audio_manager_1a76a3d620d92c747018540bead9b4832e"/>virtual void <emphasis role="strong">SetMixerVolume</emphasis> (const std::string &amp;mixerGroupName, const float &amp;value)=0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+Engine/src/Audio/IAudioManager.h</section>

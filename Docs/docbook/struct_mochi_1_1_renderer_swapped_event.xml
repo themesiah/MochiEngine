@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_mochi_1_1_renderer_swapped_event" xml:lang="en-US">
+<title>Mochi::RendererSwappedEvent Struct Reference</title>
+<indexterm><primary>Mochi::RendererSwappedEvent</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_renderer_swapped_event_1abda57b4f960be39895f53286f512cf2b"/><link linkend="_class_mochi_1_1_graphics_1_1_i_renderer">Graphics::IRenderer</link> * <emphasis role="strong">newRenderer</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_renderer_swapped_event_1a545d8d0325e870c32f45c59d281bcb09"/><link linkend="_class_mochi_1_1_graphics_1_1_abstract_g_u_i">Graphics::AbstractGUI</link> * <emphasis role="strong">newGui</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_renderer_swapped_event_1a9283ef47902454ff65d956e722ceeb62"/><link linkend="_class_mochi_1_1_debug_1_1_i_gizmos">Debug::IGizmos</link> * <emphasis role="strong">newGizmos</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+Engine/src/Event/EngineEvents.h</section>

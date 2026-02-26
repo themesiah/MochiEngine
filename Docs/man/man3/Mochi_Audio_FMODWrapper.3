@@ -1,0 +1,106 @@
+.TH "Mochi::Audio::FMODWrapper" 3 "MochiEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Mochi::Audio::FMODWrapper
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBMochi::Audio::IAudioManager\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFMODWrapper\fP (\fBFS::PackCatalog\fP *, \fBScripting::ScriptingManager\fP *)"
+.br
+.ti -1c
+.RI "virtual void \fBUpdate\fP (const float &dt) override"
+.br
+.ti -1c
+.RI "virtual void \fBLoadAudio\fP (const std::string &path) override"
+.br
+.ti -1c
+.RI "virtual void \fBUnloadAudio\fP (const std::string &path) override"
+.br
+.ti -1c
+.RI "virtual void \fBPlayBGM\fP (const std::string &eventName) override"
+.br
+.ti -1c
+.RI "virtual void \fBPauseBGM\fP () override"
+.br
+.ti -1c
+.RI "virtual void \fBResumeBGM\fP () override"
+.br
+.ti -1c
+.RI "virtual void \fBStopBGM\fP () override"
+.br
+.ti -1c
+.RI "virtual void \fBSkipToTimelinePosition\fP (const int &ms) override"
+.br
+.ti -1c
+.RI "virtual void \fBPlayOneShot\fP (const std::string &eventName) override"
+.br
+.ti -1c
+.RI "void \fBClearSoundCache\fP ()"
+.br
+.ti -1c
+.RI "void \fBClearBusCache\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBSetParameter\fP (const std::string &parameterName, const float &value) override"
+.br
+.ti -1c
+.RI "virtual void \fBSetMixerVolume\fP (const std::string &busGroupName, const float &value) override"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void Mochi::Audio::FMODWrapper::LoadAudio (const std::string & path)\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Audio::IAudioManager\fP\&.
+.SS "void Mochi::Audio::FMODWrapper::PauseBGM ()\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Audio::IAudioManager\fP\&.
+.SS "void Mochi::Audio::FMODWrapper::PlayBGM (const std::string & eventName)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Audio::IAudioManager\fP\&.
+.SS "void Mochi::Audio::FMODWrapper::PlayOneShot (const std::string & eventName)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Audio::IAudioManager\fP\&.
+.SS "void Mochi::Audio::FMODWrapper::ResumeBGM ()\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Audio::IAudioManager\fP\&.
+.SS "virtual void Mochi::Audio::FMODWrapper::SetMixerVolume (const std::string & busGroupName, const float & value)\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Audio::IAudioManager\fP\&.
+.SS "void Mochi::Audio::FMODWrapper::SetParameter (const std::string & parameterName, const float & value)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Audio::IAudioManager\fP\&.
+.SS "void Mochi::Audio::FMODWrapper::SkipToTimelinePosition (const int & ms)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Audio::IAudioManager\fP\&.
+.SS "void Mochi::Audio::FMODWrapper::StopBGM ()\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Audio::IAudioManager\fP\&.
+.SS "virtual void Mochi::Audio::FMODWrapper::UnloadAudio (const std::string & path)\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Audio::IAudioManager\fP\&.
+.SS "void Mochi::Audio::FMODWrapper::Update (const float & dt)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Audio::IAudioManager\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MochiEngine from the source code\&.

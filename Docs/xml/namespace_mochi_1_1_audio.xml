@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="namespace_mochi_1_1_audio" kind="namespace" language="C++">
+    <compoundname>Mochi::Audio</compoundname>
+    <innerclass refid="class_mochi_1_1_audio_1_1_dummy_audio_manager" prot="public">Mochi::Audio::DummyAudioManager</innerclass>
+    <innerclass refid="struct_mochi_1_1_audio_1_1_f_m_o_d_marker_event" prot="public">Mochi::Audio::FMODMarkerEvent</innerclass>
+    <innerclass refid="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper" prot="public">Mochi::Audio::FMODWrapper</innerclass>
+    <innerclass refid="class_mochi_1_1_audio_1_1_i_audio_manager" prot="public">Mochi::Audio::IAudioManager</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Audio/DummyAudioManager.h" line="6" column="1"/>
+  </compounddef>
+</doxygen>

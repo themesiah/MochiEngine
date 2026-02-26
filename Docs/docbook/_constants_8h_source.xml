@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__constants_8h_source" xml:lang="en-US">
+<title>Constants.h</title>
+<indexterm><primary>Engine/src/Constants.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_CONSTANTS</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_CONSTANTS</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+5 
+6 <emphasis role="keyword">namespace&#32;</emphasis>Mochi
+7 {
+8 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keyword">constexpr</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*CONST_DEVBUILD_TEXT&#32;=&#32;<emphasis role="stringliteral">&quot;DEVELOPMENT&#32;BUILD&quot;</emphasis>;
+9 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keyword">constexpr</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;CONST_DEVBUILD_TEXT_SIZE&#32;=&#32;16.0f;
+10 
+11 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keyword">constexpr</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*CONST_MAIN_FONT_PATH&#32;=&#32;<emphasis role="stringliteral">&quot;Fonts/SuperTechnology.ttf&quot;</emphasis>;
+12 
+14 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&#32;CONST_ACTIONS_FILE&#32;=&#32;<emphasis role="stringliteral">&quot;Actions.json&quot;</emphasis>;
+15 
+18 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keyword">constexpr</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;CONST_RENDER_LOGICAL_X&#32;=&#32;640;
+19 
+22 &#32;&#32;&#32;&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keyword">constexpr</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;CONST_RENDER_LOGICAL_Y&#32;=&#32;360;
+23 }
+24 
+25 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

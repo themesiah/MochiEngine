@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_graphics_1_1_sprite_base" xml:lang="en-US">
+<title>Mochi::Graphics::SpriteBase Class Reference</title>
+<indexterm><primary>Mochi::Graphics::SpriteBase</primary></indexterm>
+<para>Inheritance diagram for Mochi::Graphics::SpriteBase:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_mochi_1_1_graphics_1_1_sprite_base.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1a2e791b3688cc89346152f99a19e2d443"/><emphasis role="strong">SpriteBase</emphasis> (<link linkend="_class_mochi_1_1_graphics_1_1_abstract_texture_factory">AbstractTextureFactory</link> *, const std::string &amp;filename)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1a5955b525d0222435e8f76663046bbeac"/>void <emphasis role="strong">LoadTexture</emphasis> (<link linkend="_class_mochi_1_1_graphics_1_1_abstract_texture_factory">AbstractTextureFactory</link> *textureFactory, const std::string &amp;filename)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1ab36165858abde58b890a89d526a2e573"/>virtual std::vector&lt; <link linkend="_struct_mochi_1_1_graphics_1_1_render_command">RenderCommand</link> &gt; <emphasis role="strong">GetRenderData</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1aca343e7e13008264b83ba1ca632532e6"/>virtual void <emphasis role="strong">Update</emphasis> (const float &amp;dt)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1a7f711860bddc0c7f9f97fbb560fb219a"/>void <emphasis role="strong">SetZIndex</emphasis> (const uint16_t &amp;zIndex)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1aac331d97ecdef74d0de89c08f5120590"/>uint16_t <emphasis role="strong">GetZIndex</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1a74c4ce1ba2c1b81d45a0e8c7c7c75d58"/>bool <emphasis role="strong">IsVisible</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1a38b277b17397023acc00fed3012e1679"/>void <emphasis role="strong">SetVisible</emphasis> (const bool &amp;visible)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1a34414e24eba838c24fb013a3b672e061"/>uint8_t <emphasis role="strong">GetAlpha</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1a982922ac08e0087d3ac3db24fd109296"/>void <emphasis role="strong">SetAlpha</emphasis> (const uint8_t &amp;alpha)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1a4a47291cb7a932afbe63de28817589a8"/>std::shared_ptr&lt; <link linkend="_struct_mochi_1_1_transform">Transform</link> &gt; <emphasis role="strong">GetTransform</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1ad5bc6fca9d82dde5cd027fbb63cd549a"/>void <emphasis role="strong">SetTransform</emphasis> (std::shared_ptr&lt; <link linkend="_struct_mochi_1_1_transform">Transform</link> &gt; tr)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1a3a7106da0233f722957d404101843ff9"/>void <emphasis role="strong">SetSrcRect</emphasis> (const <link linkend="_struct_mochi_1_1_rectf">Rectf</link> &amp;src)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1a17a342d77ac30799a9f162772ecde008"/>std::shared_ptr&lt; <link linkend="_class_mochi_1_1_graphics_1_1_i_texture">ITexture</link> &gt; <emphasis role="strong">mTexture</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1ab46e1b1b86ce3494a01e14a4266e3c54"/><link linkend="_struct_mochi_1_1_rectf">Rectf</link> <emphasis role="strong">mSrcRect</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1aad10caaa3866922a6b74076731a4e9ec"/>uint16_t <emphasis role="strong">mZindex</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1acfa365b97191e7c222c9c8e4cf982943"/>bool <emphasis role="strong">mVisible</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1a86b3313062c41bcb2f633e5514bf550e"/>uint8_t <emphasis role="strong">mAlpha</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1a2ea094242833d093a20c3771ac68ef02"/><link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> <emphasis role="strong">mSize</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_sprite_base_1a4c1133e7009533fa98241b1a339e5616"/>std::shared_ptr&lt; <link linkend="_struct_mochi_1_1_transform">Transform</link> &gt; <emphasis role="strong">mTransform</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following files:</para>
+Engine/src/Graphics/SpriteBase.hEngine/src/Graphics/SpriteBase.cpp</section>

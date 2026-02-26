@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_mochi_1_1_physics_1_1_circle" kind="struct" language="C++" prot="public">
+    <compoundname>Mochi::Physics::Circle</compoundname>
+    <basecompoundref refid="struct_mochi_1_1_physics_1_1_shape" prot="public" virt="non-virtual">Mochi::Physics::Shape</basecompoundref>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_mochi_1_1_physics_1_1_circle_1a68f7c91229e16bbf338c8257466aaddb" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mochi::Physics::Circle::Radius</definition>
+        <argsstring></argsstring>
+        <name>Radius</name>
+        <qualifiedname>Mochi::Physics::Circle::Radius</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Physics/Shapes.h" line="74" column="15" bodyfile="Engine/src/Physics/Shapes.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_mochi_1_1_physics_1_1_circle_1a1ac38f4df3738e49dc7d7a0d87b00cce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Physics::Circle::Circle</definition>
+        <argsstring>(const Vector2f &amp;position, const float &amp;radius)</argsstring>
+        <name>Circle</name>
+        <qualifiedname>Mochi::Physics::Circle::Circle</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref> &amp;</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>const float &amp;</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Physics/Shapes.h" line="62" column="9" bodyfile="Engine/src/Physics/Shapes.h" bodystart="62" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_physics_1_1_circle_1aa461ba1ac34a4e9184e055863faf4a4c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Mochi::Physics::Circle::~Circle</definition>
+        <argsstring>()</argsstring>
+        <name>~Circle</name>
+        <qualifiedname>Mochi::Physics::Circle::~Circle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Physics/Shapes.h" line="67" column="17" bodyfile="Engine/src/Physics/Shapes.h" bodystart="67" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_physics_1_1_circle_1a3449d8765bf0138536279e639f87b2a4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::unique_ptr&lt; Shape &gt;</type>
+        <definition>std::unique_ptr&lt; Shape &gt; Mochi::Physics::Circle::Clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>Clone</name>
+        <qualifiedname>Mochi::Physics::Circle::Clone</qualifiedname>
+        <reimplements refid="struct_mochi_1_1_physics_1_1_shape_1a3c43ee1b2bf092fb4ff01860bfd6af71">Clone</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Physics/Shapes.h" line="68" column="33" bodyfile="Engine/src/Physics/Shapes.cpp" bodystart="26" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_physics_1_1_circle_1a6568a9ff22c040e648b26faf8d37f0ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mochi::Physics::Circle::IsColliding</definition>
+        <argsstring>(const Shape &amp;other) const override</argsstring>
+        <name>IsColliding</name>
+        <qualifiedname>Mochi::Physics::Circle::IsColliding</qualifiedname>
+        <reimplements refid="struct_mochi_1_1_physics_1_1_shape_1a381afe2333b4063bf31850e74842b21a">IsColliding</reimplements>
+        <param>
+          <type>const Shape &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Physics/Shapes.h" line="69" column="22" bodyfile="Engine/src/Physics/Shapes.cpp" bodystart="31" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_physics_1_1_circle_1a3e320380167d23b91f33d529282651ed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mochi::Physics::Circle::Collides</definition>
+        <argsstring>(const Point &amp;p) const override</argsstring>
+        <name>Collides</name>
+        <qualifiedname>Mochi::Physics::Circle::Collides</qualifiedname>
+        <reimplements refid="struct_mochi_1_1_physics_1_1_shape_1a8086d16b3ccf337a16bdf3b6cbb1f9c4">Collides</reimplements>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_physics_1_1_point" kindref="compound">Point</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Physics/Shapes.h" line="70" column="22" bodyfile="Engine/src/Physics/Shapes.cpp" bodystart="27" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_physics_1_1_circle_1aa691c8ac858e4760023ec076e505b527" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mochi::Physics::Circle::Collides</definition>
+        <argsstring>(const Line &amp;l) const override</argsstring>
+        <name>Collides</name>
+        <qualifiedname>Mochi::Physics::Circle::Collides</qualifiedname>
+        <reimplements refid="struct_mochi_1_1_physics_1_1_shape_1adb94fe29932940f200bec70b540f8e0e">Collides</reimplements>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_physics_1_1_line" kindref="compound">Line</ref> &amp;</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Physics/Shapes.h" line="71" column="22" bodyfile="Engine/src/Physics/Shapes.cpp" bodystart="28" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_physics_1_1_circle_1a74a1da09f4f2c4a83097012adfd1fb1b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mochi::Physics::Circle::Collides</definition>
+        <argsstring>(const Circle &amp;c) const override</argsstring>
+        <name>Collides</name>
+        <qualifiedname>Mochi::Physics::Circle::Collides</qualifiedname>
+        <reimplements refid="struct_mochi_1_1_physics_1_1_shape_1a4339da66b6c5900b52a97ff322905542">Collides</reimplements>
+        <param>
+          <type>const Circle &amp;</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Physics/Shapes.h" line="72" column="22" bodyfile="Engine/src/Physics/Shapes.cpp" bodystart="29" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_physics_1_1_circle_1a49f6a078138a0608d7e43ff3ff44565c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mochi::Physics::Circle::Collides</definition>
+        <argsstring>(const Rectangle &amp;r) const override</argsstring>
+        <name>Collides</name>
+        <qualifiedname>Mochi::Physics::Circle::Collides</qualifiedname>
+        <reimplements refid="struct_mochi_1_1_physics_1_1_shape_1a92e09662fdde5c14d7509e2a6e4f9b36">Collides</reimplements>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_physics_1_1_rectangle" kindref="compound">Rectangle</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Physics/Shapes.h" line="73" column="22" bodyfile="Engine/src/Physics/Shapes.cpp" bodystart="30" bodyend="30"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Mochi::Physics::Circle</label>
+        <link refid="struct_mochi_1_1_physics_1_1_circle"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mochi::Physics::Shape</label>
+        <link refid="struct_mochi_1_1_physics_1_1_shape"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Mochi::Physics::Circle</label>
+        <link refid="struct_mochi_1_1_physics_1_1_circle"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mochi::Physics::Shape</label>
+        <link refid="struct_mochi_1_1_physics_1_1_shape"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>Position</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Mochi::Vector2f</label>
+        <link refid="struct_mochi_1_1_vector2f"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>Down</edgelabel>
+          <edgelabel>Left</edgelabel>
+          <edgelabel>One</edgelabel>
+          <edgelabel>Right</edgelabel>
+          <edgelabel>Up</edgelabel>
+          <edgelabel>Zero</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Physics/Shapes.h" line="59" column="5" bodyfile="Engine/src/Physics/Shapes.h" bodystart="60" bodyend="75"/>
+    <listofallmembers>
+      <member refid="struct_mochi_1_1_physics_1_1_circle_1a1ac38f4df3738e49dc7d7a0d87b00cce" prot="public" virt="non-virtual"><scope>Mochi::Physics::Circle</scope><name>Circle</name></member>
+      <member refid="struct_mochi_1_1_physics_1_1_circle_1a3449d8765bf0138536279e639f87b2a4" prot="public" virt="virtual"><scope>Mochi::Physics::Circle</scope><name>Clone</name></member>
+      <member refid="struct_mochi_1_1_physics_1_1_circle_1a3e320380167d23b91f33d529282651ed" prot="public" virt="virtual"><scope>Mochi::Physics::Circle</scope><name>Collides</name></member>
+      <member refid="struct_mochi_1_1_physics_1_1_circle_1aa691c8ac858e4760023ec076e505b527" prot="public" virt="virtual"><scope>Mochi::Physics::Circle</scope><name>Collides</name></member>
+      <member refid="struct_mochi_1_1_physics_1_1_circle_1a74a1da09f4f2c4a83097012adfd1fb1b" prot="public" virt="virtual"><scope>Mochi::Physics::Circle</scope><name>Collides</name></member>
+      <member refid="struct_mochi_1_1_physics_1_1_circle_1a49f6a078138a0608d7e43ff3ff44565c" prot="public" virt="virtual"><scope>Mochi::Physics::Circle</scope><name>Collides</name></member>
+      <member refid="struct_mochi_1_1_physics_1_1_circle_1a6568a9ff22c040e648b26faf8d37f0ad" prot="public" virt="virtual"><scope>Mochi::Physics::Circle</scope><name>IsColliding</name></member>
+      <member refid="struct_mochi_1_1_physics_1_1_shape_1aee5e89844725febdf60c1e00029b341d" prot="public" virt="non-virtual"><scope>Mochi::Physics::Circle</scope><name>Position</name></member>
+      <member refid="struct_mochi_1_1_physics_1_1_circle_1a68f7c91229e16bbf338c8257466aaddb" prot="public" virt="non-virtual"><scope>Mochi::Physics::Circle</scope><name>Radius</name></member>
+      <member refid="struct_mochi_1_1_physics_1_1_shape_1a1dbd61727b60ae5fd0daa61472f5e63c" prot="public" virt="non-virtual"><scope>Mochi::Physics::Circle</scope><name>Shape</name></member>
+      <member refid="struct_mochi_1_1_physics_1_1_circle_1aa461ba1ac34a4e9184e055863faf4a4c" prot="public" virt="virtual"><scope>Mochi::Physics::Circle</scope><name>~Circle</name></member>
+      <member refid="struct_mochi_1_1_physics_1_1_shape_1a14d685be2406ce260da14dbdd3ff05f8" prot="public" virt="virtual"><scope>Mochi::Physics::Circle</scope><name>~Shape</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

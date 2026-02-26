@@ -1,0 +1,356 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="_exception_8hpp" kind="file" language="C++">
+    <compoundname>Exception.hpp</compoundname>
+    <includes local="no">stdexcept</includes>
+    <includes local="no">string</includes>
+    <includes local="no">format</includes>
+    <includes local="no">source_location</includes>
+    <includedby refid="_f_m_o_d_wrapper_8cpp" local="yes">Engine/src/Audio/FMODWrapper.cpp</includedby>
+    <includedby refid="_engine_8cpp" local="yes">Engine/src/Engine.cpp</includedby>
+    <includedby refid="_abstract_texture_factory_8cpp" local="yes">Engine/src/Graphics/AbstractTextureFactory.cpp</includedby>
+    <includedby refid="_aseprite_animation_factory_8cpp" local="yes">Engine/src/Graphics/AsepriteAnimationFactory.cpp</includedby>
+    <includedby refid="_sprite_base_8cpp" local="yes">Engine/src/Graphics/SpriteBase.cpp</includedby>
+    <includedby refid="_action_manager_8cpp" local="yes">Engine/src/Input/ActionManager.cpp</includedby>
+    <includedby refid="_input_manager_8cpp" local="yes">Engine/src/Input/InputManager.cpp</includedby>
+    <includedby refid="_performable_actions_8cpp" local="yes">Engine/src/Input/PerformableActions.cpp</includedby>
+    <includedby refid="_s_d_l_gamepad_provider_8cpp" local="yes">Engine/src/Input/SDLGamepadProvider.cpp</includedby>
+    <includedby refid="_pack_catalog_8cpp" local="yes">Engine/src/Packer/PackCatalog.cpp</includedby>
+    <includedby refid="_pack_file_8cpp" local="yes">Engine/src/Packer/PackFile.cpp</includedby>
+    <includedby refid="_system_file_loader_8cpp" local="yes">Engine/src/Packer/SystemFileLoader.cpp</includedby>
+    <includedby refid="_shapes_8h" local="yes">Engine/src/Physics/Shapes.h</includedby>
+    <includedby refid="_chrono_8cpp" local="yes">Engine/src/Time/Chrono.cpp</includedby>
+    <includedby refid="_time_system_8cpp" local="yes">Engine/src/Time/TimeSystem.cpp</includedby>
+    <includedby refid="_timer_8cpp" local="yes">Engine/src/Time/Timer.cpp</includedby>
+    <includedby refid="_types_8hpp" local="yes">Engine/src/Types/Types.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>Engine/src/Exception.hpp</label>
+        <link refid="_exception_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>format</label>
+      </node>
+      <node id="5">
+        <label>source_location</label>
+      </node>
+      <node id="2">
+        <label>stdexcept</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="7">
+        <label>Engine/src/Debug/DebugLayer.h</label>
+        <link refid="_debug_layer_8h_source"/>
+      </node>
+      <node id="3">
+        <label>Engine/src/Debug/IGizmos.h</label>
+        <link refid="_i_gizmos_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Engine/src/Debug/SDLGizmos.h</label>
+        <link refid="_s_d_l_gizmos_8h_source"/>
+      </node>
+      <node id="1">
+        <label>Engine/src/Exception.hpp</label>
+        <link refid="_exception_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>Engine/src/GUI/AbstractGUI.h</label>
+        <link refid="_abstract_g_u_i_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>Engine/src/GUI/GUICommon.hpp</label>
+        <link refid="_g_u_i_common_8hpp_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>Engine/src/GUI/SDLGUI.h</label>
+        <link refid="_s_d_l_g_u_i_8h_source"/>
+      </node>
+      <node id="14">
+        <label>Engine/src/Graphics/AnimatedSprite.h</label>
+        <link refid="_animated_sprite_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>Engine/src/Graphics/AnimationData.h</label>
+        <link refid="_animation_data_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>Engine/src/Graphics/AsepriteAnimationFactory.h</label>
+        <link refid="_aseprite_animation_factory_8h_source"/>
+      </node>
+      <node id="20">
+        <label>Engine/src/Graphics/Camera.h</label>
+        <link refid="_camera_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>Engine/src/Graphics/DummyAnimationFactory.h</label>
+        <link refid="_dummy_animation_factory_8h_source"/>
+      </node>
+      <node id="5">
+        <label>Engine/src/Graphics/DummyRendering.h</label>
+        <link refid="_dummy_rendering_8h_source"/>
+      </node>
+      <node id="19">
+        <label>Engine/src/Graphics/IAnimationFactory.h</label>
+        <link refid="_i_animation_factory_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>Engine/src/Graphics/IRenderer.h</label>
+        <link refid="_i_renderer_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>Engine/src/Graphics/ITexture.h</label>
+        <link refid="_i_texture_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>Engine/src/Graphics/OneshotAnimation.h</label>
+        <link refid="_oneshot_animation_8h_source"/>
+      </node>
+      <node id="22">
+        <label>Engine/src/Graphics/RenderCommand.h</label>
+        <link refid="_render_command_8h_source"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>Engine/src/Graphics/SDL/SDLRenderer.h</label>
+        <link refid="_s_d_l_renderer_8h_source"/>
+      </node>
+      <node id="27">
+        <label>Engine/src/Graphics/SDL/SDLTexture.h</label>
+        <link refid="_s_d_l_texture_8h_source"/>
+      </node>
+      <node id="25">
+        <label>Engine/src/Graphics/SpriteBase.h</label>
+        <link refid="_sprite_base_8h_source"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>Engine/src/Graphics/Spritesheet.h</label>
+        <link refid="_spritesheet_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>Engine/src/Input/ActionManager.h</label>
+        <link refid="_action_manager_8h_source"/>
+      </node>
+      <node id="29">
+        <label>Engine/src/Input/IActionManager.h</label>
+        <link refid="_i_action_manager_8h_source"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>Engine/src/Input/InputManager.h</label>
+        <link refid="_input_manager_8h_source"/>
+      </node>
+      <node id="30">
+        <label>Engine/src/Input/VirtualActionManager.h</label>
+        <link refid="_virtual_action_manager_8h_source"/>
+      </node>
+      <node id="6">
+        <label>Engine/src/Layer.h</label>
+        <link refid="_layer_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Engine/src/Physics/Collisions.h</label>
+        <link refid="_collisions_8h_source"/>
+      </node>
+      <node id="2">
+        <label>Engine/src/Physics/Shapes.h</label>
+        <link refid="_shapes_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Engine/src/Scripting/ScriptingLayer.h</label>
+        <link refid="_scripting_layer_8h_source"/>
+      </node>
+      <node id="32">
+        <label>Engine/src/Types/Transform.hpp</label>
+        <link refid="_transform_8hpp_source"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>Engine/src/Types/Types.hpp</label>
+        <link refid="_types_8hpp_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>Engine/src/Utils/Conversion.hpp</label>
+        <link refid="_conversion_8hpp_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_mochi_1_1_engine_error" prot="public">Mochi::EngineError</innerclass>
+    <innerclass refid="class_mochi_1_1_resource_not_found_error" prot="public">Mochi::ResourceNotFoundError</innerclass>
+    <innerclass refid="class_mochi_1_1_system_initialization_error" prot="public">Mochi::SystemInitializationError</innerclass>
+    <innerclass refid="class_mochi_1_1_malformed_input_action" prot="public">Mochi::MalformedInputAction</innerclass>
+    <innerclass refid="class_mochi_1_1_audio_operation_error" prot="public">Mochi::AudioOperationError</innerclass>
+    <innernamespace refid="namespace_mochi">Mochi</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>HDEF_EXCEPTION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HDEF_EXCEPTION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;format&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;source_location&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Mochi</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="11" refid="class_mochi_1_1_engine_error" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">EngineError<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::runtime_error</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/>EngineError(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;msg,<sp/>std::source_location<sp/>loc<sp/>=<sp/>std::source_location::current())</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>std::runtime_error(std::format(</highlight><highlight class="stringliteral">&quot;{}<sp/>[{}:{}]&quot;</highlight><highlight class="normal">,<sp/>msg,<sp/>loc.file_name(),<sp/>loc.line()))<sp/>{};</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="class_mochi_1_1_resource_not_found_error" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">ResourceNotFoundError<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>EngineError</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/>ResourceNotFoundError(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;resource,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;hint<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">)<sp/>:<sp/>EngineError(std::format(</highlight><highlight class="stringliteral">&quot;Resource<sp/>not<sp/>found:<sp/>{}<sp/>(({}))&quot;</highlight><highlight class="normal">,<sp/>resource,<sp/>hint))<sp/>{}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="class_mochi_1_1_system_initialization_error" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">SystemInitializationError<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>EngineError</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/>SystemInitializationError(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;system,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;msg)<sp/>:<sp/>EngineError(std::format(</highlight><highlight class="stringliteral">&quot;Error<sp/>initializing<sp/>system<sp/>{}:<sp/>{}&quot;</highlight><highlight class="normal">,<sp/>system,<sp/>msg))<sp/>{}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="class_mochi_1_1_malformed_input_action" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">MalformedInputAction<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>EngineError</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/>MalformedInputAction(std::source_location<sp/>loc<sp/>=<sp/>std::source_location::current())<sp/>:<sp/>EngineError(</highlight><highlight class="stringliteral">&quot;JSON<sp/>input<sp/>action<sp/>was<sp/>malformed&quot;</highlight><highlight class="normal">,<sp/>loc)<sp/>{}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="class_mochi_1_1_audio_operation_error" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">AudioOperationError<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>EngineError</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/>AudioOperationError(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;operation,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;msg)<sp/>:<sp/>EngineError(std::format(</highlight><highlight class="stringliteral">&quot;Audio<sp/>operation<sp/>failed:<sp/>{}<sp/>(({}))&quot;</highlight><highlight class="normal">,<sp/>operation,<sp/>msg))<sp/>{}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Engine/src/Exception.hpp"/>
+  </compounddef>
+</doxygen>

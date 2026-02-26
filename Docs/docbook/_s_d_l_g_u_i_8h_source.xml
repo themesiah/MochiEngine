@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__s_d_l_g_u_i_8h_source" xml:lang="en-US">
+<title>SDLGUI.h</title>
+<indexterm><primary>Engine/src/GUI/SDLGUI.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_SDLGUI</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_SDLGUI</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&quot;AbstractGUI.h&quot;</emphasis>
+5 
+6 <emphasis role="preprocessor">#include&#32;&lt;memory&gt;</emphasis>
+7 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+8 
+9 <emphasis role="preprocessor">#include&#32;&quot;../Types/Types.hpp&quot;</emphasis>
+10 <emphasis role="preprocessor">#include&#32;&quot;GUICommon.hpp&quot;</emphasis>
+11 
+12 <emphasis role="keyword">struct&#32;</emphasis>TTF_Font;
+13 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Graphics
+14 {
+15 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_s_d_l_renderer">SDLRenderer</link>;
+16 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_i_renderer">IRenderer</link>;
+17 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>SDLGUI&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;AbstractGUI
+18 &#32;&#32;&#32;&#32;{
+19 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">friend</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis>SDLRenderer;
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::unique_ptr&lt;TTF_Font,&#32;void&#32;(*)(TTF_Font&#32;*)&gt;&#32;mFont;
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;char&gt;&#32;mFontRaw;
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SDLGUI(<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link>&#32;*catalog,&#32;<link linkend="_class_mochi_1_1_graphics_1_1_i_renderer">IRenderer</link>&#32;*renderer,&#32;<link linkend="_class_mochi_1_1_input_1_1_i_action_manager">Input::IActionManager</link>&#32;*actionManager);
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SDLRenderer&#32;*mSDLRenderer;
+25 
+26 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;~SDLGUI();
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_struct_mochi_1_1_graphics_1_1_g_u_i_result">GUIResult</link>&#32;Sprite(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_graphics_1_1_g_u_i_options">GUIOptions</link>&#32;&amp;options)&#32;<emphasis role="keyword">override</emphasis>;
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_struct_mochi_1_1_graphics_1_1_g_u_i_result_button">GUIResultButton</link>&#32;Button(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_graphics_1_1_g_u_i_button_options">GUIButtonOptions</link>&#32;&amp;options,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*label,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_graphics_1_1_g_u_i_text_options">GUITextOptions</link>&#32;&amp;textOptions)&#32;<emphasis role="keyword">override</emphasis>;
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_struct_mochi_1_1_graphics_1_1_g_u_i_result">GUIResult</link>&#32;Text(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*label,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_graphics_1_1_g_u_i_text_options">GUITextOptions</link>&#32;&amp;options)&#32;<emphasis role="keyword">override</emphasis>;
+31 &#32;&#32;&#32;&#32;};
+32 }
+33 
+34 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

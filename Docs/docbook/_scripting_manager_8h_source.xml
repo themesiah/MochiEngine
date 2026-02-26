@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__scripting_manager_8h_source" xml:lang="en-US">
+<title>ScriptingManager.h</title>
+<indexterm><primary>Engine/src/Scripting/ScriptingManager.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_SCRIPTINGMANAGER</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_SCRIPTINGMANAGER</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&quot;sol/sol.hpp&quot;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+6 
+7 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::FS
+8 {
+9 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">PackCatalog</link>;
+10 }
+11 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Scripting
+12 {
+13 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>ScriptingManager
+14 &#32;&#32;&#32;&#32;{
+15 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link>&#32;*mCatalog;
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sol::environment&#32;mEnvironment;
+18 
+19 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ScriptingManager(<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link>&#32;*packCatalog);
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;~ScriptingManager();
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;Execute(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;code);
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;ExecuteFile(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;path);
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;ExecuteGlobal(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;code);
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;ExecuteFileGlobal(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;path);
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;Update(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;&amp;dt);
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;CleanEnvironment();
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sol::state&#32;State;
+29 &#32;&#32;&#32;&#32;};
+30 }
+31 
+32 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

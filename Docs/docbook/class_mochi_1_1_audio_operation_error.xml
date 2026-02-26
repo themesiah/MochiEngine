@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_audio_operation_error" xml:lang="en-US">
+<title>Mochi::AudioOperationError Class Reference</title>
+<indexterm><primary>Mochi::AudioOperationError</primary></indexterm>
+<para>Inheritance diagram for Mochi::AudioOperationError:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_mochi_1_1_audio_operation_error.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_audio_operation_error_1af0de2a2ecf5b805f2e8cef4184c1a147"/><emphasis role="strong">AudioOperationError</emphasis> (const std::string &amp;operation, const std::string &amp;msg)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_class_mochi_1_1_engine_error">Mochi::EngineError</link>        <itemizedlist>
+            <listitem><para><emphasis role="strong">EngineError</emphasis> (const std::string &amp;msg, std::source_location loc=std::source_location::current())</para>
+</listitem>
+        </itemizedlist>
+<para>
+The documentation for this class was generated from the following file:</para>
+Engine/src/Exception.hpp</section>

@@ -1,0 +1,274 @@
+.TH "Mochi::Engine" 3 "MochiEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Mochi::Engine \- Main class of the MochiEngine\&. It owns and coordinates all subsystems and layers, and drives the application lifecycle\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Engine\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEngine\fP ()"
+.br
+.RI "Constructs the \fBEngine\fP class without initializing some core systems to allow the user to use Setup to initialize them manually\&. Doesn't initialize: "
+.ti -1c
+.RI "\fBEngine\fP (const char *appName, const char *appVersion, const char *appId, const char *windowName)"
+.br
+.RI "Constructs the \fBEngine\fP class and setups it with default core subsystems\&. "
+.ti -1c
+.RI "void \fBRun\fP ()"
+.br
+.RI "Runs the engine, starting the per-frame lifecycle\&. Once called, it won't stop until receiving \fBApplicationQuitEvent\fP or getting "false" when updating a layer\&. "
+.ti -1c
+.RI "void \fBSetup\fP (std::unique_ptr< \fBGraphics::IRenderer\fP > &&renderer, std::unique_ptr< \fBInput::IActionManager\fP > &&actionManager, std::unique_ptr< \fBAudio::IAudioManager\fP > &&audioManager)"
+.br
+.RI "Manually setups some subsystems for the engine\&. Setup should only be called once, and it will keep ownership of the subsystems\&. "
+.ti -1c
+.RI "void \fBPushLayer\fP (\fBLayer\fP *layer)"
+.br
+.RI "Pushes a layer in the list of layers to initialize\&. Then initializes it at the end of the frame and gets ownership of it to update it each frame\&. The same layer should only be pushed once\&. However, several instances of the same layer type can be pushed safely\&. "
+.ti -1c
+.RI "void \fBPopLayer\fP (\fBLayer\fP *layer)"
+.br
+.RI "Pushes a layer in the list of layers to deactivate\&. At the end of the frame (when it is safe) the layer is removed from the list and destroyed\&. "
+.ti -1c
+.RI "float \fBGetLastRealDelta\fP () const"
+.br
+.ti -1c
+.RI "void \fBAddRenderCommand\fP (const \fBGraphics::RenderCommand\fP &command)"
+.br
+.RI "Adds a single render command to be rendered this frame\&. "
+.ti -1c
+.RI "void \fBAddRenderCommands\fP (const std::vector< \fBGraphics::RenderCommand\fP > &commands)"
+.br
+.RI "Adds a range of render commands to be rendered this frame\&. "
+.ti -1c
+.RI "\fBGraphics::IRenderer\fP * \fBGetRenderer\fP () const"
+.br
+.ti -1c
+.RI "\fBAudio::IAudioManager\fP * \fBGetAudio\fP () const"
+.br
+.ti -1c
+.RI "\fBInput::IActionManager\fP * \fBGetActionManager\fP () const"
+.br
+.ti -1c
+.RI "\fBFS::PackCatalog\fP * \fBGetCatalog\fP () const"
+.br
+.ti -1c
+.RI "\fBGraphics::Camera\fP * \fBGetCamera\fP () const"
+.br
+.ti -1c
+.RI "\fBGraphics::AbstractGUI\fP * \fBGetGUI\fP () const"
+.br
+.ti -1c
+.RI "\fBEvent::EventBus\fP * \fBGetEventBus\fP () const"
+.br
+.ti -1c
+.RI "\fBScripting::ScriptingManager\fP * \fBGetScriptingManager\fP () const"
+.br
+.ti -1c
+.RI "\fBDebug::IGizmos\fP * \fBGetGizmos\fP () const"
+.br
+.ti -1c
+.RI "void \fBSwapAudioManager\fP (std::unique_ptr< \fBAudio::IAudioManager\fP > &&)"
+.br
+.ti -1c
+.RI "void \fBSwapActionManager\fP (std::unique_ptr< \fBInput::IActionManager\fP > &&)"
+.br
+.ti -1c
+.RI "void \fBSwapCamera\fP (std::unique_ptr< \fBGraphics::Camera\fP > &&)"
+.br
+.ti -1c
+.RI "void \fBSwapRenderer\fP (std::unique_ptr< \fBGraphics::IRenderer\fP > &&)"
+.br
+.ti -1c
+.RI "void \fBPause\fP ()"
+.br
+.RI "Pauses the engine setting the delta time scale to 0\&. Pause can be called several times in succession, but it will only be applied once\&. "
+.ti -1c
+.RI "void \fBResume\fP ()"
+.br
+.RI "Resumes the game setting the delta time scale to the last value it was before it was paused\&. Resume can be called several times in succession, but it will only be applied once\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBEngine\fP & \fBGet\fP ()"
+.br
+.RI "Access \fBEngine\fP from anywhere Access is only available after default construction or after setup\&. Otherwise, it returns nullptr\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Main class of the MochiEngine\&. It owns and coordinates all subsystems and layers, and drives the application lifecycle\&. 
+
+Ownership:
+
+.PP
+.IP "\(bu" 2
+\fBEngine\fP has ownership of most of the subsystems\&.
+.IP "\(bu" 2
+Layers are created outside of the class and injected into the engine\&.
+.PP
+
+.PP
+Lifecycle:
+
+.PP
+.IP "\(bu" 2
+Create with default constructor and call "Setup" after to initialize\&.
+.IP "  \(bu" 4
+Alternatively, call the constructor \fBEngine(const char *appName, const char *appVersion, const char *appId, const char *windowName)\fP to initialize with default systems\&.
+.PP
+
+.IP "\(bu" 2
+Call Run to start the main loop\&. Run will end automatically when the game receives an exit signal\&.
+.IP "\(bu" 2
+When created, \fBEngine\fP is a singleton accessible everywhere, providing centralized access to core subsystems and giving ability to inject layers and render commands\&.
+.PP
+
+.PP
+Guarantees:
+
+.PP
+.IP "\(bu" 2
+Full initialization before entering the main loop\&. Failures in this step are detected early and exit the application\&.
+.IP "\(bu" 2
+Update is called each frame with a delta time
+.IP "\(bu" 2
+Subsystems are automatically updated
+.IP "\(bu" 2
+Layers are automatically managed and updated
+.IP "\(bu" 2
+Rendering is done once per frame, separated between Graphics and UI
+.PP
+
+.PP
+Thread safety:
+
+.PP
+.IP "\(bu" 2
+This class is not thread-safe\&.
+.PP
+
+.PP
+Non responsible:
+
+.PP
+.IP "\(bu" 2
+Game logic
+.IP "\(bu" 2
+Automatic rendering
+.IP "\(bu" 2
+Entity management 
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Mochi::Engine::Engine ()"
+
+.PP
+Constructs the \fBEngine\fP class without initializing some core systems to allow the user to use Setup to initialize them manually\&. Doesn't initialize: 
+.IP "\(bu" 2
+Renderer
+.IP "\(bu" 2
+Action Manager
+.IP "\(bu" 2
+Audio Manager 
+.PP
+
+.SS "Mochi::Engine::Engine (const char * appName, const char * appVersion, const char * appId, const char * windowName)"
+
+.PP
+Constructs the \fBEngine\fP class and setups it with default core subsystems\&. 
+.IP "\(bu" 2
+Renderer: SDLRenderer
+.IP "\(bu" 2
+Action Manager: Default action manager
+.IP "\(bu" 2
+Audio Manager: FMOD 
+.PP
+\fBParameters\fP
+.RS 4
+\fIappName\fP The name of the application\&. 
+.br
+\fIappVersion\fP The version of the application\&. 
+.br
+\fIappId\fP A unique string in reverse order identifying the application\&. 
+.br
+\fIwindowName\fP The name the window will receive in the OS\&. 
+.RE
+.PP
+
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Mochi::Engine::AddRenderCommand (const \fBGraphics::RenderCommand\fP & command)"
+
+.PP
+Adds a single render command to be rendered this frame\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcommand\fP The render command 
+.RE
+.PP
+
+.SS "void Mochi::Engine::AddRenderCommands (const std::vector< \fBGraphics::RenderCommand\fP > & commands)"
+
+.PP
+Adds a range of render commands to be rendered this frame\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcommands\fP The vector of commands 
+.RE
+.PP
+
+.SS "void Mochi::Engine::PopLayer (\fBLayer\fP * layer)"
+
+.PP
+Pushes a layer in the list of layers to deactivate\&. At the end of the frame (when it is safe) the layer is removed from the list and destroyed\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIlayer\fP The pointer to the layer to remove\&. 
+.RE
+.PP
+
+.SS "void Mochi::Engine::PushLayer (\fBLayer\fP * layer)"
+
+.PP
+Pushes a layer in the list of layers to initialize\&. Then initializes it at the end of the frame and gets ownership of it to update it each frame\&. The same layer should only be pushed once\&. However, several instances of the same layer type can be pushed safely\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIlayer\fP A pointer to the layer\&. Note that several layers of the same type can be active at a time and is the user responsability to manage which layers to push\&. 
+.RE
+.PP
+
+.SS "void Mochi::Engine::Setup (std::unique_ptr< \fBGraphics::IRenderer\fP > && renderer, std::unique_ptr< \fBInput::IActionManager\fP > && actionManager, std::unique_ptr< \fBAudio::IAudioManager\fP > && audioManager)"
+
+.PP
+Manually setups some subsystems for the engine\&. Setup should only be called once, and it will keep ownership of the subsystems\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIrenderer\fP The renderer\&. It will have rendering and UI responsabilities\&. 
+.br
+\fIactionManager\fP The action manager that will define how input will be interpreted\&. 
+.br
+\fIaudioManager\fP The audio manager\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MochiEngine from the source code\&.

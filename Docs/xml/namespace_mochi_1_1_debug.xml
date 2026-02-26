@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="namespace_mochi_1_1_debug" kind="namespace" language="C++">
+    <compoundname>Mochi::Debug</compoundname>
+    <innerclass refid="class_mochi_1_1_debug_1_1_i_gizmos" prot="public">Mochi::Debug::IGizmos</innerclass>
+    <innerclass refid="class_mochi_1_1_debug_1_1_frame_profiler" prot="public">Mochi::Debug::FrameProfiler</innerclass>
+    <innerclass refid="class_mochi_1_1_debug_1_1_s_d_l_gizmos" prot="public">Mochi::Debug::SDLGizmos</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Debug/IGizmos.cpp" line="6" column="1"/>
+  </compounddef>
+</doxygen>

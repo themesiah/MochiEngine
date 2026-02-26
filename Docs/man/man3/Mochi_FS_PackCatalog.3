@@ -1,0 +1,126 @@
+.TH "Mochi::FS::PackCatalog" 3 "MochiEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Mochi::FS::PackCatalog \- The pack catalog is a class that creates and owns file loaders and acts as a combined catalog for all of them at once\&. This means that opening pack A and pack B allows you to use GetFile with files that are in any or both of them\&. As it searches in reverse order of pack opening, files of the last opened packs are prioritized when using GetFile and HasFile, which allows you to "override" assets of a previous pack, allowing a simple but effective way of modding\&. Each file system inside the catalog starts at the root, so it is needed the same folder structure in two file systems to be able to override\&. Example: Pack A\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <PackCatalog\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBFileLoaderType\fP { \fBFileSystem\fP = 0, \fBPackfile\fP = 1 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPackCatalog\fP (FileLoaderType)"
+.br
+.RI "Constructs the file loader with a loader type\&. "
+.ti -1c
+.RI "void \fBOpenPack\fP (const std::string &)"
+.br
+.ti -1c
+.RI "bool \fBClosePack\fP (const std::string &)"
+.br
+.ti -1c
+.RI "bool \fBIsPackOpen\fP (const std::string &)"
+.br
+.ti -1c
+.RI "std::vector< char > \fBGetFile\fP (const std::string &) const"
+.br
+.ti -1c
+.RI "bool \fBHasFile\fP (const std::string &) const"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBGetAvailableFiles\fP () const"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The pack catalog is a class that creates and owns file loaders and acts as a combined catalog for all of them at once\&. This means that opening pack A and pack B allows you to use GetFile with files that are in any or both of them\&. As it searches in reverse order of pack opening, files of the last opened packs are prioritized when using GetFile and HasFile, which allows you to "override" assets of a previous pack, allowing a simple but effective way of modding\&. Each file system inside the catalog starts at the root, so it is needed the same folder structure in two file systems to be able to override\&. Example: Pack A\&. 
+
+
+.IP "\(bu" 2
+Fonts
+.IP "  \(bu" 4
+Arial\&.ttf
+.PP
+
+.IP "\(bu" 2
+Sprites
+.IP "  \(bu" 4
+Square\&.png Pack B
+.PP
+
+.IP "\(bu" 2
+Fonts
+.IP "  \(bu" 4
+Times\&.ttf
+.PP
+
+.IP "\(bu" 2
+Sprites
+.IP "  \(bu" 4
+Square\&.png Pack C
+.PP
+
+.IP "\(bu" 2
+Images
+.IP "  \(bu" 4
+Square\&.png For this example, if we load packs in this order: A --> B --> C we will have this catalog: Catalog
+.PP
+
+.IP "\(bu" 2
+Fonts
+.IP "  \(bu" 4
+Arial\&.ttf (A)
+.IP "  \(bu" 4
+Times\&.ttf (B)
+.PP
+
+.IP "\(bu" 2
+Sprites
+.IP "  \(bu" 4
+Square\&.png (B)
+.PP
+
+.IP "\(bu" 2
+Images
+.IP "  \(bu" 4
+Square\&.png (C)
+.PP
+
+.PP
+
+.PP
+Lifecycle:
+.IP "\(bu" 2
+A default catalog is created in the \fBEngine\fP\&. If in debug, it creates a \fBSystemFileLoader\fP, and if in release, it creates a \fBPackFile\fP\&.
+.IP "\(bu" 2
+New catalogs can be created if you have different file loader type needs, like using always a \fBSystemFileLoader\fP\&. Otherwise, the default catalog can be always used\&. 
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Mochi::FS::PackCatalog::PackCatalog (FileLoaderType fileLoaderType)"
+
+.PP
+Constructs the file loader with a loader type\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fI\fP 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MochiEngine from the source code\&.

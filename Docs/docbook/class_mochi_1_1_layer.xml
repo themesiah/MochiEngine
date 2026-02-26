@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_layer" xml:lang="en-US">
+<title>Mochi::Layer Class Reference</title>
+<indexterm><primary>Mochi::Layer</primary></indexterm>
+<para>
+
+<para>The layer class offers a simple way to organize domains of the application while having access to most of the <link linkend="_class_mochi_1_1_engine">Engine</link> subsystems. Note that a layer is meant to be inherited from and can&apos;t be instantated as is. A layer will Update, Render and show the GUI as a small <link linkend="_class_mochi_1_1_engine">Engine</link> class. So the layer is just a convenient responsability separator. Ownership: </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;Layer.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for Mochi::Layer:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_mochi_1_1_layer.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_layer_1a3e92d2c73e6a792dcd68fda44b9effcf"/><emphasis role="strong">Layer</emphasis> ()</para>
+
+<para>Default constructor. It initializes with references to the engine subsystems. Should only be constructed after the engine is setup. </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_layer_1a84ba866062d7d6bf28e028d0ee05640d">InitLayer</link> ()</para>
+
+<para>Override this to initialize members and data of your layer when the engine adds this layer to the layer list. This is useful if you want to create the layer and delay its inclusion on the engine. </para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_mochi_1_1_layer_1a2452af59d8737b448b32813d40a98985">Update</link> (const float &amp;dt)</para>
+
+<para>Override this to give your layer a way to be updated each frame. </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_layer_1af64f5be47d95ff61fb2e3a497f4846ae">Render</link> () const</para>
+
+<para>Override this to send the render commands to the engine. This task could be done on the update, but making it here its clearer. </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_layer_1a28b5e80c4f361aa71ea3afa354364258">GUI</link> () const</para>
+
+<para>Override this to draw the GUI of your layer. Even if this could be done anywhere, doing it here ensure it to be drawn after all rendering is done. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Protected Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_layer_1a872fd5176e2212246948dc9498cf23a6"/><link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link> * <emphasis role="strong">mCatalog</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_layer_1a01741515062370ea9115988500efe1ec"/><link linkend="_class_mochi_1_1_scripting_1_1_scripting_manager">Scripting::ScriptingManager</link> * <emphasis role="strong">mScripting</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_layer_1aa29803c3c18bf5b14a6ecf1c315b0eda"/><link linkend="_class_mochi_1_1_graphics_1_1_camera">Graphics::Camera</link> * <emphasis role="strong">mCamera</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_layer_1ab93d6d53b7a365e34a47a6fd18eea579"/><link linkend="_class_mochi_1_1_event_1_1_event_bus">Event::EventBus</link> * <emphasis role="strong">mEventBus</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_layer_1a661656b67f393217ca66736f3f02fc7a"/><link linkend="_class_mochi_1_1_graphics_1_1_abstract_g_u_i">Graphics::AbstractGUI</link> * <emphasis role="strong">mGUI</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_layer_1aedf4e5bc5270d6f275c26cb2dcd69e35"/><link linkend="_class_mochi_1_1_input_1_1_i_action_manager">Input::IActionManager</link> * <emphasis role="strong">mActionManager</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_layer_1a8c75ed2d067d61c14f34a393cd7007c9"/><link linkend="_class_mochi_1_1_audio_1_1_i_audio_manager">Audio::IAudioManager</link> * <emphasis role="strong">mAudioManager</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_layer_1ac5fa3952e09dda2185d6846ef59754ae"/><link linkend="_class_mochi_1_1_graphics_1_1_i_renderer">Graphics::IRenderer</link> * <emphasis role="strong">mRenderer</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>The layer class offers a simple way to organize domains of the application while having access to most of the <link linkend="_class_mochi_1_1_engine">Engine</link> subsystems. Note that a layer is meant to be inherited from and can&apos;t be instantated as is. A layer will Update, Render and show the GUI as a small <link linkend="_class_mochi_1_1_engine">Engine</link> class. So the layer is just a convenient responsability separator. Ownership: </para>
+
+
+
+<para><itemizedlist>
+<listitem>
+<para>The layer class owns only what its children owns</para>
+</listitem></itemizedlist>
+</para>
+
+<para>Lifecycle:<itemizedlist>
+<listitem>
+<para>It should be created on the heap manually and pushed onto the engine. The rest of the lifecycle is managed there.</para>
+</listitem><listitem>
+<para>The engine initializes it at the end of the frame, and when removed, it destroys it at the end of the frame too.</para>
+</listitem></itemizedlist>
+</para>
+
+<para>Guarantees:<itemizedlist>
+<listitem>
+<para>Participation in the lifecycle when pushed to the engine.</para>
+</listitem><listitem>
+<para>Safe destruction after removing it or destroying the engine instance.</para>
+</listitem></itemizedlist>
+</para>
+
+<para>Thread safety:<itemizedlist>
+<listitem>
+<para>Layers are thread safe if the implementation is thread safe. </para>
+</listitem></itemizedlist>
+</para>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_mochi_1_1_layer_1a28b5e80c4f361aa71ea3afa354364258"/><section>
+    <title>GUI()</title>
+<indexterm><primary>GUI</primary><secondary>Mochi::Layer</secondary></indexterm>
+<indexterm><primary>Mochi::Layer</primary><secondary>GUI</secondary></indexterm>
+<para><computeroutput>virtual void Mochi::Layer::GUI ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Override this to draw the GUI of your layer. Even if this could be done anywhere, doing it here ensure it to be drawn after all rendering is done. </para>
+</para>
+<para>
+Reimplemented in <link linkend="_class_mochi_1_1_debug_layer_1a71d4fe1905aa1a421aee55a0d630adbd">Mochi::DebugLayer</link>, and <link linkend="_class_mochi_1_1_scripting_1_1_scripting_layer_1ae8204c365aec3d6a0a67ef3de021b20f">Mochi::Scripting::ScriptingLayer</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_layer_1a84ba866062d7d6bf28e028d0ee05640d"/><section>
+    <title>InitLayer()</title>
+<indexterm><primary>InitLayer</primary><secondary>Mochi::Layer</secondary></indexterm>
+<indexterm><primary>Mochi::Layer</primary><secondary>InitLayer</secondary></indexterm>
+<para><computeroutput>virtual void Mochi::Layer::InitLayer ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Override this to initialize members and data of your layer when the engine adds this layer to the layer list. This is useful if you want to create the layer and delay its inclusion on the engine. </para>
+</para>
+<para>
+Reimplemented in <link linkend="_class_mochi_1_1_debug_layer_1ac9748d9565715583f9f44ae5c0cdd61b">Mochi::DebugLayer</link>, and <link linkend="_class_mochi_1_1_scripting_1_1_scripting_layer_1a682807b02043f8b2780d61870550492b">Mochi::Scripting::ScriptingLayer</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_layer_1af64f5be47d95ff61fb2e3a497f4846ae"/><section>
+    <title>Render()</title>
+<indexterm><primary>Render</primary><secondary>Mochi::Layer</secondary></indexterm>
+<indexterm><primary>Mochi::Layer</primary><secondary>Render</secondary></indexterm>
+<para><computeroutput>virtual void Mochi::Layer::Render ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Override this to send the render commands to the engine. This task could be done on the update, but making it here its clearer. </para>
+</para>
+<para>
+Reimplemented in <link linkend="_class_mochi_1_1_debug_layer_1ac1f6f94ff2139df9649a552fbc98c60d">Mochi::DebugLayer</link>, and <link linkend="_class_mochi_1_1_scripting_1_1_scripting_layer_1a7a90104ef84516699d72ea97ecf7cfe6">Mochi::Scripting::ScriptingLayer</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_layer_1a2452af59d8737b448b32813d40a98985"/><section>
+    <title>Update()</title>
+<indexterm><primary>Update</primary><secondary>Mochi::Layer</secondary></indexterm>
+<indexterm><primary>Mochi::Layer</primary><secondary>Update</secondary></indexterm>
+<para><computeroutput>virtual bool Mochi::Layer::Update (const float &amp; dt)<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Override this to give your layer a way to be updated each frame. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>dt</entry><entry>
+<para>The delta time </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>true if the execution should continue, false if the execution should halt. </para>
+</formalpara>
+</para>
+<para>
+Reimplemented in <link linkend="_class_mochi_1_1_debug_layer_1a6dbfaaf83365eb0aa3995d24580fd7f9">Mochi::DebugLayer</link>, and <link linkend="_class_mochi_1_1_scripting_1_1_scripting_layer_1a3e099ab8f79429ec0ed6be13deaf3e5c">Mochi::Scripting::ScriptingLayer</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+Engine/src/Layer.hEngine/src/Layer.cpp</section>
+</section>

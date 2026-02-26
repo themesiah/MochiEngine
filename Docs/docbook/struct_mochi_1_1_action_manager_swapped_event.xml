@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_mochi_1_1_action_manager_swapped_event" xml:lang="en-US">
+<title>Mochi::ActionManagerSwappedEvent Struct Reference</title>
+<indexterm><primary>Mochi::ActionManagerSwappedEvent</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_action_manager_swapped_event_1ad7f1cbd680cc020f20d9813eaf956856"/><link linkend="_class_mochi_1_1_input_1_1_i_action_manager">Input::IActionManager</link> * <emphasis role="strong">newActionManager</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+Engine/src/Event/EngineEvents.h</section>

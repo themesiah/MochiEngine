@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_graphics_1_1_i_texture" xml:lang="en-US">
+<title>Mochi::Graphics::ITexture Class Reference</title>
+<indexterm><primary>Mochi::Graphics::ITexture</primary></indexterm>
+<para>
+
+<para>A texture interface to be implemented by renderer specific textures. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;ITexture.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for Mochi::Graphics::ITexture:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_mochi_1_1_graphics_1_1_i_texture.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_i_texture_1a39bf79c5763e1c0fb9a9c34b0c2584f8"/>virtual <link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> <emphasis role="strong">GetSize</emphasis> () const =0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_i_texture_1a61b90eaf58c199b2e502b55c211ea97e"/>virtual void <emphasis role="strong">SetAlpha</emphasis> (const uint8_t &amp;alpha)=0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>A texture interface to be implemented by renderer specific textures. </para>
+<para>
+The documentation for this class was generated from the following file:</para>
+Engine/src/Graphics/ITexture.h</section>
+</section>

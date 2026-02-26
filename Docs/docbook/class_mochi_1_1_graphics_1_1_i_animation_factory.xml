@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_graphics_1_1_i_animation_factory" xml:lang="en-US">
+<title>Mochi::Graphics::IAnimationFactory Class Reference</title>
+<indexterm><primary>Mochi::Graphics::IAnimationFactory</primary></indexterm>
+<para>Inheritance diagram for Mochi::Graphics::IAnimationFactory:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_mochi_1_1_graphics_1_1_i_animation_factory.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_i_animation_factory_1a67fccf5d1b678410d1170447ac72ef90"/>virtual std::shared_ptr&lt; <link linkend="_struct_mochi_1_1_graphics_1_1_animations_data">AnimationsData</link> &gt; <emphasis role="strong">GetAnimationsData</emphasis> (const std::string &amp;animationDataPath)=0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_i_animation_factory_1af5aed432a71a1c16a0d0cb122a5564af"/>virtual void <emphasis role="strong">DeleteCache</emphasis> ()=0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_i_animation_factory_1af2e5ecd0526bd83b358f2874f89963d9"/>virtual void <emphasis role="strong">DeleteAnimation</emphasis> (const std::string &amp;texturePath)=0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+Engine/src/Graphics/IAnimationFactory.h</section>

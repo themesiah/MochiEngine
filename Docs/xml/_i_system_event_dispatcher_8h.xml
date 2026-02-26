@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="_i_system_event_dispatcher_8h" kind="file" language="C++">
+    <compoundname>ISystemEventDispatcher.h</compoundname>
+    <includedby refid="_engine_8cpp" local="yes">Engine/src/Engine.cpp</includedby>
+    <includedby refid="_dummy_event_dispatcher_8h" local="yes">Engine/src/Event/DummyEventDispatcher.h</includedby>
+    <includedby refid="_s_d_l_system_event_dispatcher_8h" local="yes">Engine/src/Event/SDLSystemEventDispatcher.h</includedby>
+    <invincdepgraph>
+      <node id="2">
+        <label>Engine/src/Event/DummyEventDispatcher.h</label>
+        <link refid="_dummy_event_dispatcher_8h_source"/>
+      </node>
+      <node id="1">
+        <label>Engine/src/Event/ISystemEventDispatcher.h</label>
+        <link refid="_i_system_event_dispatcher_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Engine/src/Event/SDLSystemEventDispatcher.h</label>
+        <link refid="_s_d_l_system_event_dispatcher_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_mochi_1_1_event_1_1_i_system_event_dispatcher" prot="public">Mochi::Event::ISystemEventDispatcher</innerclass>
+    <innernamespace refid="namespace_mochi">Mochi</innernamespace>
+    <innernamespace refid="namespace_mochi_1_1_event">Mochi::Event</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>ISYSTEMEVENTDISPATCHER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ISYSTEMEVENTDISPATCHER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Mochi::Event</highlight></codeline>
+<codeline lineno="5"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="6" refid="class_mochi_1_1_event_1_1_i_system_event_dispatcher" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_mochi_1_1_event_1_1_i_system_event_dispatcher" kindref="compound">ISystemEventDispatcher</ref></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="class_mochi_1_1_event_1_1_i_system_event_dispatcher" kindref="compound">~ISystemEventDispatcher</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>PollEvents()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Engine/src/Event/ISystemEventDispatcher.h"/>
+  </compounddef>
+</doxygen>

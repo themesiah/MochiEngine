@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_mochi_1_1_f_s_1_1_pack_header" xml:lang="en-US">
+<title>Mochi::FS::PackHeader Struct Reference</title>
+<indexterm><primary>Mochi::FS::PackHeader</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_f_s_1_1_pack_header_1ab8e22d7efc147f47b234a949e667e782"/>PackHeaderLength_t <emphasis role="strong">HeaderLength</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_f_s_1_1_pack_header_1a4d0d0a84349b74b98038913675885c0b"/>size_t <emphasis role="strong">BlobSize</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_f_s_1_1_pack_header_1a04ae88635aba01d4267515002256f233"/>Header_t <emphasis role="strong">HeaderMap</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+Engine/src/Packer/PackFile.h</section>

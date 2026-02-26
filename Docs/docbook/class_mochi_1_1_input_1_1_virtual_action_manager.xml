@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_input_1_1_virtual_action_manager" xml:lang="en-US">
+<title>Mochi::Input::VirtualActionManager Class Reference</title>
+<indexterm><primary>Mochi::Input::VirtualActionManager</primary></indexterm>
+<para>Inheritance diagram for Mochi::Input::VirtualActionManager:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_mochi_1_1_input_1_1_virtual_action_manager.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>virtual bool <link linkend="_class_mochi_1_1_input_1_1_virtual_action_manager_1a770495661483293824e91cdc2f781ab7">LoadActions</link> (std::vector&lt; char &gt; buffer) override</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_mochi_1_1_input_1_1_virtual_action_manager_1addb6612bbaf2bed7c7fc2cdb76e54553">LoadActionsFromFile</link> (const std::string &amp;path) override</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_mochi_1_1_input_1_1_virtual_action_manager_1abcfafb57d4734cbd3b274c78be3aec12">HasAction</link> (const std::string &amp;) const override</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_input_1_1_virtual_action_manager_1aeafe1c9c91937ab152f11bc955b39f7f">Update</link> (const float &amp;dt) override</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_mochi_1_1_input_1_1_virtual_action_manager_1a29dd6b807193b470e25c5ac7500101b3">Performed</link> (const std::string &amp;actionName) const override</para>
+</listitem>
+            <listitem><para>virtual float <link linkend="_class_mochi_1_1_input_1_1_virtual_action_manager_1a595ad0acbe0d9510c41928985a32caea">Value</link> (const std::string &amp;actionName) const override</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> <link linkend="_class_mochi_1_1_input_1_1_virtual_action_manager_1a407417604cc798898e663c768bfdb550">CompoundValue</link> (const std::string &amp;action1, const std::string &amp;action2) const override</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_input_1_1_virtual_action_manager_1a1e7a696d25b9faffe888b3b88b8b9e16"/>void <emphasis role="strong">SetActionState</emphasis> (const std::string &amp;action, const float &amp;state)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_mochi_1_1_input_1_1_virtual_action_manager_1a407417604cc798898e663c768bfdb550"/><section>
+    <title>CompoundValue()</title>
+<indexterm><primary>CompoundValue</primary><secondary>Mochi::Input::VirtualActionManager</secondary></indexterm>
+<indexterm><primary>Mochi::Input::VirtualActionManager</primary><secondary>CompoundValue</secondary></indexterm>
+<para><computeroutput><link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> Mochi::Input::VirtualActionManager::CompoundValue (const std::string &amp; action1, const std::string &amp; action2) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_input_1_1_i_action_manager">Mochi::Input::IActionManager</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_input_1_1_virtual_action_manager_1abcfafb57d4734cbd3b274c78be3aec12"/><section>
+    <title>HasAction()</title>
+<indexterm><primary>HasAction</primary><secondary>Mochi::Input::VirtualActionManager</secondary></indexterm>
+<indexterm><primary>Mochi::Input::VirtualActionManager</primary><secondary>HasAction</secondary></indexterm>
+<para><computeroutput>bool Mochi::Input::VirtualActionManager::HasAction (const std::string &amp; ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_input_1_1_i_action_manager">Mochi::Input::IActionManager</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_input_1_1_virtual_action_manager_1a770495661483293824e91cdc2f781ab7"/><section>
+    <title>LoadActions()</title>
+<indexterm><primary>LoadActions</primary><secondary>Mochi::Input::VirtualActionManager</secondary></indexterm>
+<indexterm><primary>Mochi::Input::VirtualActionManager</primary><secondary>LoadActions</secondary></indexterm>
+<para><computeroutput>bool Mochi::Input::VirtualActionManager::LoadActions (std::vector&lt; char &gt; buffer)<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_input_1_1_i_action_manager">Mochi::Input::IActionManager</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_input_1_1_virtual_action_manager_1addb6612bbaf2bed7c7fc2cdb76e54553"/><section>
+    <title>LoadActionsFromFile()</title>
+<indexterm><primary>LoadActionsFromFile</primary><secondary>Mochi::Input::VirtualActionManager</secondary></indexterm>
+<indexterm><primary>Mochi::Input::VirtualActionManager</primary><secondary>LoadActionsFromFile</secondary></indexterm>
+<para><computeroutput>bool Mochi::Input::VirtualActionManager::LoadActionsFromFile (const std::string &amp; path)<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_input_1_1_i_action_manager">Mochi::Input::IActionManager</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_input_1_1_virtual_action_manager_1a29dd6b807193b470e25c5ac7500101b3"/><section>
+    <title>Performed()</title>
+<indexterm><primary>Performed</primary><secondary>Mochi::Input::VirtualActionManager</secondary></indexterm>
+<indexterm><primary>Mochi::Input::VirtualActionManager</primary><secondary>Performed</secondary></indexterm>
+<para><computeroutput>bool Mochi::Input::VirtualActionManager::Performed (const std::string &amp; actionName) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_input_1_1_i_action_manager">Mochi::Input::IActionManager</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_input_1_1_virtual_action_manager_1aeafe1c9c91937ab152f11bc955b39f7f"/><section>
+    <title>Update()</title>
+<indexterm><primary>Update</primary><secondary>Mochi::Input::VirtualActionManager</secondary></indexterm>
+<indexterm><primary>Mochi::Input::VirtualActionManager</primary><secondary>Update</secondary></indexterm>
+<para><computeroutput>void Mochi::Input::VirtualActionManager::Update (const float &amp; dt)<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_input_1_1_i_action_manager">Mochi::Input::IActionManager</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_input_1_1_virtual_action_manager_1a595ad0acbe0d9510c41928985a32caea"/><section>
+    <title>Value()</title>
+<indexterm><primary>Value</primary><secondary>Mochi::Input::VirtualActionManager</secondary></indexterm>
+<indexterm><primary>Mochi::Input::VirtualActionManager</primary><secondary>Value</secondary></indexterm>
+<para><computeroutput>float Mochi::Input::VirtualActionManager::Value (const std::string &amp; actionName) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_input_1_1_i_action_manager">Mochi::Input::IActionManager</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+Engine/src/Input/VirtualActionManager.hEngine/src/Input/VirtualActionManager.cpp</section>
+</section>

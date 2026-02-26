@@ -1,0 +1,255 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i" kind="class" language="C++" prot="public">
+    <compoundname>Mochi::Graphics::SDLGUI</compoundname>
+    <basecompoundref refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i" prot="public" virt="non-virtual">Mochi::Graphics::AbstractGUI</basecompoundref>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i_1a6b759ab354ae37afcd13dfd78eeb6ffc" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class SDLRenderer</definition>
+        <argsstring></argsstring>
+        <name>SDLRenderer</name>
+        <qualifiedname>Mochi::Graphics::SDLGUI::SDLRenderer</qualifiedname>
+        <param>
+          <type>SDLRenderer</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/SDLGUI.h" line="20" column="22" bodyfile="Engine/src/GUI/SDLGUI.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i_1af8deb451fe1641c9ff0d5eaf420786bb" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; TTF_Font, void(*)(TTF_Font *)&gt;</type>
+        <definition>std::unique_ptr&lt;TTF_Font, void (*)(TTF_Font *)&gt; Mochi::Graphics::SDLGUI::mFont</definition>
+        <argsstring></argsstring>
+        <name>mFont</name>
+        <qualifiedname>Mochi::Graphics::SDLGUI::mFont</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/SDLGUI.h" line="21" column="25" bodyfile="Engine/src/GUI/SDLGUI.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i_1a6e5032941ff218c7aecaa090508b92b0" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; char &gt;</type>
+        <definition>std::vector&lt;char&gt; Mochi::Graphics::SDLGUI::mFontRaw</definition>
+        <argsstring></argsstring>
+        <name>mFontRaw</name>
+        <qualifiedname>Mochi::Graphics::SDLGUI::mFontRaw</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/SDLGUI.h" line="22" column="21" bodyfile="Engine/src/GUI/SDLGUI.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i_1a1856f59316f0a218635a707964ce2615" prot="private" static="no" mutable="no">
+        <type>SDLRenderer *</type>
+        <definition>SDLRenderer* Mochi::Graphics::SDLGUI::mSDLRenderer</definition>
+        <argsstring></argsstring>
+        <name>mSDLRenderer</name>
+        <qualifiedname>Mochi::Graphics::SDLGUI::mSDLRenderer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/SDLGUI.h" line="24" column="21" bodyfile="Engine/src/GUI/SDLGUI.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i_1acb3640757ef517b99ec6e038122ce6a4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Graphics::SDLGUI::SDLGUI</definition>
+        <argsstring>(FS::PackCatalog *catalog, IRenderer *renderer, Input::IActionManager *actionManager)</argsstring>
+        <name>SDLGUI</name>
+        <qualifiedname>Mochi::Graphics::SDLGUI::SDLGUI</qualifiedname>
+        <param>
+          <type><ref refid="class_mochi_1_1_f_s_1_1_pack_catalog" kindref="compound">FS::PackCatalog</ref> *</type>
+          <declname>catalog</declname>
+        </param>
+        <param>
+          <type><ref refid="class_mochi_1_1_graphics_1_1_i_renderer" kindref="compound">IRenderer</ref> *</type>
+          <declname>renderer</declname>
+        </param>
+        <param>
+          <type><ref refid="class_mochi_1_1_input_1_1_i_action_manager" kindref="compound">Input::IActionManager</ref> *</type>
+          <declname>actionManager</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/SDLGUI.h" line="23" column="9" bodyfile="Engine/src/GUI/SDLGUI.cpp" bodystart="23" bodyend="39"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i_1a8be3fd876060cada5fa518e552805024" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>Mochi::Graphics::SDLGUI::~SDLGUI</definition>
+        <argsstring>()</argsstring>
+        <name>~SDLGUI</name>
+        <qualifiedname>Mochi::Graphics::SDLGUI::~SDLGUI</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/SDLGUI.h" line="27" column="17" bodyfile="Engine/src/GUI/SDLGUI.cpp" bodystart="41" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i_1a00164b87729ef03a4aa4539ff66d2c85" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="struct_mochi_1_1_graphics_1_1_g_u_i_result" kindref="compound">GUIResult</ref></type>
+        <definition>GUIResult Mochi::Graphics::SDLGUI::Sprite</definition>
+        <argsstring>(const GUIOptions &amp;options) override</argsstring>
+        <name>Sprite</name>
+        <qualifiedname>Mochi::Graphics::SDLGUI::Sprite</qualifiedname>
+        <reimplements refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a58df0b0adad307504779f0bc851b8864">Sprite</reimplements>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_graphics_1_1_g_u_i_options" kindref="compound">GUIOptions</ref> &amp;</type>
+          <declname>options</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/SDLGUI.h" line="28" column="27" bodyfile="Engine/src/GUI/SDLGUI.cpp" bodystart="45" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i_1a325fbaba9370a24bdb7891aee3918678" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="struct_mochi_1_1_graphics_1_1_g_u_i_result_button" kindref="compound">GUIResultButton</ref></type>
+        <definition>GUIResultButton Mochi::Graphics::SDLGUI::Button</definition>
+        <argsstring>(const GUIButtonOptions &amp;options, const char *label, const GUITextOptions &amp;textOptions) override</argsstring>
+        <name>Button</name>
+        <qualifiedname>Mochi::Graphics::SDLGUI::Button</qualifiedname>
+        <reimplements refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1ace27a11ed645a0675d4b933c970b208e">Button</reimplements>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_graphics_1_1_g_u_i_button_options" kindref="compound">GUIButtonOptions</ref> &amp;</type>
+          <declname>options</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_graphics_1_1_g_u_i_text_options" kindref="compound">GUITextOptions</ref> &amp;</type>
+          <declname>textOptions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/SDLGUI.h" line="29" column="33" bodyfile="Engine/src/GUI/SDLGUI.cpp" bodystart="82" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i_1ad47c6de9019b00256f976bbe166db8f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="struct_mochi_1_1_graphics_1_1_g_u_i_result" kindref="compound">GUIResult</ref></type>
+        <definition>GUIResult Mochi::Graphics::SDLGUI::Text</definition>
+        <argsstring>(const char *label, const GUITextOptions &amp;options) override</argsstring>
+        <name>Text</name>
+        <qualifiedname>Mochi::Graphics::SDLGUI::Text</qualifiedname>
+        <reimplements refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a1c1a5a465846c5920b5ac2059c50691a">Text</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_graphics_1_1_g_u_i_text_options" kindref="compound">GUITextOptions</ref> &amp;</type>
+          <declname>options</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/SDLGUI.h" line="30" column="27" bodyfile="Engine/src/GUI/SDLGUI.cpp" bodystart="147" bodyend="176"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Mochi::Graphics::AbstractGUI</label>
+        <link refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i"/>
+      </node>
+      <node id="1">
+        <label>Mochi::Graphics::SDLGUI</label>
+        <link refid="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>Mochi::FS::PackCatalog</label>
+        <link refid="class_mochi_1_1_f_s_1_1_pack_catalog"/>
+      </node>
+      <node id="2">
+        <label>Mochi::Graphics::AbstractGUI</label>
+        <link refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>mRenderer</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>mCatalog</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>mActionManager</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Mochi::Graphics::IRenderer</label>
+        <link refid="class_mochi_1_1_graphics_1_1_i_renderer"/>
+      </node>
+      <node id="1">
+        <label>Mochi::Graphics::SDLGUI</label>
+        <link refid="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Mochi::Input::IActionManager</label>
+        <link refid="class_mochi_1_1_input_1_1_i_action_manager"/>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/GUI/SDLGUI.h" line="17" column="5" bodyfile="Engine/src/GUI/SDLGUI.h" bodystart="18" bodyend="31"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1ae2c2e3fd7ccf55f6b1fef2bc1a035f95" prot="public" virt="non-virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>AbstractGUI</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i_1a325fbaba9370a24bdb7891aee3918678" prot="public" virt="virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>Button</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a81bb131eaf0465c694d6b95b94f1fb08" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>GetNextId</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a7021fbce90beb2b7bb0c2dc0e7dc00a2" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>mActionManager</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a0382b3a8f76a1c44d560ebe4b4fdab3f" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>mCatalog</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1ab4684507644a230d46e1f8950724fdbd" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>mFocusId</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i_1af8deb451fe1641c9ff0d5eaf420786bb" prot="private" virt="non-virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>mFont</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i_1a6e5032941ff218c7aecaa090508b92b0" prot="private" virt="non-virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>mFontRaw</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a41e8e5634f67fd8c7fcb7bf4bc515628" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>mPressedId</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a8484cb6cec9f001ee115ab3effc54105" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>mRenderer</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i_1a1856f59316f0a218635a707964ce2615" prot="private" virt="non-virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>mSDLRenderer</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a0578b334e00bab559bb4485189a56c58" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>mTextureFactory</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a25ae4e052e53c7d932aef1e2dd41f6a7" prot="protected" virt="virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>OnUpdate</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i_1acb3640757ef517b99ec6e038122ce6a4" prot="private" virt="non-virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>SDLGUI</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i_1a6b759ab354ae37afcd13dfd78eeb6ffc" prot="private" virt="non-virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>SDLRenderer</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i_1a00164b87729ef03a4aa4539ff66d2c85" prot="public" virt="virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>Sprite</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i_1ad47c6de9019b00256f976bbe166db8f6" prot="public" virt="virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>Text</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a647b4b697bad1662f2cf02aa2e805bc9" prot="public" virt="non-virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>Update</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a1bcdf3aa170e51ec8df0099696f4e4f2" prot="public" virt="virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>~AbstractGUI</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i_1a8be3fd876060cada5fa518e552805024" prot="public" virt="virtual"><scope>Mochi::Graphics::SDLGUI</scope><name>~SDLGUI</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

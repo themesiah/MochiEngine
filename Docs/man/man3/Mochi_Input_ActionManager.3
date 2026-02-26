@@ -1,0 +1,72 @@
+.TH "Mochi::Input::ActionManager" 3 "MochiEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Mochi::Input::ActionManager
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBMochi::Input::IActionManager\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBActionManager\fP (std::unique_ptr< \fBInputManager\fP > inputManager)"
+.br
+.ti -1c
+.RI "bool \fBLoadActions\fP (std::vector< char >) override"
+.br
+.ti -1c
+.RI "bool \fBLoadActionsFromFile\fP (const std::string &path) override"
+.br
+.ti -1c
+.RI "bool \fBHasAction\fP (const std::string &) const override"
+.br
+.ti -1c
+.RI "void \fBUpdate\fP (const float &delta) override"
+.br
+.ti -1c
+.RI "bool \fBPerformed\fP (const std::string &actionName) const override"
+.br
+.ti -1c
+.RI "float \fBValue\fP (const std::string &actionName) const override"
+.br
+.ti -1c
+.RI "\fBVector2f\fP \fBCompoundValue\fP (const std::string &action1, const std::string &action2) const override"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBVector2f\fP Mochi::Input::ActionManager::CompoundValue (const std::string & action1, const std::string & action2) const\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Input::IActionManager\fP\&.
+.SS "bool Mochi::Input::ActionManager::HasAction (const std::string & actionName) const\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Input::IActionManager\fP\&.
+.SS "bool Mochi::Input::ActionManager::LoadActions (std::vector< char > jsonContent)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Input::IActionManager\fP\&.
+.SS "bool Mochi::Input::ActionManager::LoadActionsFromFile (const std::string & path)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Input::IActionManager\fP\&.
+.SS "bool Mochi::Input::ActionManager::Performed (const std::string & actionName) const\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Input::IActionManager\fP\&.
+.SS "void Mochi::Input::ActionManager::Update (const float & delta)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Input::IActionManager\fP\&.
+.SS "float Mochi::Input::ActionManager::Value (const std::string & actionName) const\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Input::IActionManager\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MochiEngine from the source code\&.

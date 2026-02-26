@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider" kind="class" language="C++" prot="public">
+    <compoundname>Mochi::Input::SDLGamepadProvider</compoundname>
+    <basecompoundref refid="class_mochi_1_1_input_1_1_i_gamepad_provider" prot="public" virt="non-virtual">Mochi::Input::IGamepadProvider</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider_1a76a7cfec1378903c1cbfeb2b73667fa9" prot="private" static="no" mutable="no">
+        <type><ref refid="class_mochi_1_1_event_1_1_event_bus" kindref="compound">Event::EventBus</ref> *</type>
+        <definition>Event::EventBus* Mochi::Input::SDLGamepadProvider::mEventBus</definition>
+        <argsstring></argsstring>
+        <name>mEventBus</name>
+        <qualifiedname>Mochi::Input::SDLGamepadProvider::mEventBus</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/SDLGamepadProvider.h" line="17" column="25" bodyfile="Engine/src/Input/SDLGamepadProvider.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider_1a3927915c27f73f7af7e9d17d0f851cbb" prot="private" static="no" mutable="no">
+        <type>Event::SubscriptionHandler</type>
+        <definition>Event::SubscriptionHandler Mochi::Input::SDLGamepadProvider::mGamepadAddedHandler</definition>
+        <argsstring></argsstring>
+        <name>mGamepadAddedHandler</name>
+        <qualifiedname>Mochi::Input::SDLGamepadProvider::mGamepadAddedHandler</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/SDLGamepadProvider.h" line="18" column="36" bodyfile="Engine/src/Input/SDLGamepadProvider.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider_1aad6158f7f9d28285a85cd7bbf2caff39" prot="private" static="no" mutable="no">
+        <type>Event::SubscriptionHandler</type>
+        <definition>Event::SubscriptionHandler Mochi::Input::SDLGamepadProvider::mGamepadRemovedHandler</definition>
+        <argsstring></argsstring>
+        <name>mGamepadRemovedHandler</name>
+        <qualifiedname>Mochi::Input::SDLGamepadProvider::mGamepadRemovedHandler</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/SDLGamepadProvider.h" line="19" column="36" bodyfile="Engine/src/Input/SDLGamepadProvider.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider_1ada81826d2ec88df88fd813cacefba232" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; SDL_Gamepad &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;SDL_Gamepad&gt; &gt; Mochi::Input::SDLGamepadProvider::mGamepads</definition>
+        <argsstring></argsstring>
+        <name>mGamepads</name>
+        <qualifiedname>Mochi::Input::SDLGamepadProvider::mGamepads</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/SDLGamepadProvider.h" line="20" column="21" bodyfile="Engine/src/Input/SDLGamepadProvider.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider_1a7dca4f3fad04955e43dfa7e2313fd6fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Input::SDLGamepadProvider::SDLGamepadProvider</definition>
+        <argsstring>(Event::EventBus *eventBus)</argsstring>
+        <name>SDLGamepadProvider</name>
+        <qualifiedname>Mochi::Input::SDLGamepadProvider::SDLGamepadProvider</qualifiedname>
+        <param>
+          <type><ref refid="class_mochi_1_1_event_1_1_event_bus" kindref="compound">Event::EventBus</ref> *</type>
+          <declname>eventBus</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/SDLGamepadProvider.h" line="23" column="9" bodyfile="Engine/src/Input/SDLGamepadProvider.cpp" bodystart="11" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider_1a827eaab6d78741b5fbd2f26afa8728f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>Mochi::Input::SDLGamepadProvider::~SDLGamepadProvider</definition>
+        <argsstring>()</argsstring>
+        <name>~SDLGamepadProvider</name>
+        <qualifiedname>Mochi::Input::SDLGamepadProvider::~SDLGamepadProvider</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/SDLGamepadProvider.h" line="24" column="17" bodyfile="Engine/src/Input/SDLGamepadProvider.cpp" bodystart="33" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider_1af7303e028a54deb6bf70379192e7c83f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="struct_mochi_1_1_input_1_1_gamepad_data" kindref="compound">GamepadData</ref></type>
+        <definition>GamepadData Mochi::Input::SDLGamepadProvider::GetData</definition>
+        <argsstring>(const unsigned int &amp;player) const override</argsstring>
+        <name>GetData</name>
+        <qualifiedname>Mochi::Input::SDLGamepadProvider::GetData</qualifiedname>
+        <reimplements refid="class_mochi_1_1_input_1_1_i_gamepad_provider_1a15284850eb8276b02c363df6351c04b6">GetData</reimplements>
+        <param>
+          <type>const unsigned int &amp;</type>
+          <declname>player</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/SDLGamepadProvider.h" line="25" column="29" bodyfile="Engine/src/Input/SDLGamepadProvider.cpp" bodystart="39" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider_1a80d6ea800be446ae7ebc529875d461ae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mochi::Input::SDLGamepadProvider::HasGamepad</definition>
+        <argsstring>(const unsigned int &amp;player) const override</argsstring>
+        <name>HasGamepad</name>
+        <qualifiedname>Mochi::Input::SDLGamepadProvider::HasGamepad</qualifiedname>
+        <reimplements refid="class_mochi_1_1_input_1_1_i_gamepad_provider_1a62edb56fb118537a386b095dc5126ade">HasGamepad</reimplements>
+        <param>
+          <type>const unsigned int &amp;</type>
+          <declname>player</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/SDLGamepadProvider.h" line="26" column="22" bodyfile="Engine/src/Input/SDLGamepadProvider.cpp" bodystart="79" bodyend="82"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Mochi::Input::IGamepadProvider</label>
+        <link refid="class_mochi_1_1_input_1_1_i_gamepad_provider"/>
+      </node>
+      <node id="1">
+        <label>Mochi::Input::SDLGamepadProvider</label>
+        <link refid="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Mochi::Input::IGamepadProvider</label>
+        <link refid="class_mochi_1_1_input_1_1_i_gamepad_provider"/>
+      </node>
+      <node id="1">
+        <label>Mochi::Input::SDLGamepadProvider</label>
+        <link refid="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Input/SDLGamepadProvider.h" line="14" column="5" bodyfile="Engine/src/Input/SDLGamepadProvider.h" bodystart="15" bodyend="27"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider_1af7303e028a54deb6bf70379192e7c83f" prot="public" virt="virtual"><scope>Mochi::Input::SDLGamepadProvider</scope><name>GetData</name></member>
+      <member refid="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider_1a80d6ea800be446ae7ebc529875d461ae" prot="public" virt="virtual"><scope>Mochi::Input::SDLGamepadProvider</scope><name>HasGamepad</name></member>
+      <member refid="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider_1a76a7cfec1378903c1cbfeb2b73667fa9" prot="private" virt="non-virtual"><scope>Mochi::Input::SDLGamepadProvider</scope><name>mEventBus</name></member>
+      <member refid="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider_1a3927915c27f73f7af7e9d17d0f851cbb" prot="private" virt="non-virtual"><scope>Mochi::Input::SDLGamepadProvider</scope><name>mGamepadAddedHandler</name></member>
+      <member refid="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider_1aad6158f7f9d28285a85cd7bbf2caff39" prot="private" virt="non-virtual"><scope>Mochi::Input::SDLGamepadProvider</scope><name>mGamepadRemovedHandler</name></member>
+      <member refid="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider_1ada81826d2ec88df88fd813cacefba232" prot="private" virt="non-virtual"><scope>Mochi::Input::SDLGamepadProvider</scope><name>mGamepads</name></member>
+      <member refid="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider_1a7dca4f3fad04955e43dfa7e2313fd6fd" prot="public" virt="non-virtual"><scope>Mochi::Input::SDLGamepadProvider</scope><name>SDLGamepadProvider</name></member>
+      <member refid="class_mochi_1_1_input_1_1_i_gamepad_provider_1ace99b1ca9634c60fe5b0cd74d80f5f20" prot="public" virt="virtual"><scope>Mochi::Input::SDLGamepadProvider</scope><name>~IGamepadProvider</name></member>
+      <member refid="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider_1a827eaab6d78741b5fbd2f26afa8728f3" prot="public" virt="virtual"><scope>Mochi::Input::SDLGamepadProvider</scope><name>~SDLGamepadProvider</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

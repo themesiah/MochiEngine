@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_graphics_1_1_dummy_g_u_i" kind="class" language="C++" prot="public">
+    <compoundname>Mochi::Graphics::DummyGUI</compoundname>
+    <basecompoundref refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i" prot="public" virt="non-virtual">Mochi::Graphics::AbstractGUI</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_dummy_g_u_i_1a1643f0ffbe464742c8e0083c1a472d4f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Graphics::DummyGUI::DummyGUI</definition>
+        <argsstring>(FS::PackCatalog *catalog, IRenderer *renderer, Input::IActionManager *actionManager)</argsstring>
+        <name>DummyGUI</name>
+        <qualifiedname>Mochi::Graphics::DummyGUI::DummyGUI</qualifiedname>
+        <param>
+          <type><ref refid="class_mochi_1_1_f_s_1_1_pack_catalog" kindref="compound">FS::PackCatalog</ref> *</type>
+          <declname>catalog</declname>
+        </param>
+        <param>
+          <type><ref refid="class_mochi_1_1_graphics_1_1_i_renderer" kindref="compound">IRenderer</ref> *</type>
+          <declname>renderer</declname>
+        </param>
+        <param>
+          <type><ref refid="class_mochi_1_1_input_1_1_i_action_manager" kindref="compound">Input::IActionManager</ref> *</type>
+          <declname>actionManager</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/DummyRendering.h" line="34" column="9" bodyfile="Engine/src/Graphics/DummyRendering.h" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_dummy_g_u_i_1ac387a00a3040572d89b5ef7a87107da5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Mochi::Graphics::DummyGUI::~DummyGUI</definition>
+        <argsstring>()</argsstring>
+        <name>~DummyGUI</name>
+        <qualifiedname>Mochi::Graphics::DummyGUI::~DummyGUI</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/DummyRendering.h" line="35" column="17" bodyfile="Engine/src/Graphics/DummyRendering.h" bodystart="35" bodyend="35"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Mochi::Graphics::AbstractGUI</label>
+        <link refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i"/>
+      </node>
+      <node id="1">
+        <label>Mochi::Graphics::DummyGUI</label>
+        <link refid="class_mochi_1_1_graphics_1_1_dummy_g_u_i"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>Mochi::FS::PackCatalog</label>
+        <link refid="class_mochi_1_1_f_s_1_1_pack_catalog"/>
+      </node>
+      <node id="2">
+        <label>Mochi::Graphics::AbstractGUI</label>
+        <link refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>mRenderer</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>mCatalog</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>mActionManager</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Mochi::Graphics::DummyGUI</label>
+        <link refid="class_mochi_1_1_graphics_1_1_dummy_g_u_i"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Mochi::Graphics::IRenderer</label>
+        <link refid="class_mochi_1_1_graphics_1_1_i_renderer"/>
+      </node>
+      <node id="5">
+        <label>Mochi::Input::IActionManager</label>
+        <link refid="class_mochi_1_1_input_1_1_i_action_manager"/>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Graphics/DummyRendering.h" line="31" column="5" bodyfile="Engine/src/Graphics/DummyRendering.h" bodystart="32" bodyend="36"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1ae2c2e3fd7ccf55f6b1fef2bc1a035f95" prot="public" virt="non-virtual"><scope>Mochi::Graphics::DummyGUI</scope><name>AbstractGUI</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1ace27a11ed645a0675d4b933c970b208e" prot="public" virt="virtual"><scope>Mochi::Graphics::DummyGUI</scope><name>Button</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_dummy_g_u_i_1a1643f0ffbe464742c8e0083c1a472d4f" prot="public" virt="non-virtual"><scope>Mochi::Graphics::DummyGUI</scope><name>DummyGUI</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a81bb131eaf0465c694d6b95b94f1fb08" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::DummyGUI</scope><name>GetNextId</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a7021fbce90beb2b7bb0c2dc0e7dc00a2" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::DummyGUI</scope><name>mActionManager</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a0382b3a8f76a1c44d560ebe4b4fdab3f" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::DummyGUI</scope><name>mCatalog</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1ab4684507644a230d46e1f8950724fdbd" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::DummyGUI</scope><name>mFocusId</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a41e8e5634f67fd8c7fcb7bf4bc515628" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::DummyGUI</scope><name>mPressedId</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a8484cb6cec9f001ee115ab3effc54105" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::DummyGUI</scope><name>mRenderer</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a0578b334e00bab559bb4485189a56c58" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::DummyGUI</scope><name>mTextureFactory</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a25ae4e052e53c7d932aef1e2dd41f6a7" prot="protected" virt="virtual"><scope>Mochi::Graphics::DummyGUI</scope><name>OnUpdate</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a58df0b0adad307504779f0bc851b8864" prot="public" virt="virtual"><scope>Mochi::Graphics::DummyGUI</scope><name>Sprite</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a1c1a5a465846c5920b5ac2059c50691a" prot="public" virt="virtual"><scope>Mochi::Graphics::DummyGUI</scope><name>Text</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a647b4b697bad1662f2cf02aa2e805bc9" prot="public" virt="non-virtual"><scope>Mochi::Graphics::DummyGUI</scope><name>Update</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_g_u_i_1a1bcdf3aa170e51ec8df0099696f4e4f2" prot="public" virt="virtual"><scope>Mochi::Graphics::DummyGUI</scope><name>~AbstractGUI</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_dummy_g_u_i_1ac387a00a3040572d89b5ef7a87107da5" prot="public" virt="virtual"><scope>Mochi::Graphics::DummyGUI</scope><name>~DummyGUI</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

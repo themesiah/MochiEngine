@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__i_animation_factory_8h_source" xml:lang="en-US">
+<title>IAnimationFactory.h</title>
+<indexterm><primary>Engine/src/Graphics/IAnimationFactory.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_IANIMATIONFACTORY</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_IANIMATIONFACTORY</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&quot;AnimationData.h&quot;</emphasis>
+5 
+6 <emphasis role="preprocessor">#include&#32;&lt;memory&gt;</emphasis>
+7 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+8 
+9 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Graphics
+10 {
+11 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_i_animation_factory">IAnimationFactory</link>
+12 &#32;&#32;&#32;&#32;{
+13 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+14 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_mochi_1_1_graphics_1_1_i_animation_factory">~IAnimationFactory</link>()&#32;{}
+15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;std::shared_ptr&lt;AnimationsData&gt;&#32;GetAnimationsData(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;animationDataPath)&#32;=&#32;0;
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DeleteCache()&#32;=&#32;0;
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DeleteAnimation(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;texturePath)&#32;=&#32;0;
+18 &#32;&#32;&#32;&#32;};
+19 }
+20 
+21 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

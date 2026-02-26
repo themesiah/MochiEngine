@@ -1,0 +1,320 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="_aseprite_animation_factory_8cpp" kind="file" language="C++">
+    <compoundname>AsepriteAnimationFactory.cpp</compoundname>
+    <includes refid="_aseprite_animation_factory_8h" local="yes">AsepriteAnimationFactory.h</includes>
+    <includes local="no">nlohmann/json.hpp</includes>
+    <includes refid="_string_utils_8h" local="yes">../Utils/StringUtils.h</includes>
+    <includes refid="_logger_8h" local="yes">../Utils/Logger.h</includes>
+    <includes refid="_assert_8h" local="yes">../Utils/Assert.h</includes>
+    <includes refid="_pack_catalog_8h" local="yes">../Packer/PackCatalog.h</includes>
+    <includes refid="_exception_8hpp" local="yes">../Exception.hpp</includes>
+    <incdepgraph>
+      <node id="12">
+        <label>../Exception.hpp</label>
+        <link refid="_exception_8hpp_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>AnimationData.h</label>
+        <link refid="_animation_data_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Engine/src/Graphics/AsepriteAnimationFactory.cpp</label>
+        <link refid="_aseprite_animation_factory_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>AsepriteAnimationFactory.h</label>
+        <link refid="_aseprite_animation_factory_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>IAnimationFactory.h</label>
+        <link refid="_i_animation_factory_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>../Packer/PackCatalog.h</label>
+        <link refid="_pack_catalog_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>../Types/Types.hpp</label>
+        <link refid="_types_8hpp_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>../Utils/Assert.h</label>
+        <link refid="_assert_8h_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>../Utils/Logger.h</label>
+        <link refid="_logger_8h_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>../Utils/StringUtils.h</label>
+        <link refid="_string_utils_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>SDL3/SDL.h</label>
+      </node>
+      <node id="19">
+        <label>algorithm</label>
+      </node>
+      <node id="7">
+        <label>filesystem</label>
+      </node>
+      <node id="11">
+        <label>format</label>
+      </node>
+      <node id="21">
+        <label>iostream</label>
+      </node>
+      <node id="10">
+        <label>math.h</label>
+      </node>
+      <node id="16">
+        <label>memory</label>
+      </node>
+      <node id="17">
+        <label>nlohmann/json.hpp</label>
+      </node>
+      <node id="14">
+        <label>source_location</label>
+      </node>
+      <node id="13">
+        <label>stdexcept</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+      <node id="6">
+        <label>unordered_map</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespace_mochi">Mochi</innernamespace>
+    <innernamespace refid="namespace_mochi_1_1_graphics">Mochi::Graphics</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;AsepriteAnimationFactory.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;nlohmann/json.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../Utils/StringUtils.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../Utils/Logger.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../Utils/Assert.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../Packer/PackCatalog.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../Exception.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Mochi::Graphics</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>AsepriteAnimationFactory::AsepriteAnimationFactory(FS::PackCatalog<sp/>*catalog)<sp/>:<sp/>mCatalog(catalog)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>AsepriteAnimationFactory::~AsepriteAnimationFactory()</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;AnimationsData&gt;<sp/>AsepriteAnimationFactory::GetAnimationsData(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;animationDataPath)</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>normalizedPath<sp/>=<sp/>Utils::NormalizePath(animationDataPath);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mAnimationDataMap.find(normalizedPath)<sp/>!=<sp/>mAnimationDataMap.end())</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mAnimationDataMap[normalizedPath];</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>animationFileBuffer<sp/>=<sp/>mCatalog-&gt;GetFile(normalizedPath);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nlohmann::json<sp/>data<sp/>=<sp/>nlohmann::json::parse(animationFileBuffer);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ASSERT(</highlight><highlight class="stringliteral">&quot;Animations<sp/>file<sp/>are<sp/>exported<sp/>by<sp/>Aseprite<sp/>and<sp/>need<sp/>a<sp/>\&quot;meta\&quot;<sp/>and<sp/>a<sp/>\&quot;frames\&quot;<sp/>object.<sp/>Frames<sp/>should<sp/>be<sp/>an<sp/>array&quot;</highlight><highlight class="normal">,<sp/>data.contains(</highlight><highlight class="stringliteral">&quot;frames&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ASSERT(</highlight><highlight class="stringliteral">&quot;Animations<sp/>file<sp/>are<sp/>exported<sp/>by<sp/>Aseprite<sp/>and<sp/>need<sp/>a<sp/>\&quot;meta\&quot;<sp/>and<sp/>a<sp/>\&quot;frames\&quot;<sp/>object.<sp/>Frames<sp/>should<sp/>be<sp/>an<sp/>array&quot;</highlight><highlight class="normal">,<sp/>data[</highlight><highlight class="stringliteral">&quot;frames&quot;</highlight><highlight class="normal">].is_array());</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ASSERT(</highlight><highlight class="stringliteral">&quot;Animations<sp/>file<sp/>are<sp/>exported<sp/>by<sp/>Aseprite<sp/>and<sp/>need<sp/>a<sp/>\&quot;meta\&quot;<sp/>and<sp/>a<sp/>\&quot;frames\&quot;<sp/>object.<sp/>Frames<sp/>should<sp/>be<sp/>an<sp/>array&quot;</highlight><highlight class="normal">,<sp/>!data[</highlight><highlight class="stringliteral">&quot;frames&quot;</highlight><highlight class="normal">].empty());</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ASSERT(</highlight><highlight class="stringliteral">&quot;Animations<sp/>file<sp/>are<sp/>exported<sp/>by<sp/>Aseprite<sp/>and<sp/>need<sp/>a<sp/>\&quot;meta\&quot;<sp/>and<sp/>a<sp/>\&quot;frames\&quot;<sp/>object.<sp/>Frames<sp/>should<sp/>be<sp/>an<sp/>array&quot;</highlight><highlight class="normal">,<sp/>data.contains(</highlight><highlight class="stringliteral">&quot;meta&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>meta<sp/>=<sp/>data[</highlight><highlight class="stringliteral">&quot;meta&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>frames<sp/>=<sp/>data[</highlight><highlight class="stringliteral">&quot;frames&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;AnimationsData&gt;<sp/>animationsData<sp/>=<sp/>std::make_shared&lt;AnimationsData&gt;();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ASSERT(</highlight><highlight class="stringliteral">&quot;The<sp/>\&quot;meta\&quot;<sp/>object<sp/>of<sp/>an<sp/>animation<sp/>requires<sp/>an<sp/>\&quot;image\&quot;<sp/>path&quot;</highlight><highlight class="normal">,<sp/>meta.contains(</highlight><highlight class="stringliteral">&quot;image&quot;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>meta[</highlight><highlight class="stringliteral">&quot;image&quot;</highlight><highlight class="normal">].is_string());</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>textureName<sp/>=<sp/>meta[</highlight><highlight class="stringliteral">&quot;image&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::filesystem::path<sp/>animationJsonPath<sp/>=<sp/>normalizedPath;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::filesystem::path<sp/>texturePath<sp/>=<sp/>animationJsonPath.parent_path()<sp/>/<sp/>textureName;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ASSERT(</highlight><highlight class="stringliteral">&quot;The<sp/>\&quot;meta\&quot;<sp/>object<sp/>of<sp/>an<sp/>animation<sp/>requires<sp/>a<sp/>\&quot;size\&quot;<sp/>object<sp/>with<sp/>the<sp/>w<sp/>and<sp/>h<sp/>values.&quot;</highlight><highlight class="normal">,<sp/>meta.contains(</highlight><highlight class="stringliteral">&quot;size&quot;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>meta[</highlight><highlight class="stringliteral">&quot;size&quot;</highlight><highlight class="normal">].contains(</highlight><highlight class="stringliteral">&quot;w&quot;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>meta[</highlight><highlight class="stringliteral">&quot;size&quot;</highlight><highlight class="normal">].contains(</highlight><highlight class="stringliteral">&quot;h&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>animationsData-&gt;Size.x<sp/>=<sp/>meta[</highlight><highlight class="stringliteral">&quot;size&quot;</highlight><highlight class="normal">][</highlight><highlight class="stringliteral">&quot;w&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>animationsData-&gt;Size.y<sp/>=<sp/>meta[</highlight><highlight class="stringliteral">&quot;size&quot;</highlight><highlight class="normal">][</highlight><highlight class="stringliteral">&quot;h&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>animationsData-&gt;TexturePath<sp/>=<sp/>texturePath;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ASSERT(</highlight><highlight class="stringliteral">&quot;Frame<sp/>tags<sp/>inside<sp/>\&quot;meta\&quot;<sp/>should<sp/>be<sp/>an<sp/>array<sp/>with<sp/>at<sp/>least<sp/>a<sp/>tag<sp/>(animation)&quot;</highlight><highlight class="normal">,<sp/>meta.contains(</highlight><highlight class="stringliteral">&quot;frameTags&quot;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>meta[</highlight><highlight class="stringliteral">&quot;frameTags&quot;</highlight><highlight class="normal">].is_array());</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;frameTag<sp/>:<sp/>meta[</highlight><highlight class="stringliteral">&quot;frameTags&quot;</highlight><highlight class="normal">])</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ASSERT(</highlight><highlight class="stringliteral">&quot;A<sp/>frametag<sp/>requires<sp/>at<sp/>least<sp/>a<sp/>name,<sp/>from,<sp/>to<sp/>and<sp/>a<sp/>direction&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameTag.contains(</highlight><highlight class="stringliteral">&quot;name&quot;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>frameTag.contains(</highlight><highlight class="stringliteral">&quot;from&quot;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>frameTag.contains(</highlight><highlight class="stringliteral">&quot;to&quot;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>frameTag.contains(</highlight><highlight class="stringliteral">&quot;direction&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FrameTag<sp/>frameTagAnimation;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameTagAnimation.Name<sp/>=<sp/>frameTag[</highlight><highlight class="stringliteral">&quot;name&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameTagAnimation.From<sp/>=<sp/>frameTag[</highlight><highlight class="stringliteral">&quot;from&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameTagAnimation.To<sp/>=<sp/>frameTag[</highlight><highlight class="stringliteral">&quot;to&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>direction<sp/>=<sp/>frameTag[</highlight><highlight class="stringliteral">&quot;direction&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(direction<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;Forward&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameTagAnimation.Direction<sp/>=<sp/>AnimationDirection::Forward;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(direction<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;Backward&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameTagAnimation.Direction<sp/>=<sp/>AnimationDirection::Backward;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(direction<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;Pingpong&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameTagAnimation.Direction<sp/>=<sp/>AnimationDirection::Pingpong;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(direction<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;BackwardPingpong&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameTagAnimation.Direction<sp/>=<sp/>AnimationDirection::BackwardPingPong;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameTagAnimation.Direction<sp/>=<sp/>AnimationDirection::Forward;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameTagAnimation.Repeat<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameTagAnimation.UserData<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(frameTag.contains(</highlight><highlight class="stringliteral">&quot;repeat&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>repeat<sp/>=<sp/>frameTag[</highlight><highlight class="stringliteral">&quot;repeat&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameTagAnimation.Repeat<sp/>=<sp/>std::atoi(repeat.c_str());</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(frameTag.contains(</highlight><highlight class="stringliteral">&quot;userdata&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameTagAnimation.UserData<sp/>=<sp/>frameTag[</highlight><highlight class="stringliteral">&quot;userdata&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>animationsData-&gt;Animations[frameTagAnimation.Name]<sp/>=<sp/>frameTagAnimation;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;frame<sp/>:<sp/>frames)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ASSERT(</highlight><highlight class="stringliteral">&quot;Frame<sp/>data<sp/>requires<sp/>at<sp/>least<sp/>the<sp/>filename,<sp/>the<sp/>frame,<sp/>the<sp/>spriteSourceSize<sp/>and<sp/>the<sp/>duration<sp/>values&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frame.contains(</highlight><highlight class="stringliteral">&quot;filename&quot;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>frame.contains(</highlight><highlight class="stringliteral">&quot;frame&quot;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>frame.contains(</highlight><highlight class="stringliteral">&quot;spriteSourceSize&quot;</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>frame.contains(</highlight><highlight class="stringliteral">&quot;duration&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FrameData<sp/>frameData;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameData.Filename<sp/>=<sp/>frame[</highlight><highlight class="stringliteral">&quot;filename&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameData.Duration<sp/>=<sp/>frame[</highlight><highlight class="stringliteral">&quot;duration&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameData.Duration<sp/>/=<sp/>1000.0f;<sp/></highlight><highlight class="comment">//<sp/>Millis</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameData.Frame.x<sp/>=<sp/>frame[</highlight><highlight class="stringliteral">&quot;frame&quot;</highlight><highlight class="normal">][</highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameData.Frame.y<sp/>=<sp/>frame[</highlight><highlight class="stringliteral">&quot;frame&quot;</highlight><highlight class="normal">][</highlight><highlight class="stringliteral">&quot;y&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameData.Frame.w<sp/>=<sp/>frame[</highlight><highlight class="stringliteral">&quot;frame&quot;</highlight><highlight class="normal">][</highlight><highlight class="stringliteral">&quot;w&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameData.Frame.h<sp/>=<sp/>frame[</highlight><highlight class="stringliteral">&quot;frame&quot;</highlight><highlight class="normal">][</highlight><highlight class="stringliteral">&quot;h&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameData.SpriteSourceSize.x<sp/>=<sp/>frame[</highlight><highlight class="stringliteral">&quot;spriteSourceSize&quot;</highlight><highlight class="normal">][</highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameData.SpriteSourceSize.y<sp/>=<sp/>frame[</highlight><highlight class="stringliteral">&quot;spriteSourceSize&quot;</highlight><highlight class="normal">][</highlight><highlight class="stringliteral">&quot;y&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameData.SpriteSourceSize.w<sp/>=<sp/>frame[</highlight><highlight class="stringliteral">&quot;spriteSourceSize&quot;</highlight><highlight class="normal">][</highlight><highlight class="stringliteral">&quot;w&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameData.SpriteSourceSize.h<sp/>=<sp/>frame[</highlight><highlight class="stringliteral">&quot;spriteSourceSize&quot;</highlight><highlight class="normal">][</highlight><highlight class="stringliteral">&quot;h&quot;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>animationsData-&gt;Frames.push_back(frameData);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>animationsData;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::runtime_error<sp/>&amp;e)</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>EngineError(e.what());</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>AsepriteAnimationFactory::DeleteCache()</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mAnimationDataMap.clear();</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>AsepriteAnimationFactory::DeleteAnimation(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;animationPath)</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>normalizedPath<sp/>=<sp/>Utils::NormalizePath(animationPath);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mAnimationDataMap.find(normalizedPath)<sp/>!=<sp/>mAnimationDataMap.end())</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mAnimationDataMap.erase(normalizedPath);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LOG_WARNING(std::format(</highlight><highlight class="stringliteral">&quot;Trying<sp/>to<sp/>delete<sp/>animation<sp/>with<sp/>path<sp/>{}<sp/>that<sp/>was<sp/>not<sp/>cached.&quot;</highlight><highlight class="normal">,<sp/>animationPath));</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Engine/src/Graphics/AsepriteAnimationFactory.cpp"/>
+  </compounddef>
+</doxygen>

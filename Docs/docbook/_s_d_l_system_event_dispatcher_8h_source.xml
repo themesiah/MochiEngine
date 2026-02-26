@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__s_d_l_system_event_dispatcher_8h_source" xml:lang="en-US">
+<title>SDLSystemEventDispatcher.h</title>
+<indexterm><primary>Engine/src/Event/SDLSystemEventDispatcher.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_SDLSYSTEMEVENTDISPATCHER</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_SDLSYSTEMEVENTDISPATCHER</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&quot;ISystemEventDispatcher.h&quot;</emphasis>
+5 
+6 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Event
+7 {
+8 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_event_1_1_event_bus">EventBus</link>;
+9 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>SDLSystemEventDispatcher&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_mochi_1_1_event_1_1_i_system_event_dispatcher">ISystemEventDispatcher</link>
+10 &#32;&#32;&#32;&#32;{
+11 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+12 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mochi_1_1_event_1_1_event_bus">EventBus</link>&#32;*mEventBus;
+13 
+14 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SDLSystemEventDispatcher(<link linkend="_class_mochi_1_1_event_1_1_event_bus">EventBus</link>&#32;*eventBus);
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;~SDLSystemEventDispatcher();
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;PollEvents()&#32;<emphasis role="keyword">const</emphasis>;
+18 &#32;&#32;&#32;&#32;};
+19 }
+20 
+21 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

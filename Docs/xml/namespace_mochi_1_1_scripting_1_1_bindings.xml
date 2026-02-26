@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="namespace_mochi_1_1_scripting_1_1_bindings" kind="namespace" language="C++">
+    <compoundname>Mochi::Scripting::Bindings</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="_lua_bindings_8cpp_1af569bfec87346b1c5484f7bdb32967cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mochi::Scripting::Bindings::BindGraphics</definition>
+        <argsstring>(ScriptingManager *manager, Graphics::Camera *camera)</argsstring>
+        <name>BindGraphics</name>
+        <qualifiedname>Mochi::Scripting::Bindings::BindGraphics</qualifiedname>
+        <param>
+          <type><ref refid="class_mochi_1_1_scripting_1_1_scripting_manager" kindref="compound">ScriptingManager</ref> *</type>
+          <declname>manager</declname>
+        </param>
+        <param>
+          <type><ref refid="class_mochi_1_1_graphics_1_1_camera" kindref="compound">Graphics::Camera</ref> *</type>
+          <declname>camera</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Scripting/LuaBindings.cpp" line="25" column="10" bodyfile="Engine/src/Scripting/LuaBindings.cpp" bodystart="25" bodyend="64" declfile="Engine/src/Scripting/LuaBindings.h" declline="22" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="_lua_bindings_8cpp_1af245bc888bbf9240ceb1006b39a43681" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mochi::Scripting::Bindings::BindLogic</definition>
+        <argsstring>(ScriptingManager *manager, Input::IActionManager *actionManager)</argsstring>
+        <name>BindLogic</name>
+        <qualifiedname>Mochi::Scripting::Bindings::BindLogic</qualifiedname>
+        <param>
+          <type><ref refid="class_mochi_1_1_scripting_1_1_scripting_manager" kindref="compound">ScriptingManager</ref> *</type>
+          <declname>manager</declname>
+        </param>
+        <param>
+          <type><ref refid="class_mochi_1_1_input_1_1_i_action_manager" kindref="compound">Input::IActionManager</ref> *</type>
+          <declname>actionManager</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Scripting/LuaBindings.cpp" line="66" column="10" bodyfile="Engine/src/Scripting/LuaBindings.cpp" bodystart="66" bodyend="135" declfile="Engine/src/Scripting/LuaBindings.h" declline="23" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="_lua_bindings_8cpp_1ac18073db538260e2375ded0d1c170c63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mochi::Scripting::Bindings::BindAudio</definition>
+        <argsstring>(ScriptingManager *manager, Audio::IAudioManager *audioManager)</argsstring>
+        <name>BindAudio</name>
+        <qualifiedname>Mochi::Scripting::Bindings::BindAudio</qualifiedname>
+        <param>
+          <type><ref refid="class_mochi_1_1_scripting_1_1_scripting_manager" kindref="compound">ScriptingManager</ref> *</type>
+          <declname>manager</declname>
+        </param>
+        <param>
+          <type><ref refid="class_mochi_1_1_audio_1_1_i_audio_manager" kindref="compound">Audio::IAudioManager</ref> *</type>
+          <declname>audioManager</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Scripting/LuaBindings.cpp" line="137" column="10" bodyfile="Engine/src/Scripting/LuaBindings.cpp" bodystart="137" bodyend="160" declfile="Engine/src/Scripting/LuaBindings.h" declline="24" declcolumn="10"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Scripting/LuaBindings.cpp" line="23" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__engine_8h_source" xml:lang="en-US">
+<title>Engine.h</title>
+<indexterm><primary>Engine/src/Engine.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_ENGINE</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_ENGINE</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;memory&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&lt;unordered_map&gt;</emphasis>
+7 <emphasis role="preprocessor">#include&#32;&lt;chrono&gt;</emphasis>
+8 
+9 <emphasis role="preprocessor">#include&#32;&quot;Time/TimeSystem.h&quot;</emphasis>
+10 <emphasis role="preprocessor">#include&#32;&quot;Event/EventBus.h&quot;</emphasis>
+11 
+12 <emphasis role="keyword">struct&#32;</emphasis>TTF_Font;
+13 <emphasis role="keyword">struct&#32;</emphasis>TTF_TextEngine;
+14 <emphasis role="keyword">struct&#32;</emphasis>TTF_Text;
+15 
+16 <emphasis role="keyword">namespace&#32;</emphasis>Mochi
+17 {
+18 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>Graphics
+19 &#32;&#32;&#32;&#32;{
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>Sprite;
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_animated_sprite">AnimatedSprite</link>;
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>TextureFactory;
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_camera">Camera</link>;
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_i_renderer">IRenderer</link>;
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>AnimationFactory;
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_abstract_g_u_i">AbstractGUI</link>;
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_mochi_1_1_graphics_1_1_render_command">RenderCommand</link>;
+28 &#32;&#32;&#32;&#32;}
+29 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>Audio
+30 &#32;&#32;&#32;&#32;{
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_audio_1_1_i_audio_manager">IAudioManager</link>;
+32 &#32;&#32;&#32;&#32;}
+33 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>Input
+34 &#32;&#32;&#32;&#32;{
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_input_1_1_i_action_manager">IActionManager</link>;
+36 &#32;&#32;&#32;&#32;}
+37 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>FS
+38 &#32;&#32;&#32;&#32;{
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">PackCatalog</link>;
+40 &#32;&#32;&#32;&#32;}
+41 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>Event
+42 &#32;&#32;&#32;&#32;{
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_event_1_1_i_system_event_dispatcher">ISystemEventDispatcher</link>;
+44 &#32;&#32;&#32;&#32;}
+45 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>Scripting
+46 &#32;&#32;&#32;&#32;{
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_scripting_1_1_scripting_manager">ScriptingManager</link>;
+48 &#32;&#32;&#32;&#32;}
+49 &#32;&#32;&#32;&#32;<emphasis role="keyword">namespace&#32;</emphasis>Debug
+50 &#32;&#32;&#32;&#32;{
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_debug_1_1_i_gizmos">IGizmos</link>;
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_debug_1_1_frame_profiler">FrameProfiler</link>;
+53 &#32;&#32;&#32;&#32;}
+54 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_layer">Layer</link>;
+55 
+105 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_engine_1aef3344bbe42325909e055b0067bf97ea">Engine</link>
+106 &#32;&#32;&#32;&#32;{
+107 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;mTargetFPS;
+109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::chrono::steady_clock::time_point&#32;mFrameStart;
+110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;mLastDeltaTime;
+111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;mLastRealDelta;
+112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;mIsRunning;
+113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;mIsPaused;
+114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;mUnpausedTimeScale;
+115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Event::SubscriptionHandler&#32;mAppQuitHandler;
+116 
+117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::unique_ptr&lt;Event::EventBus&gt;&#32;mEventBus;
+118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Graphics::RenderCommand&gt;&#32;mRenderQueue;
+119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;std::unique_ptr&lt;Layer&gt;&gt;&#32;mLayers;
+120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Layer&#32;*&gt;&#32;mPopLayerQueue;
+121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;Layer&#32;*&gt;&#32;mPushLayerQueue;
+122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::unique_ptr&lt;Event::ISystemEventDispatcher&gt;&#32;mEventDispatcher;
+123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::unique_ptr&lt;Graphics::IRenderer&gt;&#32;mRenderer;
+124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::unique_ptr&lt;Audio::IAudioManager&gt;&#32;mAudio;
+125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::unique_ptr&lt;Input::IActionManager&gt;&#32;mActionManager;
+126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::unique_ptr&lt;FS::PackCatalog&gt;&#32;mCatalog;
+127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::unique_ptr&lt;Graphics::Camera&gt;&#32;mCamera;
+128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::unique_ptr&lt;Graphics::AbstractGUI&gt;&#32;mGUI;
+129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::unique_ptr&lt;Scripting::ScriptingManager&gt;&#32;mScripting;
+130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::unique_ptr&lt;Debug::IGizmos&gt;&#32;mGizmos;
+131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::unique_ptr&lt;Debug::FrameProfiler&gt;&#32;mProfiler;
+132 
+133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;PreciseDelay(std::chrono::nanoseconds&#32;ns)&#32;<emphasis role="keyword">const</emphasis>;
+134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;MinimalSetup();
+135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;Update(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;&amp;dt);
+136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;Render();
+137 
+138 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<link linkend="_class_mochi_1_1_engine_1aef3344bbe42325909e055b0067bf97ea">Engine</link>&#32;&amp;<link linkend="_class_mochi_1_1_engine_1ad48900df227aa688a5708cfc2e829dd6">Get</link>();
+143 
+149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mochi_1_1_engine_1aef3344bbe42325909e055b0067bf97ea">Engine</link>();
+150 
+159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mochi_1_1_engine_1aef3344bbe42325909e055b0067bf97ea">Engine</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*appName,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*appVersion,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*appId,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*windowName);
+160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_mochi_1_1_engine_1aef3344bbe42325909e055b0067bf97ea">~Engine</link>();
+161 
+164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_mochi_1_1_engine_1a8607f25ed8f2f147e0392fd6e3f7b3df">Run</link>();
+165 
+171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_mochi_1_1_engine_1ab94fefb2ec8339205da249776232e6b9">Setup</link>(std::unique_ptr&lt;Graphics::IRenderer&gt;&#32;&amp;&amp;renderer,&#32;std::unique_ptr&lt;Input::IActionManager&gt;&#32;&amp;&amp;actionManager,&#32;std::unique_ptr&lt;Audio::IAudioManager&gt;&#32;&amp;&amp;audioManager);
+172 
+176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_mochi_1_1_engine_1a96968a4a8d7f6bc8971adff496f012c2">PushLayer</link>(<link linkend="_class_mochi_1_1_layer">Layer</link>&#32;*layer);
+177 
+180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_mochi_1_1_engine_1a107d1939f2ca80f809d94ec3bc6778ea">PopLayer</link>(<link linkend="_class_mochi_1_1_layer">Layer</link>&#32;*layer);
+181 
+182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;GetLastRealDelta()<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;mLastRealDelta;&#32;}
+183 
+186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_mochi_1_1_engine_1a30dd4483d8bcfdfc538ce15cc7c2d779">AddRenderCommand</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_graphics_1_1_render_command">Graphics::RenderCommand</link>&#32;&amp;command);
+187 
+190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_mochi_1_1_engine_1a9376f54788aec93f39b401be824cdae9">AddRenderCommands</link>(<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;Graphics::RenderCommand&gt;&#32;&amp;commands);
+191 
+192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Access&#32;subsystems</emphasis>
+193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mochi_1_1_graphics_1_1_i_renderer">Graphics::IRenderer</link>&#32;*GetRenderer()<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;mRenderer.get();&#32;}
+194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mochi_1_1_audio_1_1_i_audio_manager">Audio::IAudioManager</link>&#32;*GetAudio()<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;mAudio.get();&#32;}
+195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mochi_1_1_input_1_1_i_action_manager">Input::IActionManager</link>&#32;*GetActionManager()<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;mActionManager.get();&#32;}
+196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link>&#32;*GetCatalog()<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;mCatalog.get();&#32;}
+197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mochi_1_1_graphics_1_1_camera">Graphics::Camera</link>&#32;*GetCamera()<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;mCamera.get();&#32;}
+198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mochi_1_1_graphics_1_1_abstract_g_u_i">Graphics::AbstractGUI</link>&#32;*GetGUI()<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;mGUI.get();&#32;}
+199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mochi_1_1_event_1_1_event_bus">Event::EventBus</link>&#32;*GetEventBus()<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;mEventBus.get();&#32;}
+200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mochi_1_1_scripting_1_1_scripting_manager">Scripting::ScriptingManager</link>&#32;*GetScriptingManager()<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;mScripting.get();&#32;}
+201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mochi_1_1_debug_1_1_i_gizmos">Debug::IGizmos</link>&#32;*GetGizmos()<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;mGizmos.get();&#32;}
+202 
+203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;SwapAudioManager(std::unique_ptr&lt;Audio::IAudioManager&gt;&#32;&amp;&amp;);
+204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;SwapActionManager(std::unique_ptr&lt;Input::IActionManager&gt;&#32;&amp;&amp;);
+205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;SwapCamera(std::unique_ptr&lt;Graphics::Camera&gt;&#32;&amp;&amp;);
+206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;SwapRenderer(std::unique_ptr&lt;Graphics::IRenderer&gt;&#32;&amp;&amp;);
+207 
+210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_mochi_1_1_engine_1aec9b3548390004b6340326325c629401">Pause</link>();
+211 
+214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_mochi_1_1_engine_1a1c4b0466ffb0f2c58cad94dd85413b2b">Resume</link>();
+215 &#32;&#32;&#32;&#32;};
+216 }
+217 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

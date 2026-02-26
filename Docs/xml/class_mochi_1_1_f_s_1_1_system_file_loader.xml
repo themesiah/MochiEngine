@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_f_s_1_1_system_file_loader" kind="class" language="C++" prot="public">
+    <compoundname>Mochi::FS::SystemFileLoader</compoundname>
+    <basecompoundref refid="class_mochi_1_1_f_s_1_1_i_file_loader" prot="public" virt="non-virtual">Mochi::FS::IFileLoader</basecompoundref>
+    <includes refid="_system_file_loader_8h" local="no">SystemFileLoader.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_mochi_1_1_f_s_1_1_system_file_loader_1ac562e65969442118fdccabc2677736b7" prot="private" static="no" mutable="no">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path Mochi::FS::SystemFileLoader::mDirectoryPath</definition>
+        <argsstring></argsstring>
+        <name>mDirectoryPath</name>
+        <qualifiedname>Mochi::FS::SystemFileLoader::mDirectoryPath</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/SystemFileLoader.h" line="18" column="31" bodyfile="Engine/src/Packer/SystemFileLoader.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_f_s_1_1_system_file_loader_1a2c646f35e415cc4637d47dbf3dd02f43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::FS::SystemFileLoader::SystemFileLoader</definition>
+        <argsstring>(const std::string &amp;directoryPath)</argsstring>
+        <name>SystemFileLoader</name>
+        <qualifiedname>Mochi::FS::SystemFileLoader::SystemFileLoader</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>directoryPath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/SystemFileLoader.h" line="21" column="9" bodyfile="Engine/src/Packer/SystemFileLoader.cpp" bodystart="13" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_f_s_1_1_system_file_loader_1a4683d65937a014cf3f780a0e6bc6c3ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>Mochi::FS::SystemFileLoader::~SystemFileLoader</definition>
+        <argsstring>()</argsstring>
+        <name>~SystemFileLoader</name>
+        <qualifiedname>Mochi::FS::SystemFileLoader::~SystemFileLoader</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/SystemFileLoader.h" line="22" column="17" bodyfile="Engine/src/Packer/SystemFileLoader.cpp" bodystart="21" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_f_s_1_1_system_file_loader_1aff9df4b6e8bf2967c890602922a37f02" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mochi::FS::SystemFileLoader::IsValid</definition>
+        <argsstring>() const</argsstring>
+        <name>IsValid</name>
+        <qualifiedname>Mochi::FS::SystemFileLoader::IsValid</qualifiedname>
+        <reimplements refid="class_mochi_1_1_f_s_1_1_i_file_loader_1ab4f7bc0eb65a6bb1f2908c446fdff870">IsValid</reimplements>
+        <briefdescription>
+<para>Tells us if the file loader can be used at the moment. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if can be used, false if not </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/SystemFileLoader.h" line="23" column="22" bodyfile="Engine/src/Packer/SystemFileLoader.cpp" bodystart="25" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_f_s_1_1_system_file_loader_1a96e9faf7db0ab5a89ddb0693571c2aef" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::vector&lt; char &gt;</type>
+        <definition>std::vector&lt; char &gt; Mochi::FS::SystemFileLoader::GetFile</definition>
+        <argsstring>(const std::string &amp;path)</argsstring>
+        <name>GetFile</name>
+        <qualifiedname>Mochi::FS::SystemFileLoader::GetFile</qualifiedname>
+        <reimplements refid="class_mochi_1_1_f_s_1_1_i_file_loader_1a3f9f15a055c5f822fdf50c69426a0a62">GetFile</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Give us a binary representation of a file in a filesystem. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="class_mochi_1_1_engine_error" kindref="compound">EngineError</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if is not valid or doesn&apos;t have file </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A path, or unique identifier to the file </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A vector of chars, or binary representation of a file. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/SystemFileLoader.h" line="24" column="29" bodyfile="Engine/src/Packer/SystemFileLoader.cpp" bodystart="30" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_f_s_1_1_system_file_loader_1ad5664f22b602ee4f388f8b8d6ef13df2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mochi::FS::SystemFileLoader::HasFile</definition>
+        <argsstring>(const std::string &amp;path) const</argsstring>
+        <name>HasFile</name>
+        <qualifiedname>Mochi::FS::SystemFileLoader::HasFile</qualifiedname>
+        <reimplements refid="class_mochi_1_1_f_s_1_1_i_file_loader_1aaadf8aa5e70d40aa8cfcb32738a51932">HasFile</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Tells us if the filesystem has a file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A path, or unique identifier to the file </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if it has the file, false if not </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/SystemFileLoader.h" line="25" column="22" bodyfile="Engine/src/Packer/SystemFileLoader.cpp" bodystart="47" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_f_s_1_1_system_file_loader_1a4ca12626122c0506a845ef6fdb1465dc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; Mochi::FS::SystemFileLoader::GetAvailableFiles</definition>
+        <argsstring>() const</argsstring>
+        <name>GetAvailableFiles</name>
+        <qualifiedname>Mochi::FS::SystemFileLoader::GetAvailableFiles</qualifiedname>
+        <reimplements refid="class_mochi_1_1_f_s_1_1_i_file_loader_1a17f2ad4d0c222921e6e10e167688b67e">GetAvailableFiles</reimplements>
+        <briefdescription>
+<para>Tells us which files are in the filesystem. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A vector with the unique identifiers of all files </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/SystemFileLoader.h" line="26" column="29" bodyfile="Engine/src/Packer/SystemFileLoader.cpp" bodystart="59" bodyend="70"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>This class creates a very simple virtual file system from a directory. This allows read access to all files in that directory referencing them from their path as a unique identifier. As this doesn&apos;t give the benefits of asset obfuscation, it is only used on debug mode, and can&apos;t be configured at the moment. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Mochi::FS::IFileLoader</label>
+        <link refid="class_mochi_1_1_f_s_1_1_i_file_loader"/>
+      </node>
+      <node id="1">
+        <label>Mochi::FS::SystemFileLoader</label>
+        <link refid="class_mochi_1_1_f_s_1_1_system_file_loader"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Mochi::FS::IFileLoader</label>
+        <link refid="class_mochi_1_1_f_s_1_1_i_file_loader"/>
+      </node>
+      <node id="1">
+        <label>Mochi::FS::SystemFileLoader</label>
+        <link refid="class_mochi_1_1_f_s_1_1_system_file_loader"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Packer/SystemFileLoader.h" line="15" column="5" bodyfile="Engine/src/Packer/SystemFileLoader.h" bodystart="16" bodyend="27"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_f_s_1_1_system_file_loader_1a4ca12626122c0506a845ef6fdb1465dc" prot="public" virt="virtual"><scope>Mochi::FS::SystemFileLoader</scope><name>GetAvailableFiles</name></member>
+      <member refid="class_mochi_1_1_f_s_1_1_system_file_loader_1a96e9faf7db0ab5a89ddb0693571c2aef" prot="public" virt="virtual"><scope>Mochi::FS::SystemFileLoader</scope><name>GetFile</name></member>
+      <member refid="class_mochi_1_1_f_s_1_1_system_file_loader_1ad5664f22b602ee4f388f8b8d6ef13df2" prot="public" virt="virtual"><scope>Mochi::FS::SystemFileLoader</scope><name>HasFile</name></member>
+      <member refid="class_mochi_1_1_f_s_1_1_system_file_loader_1aff9df4b6e8bf2967c890602922a37f02" prot="public" virt="virtual"><scope>Mochi::FS::SystemFileLoader</scope><name>IsValid</name></member>
+      <member refid="class_mochi_1_1_f_s_1_1_system_file_loader_1ac562e65969442118fdccabc2677736b7" prot="private" virt="non-virtual"><scope>Mochi::FS::SystemFileLoader</scope><name>mDirectoryPath</name></member>
+      <member refid="class_mochi_1_1_f_s_1_1_system_file_loader_1a2c646f35e415cc4637d47dbf3dd02f43" prot="public" virt="non-virtual"><scope>Mochi::FS::SystemFileLoader</scope><name>SystemFileLoader</name></member>
+      <member refid="class_mochi_1_1_f_s_1_1_i_file_loader_1a1929fc8b5fbe1e59ca8ecb726474993c" prot="public" virt="virtual"><scope>Mochi::FS::SystemFileLoader</scope><name>~IFileLoader</name></member>
+      <member refid="class_mochi_1_1_f_s_1_1_system_file_loader_1a4683d65937a014cf3f780a0e6bc6c3ef" prot="public" virt="virtual"><scope>Mochi::FS::SystemFileLoader</scope><name>~SystemFileLoader</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_event_1_1_i_system_event_dispatcher" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>Mochi::Event::ISystemEventDispatcher</compoundname>
+    <derivedcompoundref refid="class_mochi_1_1_event_1_1_dummy_event_dispatcher" prot="public" virt="non-virtual">Mochi::Event::DummyEventDispatcher</derivedcompoundref>
+    <derivedcompoundref refid="class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher" prot="public" virt="non-virtual">Mochi::Event::SDLSystemEventDispatcher</derivedcompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_event_1_1_i_system_event_dispatcher_1a38505a8ba09df7546459cde377d572fa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Mochi::Event::ISystemEventDispatcher::~ISystemEventDispatcher</definition>
+        <argsstring>()</argsstring>
+        <name>~ISystemEventDispatcher</name>
+        <qualifiedname>Mochi::Event::ISystemEventDispatcher::~ISystemEventDispatcher</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/ISystemEventDispatcher.h" line="9" column="17" bodyfile="Engine/src/Event/ISystemEventDispatcher.h" bodystart="9" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_event_1_1_i_system_event_dispatcher_1a783b1102acffe1c2b1c931ce162045b3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Event::ISystemEventDispatcher::PollEvents</definition>
+        <argsstring>() const =0</argsstring>
+        <name>PollEvents</name>
+        <qualifiedname>Mochi::Event::ISystemEventDispatcher::PollEvents</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_event_1_1_dummy_event_dispatcher_1aa879ec61a75606696d43d832aaef8136">PollEvents</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher_1a1575b435bec601f5eaa8824869435908">PollEvents</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/ISystemEventDispatcher.h" line="10" column="22"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Mochi::Event::DummyEventDispatcher</label>
+        <link refid="class_mochi_1_1_event_1_1_dummy_event_dispatcher"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Mochi::Event::ISystemEventDispatcher</label>
+        <link refid="class_mochi_1_1_event_1_1_i_system_event_dispatcher"/>
+      </node>
+      <node id="3">
+        <label>Mochi::Event::SDLSystemEventDispatcher</label>
+        <link refid="class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="Engine/src/Event/ISystemEventDispatcher.h" line="6" column="5" bodyfile="Engine/src/Event/ISystemEventDispatcher.h" bodystart="7" bodyend="11"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_event_1_1_i_system_event_dispatcher_1a783b1102acffe1c2b1c931ce162045b3" prot="public" virt="pure-virtual"><scope>Mochi::Event::ISystemEventDispatcher</scope><name>PollEvents</name></member>
+      <member refid="class_mochi_1_1_event_1_1_i_system_event_dispatcher_1a38505a8ba09df7546459cde377d572fa" prot="public" virt="virtual"><scope>Mochi::Event::ISystemEventDispatcher</scope><name>~ISystemEventDispatcher</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

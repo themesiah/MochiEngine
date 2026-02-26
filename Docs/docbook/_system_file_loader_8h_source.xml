@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__system_file_loader_8h_source" xml:lang="en-US">
+<title>SystemFileLoader.h</title>
+<indexterm><primary>Engine/src/Packer/SystemFileLoader.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_SYSTEMFILELOADER</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_SYSTEMFILELOADER</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&quot;IFileLoader.h&quot;</emphasis>
+5 
+6 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+7 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+8 <emphasis role="preprocessor">#include&#32;&lt;filesystem&gt;</emphasis>
+9 
+10 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::FS
+11 {
+15 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>SystemFileLoader&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_mochi_1_1_f_s_1_1_i_file_loader">IFileLoader</link>
+16 &#32;&#32;&#32;&#32;{
+17 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::filesystem::path&#32;mDirectoryPath;
+19 
+20 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SystemFileLoader(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;directoryPath);
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;~SystemFileLoader();
+23 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_mochi_1_1_f_s_1_1_system_file_loader_1aff9df4b6e8bf2967c890602922a37f02">IsValid</link>()&#32;<emphasis role="keyword">const</emphasis>;
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;std::vector&lt;char&gt;&#32;<link linkend="_class_mochi_1_1_f_s_1_1_system_file_loader_1a96e9faf7db0ab5a89ddb0693571c2aef">GetFile</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;path);
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_mochi_1_1_f_s_1_1_system_file_loader_1ad5664f22b602ee4f388f8b8d6ef13df2">HasFile</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;path)&#32;<emphasis role="keyword">const</emphasis>;
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;std::vector&lt;std::string&gt;&#32;<link linkend="_class_mochi_1_1_f_s_1_1_system_file_loader_1a4ca12626122c0506a845ef6fdb1465dc">GetAvailableFiles</link>()&#32;<emphasis role="keyword">const</emphasis>;
+27 &#32;&#32;&#32;&#32;};
+28 }
+29 
+30 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__logger_8h_source" xml:lang="en-US">
+<title>Logger.h</title>
+<indexterm><primary>Engine/src/Utils/Logger.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_LOGGER</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_LOGGER</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+5 
+6 <emphasis role="preprocessor">#ifndef&#32;DEBUG</emphasis>
+7 <emphasis role="preprocessor">#define&#32;LOG_INFO(x)</emphasis>
+8 <emphasis role="preprocessor">#define&#32;LOG_OK(x)</emphasis>
+9 <emphasis role="preprocessor">#define&#32;LOG_WARNING(x)</emphasis>
+10 <emphasis role="preprocessor">#define&#32;LOG_ERROR(x)</emphasis>
+11 <emphasis role="preprocessor">#define&#32;LOG_PANIC(x)</emphasis>
+12 <emphasis role="preprocessor">#else</emphasis>
+13 
+14 <emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keyword">constexpr</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*LOG_NOCOLOR&#32;=&#32;<emphasis role="stringliteral">&quot;\033[0m&quot;</emphasis>;
+15 <emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keyword">constexpr</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*LOG_COLOR_GREEN&#32;=&#32;<emphasis role="stringliteral">&quot;\x1B[32m&quot;</emphasis>;
+16 <emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keyword">constexpr</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*LOG_COLOR_YELLOW&#32;=&#32;<emphasis role="stringliteral">&quot;\x1B[33m&quot;</emphasis>;
+17 <emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keyword">constexpr</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*LOG_COLOR_RED&#32;=&#32;<emphasis role="stringliteral">&quot;\x1B[31m&quot;</emphasis>;
+18 <emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keyword">constexpr</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*LOG_COLOR_PANIC&#32;=&#32;<emphasis role="stringliteral">&quot;\x1B[91m&quot;</emphasis>;
+19 
+20 <emphasis role="preprocessor">#define&#32;LOG_INFO(x)&#32;(std::cout&#32;&lt;&lt;&#32;LOG_NOCOLOR&#32;&lt;&lt;&#32;x&#32;&lt;&lt;&#32;&quot;&#32;(&quot;&#32;&lt;&lt;&#32;__FILE__&#32;&lt;&lt;&#32;&quot;:&quot;&#32;&lt;&lt;&#32;__LINE__&#32;&lt;&lt;&#32;&quot;)&quot;&#32;&lt;&lt;&#32;LOG_NOCOLOR&#32;&lt;&lt;&#32;std::endl)</emphasis>
+21 <emphasis role="preprocessor">#define&#32;LOG_OK(x)&#32;(std::cout&#32;&lt;&lt;&#32;LOG_COLOR_GREEN&#32;&lt;&lt;&#32;x&#32;&lt;&lt;&#32;&quot;&#32;(&quot;&#32;&lt;&lt;&#32;__FILE__&#32;&lt;&lt;&#32;&quot;:&quot;&#32;&lt;&lt;&#32;__LINE__&#32;&lt;&lt;&#32;&quot;)&quot;&#32;&lt;&lt;&#32;LOG_NOCOLOR&#32;&lt;&lt;&#32;std::endl)</emphasis>
+22 <emphasis role="preprocessor">#define&#32;LOG_WARNING(x)&#32;(std::cout&#32;&lt;&lt;&#32;LOG_COLOR_YELLOW&#32;&lt;&lt;&#32;x&#32;&lt;&lt;&#32;&quot;&#32;(&quot;&#32;&lt;&lt;&#32;__FILE__&#32;&lt;&lt;&#32;&quot;:&quot;&#32;&lt;&lt;&#32;__LINE__&#32;&lt;&lt;&#32;&quot;)&quot;&#32;&lt;&lt;&#32;LOG_NOCOLOR&#32;&lt;&lt;&#32;std::endl)</emphasis>
+23 <emphasis role="preprocessor">#define&#32;LOG_ERROR(x)&#32;(std::cout&#32;&lt;&lt;&#32;LOG_COLOR_RED&#32;&lt;&lt;&#32;x&#32;&lt;&lt;&#32;&quot;&#32;(&quot;&#32;&lt;&lt;&#32;__FILE__&#32;&lt;&lt;&#32;&quot;:&quot;&#32;&lt;&lt;&#32;__LINE__&#32;&lt;&lt;&#32;&quot;)&quot;&#32;&lt;&lt;&#32;LOG_NOCOLOR&#32;&lt;&lt;&#32;std::endl)</emphasis>
+24 <emphasis role="preprocessor">#define&#32;LOG_PANIC(x)&#32;(std::cout&#32;&lt;&lt;&#32;LOG_COLOR_PANIC&#32;&lt;&lt;&#32;x&#32;&lt;&lt;&#32;&quot;&#32;(&quot;&#32;&lt;&lt;&#32;__FILE__&#32;&lt;&lt;&#32;&quot;:&quot;&#32;&lt;&lt;&#32;__LINE__&#32;&lt;&lt;&#32;&quot;)&quot;&#32;&lt;&lt;&#32;LOG_NOCOLOR&#32;&lt;&lt;&#32;std::endl)</emphasis>
+25 <emphasis role="preprocessor">#endif</emphasis>
+26 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

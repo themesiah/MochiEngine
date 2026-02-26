@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_mochi_1_1_gamepad_removed_event" xml:lang="en-US">
+<title>Mochi::GamepadRemovedEvent Struct Reference</title>
+<indexterm><primary>Mochi::GamepadRemovedEvent</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_gamepad_removed_event_1a24ddfe2a85020a6443cec9123f460591"/>unsigned int <emphasis role="strong">GamepadID</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+Engine/src/Event/EngineEvents.h</section>

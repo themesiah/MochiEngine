@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_input_1_1_dummy_gamepad_provider" xml:lang="en-US">
+<title>Mochi::Input::DummyGamepadProvider Class Reference</title>
+<indexterm><primary>Mochi::Input::DummyGamepadProvider</primary></indexterm>
+<para>Inheritance diagram for Mochi::Input::DummyGamepadProvider:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_mochi_1_1_input_1_1_dummy_gamepad_provider.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>virtual <link linkend="_struct_mochi_1_1_input_1_1_gamepad_data">GamepadData</link> <link linkend="_class_mochi_1_1_input_1_1_dummy_gamepad_provider_1a2eb9402242cafac455a495261c92a804">GetData</link> (const unsigned int &amp;player) const override</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_mochi_1_1_input_1_1_dummy_gamepad_provider_1a2b23c7a17dd4abc94dcf117fa329ff1e">HasGamepad</link> (const unsigned int &amp;player) const override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_mochi_1_1_input_1_1_dummy_gamepad_provider_1a2eb9402242cafac455a495261c92a804"/><section>
+    <title>GetData()</title>
+<indexterm><primary>GetData</primary><secondary>Mochi::Input::DummyGamepadProvider</secondary></indexterm>
+<indexterm><primary>Mochi::Input::DummyGamepadProvider</primary><secondary>GetData</secondary></indexterm>
+<para><computeroutput>virtual <link linkend="_struct_mochi_1_1_input_1_1_gamepad_data">GamepadData</link> Mochi::Input::DummyGamepadProvider::GetData (const unsigned int &amp; player) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_input_1_1_i_gamepad_provider">Mochi::Input::IGamepadProvider</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_input_1_1_dummy_gamepad_provider_1a2b23c7a17dd4abc94dcf117fa329ff1e"/><section>
+    <title>HasGamepad()</title>
+<indexterm><primary>HasGamepad</primary><secondary>Mochi::Input::DummyGamepadProvider</secondary></indexterm>
+<indexterm><primary>Mochi::Input::DummyGamepadProvider</primary><secondary>HasGamepad</secondary></indexterm>
+<para><computeroutput>virtual bool Mochi::Input::DummyGamepadProvider::HasGamepad (const unsigned int &amp; player) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_input_1_1_i_gamepad_provider">Mochi::Input::IGamepadProvider</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+Engine/src/Input/DummyInputProviders.h</section>
+</section>

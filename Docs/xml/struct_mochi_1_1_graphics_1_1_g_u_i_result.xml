@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_mochi_1_1_graphics_1_1_g_u_i_result" kind="struct" language="C++" prot="public">
+    <compoundname>Mochi::Graphics::GUIResult</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_g_u_i_result_1a405d8c251bac55120e3b6ca877d920b3" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_mochi_1_1_rectf" kindref="compound">Rectf</ref></type>
+        <definition>Rectf Mochi::Graphics::GUIResult::FinalRect</definition>
+        <argsstring></argsstring>
+        <name>FinalRect</name>
+        <qualifiedname>Mochi::Graphics::GUIResult::FinalRect</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/GUICommon.hpp" line="58" column="15" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Mochi::Graphics::GUIResult</label>
+        <link refid="struct_mochi_1_1_graphics_1_1_g_u_i_result"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>FinalRect</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mochi::Rectf</label>
+        <link refid="struct_mochi_1_1_rectf"/>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/GUI/GUICommon.hpp" line="56" column="5" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="57" bodyend="59"/>
+    <listofallmembers>
+      <member refid="struct_mochi_1_1_graphics_1_1_g_u_i_result_1a405d8c251bac55120e3b6ca877d920b3" prot="public" virt="non-virtual"><scope>Mochi::Graphics::GUIResult</scope><name>FinalRect</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_debug_layer" xml:lang="en-US">
+<title>Mochi::DebugLayer Class Reference</title>
+<indexterm><primary>Mochi::DebugLayer</primary></indexterm>
+<para>Inheritance diagram for Mochi::DebugLayer:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_mochi_1_1_debug_layer.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_debug_layer_1ac9748d9565715583f9f44ae5c0cdd61b">InitLayer</link> () override</para>
+
+<para>Override this to initialize members and data of your layer when the engine adds this layer to the layer list. This is useful if you want to create the layer and delay its inclusion on the engine. </para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_mochi_1_1_debug_layer_1a6dbfaaf83365eb0aa3995d24580fd7f9">Update</link> (const float &amp;dt) override</para>
+
+<para>Override this to give your layer a way to be updated each frame. </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_debug_layer_1ac1f6f94ff2139df9649a552fbc98c60d">Render</link> () const override</para>
+
+<para>Override this to send the render commands to the engine. This task could be done on the update, but making it here its clearer. </para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_debug_layer_1a71d4fe1905aa1a421aee55a0d630adbd">GUI</link> () const override</para>
+
+<para>Override this to draw the GUI of your layer. Even if this could be done anywhere, doing it here ensure it to be drawn after all rendering is done. </para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_debug_layer_1a5c9b841b482bf07dd2cb1910870190bf"/>virtual void <emphasis role="strong">Debug</emphasis> () const override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_class_mochi_1_1_layer">Mochi::Layer</link>        <itemizedlist>
+            <listitem><para><emphasis role="strong">Layer</emphasis> ()</para>
+
+<para>Default constructor. It initializes with references to the engine subsystems. Should only be constructed after the engine is setup. </para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+Protected Attributes inherited from <link linkend="_class_mochi_1_1_layer">Mochi::Layer</link>        <itemizedlist>
+            <listitem><para><link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link> * <emphasis role="strong">mCatalog</emphasis></para>
+</listitem>
+            <listitem><para><link linkend="_class_mochi_1_1_scripting_1_1_scripting_manager">Scripting::ScriptingManager</link> * <emphasis role="strong">mScripting</emphasis></para>
+</listitem>
+            <listitem><para><link linkend="_class_mochi_1_1_graphics_1_1_camera">Graphics::Camera</link> * <emphasis role="strong">mCamera</emphasis></para>
+</listitem>
+            <listitem><para><link linkend="_class_mochi_1_1_event_1_1_event_bus">Event::EventBus</link> * <emphasis role="strong">mEventBus</emphasis></para>
+</listitem>
+            <listitem><para><link linkend="_class_mochi_1_1_graphics_1_1_abstract_g_u_i">Graphics::AbstractGUI</link> * <emphasis role="strong">mGUI</emphasis></para>
+</listitem>
+            <listitem><para><link linkend="_class_mochi_1_1_input_1_1_i_action_manager">Input::IActionManager</link> * <emphasis role="strong">mActionManager</emphasis></para>
+</listitem>
+            <listitem><para><link linkend="_class_mochi_1_1_audio_1_1_i_audio_manager">Audio::IAudioManager</link> * <emphasis role="strong">mAudioManager</emphasis></para>
+</listitem>
+            <listitem><para><link linkend="_class_mochi_1_1_graphics_1_1_i_renderer">Graphics::IRenderer</link> * <emphasis role="strong">mRenderer</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_mochi_1_1_debug_layer_1a71d4fe1905aa1a421aee55a0d630adbd"/><section>
+    <title>GUI()</title>
+<indexterm><primary>GUI</primary><secondary>Mochi::DebugLayer</secondary></indexterm>
+<indexterm><primary>Mochi::DebugLayer</primary><secondary>GUI</secondary></indexterm>
+<para><computeroutput>void Mochi::DebugLayer::GUI ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Override this to draw the GUI of your layer. Even if this could be done anywhere, doing it here ensure it to be drawn after all rendering is done. </para>
+</para>
+<para>
+Reimplemented from <link linkend="_class_mochi_1_1_layer_1a28b5e80c4f361aa71ea3afa354364258">Mochi::Layer</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_debug_layer_1ac9748d9565715583f9f44ae5c0cdd61b"/><section>
+    <title>InitLayer()</title>
+<indexterm><primary>InitLayer</primary><secondary>Mochi::DebugLayer</secondary></indexterm>
+<indexterm><primary>Mochi::DebugLayer</primary><secondary>InitLayer</secondary></indexterm>
+<para><computeroutput>void Mochi::DebugLayer::InitLayer ( )<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Override this to initialize members and data of your layer when the engine adds this layer to the layer list. This is useful if you want to create the layer and delay its inclusion on the engine. </para>
+</para>
+<para>
+Reimplemented from <link linkend="_class_mochi_1_1_layer_1a84ba866062d7d6bf28e028d0ee05640d">Mochi::Layer</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_debug_layer_1ac1f6f94ff2139df9649a552fbc98c60d"/><section>
+    <title>Render()</title>
+<indexterm><primary>Render</primary><secondary>Mochi::DebugLayer</secondary></indexterm>
+<indexterm><primary>Mochi::DebugLayer</primary><secondary>Render</secondary></indexterm>
+<para><computeroutput>void Mochi::DebugLayer::Render ( ) const<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Override this to send the render commands to the engine. This task could be done on the update, but making it here its clearer. </para>
+</para>
+<para>
+Reimplemented from <link linkend="_class_mochi_1_1_layer_1af64f5be47d95ff61fb2e3a497f4846ae">Mochi::Layer</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_debug_layer_1a6dbfaaf83365eb0aa3995d24580fd7f9"/><section>
+    <title>Update()</title>
+<indexterm><primary>Update</primary><secondary>Mochi::DebugLayer</secondary></indexterm>
+<indexterm><primary>Mochi::DebugLayer</primary><secondary>Update</secondary></indexterm>
+<para><computeroutput>bool Mochi::DebugLayer::Update (const float &amp; dt)<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+
+<para>Override this to give your layer a way to be updated each frame. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>dt</entry><entry>
+<para>The delta time </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>true if the execution should continue, false if the execution should halt. </para>
+</formalpara>
+</para>
+<para>
+Reimplemented from <link linkend="_class_mochi_1_1_layer_1a2452af59d8737b448b32813d40a98985">Mochi::Layer</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+Engine/src/Debug/DebugLayer.hEngine/src/Debug/DebugLayer.cpp</section>
+</section>

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_input_1_1_dummy_keyboard_provider" xml:lang="en-US">
+<title>Mochi::Input::DummyKeyboardProvider Class Reference</title>
+<indexterm><primary>Mochi::Input::DummyKeyboardProvider</primary></indexterm>
+<para>Inheritance diagram for Mochi::Input::DummyKeyboardProvider:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_mochi_1_1_input_1_1_dummy_keyboard_provider.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>virtual const bool * <link linkend="_class_mochi_1_1_input_1_1_dummy_keyboard_provider_1a255ea27ffe81c2c55280ddc31967c6f2">GetState</link> () const override</para>
+</listitem>
+            <listitem><para>virtual size_t <link linkend="_class_mochi_1_1_input_1_1_dummy_keyboard_provider_1a42cc601028cbf8f58623971acdbfc242">GetMaxKeys</link> () const override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_mochi_1_1_input_1_1_dummy_keyboard_provider_1a42cc601028cbf8f58623971acdbfc242"/><section>
+    <title>GetMaxKeys()</title>
+<indexterm><primary>GetMaxKeys</primary><secondary>Mochi::Input::DummyKeyboardProvider</secondary></indexterm>
+<indexterm><primary>Mochi::Input::DummyKeyboardProvider</primary><secondary>GetMaxKeys</secondary></indexterm>
+<para><computeroutput>virtual size_t Mochi::Input::DummyKeyboardProvider::GetMaxKeys ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_input_1_1_i_keyboard_provider">Mochi::Input::IKeyboardProvider</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_input_1_1_dummy_keyboard_provider_1a255ea27ffe81c2c55280ddc31967c6f2"/><section>
+    <title>GetState()</title>
+<indexterm><primary>GetState</primary><secondary>Mochi::Input::DummyKeyboardProvider</secondary></indexterm>
+<indexterm><primary>Mochi::Input::DummyKeyboardProvider</primary><secondary>GetState</secondary></indexterm>
+<para><computeroutput>virtual const bool * Mochi::Input::DummyKeyboardProvider::GetState ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_input_1_1_i_keyboard_provider">Mochi::Input::IKeyboardProvider</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+Engine/src/Input/DummyInputProviders.h</section>
+</section>

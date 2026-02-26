@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__dummy_event_dispatcher_8h_source" xml:lang="en-US">
+<title>DummyEventDispatcher.h</title>
+<indexterm><primary>Engine/src/Event/DummyEventDispatcher.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_DUMMYEVENTDISPATCHER</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_DUMMYEVENTDISPATCHER</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&quot;ISystemEventDispatcher.h&quot;</emphasis>
+5 
+6 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Event
+7 {
+8 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_event_1_1_dummy_event_dispatcher">DummyEventDispatcher</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_mochi_1_1_event_1_1_i_system_event_dispatcher">ISystemEventDispatcher</link>
+9 &#32;&#32;&#32;&#32;{
+10 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+11 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_mochi_1_1_event_1_1_dummy_event_dispatcher">~DummyEventDispatcher</link>()&#32;{}
+12 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;PollEvents()<emphasis role="keyword">&#32;const&#32;override&#32;</emphasis>{};
+13 &#32;&#32;&#32;&#32;};
+14 }
+15 
+16 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

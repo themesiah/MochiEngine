@@ -1,0 +1,67 @@
+.TH "Mochi::Graphics::DummyTextureFactory" 3 "MochiEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Mochi::Graphics::DummyTextureFactory
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBMochi::Graphics::AbstractTextureFactory\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual std::shared_ptr< \fBITexture\fP > \fBLoadTexture\fP (const std::string &texturePath) override"
+.br
+.RI "Implement this method to actually load the selected texture from memory onto a format that is compatible with the current renderer\&. "
+.in -1c
+
+Public Member Functions inherited from \fBMochi::Graphics::AbstractTextureFactory\fP
+.in +1c
+.ti -1c
+.RI "std::shared_ptr< \fBITexture\fP > \fBGetTexture\fP (const std::string &texturePath)"
+.br
+.RI "Gets the texture on the specified path on the file system\&. If the texture is in the cache it returns that one, otherwise it loads the texture from the system\&. "
+.ti -1c
+.RI "void \fBDeleteCache\fP ()"
+.br
+.RI "Deletes the texture cache from the factory\&. "
+.ti -1c
+.RI "void \fBDeleteTexture\fP (const std::string &texturePath)"
+.br
+.RI "Deletes a single texture from the cache\&. "
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Attributes inherited from \fBMochi::Graphics::AbstractTextureFactory\fP
+.in +1c
+.ti -1c
+.RI "std::unordered_map< std::string, std::shared_ptr< \fBITexture\fP > > \fBmTexturesMap\fP"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual std::shared_ptr< \fBITexture\fP > Mochi::Graphics::DummyTextureFactory::LoadTexture (const std::string & texturePath)\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implement this method to actually load the selected texture from memory onto a format that is compatible with the current renderer\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItexturePath\fP The path of the texture in the virtual file system\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A shared pointer to the texture\&. 
+.RE
+.PP
+
+.PP
+Implements \fBMochi::Graphics::AbstractTextureFactory\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MochiEngine from the source code\&.

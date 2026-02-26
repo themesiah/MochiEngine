@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_mochi_1_1_graphics_1_1_g_u_i_text_options" kind="struct" language="C++" prot="public">
+    <compoundname>Mochi::Graphics::GUITextOptions</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_g_u_i_text_options_1ad7e5b50299a2f65acd791c42bb672ee0" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="struct_mochi_1_1_rectf" kindref="compound">Rectf</ref> &gt;</type>
+        <definition>std::optional&lt;Rectf&gt; Mochi::Graphics::GUITextOptions::ParentRect</definition>
+        <argsstring></argsstring>
+        <name>ParentRect</name>
+        <qualifiedname>Mochi::Graphics::GUITextOptions::ParentRect</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/GUICommon.hpp" line="41" column="23" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_g_u_i_text_options_1a07f82b56795a9eebef59d7e22a25db47" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="struct_mochi_1_1_rectf" kindref="compound">Rectf</ref> &gt;</type>
+        <definition>std::optional&lt;Rectf&gt; Mochi::Graphics::GUITextOptions::DstRect</definition>
+        <argsstring></argsstring>
+        <name>DstRect</name>
+        <qualifiedname>Mochi::Graphics::GUITextOptions::DstRect</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/GUICommon.hpp" line="42" column="23" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_g_u_i_text_options_1a9e2f217760e283a2ab2608caa9c3c5f1" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref></type>
+        <definition>Vector2f Mochi::Graphics::GUITextOptions::ScreenAnchor</definition>
+        <argsstring></argsstring>
+        <name>ScreenAnchor</name>
+        <qualifiedname>Mochi::Graphics::GUITextOptions::ScreenAnchor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/GUICommon.hpp" line="43" column="18" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_g_u_i_text_options_1a5ad853e28fd9adaaadf18bd070534bc0" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref></type>
+        <definition>Vector2f Mochi::Graphics::GUITextOptions::TextPivot</definition>
+        <argsstring></argsstring>
+        <name>TextPivot</name>
+        <qualifiedname>Mochi::Graphics::GUITextOptions::TextPivot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/GUICommon.hpp" line="44" column="18" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_g_u_i_text_options_1abe53c5998b194493cbe598ebe11a2b61" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mochi::Graphics::GUITextOptions::TextSize</definition>
+        <argsstring></argsstring>
+        <name>TextSize</name>
+        <qualifiedname>Mochi::Graphics::GUITextOptions::TextSize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/GUICommon.hpp" line="45" column="15" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_g_u_i_text_options_1ad2f3088459b6bcf05b80fd06407fb4d7" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; Color &gt;</type>
+        <definition>std::optional&lt;Color&gt; Mochi::Graphics::GUITextOptions::Color</definition>
+        <argsstring></argsstring>
+        <name>Color</name>
+        <qualifiedname>Mochi::Graphics::GUITextOptions::Color</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/GUI/GUICommon.hpp" line="46" column="23" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Mochi::Graphics::GUITextOptions</label>
+        <link refid="struct_mochi_1_1_graphics_1_1_g_u_i_text_options"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>ScreenAnchor</edgelabel>
+          <edgelabel>TextPivot</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mochi::Vector2f</label>
+        <link refid="struct_mochi_1_1_vector2f"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>Down</edgelabel>
+          <edgelabel>Left</edgelabel>
+          <edgelabel>One</edgelabel>
+          <edgelabel>Right</edgelabel>
+          <edgelabel>Up</edgelabel>
+          <edgelabel>Zero</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/GUI/GUICommon.hpp" line="39" column="5" bodyfile="Engine/src/GUI/GUICommon.hpp" bodystart="40" bodyend="47"/>
+    <listofallmembers>
+      <member refid="struct_mochi_1_1_graphics_1_1_g_u_i_text_options_1ad2f3088459b6bcf05b80fd06407fb4d7" prot="public" virt="non-virtual"><scope>Mochi::Graphics::GUITextOptions</scope><name>Color</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_g_u_i_text_options_1a07f82b56795a9eebef59d7e22a25db47" prot="public" virt="non-virtual"><scope>Mochi::Graphics::GUITextOptions</scope><name>DstRect</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_g_u_i_text_options_1ad7e5b50299a2f65acd791c42bb672ee0" prot="public" virt="non-virtual"><scope>Mochi::Graphics::GUITextOptions</scope><name>ParentRect</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_g_u_i_text_options_1a9e2f217760e283a2ab2608caa9c3c5f1" prot="public" virt="non-virtual"><scope>Mochi::Graphics::GUITextOptions</scope><name>ScreenAnchor</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_g_u_i_text_options_1a5ad853e28fd9adaaadf18bd070534bc0" prot="public" virt="non-virtual"><scope>Mochi::Graphics::GUITextOptions</scope><name>TextPivot</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_g_u_i_text_options_1abe53c5998b194493cbe598ebe11a2b61" prot="public" virt="non-virtual"><scope>Mochi::Graphics::GUITextOptions</scope><name>TextSize</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

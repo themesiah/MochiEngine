@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__animation_data_8h_source" xml:lang="en-US">
+<title>AnimationData.h</title>
+<indexterm><primary>Engine/src/Graphics/AnimationData.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_ANIMATIONDATA</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_ANIMATIONDATA</emphasis>
+3 
+4 <emphasis role="comment">/*</emphasis>
+5 <emphasis role="comment">FrameData:</emphasis>
+6 <emphasis role="comment">&#32;&#32;&#32;&#32;string&#32;filename</emphasis>
+7 <emphasis role="comment">&#32;&#32;&#32;&#32;sdlrect&#32;frame</emphasis>
+8 <emphasis role="comment">&#32;&#32;&#32;&#32;sdlrect&#32;spritesourcesize</emphasis>
+9 <emphasis role="comment">&#32;&#32;&#32;&#32;float&#32;duration</emphasis>
+10 <emphasis role="comment"></emphasis>
+11 <emphasis role="comment">AnimationData:</emphasis>
+12 <emphasis role="comment">&#32;&#32;&#32;&#32;string&#32;name</emphasis>
+13 <emphasis role="comment">&#32;&#32;&#32;&#32;int&#32;from</emphasis>
+14 <emphasis role="comment">&#32;&#32;&#32;&#32;int&#32;to</emphasis>
+15 <emphasis role="comment">&#32;&#32;&#32;&#32;string&#32;direction&#32;-&gt;&#32;parse&#32;to&#32;enum&#32;{forward,&#32;backward,&#32;pingpong,&#32;pingpongbackward}</emphasis>
+16 <emphasis role="comment">&#32;&#32;&#32;&#32;string&#32;repeat&#32;-&gt;&#32;parse&#32;to&#32;int,&#32;may&#32;be&#32;null</emphasis>
+17 <emphasis role="comment">&#32;&#32;&#32;&#32;string&#32;userdata</emphasis>
+18 <emphasis role="comment"></emphasis>
+19 <emphasis role="comment">AnimationsData:</emphasis>
+20 <emphasis role="comment">&#32;&#32;&#32;&#32;vector&lt;framedata&gt;&#32;frames</emphasis>
+21 <emphasis role="comment">&#32;&#32;&#32;&#32;vector&lt;animationdata&gt;&#32;frameTags</emphasis>
+22 <emphasis role="comment"></emphasis>
+23 <emphasis role="comment">*/</emphasis>
+24 
+25 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+26 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+27 <emphasis role="preprocessor">#include&#32;&lt;unordered_map&gt;</emphasis>
+28 <emphasis role="preprocessor">#include&#32;&lt;filesystem&gt;</emphasis>
+29 <emphasis role="preprocessor">#include&#32;&quot;../Types/Types.hpp&quot;</emphasis>
+30 
+31 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Graphics
+32 {
+33 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_mochi_1_1_graphics_1_1_frame_data">FrameData</link>
+34 &#32;&#32;&#32;&#32;{
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;Filename;&#32;<emphasis role="comment">//&#32;for&#32;debug&#32;purposes</emphasis>
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_mochi_1_1_rectf">Rectf</link>&#32;Frame;
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_mochi_1_1_rectf">Rectf</link>&#32;SpriteSourceSize;
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;Duration;
+39 &#32;&#32;&#32;&#32;};
+40 
+41 &#32;&#32;&#32;&#32;<emphasis role="keyword">enum</emphasis>&#32;AnimationDirection
+42 &#32;&#32;&#32;&#32;{
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Forward,
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Backward,
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Pingpong,
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;BackwardPingPong
+47 &#32;&#32;&#32;&#32;};
+48 
+49 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_mochi_1_1_graphics_1_1_frame_tag">FrameTag</link>
+50 &#32;&#32;&#32;&#32;{
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;Name;
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;From;
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;To;
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;AnimationDirection&#32;Direction;
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;Repeat;
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;UserData;
+57 &#32;&#32;&#32;&#32;};
+58 
+59 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_mochi_1_1_graphics_1_1_animations_data">AnimationsData</link>
+60 &#32;&#32;&#32;&#32;{
+61 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::filesystem::path&#32;TexturePath;
+62 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_mochi_1_1_vector2f">Vector2f</link>&#32;Size;
+63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;FrameData&gt;&#32;Frames;
+64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::unordered_map&lt;std::string,&#32;FrameTag&gt;&#32;Animations;
+65 &#32;&#32;&#32;&#32;};
+66 }
+67 
+68 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

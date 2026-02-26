@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_graphics_1_1_dummy_animation_factory" xml:lang="en-US">
+<title>Mochi::Graphics::DummyAnimationFactory Class Reference</title>
+<indexterm><primary>Mochi::Graphics::DummyAnimationFactory</primary></indexterm>
+<para>Inheritance diagram for Mochi::Graphics::DummyAnimationFactory:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_mochi_1_1_graphics_1_1_dummy_animation_factory.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>virtual std::shared_ptr&lt; <link linkend="_struct_mochi_1_1_graphics_1_1_animations_data">AnimationsData</link> &gt; <link linkend="_class_mochi_1_1_graphics_1_1_dummy_animation_factory_1af981185e805e311fff2576619806a842">GetAnimationsData</link> (const std::string &amp;animationDataPath) override</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_graphics_1_1_dummy_animation_factory_1a5667129867c7587dea94b93723e76485">DeleteCache</link> () override</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_graphics_1_1_dummy_animation_factory_1a77cc39a2ece6b1dcd008c15075162eea">DeleteAnimation</link> (const std::string &amp;texturePath) override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_mochi_1_1_graphics_1_1_dummy_animation_factory_1a77cc39a2ece6b1dcd008c15075162eea"/><section>
+    <title>DeleteAnimation()</title>
+<indexterm><primary>DeleteAnimation</primary><secondary>Mochi::Graphics::DummyAnimationFactory</secondary></indexterm>
+<indexterm><primary>Mochi::Graphics::DummyAnimationFactory</primary><secondary>DeleteAnimation</secondary></indexterm>
+<para><computeroutput>virtual void Mochi::Graphics::DummyAnimationFactory::DeleteAnimation (const std::string &amp; texturePath)<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_graphics_1_1_i_animation_factory">Mochi::Graphics::IAnimationFactory</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_graphics_1_1_dummy_animation_factory_1a5667129867c7587dea94b93723e76485"/><section>
+    <title>DeleteCache()</title>
+<indexterm><primary>DeleteCache</primary><secondary>Mochi::Graphics::DummyAnimationFactory</secondary></indexterm>
+<indexterm><primary>Mochi::Graphics::DummyAnimationFactory</primary><secondary>DeleteCache</secondary></indexterm>
+<para><computeroutput>virtual void Mochi::Graphics::DummyAnimationFactory::DeleteCache ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_graphics_1_1_i_animation_factory">Mochi::Graphics::IAnimationFactory</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_graphics_1_1_dummy_animation_factory_1af981185e805e311fff2576619806a842"/><section>
+    <title>GetAnimationsData()</title>
+<indexterm><primary>GetAnimationsData</primary><secondary>Mochi::Graphics::DummyAnimationFactory</secondary></indexterm>
+<indexterm><primary>Mochi::Graphics::DummyAnimationFactory</primary><secondary>GetAnimationsData</secondary></indexterm>
+<para><computeroutput>virtual std::shared_ptr&lt; <link linkend="_struct_mochi_1_1_graphics_1_1_animations_data">AnimationsData</link> &gt; Mochi::Graphics::DummyAnimationFactory::GetAnimationsData (const std::string &amp; animationDataPath)<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_graphics_1_1_i_animation_factory">Mochi::Graphics::IAnimationFactory</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+Engine/src/Graphics/DummyAnimationFactory.h</section>
+</section>

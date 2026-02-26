@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_graphics_1_1_dummy_texture" kind="class" language="C++" prot="public">
+    <compoundname>Mochi::Graphics::DummyTexture</compoundname>
+    <basecompoundref refid="class_mochi_1_1_graphics_1_1_i_texture" prot="public" virt="non-virtual">Mochi::Graphics::ITexture</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_dummy_texture_1a3db04130b7c4a05851e19407734f38d3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Graphics::DummyTexture::DummyTexture</definition>
+        <argsstring>()</argsstring>
+        <name>DummyTexture</name>
+        <qualifiedname>Mochi::Graphics::DummyTexture::DummyTexture</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/DummyRendering.h" line="17" column="9" bodyfile="Engine/src/Graphics/DummyRendering.h" bodystart="17" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_dummy_texture_1a2ea668d4f2fd58ecd4c8865c59eba9f5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Mochi::Graphics::DummyTexture::~DummyTexture</definition>
+        <argsstring>()</argsstring>
+        <name>~DummyTexture</name>
+        <qualifiedname>Mochi::Graphics::DummyTexture::~DummyTexture</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/DummyRendering.h" line="18" column="17" bodyfile="Engine/src/Graphics/DummyRendering.h" bodystart="18" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_dummy_texture_1aee5d563208e9c3ee39035d3403c43cac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref></type>
+        <definition>virtual Vector2f Mochi::Graphics::DummyTexture::GetSize</definition>
+        <argsstring>() const override</argsstring>
+        <name>GetSize</name>
+        <qualifiedname>Mochi::Graphics::DummyTexture::GetSize</qualifiedname>
+        <reimplements refid="class_mochi_1_1_graphics_1_1_i_texture_1a39bf79c5763e1c0fb9a9c34b0c2584f8">GetSize</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/DummyRendering.h" line="19" column="26" bodyfile="Engine/src/Graphics/DummyRendering.h" bodystart="19" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_dummy_texture_1a98ce676b01401ece9d72b0ef534d4bd5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Graphics::DummyTexture::SetAlpha</definition>
+        <argsstring>(const uint8_t &amp;alpha)</argsstring>
+        <name>SetAlpha</name>
+        <qualifiedname>Mochi::Graphics::DummyTexture::SetAlpha</qualifiedname>
+        <reimplements refid="class_mochi_1_1_graphics_1_1_i_texture_1a61b90eaf58c199b2e502b55c211ea97e">SetAlpha</reimplements>
+        <param>
+          <type>const uint8_t &amp;</type>
+          <declname>alpha</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/DummyRendering.h" line="20" column="22" bodyfile="Engine/src/Graphics/DummyRendering.h" bodystart="20" bodyend="20"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Mochi::Graphics::DummyTexture</label>
+        <link refid="class_mochi_1_1_graphics_1_1_dummy_texture"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mochi::Graphics::ITexture</label>
+        <link refid="class_mochi_1_1_graphics_1_1_i_texture"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Mochi::Graphics::DummyTexture</label>
+        <link refid="class_mochi_1_1_graphics_1_1_dummy_texture"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mochi::Graphics::ITexture</label>
+        <link refid="class_mochi_1_1_graphics_1_1_i_texture"/>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Graphics/DummyRendering.h" line="14" column="5" bodyfile="Engine/src/Graphics/DummyRendering.h" bodystart="15" bodyend="21"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_graphics_1_1_dummy_texture_1a3db04130b7c4a05851e19407734f38d3" prot="public" virt="non-virtual"><scope>Mochi::Graphics::DummyTexture</scope><name>DummyTexture</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_dummy_texture_1aee5d563208e9c3ee39035d3403c43cac" prot="public" virt="virtual"><scope>Mochi::Graphics::DummyTexture</scope><name>GetSize</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_dummy_texture_1a98ce676b01401ece9d72b0ef534d4bd5" prot="public" virt="virtual"><scope>Mochi::Graphics::DummyTexture</scope><name>SetAlpha</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_dummy_texture_1a2ea668d4f2fd58ecd4c8865c59eba9f5" prot="public" virt="virtual"><scope>Mochi::Graphics::DummyTexture</scope><name>~DummyTexture</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_i_texture_1aacb6d49766b769125b53421770054132" prot="public" virt="virtual"><scope>Mochi::Graphics::DummyTexture</scope><name>~ITexture</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="namespace_mochi_1_1_f_s" kind="namespace" language="C++">
+    <compoundname>Mochi::FS</compoundname>
+    <innerclass refid="class_mochi_1_1_f_s_1_1_i_file_loader" prot="public">Mochi::FS::IFileLoader</innerclass>
+    <innerclass refid="class_mochi_1_1_f_s_1_1_pack_catalog" prot="public">Mochi::FS::PackCatalog</innerclass>
+    <innerclass refid="struct_mochi_1_1_f_s_1_1_file_entry" prot="public">Mochi::FS::FileEntry</innerclass>
+    <innerclass refid="struct_mochi_1_1_f_s_1_1_pack_header" prot="public">Mochi::FS::PackHeader</innerclass>
+    <innerclass refid="class_mochi_1_1_f_s_1_1_pack_file" prot="public">Mochi::FS::PackFile</innerclass>
+    <innerclass refid="class_mochi_1_1_f_s_1_1_system_file_loader" prot="public">Mochi::FS::SystemFileLoader</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="_pack_file_8h_1ac0d6196882f86f2c14612a3e4c2b5e31" prot="public" static="no">
+        <type>uint16_t</type>
+        <definition>using Mochi::FS::PathLenSize_t = uint16_t</definition>
+        <argsstring></argsstring>
+        <name>PathLenSize_t</name>
+        <qualifiedname>Mochi::FS::PathLenSize_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/PackFile.h" line="16" column="5" bodyfile="Engine/src/Packer/PackFile.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_pack_file_8h_1ae93e87f0b4a8563b98d7fef869bc2aff" prot="public" static="no">
+        <type>uint64_t</type>
+        <definition>using Mochi::FS::PackHeaderLength_t = uint64_t</definition>
+        <argsstring></argsstring>
+        <name>PackHeaderLength_t</name>
+        <qualifiedname>Mochi::FS::PackHeaderLength_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/PackFile.h" line="17" column="5" bodyfile="Engine/src/Packer/PackFile.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_pack_file_8h_1ad731a498d4d9f80ab25b039d12d18c9a" prot="public" static="no">
+        <type>uint64_t</type>
+        <definition>using Mochi::FS::FileOffset_t = uint64_t</definition>
+        <argsstring></argsstring>
+        <name>FileOffset_t</name>
+        <qualifiedname>Mochi::FS::FileOffset_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/PackFile.h" line="18" column="5" bodyfile="Engine/src/Packer/PackFile.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_pack_file_8h_1a40133a9e1dec42e665c0de163c31c5f1" prot="public" static="no">
+        <type>uint64_t</type>
+        <definition>using Mochi::FS::FileSize_t = uint64_t</definition>
+        <argsstring></argsstring>
+        <name>FileSize_t</name>
+        <qualifiedname>Mochi::FS::FileSize_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/PackFile.h" line="19" column="5" bodyfile="Engine/src/Packer/PackFile.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_pack_file_8h_1aa1868f564bf19d328fafd4f30b0986c1" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>using Mochi::FS::FileCount_t = uint32_t</definition>
+        <argsstring></argsstring>
+        <name>FileCount_t</name>
+        <qualifiedname>Mochi::FS::FileCount_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/PackFile.h" line="20" column="5" bodyfile="Engine/src/Packer/PackFile.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_pack_file_8h_1af10b8949a95b9687be17fcac6af71ec4" prot="public" static="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="struct_mochi_1_1_f_s_1_1_file_entry" kindref="compound">FileEntry</ref> &gt;</type>
+        <definition>using Mochi::FS::Header_t = std::unordered_map&lt;std::string, FileEntry&gt;</definition>
+        <argsstring></argsstring>
+        <name>Header_t</name>
+        <qualifiedname>Mochi::FS::Header_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/PackFile.h" line="28" column="5" bodyfile="Engine/src/Packer/PackFile.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="_pack_file_8h_1a891bfb1db486744c8c176c0970cfd68f" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>const char *</type>
+        <definition>const char* Mochi::FS::PACKFILE_EXTENSION</definition>
+        <argsstring></argsstring>
+        <name>PACKFILE_EXTENSION</name>
+        <qualifiedname>Mochi::FS::PACKFILE_EXTENSION</qualifiedname>
+        <initializer>= &quot;pak&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/PackFile.h" line="14" column="33" bodyfile="Engine/src/Packer/PackFile.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Audio/FMODWrapper.h" line="19" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__i_gizmos_8h_source" xml:lang="en-US">
+<title>IGizmos.h</title>
+<indexterm><primary>Engine/src/Debug/IGizmos.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_IGIZMOS</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_IGIZMOS</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&quot;../Physics/Shapes.h&quot;</emphasis>
+5 
+6 <emphasis role="keyword">namespace&#32;</emphasis>Mochi
+7 {
+8 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_mochi_1_1_color">Color</link>;
+9 }
+10 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Debug
+11 {
+12 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_debug_1_1_i_gizmos">IGizmos</link>
+13 &#32;&#32;&#32;&#32;{
+14 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_mochi_1_1_debug_1_1_i_gizmos">~IGizmos</link>();
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawShape(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_shape">Physics::Shape</link>&#32;&amp;shape,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_color">Color</link>&#32;&amp;color)&#32;<emphasis role="keyword">const</emphasis>;
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawRectangle(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_rectangle">Physics::Rectangle</link>&#32;*rectangle,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_color">Color</link>&#32;&amp;color)&#32;<emphasis role="keyword">const</emphasis>&#32;=&#32;0;
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawCircle(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_circle">Physics::Circle</link>&#32;*circle,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_color">Color</link>&#32;&amp;color)&#32;<emphasis role="keyword">const</emphasis>&#32;=&#32;0;
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawLine(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_line">Physics::Line</link>&#32;*line,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_color">Color</link>&#32;&amp;color)&#32;<emphasis role="keyword">const</emphasis>&#32;=&#32;0;
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawPoint(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_point">Physics::Point</link>&#32;*point,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_color">Color</link>&#32;&amp;color)&#32;<emphasis role="keyword">const</emphasis>&#32;=&#32;0;
+21 &#32;&#32;&#32;&#32;};
+22 }
+23 
+24 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

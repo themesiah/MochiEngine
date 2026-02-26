@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="_abstract_texture_factory_8h" kind="file" language="C++">
+    <compoundname>AbstractTextureFactory.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">string</includes>
+    <includes local="no">unordered_map</includes>
+    <includedby refid="_abstract_g_u_i_8cpp" local="yes">Engine/src/GUI/AbstractGUI.cpp</includedby>
+    <includedby refid="_s_d_l_g_u_i_8cpp" local="yes">Engine/src/GUI/SDLGUI.cpp</includedby>
+    <includedby refid="_abstract_texture_factory_8cpp" local="yes">Engine/src/Graphics/AbstractTextureFactory.cpp</includedby>
+    <includedby refid="_animated_sprite_8cpp" local="yes">Engine/src/Graphics/AnimatedSprite.cpp</includedby>
+    <includedby refid="_dummy_rendering_8h" local="yes">Engine/src/Graphics/DummyRendering.h</includedby>
+    <includedby refid="_oneshot_animation_8cpp" local="yes">Engine/src/Graphics/OneshotAnimation.cpp</includedby>
+    <includedby refid="_s_d_l_texture_factory_8h" local="yes">Engine/src/Graphics/SDL/SDLTextureFactory.h</includedby>
+    <includedby refid="_sprite_base_8cpp" local="yes">Engine/src/Graphics/SpriteBase.cpp</includedby>
+    <includedby refid="_spritesheet_8cpp" local="yes">Engine/src/Graphics/Spritesheet.cpp</includedby>
+    <includedby refid="_scripting_layer_8cpp" local="yes">Engine/src/Scripting/ScriptingLayer.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>Engine/src/Graphics/AbstractTextureFactory.h</label>
+        <link refid="_abstract_texture_factory_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>memory</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>unordered_map</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>Engine/src/Graphics/AbstractTextureFactory.h</label>
+        <link refid="_abstract_texture_factory_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Engine/src/Graphics/DummyRendering.h</label>
+        <link refid="_dummy_rendering_8h_source"/>
+      </node>
+      <node id="3">
+        <label>Engine/src/Graphics/SDL/SDLTextureFactory.h</label>
+        <link refid="_s_d_l_texture_factory_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory" prot="public">Mochi::Graphics::AbstractTextureFactory</innerclass>
+    <innernamespace refid="namespace_mochi">Mochi</innernamespace>
+    <innernamespace refid="namespace_mochi_1_1_graphics">Mochi::Graphics</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>HDEF_ABSTRACTTEXTUREFACTORY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HDEF_ABSTRACTTEXTUREFACTORY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Mochi::Graphics</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_mochi_1_1_graphics_1_1_i_texture" kindref="compound">ITexture</ref>;</highlight></codeline>
+<codeline lineno="31" refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">AbstractTextureFactory</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::unordered_map&lt;std::string,<sp/>std::shared_ptr&lt;ITexture&gt;&gt;<sp/>mTexturesMap;</highlight></codeline>
+<codeline lineno="39" refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1ad5bd8a4ebfa5b8bf0342593e6ab458de" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;ITexture&gt;<sp/><ref refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1ad5bd8a4ebfa5b8bf0342593e6ab458de" kindref="member">LoadTexture</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;texturePath)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>AbstractTextureFactory();</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~AbstractTextureFactory();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;ITexture&gt;<sp/><ref refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1aa5071adc90bb9efaeaa749d273d01724" kindref="member">GetTexture</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;texturePath);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1a311bcb940cfced4ccb69a297e74748f7" kindref="member">DeleteCache</ref>();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1a456af37bfaf4dcf55ad0df412ed17888" kindref="member">DeleteTexture</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;texturePath);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Engine/src/Graphics/AbstractTextureFactory.h"/>
+  </compounddef>
+</doxygen>

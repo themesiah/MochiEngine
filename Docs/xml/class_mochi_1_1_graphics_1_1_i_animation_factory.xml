@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_graphics_1_1_i_animation_factory" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>Mochi::Graphics::IAnimationFactory</compoundname>
+    <derivedcompoundref refid="class_mochi_1_1_graphics_1_1_aseprite_animation_factory" prot="public" virt="non-virtual">Mochi::Graphics::AsepriteAnimationFactory</derivedcompoundref>
+    <derivedcompoundref refid="class_mochi_1_1_graphics_1_1_dummy_animation_factory" prot="public" virt="non-virtual">Mochi::Graphics::DummyAnimationFactory</derivedcompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_i_animation_factory_1ab2b9a05161643fa57bed2a2e6f3fd044" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Mochi::Graphics::IAnimationFactory::~IAnimationFactory</definition>
+        <argsstring>()</argsstring>
+        <name>~IAnimationFactory</name>
+        <qualifiedname>Mochi::Graphics::IAnimationFactory::~IAnimationFactory</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/IAnimationFactory.h" line="14" column="17" bodyfile="Engine/src/Graphics/IAnimationFactory.h" bodystart="14" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_i_animation_factory_1a67fccf5d1b678410d1170447ac72ef90" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="struct_mochi_1_1_graphics_1_1_animations_data" kindref="compound">AnimationsData</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; AnimationsData &gt; Mochi::Graphics::IAnimationFactory::GetAnimationsData</definition>
+        <argsstring>(const std::string &amp;animationDataPath)=0</argsstring>
+        <name>GetAnimationsData</name>
+        <qualifiedname>Mochi::Graphics::IAnimationFactory::GetAnimationsData</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_graphics_1_1_aseprite_animation_factory_1a9755718e91c1f769e002d3bdf1d0055f">GetAnimationsData</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_graphics_1_1_dummy_animation_factory_1af981185e805e311fff2576619806a842">GetAnimationsData</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>animationDataPath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/IAnimationFactory.h" line="15" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_i_animation_factory_1af5aed432a71a1c16a0d0cb122a5564af" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Graphics::IAnimationFactory::DeleteCache</definition>
+        <argsstring>()=0</argsstring>
+        <name>DeleteCache</name>
+        <qualifiedname>Mochi::Graphics::IAnimationFactory::DeleteCache</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_graphics_1_1_aseprite_animation_factory_1a75f725eb215e793cd0a48f8fd25e3d4f">DeleteCache</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_graphics_1_1_dummy_animation_factory_1a5667129867c7587dea94b93723e76485">DeleteCache</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/IAnimationFactory.h" line="16" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_i_animation_factory_1af2e5ecd0526bd83b358f2874f89963d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Graphics::IAnimationFactory::DeleteAnimation</definition>
+        <argsstring>(const std::string &amp;texturePath)=0</argsstring>
+        <name>DeleteAnimation</name>
+        <qualifiedname>Mochi::Graphics::IAnimationFactory::DeleteAnimation</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_graphics_1_1_aseprite_animation_factory_1ab1cc02ad0b934792bd34f067b162032f">DeleteAnimation</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_graphics_1_1_dummy_animation_factory_1a77cc39a2ece6b1dcd008c15075162eea">DeleteAnimation</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>texturePath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/IAnimationFactory.h" line="17" column="22"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Mochi::Graphics::AsepriteAnimationFactory</label>
+        <link refid="class_mochi_1_1_graphics_1_1_aseprite_animation_factory"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Mochi::Graphics::DummyAnimationFactory</label>
+        <link refid="class_mochi_1_1_graphics_1_1_dummy_animation_factory"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Mochi::Graphics::IAnimationFactory</label>
+        <link refid="class_mochi_1_1_graphics_1_1_i_animation_factory"/>
+      </node>
+    </inheritancegraph>
+    <location file="Engine/src/Graphics/IAnimationFactory.h" line="11" column="5" bodyfile="Engine/src/Graphics/IAnimationFactory.h" bodystart="12" bodyend="18"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_graphics_1_1_i_animation_factory_1af2e5ecd0526bd83b358f2874f89963d9" prot="public" virt="pure-virtual"><scope>Mochi::Graphics::IAnimationFactory</scope><name>DeleteAnimation</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_i_animation_factory_1af5aed432a71a1c16a0d0cb122a5564af" prot="public" virt="pure-virtual"><scope>Mochi::Graphics::IAnimationFactory</scope><name>DeleteCache</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_i_animation_factory_1a67fccf5d1b678410d1170447ac72ef90" prot="public" virt="pure-virtual"><scope>Mochi::Graphics::IAnimationFactory</scope><name>GetAnimationsData</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_i_animation_factory_1ab2b9a05161643fa57bed2a2e6f3fd044" prot="public" virt="virtual"><scope>Mochi::Graphics::IAnimationFactory</scope><name>~IAnimationFactory</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

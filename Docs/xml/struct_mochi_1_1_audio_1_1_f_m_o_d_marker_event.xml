@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_mochi_1_1_audio_1_1_f_m_o_d_marker_event" kind="struct" language="C++" prot="public">
+    <compoundname>Mochi::Audio::FMODMarkerEvent</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_mochi_1_1_audio_1_1_f_m_o_d_marker_event_1a643d233d4d3d94b0348895026c707c71" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* Mochi::Audio::FMODMarkerEvent::MarkerName</definition>
+        <argsstring></argsstring>
+        <name>MarkerName</name>
+        <qualifiedname>Mochi::Audio::FMODMarkerEvent::MarkerName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/FMODWrapper.h" line="31" column="20" bodyfile="Engine/src/Audio/FMODWrapper.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_audio_1_1_f_m_o_d_marker_event_1aa53067fd479a01e74aca5e7efd4f500c" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Mochi::Audio::FMODMarkerEvent::MarkerPosition</definition>
+        <argsstring></argsstring>
+        <name>MarkerPosition</name>
+        <qualifiedname>Mochi::Audio::FMODMarkerEvent::MarkerPosition</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/FMODWrapper.h" line="32" column="13" bodyfile="Engine/src/Audio/FMODWrapper.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Audio/FMODWrapper.h" line="29" column="5" bodyfile="Engine/src/Audio/FMODWrapper.h" bodystart="30" bodyend="33"/>
+    <listofallmembers>
+      <member refid="struct_mochi_1_1_audio_1_1_f_m_o_d_marker_event_1a643d233d4d3d94b0348895026c707c71" prot="public" virt="non-virtual"><scope>Mochi::Audio::FMODMarkerEvent</scope><name>MarkerName</name></member>
+      <member refid="struct_mochi_1_1_audio_1_1_f_m_o_d_marker_event_1aa53067fd479a01e74aca5e7efd4f500c" prot="public" virt="non-virtual"><scope>Mochi::Audio::FMODMarkerEvent</scope><name>MarkerPosition</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

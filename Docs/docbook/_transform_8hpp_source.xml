@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__transform_8hpp_source" xml:lang="en-US">
+<title>Transform.hpp</title>
+<indexterm><primary>Engine/src/Types/Transform.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_TRANSFORM</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_TRANSFORM</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&quot;Types.hpp&quot;</emphasis>
+5 
+6 <emphasis role="keyword">namespace&#32;</emphasis>Mochi
+7 {
+8 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis>Transform
+9 &#32;&#32;&#32;&#32;{
+10 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_mochi_1_1_vector2f">Vector2f</link>&#32;Position;
+11 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;Scale;
+12 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;Move(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_vector2f">Vector2f</link>&#32;&amp;delta)&#32;{&#32;Position&#32;+=&#32;delta;&#32;}
+13 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Transform()&#32;:&#32;Position({0.0f,&#32;0.0f}),&#32;Scale(1.0f)&#32;{}
+14 &#32;&#32;&#32;&#32;};
+15 }
+16 
+17 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

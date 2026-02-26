@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__i_mouse_provider_8h_source" xml:lang="en-US">
+<title>IMouseProvider.h</title>
+<indexterm><primary>Engine/src/Input/IMouseProvider.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_IMOUSEPROVIDER</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_IMOUSEPROVIDER</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;array&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&quot;InputCommons.h&quot;</emphasis>
+6 
+7 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Input
+8 {
+9 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_input_1_1_i_mouse_provider">IMouseProvider</link>
+10 &#32;&#32;&#32;&#32;{
+11 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+12 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_mochi_1_1_input_1_1_i_mouse_provider">~IMouseProvider</link>()&#32;{}
+13 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;std::array&lt;bool,&#32;MouseButton::MouseButtonsCount&gt;&#32;GetState(<emphasis role="keywordtype">float</emphasis>&#32;*x,&#32;<emphasis role="keywordtype">float</emphasis>&#32;*y)&#32;<emphasis role="keyword">const</emphasis>&#32;=&#32;0;
+14 &#32;&#32;&#32;&#32;};
+15 }
+16 
+17 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

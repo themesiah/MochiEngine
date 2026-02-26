@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__abstract_g_u_i_8h_source" xml:lang="en-US">
+<title>AbstractGUI.h</title>
+<indexterm><primary>Engine/src/GUI/AbstractGUI.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_ABSTRACTGUI</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_ABSTRACTGUI</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;memory&gt;</emphasis>
+6 
+7 <emphasis role="preprocessor">#include&#32;&quot;../Types/Types.hpp&quot;</emphasis>
+8 <emphasis role="preprocessor">#include&#32;&quot;GUICommon.hpp&quot;</emphasis>
+9 
+10 <emphasis role="keyword">namespace&#32;</emphasis>Mochi
+11 {
+12 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_mochi_1_1_color">Color</link>;
+13 }
+14 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::FS
+15 {
+16 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">PackCatalog</link>;
+17 }
+18 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Input
+19 {
+20 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_input_1_1_i_action_manager">IActionManager</link>;
+21 }
+22 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Graphics
+23 {
+24 &#32;&#32;&#32;&#32;<emphasis role="keyword">using&#32;</emphasis>GUIElementId&#32;=&#32;int;
+25 
+26 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_i_renderer">IRenderer</link>;
+27 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_abstract_texture_factory">AbstractTextureFactory</link>;
+28 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>AbstractGUI
+29 &#32;&#32;&#32;&#32;{
+30 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GUIElementId&#32;mCurrentId;
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;ResetFrame();
+33 
+34 &#32;&#32;&#32;&#32;<emphasis role="keyword">protected</emphasis>:
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GUIElementId&#32;mFocusId;
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GUIElementId&#32;mPressedId;
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::unique_ptr&lt;AbstractTextureFactory&gt;&#32;mTextureFactory;
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mochi_1_1_graphics_1_1_i_renderer">IRenderer</link>&#32;*mRenderer;
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link>&#32;*mCatalog;
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mochi_1_1_input_1_1_i_action_manager">Input::IActionManager</link>&#32;*mActionManager;
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GUIElementId&#32;GetNextId();
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;OnUpdate()&#32;{}
+43 
+44 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;AbstractGUI(<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link>&#32;*catalog,&#32;<link linkend="_class_mochi_1_1_graphics_1_1_i_renderer">IRenderer</link>&#32;*renderer,&#32;<link linkend="_class_mochi_1_1_input_1_1_i_action_manager">Input::IActionManager</link>&#32;*actionManager);
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;~AbstractGUI();
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;Update(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">float</emphasis>&#32;&amp;dt);
+48 
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;UI&#32;Elements</emphasis>
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_struct_mochi_1_1_graphics_1_1_g_u_i_result_button">GUIResultButton</link>&#32;Button(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_graphics_1_1_g_u_i_button_options">GUIButtonOptions</link>&#32;&amp;options,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*label,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_graphics_1_1_g_u_i_text_options">GUITextOptions</link>&#32;&amp;textOptions)&#32;{&#32;<emphasis role="keywordflow">return</emphasis>&#32;{{},&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keyword">false</emphasis>};&#32;}
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_struct_mochi_1_1_graphics_1_1_g_u_i_result">GUIResult</link>&#32;Text(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;*label,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_graphics_1_1_g_u_i_text_options">GUITextOptions</link>&#32;&amp;options)&#32;{&#32;<emphasis role="keywordflow">return</emphasis>&#32;{};&#32;}
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_struct_mochi_1_1_graphics_1_1_g_u_i_result">GUIResult</link>&#32;Sprite(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_graphics_1_1_g_u_i_options">GUIOptions</link>&#32;&amp;options)&#32;{&#32;<emphasis role="keywordflow">return</emphasis>&#32;{};&#32;}
+53 &#32;&#32;&#32;&#32;};
+54 }
+55 
+56 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

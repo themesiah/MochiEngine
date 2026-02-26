@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_input_1_1_input_manager" xml:lang="en-US">
+<title>Mochi::Input::InputManager Class Reference</title>
+<indexterm><primary>Mochi::Input::InputManager</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_input_1_1_input_manager_1aae544888d4a2dfa4150c02fcc217a272"/><emphasis role="strong">InputManager</emphasis> (std::unique_ptr&lt; <link linkend="_class_mochi_1_1_input_1_1_i_keyboard_provider">IKeyboardProvider</link> &gt; keyboardProvider, std::unique_ptr&lt; <link linkend="_class_mochi_1_1_input_1_1_i_mouse_provider">IMouseProvider</link> &gt; mouseProvider, std::unique_ptr&lt; <link linkend="_class_mochi_1_1_input_1_1_i_gamepad_provider">IGamepadProvider</link> &gt; mGamepadProvider)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_input_1_1_input_manager_1a58a36e5dd0ca363e736bb774cb12fb37"/>bool <emphasis role="strong">IsDown</emphasis> (const int &amp;key) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_input_1_1_input_manager_1ac40ad17ec1f9cca254adc8acf17de5b0"/>bool <emphasis role="strong">WasPressed</emphasis> (const int &amp;key) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_input_1_1_input_manager_1ad6c9201743caad616f65b2679b98c1ed"/>bool <emphasis role="strong">WasReleased</emphasis> (const int &amp;key) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_input_1_1_input_manager_1adaeb66393b50c7bf1d421623a832b1d3"/>void <emphasis role="strong">Update</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_input_1_1_input_manager_1a181d20d1a61eb1894867d89db2d95188"/>bool <emphasis role="strong">MouseIsDown</emphasis> (const unsigned int &amp;mouseButton) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_input_1_1_input_manager_1adf6e4ed8bd8a9fcef45da82965d1bc77"/>bool <emphasis role="strong">MouseWasPressed</emphasis> (const unsigned int &amp;mouseButton) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_input_1_1_input_manager_1a49fe8d91cd64bd817587d05ff103fcd3"/>bool <emphasis role="strong">MouseWasReleased</emphasis> (const unsigned int &amp;mouseButton) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_input_1_1_input_manager_1a856d04adb7dfd8af6cd9671ed91dc8d0"/><link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> <emphasis role="strong">GetMousePosition</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_input_1_1_input_manager_1ac20a98b71652ab5610f8adc0998085f2"/><link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> <emphasis role="strong">GetMouseDelta</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_input_1_1_input_manager_1a1aeeac6ec14abc225298b5f632232ffa"/>float <emphasis role="strong">GetGamepadAxis</emphasis> (const GamepadAxis &amp;axis) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_input_1_1_input_manager_1a114a385737aaea029a9a0c360f42035d"/>bool <emphasis role="strong">GamepadButtonIsDown</emphasis> (const GamepadButton &amp;button) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_input_1_1_input_manager_1a497ed831c64b74816df25c3ac317d0ab"/>bool <emphasis role="strong">GamepadButtonWasPressed</emphasis> (const GamepadButton &amp;button) const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_input_1_1_input_manager_1a960a71bdedbad9ca6d4e83edc5d82620"/>bool <emphasis role="strong">GamepadButtonWasReleased</emphasis> (const GamepadButton &amp;button) const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following files:</para>
+Engine/src/Input/InputManager.hEngine/src/Input/InputManager.cpp</section>

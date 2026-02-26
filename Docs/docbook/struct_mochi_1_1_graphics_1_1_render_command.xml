@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_mochi_1_1_graphics_1_1_render_command" xml:lang="en-US">
+<title>Mochi::Graphics::RenderCommand Struct Reference</title>
+<indexterm><primary>Mochi::Graphics::RenderCommand</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_graphics_1_1_render_command_1a71468d8b788fb8ce8c62a7d0e470e2bd"/><link linkend="_class_mochi_1_1_graphics_1_1_i_texture">ITexture</link> * <emphasis role="strong">texture</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_graphics_1_1_render_command_1ad7af049bccfda0c10e5886b73f97cb3b"/><link linkend="_struct_mochi_1_1_rectf">Rectf</link> <emphasis role="strong">sourceRect</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_graphics_1_1_render_command_1a269c4d28ba4958e669902e4bcae1e1ee"/><link linkend="_struct_mochi_1_1_rectf">Rectf</link> <emphasis role="strong">destRect</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_graphics_1_1_render_command_1afbaf71b729d6abedc4ed0971a4342c5d"/>unsigned int <emphasis role="strong">zindex</emphasis></para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_graphics_1_1_render_command_1aa53afa681388804ce4865cf33e01800e"/>RenderCommandPositionType <emphasis role="strong">PositionType</emphasis> = RenderCommandPositionWorld</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_graphics_1_1_render_command_1a60316c228aa53e7b27a76e1ae162f681"/>std::optional&lt; TiledRenderOptions &gt; <emphasis role="strong">TiledRenderOptions</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+Engine/src/Graphics/RenderCommand.h</section>

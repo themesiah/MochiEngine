@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_graphics_1_1_dummy_texture" xml:lang="en-US">
+<title>Mochi::Graphics::DummyTexture Class Reference</title>
+<indexterm><primary>Mochi::Graphics::DummyTexture</primary></indexterm>
+<para>Inheritance diagram for Mochi::Graphics::DummyTexture:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_mochi_1_1_graphics_1_1_dummy_texture.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>virtual <link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> <link linkend="_class_mochi_1_1_graphics_1_1_dummy_texture_1aee5d563208e9c3ee39035d3403c43cac">GetSize</link> () const override</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_graphics_1_1_dummy_texture_1a98ce676b01401ece9d72b0ef534d4bd5">SetAlpha</link> (const uint8_t &amp;alpha)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_mochi_1_1_graphics_1_1_dummy_texture_1aee5d563208e9c3ee39035d3403c43cac"/><section>
+    <title>GetSize()</title>
+<indexterm><primary>GetSize</primary><secondary>Mochi::Graphics::DummyTexture</secondary></indexterm>
+<indexterm><primary>Mochi::Graphics::DummyTexture</primary><secondary>GetSize</secondary></indexterm>
+<para><computeroutput>virtual <link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> Mochi::Graphics::DummyTexture::GetSize ( ) const<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_graphics_1_1_i_texture">Mochi::Graphics::ITexture</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_graphics_1_1_dummy_texture_1a98ce676b01401ece9d72b0ef534d4bd5"/><section>
+    <title>SetAlpha()</title>
+<indexterm><primary>SetAlpha</primary><secondary>Mochi::Graphics::DummyTexture</secondary></indexterm>
+<indexterm><primary>Mochi::Graphics::DummyTexture</primary><secondary>SetAlpha</secondary></indexterm>
+<para><computeroutput>virtual void Mochi::Graphics::DummyTexture::SetAlpha (const uint8_t &amp; alpha)<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_graphics_1_1_i_texture">Mochi::Graphics::ITexture</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+Engine/src/Graphics/DummyRendering.h</section>
+</section>

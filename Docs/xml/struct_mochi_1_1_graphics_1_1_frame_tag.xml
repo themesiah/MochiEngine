@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_mochi_1_1_graphics_1_1_frame_tag" kind="struct" language="C++" prot="public">
+    <compoundname>Mochi::Graphics::FrameTag</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_frame_tag_1a5cbf60e09cc0fad655fab6a7a68604b6" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Mochi::Graphics::FrameTag::Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <qualifiedname>Mochi::Graphics::FrameTag::Name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AnimationData.h" line="51" column="21" bodyfile="Engine/src/Graphics/AnimationData.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_frame_tag_1a106ef06cf4d2e6e4d50f0f3bad708bde" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Mochi::Graphics::FrameTag::From</definition>
+        <argsstring></argsstring>
+        <name>From</name>
+        <qualifiedname>Mochi::Graphics::FrameTag::From</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AnimationData.h" line="52" column="13" bodyfile="Engine/src/Graphics/AnimationData.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_frame_tag_1a13d176c2d15b06517c15d6fdf8210340" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Mochi::Graphics::FrameTag::To</definition>
+        <argsstring></argsstring>
+        <name>To</name>
+        <qualifiedname>Mochi::Graphics::FrameTag::To</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AnimationData.h" line="53" column="13" bodyfile="Engine/src/Graphics/AnimationData.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_frame_tag_1a9b68080f1984f93788736c90bea6286c" prot="public" static="no" mutable="no">
+        <type>AnimationDirection</type>
+        <definition>AnimationDirection Mochi::Graphics::FrameTag::Direction</definition>
+        <argsstring></argsstring>
+        <name>Direction</name>
+        <qualifiedname>Mochi::Graphics::FrameTag::Direction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AnimationData.h" line="54" column="28" bodyfile="Engine/src/Graphics/AnimationData.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_frame_tag_1aa312951fcecf4d59fe11cd4a3164a9a7" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Mochi::Graphics::FrameTag::Repeat</definition>
+        <argsstring></argsstring>
+        <name>Repeat</name>
+        <qualifiedname>Mochi::Graphics::FrameTag::Repeat</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AnimationData.h" line="55" column="13" bodyfile="Engine/src/Graphics/AnimationData.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_frame_tag_1a37ce871515af72e4a41b481ca625ad28" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Mochi::Graphics::FrameTag::UserData</definition>
+        <argsstring></argsstring>
+        <name>UserData</name>
+        <qualifiedname>Mochi::Graphics::FrameTag::UserData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/AnimationData.h" line="56" column="21" bodyfile="Engine/src/Graphics/AnimationData.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Graphics/AnimationData.h" line="49" column="5" bodyfile="Engine/src/Graphics/AnimationData.h" bodystart="50" bodyend="57"/>
+    <listofallmembers>
+      <member refid="struct_mochi_1_1_graphics_1_1_frame_tag_1a9b68080f1984f93788736c90bea6286c" prot="public" virt="non-virtual"><scope>Mochi::Graphics::FrameTag</scope><name>Direction</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_frame_tag_1a106ef06cf4d2e6e4d50f0f3bad708bde" prot="public" virt="non-virtual"><scope>Mochi::Graphics::FrameTag</scope><name>From</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_frame_tag_1a5cbf60e09cc0fad655fab6a7a68604b6" prot="public" virt="non-virtual"><scope>Mochi::Graphics::FrameTag</scope><name>Name</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_frame_tag_1aa312951fcecf4d59fe11cd4a3164a9a7" prot="public" virt="non-virtual"><scope>Mochi::Graphics::FrameTag</scope><name>Repeat</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_frame_tag_1a13d176c2d15b06517c15d6fdf8210340" prot="public" virt="non-virtual"><scope>Mochi::Graphics::FrameTag</scope><name>To</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_frame_tag_1a37ce871515af72e4a41b481ca625ad28" prot="public" virt="non-virtual"><scope>Mochi::Graphics::FrameTag</scope><name>UserData</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

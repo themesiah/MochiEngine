@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_audio_1_1_dummy_audio_manager" kind="class" language="C++" prot="public">
+    <compoundname>Mochi::Audio::DummyAudioManager</compoundname>
+    <basecompoundref refid="class_mochi_1_1_audio_1_1_i_audio_manager" prot="public" virt="non-virtual">Mochi::Audio::IAudioManager</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a761a80d33ff0421306c5e31329ebef36" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Mochi::Audio::DummyAudioManager::~DummyAudioManager</definition>
+        <argsstring>()</argsstring>
+        <name>~DummyAudioManager</name>
+        <qualifiedname>Mochi::Audio::DummyAudioManager::~DummyAudioManager</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/DummyAudioManager.h" line="11" column="17" bodyfile="Engine/src/Audio/DummyAudioManager.h" bodystart="11" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a12e1a1d98ea1d32d7c4b23942fbfd04d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::DummyAudioManager::Update</definition>
+        <argsstring>(const float &amp;dt) override</argsstring>
+        <name>Update</name>
+        <qualifiedname>Mochi::Audio::DummyAudioManager::Update</qualifiedname>
+        <reimplements refid="class_mochi_1_1_audio_1_1_i_audio_manager_1a60a100b63a20c4e021403aed76f1a609">Update</reimplements>
+        <param>
+          <type>const float &amp;</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/DummyAudioManager.h" line="12" column="22" bodyfile="Engine/src/Audio/DummyAudioManager.h" bodystart="12" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a826ac7b22da3c404349afc7ea7628831" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::DummyAudioManager::LoadAudio</definition>
+        <argsstring>(const std::string &amp;path) override</argsstring>
+        <name>LoadAudio</name>
+        <qualifiedname>Mochi::Audio::DummyAudioManager::LoadAudio</qualifiedname>
+        <reimplements refid="class_mochi_1_1_audio_1_1_i_audio_manager_1aa38cd1d9b2654083ca1ed178fa459dfa">LoadAudio</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/DummyAudioManager.h" line="13" column="22" bodyfile="Engine/src/Audio/DummyAudioManager.h" bodystart="13" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a289736f2b6b0a6e7e32dc53135257d8c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::DummyAudioManager::UnloadAudio</definition>
+        <argsstring>(const std::string &amp;path) override</argsstring>
+        <name>UnloadAudio</name>
+        <qualifiedname>Mochi::Audio::DummyAudioManager::UnloadAudio</qualifiedname>
+        <reimplements refid="class_mochi_1_1_audio_1_1_i_audio_manager_1a6421aef4a91b399c1f05464d980590ee">UnloadAudio</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/DummyAudioManager.h" line="14" column="22" bodyfile="Engine/src/Audio/DummyAudioManager.h" bodystart="14" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a5cfe7f47e8aaa30a3f844dfc1f5e7446" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::DummyAudioManager::PlayBGM</definition>
+        <argsstring>(const std::string &amp;audioName) override</argsstring>
+        <name>PlayBGM</name>
+        <qualifiedname>Mochi::Audio::DummyAudioManager::PlayBGM</qualifiedname>
+        <reimplements refid="class_mochi_1_1_audio_1_1_i_audio_manager_1a696e2a8c879fd8daa298553cd944720f">PlayBGM</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>audioName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/DummyAudioManager.h" line="15" column="22" bodyfile="Engine/src/Audio/DummyAudioManager.h" bodystart="15" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a4ddafe8bc8dde96567714dba94e24a2f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::DummyAudioManager::PauseBGM</definition>
+        <argsstring>() override</argsstring>
+        <name>PauseBGM</name>
+        <qualifiedname>Mochi::Audio::DummyAudioManager::PauseBGM</qualifiedname>
+        <reimplements refid="class_mochi_1_1_audio_1_1_i_audio_manager_1a8b63f8d8da1ce6cc584c123ac04533b4">PauseBGM</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/DummyAudioManager.h" line="16" column="22" bodyfile="Engine/src/Audio/DummyAudioManager.h" bodystart="16" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a2eaef99492d10c063a293b915505b683" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::DummyAudioManager::StopBGM</definition>
+        <argsstring>() override</argsstring>
+        <name>StopBGM</name>
+        <qualifiedname>Mochi::Audio::DummyAudioManager::StopBGM</qualifiedname>
+        <reimplements refid="class_mochi_1_1_audio_1_1_i_audio_manager_1ab121967b0728a8da3292a597d105cdd1">StopBGM</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/DummyAudioManager.h" line="17" column="22" bodyfile="Engine/src/Audio/DummyAudioManager.h" bodystart="17" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a85e10e02d121a5a3bf27b62256595c93" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::DummyAudioManager::ResumeBGM</definition>
+        <argsstring>() override</argsstring>
+        <name>ResumeBGM</name>
+        <qualifiedname>Mochi::Audio::DummyAudioManager::ResumeBGM</qualifiedname>
+        <reimplements refid="class_mochi_1_1_audio_1_1_i_audio_manager_1a4cd3c1364a66b18588a7b0cbbf9d95cb">ResumeBGM</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/DummyAudioManager.h" line="18" column="22" bodyfile="Engine/src/Audio/DummyAudioManager.h" bodystart="18" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a92c04efd6e0d5f779ec658ca9e7f17d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::DummyAudioManager::SkipToTimelinePosition</definition>
+        <argsstring>(const int &amp;ms) override</argsstring>
+        <name>SkipToTimelinePosition</name>
+        <qualifiedname>Mochi::Audio::DummyAudioManager::SkipToTimelinePosition</qualifiedname>
+        <reimplements refid="class_mochi_1_1_audio_1_1_i_audio_manager_1a2a924034d3a7d9887afa64ad444ad147">SkipToTimelinePosition</reimplements>
+        <param>
+          <type>const int &amp;</type>
+          <declname>ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/DummyAudioManager.h" line="19" column="22" bodyfile="Engine/src/Audio/DummyAudioManager.h" bodystart="19" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a7048dfd359a830fc05832f6521025704" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::DummyAudioManager::PlayOneShot</definition>
+        <argsstring>(const std::string &amp;audioName) override</argsstring>
+        <name>PlayOneShot</name>
+        <qualifiedname>Mochi::Audio::DummyAudioManager::PlayOneShot</qualifiedname>
+        <reimplements refid="class_mochi_1_1_audio_1_1_i_audio_manager_1a0cac77dbfd09f57e769e4c07cedc27bf">PlayOneShot</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>audioName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/DummyAudioManager.h" line="20" column="22" bodyfile="Engine/src/Audio/DummyAudioManager.h" bodystart="20" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_dummy_audio_manager_1af7f62259844bddd15b9d388810bea135" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::DummyAudioManager::SetParameter</definition>
+        <argsstring>(const std::string &amp;parameterName, const float &amp;value) override</argsstring>
+        <name>SetParameter</name>
+        <qualifiedname>Mochi::Audio::DummyAudioManager::SetParameter</qualifiedname>
+        <reimplements refid="class_mochi_1_1_audio_1_1_i_audio_manager_1adc60851e6a18a6a2de2083c0f37506de">SetParameter</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>parameterName</declname>
+        </param>
+        <param>
+          <type>const float &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/DummyAudioManager.h" line="21" column="22" bodyfile="Engine/src/Audio/DummyAudioManager.h" bodystart="21" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a616186bbbb7e7e565cf51e8ae2a9e056" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Audio::DummyAudioManager::SetMixerVolume</definition>
+        <argsstring>(const std::string &amp;mixerGroupName, const float &amp;value) override</argsstring>
+        <name>SetMixerVolume</name>
+        <qualifiedname>Mochi::Audio::DummyAudioManager::SetMixerVolume</qualifiedname>
+        <reimplements refid="class_mochi_1_1_audio_1_1_i_audio_manager_1a76a3d620d92c747018540bead9b4832e">SetMixerVolume</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>mixerGroupName</declname>
+        </param>
+        <param>
+          <type>const float &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Audio/DummyAudioManager.h" line="22" column="22" bodyfile="Engine/src/Audio/DummyAudioManager.h" bodystart="22" bodyend="22"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Mochi::Audio::DummyAudioManager</label>
+        <link refid="class_mochi_1_1_audio_1_1_dummy_audio_manager"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mochi::Audio::IAudioManager</label>
+        <link refid="class_mochi_1_1_audio_1_1_i_audio_manager"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Mochi::Audio::DummyAudioManager</label>
+        <link refid="class_mochi_1_1_audio_1_1_dummy_audio_manager"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mochi::Audio::IAudioManager</label>
+        <link refid="class_mochi_1_1_audio_1_1_i_audio_manager"/>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Audio/DummyAudioManager.h" line="8" column="5" bodyfile="Engine/src/Audio/DummyAudioManager.h" bodystart="9" bodyend="23"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a826ac7b22da3c404349afc7ea7628831" prot="public" virt="virtual"><scope>Mochi::Audio::DummyAudioManager</scope><name>LoadAudio</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a4ddafe8bc8dde96567714dba94e24a2f" prot="public" virt="virtual"><scope>Mochi::Audio::DummyAudioManager</scope><name>PauseBGM</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a5cfe7f47e8aaa30a3f844dfc1f5e7446" prot="public" virt="virtual"><scope>Mochi::Audio::DummyAudioManager</scope><name>PlayBGM</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a7048dfd359a830fc05832f6521025704" prot="public" virt="virtual"><scope>Mochi::Audio::DummyAudioManager</scope><name>PlayOneShot</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a85e10e02d121a5a3bf27b62256595c93" prot="public" virt="virtual"><scope>Mochi::Audio::DummyAudioManager</scope><name>ResumeBGM</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a616186bbbb7e7e565cf51e8ae2a9e056" prot="public" virt="virtual"><scope>Mochi::Audio::DummyAudioManager</scope><name>SetMixerVolume</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1af7f62259844bddd15b9d388810bea135" prot="public" virt="virtual"><scope>Mochi::Audio::DummyAudioManager</scope><name>SetParameter</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a92c04efd6e0d5f779ec658ca9e7f17d0" prot="public" virt="virtual"><scope>Mochi::Audio::DummyAudioManager</scope><name>SkipToTimelinePosition</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a2eaef99492d10c063a293b915505b683" prot="public" virt="virtual"><scope>Mochi::Audio::DummyAudioManager</scope><name>StopBGM</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a289736f2b6b0a6e7e32dc53135257d8c" prot="public" virt="virtual"><scope>Mochi::Audio::DummyAudioManager</scope><name>UnloadAudio</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a12e1a1d98ea1d32d7c4b23942fbfd04d" prot="public" virt="virtual"><scope>Mochi::Audio::DummyAudioManager</scope><name>Update</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_dummy_audio_manager_1a761a80d33ff0421306c5e31329ebef36" prot="public" virt="virtual"><scope>Mochi::Audio::DummyAudioManager</scope><name>~DummyAudioManager</name></member>
+      <member refid="class_mochi_1_1_audio_1_1_i_audio_manager_1a13465a3b824f28348972037be648507c" prot="public" virt="virtual"><scope>Mochi::Audio::DummyAudioManager</scope><name>~IAudioManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

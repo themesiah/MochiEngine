@@ -1,0 +1,200 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_input_1_1_i_action_manager" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>Mochi::Input::IActionManager</compoundname>
+    <derivedcompoundref refid="class_mochi_1_1_input_1_1_action_manager" prot="public" virt="non-virtual">Mochi::Input::ActionManager</derivedcompoundref>
+    <derivedcompoundref refid="class_mochi_1_1_input_1_1_virtual_action_manager" prot="public" virt="non-virtual">Mochi::Input::VirtualActionManager</derivedcompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_input_1_1_i_action_manager_1a3129a058e3f88e66e8770d5c7ec1c722" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Mochi::Input::IActionManager::~IActionManager</definition>
+        <argsstring>()</argsstring>
+        <name>~IActionManager</name>
+        <qualifiedname>Mochi::Input::IActionManager::~IActionManager</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/IActionManager.h" line="14" column="17" bodyfile="Engine/src/Input/IActionManager.h" bodystart="14" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_input_1_1_i_action_manager_1a23f7218651e7d0fdc936a052c6328bc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool Mochi::Input::IActionManager::LoadActions</definition>
+        <argsstring>(std::vector&lt; char &gt; buffer)=0</argsstring>
+        <name>LoadActions</name>
+        <qualifiedname>Mochi::Input::IActionManager::LoadActions</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_input_1_1_action_manager_1a9091bba64105f513c8ee23baa924701a">LoadActions</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_input_1_1_virtual_action_manager_1a770495661483293824e91cdc2f781ab7">LoadActions</reimplementedby>
+        <param>
+          <type>std::vector&lt; char &gt;</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/IActionManager.h" line="15" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_input_1_1_i_action_manager_1ac95e540f122d3d559077bd265197e961" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool Mochi::Input::IActionManager::LoadActionsFromFile</definition>
+        <argsstring>(const std::string &amp;path)=0</argsstring>
+        <name>LoadActionsFromFile</name>
+        <qualifiedname>Mochi::Input::IActionManager::LoadActionsFromFile</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_input_1_1_action_manager_1a717790c4344119d4781528cf3a3879e8">LoadActionsFromFile</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_input_1_1_virtual_action_manager_1addb6612bbaf2bed7c7fc2cdb76e54553">LoadActionsFromFile</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/IActionManager.h" line="16" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_input_1_1_i_action_manager_1a49742ea840ca85128cb3d7ea36b331cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool Mochi::Input::IActionManager::HasAction</definition>
+        <argsstring>(const std::string &amp;) const =0</argsstring>
+        <name>HasAction</name>
+        <qualifiedname>Mochi::Input::IActionManager::HasAction</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_input_1_1_action_manager_1a09792390a9ad065790404572d13afd4e">HasAction</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_input_1_1_virtual_action_manager_1abcfafb57d4734cbd3b274c78be3aec12">HasAction</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/IActionManager.h" line="17" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_input_1_1_i_action_manager_1a3634ae23c87b17b78de158ffbd8a7a95" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Input::IActionManager::Update</definition>
+        <argsstring>(const float &amp;dt)=0</argsstring>
+        <name>Update</name>
+        <qualifiedname>Mochi::Input::IActionManager::Update</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_input_1_1_action_manager_1a2ab280666b8865c58ba8301e1f685a3e">Update</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_input_1_1_virtual_action_manager_1aeafe1c9c91937ab152f11bc955b39f7f">Update</reimplementedby>
+        <param>
+          <type>const float &amp;</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/IActionManager.h" line="18" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_input_1_1_i_action_manager_1a8cc6193594678f9cee362863bf075477" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool Mochi::Input::IActionManager::Performed</definition>
+        <argsstring>(const std::string &amp;actionName) const =0</argsstring>
+        <name>Performed</name>
+        <qualifiedname>Mochi::Input::IActionManager::Performed</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_input_1_1_action_manager_1aea9d263b0f27d7620c226fcd49aa31e7">Performed</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_input_1_1_virtual_action_manager_1a29dd6b807193b470e25c5ac7500101b3">Performed</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>actionName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/IActionManager.h" line="19" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_input_1_1_i_action_manager_1aac119dcf7fd069a90d0a6e703bb2a8e0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>float</type>
+        <definition>virtual float Mochi::Input::IActionManager::Value</definition>
+        <argsstring>(const std::string &amp;actionName) const =0</argsstring>
+        <name>Value</name>
+        <qualifiedname>Mochi::Input::IActionManager::Value</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_input_1_1_action_manager_1a02c35ddcfe36e5a57610b80a185e4f2c">Value</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_input_1_1_virtual_action_manager_1a595ad0acbe0d9510c41928985a32caea">Value</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>actionName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/IActionManager.h" line="20" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_input_1_1_i_action_manager_1a614ce3436dbf6ae87de9c1bd385fb462" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref></type>
+        <definition>virtual Vector2f Mochi::Input::IActionManager::CompoundValue</definition>
+        <argsstring>(const std::string &amp;action1, const std::string &amp;action2) const =0</argsstring>
+        <name>CompoundValue</name>
+        <qualifiedname>Mochi::Input::IActionManager::CompoundValue</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_input_1_1_action_manager_1adc75b823efaf60772bc1bdfc563cde7d">CompoundValue</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_input_1_1_virtual_action_manager_1a407417604cc798898e663c768bfdb550">CompoundValue</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>action1</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>action2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Input/IActionManager.h" line="21" column="26"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Mochi::Input::ActionManager</label>
+        <link refid="class_mochi_1_1_input_1_1_action_manager"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Mochi::Input::IActionManager</label>
+        <link refid="class_mochi_1_1_input_1_1_i_action_manager"/>
+      </node>
+      <node id="3">
+        <label>Mochi::Input::VirtualActionManager</label>
+        <link refid="class_mochi_1_1_input_1_1_virtual_action_manager"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="Engine/src/Input/IActionManager.h" line="11" column="5" bodyfile="Engine/src/Input/IActionManager.h" bodystart="12" bodyend="22"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_input_1_1_i_action_manager_1a614ce3436dbf6ae87de9c1bd385fb462" prot="public" virt="pure-virtual"><scope>Mochi::Input::IActionManager</scope><name>CompoundValue</name></member>
+      <member refid="class_mochi_1_1_input_1_1_i_action_manager_1a49742ea840ca85128cb3d7ea36b331cb" prot="public" virt="pure-virtual"><scope>Mochi::Input::IActionManager</scope><name>HasAction</name></member>
+      <member refid="class_mochi_1_1_input_1_1_i_action_manager_1a23f7218651e7d0fdc936a052c6328bc6" prot="public" virt="pure-virtual"><scope>Mochi::Input::IActionManager</scope><name>LoadActions</name></member>
+      <member refid="class_mochi_1_1_input_1_1_i_action_manager_1ac95e540f122d3d559077bd265197e961" prot="public" virt="pure-virtual"><scope>Mochi::Input::IActionManager</scope><name>LoadActionsFromFile</name></member>
+      <member refid="class_mochi_1_1_input_1_1_i_action_manager_1a8cc6193594678f9cee362863bf075477" prot="public" virt="pure-virtual"><scope>Mochi::Input::IActionManager</scope><name>Performed</name></member>
+      <member refid="class_mochi_1_1_input_1_1_i_action_manager_1a3634ae23c87b17b78de158ffbd8a7a95" prot="public" virt="pure-virtual"><scope>Mochi::Input::IActionManager</scope><name>Update</name></member>
+      <member refid="class_mochi_1_1_input_1_1_i_action_manager_1aac119dcf7fd069a90d0a6e703bb2a8e0" prot="public" virt="pure-virtual"><scope>Mochi::Input::IActionManager</scope><name>Value</name></member>
+      <member refid="class_mochi_1_1_input_1_1_i_action_manager_1a3129a058e3f88e66e8770d5c7ec1c722" prot="public" virt="virtual"><scope>Mochi::Input::IActionManager</scope><name>~IActionManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

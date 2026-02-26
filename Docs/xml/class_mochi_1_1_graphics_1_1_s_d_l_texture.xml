@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_graphics_1_1_s_d_l_texture" kind="class" language="C++" prot="public">
+    <compoundname>Mochi::Graphics::SDLTexture</compoundname>
+    <basecompoundref refid="class_mochi_1_1_graphics_1_1_i_texture" prot="public" virt="non-virtual">Mochi::Graphics::ITexture</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_mochi_1_1_graphics_1_1_s_d_l_texture_1a359b2008c6e4358af6c7f7afcfab4420" prot="private" static="no" mutable="no">
+        <type>SDL_Texture *</type>
+        <definition>SDL_Texture* Mochi::Graphics::SDLTexture::mTexture</definition>
+        <argsstring></argsstring>
+        <name>mTexture</name>
+        <qualifiedname>Mochi::Graphics::SDLTexture::mTexture</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/SDL/SDLTexture.h" line="22" column="21" bodyfile="Engine/src/Graphics/SDL/SDLTexture.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_s_d_l_texture_1a1a6edcc94f7bceb72232b2b33e218437" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Graphics::SDLTexture::SDLTexture</definition>
+        <argsstring>(SDL_Texture *texture)</argsstring>
+        <name>SDLTexture</name>
+        <qualifiedname>Mochi::Graphics::SDLTexture::SDLTexture</qualifiedname>
+        <param>
+          <type>SDL_Texture *</type>
+          <declname>texture</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/SDL/SDLTexture.h" line="15" column="9" bodyfile="Engine/src/Graphics/SDL/SDLTexture.cpp" bodystart="7" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_s_d_l_texture_1a71cc8e8b92e85386b332bef62c3e8878" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>Mochi::Graphics::SDLTexture::~SDLTexture</definition>
+        <argsstring>()</argsstring>
+        <name>~SDLTexture</name>
+        <qualifiedname>Mochi::Graphics::SDLTexture::~SDLTexture</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/SDL/SDLTexture.h" line="16" column="17" bodyfile="Engine/src/Graphics/SDL/SDLTexture.cpp" bodystart="11" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_s_d_l_texture_1a8ab1828b8f3336bb0915c4ef50eb5cae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref></type>
+        <definition>Vector2f Mochi::Graphics::SDLTexture::GetSize</definition>
+        <argsstring>() const override</argsstring>
+        <name>GetSize</name>
+        <qualifiedname>Mochi::Graphics::SDLTexture::GetSize</qualifiedname>
+        <reimplements refid="class_mochi_1_1_graphics_1_1_i_texture_1a39bf79c5763e1c0fb9a9c34b0c2584f8">GetSize</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/SDL/SDLTexture.h" line="17" column="26" bodyfile="Engine/src/Graphics/SDL/SDLTexture.cpp" bodystart="21" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_s_d_l_texture_1ab8ee0017881c92d01c91b66cf372cbd4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>SDL_Texture *</type>
+        <definition>SDL_Texture * Mochi::Graphics::SDLTexture::GetTexture</definition>
+        <argsstring>() const</argsstring>
+        <name>GetTexture</name>
+        <qualifiedname>Mochi::Graphics::SDLTexture::GetTexture</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/SDL/SDLTexture.h" line="18" column="21" bodyfile="Engine/src/Graphics/SDL/SDLTexture.cpp" bodystart="16" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_s_d_l_texture_1aa7b6d3cc66304645fb4a0f38db5e67a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Mochi::Graphics::SDLTexture::SetAlpha</definition>
+        <argsstring>(const uint8_t &amp;alpha) override</argsstring>
+        <name>SetAlpha</name>
+        <qualifiedname>Mochi::Graphics::SDLTexture::SetAlpha</qualifiedname>
+        <reimplements refid="class_mochi_1_1_graphics_1_1_i_texture_1a61b90eaf58c199b2e502b55c211ea97e">SetAlpha</reimplements>
+        <param>
+          <type>const uint8_t &amp;</type>
+          <declname>alpha</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/SDL/SDLTexture.h" line="19" column="22" bodyfile="Engine/src/Graphics/SDL/SDLTexture.cpp" bodystart="28" bodyend="31"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Mochi::Graphics::ITexture</label>
+        <link refid="class_mochi_1_1_graphics_1_1_i_texture"/>
+      </node>
+      <node id="1">
+        <label>Mochi::Graphics::SDLTexture</label>
+        <link refid="class_mochi_1_1_graphics_1_1_s_d_l_texture"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Mochi::Graphics::ITexture</label>
+        <link refid="class_mochi_1_1_graphics_1_1_i_texture"/>
+      </node>
+      <node id="1">
+        <label>Mochi::Graphics::SDLTexture</label>
+        <link refid="class_mochi_1_1_graphics_1_1_s_d_l_texture"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Graphics/SDL/SDLTexture.h" line="12" column="5" bodyfile="Engine/src/Graphics/SDL/SDLTexture.h" bodystart="13" bodyend="23"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_texture_1a8ab1828b8f3336bb0915c4ef50eb5cae" prot="public" virt="virtual"><scope>Mochi::Graphics::SDLTexture</scope><name>GetSize</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_texture_1ab8ee0017881c92d01c91b66cf372cbd4" prot="public" virt="non-virtual"><scope>Mochi::Graphics::SDLTexture</scope><name>GetTexture</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_texture_1a359b2008c6e4358af6c7f7afcfab4420" prot="private" virt="non-virtual"><scope>Mochi::Graphics::SDLTexture</scope><name>mTexture</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_texture_1a1a6edcc94f7bceb72232b2b33e218437" prot="public" virt="non-virtual"><scope>Mochi::Graphics::SDLTexture</scope><name>SDLTexture</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_texture_1aa7b6d3cc66304645fb4a0f38db5e67a4" prot="public" virt="virtual"><scope>Mochi::Graphics::SDLTexture</scope><name>SetAlpha</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_i_texture_1aacb6d49766b769125b53421770054132" prot="public" virt="virtual"><scope>Mochi::Graphics::SDLTexture</scope><name>~ITexture</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_texture_1a71cc8e8b92e85386b332bef62c3e8878" prot="public" virt="virtual"><scope>Mochi::Graphics::SDLTexture</scope><name>~SDLTexture</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_mochi_1_1_input_1_1_action" xml:lang="en-US">
+<title>Mochi::Input::Action Struct Reference</title>
+<indexterm><primary>Mochi::Input::Action</primary></indexterm>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_input_1_1_action_1a9a1d9b8ca618f91a9dce645e0be04dab"/>std::vector&lt; std::shared_ptr&lt; <link linkend="_struct_mochi_1_1_input_1_1_i_performable_action">IPerformableAction</link> &gt; &gt; <emphasis role="strong">PerformableActions</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+Engine/src/Input/ActionManager.h</section>

@@ -1,0 +1,138 @@
+.TH "Mochi::Layer" 3 "MochiEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Mochi::Layer \- The layer class offers a simple way to organize domains of the application while having access to most of the \fBEngine\fP subsystems\&. Note that a layer is meant to be inherited from and can't be instantated as is\&. A layer will Update, Render and show the GUI as a small \fBEngine\fP class\&. So the layer is just a convenient responsability separator\&. Ownership:  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Layer\&.h>\fP
+.PP
+Inherited by \fBMochi::DebugLayer\fP, and \fBMochi::Scripting::ScriptingLayer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLayer\fP ()"
+.br
+.RI "Default constructor\&. It initializes with references to the engine subsystems\&. Should only be constructed after the engine is setup\&. "
+.ti -1c
+.RI "virtual void \fBInitLayer\fP ()"
+.br
+.RI "Override this to initialize members and data of your layer when the engine adds this layer to the layer list\&. This is useful if you want to create the layer and delay its inclusion on the engine\&. "
+.ti -1c
+.RI "virtual bool \fBUpdate\fP (const float &dt)"
+.br
+.RI "Override this to give your layer a way to be updated each frame\&. "
+.ti -1c
+.RI "virtual void \fBRender\fP () const"
+.br
+.RI "Override this to send the render commands to the engine\&. This task could be done on the update, but making it here its clearer\&. "
+.ti -1c
+.RI "virtual void \fBGUI\fP () const"
+.br
+.RI "Override this to draw the GUI of your layer\&. Even if this could be done anywhere, doing it here ensure it to be drawn after all rendering is done\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBFS::PackCatalog\fP * \fBmCatalog\fP"
+.br
+.ti -1c
+.RI "\fBScripting::ScriptingManager\fP * \fBmScripting\fP"
+.br
+.ti -1c
+.RI "\fBGraphics::Camera\fP * \fBmCamera\fP"
+.br
+.ti -1c
+.RI "\fBEvent::EventBus\fP * \fBmEventBus\fP"
+.br
+.ti -1c
+.RI "\fBGraphics::AbstractGUI\fP * \fBmGUI\fP"
+.br
+.ti -1c
+.RI "\fBInput::IActionManager\fP * \fBmActionManager\fP"
+.br
+.ti -1c
+.RI "\fBAudio::IAudioManager\fP * \fBmAudioManager\fP"
+.br
+.ti -1c
+.RI "\fBGraphics::IRenderer\fP * \fBmRenderer\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The layer class offers a simple way to organize domains of the application while having access to most of the \fBEngine\fP subsystems\&. Note that a layer is meant to be inherited from and can't be instantated as is\&. A layer will Update, Render and show the GUI as a small \fBEngine\fP class\&. So the layer is just a convenient responsability separator\&. Ownership: 
+
+
+.IP "\(bu" 2
+The layer class owns only what its children owns
+.PP
+
+.PP
+Lifecycle:
+.IP "\(bu" 2
+It should be created on the heap manually and pushed onto the engine\&. The rest of the lifecycle is managed there\&.
+.IP "\(bu" 2
+The engine initializes it at the end of the frame, and when removed, it destroys it at the end of the frame too\&.
+.PP
+
+.PP
+Guarantees:
+.IP "\(bu" 2
+Participation in the lifecycle when pushed to the engine\&.
+.IP "\(bu" 2
+Safe destruction after removing it or destroying the engine instance\&.
+.PP
+
+.PP
+Thread safety:
+.IP "\(bu" 2
+Layers are thread safe if the implementation is thread safe\&. 
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void Mochi::Layer::GUI () const\fR [inline]\fP, \fR [virtual]\fP"
+
+.PP
+Override this to draw the GUI of your layer\&. Even if this could be done anywhere, doing it here ensure it to be drawn after all rendering is done\&. 
+.PP
+Reimplemented in \fBMochi::DebugLayer\fP, and \fBMochi::Scripting::ScriptingLayer\fP\&.
+.SS "virtual void Mochi::Layer::InitLayer ()\fR [inline]\fP, \fR [virtual]\fP"
+
+.PP
+Override this to initialize members and data of your layer when the engine adds this layer to the layer list\&. This is useful if you want to create the layer and delay its inclusion on the engine\&. 
+.PP
+Reimplemented in \fBMochi::DebugLayer\fP, and \fBMochi::Scripting::ScriptingLayer\fP\&.
+.SS "virtual void Mochi::Layer::Render () const\fR [inline]\fP, \fR [virtual]\fP"
+
+.PP
+Override this to send the render commands to the engine\&. This task could be done on the update, but making it here its clearer\&. 
+.PP
+Reimplemented in \fBMochi::DebugLayer\fP, and \fBMochi::Scripting::ScriptingLayer\fP\&.
+.SS "virtual bool Mochi::Layer::Update (const float & dt)\fR [inline]\fP, \fR [virtual]\fP"
+
+.PP
+Override this to give your layer a way to be updated each frame\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdt\fP The delta time 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+true if the execution should continue, false if the execution should halt\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBMochi::DebugLayer\fP, and \fBMochi::Scripting::ScriptingLayer\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MochiEngine from the source code\&.

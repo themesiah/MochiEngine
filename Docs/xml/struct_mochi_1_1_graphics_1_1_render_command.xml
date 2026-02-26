@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_mochi_1_1_graphics_1_1_render_command" kind="struct" language="C++" prot="public">
+    <compoundname>Mochi::Graphics::RenderCommand</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_render_command_1a71468d8b788fb8ce8c62a7d0e470e2bd" prot="public" static="no" mutable="no">
+        <type><ref refid="class_mochi_1_1_graphics_1_1_i_texture" kindref="compound">ITexture</ref> *</type>
+        <definition>ITexture* Mochi::Graphics::RenderCommand::texture</definition>
+        <argsstring></argsstring>
+        <name>texture</name>
+        <qualifiedname>Mochi::Graphics::RenderCommand::texture</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/RenderCommand.h" line="25" column="18" bodyfile="Engine/src/Graphics/RenderCommand.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_render_command_1ad7af049bccfda0c10e5886b73f97cb3b" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_mochi_1_1_rectf" kindref="compound">Rectf</ref></type>
+        <definition>Rectf Mochi::Graphics::RenderCommand::sourceRect</definition>
+        <argsstring></argsstring>
+        <name>sourceRect</name>
+        <qualifiedname>Mochi::Graphics::RenderCommand::sourceRect</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/RenderCommand.h" line="26" column="15" bodyfile="Engine/src/Graphics/RenderCommand.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_render_command_1a269c4d28ba4958e669902e4bcae1e1ee" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_mochi_1_1_rectf" kindref="compound">Rectf</ref></type>
+        <definition>Rectf Mochi::Graphics::RenderCommand::destRect</definition>
+        <argsstring></argsstring>
+        <name>destRect</name>
+        <qualifiedname>Mochi::Graphics::RenderCommand::destRect</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/RenderCommand.h" line="27" column="15" bodyfile="Engine/src/Graphics/RenderCommand.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_render_command_1afbaf71b729d6abedc4ed0971a4342c5d" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int Mochi::Graphics::RenderCommand::zindex</definition>
+        <argsstring></argsstring>
+        <name>zindex</name>
+        <qualifiedname>Mochi::Graphics::RenderCommand::zindex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/RenderCommand.h" line="28" column="22" bodyfile="Engine/src/Graphics/RenderCommand.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_render_command_1aa53afa681388804ce4865cf33e01800e" prot="public" static="no" mutable="no">
+        <type>RenderCommandPositionType</type>
+        <definition>RenderCommandPositionType Mochi::Graphics::RenderCommand::PositionType</definition>
+        <argsstring></argsstring>
+        <name>PositionType</name>
+        <qualifiedname>Mochi::Graphics::RenderCommand::PositionType</qualifiedname>
+        <initializer>= RenderCommandPositionWorld</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/RenderCommand.h" line="29" column="35" bodyfile="Engine/src/Graphics/RenderCommand.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_graphics_1_1_render_command_1a60316c228aa53e7b27a76e1ae162f681" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; TiledRenderOptions &gt;</type>
+        <definition>std::optional&lt;TiledRenderOptions&gt; Mochi::Graphics::RenderCommand::TiledRenderOptions</definition>
+        <argsstring></argsstring>
+        <name>TiledRenderOptions</name>
+        <qualifiedname>Mochi::Graphics::RenderCommand::TiledRenderOptions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/RenderCommand.h" line="30" column="23" bodyfile="Engine/src/Graphics/RenderCommand.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Mochi::Graphics::ITexture</label>
+        <link refid="class_mochi_1_1_graphics_1_1_i_texture"/>
+      </node>
+      <node id="1">
+        <label>Mochi::Graphics::RenderCommand</label>
+        <link refid="struct_mochi_1_1_graphics_1_1_render_command"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>texture</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>destRect</edgelabel>
+          <edgelabel>sourceRect</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Mochi::Rectf</label>
+        <link refid="struct_mochi_1_1_rectf"/>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Graphics/RenderCommand.h" line="23" column="5" bodyfile="Engine/src/Graphics/RenderCommand.h" bodystart="24" bodyend="31"/>
+    <listofallmembers>
+      <member refid="struct_mochi_1_1_graphics_1_1_render_command_1a269c4d28ba4958e669902e4bcae1e1ee" prot="public" virt="non-virtual"><scope>Mochi::Graphics::RenderCommand</scope><name>destRect</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_render_command_1aa53afa681388804ce4865cf33e01800e" prot="public" virt="non-virtual"><scope>Mochi::Graphics::RenderCommand</scope><name>PositionType</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_render_command_1ad7af049bccfda0c10e5886b73f97cb3b" prot="public" virt="non-virtual"><scope>Mochi::Graphics::RenderCommand</scope><name>sourceRect</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_render_command_1a71468d8b788fb8ce8c62a7d0e470e2bd" prot="public" virt="non-virtual"><scope>Mochi::Graphics::RenderCommand</scope><name>texture</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_render_command_1a60316c228aa53e7b27a76e1ae162f681" prot="public" virt="non-virtual"><scope>Mochi::Graphics::RenderCommand</scope><name>TiledRenderOptions</name></member>
+      <member refid="struct_mochi_1_1_graphics_1_1_render_command_1afbaf71b729d6abedc4ed0971a4342c5d" prot="public" virt="non-virtual"><scope>Mochi::Graphics::RenderCommand</scope><name>zindex</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

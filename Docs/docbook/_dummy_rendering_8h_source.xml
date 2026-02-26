@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__dummy_rendering_8h_source" xml:lang="en-US">
+<title>DummyRendering.h</title>
+<indexterm><primary>Engine/src/Graphics/DummyRendering.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_DUMMYRENDERER</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_DUMMYRENDERER</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&lt;memory&gt;</emphasis>
+5 
+6 <emphasis role="preprocessor">#include&#32;&quot;IRenderer.h&quot;</emphasis>
+7 <emphasis role="preprocessor">#include&#32;&quot;AbstractTextureFactory.h&quot;</emphasis>
+8 <emphasis role="preprocessor">#include&#32;&quot;ITexture.h&quot;</emphasis>
+9 <emphasis role="preprocessor">#include&#32;&quot;../GUI/AbstractGUI.h&quot;</emphasis>
+10 <emphasis role="preprocessor">#include&#32;&quot;../Debug/IGizmos.h&quot;</emphasis>
+11 
+12 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Graphics
+13 {
+14 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>DummyTexture&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_mochi_1_1_graphics_1_1_i_texture">ITexture</link>
+15 &#32;&#32;&#32;&#32;{
+16 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DummyTexture()&#32;{}
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;~DummyTexture()&#32;{}
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_struct_mochi_1_1_vector2f">Vector2f</link>&#32;GetSize()<emphasis role="keyword">&#32;const&#32;override&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;{0.0f,&#32;0.0f};&#32;}
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetAlpha(<emphasis role="keyword">const</emphasis>&#32;uint8_t&#32;&amp;alpha)&#32;{}
+21 &#32;&#32;&#32;&#32;};
+22 
+23 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>DummyTextureFactory&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;AbstractTextureFactory
+24 &#32;&#32;&#32;&#32;{
+25 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DummyTextureFactory()&#32;{}
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;~DummyTextureFactory()&#32;{}
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;std::shared_ptr&lt;ITexture&gt;&#32;<link linkend="_class_mochi_1_1_graphics_1_1_dummy_texture_factory_1a87fe211cfdeea0862404eb5c0b567f0d">LoadTexture</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;texturePath)<emphasis role="keyword">&#32;override&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;std::make_shared&lt;DummyTexture&gt;();&#32;}
+29 &#32;&#32;&#32;&#32;};
+30 
+31 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>DummyGUI&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;AbstractGUI
+32 &#32;&#32;&#32;&#32;{
+33 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DummyGUI(<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link>&#32;*catalog,&#32;<link linkend="_class_mochi_1_1_graphics_1_1_i_renderer">IRenderer</link>&#32;*renderer,&#32;<link linkend="_class_mochi_1_1_input_1_1_i_action_manager">Input::IActionManager</link>&#32;*actionManager)&#32;:&#32;AbstractGUI(catalog,&#32;renderer,&#32;actionManager)&#32;{}
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;~DummyGUI()&#32;{}
+36 &#32;&#32;&#32;&#32;};
+37 
+38 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>DummyGizmos&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_mochi_1_1_debug_1_1_i_gizmos">Debug::IGizmos</link>
+39 &#32;&#32;&#32;&#32;{
+40 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DummyGizmos()&#32;{}
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;~DummyGizmos()&#32;{}
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawRectangle(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_rectangle">Physics::Rectangle</link>&#32;*rectangle,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_color">Color</link>&#32;&amp;color)<emphasis role="keyword">&#32;const&#32;override&#32;</emphasis>{};
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawCircle(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_circle">Physics::Circle</link>&#32;*circle,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_color">Color</link>&#32;&amp;color)<emphasis role="keyword">&#32;const&#32;override&#32;</emphasis>{};
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawLine(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_line">Physics::Line</link>&#32;*line,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_color">Color</link>&#32;&amp;color)<emphasis role="keyword">&#32;const&#32;override&#32;</emphasis>{};
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawPoint(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_point">Physics::Point</link>&#32;*point,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_color">Color</link>&#32;&amp;color)<emphasis role="keyword">&#32;const&#32;override&#32;</emphasis>{};
+47 &#32;&#32;&#32;&#32;};
+48 
+49 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>DummyRenderer&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_mochi_1_1_graphics_1_1_i_renderer">IRenderer</link>
+50 &#32;&#32;&#32;&#32;{
+51 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DummyRenderer()&#32;{}
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;~DummyRenderer()&#32;{}
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_mochi_1_1_graphics_1_1_dummy_renderer_1a019521a2460a61547b8fcd90511e0784">StartFrameRendering</link>()<emphasis role="keyword">&#32;const&#32;override&#32;</emphasis>{}
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_mochi_1_1_graphics_1_1_dummy_renderer_1a461be455f075df6771abc63152791895">Render</link>(std::vector&lt;RenderCommand&gt;&#32;renderQueue,&#32;<link linkend="_class_mochi_1_1_graphics_1_1_camera">Camera</link>&#32;*camera)<emphasis role="keyword">&#32;const&#32;override&#32;</emphasis>{}
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_mochi_1_1_graphics_1_1_dummy_renderer_1a9f31ee26d51c2ade3b9fe203364b7284">FinishRendering</link>()<emphasis role="keyword">&#32;const&#32;override&#32;</emphasis>{}
+57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;std::unique_ptr&lt;AbstractTextureFactory&gt;&#32;<link linkend="_class_mochi_1_1_graphics_1_1_dummy_renderer_1ad4cc57be39e73ed98578ff06eabca969">CreateTextureFactory</link>(<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link>&#32;*)<emphasis role="keyword">&#32;const&#32;override&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;std::make_unique&lt;DummyTextureFactory&gt;();&#32;}
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;std::unique_ptr&lt;AbstractGUI&gt;&#32;<link linkend="_class_mochi_1_1_graphics_1_1_dummy_renderer_1a54c84b17a07955005c83d7a84b5cfe3b">CreateGUI</link>(<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link>&#32;*catalog,&#32;<link linkend="_class_mochi_1_1_input_1_1_i_action_manager">Input::IActionManager</link>&#32;*actionManager)<emphasis role="keyword">&#32;override&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;std::make_unique&lt;DummyGUI&gt;(catalog,&#32;<emphasis role="keyword">this</emphasis>,&#32;actionManager);&#32;}
+59 <emphasis role="preprocessor">#if&#32;DEBUG</emphasis>
+60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;std::unique_ptr&lt;Debug::IGizmos&gt;&#32;CreateGizmos()<emphasis role="keyword">&#32;override&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;std::make_unique&lt;DummyGizmos&gt;();&#32;}
+61 <emphasis role="preprocessor">#endif</emphasis>
+62 &#32;&#32;&#32;&#32;};
+63 }
+64 
+65 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

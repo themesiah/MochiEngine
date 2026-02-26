@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_mochi_1_1_f_s_1_1_pack_catalog_1_1_pack" kind="struct" language="C++" prot="private">
+    <compoundname>Mochi::FS::PackCatalog::Pack</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_mochi_1_1_f_s_1_1_pack_catalog_1_1_pack_1a81c57943aaa239e2d8dbf7c27c31d422" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Mochi::FS::PackCatalog::Pack::packId</definition>
+        <argsstring></argsstring>
+        <name>packId</name>
+        <qualifiedname>Mochi::FS::PackCatalog::Pack::packId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/PackCatalog.h" line="69" column="25" bodyfile="Engine/src/Packer/PackCatalog.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_f_s_1_1_pack_catalog_1_1_pack_1a2afb157916e97fa1ae532f02ce6d8407" prot="public" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="class_mochi_1_1_f_s_1_1_i_file_loader" kindref="compound">IFileLoader</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;IFileLoader&gt; Mochi::FS::PackCatalog::Pack::fileLoader</definition>
+        <argsstring></argsstring>
+        <name>fileLoader</name>
+        <qualifiedname>Mochi::FS::PackCatalog::Pack::fileLoader</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Packer/PackCatalog.h" line="70" column="29" bodyfile="Engine/src/Packer/PackCatalog.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Packer/PackCatalog.h" line="67" column="9" bodyfile="Engine/src/Packer/PackCatalog.h" bodystart="68" bodyend="71"/>
+    <listofallmembers>
+      <member refid="struct_mochi_1_1_f_s_1_1_pack_catalog_1_1_pack_1a2afb157916e97fa1ae532f02ce6d8407" prot="public" virt="non-virtual"><scope>Mochi::FS::PackCatalog::Pack</scope><name>fileLoader</name></member>
+      <member refid="struct_mochi_1_1_f_s_1_1_pack_catalog_1_1_pack_1a81c57943aaa239e2d8dbf7c27c31d422" prot="public" virt="non-virtual"><scope>Mochi::FS::PackCatalog::Pack</scope><name>packId</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

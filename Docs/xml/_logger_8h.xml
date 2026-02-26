@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="_logger_8h" kind="file" language="C++">
+    <compoundname>Logger.h</compoundname>
+    <includes local="no">iostream</includes>
+    <includedby refid="_f_m_o_d_wrapper_8cpp" local="yes">Engine/src/Audio/FMODWrapper.cpp</includedby>
+    <includedby refid="_debug_layer_8cpp" local="yes">Engine/src/Debug/DebugLayer.cpp</includedby>
+    <includedby refid="_engine_8cpp" local="yes">Engine/src/Engine.cpp</includedby>
+    <includedby refid="_abstract_g_u_i_8cpp" local="yes">Engine/src/GUI/AbstractGUI.cpp</includedby>
+    <includedby refid="_s_d_l_g_u_i_8cpp" local="yes">Engine/src/GUI/SDLGUI.cpp</includedby>
+    <includedby refid="_abstract_texture_factory_8cpp" local="yes">Engine/src/Graphics/AbstractTextureFactory.cpp</includedby>
+    <includedby refid="_animated_sprite_8cpp" local="yes">Engine/src/Graphics/AnimatedSprite.cpp</includedby>
+    <includedby refid="_aseprite_animation_factory_8cpp" local="yes">Engine/src/Graphics/AsepriteAnimationFactory.cpp</includedby>
+    <includedby refid="_camera_8cpp" local="yes">Engine/src/Graphics/Camera.cpp</includedby>
+    <includedby refid="_sprite_base_8cpp" local="yes">Engine/src/Graphics/SpriteBase.cpp</includedby>
+    <includedby refid="_action_manager_8cpp" local="yes">Engine/src/Input/ActionManager.cpp</includedby>
+    <includedby refid="_input_manager_8cpp" local="yes">Engine/src/Input/InputManager.cpp</includedby>
+    <includedby refid="_performable_actions_8cpp" local="yes">Engine/src/Input/PerformableActions.cpp</includedby>
+    <includedby refid="_s_d_l_gamepad_provider_8cpp" local="yes">Engine/src/Input/SDLGamepadProvider.cpp</includedby>
+    <includedby refid="_pack_catalog_8cpp" local="yes">Engine/src/Packer/PackCatalog.cpp</includedby>
+    <includedby refid="_lua_bindings_8cpp" local="yes">Engine/src/Scripting/LuaBindings.cpp</includedby>
+    <includedby refid="_scripting_layer_8cpp" local="yes">Engine/src/Scripting/ScriptingLayer.cpp</includedby>
+    <includedby refid="_scripting_manager_8cpp" local="yes">Engine/src/Scripting/ScriptingManager.cpp</includedby>
+    <includedby refid="_time_system_8h" local="yes">Engine/src/Time/TimeSystem.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>Engine/src/Utils/Logger.h</label>
+        <link refid="_logger_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>iostream</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5">
+        <label>Engine/src/Debug/DebugLayer.h</label>
+        <link refid="_debug_layer_8h_source"/>
+      </node>
+      <node id="3">
+        <label>Engine/src/Engine.h</label>
+        <link refid="_engine_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Engine/src/Layer.h</label>
+        <link refid="_layer_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Engine/src/Scripting/ScriptingLayer.h</label>
+        <link refid="_scripting_layer_8h_source"/>
+      </node>
+      <node id="2">
+        <label>Engine/src/Time/TimeSystem.h</label>
+        <link refid="_time_system_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Engine/src/Utils/Logger.h</label>
+        <link refid="_logger_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="_logger_8h_1a90a763585c9c531e1ddbe2ab0ac827e6" prot="public" static="no">
+        <name>LOG_INFO</name>
+        <param><defname>x</defname></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Utils/Logger.h" line="7" column="9" bodyfile="Engine/src/Utils/Logger.h" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_logger_8h_1a804ee7b9d880018e268993d002cd35c8" prot="public" static="no">
+        <name>LOG_OK</name>
+        <param><defname>x</defname></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Utils/Logger.h" line="8" column="9" bodyfile="Engine/src/Utils/Logger.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_logger_8h_1a4cac45cb284ff3cb61992bde9d30e69c" prot="public" static="no">
+        <name>LOG_WARNING</name>
+        <param><defname>x</defname></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Utils/Logger.h" line="9" column="9" bodyfile="Engine/src/Utils/Logger.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_logger_8h_1aa047c38edeac5f6a168cdfc571bc3e36" prot="public" static="no">
+        <name>LOG_ERROR</name>
+        <param><defname>x</defname></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Utils/Logger.h" line="10" column="9" bodyfile="Engine/src/Utils/Logger.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_logger_8h_1a4680b45ab8b01e73e98524f25a852c37" prot="public" static="no">
+        <name>LOG_PANIC</name>
+        <param><defname>x</defname></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Utils/Logger.h" line="11" column="9" bodyfile="Engine/src/Utils/Logger.h" bodystart="11" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>HDEF_LOGGER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HDEF_LOGGER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>DEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_INFO(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_OK(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_WARNING(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_ERROR(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_PANIC(x)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*LOG_NOCOLOR<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\033[0m&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*LOG_COLOR_GREEN<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\x1B[32m&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*LOG_COLOR_YELLOW<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\x1B[33m&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*LOG_COLOR_RED<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\x1B[31m&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*LOG_COLOR_PANIC<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;\x1B[91m&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_INFO(x)<sp/>(std::cout<sp/>&lt;&lt;<sp/>LOG_NOCOLOR<sp/>&lt;&lt;<sp/>x<sp/>&lt;&lt;<sp/>&quot;<sp/>(&quot;<sp/>&lt;&lt;<sp/>__FILE__<sp/>&lt;&lt;<sp/>&quot;:&quot;<sp/>&lt;&lt;<sp/>__LINE__<sp/>&lt;&lt;<sp/>&quot;)&quot;<sp/>&lt;&lt;<sp/>LOG_NOCOLOR<sp/>&lt;&lt;<sp/>std::endl)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_OK(x)<sp/>(std::cout<sp/>&lt;&lt;<sp/>LOG_COLOR_GREEN<sp/>&lt;&lt;<sp/>x<sp/>&lt;&lt;<sp/>&quot;<sp/>(&quot;<sp/>&lt;&lt;<sp/>__FILE__<sp/>&lt;&lt;<sp/>&quot;:&quot;<sp/>&lt;&lt;<sp/>__LINE__<sp/>&lt;&lt;<sp/>&quot;)&quot;<sp/>&lt;&lt;<sp/>LOG_NOCOLOR<sp/>&lt;&lt;<sp/>std::endl)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_WARNING(x)<sp/>(std::cout<sp/>&lt;&lt;<sp/>LOG_COLOR_YELLOW<sp/>&lt;&lt;<sp/>x<sp/>&lt;&lt;<sp/>&quot;<sp/>(&quot;<sp/>&lt;&lt;<sp/>__FILE__<sp/>&lt;&lt;<sp/>&quot;:&quot;<sp/>&lt;&lt;<sp/>__LINE__<sp/>&lt;&lt;<sp/>&quot;)&quot;<sp/>&lt;&lt;<sp/>LOG_NOCOLOR<sp/>&lt;&lt;<sp/>std::endl)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_ERROR(x)<sp/>(std::cout<sp/>&lt;&lt;<sp/>LOG_COLOR_RED<sp/>&lt;&lt;<sp/>x<sp/>&lt;&lt;<sp/>&quot;<sp/>(&quot;<sp/>&lt;&lt;<sp/>__FILE__<sp/>&lt;&lt;<sp/>&quot;:&quot;<sp/>&lt;&lt;<sp/>__LINE__<sp/>&lt;&lt;<sp/>&quot;)&quot;<sp/>&lt;&lt;<sp/>LOG_NOCOLOR<sp/>&lt;&lt;<sp/>std::endl)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_PANIC(x)<sp/>(std::cout<sp/>&lt;&lt;<sp/>LOG_COLOR_PANIC<sp/>&lt;&lt;<sp/>x<sp/>&lt;&lt;<sp/>&quot;<sp/>(&quot;<sp/>&lt;&lt;<sp/>__FILE__<sp/>&lt;&lt;<sp/>&quot;:&quot;<sp/>&lt;&lt;<sp/>__LINE__<sp/>&lt;&lt;<sp/>&quot;)&quot;<sp/>&lt;&lt;<sp/>LOG_NOCOLOR<sp/>&lt;&lt;<sp/>std::endl)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Engine/src/Utils/Logger.h"/>
+  </compounddef>
+</doxygen>

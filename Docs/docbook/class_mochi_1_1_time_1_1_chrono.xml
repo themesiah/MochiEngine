@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_time_1_1_chrono" xml:lang="en-US">
+<title>Mochi::Time::Chrono Class Reference</title>
+<indexterm><primary>Mochi::Time::Chrono</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_time_1_1_chrono_1a90ed25a80700ddb923e0530396d713a9"/>float <emphasis role="strong">GetTime</emphasis> () const</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_time_1_1_chrono_1ae3692486b60ebb541c3c874e1676bc0b"/>void <emphasis role="strong">Tick</emphasis> (const float &amp;dt)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following files:</para>
+Engine/src/Time/Chrono.hEngine/src/Time/Chrono.cpp</section>

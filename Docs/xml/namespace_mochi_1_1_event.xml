@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="namespace_mochi_1_1_event" kind="namespace" language="C++">
+    <compoundname>Mochi::Event</compoundname>
+    <innerclass refid="class_mochi_1_1_event_1_1_dummy_event_dispatcher" prot="public">Mochi::Event::DummyEventDispatcher</innerclass>
+    <innerclass refid="class_mochi_1_1_event_1_1_event_bus" prot="public">Mochi::Event::EventBus</innerclass>
+    <innerclass refid="class_mochi_1_1_event_1_1_i_system_event_dispatcher" prot="public">Mochi::Event::ISystemEventDispatcher</innerclass>
+    <innerclass refid="class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher" prot="public">Mochi::Event::SDLSystemEventDispatcher</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="_event_bus_8h_1a9b807381ce8d819cda607eed9eb671f5" prot="public" static="no">
+        <type>size_t</type>
+        <definition>using Mochi::Event::SubscriptionHandler = size_t</definition>
+        <argsstring></argsstring>
+        <name>SubscriptionHandler</name>
+        <qualifiedname>Mochi::Event::SubscriptionHandler</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/EventBus.h" line="13" column="5" bodyfile="Engine/src/Event/EventBus.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_event_bus_8h_1a8edc4269e068ab3a725c539ada8ca9a5" prot="public" static="no">
+        <type>std::function&lt; void(const void *)&gt;</type>
+        <definition>using Mochi::Event::SubscriberFunc = std::function&lt;void(const void *)&gt;</definition>
+        <argsstring></argsstring>
+        <name>SubscriberFunc</name>
+        <qualifiedname>Mochi::Event::SubscriberFunc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/EventBus.h" line="14" column="5" bodyfile="Engine/src/Event/EventBus.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_event_bus_8h_1a7971488d56a243980059c310fe3c0ce5" prot="public" static="no">
+        <type>std::pair&lt; SubscriptionHandler, SubscriberFunc &gt;</type>
+        <definition>using Mochi::Event::SubscriberPair = std::pair&lt;SubscriptionHandler, SubscriberFunc&gt;</definition>
+        <argsstring></argsstring>
+        <name>SubscriberPair</name>
+        <qualifiedname>Mochi::Event::SubscriberPair</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/EventBus.h" line="15" column="5" bodyfile="Engine/src/Event/EventBus.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Engine.h" line="41" column="5"/>
+  </compounddef>
+</doxygen>

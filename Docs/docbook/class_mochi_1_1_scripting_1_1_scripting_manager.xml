@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_scripting_1_1_scripting_manager" xml:lang="en-US">
+<title>Mochi::Scripting::ScriptingManager Class Reference</title>
+<indexterm><primary>Mochi::Scripting::ScriptingManager</primary></indexterm>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_scripting_1_1_scripting_manager_1a29ceaed3cab8818b5510a5c04851a4ca"/><emphasis role="strong">ScriptingManager</emphasis> (<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link> *packCatalog)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_scripting_1_1_scripting_manager_1a63ce8b22d8452b67dd02944cfe6392a8"/>void <emphasis role="strong">Execute</emphasis> (const std::string &amp;code)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_scripting_1_1_scripting_manager_1ab69f1ee60d9b23a1d919f7208607fa42"/>void <emphasis role="strong">ExecuteFile</emphasis> (const std::string &amp;path)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_scripting_1_1_scripting_manager_1a8e9307df83018d94ed7b421eb6a51268"/>void <emphasis role="strong">ExecuteGlobal</emphasis> (const std::string &amp;code)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_scripting_1_1_scripting_manager_1a937de1957c52be60e8e4aae2cbf6dacd"/>void <emphasis role="strong">ExecuteFileGlobal</emphasis> (const std::string &amp;path)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_scripting_1_1_scripting_manager_1a279bb92186d1c9c800150bf9888ff1d6"/>void <emphasis role="strong">Update</emphasis> (const float &amp;dt)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_scripting_1_1_scripting_manager_1a41d4686e1314acd433937ed8bc592f56"/>void <emphasis role="strong">CleanEnvironment</emphasis> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_scripting_1_1_scripting_manager_1ad2cce6f2d04ed2f794b2335f53f9d79d"/>sol::state <emphasis role="strong">State</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following files:</para>
+Engine/src/Scripting/ScriptingManager.hEngine/src/Scripting/ScriptingManager.cpp</section>

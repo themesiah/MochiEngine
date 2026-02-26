@@ -1,0 +1,82 @@
+.TH "Mochi::Graphics::SpriteBase" 3 "MochiEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Mochi::Graphics::SpriteBase
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBMochi::Graphics::Spritesheet\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSpriteBase\fP (\fBAbstractTextureFactory\fP *, const std::string &filename)"
+.br
+.ti -1c
+.RI "void \fBLoadTexture\fP (\fBAbstractTextureFactory\fP *textureFactory, const std::string &filename)"
+.br
+.ti -1c
+.RI "virtual std::vector< \fBRenderCommand\fP > \fBGetRenderData\fP () const"
+.br
+.ti -1c
+.RI "virtual void \fBUpdate\fP (const float &dt)"
+.br
+.ti -1c
+.RI "void \fBSetZIndex\fP (const uint16_t &zIndex)"
+.br
+.ti -1c
+.RI "uint16_t \fBGetZIndex\fP () const"
+.br
+.ti -1c
+.RI "bool \fBIsVisible\fP () const"
+.br
+.ti -1c
+.RI "void \fBSetVisible\fP (const bool &visible)"
+.br
+.ti -1c
+.RI "uint8_t \fBGetAlpha\fP () const"
+.br
+.ti -1c
+.RI "void \fBSetAlpha\fP (const uint8_t &alpha)"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBTransform\fP > \fBGetTransform\fP () const"
+.br
+.ti -1c
+.RI "void \fBSetTransform\fP (std::shared_ptr< \fBTransform\fP > tr)"
+.br
+.ti -1c
+.RI "void \fBSetSrcRect\fP (const \fBRectf\fP &src)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::shared_ptr< \fBITexture\fP > \fBmTexture\fP"
+.br
+.ti -1c
+.RI "\fBRectf\fP \fBmSrcRect\fP"
+.br
+.ti -1c
+.RI "uint16_t \fBmZindex\fP"
+.br
+.ti -1c
+.RI "bool \fBmVisible\fP"
+.br
+.ti -1c
+.RI "uint8_t \fBmAlpha\fP"
+.br
+.ti -1c
+.RI "\fBVector2f\fP \fBmSize\fP"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBTransform\fP > \fBmTransform\fP"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MochiEngine from the source code\&.

@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_event_1_1_event_bus" kind="class" language="C++" prot="public">
+    <compoundname>Mochi::Event::EventBus</compoundname>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_mochi_1_1_event_1_1_event_bus_1a84d6fd202f630a5dfd3be998abbddc55" prot="private" static="no" mutable="no">
+        <type>SubscriptionHandler</type>
+        <definition>SubscriptionHandler Mochi::Event::EventBus::mLastSubscriptionHandler</definition>
+        <argsstring></argsstring>
+        <name>mLastSubscriptionHandler</name>
+        <qualifiedname>Mochi::Event::EventBus::mLastSubscriptionHandler</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/EventBus.h" line="19" column="29" bodyfile="Engine/src/Event/EventBus.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_mochi_1_1_event_1_1_event_bus_1aefa8654ba3c077742dc7ee6a1f1ccd26" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; SubscriptionHandler &gt;</type>
+        <definition>std::vector&lt;SubscriptionHandler&gt; Mochi::Event::EventBus::mFreeSubscriptionHandlers</definition>
+        <argsstring></argsstring>
+        <name>mFreeSubscriptionHandlers</name>
+        <qualifiedname>Mochi::Event::EventBus::mFreeSubscriptionHandlers</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/EventBus.h" line="20" column="21" bodyfile="Engine/src/Event/EventBus.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_mochi_1_1_event_1_1_event_bus_1a38589b6477722f7c5b9542e2293c5a15" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::type_index, std::vector&lt; SubscriberPair &gt; &gt;</type>
+        <definition>std::unordered_map&lt;std::type_index, std::vector&lt;SubscriberPair&gt; &gt; Mochi::Event::EventBus::mSubscribersMap</definition>
+        <argsstring></argsstring>
+        <name>mSubscribersMap</name>
+        <qualifiedname>Mochi::Event::EventBus::mSubscribersMap</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/EventBus.h" line="21" column="28" bodyfile="Engine/src/Event/EventBus.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_mochi_1_1_event_1_1_event_bus_1a1d3d83f3766c28912914f29d0a7744ef" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>SubscriptionHandler</type>
+        <definition>SubscriptionHandler Mochi::Event::EventBus::GetNextSubscriptionHandler</definition>
+        <argsstring>()</argsstring>
+        <name>GetNextSubscriptionHandler</name>
+        <qualifiedname>Mochi::Event::EventBus::GetNextSubscriptionHandler</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/EventBus.h" line="23" column="29" bodyfile="Engine/src/Event/EventBus.h" bodystart="23" bodyend="35"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_event_1_1_event_bus_1a00b584fea3e70b9d37eb08847cecb93f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Event::EventBus::EventBus</definition>
+        <argsstring>()</argsstring>
+        <name>EventBus</name>
+        <qualifiedname>Mochi::Event::EventBus::EventBus</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/EventBus.h" line="38" column="9" bodyfile="Engine/src/Event/EventBus.h" bodystart="38" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_event_1_1_event_bus_1a761e3d560c6d7f1849bc8700f44eb375" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Event::EventBus::~EventBus</definition>
+        <argsstring>()</argsstring>
+        <name>~EventBus</name>
+        <qualifiedname>Mochi::Event::EventBus::~EventBus</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/EventBus.h" line="39" column="9" bodyfile="Engine/src/Event/EventBus.h" bodystart="39" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_event_1_1_event_bus_1ac676d665d2150a14eac8bc53f3f7a0ab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename EventType</type>
+          </param>
+        </templateparamlist>
+        <type>SubscriptionHandler</type>
+        <definition>SubscriptionHandler Mochi::Event::EventBus::Subscribe</definition>
+        <argsstring>(std::function&lt; void(const EventType &amp;)&gt; callback)</argsstring>
+        <name>Subscribe</name>
+        <qualifiedname>Mochi::Event::EventBus::Subscribe</qualifiedname>
+        <param>
+          <type>std::function&lt; void(const EventType &amp;)&gt;</type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/EventBus.h" line="46" column="29" bodyfile="Engine/src/Event/EventBus.h" bodystart="46" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_event_1_1_event_bus_1aecea06cde68e8523a2045cf2650ebba6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename EventType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Mochi::Event::EventBus::Unsubscribe</definition>
+        <argsstring>(SubscriptionHandler handler)</argsstring>
+        <name>Unsubscribe</name>
+        <qualifiedname>Mochi::Event::EventBus::Unsubscribe</qualifiedname>
+        <param>
+          <type>SubscriptionHandler</type>
+          <declname>handler</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/EventBus.h" line="55" column="14" bodyfile="Engine/src/Event/EventBus.h" bodystart="55" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_event_1_1_event_bus_1a2743e6ad90e08f277711357b26cdb85e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename EventType</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void Mochi::Event::EventBus::Publish</definition>
+        <argsstring>(const EventType &amp;event)</argsstring>
+        <name>Publish</name>
+        <qualifiedname>Mochi::Event::EventBus::Publish</qualifiedname>
+        <param>
+          <type>const EventType &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/EventBus.h" line="72" column="14" bodyfile="Engine/src/Event/EventBus.h" bodystart="72" bodyend="82"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Event/EventBus.h" line="16" column="5" bodyfile="Engine/src/Event/EventBus.h" bodystart="17" bodyend="83"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_event_1_1_event_bus_1a00b584fea3e70b9d37eb08847cecb93f" prot="public" virt="non-virtual"><scope>Mochi::Event::EventBus</scope><name>EventBus</name></member>
+      <member refid="class_mochi_1_1_event_1_1_event_bus_1a1d3d83f3766c28912914f29d0a7744ef" prot="private" virt="non-virtual"><scope>Mochi::Event::EventBus</scope><name>GetNextSubscriptionHandler</name></member>
+      <member refid="class_mochi_1_1_event_1_1_event_bus_1aefa8654ba3c077742dc7ee6a1f1ccd26" prot="private" virt="non-virtual"><scope>Mochi::Event::EventBus</scope><name>mFreeSubscriptionHandlers</name></member>
+      <member refid="class_mochi_1_1_event_1_1_event_bus_1a84d6fd202f630a5dfd3be998abbddc55" prot="private" virt="non-virtual"><scope>Mochi::Event::EventBus</scope><name>mLastSubscriptionHandler</name></member>
+      <member refid="class_mochi_1_1_event_1_1_event_bus_1a38589b6477722f7c5b9542e2293c5a15" prot="private" virt="non-virtual"><scope>Mochi::Event::EventBus</scope><name>mSubscribersMap</name></member>
+      <member refid="class_mochi_1_1_event_1_1_event_bus_1a2743e6ad90e08f277711357b26cdb85e" prot="public" virt="non-virtual"><scope>Mochi::Event::EventBus</scope><name>Publish</name></member>
+      <member refid="class_mochi_1_1_event_1_1_event_bus_1ac676d665d2150a14eac8bc53f3f7a0ab" prot="public" virt="non-virtual"><scope>Mochi::Event::EventBus</scope><name>Subscribe</name></member>
+      <member refid="class_mochi_1_1_event_1_1_event_bus_1aecea06cde68e8523a2045cf2650ebba6" prot="public" virt="non-virtual"><scope>Mochi::Event::EventBus</scope><name>Unsubscribe</name></member>
+      <member refid="class_mochi_1_1_event_1_1_event_bus_1a761e3d560c6d7f1849bc8700f44eb375" prot="public" virt="non-virtual"><scope>Mochi::Event::EventBus</scope><name>~EventBus</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_a6b73010b9e2979271452c5d026ba725" kind="dir">
+    <compoundname>Engine/src/Time</compoundname>
+    <innerfile refid="_chrono_8cpp">Chrono.cpp</innerfile>
+    <innerfile refid="_chrono_8h">Chrono.h</innerfile>
+    <innerfile refid="_timer_8cpp">Timer.cpp</innerfile>
+    <innerfile refid="_timer_8h">Timer.h</innerfile>
+    <innerfile refid="_time_system_8cpp">TimeSystem.cpp</innerfile>
+    <innerfile refid="_time_system_8h">TimeSystem.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Time/"/>
+  </compounddef>
+</doxygen>

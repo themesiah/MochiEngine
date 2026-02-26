@@ -1,0 +1,44 @@
+.TH "Mochi::Graphics::AsepriteAnimationFactory" 3 "MochiEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Mochi::Graphics::AsepriteAnimationFactory
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBMochi::Graphics::IAnimationFactory\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAsepriteAnimationFactory\fP (\fBFS::PackCatalog\fP *)"
+.br
+.ti -1c
+.RI "virtual std::shared_ptr< \fBAnimationsData\fP > \fBGetAnimationsData\fP (const std::string &animationDataPath) override"
+.br
+.ti -1c
+.RI "virtual void \fBDeleteCache\fP () override"
+.br
+.ti -1c
+.RI "virtual void \fBDeleteAnimation\fP (const std::string &texturePath) override"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "void Mochi::Graphics::AsepriteAnimationFactory::DeleteAnimation (const std::string & texturePath)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Graphics::IAnimationFactory\fP\&.
+.SS "void Mochi::Graphics::AsepriteAnimationFactory::DeleteCache ()\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Graphics::IAnimationFactory\fP\&.
+.SS "std::shared_ptr< \fBAnimationsData\fP > Mochi::Graphics::AsepriteAnimationFactory::GetAnimationsData (const std::string & animationDataPath)\fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBMochi::Graphics::IAnimationFactory\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MochiEngine from the source code\&.

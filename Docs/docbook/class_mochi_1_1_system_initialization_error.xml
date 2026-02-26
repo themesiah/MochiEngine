@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_system_initialization_error" xml:lang="en-US">
+<title>Mochi::SystemInitializationError Class Reference</title>
+<indexterm><primary>Mochi::SystemInitializationError</primary></indexterm>
+<para>Inheritance diagram for Mochi::SystemInitializationError:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_mochi_1_1_system_initialization_error.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_system_initialization_error_1a495622ca1dd7ab6649ad5a52cd863b80"/><emphasis role="strong">SystemInitializationError</emphasis> (const std::string &amp;system, const std::string &amp;msg)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_class_mochi_1_1_engine_error">Mochi::EngineError</link>        <itemizedlist>
+            <listitem><para><emphasis role="strong">EngineError</emphasis> (const std::string &amp;msg, std::source_location loc=std::source_location::current())</para>
+</listitem>
+        </itemizedlist>
+<para>
+The documentation for this class was generated from the following file:</para>
+Engine/src/Exception.hpp</section>

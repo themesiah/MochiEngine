@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__aseprite_animation_factory_8h_source" xml:lang="en-US">
+<title>AsepriteAnimationFactory.h</title>
+<indexterm><primary>Engine/src/Graphics/AsepriteAnimationFactory.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_ANIMATIONFACTORY</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_ANIMATIONFACTORY</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&quot;AnimationData.h&quot;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&quot;IAnimationFactory.h&quot;</emphasis>
+6 
+7 <emphasis role="preprocessor">#include&#32;&lt;memory&gt;</emphasis>
+8 <emphasis role="preprocessor">#include&#32;&lt;unordered_map&gt;</emphasis>
+9 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+10 
+11 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::FS
+12 {
+13 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">PackCatalog</link>;
+14 }
+15 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Graphics
+16 {
+17 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>AsepriteAnimationFactory&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_mochi_1_1_graphics_1_1_i_animation_factory">IAnimationFactory</link>
+18 &#32;&#32;&#32;&#32;{
+19 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::unordered_map&lt;std::string,&#32;std::shared_ptr&lt;AnimationsData&gt;&gt;&#32;mAnimationDataMap;
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link>&#32;*mCatalog;
+22 
+23 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;AsepriteAnimationFactory(<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link>&#32;*);
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;~AsepriteAnimationFactory();
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;std::shared_ptr&lt;AnimationsData&gt;&#32;GetAnimationsData(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;animationDataPath)&#32;<emphasis role="keyword">override</emphasis>;
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DeleteCache()&#32;<emphasis role="keyword">override</emphasis>;
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DeleteAnimation(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;texturePath)&#32;<emphasis role="keyword">override</emphasis>;
+29 &#32;&#32;&#32;&#32;};
+30 
+31 }
+32 
+33 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

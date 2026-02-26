@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_graphics_1_1_s_d_l_texture_factory" kind="class" language="C++" prot="public">
+    <compoundname>Mochi::Graphics::SDLTextureFactory</compoundname>
+    <basecompoundref refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory" prot="public" virt="non-virtual">Mochi::Graphics::AbstractTextureFactory</basecompoundref>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_mochi_1_1_graphics_1_1_s_d_l_texture_factory_1a6b759ab354ae37afcd13dfd78eeb6ffc" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class SDLRenderer</definition>
+        <argsstring></argsstring>
+        <name>SDLRenderer</name>
+        <qualifiedname>Mochi::Graphics::SDLTextureFactory::SDLRenderer</qualifiedname>
+        <param>
+          <type>SDLRenderer</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/SDL/SDLTextureFactory.h" line="23" column="22" bodyfile="Engine/src/Graphics/SDL/SDLTextureFactory.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_mochi_1_1_graphics_1_1_s_d_l_texture_factory_1aae7ac52cfb1d665fff604b9bf5f48793" prot="private" static="no" mutable="no">
+        <type><ref refid="class_mochi_1_1_f_s_1_1_pack_catalog" kindref="compound">FS::PackCatalog</ref> *</type>
+        <definition>FS::PackCatalog* Mochi::Graphics::SDLTextureFactory::mCatalog</definition>
+        <argsstring></argsstring>
+        <name>mCatalog</name>
+        <qualifiedname>Mochi::Graphics::SDLTextureFactory::mCatalog</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/SDL/SDLTextureFactory.h" line="25" column="25" bodyfile="Engine/src/Graphics/SDL/SDLTextureFactory.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_mochi_1_1_graphics_1_1_s_d_l_texture_factory_1adef35bee4eddebc151dc0a16024269ee" prot="private" static="no" mutable="no">
+        <type>SDL_Renderer *</type>
+        <definition>SDL_Renderer* Mochi::Graphics::SDLTextureFactory::mRenderer</definition>
+        <argsstring></argsstring>
+        <name>mRenderer</name>
+        <qualifiedname>Mochi::Graphics::SDLTextureFactory::mRenderer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/SDL/SDLTextureFactory.h" line="26" column="22" bodyfile="Engine/src/Graphics/SDL/SDLTextureFactory.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_s_d_l_texture_factory_1afe7d9e0d678b173c1f55bb891cdc6e44" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Graphics::SDLTextureFactory::SDLTextureFactory</definition>
+        <argsstring>(FS::PackCatalog *catalog, SDL_Renderer *renderer)</argsstring>
+        <name>SDLTextureFactory</name>
+        <qualifiedname>Mochi::Graphics::SDLTextureFactory::SDLTextureFactory</qualifiedname>
+        <param>
+          <type><ref refid="class_mochi_1_1_f_s_1_1_pack_catalog" kindref="compound">FS::PackCatalog</ref> *</type>
+          <declname>catalog</declname>
+        </param>
+        <param>
+          <type>SDL_Renderer *</type>
+          <declname>renderer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/SDL/SDLTextureFactory.h" line="24" column="9" bodyfile="Engine/src/Graphics/SDL/SDLTextureFactory.cpp" bodystart="17" bodyend="19"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_s_d_l_texture_factory_1aa1f557a049b3a67cca4e0b0e753de739" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::shared_ptr&lt; <ref refid="class_mochi_1_1_graphics_1_1_i_texture" kindref="compound">ITexture</ref> &gt;</type>
+        <definition>std::shared_ptr&lt; ITexture &gt; Mochi::Graphics::SDLTextureFactory::LoadTexture</definition>
+        <argsstring>(const std::string &amp;texturePath) override</argsstring>
+        <name>LoadTexture</name>
+        <qualifiedname>Mochi::Graphics::SDLTextureFactory::LoadTexture</qualifiedname>
+        <reimplements refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1ad5bd8a4ebfa5b8bf0342593e6ab458de">LoadTexture</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>texturePath</declname>
+        </param>
+        <briefdescription>
+<para>Gets a texture from the cache if it exists, or loads it from the catalog if not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>texturePath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The texture path in the catalog </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A pointer to the texture </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/SDL/SDLTextureFactory.h" line="29" column="33" bodyfile="Engine/src/Graphics/SDL/SDLTextureFactory.cpp" bodystart="28" bodyend="42"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_s_d_l_texture_factory_1ad7589fac8b0774f6cf6605f2d465810f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>Mochi::Graphics::SDLTextureFactory::~SDLTextureFactory</definition>
+        <argsstring>()</argsstring>
+        <name>~SDLTextureFactory</name>
+        <qualifiedname>Mochi::Graphics::SDLTextureFactory::~SDLTextureFactory</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/SDL/SDLTextureFactory.h" line="32" column="17" bodyfile="Engine/src/Graphics/SDL/SDLTextureFactory.cpp" bodystart="21" bodyend="23"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Mochi::Graphics::AbstractTextureFactory</label>
+        <link refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory"/>
+      </node>
+      <node id="1">
+        <label>Mochi::Graphics::SDLTextureFactory</label>
+        <link refid="class_mochi_1_1_graphics_1_1_s_d_l_texture_factory"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Mochi::Graphics::AbstractTextureFactory</label>
+        <link refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory"/>
+      </node>
+      <node id="1">
+        <label>Mochi::Graphics::SDLTextureFactory</label>
+        <link refid="class_mochi_1_1_graphics_1_1_s_d_l_texture_factory"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Graphics/SDL/SDLTextureFactory.h" line="20" column="5" bodyfile="Engine/src/Graphics/SDL/SDLTextureFactory.h" bodystart="21" bodyend="33"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1a609e68e93633406cc49eaba8b27793b2" prot="public" virt="non-virtual"><scope>Mochi::Graphics::SDLTextureFactory</scope><name>AbstractTextureFactory</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1a311bcb940cfced4ccb69a297e74748f7" prot="public" virt="non-virtual"><scope>Mochi::Graphics::SDLTextureFactory</scope><name>DeleteCache</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1a456af37bfaf4dcf55ad0df412ed17888" prot="public" virt="non-virtual"><scope>Mochi::Graphics::SDLTextureFactory</scope><name>DeleteTexture</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1aa5071adc90bb9efaeaa749d273d01724" prot="public" virt="non-virtual"><scope>Mochi::Graphics::SDLTextureFactory</scope><name>GetTexture</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_texture_factory_1aa1f557a049b3a67cca4e0b0e753de739" prot="protected" virt="virtual"><scope>Mochi::Graphics::SDLTextureFactory</scope><name>LoadTexture</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_texture_factory_1aae7ac52cfb1d665fff604b9bf5f48793" prot="private" virt="non-virtual"><scope>Mochi::Graphics::SDLTextureFactory</scope><name>mCatalog</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_texture_factory_1adef35bee4eddebc151dc0a16024269ee" prot="private" virt="non-virtual"><scope>Mochi::Graphics::SDLTextureFactory</scope><name>mRenderer</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1a41bdbf61766433ee52b9cf540e529b72" prot="protected" virt="non-virtual"><scope>Mochi::Graphics::SDLTextureFactory</scope><name>mTexturesMap</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_texture_factory_1a6b759ab354ae37afcd13dfd78eeb6ffc" prot="private" virt="non-virtual"><scope>Mochi::Graphics::SDLTextureFactory</scope><name>SDLRenderer</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_texture_factory_1afe7d9e0d678b173c1f55bb891cdc6e44" prot="private" virt="non-virtual"><scope>Mochi::Graphics::SDLTextureFactory</scope><name>SDLTextureFactory</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_abstract_texture_factory_1af35d9f4af7a896d57510110c4ab62564" prot="public" virt="virtual"><scope>Mochi::Graphics::SDLTextureFactory</scope><name>~AbstractTextureFactory</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_s_d_l_texture_factory_1ad7589fac8b0774f6cf6605f2d465810f" prot="public" virt="virtual"><scope>Mochi::Graphics::SDLTextureFactory</scope><name>~SDLTextureFactory</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

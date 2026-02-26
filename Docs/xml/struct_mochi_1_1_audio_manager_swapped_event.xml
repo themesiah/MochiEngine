@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_mochi_1_1_audio_manager_swapped_event" kind="struct" language="C++" prot="public">
+    <compoundname>Mochi::AudioManagerSwappedEvent</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_mochi_1_1_audio_manager_swapped_event_1a440885f7df267f053a8b91afef4b5057" prot="public" static="no" mutable="no">
+        <type><ref refid="class_mochi_1_1_audio_1_1_i_audio_manager" kindref="compound">Audio::IAudioManager</ref> *</type>
+        <definition>Audio::IAudioManager* Mochi::AudioManagerSwappedEvent::newManager</definition>
+        <argsstring></argsstring>
+        <name>newManager</name>
+        <qualifiedname>Mochi::AudioManagerSwappedEvent::newManager</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/EngineEvents.h" line="39" column="30" bodyfile="Engine/src/Event/EngineEvents.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Mochi::Audio::IAudioManager</label>
+        <link refid="class_mochi_1_1_audio_1_1_i_audio_manager"/>
+      </node>
+      <node id="1">
+        <label>Mochi::AudioManagerSwappedEvent</label>
+        <link refid="struct_mochi_1_1_audio_manager_swapped_event"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>newManager</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Event/EngineEvents.h" line="37" column="5" bodyfile="Engine/src/Event/EngineEvents.h" bodystart="38" bodyend="40"/>
+    <listofallmembers>
+      <member refid="struct_mochi_1_1_audio_manager_swapped_event_1a440885f7df267f053a8b91afef4b5057" prot="public" virt="non-virtual"><scope>Mochi::AudioManagerSwappedEvent</scope><name>newManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

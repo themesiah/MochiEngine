@@ -1,0 +1,46 @@
+.TH "Mochi::Physics::Shape" 3 "MochiEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Mochi::Physics::Shape
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBMochi::Physics::Circle\fP, \fBMochi::Physics::Line\fP, \fBMochi::Physics::Point\fP, and \fBMochi::Physics::Rectangle\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBShape\fP (const \fBVector2f\fP &position)"
+.br
+.ti -1c
+.RI "virtual std::unique_ptr< Shape > \fBClone\fP () const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBIsColliding\fP (const Shape &other) const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBCollides\fP (const \fBPoint\fP &p) const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBCollides\fP (const \fBLine\fP &l) const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBCollides\fP (const \fBCircle\fP &c) const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBCollides\fP (const \fBRectangle\fP &r) const =0"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBVector2f\fP \fBPosition\fP"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MochiEngine from the source code\&.

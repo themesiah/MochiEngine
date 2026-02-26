@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher" kind="class" language="C++" prot="public">
+    <compoundname>Mochi::Event::SDLSystemEventDispatcher</compoundname>
+    <basecompoundref refid="class_mochi_1_1_event_1_1_i_system_event_dispatcher" prot="public" virt="non-virtual">Mochi::Event::ISystemEventDispatcher</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher_1ad7ce61ad06c50a3316df3060eca25c19" prot="private" static="no" mutable="no">
+        <type><ref refid="class_mochi_1_1_event_1_1_event_bus" kindref="compound">EventBus</ref> *</type>
+        <definition>EventBus* Mochi::Event::SDLSystemEventDispatcher::mEventBus</definition>
+        <argsstring></argsstring>
+        <name>mEventBus</name>
+        <qualifiedname>Mochi::Event::SDLSystemEventDispatcher::mEventBus</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/SDLSystemEventDispatcher.h" line="12" column="18" bodyfile="Engine/src/Event/SDLSystemEventDispatcher.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher_1aa789b2325d4e652c90dd291ed812bf4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Event::SDLSystemEventDispatcher::SDLSystemEventDispatcher</definition>
+        <argsstring>(EventBus *eventBus)</argsstring>
+        <name>SDLSystemEventDispatcher</name>
+        <qualifiedname>Mochi::Event::SDLSystemEventDispatcher::SDLSystemEventDispatcher</qualifiedname>
+        <param>
+          <type><ref refid="class_mochi_1_1_event_1_1_event_bus" kindref="compound">EventBus</ref> *</type>
+          <declname>eventBus</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/SDLSystemEventDispatcher.h" line="15" column="9" bodyfile="Engine/src/Event/SDLSystemEventDispatcher.cpp" bodystart="10" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher_1ab0c24b82e5cd6d60379651e300bf8fe2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>Mochi::Event::SDLSystemEventDispatcher::~SDLSystemEventDispatcher</definition>
+        <argsstring>()</argsstring>
+        <name>~SDLSystemEventDispatcher</name>
+        <qualifiedname>Mochi::Event::SDLSystemEventDispatcher::~SDLSystemEventDispatcher</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/SDLSystemEventDispatcher.h" line="16" column="17" bodyfile="Engine/src/Event/SDLSystemEventDispatcher.cpp" bodystart="14" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher_1a1575b435bec601f5eaa8824869435908" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Mochi::Event::SDLSystemEventDispatcher::PollEvents</definition>
+        <argsstring>() const</argsstring>
+        <name>PollEvents</name>
+        <qualifiedname>Mochi::Event::SDLSystemEventDispatcher::PollEvents</qualifiedname>
+        <reimplements refid="class_mochi_1_1_event_1_1_i_system_event_dispatcher_1a783b1102acffe1c2b1c931ce162045b3">PollEvents</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Event/SDLSystemEventDispatcher.h" line="17" column="22" bodyfile="Engine/src/Event/SDLSystemEventDispatcher.cpp" bodystart="18" bodyend="36"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Mochi::Event::ISystemEventDispatcher</label>
+        <link refid="class_mochi_1_1_event_1_1_i_system_event_dispatcher"/>
+      </node>
+      <node id="1">
+        <label>Mochi::Event::SDLSystemEventDispatcher</label>
+        <link refid="class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Mochi::Event::ISystemEventDispatcher</label>
+        <link refid="class_mochi_1_1_event_1_1_i_system_event_dispatcher"/>
+      </node>
+      <node id="1">
+        <label>Mochi::Event::SDLSystemEventDispatcher</label>
+        <link refid="class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Event/SDLSystemEventDispatcher.h" line="9" column="5" bodyfile="Engine/src/Event/SDLSystemEventDispatcher.h" bodystart="10" bodyend="18"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher_1ad7ce61ad06c50a3316df3060eca25c19" prot="private" virt="non-virtual"><scope>Mochi::Event::SDLSystemEventDispatcher</scope><name>mEventBus</name></member>
+      <member refid="class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher_1a1575b435bec601f5eaa8824869435908" prot="public" virt="virtual"><scope>Mochi::Event::SDLSystemEventDispatcher</scope><name>PollEvents</name></member>
+      <member refid="class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher_1aa789b2325d4e652c90dd291ed812bf4d" prot="public" virt="non-virtual"><scope>Mochi::Event::SDLSystemEventDispatcher</scope><name>SDLSystemEventDispatcher</name></member>
+      <member refid="class_mochi_1_1_event_1_1_i_system_event_dispatcher_1a38505a8ba09df7546459cde377d572fa" prot="public" virt="virtual"><scope>Mochi::Event::SDLSystemEventDispatcher</scope><name>~ISystemEventDispatcher</name></member>
+      <member refid="class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher_1ab0c24b82e5cd6d60379651e300bf8fe2" prot="public" virt="virtual"><scope>Mochi::Event::SDLSystemEventDispatcher</scope><name>~SDLSystemEventDispatcher</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

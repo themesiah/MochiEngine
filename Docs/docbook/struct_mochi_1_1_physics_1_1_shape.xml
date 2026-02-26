@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_mochi_1_1_physics_1_1_shape" xml:lang="en-US">
+<title>Mochi::Physics::Shape Struct Reference</title>
+<indexterm><primary>Mochi::Physics::Shape</primary></indexterm>
+<para>Inheritance diagram for Mochi::Physics::Shape:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="struct_mochi_1_1_physics_1_1_shape.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_physics_1_1_shape_1a1dbd61727b60ae5fd0daa61472f5e63c"/><emphasis role="strong">Shape</emphasis> (const <link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> &amp;position)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_physics_1_1_shape_1a3c43ee1b2bf092fb4ff01860bfd6af71"/>virtual std::unique_ptr&lt; Shape &gt; <emphasis role="strong">Clone</emphasis> () const =0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_physics_1_1_shape_1a381afe2333b4063bf31850e74842b21a"/>virtual bool <emphasis role="strong">IsColliding</emphasis> (const Shape &amp;other) const =0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_physics_1_1_shape_1a8086d16b3ccf337a16bdf3b6cbb1f9c4"/>virtual bool <emphasis role="strong">Collides</emphasis> (const <link linkend="_struct_mochi_1_1_physics_1_1_point">Point</link> &amp;p) const =0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_physics_1_1_shape_1adb94fe29932940f200bec70b540f8e0e"/>virtual bool <emphasis role="strong">Collides</emphasis> (const <link linkend="_struct_mochi_1_1_physics_1_1_line">Line</link> &amp;l) const =0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_physics_1_1_shape_1a4339da66b6c5900b52a97ff322905542"/>virtual bool <emphasis role="strong">Collides</emphasis> (const <link linkend="_struct_mochi_1_1_physics_1_1_circle">Circle</link> &amp;c) const =0</para>
+</listitem>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_physics_1_1_shape_1a92e09662fdde5c14d7509e2a6e4f9b36"/>virtual bool <emphasis role="strong">Collides</emphasis> (const <link linkend="_struct_mochi_1_1_physics_1_1_rectangle">Rectangle</link> &amp;r) const =0</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_struct_mochi_1_1_physics_1_1_shape_1aee5e89844725febdf60c1e00029b341d"/><link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> <emphasis role="strong">Position</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this struct was generated from the following file:</para>
+Engine/src/Physics/Shapes.h</section>

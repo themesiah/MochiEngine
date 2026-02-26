@@ -1,0 +1,65 @@
+.TH "Mochi::Graphics::AbstractGUI" 3 "MochiEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Mochi::Graphics::AbstractGUI
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBMochi::Graphics::DummyGUI\fP, and \fBMochi::Graphics::SDLGUI\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractGUI\fP (\fBFS::PackCatalog\fP *catalog, \fBIRenderer\fP *renderer, \fBInput::IActionManager\fP *actionManager)"
+.br
+.ti -1c
+.RI "void \fBUpdate\fP (const float &dt)"
+.br
+.ti -1c
+.RI "virtual \fBGUIResultButton\fP \fBButton\fP (const \fBGUIButtonOptions\fP &options, const char *label, const \fBGUITextOptions\fP &textOptions)"
+.br
+.ti -1c
+.RI "virtual \fBGUIResult\fP \fBText\fP (const char *label, const \fBGUITextOptions\fP &options)"
+.br
+.ti -1c
+.RI "virtual \fBGUIResult\fP \fBSprite\fP (const \fBGUIOptions\fP &options)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "GUIElementId \fBGetNextId\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnUpdate\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "GUIElementId \fBmFocusId\fP"
+.br
+.ti -1c
+.RI "GUIElementId \fBmPressedId\fP"
+.br
+.ti -1c
+.RI "std::unique_ptr< \fBAbstractTextureFactory\fP > \fBmTextureFactory\fP"
+.br
+.ti -1c
+.RI "\fBIRenderer\fP * \fBmRenderer\fP"
+.br
+.ti -1c
+.RI "\fBFS::PackCatalog\fP * \fBmCatalog\fP"
+.br
+.ti -1c
+.RI "\fBInput::IActionManager\fP * \fBmActionManager\fP"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MochiEngine from the source code\&.

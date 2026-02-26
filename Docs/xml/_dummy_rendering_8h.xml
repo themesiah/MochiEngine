@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="_dummy_rendering_8h" kind="file" language="C++">
+    <compoundname>DummyRendering.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes refid="_i_renderer_8h" local="yes">IRenderer.h</includes>
+    <includes refid="_abstract_texture_factory_8h" local="yes">AbstractTextureFactory.h</includes>
+    <includes refid="_i_texture_8h" local="yes">ITexture.h</includes>
+    <includes refid="_abstract_g_u_i_8h" local="yes">../GUI/AbstractGUI.h</includes>
+    <includes refid="_i_gizmos_8h" local="yes">../Debug/IGizmos.h</includes>
+    <incdepgraph>
+      <node id="20">
+        <label>../Constants.h</label>
+        <link refid="_constants_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>../Debug/IGizmos.h</label>
+        <link refid="_i_gizmos_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>../Exception.hpp</label>
+        <link refid="_exception_8hpp_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>../GUI/AbstractGUI.h</label>
+        <link refid="_abstract_g_u_i_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>GUICommon.hpp</label>
+        <link refid="_g_u_i_common_8hpp_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>AbstractTextureFactory.h</label>
+        <link refid="_abstract_texture_factory_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Engine/src/Graphics/DummyRendering.h</label>
+        <link refid="_dummy_rendering_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>IRenderer.h</label>
+        <link refid="_i_renderer_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>ITexture.h</label>
+        <link refid="_i_texture_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>RenderCommand.h</label>
+        <link refid="_render_command_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>../Physics/Shapes.h</label>
+        <link refid="_shapes_8h_source"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>../Types/Types.hpp</label>
+        <link refid="_types_8hpp_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>SDL3/SDL.h</label>
+      </node>
+      <node id="23">
+        <label>array</label>
+      </node>
+      <node id="11">
+        <label>format</label>
+      </node>
+      <node id="9">
+        <label>math.h</label>
+      </node>
+      <node id="2">
+        <label>memory</label>
+      </node>
+      <node id="6">
+        <label>optional</label>
+      </node>
+      <node id="14">
+        <label>source_location</label>
+      </node>
+      <node id="13">
+        <label>stdexcept</label>
+      </node>
+      <node id="10">
+        <label>string</label>
+      </node>
+      <node id="17">
+        <label>unordered_map</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="class_mochi_1_1_graphics_1_1_dummy_texture" prot="public">Mochi::Graphics::DummyTexture</innerclass>
+    <innerclass refid="class_mochi_1_1_graphics_1_1_dummy_texture_factory" prot="public">Mochi::Graphics::DummyTextureFactory</innerclass>
+    <innerclass refid="class_mochi_1_1_graphics_1_1_dummy_g_u_i" prot="public">Mochi::Graphics::DummyGUI</innerclass>
+    <innerclass refid="class_mochi_1_1_graphics_1_1_dummy_gizmos" prot="public">Mochi::Graphics::DummyGizmos</innerclass>
+    <innerclass refid="class_mochi_1_1_graphics_1_1_dummy_renderer" prot="public">Mochi::Graphics::DummyRenderer</innerclass>
+    <innernamespace refid="namespace_mochi">Mochi</innernamespace>
+    <innernamespace refid="namespace_mochi_1_1_graphics">Mochi::Graphics</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>HDEF_DUMMYRENDERER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HDEF_DUMMYRENDERER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;IRenderer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;AbstractTextureFactory.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ITexture.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../GUI/AbstractGUI.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;../Debug/IGizmos.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">Mochi::Graphics</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14" refid="class_mochi_1_1_graphics_1_1_dummy_texture" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">DummyTexture<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_mochi_1_1_graphics_1_1_i_texture" kindref="compound">ITexture</ref></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DummyTexture()<sp/>{}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~DummyTexture()<sp/>{}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref><sp/>GetSize()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{0.0f,<sp/>0.0f};<sp/>}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SetAlpha(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>&amp;alpha)<sp/>{}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="class_mochi_1_1_graphics_1_1_dummy_texture_factory" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">DummyTextureFactory<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>AbstractTextureFactory</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DummyTextureFactory()<sp/>{}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~DummyTextureFactory()<sp/>{}</highlight></codeline>
+<codeline lineno="28" refid="class_mochi_1_1_graphics_1_1_dummy_texture_factory_1a87fe211cfdeea0862404eb5c0b567f0d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;ITexture&gt;<sp/><ref refid="class_mochi_1_1_graphics_1_1_dummy_texture_factory_1a87fe211cfdeea0862404eb5c0b567f0d" kindref="member">LoadTexture</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;texturePath)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_shared&lt;DummyTexture&gt;();<sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="class_mochi_1_1_graphics_1_1_dummy_g_u_i" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">DummyGUI<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>AbstractGUI</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DummyGUI(<ref refid="class_mochi_1_1_f_s_1_1_pack_catalog" kindref="compound">FS::PackCatalog</ref><sp/>*catalog,<sp/><ref refid="class_mochi_1_1_graphics_1_1_i_renderer" kindref="compound">IRenderer</ref><sp/>*renderer,<sp/><ref refid="class_mochi_1_1_input_1_1_i_action_manager" kindref="compound">Input::IActionManager</ref><sp/>*actionManager)<sp/>:<sp/>AbstractGUI(catalog,<sp/>renderer,<sp/>actionManager)<sp/>{}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~DummyGUI()<sp/>{}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="class_mochi_1_1_graphics_1_1_dummy_gizmos" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">DummyGizmos<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_mochi_1_1_debug_1_1_i_gizmos" kindref="compound">Debug::IGizmos</ref></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DummyGizmos()<sp/>{}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~DummyGizmos()<sp/>{}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawRectangle(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_rectangle" kindref="compound">Physics::Rectangle</ref><sp/>*rectangle,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_color" kindref="compound">Color</ref><sp/>&amp;color)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawCircle(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_circle" kindref="compound">Physics::Circle</ref><sp/>*circle,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_color" kindref="compound">Color</ref><sp/>&amp;color)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{};</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawLine(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_line" kindref="compound">Physics::Line</ref><sp/>*line,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_color" kindref="compound">Color</ref><sp/>&amp;color)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{};</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DrawPoint(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_physics_1_1_point" kindref="compound">Physics::Point</ref><sp/>*point,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_mochi_1_1_color" kindref="compound">Color</ref><sp/>&amp;color)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="class_mochi_1_1_graphics_1_1_dummy_renderer" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">DummyRenderer<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_mochi_1_1_graphics_1_1_i_renderer" kindref="compound">IRenderer</ref></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DummyRenderer()<sp/>{}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~DummyRenderer()<sp/>{}</highlight></codeline>
+<codeline lineno="54" refid="class_mochi_1_1_graphics_1_1_dummy_renderer_1a019521a2460a61547b8fcd90511e0784" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_mochi_1_1_graphics_1_1_dummy_renderer_1a019521a2460a61547b8fcd90511e0784" kindref="member">StartFrameRendering</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{}</highlight></codeline>
+<codeline lineno="55" refid="class_mochi_1_1_graphics_1_1_dummy_renderer_1a461be455f075df6771abc63152791895" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_mochi_1_1_graphics_1_1_dummy_renderer_1a461be455f075df6771abc63152791895" kindref="member">Render</ref>(std::vector&lt;RenderCommand&gt;<sp/>renderQueue,<sp/><ref refid="class_mochi_1_1_graphics_1_1_camera" kindref="compound">Camera</ref><sp/>*camera)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{}</highlight></codeline>
+<codeline lineno="56" refid="class_mochi_1_1_graphics_1_1_dummy_renderer_1a9f31ee26d51c2ade3b9fe203364b7284" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_mochi_1_1_graphics_1_1_dummy_renderer_1a9f31ee26d51c2ade3b9fe203364b7284" kindref="member">FinishRendering</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{}</highlight></codeline>
+<codeline lineno="57" refid="class_mochi_1_1_graphics_1_1_dummy_renderer_1ad4cc57be39e73ed98578ff06eabca969" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;AbstractTextureFactory&gt;<sp/><ref refid="class_mochi_1_1_graphics_1_1_dummy_renderer_1ad4cc57be39e73ed98578ff06eabca969" kindref="member">CreateTextureFactory</ref>(<ref refid="class_mochi_1_1_f_s_1_1_pack_catalog" kindref="compound">FS::PackCatalog</ref><sp/>*)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_unique&lt;DummyTextureFactory&gt;();<sp/>}</highlight></codeline>
+<codeline lineno="58" refid="class_mochi_1_1_graphics_1_1_dummy_renderer_1a54c84b17a07955005c83d7a84b5cfe3b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;AbstractGUI&gt;<sp/><ref refid="class_mochi_1_1_graphics_1_1_dummy_renderer_1a54c84b17a07955005c83d7a84b5cfe3b" kindref="member">CreateGUI</ref>(<ref refid="class_mochi_1_1_f_s_1_1_pack_catalog" kindref="compound">FS::PackCatalog</ref><sp/>*catalog,<sp/><ref refid="class_mochi_1_1_input_1_1_i_action_manager" kindref="compound">Input::IActionManager</ref><sp/>*actionManager)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_unique&lt;DummyGUI&gt;(catalog,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>actionManager);<sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>DEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;Debug::IGizmos&gt;<sp/>CreateGizmos()</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_unique&lt;DummyGizmos&gt;();<sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Engine/src/Graphics/DummyRendering.h"/>
+  </compounddef>
+</doxygen>

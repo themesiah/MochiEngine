@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__assert_8h_source" xml:lang="en-US">
+<title>Assert.h</title>
+<indexterm><primary>Engine/src/Utils/Assert.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 
+2 <emphasis role="preprocessor">#ifndef&#32;HDEF_ASSERT</emphasis>
+3 <emphasis role="preprocessor">#define&#32;HDEF_ASSERT</emphasis>
+4 
+5 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+6 
+7 <emphasis role="preprocessor">#ifndef&#32;DEBUG</emphasis>
+8 <emphasis role="preprocessor">#define&#32;ASSERT(message,&#32;x)</emphasis>
+9 <emphasis role="preprocessor">#else</emphasis>
+10 <emphasis role="preprocessor">#define&#32;ASSERT(message,&#32;x)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;\</emphasis>
+11 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;if&#32;(!(x))&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;\</emphasis>
+12 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;\</emphasis>
+13 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;!!!!!ASSERTION&#32;FAILED!!!!!&quot;&#32;&lt;&lt;&#32;std::endl&#32;\</emphasis>
+14 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;&lt;&#32;&quot;\&quot;&quot;&#32;&lt;&lt;&#32;message&#32;&lt;&lt;&#32;&quot;\&quot;&quot;&#32;&lt;&lt;&#32;std::endl&#32;&#32;&#32;&#32;&#32;&#32;\</emphasis>
+15 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;&lt;&#32;#x&#32;&lt;&lt;&#32;std::endl&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;\</emphasis>
+16 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;&lt;&#32;&quot;File:&#32;&quot;&#32;&lt;&lt;&#32;__FILE__&#32;&lt;&lt;&#32;std::endl&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;\</emphasis>
+17 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;&lt;&#32;&quot;Line:&#32;&quot;&#32;&lt;&lt;&#32;__LINE__&#32;&lt;&lt;&#32;std::endl;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;\</emphasis>
+18 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;exit(-1);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;\</emphasis>
+19 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;}</emphasis>
+20 <emphasis role="preprocessor">#endif</emphasis>
+21 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

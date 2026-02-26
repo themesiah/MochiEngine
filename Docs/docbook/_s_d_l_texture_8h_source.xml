@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__s_d_l_texture_8h_source" xml:lang="en-US">
+<title>SDLTexture.h</title>
+<indexterm><primary>Engine/src/Graphics/SDL/SDLTexture.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_SDLTEXTURE</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_SDLTEXTURE</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&quot;../ITexture.h&quot;</emphasis>
+5 
+6 <emphasis role="preprocessor">#include&#32;&quot;SDL3/SDL.h&quot;</emphasis>
+7 
+8 <emphasis role="preprocessor">#include&#32;&quot;../../Types/Types.hpp&quot;</emphasis>
+9 
+10 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Graphics
+11 {
+12 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>SDLTexture&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_mochi_1_1_graphics_1_1_i_texture">ITexture</link>
+13 &#32;&#32;&#32;&#32;{
+14 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SDLTexture(SDL_Texture&#32;*texture);
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;~SDLTexture();
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_struct_mochi_1_1_vector2f">Vector2f</link>&#32;GetSize()&#32;<emphasis role="keyword">const&#32;override</emphasis>;
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SDL_Texture&#32;*GetTexture()&#32;<emphasis role="keyword">const</emphasis>;
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetAlpha(<emphasis role="keyword">const</emphasis>&#32;uint8_t&#32;&amp;alpha)&#32;<emphasis role="keyword">override</emphasis>;
+20 
+21 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+22 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SDL_Texture&#32;*mTexture;
+23 &#32;&#32;&#32;&#32;};
+24 }
+25 
+26 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

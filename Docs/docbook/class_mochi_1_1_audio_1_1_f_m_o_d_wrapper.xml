@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper" xml:lang="en-US">
+<title>Mochi::Audio::FMODWrapper Class Reference</title>
+<indexterm><primary>Mochi::Audio::FMODWrapper</primary></indexterm>
+<para>Inheritance diagram for Mochi::Audio::FMODWrapper:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1abec79a76e87c00078c20e485d6508a26"/><emphasis role="strong">FMODWrapper</emphasis> (<link linkend="_class_mochi_1_1_f_s_1_1_pack_catalog">FS::PackCatalog</link> *, <link linkend="_class_mochi_1_1_scripting_1_1_scripting_manager">Scripting::ScriptingManager</link> *)</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1a49d33aca4f9a6626573e004ca2f06c34">Update</link> (const float &amp;dt) override</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1acce9c4f69f92630f6b6eb61738811b69">LoadAudio</link> (const std::string &amp;path) override</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1ad4edd7769e5f9506aceea1876741db04">UnloadAudio</link> (const std::string &amp;path) override</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1a41e22fcb4b06f7aa54f02c376bb26fdc">PlayBGM</link> (const std::string &amp;eventName) override</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1ac65626a0a44e59ce60035467d881af49">PauseBGM</link> () override</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1a5ae1a3e67716584e51e139686f20d8ae">ResumeBGM</link> () override</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1a55689529c43248398f3ce32d3d37a303">StopBGM</link> () override</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1ac07e9f7220ea15fce8822b3cf80d545f">SkipToTimelinePosition</link> (const int &amp;ms) override</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1a9fba3cbd6a2a943006304382b6c89e4c">PlayOneShot</link> (const std::string &amp;eventName) override</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1ad041fe028b7ffb71f0bb03e2f0f8cf22"/>void <emphasis role="strong">ClearSoundCache</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1a3f18108b9038ab0f1fe076c15ea3cf63"/>void <emphasis role="strong">ClearBusCache</emphasis> ()</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1ab8a3a0c4a5df85eb85277b1760929145">SetParameter</link> (const std::string &amp;parameterName, const float &amp;value) override</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1ac49e67345bfc471a3ae978081fe6eb69">SetMixerVolume</link> (const std::string &amp;busGroupName, const float &amp;value) override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1acce9c4f69f92630f6b6eb61738811b69"/><section>
+    <title>LoadAudio()</title>
+<indexterm><primary>LoadAudio</primary><secondary>Mochi::Audio::FMODWrapper</secondary></indexterm>
+<indexterm><primary>Mochi::Audio::FMODWrapper</primary><secondary>LoadAudio</secondary></indexterm>
+<para><computeroutput>virtual void Mochi::Audio::FMODWrapper::LoadAudio (const std::string &amp; path)<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_audio_1_1_i_audio_manager">Mochi::Audio::IAudioManager</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1ac65626a0a44e59ce60035467d881af49"/><section>
+    <title>PauseBGM()</title>
+<indexterm><primary>PauseBGM</primary><secondary>Mochi::Audio::FMODWrapper</secondary></indexterm>
+<indexterm><primary>Mochi::Audio::FMODWrapper</primary><secondary>PauseBGM</secondary></indexterm>
+<para><computeroutput>void Mochi::Audio::FMODWrapper::PauseBGM ( )<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_audio_1_1_i_audio_manager">Mochi::Audio::IAudioManager</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1a41e22fcb4b06f7aa54f02c376bb26fdc"/><section>
+    <title>PlayBGM()</title>
+<indexterm><primary>PlayBGM</primary><secondary>Mochi::Audio::FMODWrapper</secondary></indexterm>
+<indexterm><primary>Mochi::Audio::FMODWrapper</primary><secondary>PlayBGM</secondary></indexterm>
+<para><computeroutput>void Mochi::Audio::FMODWrapper::PlayBGM (const std::string &amp; eventName)<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_audio_1_1_i_audio_manager">Mochi::Audio::IAudioManager</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1a9fba3cbd6a2a943006304382b6c89e4c"/><section>
+    <title>PlayOneShot()</title>
+<indexterm><primary>PlayOneShot</primary><secondary>Mochi::Audio::FMODWrapper</secondary></indexterm>
+<indexterm><primary>Mochi::Audio::FMODWrapper</primary><secondary>PlayOneShot</secondary></indexterm>
+<para><computeroutput>void Mochi::Audio::FMODWrapper::PlayOneShot (const std::string &amp; eventName)<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_audio_1_1_i_audio_manager">Mochi::Audio::IAudioManager</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1a5ae1a3e67716584e51e139686f20d8ae"/><section>
+    <title>ResumeBGM()</title>
+<indexterm><primary>ResumeBGM</primary><secondary>Mochi::Audio::FMODWrapper</secondary></indexterm>
+<indexterm><primary>Mochi::Audio::FMODWrapper</primary><secondary>ResumeBGM</secondary></indexterm>
+<para><computeroutput>void Mochi::Audio::FMODWrapper::ResumeBGM ( )<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_audio_1_1_i_audio_manager">Mochi::Audio::IAudioManager</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1ac49e67345bfc471a3ae978081fe6eb69"/><section>
+    <title>SetMixerVolume()</title>
+<indexterm><primary>SetMixerVolume</primary><secondary>Mochi::Audio::FMODWrapper</secondary></indexterm>
+<indexterm><primary>Mochi::Audio::FMODWrapper</primary><secondary>SetMixerVolume</secondary></indexterm>
+<para><computeroutput>virtual void Mochi::Audio::FMODWrapper::SetMixerVolume (const std::string &amp; busGroupName, const float &amp; value)<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_audio_1_1_i_audio_manager">Mochi::Audio::IAudioManager</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1ab8a3a0c4a5df85eb85277b1760929145"/><section>
+    <title>SetParameter()</title>
+<indexterm><primary>SetParameter</primary><secondary>Mochi::Audio::FMODWrapper</secondary></indexterm>
+<indexterm><primary>Mochi::Audio::FMODWrapper</primary><secondary>SetParameter</secondary></indexterm>
+<para><computeroutput>void Mochi::Audio::FMODWrapper::SetParameter (const std::string &amp; parameterName, const float &amp; value)<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_audio_1_1_i_audio_manager">Mochi::Audio::IAudioManager</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1ac07e9f7220ea15fce8822b3cf80d545f"/><section>
+    <title>SkipToTimelinePosition()</title>
+<indexterm><primary>SkipToTimelinePosition</primary><secondary>Mochi::Audio::FMODWrapper</secondary></indexterm>
+<indexterm><primary>Mochi::Audio::FMODWrapper</primary><secondary>SkipToTimelinePosition</secondary></indexterm>
+<para><computeroutput>void Mochi::Audio::FMODWrapper::SkipToTimelinePosition (const int &amp; ms)<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_audio_1_1_i_audio_manager">Mochi::Audio::IAudioManager</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1a55689529c43248398f3ce32d3d37a303"/><section>
+    <title>StopBGM()</title>
+<indexterm><primary>StopBGM</primary><secondary>Mochi::Audio::FMODWrapper</secondary></indexterm>
+<indexterm><primary>Mochi::Audio::FMODWrapper</primary><secondary>StopBGM</secondary></indexterm>
+<para><computeroutput>void Mochi::Audio::FMODWrapper::StopBGM ( )<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_audio_1_1_i_audio_manager">Mochi::Audio::IAudioManager</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1ad4edd7769e5f9506aceea1876741db04"/><section>
+    <title>UnloadAudio()</title>
+<indexterm><primary>UnloadAudio</primary><secondary>Mochi::Audio::FMODWrapper</secondary></indexterm>
+<indexterm><primary>Mochi::Audio::FMODWrapper</primary><secondary>UnloadAudio</secondary></indexterm>
+<para><computeroutput>virtual void Mochi::Audio::FMODWrapper::UnloadAudio (const std::string &amp; path)<computeroutput>[inline]</computeroutput>, <computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_audio_1_1_i_audio_manager">Mochi::Audio::IAudioManager</link>.</para>
+</section>
+<anchor xml:id="_class_mochi_1_1_audio_1_1_f_m_o_d_wrapper_1a49d33aca4f9a6626573e004ca2f06c34"/><section>
+    <title>Update()</title>
+<indexterm><primary>Update</primary><secondary>Mochi::Audio::FMODWrapper</secondary></indexterm>
+<indexterm><primary>Mochi::Audio::FMODWrapper</primary><secondary>Update</secondary></indexterm>
+<para><computeroutput>void Mochi::Audio::FMODWrapper::Update (const float &amp; dt)<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Implements <link linkend="_class_mochi_1_1_audio_1_1_i_audio_manager">Mochi::Audio::IAudioManager</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+Engine/src/Audio/FMODWrapper.hEngine/src/Audio/FMODWrapper.cpp</section>
+</section>

@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_graphics_1_1_dummy_gizmos" kind="class" language="C++" prot="public">
+    <compoundname>Mochi::Graphics::DummyGizmos</compoundname>
+    <basecompoundref refid="class_mochi_1_1_debug_1_1_i_gizmos" prot="public" virt="non-virtual">Mochi::Debug::IGizmos</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_dummy_gizmos_1a854ea2a86d44a7a60b030cc1999dbbf9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Graphics::DummyGizmos::DummyGizmos</definition>
+        <argsstring>()</argsstring>
+        <name>DummyGizmos</name>
+        <qualifiedname>Mochi::Graphics::DummyGizmos::DummyGizmos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/DummyRendering.h" line="41" column="9" bodyfile="Engine/src/Graphics/DummyRendering.h" bodystart="41" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_dummy_gizmos_1afaf0b17ccac69707e20b30983dde4aa9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Mochi::Graphics::DummyGizmos::~DummyGizmos</definition>
+        <argsstring>()</argsstring>
+        <name>~DummyGizmos</name>
+        <qualifiedname>Mochi::Graphics::DummyGizmos::~DummyGizmos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/DummyRendering.h" line="42" column="17" bodyfile="Engine/src/Graphics/DummyRendering.h" bodystart="42" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_dummy_gizmos_1ab06a7d6c47ae3bcee864c843d81e749a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Graphics::DummyGizmos::DrawRectangle</definition>
+        <argsstring>(const Physics::Rectangle *rectangle, const Color &amp;color) const override</argsstring>
+        <name>DrawRectangle</name>
+        <qualifiedname>Mochi::Graphics::DummyGizmos::DrawRectangle</qualifiedname>
+        <reimplements refid="class_mochi_1_1_debug_1_1_i_gizmos_1a8ec55d33b957338d1f09c041f954a940">DrawRectangle</reimplements>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_physics_1_1_rectangle" kindref="compound">Physics::Rectangle</ref> *</type>
+          <declname>rectangle</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_color" kindref="compound">Color</ref> &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/DummyRendering.h" line="43" column="22" bodyfile="Engine/src/Graphics/DummyRendering.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_dummy_gizmos_1aefb37e3c1a21c06d584e32391628e82f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Graphics::DummyGizmos::DrawCircle</definition>
+        <argsstring>(const Physics::Circle *circle, const Color &amp;color) const override</argsstring>
+        <name>DrawCircle</name>
+        <qualifiedname>Mochi::Graphics::DummyGizmos::DrawCircle</qualifiedname>
+        <reimplements refid="class_mochi_1_1_debug_1_1_i_gizmos_1ac678e4d5f9b2e9b54b3b5fe7292386c6">DrawCircle</reimplements>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_physics_1_1_circle" kindref="compound">Physics::Circle</ref> *</type>
+          <declname>circle</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_color" kindref="compound">Color</ref> &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/DummyRendering.h" line="44" column="22" bodyfile="Engine/src/Graphics/DummyRendering.h" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_dummy_gizmos_1a856d8b1bef6db00f272c174cbf22bc05" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Graphics::DummyGizmos::DrawLine</definition>
+        <argsstring>(const Physics::Line *line, const Color &amp;color) const override</argsstring>
+        <name>DrawLine</name>
+        <qualifiedname>Mochi::Graphics::DummyGizmos::DrawLine</qualifiedname>
+        <reimplements refid="class_mochi_1_1_debug_1_1_i_gizmos_1a9aa71075b716eb6b2fd9b12977dd7813">DrawLine</reimplements>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_physics_1_1_line" kindref="compound">Physics::Line</ref> *</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_color" kindref="compound">Color</ref> &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/DummyRendering.h" line="45" column="22" bodyfile="Engine/src/Graphics/DummyRendering.h" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_graphics_1_1_dummy_gizmos_1a6376b189fad781a5f66c7ba2bda1ad9d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Graphics::DummyGizmos::DrawPoint</definition>
+        <argsstring>(const Physics::Point *point, const Color &amp;color) const override</argsstring>
+        <name>DrawPoint</name>
+        <qualifiedname>Mochi::Graphics::DummyGizmos::DrawPoint</qualifiedname>
+        <reimplements refid="class_mochi_1_1_debug_1_1_i_gizmos_1a666c77f5baeceed30f774a8d9fb405a1">DrawPoint</reimplements>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_physics_1_1_point" kindref="compound">Physics::Point</ref> *</type>
+          <declname>point</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_color" kindref="compound">Color</ref> &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Graphics/DummyRendering.h" line="46" column="22" bodyfile="Engine/src/Graphics/DummyRendering.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Mochi::Debug::IGizmos</label>
+        <link refid="class_mochi_1_1_debug_1_1_i_gizmos"/>
+      </node>
+      <node id="1">
+        <label>Mochi::Graphics::DummyGizmos</label>
+        <link refid="class_mochi_1_1_graphics_1_1_dummy_gizmos"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Mochi::Debug::IGizmos</label>
+        <link refid="class_mochi_1_1_debug_1_1_i_gizmos"/>
+      </node>
+      <node id="1">
+        <label>Mochi::Graphics::DummyGizmos</label>
+        <link refid="class_mochi_1_1_graphics_1_1_dummy_gizmos"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Engine/src/Graphics/DummyRendering.h" line="38" column="5" bodyfile="Engine/src/Graphics/DummyRendering.h" bodystart="39" bodyend="47"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_graphics_1_1_dummy_gizmos_1aefb37e3c1a21c06d584e32391628e82f" prot="public" virt="virtual"><scope>Mochi::Graphics::DummyGizmos</scope><name>DrawCircle</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_dummy_gizmos_1a856d8b1bef6db00f272c174cbf22bc05" prot="public" virt="virtual"><scope>Mochi::Graphics::DummyGizmos</scope><name>DrawLine</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_dummy_gizmos_1a6376b189fad781a5f66c7ba2bda1ad9d" prot="public" virt="virtual"><scope>Mochi::Graphics::DummyGizmos</scope><name>DrawPoint</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_dummy_gizmos_1ab06a7d6c47ae3bcee864c843d81e749a" prot="public" virt="virtual"><scope>Mochi::Graphics::DummyGizmos</scope><name>DrawRectangle</name></member>
+      <member refid="class_mochi_1_1_debug_1_1_i_gizmos_1a58685a5b50ed0032d2a85d3e1b13df5a" prot="public" virt="non-virtual"><scope>Mochi::Graphics::DummyGizmos</scope><name>DrawShape</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_dummy_gizmos_1a854ea2a86d44a7a60b030cc1999dbbf9" prot="public" virt="non-virtual"><scope>Mochi::Graphics::DummyGizmos</scope><name>DummyGizmos</name></member>
+      <member refid="class_mochi_1_1_graphics_1_1_dummy_gizmos_1afaf0b17ccac69707e20b30983dde4aa9" prot="public" virt="virtual"><scope>Mochi::Graphics::DummyGizmos</scope><name>~DummyGizmos</name></member>
+      <member refid="class_mochi_1_1_debug_1_1_i_gizmos_1a891c5bceed7f34176088f3f0cd14743c" prot="public" virt="virtual"><scope>Mochi::Graphics::DummyGizmos</scope><name>~IGizmos</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

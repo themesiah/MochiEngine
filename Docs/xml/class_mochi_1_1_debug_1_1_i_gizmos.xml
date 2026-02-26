@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_mochi_1_1_debug_1_1_i_gizmos" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>Mochi::Debug::IGizmos</compoundname>
+    <derivedcompoundref refid="class_mochi_1_1_debug_1_1_s_d_l_gizmos" prot="public" virt="non-virtual">Mochi::Debug::SDLGizmos</derivedcompoundref>
+    <derivedcompoundref refid="class_mochi_1_1_graphics_1_1_dummy_gizmos" prot="public" virt="non-virtual">Mochi::Graphics::DummyGizmos</derivedcompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mochi_1_1_debug_1_1_i_gizmos_1a891c5bceed7f34176088f3f0cd14743c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>Mochi::Debug::IGizmos::~IGizmos</definition>
+        <argsstring>()</argsstring>
+        <name>~IGizmos</name>
+        <qualifiedname>Mochi::Debug::IGizmos::~IGizmos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Debug/IGizmos.h" line="15" column="17" bodyfile="Engine/src/Debug/IGizmos.cpp" bodystart="8" bodyend="8"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_debug_1_1_i_gizmos_1a58685a5b50ed0032d2a85d3e1b13df5a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mochi::Debug::IGizmos::DrawShape</definition>
+        <argsstring>(const Physics::Shape &amp;shape, const Color &amp;color) const</argsstring>
+        <name>DrawShape</name>
+        <qualifiedname>Mochi::Debug::IGizmos::DrawShape</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_physics_1_1_shape" kindref="compound">Physics::Shape</ref> &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_color" kindref="compound">Color</ref> &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Debug/IGizmos.h" line="16" column="14" bodyfile="Engine/src/Debug/IGizmos.cpp" bodystart="10" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_debug_1_1_i_gizmos_1a8ec55d33b957338d1f09c041f954a940" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Debug::IGizmos::DrawRectangle</definition>
+        <argsstring>(const Physics::Rectangle *rectangle, const Color &amp;color) const =0</argsstring>
+        <name>DrawRectangle</name>
+        <qualifiedname>Mochi::Debug::IGizmos::DrawRectangle</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_debug_1_1_s_d_l_gizmos_1a4058594bba250027d5046524587d52b1">DrawRectangle</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_graphics_1_1_dummy_gizmos_1ab06a7d6c47ae3bcee864c843d81e749a">DrawRectangle</reimplementedby>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_physics_1_1_rectangle" kindref="compound">Physics::Rectangle</ref> *</type>
+          <declname>rectangle</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_color" kindref="compound">Color</ref> &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Debug/IGizmos.h" line="17" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_debug_1_1_i_gizmos_1ac678e4d5f9b2e9b54b3b5fe7292386c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Debug::IGizmos::DrawCircle</definition>
+        <argsstring>(const Physics::Circle *circle, const Color &amp;color) const =0</argsstring>
+        <name>DrawCircle</name>
+        <qualifiedname>Mochi::Debug::IGizmos::DrawCircle</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_debug_1_1_s_d_l_gizmos_1ab12593f78d5565904cda7547c8c37763">DrawCircle</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_graphics_1_1_dummy_gizmos_1aefb37e3c1a21c06d584e32391628e82f">DrawCircle</reimplementedby>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_physics_1_1_circle" kindref="compound">Physics::Circle</ref> *</type>
+          <declname>circle</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_color" kindref="compound">Color</ref> &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Debug/IGizmos.h" line="18" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_debug_1_1_i_gizmos_1a9aa71075b716eb6b2fd9b12977dd7813" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Debug::IGizmos::DrawLine</definition>
+        <argsstring>(const Physics::Line *line, const Color &amp;color) const =0</argsstring>
+        <name>DrawLine</name>
+        <qualifiedname>Mochi::Debug::IGizmos::DrawLine</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_debug_1_1_s_d_l_gizmos_1a44b734930b35e967f22c794b58982b52">DrawLine</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_graphics_1_1_dummy_gizmos_1a856d8b1bef6db00f272c174cbf22bc05">DrawLine</reimplementedby>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_physics_1_1_line" kindref="compound">Physics::Line</ref> *</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_color" kindref="compound">Color</ref> &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Debug/IGizmos.h" line="19" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mochi_1_1_debug_1_1_i_gizmos_1a666c77f5baeceed30f774a8d9fb405a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void Mochi::Debug::IGizmos::DrawPoint</definition>
+        <argsstring>(const Physics::Point *point, const Color &amp;color) const =0</argsstring>
+        <name>DrawPoint</name>
+        <qualifiedname>Mochi::Debug::IGizmos::DrawPoint</qualifiedname>
+        <reimplementedby refid="class_mochi_1_1_debug_1_1_s_d_l_gizmos_1ac8e5589854cf45572539cc684cc1bdcd">DrawPoint</reimplementedby>
+        <reimplementedby refid="class_mochi_1_1_graphics_1_1_dummy_gizmos_1a6376b189fad781a5f66c7ba2bda1ad9d">DrawPoint</reimplementedby>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_physics_1_1_point" kindref="compound">Physics::Point</ref> *</type>
+          <declname>point</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_color" kindref="compound">Color</ref> &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Debug/IGizmos.h" line="20" column="22"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Mochi::Debug::IGizmos</label>
+        <link refid="class_mochi_1_1_debug_1_1_i_gizmos"/>
+      </node>
+      <node id="2">
+        <label>Mochi::Debug::SDLGizmos</label>
+        <link refid="class_mochi_1_1_debug_1_1_s_d_l_gizmos"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Mochi::Graphics::DummyGizmos</label>
+        <link refid="class_mochi_1_1_graphics_1_1_dummy_gizmos"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="Engine/src/Debug/IGizmos.h" line="12" column="5" bodyfile="Engine/src/Debug/IGizmos.h" bodystart="13" bodyend="21"/>
+    <listofallmembers>
+      <member refid="class_mochi_1_1_debug_1_1_i_gizmos_1ac678e4d5f9b2e9b54b3b5fe7292386c6" prot="public" virt="pure-virtual"><scope>Mochi::Debug::IGizmos</scope><name>DrawCircle</name></member>
+      <member refid="class_mochi_1_1_debug_1_1_i_gizmos_1a9aa71075b716eb6b2fd9b12977dd7813" prot="public" virt="pure-virtual"><scope>Mochi::Debug::IGizmos</scope><name>DrawLine</name></member>
+      <member refid="class_mochi_1_1_debug_1_1_i_gizmos_1a666c77f5baeceed30f774a8d9fb405a1" prot="public" virt="pure-virtual"><scope>Mochi::Debug::IGizmos</scope><name>DrawPoint</name></member>
+      <member refid="class_mochi_1_1_debug_1_1_i_gizmos_1a8ec55d33b957338d1f09c041f954a940" prot="public" virt="pure-virtual"><scope>Mochi::Debug::IGizmos</scope><name>DrawRectangle</name></member>
+      <member refid="class_mochi_1_1_debug_1_1_i_gizmos_1a58685a5b50ed0032d2a85d3e1b13df5a" prot="public" virt="non-virtual"><scope>Mochi::Debug::IGizmos</scope><name>DrawShape</name></member>
+      <member refid="class_mochi_1_1_debug_1_1_i_gizmos_1a891c5bceed7f34176088f3f0cd14743c" prot="public" virt="virtual"><scope>Mochi::Debug::IGizmos</scope><name>~IGizmos</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

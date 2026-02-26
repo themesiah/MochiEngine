@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__s_d_l_gizmos_8h_source" xml:lang="en-US">
+<title>SDLGizmos.h</title>
+<indexterm><primary>Engine/src/Debug/SDLGizmos.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#ifndef&#32;HDEF_SDLGIZMOS</emphasis>
+2 <emphasis role="preprocessor">#define&#32;HDEF_SDLGIZMOS</emphasis>
+3 
+4 <emphasis role="preprocessor">#include&#32;&quot;IGizmos.h&quot;</emphasis>
+5 
+6 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Graphics
+7 {
+8 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_s_d_l_renderer">SDLRenderer</link>;
+9 }
+10 <emphasis role="keyword">namespace&#32;</emphasis>Mochi
+11 {
+12 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_mochi_1_1_color">Color</link>;
+13 }
+14 <emphasis role="keyword">namespace&#32;</emphasis>Mochi::Debug
+15 {
+16 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>SDLGizmos&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_mochi_1_1_debug_1_1_i_gizmos">IGizmos</link>
+17 &#32;&#32;&#32;&#32;{
+18 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">friend</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_class_mochi_1_1_graphics_1_1_s_d_l_renderer">Graphics::SDLRenderer</link>;
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_mochi_1_1_graphics_1_1_s_d_l_renderer">Graphics::SDLRenderer</link>&#32;*mRenderer;
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SDLGizmos(<link linkend="_class_mochi_1_1_graphics_1_1_s_d_l_renderer">Graphics::SDLRenderer</link>&#32;*renderer);
+22 
+23 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawRectangle(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_rectangle">Physics::Rectangle</link>&#32;*rectangle,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_color">Color</link>&#32;&amp;color)&#32;<emphasis role="keyword">const&#32;override</emphasis>;
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawCircle(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_circle">Physics::Circle</link>&#32;*circle,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_color">Color</link>&#32;&amp;color)&#32;<emphasis role="keyword">const&#32;override</emphasis>;
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawLine(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_line">Physics::Line</link>&#32;*line,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_color">Color</link>&#32;&amp;color)&#32;<emphasis role="keyword">const&#32;override</emphasis>;
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;DrawPoint(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_physics_1_1_point">Physics::Point</link>&#32;*point,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_struct_mochi_1_1_color">Color</link>&#32;&amp;color)&#32;<emphasis role="keyword">const&#32;override</emphasis>;
+28 &#32;&#32;&#32;&#32;};
+29 }
+30 
+31 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

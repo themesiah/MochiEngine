@@ -1,0 +1,573 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_mochi_1_1_rectf" kind="struct" language="C++" prot="public">
+    <compoundname>Mochi::Rectf</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_mochi_1_1_rectf_1ac6b39a71e7dc95606154b952875fbe3d" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mochi::Rectf::x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <qualifiedname>Mochi::Rectf::x</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="218" column="15" bodyfile="Engine/src/Types/Types.hpp" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_rectf_1aa03228c4919adfaf62e84a530ce83b36" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mochi::Rectf::y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <qualifiedname>Mochi::Rectf::y</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="218" column="17" bodyfile="Engine/src/Types/Types.hpp" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_rectf_1aa32d51725d4fba2fe2d97f239ce45c0d" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mochi::Rectf::w</definition>
+        <argsstring></argsstring>
+        <name>w</name>
+        <qualifiedname>Mochi::Rectf::w</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="218" column="19" bodyfile="Engine/src/Types/Types.hpp" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_mochi_1_1_rectf_1a6859b9d6acf9025e7270f199728e5c2b" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mochi::Rectf::h</definition>
+        <argsstring></argsstring>
+        <name>h</name>
+        <qualifiedname>Mochi::Rectf::h</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="218" column="21" bodyfile="Engine/src/Types/Types.hpp" bodystart="218" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_mochi_1_1_rectf_1a0889543edf492e97415a33f506a6b07d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Rectf::Rectf</definition>
+        <argsstring>(float _x=0, float _y=0, float _w=0, float _h=0)</argsstring>
+        <name>Rectf</name>
+        <qualifiedname>Mochi::Rectf::Rectf</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>_x</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>_y</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>_w</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>_h</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="220" column="9" bodyfile="Engine/src/Types/Types.hpp" bodystart="220" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_rectf_1a89f7e9825f4275c399d726f96fafc420" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Rectf::Rectf</definition>
+        <argsstring>(const Rectf &amp;r)</argsstring>
+        <name>Rectf</name>
+        <qualifiedname>Mochi::Rectf::Rectf</qualifiedname>
+        <param>
+          <type>const Rectf &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="221" column="9" bodyfile="Engine/src/Types/Types.hpp" bodystart="221" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_rectf_1aef3e335aced130882aa2658ff2c054f8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Rectf::Rectf</definition>
+        <argsstring>(Rectf &amp;&amp;r)</argsstring>
+        <name>Rectf</name>
+        <qualifiedname>Mochi::Rectf::Rectf</qualifiedname>
+        <param>
+          <type>Rectf &amp;&amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="222" column="9" bodyfile="Engine/src/Types/Types.hpp" bodystart="222" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_rectf_1a40041d0b87c0fbcbd375a6d450cc0b2d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Rectf::Rectf</definition>
+        <argsstring>(Vector2f pos, Vector2f size)</argsstring>
+        <name>Rectf</name>
+        <qualifiedname>Mochi::Rectf::Rectf</qualifiedname>
+        <param>
+          <type><ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref></type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref></type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="223" column="9" bodyfile="Engine/src/Types/Types.hpp" bodystart="223" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_rectf_1a642774c750d138bf9b7f07f5cf79d3c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Rectf::Rectf</definition>
+        <argsstring>(const SDL_FRect &amp;r)</argsstring>
+        <name>Rectf</name>
+        <qualifiedname>Mochi::Rectf::Rectf</qualifiedname>
+        <param>
+          <type>const SDL_FRect &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="226" column="9" bodyfile="Engine/src/Types/Types.hpp" bodystart="226" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_rectf_1af0a85550129a12aa62a06ce272c2d551" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Mochi::Rectf::operator SDL_FRect</definition>
+        <argsstring>() const</argsstring>
+        <name>operator SDL_FRect</name>
+        <qualifiedname>Mochi::Rectf::operator SDL_FRect</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="227" column="16" bodyfile="Engine/src/Types/Types.hpp" bodystart="227" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_rectf_1ac71e16c0af25ba18736270d780ebdbbe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Rectf &amp;</type>
+        <definition>Rectf &amp; Mochi::Rectf::operator=</definition>
+        <argsstring>(const Rectf &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Mochi::Rectf::operator=</qualifiedname>
+        <param>
+          <type>const Rectf &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="230" column="22" bodyfile="Engine/src/Types/Types.hpp" bodystart="230" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_rectf_1ab9e24525fa3c563c43c343913029ad7f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Rectf &amp;</type>
+        <definition>Rectf &amp; Mochi::Rectf::operator=</definition>
+        <argsstring>(const SDL_FRect &amp;other)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Mochi::Rectf::operator=</qualifiedname>
+        <param>
+          <type>const SDL_FRect &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="243" column="22" bodyfile="Engine/src/Types/Types.hpp" bodystart="243" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_rectf_1ab698352ba3fd207a4973fa3a3d60b0da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Rectf &amp;</type>
+        <definition>Rectf &amp; Mochi::Rectf::operator+=</definition>
+        <argsstring>(const Vector2f &amp;rhs)</argsstring>
+        <name>operator+=</name>
+        <qualifiedname>Mochi::Rectf::operator+=</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Moves the position of the rect adding a vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The movement vector </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Modified rect </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="255" column="22" bodyfile="Engine/src/Types/Types.hpp" bodystart="255" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_rectf_1a3f8eca0df388421e950b8a8979fdd1c1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Rectf &amp;</type>
+        <definition>Rectf &amp; Mochi::Rectf::operator-=</definition>
+        <argsstring>(const Vector2f &amp;rhs)</argsstring>
+        <name>operator-=</name>
+        <qualifiedname>Mochi::Rectf::operator-=</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Moves the position of the rect subtracting a vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The movement vector </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Modified rect </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="265" column="22" bodyfile="Engine/src/Types/Types.hpp" bodystart="265" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_rectf_1aa3dba1f17920627ddab6745ccec20ff1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Mochi::Rectf::operator==</definition>
+        <argsstring>(const Rectf &amp;rhs)</argsstring>
+        <name>operator==</name>
+        <qualifiedname>Mochi::Rectf::operator==</qualifiedname>
+        <param>
+          <type>const Rectf &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="272" column="21" bodyfile="Engine/src/Types/Types.hpp" bodystart="272" bodyend="275"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_rectf_1ac075fcb0c0d1f99e261b84e030f2a7af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref></type>
+        <definition>Vector2f Mochi::Rectf::GetPosition</definition>
+        <argsstring>() const</argsstring>
+        <name>GetPosition</name>
+        <qualifiedname>Mochi::Rectf::GetPosition</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="301" column="25" bodyfile="Engine/src/Types/Types.hpp" bodystart="301" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_rectf_1ad22b2a22f323a51d63410fc8b5b09c53" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mochi::Rectf::SetPosition</definition>
+        <argsstring>(const Vector2f &amp;pos)</argsstring>
+        <name>SetPosition</name>
+        <qualifiedname>Mochi::Rectf::SetPosition</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref> &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="306" column="21" bodyfile="Engine/src/Types/Types.hpp" bodystart="306" bodyend="310"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_rectf_1aa7aa2b99bafe55fce49689fc68a8b225" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mochi::Rectf::SetPosition</definition>
+        <argsstring>(const float &amp;newX, const float &amp;newY)</argsstring>
+        <name>SetPosition</name>
+        <qualifiedname>Mochi::Rectf::SetPosition</qualifiedname>
+        <param>
+          <type>const float &amp;</type>
+          <declname>newX</declname>
+        </param>
+        <param>
+          <type>const float &amp;</type>
+          <declname>newY</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="312" column="21" bodyfile="Engine/src/Types/Types.hpp" bodystart="312" bodyend="316"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_rectf_1a72d57d0257fefcabfb3ed8304aee028c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref></type>
+        <definition>Vector2f Mochi::Rectf::GetSize</definition>
+        <argsstring>() const</argsstring>
+        <name>GetSize</name>
+        <qualifiedname>Mochi::Rectf::GetSize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="318" column="25" bodyfile="Engine/src/Types/Types.hpp" bodystart="318" bodyend="321"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_rectf_1a6488924993a2fb0f692913812cd54918" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mochi::Rectf::SetSize</definition>
+        <argsstring>(const Vector2f &amp;size)</argsstring>
+        <name>SetSize</name>
+        <qualifiedname>Mochi::Rectf::SetSize</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref> &amp;</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="323" column="21" bodyfile="Engine/src/Types/Types.hpp" bodystart="323" bodyend="327"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_rectf_1af208a1dd5f4be6f044f22b8633b6276b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mochi::Rectf::SetSize</definition>
+        <argsstring>(const float &amp;newW, const float &amp;newH)</argsstring>
+        <name>SetSize</name>
+        <qualifiedname>Mochi::Rectf::SetSize</qualifiedname>
+        <param>
+          <type>const float &amp;</type>
+          <declname>newW</declname>
+        </param>
+        <param>
+          <type>const float &amp;</type>
+          <declname>newH</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="329" column="21" bodyfile="Engine/src/Types/Types.hpp" bodystart="329" bodyend="333"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_rectf_1adbd7f5794f90ee4a8f6d8c185c1a178b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mochi::Rectf::Scale</definition>
+        <argsstring>(const float &amp;scale)</argsstring>
+        <name>Scale</name>
+        <qualifiedname>Mochi::Rectf::Scale</qualifiedname>
+        <param>
+          <type>const float &amp;</type>
+          <declname>scale</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="335" column="21" bodyfile="Engine/src/Types/Types.hpp" bodystart="335" bodyend="339"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_mochi_1_1_rectf_1a7e5128d468d95263c8c85f50417a708b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Mochi::Rectf::IsTextureValid</definition>
+        <argsstring>()</argsstring>
+        <name>IsTextureValid</name>
+        <qualifiedname>Mochi::Rectf::IsTextureValid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="341" column="21" bodyfile="Engine/src/Types/Types.hpp" bodystart="341" bodyend="344"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="struct_mochi_1_1_rectf_1a2f1ba17a8530d31c3bbfb5ad7658850c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Rectf</type>
+        <definition>Rectf operator+</definition>
+        <argsstring>(Rectf lhs, const Vector2f &amp;rhs)</argsstring>
+        <name>operator+</name>
+        <qualifiedname>Mochi::Rectf::operator+</qualifiedname>
+        <param>
+          <type>Rectf</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Moves the position of the rect adding a vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The movement vector </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Resulting rect </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="280" column="22" bodyfile="Engine/src/Types/Types.hpp" bodystart="280" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="friend" id="struct_mochi_1_1_rectf_1a2853169ea98c469768cd1b623f5234cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Rectf</type>
+        <definition>Rectf operator-</definition>
+        <argsstring>(Rectf lhs, const Vector2f &amp;rhs)</argsstring>
+        <name>operator-</name>
+        <qualifiedname>Mochi::Rectf::operator-</qualifiedname>
+        <param>
+          <type>Rectf</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_mochi_1_1_vector2f" kindref="compound">Vector2f</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Moves the position of the rect subtracting a vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The movement vector </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Resulting rect </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="289" column="22" bodyfile="Engine/src/Types/Types.hpp" bodystart="289" bodyend="293"/>
+      </memberdef>
+      <memberdef kind="friend" id="struct_mochi_1_1_rectf_1a1dfe2dde0dfe90176ddc4da2bd0bc86d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool operator==</definition>
+        <argsstring>(const Rectf &amp;lhs, const Rectf &amp;rhs)</argsstring>
+        <name>operator==</name>
+        <qualifiedname>Mochi::Rectf::operator==</qualifiedname>
+        <param>
+          <type>const Rectf &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const Rectf &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Engine/src/Types/Types.hpp" line="295" column="21" bodyfile="Engine/src/Types/Types.hpp" bodystart="295" bodyend="298"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Engine/src/Types/Types.hpp" line="216" column="5" bodyfile="Engine/src/Types/Types.hpp" bodystart="217" bodyend="345"/>
+    <listofallmembers>
+      <member refid="struct_mochi_1_1_rectf_1ac075fcb0c0d1f99e261b84e030f2a7af" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>GetPosition</name></member>
+      <member refid="struct_mochi_1_1_rectf_1a72d57d0257fefcabfb3ed8304aee028c" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>GetSize</name></member>
+      <member refid="struct_mochi_1_1_rectf_1a6859b9d6acf9025e7270f199728e5c2b" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>h</name></member>
+      <member refid="struct_mochi_1_1_rectf_1a7e5128d468d95263c8c85f50417a708b" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>IsTextureValid</name></member>
+      <member refid="struct_mochi_1_1_rectf_1af0a85550129a12aa62a06ce272c2d551" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>operator SDL_FRect</name></member>
+      <member refid="struct_mochi_1_1_rectf_1a2f1ba17a8530d31c3bbfb5ad7658850c" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>operator+</name></member>
+      <member refid="struct_mochi_1_1_rectf_1ab698352ba3fd207a4973fa3a3d60b0da" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>operator+=</name></member>
+      <member refid="struct_mochi_1_1_rectf_1a2853169ea98c469768cd1b623f5234cb" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>operator-</name></member>
+      <member refid="struct_mochi_1_1_rectf_1a3f8eca0df388421e950b8a8979fdd1c1" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>operator-=</name></member>
+      <member refid="struct_mochi_1_1_rectf_1ac71e16c0af25ba18736270d780ebdbbe" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>operator=</name></member>
+      <member refid="struct_mochi_1_1_rectf_1ab9e24525fa3c563c43c343913029ad7f" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>operator=</name></member>
+      <member refid="struct_mochi_1_1_rectf_1aa3dba1f17920627ddab6745ccec20ff1" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>operator==</name></member>
+      <member refid="struct_mochi_1_1_rectf_1a1dfe2dde0dfe90176ddc4da2bd0bc86d" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>operator==</name></member>
+      <member refid="struct_mochi_1_1_rectf_1a0889543edf492e97415a33f506a6b07d" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>Rectf</name></member>
+      <member refid="struct_mochi_1_1_rectf_1a89f7e9825f4275c399d726f96fafc420" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>Rectf</name></member>
+      <member refid="struct_mochi_1_1_rectf_1aef3e335aced130882aa2658ff2c054f8" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>Rectf</name></member>
+      <member refid="struct_mochi_1_1_rectf_1a40041d0b87c0fbcbd375a6d450cc0b2d" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>Rectf</name></member>
+      <member refid="struct_mochi_1_1_rectf_1a642774c750d138bf9b7f07f5cf79d3c6" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>Rectf</name></member>
+      <member refid="struct_mochi_1_1_rectf_1adbd7f5794f90ee4a8f6d8c185c1a178b" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>Scale</name></member>
+      <member refid="struct_mochi_1_1_rectf_1ad22b2a22f323a51d63410fc8b5b09c53" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>SetPosition</name></member>
+      <member refid="struct_mochi_1_1_rectf_1aa7aa2b99bafe55fce49689fc68a8b225" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>SetPosition</name></member>
+      <member refid="struct_mochi_1_1_rectf_1a6488924993a2fb0f692913812cd54918" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>SetSize</name></member>
+      <member refid="struct_mochi_1_1_rectf_1af208a1dd5f4be6f044f22b8633b6276b" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>SetSize</name></member>
+      <member refid="struct_mochi_1_1_rectf_1aa32d51725d4fba2fe2d97f239ce45c0d" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>w</name></member>
+      <member refid="struct_mochi_1_1_rectf_1ac6b39a71e7dc95606154b952875fbe3d" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>x</name></member>
+      <member refid="struct_mochi_1_1_rectf_1aa03228c4919adfaf62e84a530ce83b36" prot="public" virt="non-virtual"><scope>Mochi::Rectf</scope><name>y</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

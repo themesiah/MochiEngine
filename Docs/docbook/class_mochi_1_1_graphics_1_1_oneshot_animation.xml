@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_mochi_1_1_graphics_1_1_oneshot_animation" xml:lang="en-US">
+<title>Mochi::Graphics::OneshotAnimation Class Reference</title>
+<indexterm><primary>Mochi::Graphics::OneshotAnimation</primary></indexterm>
+<para>Inheritance diagram for Mochi::Graphics::OneshotAnimation:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_mochi_1_1_graphics_1_1_oneshot_animation.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_oneshot_animation_1a43458cf927ec6731545eb42f599acabc"/><emphasis role="strong">OneshotAnimation</emphasis> (<link linkend="_class_mochi_1_1_graphics_1_1_i_animation_factory">IAnimationFactory</link> *, <link linkend="_class_mochi_1_1_graphics_1_1_abstract_texture_factory">AbstractTextureFactory</link> *, const std::string &amp;animationPath, const std::string &amp;mainAnimation)</para>
+</listitem>
+            <listitem><para>virtual void <link linkend="_class_mochi_1_1_graphics_1_1_oneshot_animation_1af64ef212186185343ce25807a50c99e6">Update</link> (const float &amp;dt) override</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_mochi_1_1_graphics_1_1_oneshot_animation_1ac87994e640b4af219b719e3bcbf8edc4"/>void <emphasis role="strong">SetFinishCallback</emphasis> (std::function&lt; void()&gt; onFinishedCallback)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_class_mochi_1_1_graphics_1_1_animated_sprite">Mochi::Graphics::AnimatedSprite</link>        <itemizedlist>
+            <listitem><para><emphasis role="strong">AnimatedSprite</emphasis> (<link linkend="_class_mochi_1_1_graphics_1_1_i_animation_factory">IAnimationFactory</link> *, <link linkend="_class_mochi_1_1_graphics_1_1_abstract_texture_factory">AbstractTextureFactory</link> *, const std::string &amp;animationPath, const std::string &amp;mainAnimation)</para>
+</listitem>
+            <listitem><para>virtual void <emphasis role="strong">PlayAnimation</emphasis> (const std::string &amp;animationName)</para>
+</listitem>
+            <listitem><para>void <emphasis role="strong">StopAnimation</emphasis> ()</para>
+</listitem>
+            <listitem><para>std::string <emphasis role="strong">GetCurrentAnimation</emphasis> () const</para>
+</listitem>
+        </itemizedlist>
+Public Member Functions inherited from <link linkend="_class_mochi_1_1_graphics_1_1_spritesheet">Mochi::Graphics::Spritesheet</link>        <itemizedlist>
+            <listitem><para><emphasis role="strong">Spritesheet</emphasis> (<link linkend="_class_mochi_1_1_graphics_1_1_i_animation_factory">IAnimationFactory</link> *animationFactory, <link linkend="_class_mochi_1_1_graphics_1_1_abstract_texture_factory">AbstractTextureFactory</link> *textureFactory, const std::string &amp;animationPath, const int &amp;startingFrame)</para>
+</listitem>
+            <listitem><para>void <emphasis role="strong">SetFrame</emphasis> (const int &amp;frameIndex)</para>
+</listitem>
+            <listitem><para>int <emphasis role="strong">GetFrame</emphasis> () const</para>
+</listitem>
+        </itemizedlist>
+Public Member Functions inherited from <link linkend="_class_mochi_1_1_graphics_1_1_sprite_base">Mochi::Graphics::SpriteBase</link>        <itemizedlist>
+            <listitem><para><emphasis role="strong">SpriteBase</emphasis> (<link linkend="_class_mochi_1_1_graphics_1_1_abstract_texture_factory">AbstractTextureFactory</link> *, const std::string &amp;filename)</para>
+</listitem>
+            <listitem><para>void <emphasis role="strong">LoadTexture</emphasis> (<link linkend="_class_mochi_1_1_graphics_1_1_abstract_texture_factory">AbstractTextureFactory</link> *textureFactory, const std::string &amp;filename)</para>
+</listitem>
+            <listitem><para>virtual std::vector&lt; <link linkend="_struct_mochi_1_1_graphics_1_1_render_command">RenderCommand</link> &gt; <emphasis role="strong">GetRenderData</emphasis> () const</para>
+</listitem>
+            <listitem><para>void <emphasis role="strong">SetZIndex</emphasis> (const uint16_t &amp;zIndex)</para>
+</listitem>
+            <listitem><para>uint16_t <emphasis role="strong">GetZIndex</emphasis> () const</para>
+</listitem>
+            <listitem><para>bool <emphasis role="strong">IsVisible</emphasis> () const</para>
+</listitem>
+            <listitem><para>void <emphasis role="strong">SetVisible</emphasis> (const bool &amp;visible)</para>
+</listitem>
+            <listitem><para>uint8_t <emphasis role="strong">GetAlpha</emphasis> () const</para>
+</listitem>
+            <listitem><para>void <emphasis role="strong">SetAlpha</emphasis> (const uint8_t &amp;alpha)</para>
+</listitem>
+            <listitem><para>std::shared_ptr&lt; <link linkend="_struct_mochi_1_1_transform">Transform</link> &gt; <emphasis role="strong">GetTransform</emphasis> () const</para>
+</listitem>
+            <listitem><para>void <emphasis role="strong">SetTransform</emphasis> (std::shared_ptr&lt; <link linkend="_struct_mochi_1_1_transform">Transform</link> &gt; tr)</para>
+</listitem>
+            <listitem><para>void <emphasis role="strong">SetSrcRect</emphasis> (const <link linkend="_struct_mochi_1_1_rectf">Rectf</link> &amp;src)</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Additional Inherited Members    </title>
+Protected Attributes inherited from <link linkend="_class_mochi_1_1_graphics_1_1_animated_sprite">Mochi::Graphics::AnimatedSprite</link>        <itemizedlist>
+            <listitem><para>bool <emphasis role="strong">mPlaying</emphasis></para>
+</listitem>
+            <listitem><para>float <emphasis role="strong">mTimer</emphasis></para>
+</listitem>
+            <listitem><para>int <emphasis role="strong">mLoops</emphasis></para>
+</listitem>
+            <listitem><para>bool <emphasis role="strong">mForward</emphasis></para>
+</listitem>
+            <listitem><para>std::string <emphasis role="strong">mCurrentAnimation</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Protected Attributes inherited from <link linkend="_class_mochi_1_1_graphics_1_1_spritesheet">Mochi::Graphics::Spritesheet</link>        <itemizedlist>
+            <listitem><para>std::shared_ptr&lt; <link linkend="_struct_mochi_1_1_graphics_1_1_animations_data">AnimationsData</link> &gt; <emphasis role="strong">mAnimationsData</emphasis></para>
+</listitem>
+        </itemizedlist>
+Protected Attributes inherited from <link linkend="_class_mochi_1_1_graphics_1_1_sprite_base">Mochi::Graphics::SpriteBase</link>        <itemizedlist>
+            <listitem><para>std::shared_ptr&lt; <link linkend="_class_mochi_1_1_graphics_1_1_i_texture">ITexture</link> &gt; <emphasis role="strong">mTexture</emphasis></para>
+</listitem>
+            <listitem><para><link linkend="_struct_mochi_1_1_rectf">Rectf</link> <emphasis role="strong">mSrcRect</emphasis></para>
+</listitem>
+            <listitem><para>uint16_t <emphasis role="strong">mZindex</emphasis></para>
+</listitem>
+            <listitem><para>bool <emphasis role="strong">mVisible</emphasis></para>
+</listitem>
+            <listitem><para>uint8_t <emphasis role="strong">mAlpha</emphasis></para>
+</listitem>
+            <listitem><para><link linkend="_struct_mochi_1_1_vector2f">Vector2f</link> <emphasis role="strong">mSize</emphasis></para>
+</listitem>
+            <listitem><para>std::shared_ptr&lt; <link linkend="_struct_mochi_1_1_transform">Transform</link> &gt; <emphasis role="strong">mTransform</emphasis></para>
+</listitem>
+        </itemizedlist>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_mochi_1_1_graphics_1_1_oneshot_animation_1af64ef212186185343ce25807a50c99e6"/><section>
+    <title>Update()</title>
+<indexterm><primary>Update</primary><secondary>Mochi::Graphics::OneshotAnimation</secondary></indexterm>
+<indexterm><primary>Mochi::Graphics::OneshotAnimation</primary><secondary>Update</secondary></indexterm>
+<para><computeroutput>void Mochi::Graphics::OneshotAnimation::Update (const float &amp; dt)<computeroutput>[override]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_mochi_1_1_graphics_1_1_animated_sprite">Mochi::Graphics::AnimatedSprite</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+Engine/src/Graphics/OneshotAnimation.hEngine/src/Graphics/OneshotAnimation.cpp</section>
+</section>
