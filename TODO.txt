@@ -1,11 +1,9 @@
 x Prepare github as engine+samples
 x Automatize packer
 x Make test building optional and prepare tests for calling "ctest" manually
-- Zip packer
-- Raw pointers to weak ptr?
-- Remove pixel-perfect?
 - Document and comment
 - EnTT
 - SDL Mixer
 - Platformer sample
 - Puzzle sample
+- Zip packer

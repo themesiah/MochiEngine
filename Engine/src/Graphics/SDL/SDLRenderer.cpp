@@ -48,7 +48,7 @@ namespace Mochi::Graphics
             throw SystemInitializationError("Graphics", SDL_GetError());
         }
 
-        SDL_SetWindowFullscreen(mWindow.get(), true);
+        // SDL_SetWindowFullscreen(mWindow.get(), true);
 
         // if (!SDL_SetRenderVSync(mRenderer.get(), 1))
         // {

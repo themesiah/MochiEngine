@@ -1,3 +1,32 @@
+/*
+Main class of the MochiEngine. It owns and coordinates all subsystems and layers, and drives the application lifecycle.
+
+Ownership:
+- Engine has ownership of most of the subsystems.
+- Layers are created outside of the class and injected into the engine.
+
+Lifecycle:
+- Create with default constructor and call "Setup" after to initialize.
+    - Alternatively, call the constructor Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName) to initialize with default systems.
+- Call Run to start the main loop. Run will end automatically when the game receives an exit signal.
+- When created, Engine is a singleton accessible everywhere, providing centralized access to core subsystems and giving ability to inject layers and render commands.
+
+Guarantees:
+- Full initialization before entering the main loop. Failures in this step are detected early and exit the application.
+- Update is called each frame with a delta time
+- Subsystems are automatically updated
+- Layers are automatically managed and updated
+- Rendering is done once per frame, separated between Graphics and UI
+
+Thread safety:
+- This class is not thread-safe.
+
+Non responsible:
+- Game logic
+- Automatic rendering
+- Entity management
+*/
+
 #ifndef HDEF_ENGINE
 #define HDEF_ENGINE
 
@@ -52,6 +81,7 @@ namespace Mochi
         class FrameProfiler;
     }
     class Layer;
+
     class Engine
     {
     private:
@@ -82,22 +112,60 @@ namespace Mochi
 
         void PreciseDelay(std::chrono::nanoseconds ns) const;
         void MinimalSetup();
+        bool Update(const float &dt);
+        void Render();
 
     public:
+        /// @brief Access Engine from anywhere
+        /// Access is only available after default construction or after setup.
+        /// Otherwise, it returns nullptr.
+        static Engine &Get();
+
+        /// @brief Constructs the Engine class without initializing some core systems to allow the user to use Setup to initialize them manually.
+        /// Doesn't initialize:
+        /// - Renderer
+        /// - Action Manager
+        /// - Audio Manager
         Engine();
+
+        /// @brief Constructs the Engine class and setups it with default core subsystems.
+        /// - Renderer: SDLRenderer
+        /// - Action Manager: Default action manager
+        /// - Audio Manager: FMOD
+        /// @param appName The name of the application.
+        /// @param appVersion The version of the application.
+        /// @param appId A unique string in reverse order identifying the application.
+        /// @param windowName The name the window will receive in the OS.
         Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName);
         virtual ~Engine();
-        void Run();
-        void Setup(std::unique_ptr<Graphics::IRenderer> &&renderer, std::unique_ptr<Input::IActionManager> &&actionManager, std::unique_ptr<Audio::IAudioManager> &&audioManager);
-        void Render();
-        bool Update(const float &dt);
 
-        static Engine &Get();
+        /// @brief Runs the engine, starting the per-frame lifecycle.
+        /// Once called, it won't stop until receiving ApplicationQuitEvent or getting "false" when updating a layer.
+        void Run();
+
+        /// @brief Manually setups some subsystems for the engine.
+        /// Setup should only be called once, and it will keep ownership of the subsystems.
+        /// @param renderer The renderer. It will have rendering and UI responsabilities.
+        /// @param actionManager The action manager that will define how input will be interpreted.
+        /// @param audioManager The audio manager.
+        void Setup(std::unique_ptr<Graphics::IRenderer> &&renderer, std::unique_ptr<Input::IActionManager> &&actionManager, std::unique_ptr<Audio::IAudioManager> &&audioManager);
+
+        /// @brief Pushes a layer in the list of layers to initialize. Then initializes it at the end of the frame and gets ownership of it to update it each frame.
+        /// @param layer A pointer to the layer. Note that several layers of the same type can be active at a time and is the user responsability to manage which layers to push.
         void PushLayer(Layer *layer);
+
+        /// @brief Pushes a layer in the list of layers to deactivate. At the end of the frame (when it is safe) the layer is removed from the list and destroyed.
+        /// @param layer The pointer to the layer to remove.
         void PopLayer(Layer *layer);
 
         float GetLastRealDelta() const { return mLastRealDelta; }
+
+        /// @brief Adds a single render command to be rendered this frame.
+        /// @param command The render command
         void AddRenderCommand(const Graphics::RenderCommand &command);
+
+        /// @brief Adds a range of render commands to be rendered this frame.
+        /// @param commands The vector of commands
         void AddRenderCommands(const std::vector<Graphics::RenderCommand> &commands);
 
         // Access subsystems
@@ -116,7 +184,12 @@ namespace Mochi
         void SwapCamera(std::unique_ptr<Graphics::Camera> &&);
         void SwapRenderer(std::unique_ptr<Graphics::IRenderer> &&);
 
+        /// @brief Pauses the engine setting the delta time scale to 0.
+        /// Pause can be called several times in succession, but it will only be applied once.
         void Pause();
+
+        /// @brief Resumes the game setting the delta time scale to the last value it was before it was paused.
+        /// Resume can be called several times in succession, but it will only be applied once.
         void Resume();
     };
 }
