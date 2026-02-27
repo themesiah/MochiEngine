@@ -93,6 +93,8 @@ $(function(){initNavTree('class_mochi_1_1_input_1_1_i_gamepad_provider.html','',
   <div class="headertitle"><div class="title">Mochi::Input::IGamepadProvider Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_i_gamepad_provider_8h_source.html">IGamepadProvider.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Mochi::Input::IGamepadProvider:</div>
 <div class="dyncontent">
@@ -100,17 +102,92 @@ Inheritance diagram for Mochi::Input::IGamepadProvider:</div>
   <img src="class_mochi_1_1_input_1_1_i_gamepad_provider.png" usemap="#Mochi_3A_3AInput_3A_3AIGamepadProvider_map" alt=""/>
   <map id="Mochi_3A_3AInput_3A_3AIGamepadProvider_map" name="Mochi_3A_3AInput_3A_3AIGamepadProvider_map">
 <area href="class_mochi_1_1_input_1_1_dummy_gamepad_provider.html" alt="Mochi::Input::DummyGamepadProvider" shape="rect" coords="0,56,229,80"/>
-<area href="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider.html" alt="Mochi::Input::SDLGamepadProvider" shape="rect" coords="239,56,468,80"/>
+<area href="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider.html" title="Implementation of IGamepadProvider that uses SDL_GetGamepadAxis and SDL_GetGamepadButton to retrieve ..." alt="Mochi::Input::SDLGamepadProvider" shape="rect" coords="239,56,468,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a15284850eb8276b02c363df6351c04b6" id="r_a15284850eb8276b02c363df6351c04b6"><td class="memItemLeft"><a id="a15284850eb8276b02c363df6351c04b6" name="a15284850eb8276b02c363df6351c04b6"></a>
-virtual <a class="el" href="struct_mochi_1_1_input_1_1_gamepad_data.html">GamepadData</a>&#160;</td><td class="memItemRight"><b>GetData</b> (const unsigned int &amp;player) const =0</td></tr>
-<tr class="memitem:a62edb56fb118537a386b095dc5126ade" id="r_a62edb56fb118537a386b095dc5126ade"><td class="memItemLeft"><a id="a62edb56fb118537a386b095dc5126ade" name="a62edb56fb118537a386b095dc5126ade"></a>
-virtual bool&#160;</td><td class="memItemRight"><b>HasGamepad</b> (const unsigned int &amp;player) const =0</td></tr>
+<tr class="memitem:a15284850eb8276b02c363df6351c04b6" id="r_a15284850eb8276b02c363df6351c04b6"><td class="memItemLeft">virtual <a class="el" href="struct_mochi_1_1_input_1_1_gamepad_data.html">GamepadData</a>&#160;</td><td class="memItemRight"><a class="el" href="#a15284850eb8276b02c363df6351c04b6">GetData</a> (const unsigned int &amp;player) const =0</td></tr>
+<tr class="memdesc:a15284850eb8276b02c363df6351c04b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets data of the gamepad in the selected slot for this frame.  <br /></td></tr>
+<tr class="memitem:a62edb56fb118537a386b095dc5126ade" id="r_a62edb56fb118537a386b095dc5126ade"><td class="memItemLeft">virtual bool&#160;</td><td class="memItemRight"><a class="el" href="#a62edb56fb118537a386b095dc5126ade">HasGamepad</a> (const unsigned int &amp;player) const =0</td></tr>
+<tr class="memdesc:a62edb56fb118537a386b095dc5126ade"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if there is a gamepad connected in the specified player slot.  <br /></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Interface used to get per-frame data of the connected gamepads. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a15284850eb8276b02c363df6351c04b6" name="a15284850eb8276b02c363df6351c04b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15284850eb8276b02c363df6351c04b6">&#9670;&#160;</a></span>GetData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="struct_mochi_1_1_input_1_1_gamepad_data.html">GamepadData</a> Mochi::Input::IGamepadProvider::GetData </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned int &amp;</td>          <td class="paramname"><span class="paramname"><em>player</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets data of the gamepad in the selected slot for this frame. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>The slot to get the data from. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_mochi_1_1_input_1_1_gamepad_data.html" title="Data for Axis and Buttos of a single gamepad.">GamepadData</a> of the selected slot for this frame. </dd></dl>
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_input_1_1_dummy_gamepad_provider.html#a2eb9402242cafac455a495261c92a804">Mochi::Input::DummyGamepadProvider</a>, and <a class="el" href="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider.html#af7303e028a54deb6bf70379192e7c83f">Mochi::Input::SDLGamepadProvider</a>.</p>
+
+</div>
+</div>
+<a id="a62edb56fb118537a386b095dc5126ade" name="a62edb56fb118537a386b095dc5126ade"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62edb56fb118537a386b095dc5126ade">&#9670;&#160;</a></span>HasGamepad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Mochi::Input::IGamepadProvider::HasGamepad </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned int &amp;</td>          <td class="paramname"><span class="paramname"><em>player</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if there is a gamepad connected in the specified player slot. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>The slot to check. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the slot has a gamepad connected. </dd></dl>
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_input_1_1_dummy_gamepad_provider.html#a2b23c7a17dd4abc94dcf117fa329ff1e">Mochi::Input::DummyGamepadProvider</a>, and <a class="el" href="class_mochi_1_1_input_1_1_s_d_l_gamepad_provider.html#a80d6ea800be446ae7ebc529875d461ae">Mochi::Input::SDLGamepadProvider</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>Engine/src/Input/<a class="el" href="_i_gamepad_provider_8h_source.html">IGamepadProvider.h</a></li>
 </ul>

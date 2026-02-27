@@ -5,6 +5,10 @@
 
 namespace Mochi
 {
+    /// @brief Minimal transform with a position and scale.
+    /// Rotation is deliberately omited because of the incompatibility with pixel art.
+    /// This class is meant to represent the space occupied by an entity, and reused for several elements of
+    /// that same entity, as the game logic, sprite or collider.
     struct Transform
     {
         Vector2f Position;

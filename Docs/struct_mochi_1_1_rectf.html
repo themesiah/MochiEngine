@@ -93,6 +93,11 @@ $(function(){initNavTree('struct_mochi_1_1_rectf.html','','struct_mochi_1_1_rect
   <div class="headertitle"><div class="title">Mochi::Rectf Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Float vector of 4 positions with an X, Y, W and H elements defining a rectangle and conversion with SDL_FRect for ease of use with SDL. It allows basic operations with other rectangles, vectors or scalars.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_types_8hpp_source.html">Types.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -118,22 +123,22 @@ Rectf &amp;&#160;</td><td class="memItemRight"><b>operator=</b> (const SDL_FRect
 <tr class="memdesc:a3f8eca0df388421e950b8a8979fdd1c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the position of the rect subtracting a vector.  <br /></td></tr>
 <tr class="memitem:aa3dba1f17920627ddab6745ccec20ff1" id="r_aa3dba1f17920627ddab6745ccec20ff1"><td class="memItemLeft"><a id="aa3dba1f17920627ddab6745ccec20ff1" name="aa3dba1f17920627ddab6745ccec20ff1"></a>
 bool&#160;</td><td class="memItemRight"><b>operator==</b> (const Rectf &amp;rhs)</td></tr>
-<tr class="memitem:ac075fcb0c0d1f99e261b84e030f2a7af" id="r_ac075fcb0c0d1f99e261b84e030f2a7af"><td class="memItemLeft"><a id="ac075fcb0c0d1f99e261b84e030f2a7af" name="ac075fcb0c0d1f99e261b84e030f2a7af"></a>
-<a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight"><b>GetPosition</b> () const</td></tr>
-<tr class="memitem:ad22b2a22f323a51d63410fc8b5b09c53" id="r_ad22b2a22f323a51d63410fc8b5b09c53"><td class="memItemLeft"><a id="ad22b2a22f323a51d63410fc8b5b09c53" name="ad22b2a22f323a51d63410fc8b5b09c53"></a>
-void&#160;</td><td class="memItemRight"><b>SetPosition</b> (const <a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a> &amp;pos)</td></tr>
-<tr class="memitem:aa7aa2b99bafe55fce49689fc68a8b225" id="r_aa7aa2b99bafe55fce49689fc68a8b225"><td class="memItemLeft"><a id="aa7aa2b99bafe55fce49689fc68a8b225" name="aa7aa2b99bafe55fce49689fc68a8b225"></a>
-void&#160;</td><td class="memItemRight"><b>SetPosition</b> (const float &amp;newX, const float &amp;newY)</td></tr>
-<tr class="memitem:a72d57d0257fefcabfb3ed8304aee028c" id="r_a72d57d0257fefcabfb3ed8304aee028c"><td class="memItemLeft"><a id="a72d57d0257fefcabfb3ed8304aee028c" name="a72d57d0257fefcabfb3ed8304aee028c"></a>
-<a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight"><b>GetSize</b> () const</td></tr>
-<tr class="memitem:a6488924993a2fb0f692913812cd54918" id="r_a6488924993a2fb0f692913812cd54918"><td class="memItemLeft"><a id="a6488924993a2fb0f692913812cd54918" name="a6488924993a2fb0f692913812cd54918"></a>
-void&#160;</td><td class="memItemRight"><b>SetSize</b> (const <a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a> &amp;size)</td></tr>
-<tr class="memitem:af208a1dd5f4be6f044f22b8633b6276b" id="r_af208a1dd5f4be6f044f22b8633b6276b"><td class="memItemLeft"><a id="af208a1dd5f4be6f044f22b8633b6276b" name="af208a1dd5f4be6f044f22b8633b6276b"></a>
-void&#160;</td><td class="memItemRight"><b>SetSize</b> (const float &amp;newW, const float &amp;newH)</td></tr>
-<tr class="memitem:adbd7f5794f90ee4a8f6d8c185c1a178b" id="r_adbd7f5794f90ee4a8f6d8c185c1a178b"><td class="memItemLeft"><a id="adbd7f5794f90ee4a8f6d8c185c1a178b" name="adbd7f5794f90ee4a8f6d8c185c1a178b"></a>
-void&#160;</td><td class="memItemRight"><b>Scale</b> (const float &amp;scale)</td></tr>
-<tr class="memitem:a7e5128d468d95263c8c85f50417a708b" id="r_a7e5128d468d95263c8c85f50417a708b"><td class="memItemLeft"><a id="a7e5128d468d95263c8c85f50417a708b" name="a7e5128d468d95263c8c85f50417a708b"></a>
-bool&#160;</td><td class="memItemRight"><b>IsTextureValid</b> ()</td></tr>
+<tr class="memitem:ac075fcb0c0d1f99e261b84e030f2a7af" id="r_ac075fcb0c0d1f99e261b84e030f2a7af"><td class="memItemLeft"><a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight"><a class="el" href="#ac075fcb0c0d1f99e261b84e030f2a7af">GetPosition</a> () const</td></tr>
+<tr class="memdesc:ac075fcb0c0d1f99e261b84e030f2a7af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the x and y elements of the rectangle.  <br /></td></tr>
+<tr class="memitem:ad22b2a22f323a51d63410fc8b5b09c53" id="r_ad22b2a22f323a51d63410fc8b5b09c53"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ad22b2a22f323a51d63410fc8b5b09c53">SetPosition</a> (const <a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a> &amp;pos)</td></tr>
+<tr class="memdesc:ad22b2a22f323a51d63410fc8b5b09c53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the x and y elements of the rectangle.  <br /></td></tr>
+<tr class="memitem:aa7aa2b99bafe55fce49689fc68a8b225" id="r_aa7aa2b99bafe55fce49689fc68a8b225"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa7aa2b99bafe55fce49689fc68a8b225">SetPosition</a> (const float &amp;newX, const float &amp;newY)</td></tr>
+<tr class="memdesc:aa7aa2b99bafe55fce49689fc68a8b225"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the x and y elements of the rectangle.  <br /></td></tr>
+<tr class="memitem:a72d57d0257fefcabfb3ed8304aee028c" id="r_a72d57d0257fefcabfb3ed8304aee028c"><td class="memItemLeft"><a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight"><a class="el" href="#a72d57d0257fefcabfb3ed8304aee028c">GetSize</a> () const</td></tr>
+<tr class="memdesc:a72d57d0257fefcabfb3ed8304aee028c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the w and h elements of the rectangle.  <br /></td></tr>
+<tr class="memitem:a6488924993a2fb0f692913812cd54918" id="r_a6488924993a2fb0f692913812cd54918"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a6488924993a2fb0f692913812cd54918">SetSize</a> (const <a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a> &amp;size)</td></tr>
+<tr class="memdesc:a6488924993a2fb0f692913812cd54918"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the w and h elements of the rectangle.  <br /></td></tr>
+<tr class="memitem:af208a1dd5f4be6f044f22b8633b6276b" id="r_af208a1dd5f4be6f044f22b8633b6276b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af208a1dd5f4be6f044f22b8633b6276b">SetSize</a> (const float &amp;newW, const float &amp;newH)</td></tr>
+<tr class="memdesc:af208a1dd5f4be6f044f22b8633b6276b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the w and h elements of the rectangle.  <br /></td></tr>
+<tr class="memitem:adbd7f5794f90ee4a8f6d8c185c1a178b" id="r_adbd7f5794f90ee4a8f6d8c185c1a178b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#adbd7f5794f90ee4a8f6d8c185c1a178b">Scale</a> (const float &amp;scale)</td></tr>
+<tr class="memdesc:adbd7f5794f90ee4a8f6d8c185c1a178b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies the size vector by an scalar value.  <br /></td></tr>
+<tr class="memitem:a7e5128d468d95263c8c85f50417a708b" id="r_a7e5128d468d95263c8c85f50417a708b"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a7e5128d468d95263c8c85f50417a708b">IsTextureValid</a> ()</td></tr>
+<tr class="memdesc:a7e5128d468d95263c8c85f50417a708b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility method to check if a texture is valid. A texture is valid when its width and height are greater than 0.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -155,7 +160,93 @@ Friends</h2></td></tr>
 <tr class="memitem:a1dfe2dde0dfe90176ddc4da2bd0bc86d" id="r_a1dfe2dde0dfe90176ddc4da2bd0bc86d"><td class="memItemLeft"><a id="a1dfe2dde0dfe90176ddc4da2bd0bc86d" name="a1dfe2dde0dfe90176ddc4da2bd0bc86d"></a>
 bool&#160;</td><td class="memItemRight"><b>operator==</b> (const Rectf &amp;lhs, const Rectf &amp;rhs)</td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Float vector of 4 positions with an X, Y, W and H elements defining a rectangle and conversion with SDL_FRect for ease of use with SDL. It allows basic operations with other rectangles, vectors or scalars. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="ac075fcb0c0d1f99e261b84e030f2a7af" name="ac075fcb0c0d1f99e261b84e030f2a7af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac075fcb0c0d1f99e261b84e030f2a7af">&#9670;&#160;</a></span>GetPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a> Mochi::Rectf::GetPosition </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the x and y elements of the rectangle. </p>
+<dl class="section return"><dt>Returns</dt><dd>The vector of the position. </dd></dl>
+
+</div>
+</div>
+<a id="a72d57d0257fefcabfb3ed8304aee028c" name="a72d57d0257fefcabfb3ed8304aee028c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72d57d0257fefcabfb3ed8304aee028c">&#9670;&#160;</a></span>GetSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a> Mochi::Rectf::GetSize </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the w and h elements of the rectangle. </p>
+<dl class="section return"><dt>Returns</dt><dd>The vector of the size. </dd></dl>
+
+</div>
+</div>
+<a id="a7e5128d468d95263c8c85f50417a708b" name="a7e5128d468d95263c8c85f50417a708b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e5128d468d95263c8c85f50417a708b">&#9670;&#160;</a></span>IsTextureValid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Mochi::Rectf::IsTextureValid </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Utility method to check if a texture is valid. A texture is valid when its width and height are greater than 0. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the texture is valid, false otherwise. </dd></dl>
+
+</div>
+</div>
 <a id="ab698352ba3fd207a4973fa3a3d60b0da" name="ab698352ba3fd207a4973fa3a3d60b0da"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab698352ba3fd207a4973fa3a3d60b0da">&#9670;&#160;</a></span>operator+=()</h2>
 
@@ -221,6 +312,181 @@ bool&#160;</td><td class="memItemRight"><b>operator==</b> (const Rectf &amp;lhs,
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Modified rect </dd></dl>
+
+</div>
+</div>
+<a id="adbd7f5794f90ee4a8f6d8c185c1a178b" name="adbd7f5794f90ee4a8f6d8c185c1a178b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbd7f5794f90ee4a8f6d8c185c1a178b">&#9670;&#160;</a></span>Scale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mochi::Rectf::Scale </td>
+          <td>(</td>
+          <td class="paramtype">const float &amp;</td>          <td class="paramname"><span class="paramname"><em>scale</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Multiplies the size vector by an scalar value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scale</td><td>The scalar value. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa7aa2b99bafe55fce49689fc68a8b225" name="aa7aa2b99bafe55fce49689fc68a8b225"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7aa2b99bafe55fce49689fc68a8b225">&#9670;&#160;</a></span>SetPosition() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mochi::Rectf::SetPosition </td>
+          <td>(</td>
+          <td class="paramtype">const float &amp;</td>          <td class="paramname"><span class="paramname"><em>newX</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float &amp;</td>          <td class="paramname"><span class="paramname"><em>newY</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the x and y elements of the rectangle. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newX</td><td>New X value </td></tr>
+    <tr><td class="paramname">newY</td><td>New Y value </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad22b2a22f323a51d63410fc8b5b09c53" name="ad22b2a22f323a51d63410fc8b5b09c53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad22b2a22f323a51d63410fc8b5b09c53">&#9670;&#160;</a></span>SetPosition() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mochi::Rectf::SetPosition </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the x and y elements of the rectangle. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>New position vector </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af208a1dd5f4be6f044f22b8633b6276b" name="af208a1dd5f4be6f044f22b8633b6276b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af208a1dd5f4be6f044f22b8633b6276b">&#9670;&#160;</a></span>SetSize() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mochi::Rectf::SetSize </td>
+          <td>(</td>
+          <td class="paramtype">const float &amp;</td>          <td class="paramname"><span class="paramname"><em>newW</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float &amp;</td>          <td class="paramname"><span class="paramname"><em>newH</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the w and h elements of the rectangle. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newW</td><td>New w value. </td></tr>
+    <tr><td class="paramname">newH</td><td>New h value. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6488924993a2fb0f692913812cd54918" name="a6488924993a2fb0f692913812cd54918"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6488924993a2fb0f692913812cd54918">&#9670;&#160;</a></span>SetSize() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mochi::Rectf::SetSize </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the w and h elements of the rectangle. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>The new size vector. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

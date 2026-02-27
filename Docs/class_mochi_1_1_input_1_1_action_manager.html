@@ -93,28 +93,92 @@ $(function(){initNavTree('class_mochi_1_1_input_1_1_action_manager.html','','cla
   <div class="headertitle"><div class="title">Mochi::Input::ActionManager Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implementation of <a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html" title="IActionManager is an interface with the purpose of giving the ability to identify which actions are b...">IActionManager</a> meant to be used on any context where the user has control over the game. Expected flow for this class is creating it, loading the actions config file, updating it each frame and checking the state of the actions at any time.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_action_manager_8h_source.html">ActionManager.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Mochi::Input::ActionManager:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_mochi_1_1_input_1_1_action_manager.png" usemap="#Mochi_3A_3AInput_3A_3AActionManager_map" alt=""/>
   <map id="Mochi_3A_3AInput_3A_3AActionManager_map" name="Mochi_3A_3AInput_3A_3AActionManager_map">
-<area href="class_mochi_1_1_input_1_1_i_action_manager.html" alt="Mochi::Input::IActionManager" shape="rect" coords="0,0,176,24"/>
+<area href="class_mochi_1_1_input_1_1_i_action_manager.html" title="IActionManager is an interface with the purpose of giving the ability to identify which actions are b..." alt="Mochi::Input::IActionManager" shape="rect" coords="0,0,176,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a55ace7b92c2177a8f3ab7a2200c1e6d3" id="r_a55ace7b92c2177a8f3ab7a2200c1e6d3"><td class="memItemLeft"><a id="a55ace7b92c2177a8f3ab7a2200c1e6d3" name="a55ace7b92c2177a8f3ab7a2200c1e6d3"></a>
-&#160;</td><td class="memItemRight"><b>ActionManager</b> (std::unique_ptr&lt; <a class="el" href="class_mochi_1_1_input_1_1_input_manager.html">InputManager</a> &gt; inputManager)</td></tr>
-<tr class="memitem:a9091bba64105f513c8ee23baa924701a" id="r_a9091bba64105f513c8ee23baa924701a"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a9091bba64105f513c8ee23baa924701a">LoadActions</a> (std::vector&lt; char &gt;) override</td></tr>
+<tr class="memitem:a55ace7b92c2177a8f3ab7a2200c1e6d3" id="r_a55ace7b92c2177a8f3ab7a2200c1e6d3"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a55ace7b92c2177a8f3ab7a2200c1e6d3">ActionManager</a> (std::unique_ptr&lt; <a class="el" href="class_mochi_1_1_input_1_1_input_manager.html">InputManager</a> &gt; inputManager)</td></tr>
+<tr class="memitem:ab1610cbb01bb03e51cbbe97366d00de3" id="r_ab1610cbb01bb03e51cbbe97366d00de3"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ab1610cbb01bb03e51cbbe97366d00de3">LoadActions</a> (std::vector&lt; char &gt; data) override</td></tr>
+<tr class="memdesc:ab1610cbb01bb03e51cbbe97366d00de3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a list of actions from a JSON string data.  <br /></td></tr>
 <tr class="memitem:a717790c4344119d4781528cf3a3879e8" id="r_a717790c4344119d4781528cf3a3879e8"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a717790c4344119d4781528cf3a3879e8">LoadActionsFromFile</a> (const std::string &amp;path) override</td></tr>
-<tr class="memitem:a09792390a9ad065790404572d13afd4e" id="r_a09792390a9ad065790404572d13afd4e"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a09792390a9ad065790404572d13afd4e">HasAction</a> (const std::string &amp;) const override</td></tr>
+<tr class="memdesc:a717790c4344119d4781528cf3a3879e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a file from the system (without using the PackCatalog) and calls LoadActions with its content.  <br /></td></tr>
+<tr class="memitem:af1c2f9d091f5d26d63c5f8f618830fb8" id="r_af1c2f9d091f5d26d63c5f8f618830fb8"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#af1c2f9d091f5d26d63c5f8f618830fb8">HasAction</a> (const std::string &amp;actionName) const override</td></tr>
+<tr class="memdesc:af1c2f9d091f5d26d63c5f8f618830fb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if there is a action with the provided name in the list.  <br /></td></tr>
 <tr class="memitem:a2ab280666b8865c58ba8301e1f685a3e" id="r_a2ab280666b8865c58ba8301e1f685a3e"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2ab280666b8865c58ba8301e1f685a3e">Update</a> (const float &amp;delta) override</td></tr>
+<tr class="memdesc:a2ab280666b8865c58ba8301e1f685a3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the internal input manager. Check <a class="el" href="class_mochi_1_1_input_1_1_input_manager.html" title="Class that takes one IKeyboardProvider, one IMouseProvider and one IGamepadProvider and updates and c...">InputManager</a>.  <br /></td></tr>
 <tr class="memitem:aea9d263b0f27d7620c226fcd49aa31e7" id="r_aea9d263b0f27d7620c226fcd49aa31e7"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aea9d263b0f27d7620c226fcd49aa31e7">Performed</a> (const std::string &amp;actionName) const override</td></tr>
+<tr class="memdesc:aea9d263b0f27d7620c226fcd49aa31e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if an action has been performed this frame.  <br /></td></tr>
 <tr class="memitem:a02c35ddcfe36e5a57610b80a185e4f2c" id="r_a02c35ddcfe36e5a57610b80a185e4f2c"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a02c35ddcfe36e5a57610b80a185e4f2c">Value</a> (const std::string &amp;actionName) const override</td></tr>
+<tr class="memdesc:a02c35ddcfe36e5a57610b80a185e4f2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the analog value of an action.  <br /></td></tr>
 <tr class="memitem:adc75b823efaf60772bc1bdfc563cde7d" id="r_adc75b823efaf60772bc1bdfc563cde7d"><td class="memItemLeft"><a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight"><a class="el" href="#adc75b823efaf60772bc1bdfc563cde7d">CompoundValue</a> (const std::string &amp;action1, const std::string &amp;action2) const override</td></tr>
+<tr class="memdesc:adc75b823efaf60772bc1bdfc563cde7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility method to get two values at the same time. Useful to get values on vertical and horizontal axis at the same time, for example.  <br /></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of <a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html" title="IActionManager is an interface with the purpose of giving the ability to identify which actions are b...">IActionManager</a> meant to be used on any context where the user has control over the game. Expected flow for this class is creating it, loading the actions config file, updating it each frame and checking the state of the actions at any time. </p>
+<p>NOTE: Actions data is expected as a JSON. Check <a href="./Resources/Actions.json">this example</a> for a first example of the format.</p>
+<p>Actions are a set of PerformableAction, which defines when an action is considered as performed and how it gets its value.</p>
+<p>Related and important classes or structures:</p>
+<ul>
+<li><a class="el" href="struct_mochi_1_1_input_1_1_action.html" title="Set of performable actions that will be used to compute an &quot;or&quot; operation, making an action be consid...">Action</a></li>
+<li><a class="el" href="struct_mochi_1_1_input_1_1_i_performable_action.html" title="An interface defining if an action is being performed and what its value is for a single trigger.">IPerformableAction</a>, <a class="el" href="struct_mochi_1_1_input_1_1_performable_action_keyboard.html" title="IPerformableAction implementation to check if actions requiring a keyboard key are being performed.">PerformableActionKeyboard</a>, <a class="el" href="struct_mochi_1_1_input_1_1_performable_action_mouse.html" title="IPerformableAction implementation to check if actions requiring a mouse button are being performed.">PerformableActionMouse</a>, <a class="el" href="struct_mochi_1_1_input_1_1_performable_action_mouse_axis.html" title="IPerformableAction implementation to check the value of actions requiring mouse position.">PerformableActionMouseAxis</a>, <a class="el" href="struct_mochi_1_1_input_1_1_performable_action_gamepad.html" title="IPerformableAction implementation to check if actions requiring a gamepad button are being performed.">PerformableActionGamepad</a>, <a class="el" href="struct_mochi_1_1_input_1_1_performable_action_gamepad_axis.html" title="IPerformableAction implementation to check the value of actions requiring gamepad axis.">PerformableActionGamepadAxis</a></li>
+<li><a class="el" href="class_mochi_1_1_input_1_1_input_manager.html" title="Class that takes one IKeyboardProvider, one IMouseProvider and one IGamepadProvider and updates and c...">InputManager</a></li>
+<li><a class="el" href="class_mochi_1_1_input_1_1_i_gamepad_provider.html">IGamepadProvider</a>, <a class="el" href="class_mochi_1_1_input_1_1_i_keyboard_provider.html">IKeyboardProvider</a>, <a class="el" href="class_mochi_1_1_input_1_1_i_mouse_provider.html">IMouseProvider</a></li>
+</ul>
+<p>Ownership:</p>
+<ul>
+<li>Owns the input manager.</li>
+<li>Owns a set of actions, loaded from the data JSON.</li>
+</ul>
+<p>Guarantees:</p>
+<ul>
+<li>An updated state of each action each frame, accessible via polling (Performed, Value, CompoundValue)</li>
+</ul>
+<p>Non responsible:</p>
+<ul>
+<li>Dispatching events when an action is performed.</li>
+</ul>
+<p>Thread safety:</p>
+<ul>
+<li>Polling data is thread safe, as it doesn't modify the class.</li>
+<li>Update is not thread safe. </li>
+</ul>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a55ace7b92c2177a8f3ab7a2200c1e6d3" name="a55ace7b92c2177a8f3ab7a2200c1e6d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55ace7b92c2177a8f3ab7a2200c1e6d3">&#9670;&#160;</a></span>ActionManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Mochi::Input::ActionManager::ActionManager </td>
+          <td>(</td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="class_mochi_1_1_input_1_1_input_manager.html">InputManager</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>inputManager</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inputManager</td><td>A unique pointer to the input manager. Reference will be moved by this class to take ownership of the unique pointer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="adc75b823efaf60772bc1bdfc563cde7d" name="adc75b823efaf60772bc1bdfc563cde7d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc75b823efaf60772bc1bdfc563cde7d">&#9670;&#160;</a></span>CompoundValue()</h2>
@@ -143,12 +207,22 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Utility method to get two values at the same time. Useful to get values on vertical and horizontal axis at the same time, for example. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action1</td><td>First action to check. </td></tr>
+    <tr><td class="paramname">action2</td><td>Second action to check. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector with the two resulting values. </dd></dl>
+
 <p>Implements <a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html">Mochi::Input::IActionManager</a>.</p>
 
 </div>
 </div>
-<a id="a09792390a9ad065790404572d13afd4e" name="a09792390a9ad065790404572d13afd4e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a09792390a9ad065790404572d13afd4e">&#9670;&#160;</a></span>HasAction()</h2>
+<a id="af1c2f9d091f5d26d63c5f8f618830fb8" name="af1c2f9d091f5d26d63c5f8f618830fb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1c2f9d091f5d26d63c5f8f618830fb8">&#9670;&#160;</a></span>HasAction()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -170,12 +244,21 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Checks if there is a action with the provided name in the list. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">actionName</td><td>The name of the action to check. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the action exists, false otherwise. </dd></dl>
+
 <p>Implements <a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html">Mochi::Input::IActionManager</a>.</p>
 
 </div>
 </div>
-<a id="a9091bba64105f513c8ee23baa924701a" name="a9091bba64105f513c8ee23baa924701a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9091bba64105f513c8ee23baa924701a">&#9670;&#160;</a></span>LoadActions()</h2>
+<a id="ab1610cbb01bb03e51cbbe97366d00de3" name="ab1610cbb01bb03e51cbbe97366d00de3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1610cbb01bb03e51cbbe97366d00de3">&#9670;&#160;</a></span>LoadActions()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -186,7 +269,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">bool Mochi::Input::ActionManager::LoadActions </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; char &gt;</td>          <td class="paramname"><span class="paramname"><em>jsonContent</em></span></td><td>)</td>
+          <td class="paramtype">std::vector&lt; char &gt;</td>          <td class="paramname"><span class="paramname"><em>data</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -196,6 +279,21 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Loads a list of actions from a JSON string data. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="class_mochi_1_1_malformed_input_action.html">MalformedInputAction</a></td><td>if JSON has not the correct format. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>The string JSON with the actions data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if loaded correctly. </dd></dl>
 
 <p>Implements <a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html">Mochi::Input::IActionManager</a>.</p>
 
@@ -224,6 +322,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Loads a file from the system (without using the PackCatalog) and calls LoadActions with its content. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The path to the file. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if loaded correctly. </dd></dl>
+
 <p>Implements <a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html">Mochi::Input::IActionManager</a>.</p>
 
 </div>
@@ -250,6 +357,15 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Checks if an action has been performed this frame. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">actionName</td><td>The name of the action. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the action has been performed this frame. An analog action is true if its value is different from 0. </dd></dl>
 
 <p>Implements <a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html">Mochi::Input::IActionManager</a>.</p>
 
@@ -278,6 +394,14 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Updates the internal input manager. Check <a class="el" href="class_mochi_1_1_input_1_1_input_manager.html" title="Class that takes one IKeyboardProvider, one IMouseProvider and one IGamepadProvider and updates and c...">InputManager</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">delta</td><td>The delta time. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Implements <a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html">Mochi::Input::IActionManager</a>.</p>
 
 </div>
@@ -304,6 +428,15 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Gets the analog value of an action. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">actionName</td><td>The name of the action. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The analog value of the action. </dd></dl>
 
 <p>Implements <a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html">Mochi::Input::IActionManager</a>.</p>
 

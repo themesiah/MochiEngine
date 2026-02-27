@@ -8,6 +8,17 @@
 
 namespace Mochi::Input
 {
+    /**
+     * @brief IActionManager is an interface with the purpose of giving the ability to identify which actions
+     * are being performed by the player.
+     * Do not mistake this by an input manager that returns true or false if some key is pressed. An action manager
+     * should identify is a button or key has been pressed this frame, or released, or the relative value of an analog control
+     * like a joystick. The responsibility of those features comes with the implementation.
+     *
+     * Actually, a single ActionManager implementation should be enough for any game, but this interface allows us to
+     * implement also VirtualActionManager, which is useful for tests. Check those two classes for more information
+     * on the implemented methods.
+     */
     class IActionManager
     {
     public:

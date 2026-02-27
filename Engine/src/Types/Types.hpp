@@ -10,7 +10,9 @@
 
 namespace Mochi
 {
-
+    /// @brief Float vector of two positions with an X and Y elements and conversion with SDL_FPoint for ease of use with SDL.
+    /// It allows basic operations like sum, substraction, multiplication and division of vectors, and also multiplication and
+    /// division with scalars. It also gives useful methods like the Dot, or the length of the vector (the Distance from 0,0).
     struct Vector2f
     {
         float x, y;
@@ -135,6 +137,8 @@ namespace Mochi
         }
 
         // Operations
+        /// @brief Gives the length of the vector, or the distance to the origin point.
+        /// @return The length.
         inline float Distance() const
         {
             return sqrtf(x * x + y * y);
@@ -152,21 +156,33 @@ namespace Mochi
             return {x / d, y / d};
         }
 
+        /// @brief Sets the vector to its Normalized state.
         inline void Normalize()
         {
             *this = Normalized();
         }
 
+        /// @brief Gives the dot product of the vector and other vector.
+        /// @param rhs Other vector.
+        /// @return The dot product.
         inline float Dot(const Vector2f &rhs) const
         {
             return (x * rhs.x + y * rhs.y);
         }
 
+        /// @brief Gives the dot product between two vectors.
+        /// @param lhs Left side vector
+        /// @param rhs Right side vector
+        /// @return The dot product.
         static float Dot(Vector2f lhs, const Vector2f &rhs)
         {
             return lhs.Dot(rhs);
         }
 
+        /// @brief Returns the dot product of the normalized states of the vector and other vector.
+        /// This is the same as the "Dot" operation given by the Unity Engine.
+        /// @param rhs Other vector.
+        /// @return The dot product of the normalized vectors.
         inline float CosineProximity(const Vector2f &rhs) const
         {
             auto n1 = this->Normalized();
@@ -174,11 +190,21 @@ namespace Mochi
             return (n1.x * n2.x + n1.y * n2.y);
         }
 
+        /// @brief Returns the dot product of the normalized states of two vectors.
+        /// This is the same as the "Dot" operation given by the Unity Engine.
+        /// @param lhs Left side vector.
+        /// @param rhs Right side vector.
+        /// @return The dot product of the normalized vectors.
         static float CosineProximity(Vector2f lhs, const Vector2f &rhs)
         {
             return lhs.CosineProximity(rhs);
         }
 
+        /// @brief Gives the resulting vector when moving a source vector towards another vector up to a maximum distance.
+        /// @param source Where to start.
+        /// @param target Where to end, at most.
+        /// @param maxMagnitude The maximum distance to move.
+        /// @return Target vector if distance was less than max magnitude, or a point inbetween if not.
         static Vector2f MoveTowards(const Vector2f source, const Vector2f target, const float &maxMagnitude)
         {
             if ((source - target).Distance() <= maxMagnitude)
@@ -213,6 +239,8 @@ namespace Mochi
         return !(lhs == rhs);
     }
 
+    /// @brief Float vector of 4 positions with an X, Y, W and H elements defining a rectangle and conversion with SDL_FRect for ease of use with SDL.
+    /// It allows basic operations with other rectangles, vectors or scalars.
     struct Rectf
     {
         float x, y, w, h;
@@ -298,52 +326,72 @@ namespace Mochi
         }
 
         // Utilities
+        /// @brief Gets the x and y elements of the rectangle.
+        /// @return The vector of the position.
         inline Vector2f GetPosition() const
         {
             return {x, y};
         }
 
+        /// @brief Sets the x and y elements of the rectangle.
+        /// @param pos New position vector
         inline void SetPosition(const Vector2f &pos)
         {
             x = pos.x;
             y = pos.y;
         }
 
+        /// @brief Sets the x and y elements of the rectangle.
+        /// @param newX New X value
+        /// @param newY New Y value
         inline void SetPosition(const float &newX, const float &newY)
         {
             x = newX;
             y = newY;
         }
 
+        /// @brief Gets the w and h elements of the rectangle.
+        /// @return The vector of the size.
         inline Vector2f GetSize() const
         {
             return {w, h};
         }
 
+        /// @brief Sets the w and h elements of the rectangle.
+        /// @param size The new size vector.
         inline void SetSize(const Vector2f &size)
         {
             w = size.x;
             h = size.y;
         }
 
+        /// @brief Sets the w and h elements of the rectangle.
+        /// @param newW New w value.
+        /// @param newH New h value.
         inline void SetSize(const float &newW, const float &newH)
         {
             w = newW;
             h = newH;
         }
 
+        /// @brief Multiplies the size vector by an scalar value.
+        /// @param scale The scalar value.
         inline void Scale(const float &scale)
         {
             w *= scale;
             h *= scale;
         }
 
+        /// @brief Utility method to check if a texture is valid. A texture is valid when its width and height are greater than 0.
+        /// @return True if the texture is valid, false otherwise.
         inline bool IsTextureValid()
         {
             return w > 0 && h > 0;
         }
     };
 
+    /// @brief unsigned int vector of 4 elements, with the rgb elements of the color and an alpha channel.
+    /// It also has automatic conversion to SDL_Color for ease of use with SDL.
     struct Color
     {
         unsigned int r;

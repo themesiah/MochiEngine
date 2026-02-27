@@ -11,6 +11,9 @@
 
 namespace Mochi::Input
 {
+    /**
+     * @brief Implementation of IGamepadProvider that uses SDL_GetGamepadAxis and SDL_GetGamepadButton to retrieve gamepad data.
+     */
     class SDLGamepadProvider : public IGamepadProvider
     {
     private:

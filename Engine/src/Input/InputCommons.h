@@ -80,6 +80,7 @@ namespace Mochi::Input
         GAMEPAD_BUTTON_COUNT
     };
 
+    /// @brief Data for Axis and Buttos of a single gamepad.
     struct GamepadData
     {
         std::array<float, GamepadAxis::GAMEPAD_AXIS_COUNT> AxisData;

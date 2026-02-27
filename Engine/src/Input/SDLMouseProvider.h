@@ -11,6 +11,9 @@ namespace Mochi::Graphics
 struct SDL_Renderer;
 namespace Mochi::Input
 {
+    /**
+     * @brief Implementation of IMouseProvider that uses SDL_GetMouseState and SDL_RenderCoordinatesFromWindow to retrieve mouse data.
+     */
     class SDLMouseProvider : public IMouseProvider
     {
     private:

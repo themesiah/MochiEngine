@@ -93,6 +93,11 @@ $(function(){initNavTree('class_mochi_1_1_input_1_1_s_d_l_keyboard_provider.html
   <div class="headertitle"><div class="title">Mochi::Input::SDLKeyboardProvider Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implementation of <a class="el" href="class_mochi_1_1_input_1_1_i_keyboard_provider.html">IKeyboardProvider</a> that uses SDL_GetKeyboardState to retrieve keyboard data.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_s_d_l_keyboard_provider_8h_source.html">SDLKeyboardProvider.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Mochi::Input::SDLKeyboardProvider:</div>
 <div class="dyncontent">
@@ -106,9 +111,13 @@ Inheritance diagram for Mochi::Input::SDLKeyboardProvider:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3fc1fa007248a91edb3735b84400222d" id="r_a3fc1fa007248a91edb3735b84400222d"><td class="memItemLeft">virtual const bool *&#160;</td><td class="memItemRight"><a class="el" href="#a3fc1fa007248a91edb3735b84400222d">GetState</a> () const override</td></tr>
+<tr class="memdesc:a3fc1fa007248a91edb3735b84400222d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets an array of boolean values defining if each keyboard key is being pressed this frame or not. Key mapping is responsability of each implementation, but currently should follow the <a href="https://wiki.libsdl.org/SDL3/SDL_Keycode">SDL keycode definitions</a>.  <br /></td></tr>
 <tr class="memitem:ab62afe96d74edbbe10193e69b3b3ed9a" id="r_ab62afe96d74edbbe10193e69b3b3ed9a"><td class="memItemLeft">virtual size_t&#160;</td><td class="memItemRight"><a class="el" href="#ab62afe96d74edbbe10193e69b3b3ed9a">GetMaxKeys</a> () const override</td></tr>
+<tr class="memdesc:ab62afe96d74edbbe10193e69b3b3ed9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the maximum amount of keys, which is the size of the GetState array of bools.  <br /></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of <a class="el" href="class_mochi_1_1_input_1_1_i_keyboard_provider.html">IKeyboardProvider</a> that uses SDL_GetKeyboardState to retrieve keyboard data. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="ab62afe96d74edbbe10193e69b3b3ed9a" name="ab62afe96d74edbbe10193e69b3b3ed9a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab62afe96d74edbbe10193e69b3b3ed9a">&#9670;&#160;</a></span>GetMaxKeys()</h2>
 
@@ -132,7 +141,10 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_mochi_1_1_input_1_1_i_keyboard_provider.html">Mochi::Input::IKeyboardProvider</a>.</p>
+<p>Gets the maximum amount of keys, which is the size of the GetState array of bools. </p>
+<dl class="section return"><dt>Returns</dt><dd>The amount of keys the keyboard has. </dd></dl>
+
+<p>Implements <a class="el" href="class_mochi_1_1_input_1_1_i_keyboard_provider.html#a722c7d3e3961ec344432fbc6ebfd03f3">Mochi::Input::IKeyboardProvider</a>.</p>
 
 </div>
 </div>
@@ -159,7 +171,10 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_mochi_1_1_input_1_1_i_keyboard_provider.html">Mochi::Input::IKeyboardProvider</a>.</p>
+<p>Gets an array of boolean values defining if each keyboard key is being pressed this frame or not. Key mapping is responsability of each implementation, but currently should follow the <a href="https://wiki.libsdl.org/SDL3/SDL_Keycode">SDL keycode definitions</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to a bool array. </dd></dl>
+
+<p>Implements <a class="el" href="class_mochi_1_1_input_1_1_i_keyboard_provider.html#a4532581b11b5c456d9a85e091717bd12">Mochi::Input::IKeyboardProvider</a>.</p>
 
 </div>
 </div>

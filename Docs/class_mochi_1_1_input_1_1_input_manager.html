@@ -93,38 +93,395 @@ $(function(){initNavTree('class_mochi_1_1_input_1_1_input_manager.html','','clas
   <div class="headertitle"><div class="title">Mochi::Input::InputManager Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class that takes one <a class="el" href="class_mochi_1_1_input_1_1_i_keyboard_provider.html">IKeyboardProvider</a>, one <a class="el" href="class_mochi_1_1_input_1_1_i_mouse_provider.html">IMouseProvider</a> and one <a class="el" href="class_mochi_1_1_input_1_1_i_gamepad_provider.html">IGamepadProvider</a> and updates and collects data from them each frame automatically. It provides functions to poll the state of each provider, used by the <a class="el" href="class_mochi_1_1_input_1_1_action_manager.html" title="Implementation of IActionManager meant to be used on any context where the user has control over the ...">ActionManager</a>. This class is not meant to be implemented differently in any way, as it already receives different sets of providers for that purpose.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_input_manager_8h_source.html">InputManager.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aae544888d4a2dfa4150c02fcc217a272" id="r_aae544888d4a2dfa4150c02fcc217a272"><td class="memItemLeft"><a id="aae544888d4a2dfa4150c02fcc217a272" name="aae544888d4a2dfa4150c02fcc217a272"></a>
-&#160;</td><td class="memItemRight"><b>InputManager</b> (std::unique_ptr&lt; <a class="el" href="class_mochi_1_1_input_1_1_i_keyboard_provider.html">IKeyboardProvider</a> &gt; keyboardProvider, std::unique_ptr&lt; <a class="el" href="class_mochi_1_1_input_1_1_i_mouse_provider.html">IMouseProvider</a> &gt; mouseProvider, std::unique_ptr&lt; <a class="el" href="class_mochi_1_1_input_1_1_i_gamepad_provider.html">IGamepadProvider</a> &gt; mGamepadProvider)</td></tr>
-<tr class="memitem:a58a36e5dd0ca363e736bb774cb12fb37" id="r_a58a36e5dd0ca363e736bb774cb12fb37"><td class="memItemLeft"><a id="a58a36e5dd0ca363e736bb774cb12fb37" name="a58a36e5dd0ca363e736bb774cb12fb37"></a>
-bool&#160;</td><td class="memItemRight"><b>IsDown</b> (const int &amp;key) const</td></tr>
-<tr class="memitem:ac40ad17ec1f9cca254adc8acf17de5b0" id="r_ac40ad17ec1f9cca254adc8acf17de5b0"><td class="memItemLeft"><a id="ac40ad17ec1f9cca254adc8acf17de5b0" name="ac40ad17ec1f9cca254adc8acf17de5b0"></a>
-bool&#160;</td><td class="memItemRight"><b>WasPressed</b> (const int &amp;key) const</td></tr>
-<tr class="memitem:ad6c9201743caad616f65b2679b98c1ed" id="r_ad6c9201743caad616f65b2679b98c1ed"><td class="memItemLeft"><a id="ad6c9201743caad616f65b2679b98c1ed" name="ad6c9201743caad616f65b2679b98c1ed"></a>
-bool&#160;</td><td class="memItemRight"><b>WasReleased</b> (const int &amp;key) const</td></tr>
+<tr class="memitem:aae544888d4a2dfa4150c02fcc217a272" id="r_aae544888d4a2dfa4150c02fcc217a272"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aae544888d4a2dfa4150c02fcc217a272">InputManager</a> (std::unique_ptr&lt; <a class="el" href="class_mochi_1_1_input_1_1_i_keyboard_provider.html">IKeyboardProvider</a> &gt; keyboardProvider, std::unique_ptr&lt; <a class="el" href="class_mochi_1_1_input_1_1_i_mouse_provider.html">IMouseProvider</a> &gt; mouseProvider, std::unique_ptr&lt; <a class="el" href="class_mochi_1_1_input_1_1_i_gamepad_provider.html">IGamepadProvider</a> &gt; mGamepadProvider)</td></tr>
+<tr class="memitem:a58a36e5dd0ca363e736bb774cb12fb37" id="r_a58a36e5dd0ca363e736bb774cb12fb37"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a58a36e5dd0ca363e736bb774cb12fb37">IsDown</a> (const int &amp;key) const</td></tr>
+<tr class="memdesc:a58a36e5dd0ca363e736bb774cb12fb37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a keyboard key is down in this frame.  <br /></td></tr>
+<tr class="memitem:ac40ad17ec1f9cca254adc8acf17de5b0" id="r_ac40ad17ec1f9cca254adc8acf17de5b0"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ac40ad17ec1f9cca254adc8acf17de5b0">WasPressed</a> (const int &amp;key) const</td></tr>
+<tr class="memdesc:ac40ad17ec1f9cca254adc8acf17de5b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a keyboard key is pressed this frame and wasn't the last.  <br /></td></tr>
+<tr class="memitem:ad6c9201743caad616f65b2679b98c1ed" id="r_ad6c9201743caad616f65b2679b98c1ed"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ad6c9201743caad616f65b2679b98c1ed">WasReleased</a> (const int &amp;key) const</td></tr>
+<tr class="memdesc:ad6c9201743caad616f65b2679b98c1ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a keyboard key is not pressed this frame and was the last.  <br /></td></tr>
 <tr class="memitem:adaeb66393b50c7bf1d421623a832b1d3" id="r_adaeb66393b50c7bf1d421623a832b1d3"><td class="memItemLeft"><a id="adaeb66393b50c7bf1d421623a832b1d3" name="adaeb66393b50c7bf1d421623a832b1d3"></a>
 void&#160;</td><td class="memItemRight"><b>Update</b> ()</td></tr>
-<tr class="memitem:a181d20d1a61eb1894867d89db2d95188" id="r_a181d20d1a61eb1894867d89db2d95188"><td class="memItemLeft"><a id="a181d20d1a61eb1894867d89db2d95188" name="a181d20d1a61eb1894867d89db2d95188"></a>
-bool&#160;</td><td class="memItemRight"><b>MouseIsDown</b> (const unsigned int &amp;mouseButton) const</td></tr>
-<tr class="memitem:adf6e4ed8bd8a9fcef45da82965d1bc77" id="r_adf6e4ed8bd8a9fcef45da82965d1bc77"><td class="memItemLeft"><a id="adf6e4ed8bd8a9fcef45da82965d1bc77" name="adf6e4ed8bd8a9fcef45da82965d1bc77"></a>
-bool&#160;</td><td class="memItemRight"><b>MouseWasPressed</b> (const unsigned int &amp;mouseButton) const</td></tr>
-<tr class="memitem:a49fe8d91cd64bd817587d05ff103fcd3" id="r_a49fe8d91cd64bd817587d05ff103fcd3"><td class="memItemLeft"><a id="a49fe8d91cd64bd817587d05ff103fcd3" name="a49fe8d91cd64bd817587d05ff103fcd3"></a>
-bool&#160;</td><td class="memItemRight"><b>MouseWasReleased</b> (const unsigned int &amp;mouseButton) const</td></tr>
-<tr class="memitem:a856d04adb7dfd8af6cd9671ed91dc8d0" id="r_a856d04adb7dfd8af6cd9671ed91dc8d0"><td class="memItemLeft"><a id="a856d04adb7dfd8af6cd9671ed91dc8d0" name="a856d04adb7dfd8af6cd9671ed91dc8d0"></a>
-<a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight"><b>GetMousePosition</b> () const</td></tr>
-<tr class="memitem:ac20a98b71652ab5610f8adc0998085f2" id="r_ac20a98b71652ab5610f8adc0998085f2"><td class="memItemLeft"><a id="ac20a98b71652ab5610f8adc0998085f2" name="ac20a98b71652ab5610f8adc0998085f2"></a>
-<a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight"><b>GetMouseDelta</b> () const</td></tr>
-<tr class="memitem:a1aeeac6ec14abc225298b5f632232ffa" id="r_a1aeeac6ec14abc225298b5f632232ffa"><td class="memItemLeft"><a id="a1aeeac6ec14abc225298b5f632232ffa" name="a1aeeac6ec14abc225298b5f632232ffa"></a>
-float&#160;</td><td class="memItemRight"><b>GetGamepadAxis</b> (const GamepadAxis &amp;axis) const</td></tr>
-<tr class="memitem:a114a385737aaea029a9a0c360f42035d" id="r_a114a385737aaea029a9a0c360f42035d"><td class="memItemLeft"><a id="a114a385737aaea029a9a0c360f42035d" name="a114a385737aaea029a9a0c360f42035d"></a>
-bool&#160;</td><td class="memItemRight"><b>GamepadButtonIsDown</b> (const GamepadButton &amp;button) const</td></tr>
-<tr class="memitem:a497ed831c64b74816df25c3ac317d0ab" id="r_a497ed831c64b74816df25c3ac317d0ab"><td class="memItemLeft"><a id="a497ed831c64b74816df25c3ac317d0ab" name="a497ed831c64b74816df25c3ac317d0ab"></a>
-bool&#160;</td><td class="memItemRight"><b>GamepadButtonWasPressed</b> (const GamepadButton &amp;button) const</td></tr>
-<tr class="memitem:a960a71bdedbad9ca6d4e83edc5d82620" id="r_a960a71bdedbad9ca6d4e83edc5d82620"><td class="memItemLeft"><a id="a960a71bdedbad9ca6d4e83edc5d82620" name="a960a71bdedbad9ca6d4e83edc5d82620"></a>
-bool&#160;</td><td class="memItemRight"><b>GamepadButtonWasReleased</b> (const GamepadButton &amp;button) const</td></tr>
+<tr class="memdesc:adaeb66393b50c7bf1d421623a832b1d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the previous frame data with the data of the previous frame and updates the previous frame data with the data of this frame. <br /></td></tr>
+<tr class="memitem:a181d20d1a61eb1894867d89db2d95188" id="r_a181d20d1a61eb1894867d89db2d95188"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a181d20d1a61eb1894867d89db2d95188">MouseIsDown</a> (const unsigned int &amp;mouseButton) const</td></tr>
+<tr class="memdesc:a181d20d1a61eb1894867d89db2d95188"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a mouse button is down in this frame.  <br /></td></tr>
+<tr class="memitem:adf6e4ed8bd8a9fcef45da82965d1bc77" id="r_adf6e4ed8bd8a9fcef45da82965d1bc77"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#adf6e4ed8bd8a9fcef45da82965d1bc77">MouseWasPressed</a> (const unsigned int &amp;mouseButton) const</td></tr>
+<tr class="memdesc:adf6e4ed8bd8a9fcef45da82965d1bc77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a mouse button is down in this frame and wasn't last frame.  <br /></td></tr>
+<tr class="memitem:a49fe8d91cd64bd817587d05ff103fcd3" id="r_a49fe8d91cd64bd817587d05ff103fcd3"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a49fe8d91cd64bd817587d05ff103fcd3">MouseWasReleased</a> (const unsigned int &amp;mouseButton) const</td></tr>
+<tr class="memdesc:a49fe8d91cd64bd817587d05ff103fcd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a mouse button is not pressed in this frame and was last frame.  <br /></td></tr>
+<tr class="memitem:a856d04adb7dfd8af6cd9671ed91dc8d0" id="r_a856d04adb7dfd8af6cd9671ed91dc8d0"><td class="memItemLeft"><a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight"><a class="el" href="#a856d04adb7dfd8af6cd9671ed91dc8d0">GetMousePosition</a> () const</td></tr>
+<tr class="memdesc:a856d04adb7dfd8af6cd9671ed91dc8d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the mouse position in this frame in screen coordinates.  <br /></td></tr>
+<tr class="memitem:ac20a98b71652ab5610f8adc0998085f2" id="r_ac20a98b71652ab5610f8adc0998085f2"><td class="memItemLeft"><a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight"><a class="el" href="#ac20a98b71652ab5610f8adc0998085f2">GetMouseDelta</a> () const</td></tr>
+<tr class="memdesc:ac20a98b71652ab5610f8adc0998085f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the difference in position between last frames mouse position and this frame mouse position.  <br /></td></tr>
+<tr class="memitem:a1aeeac6ec14abc225298b5f632232ffa" id="r_a1aeeac6ec14abc225298b5f632232ffa"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a1aeeac6ec14abc225298b5f632232ffa">GetGamepadAxis</a> (const GamepadAxis &amp;axis) const</td></tr>
+<tr class="memdesc:a1aeeac6ec14abc225298b5f632232ffa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value of the axis of the gamepad, between -1 and 1.  <br /></td></tr>
+<tr class="memitem:a114a385737aaea029a9a0c360f42035d" id="r_a114a385737aaea029a9a0c360f42035d"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a114a385737aaea029a9a0c360f42035d">GamepadButtonIsDown</a> (const GamepadButton &amp;button) const</td></tr>
+<tr class="memdesc:a114a385737aaea029a9a0c360f42035d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a gamepad button is down.  <br /></td></tr>
+<tr class="memitem:a497ed831c64b74816df25c3ac317d0ab" id="r_a497ed831c64b74816df25c3ac317d0ab"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a497ed831c64b74816df25c3ac317d0ab">GamepadButtonWasPressed</a> (const GamepadButton &amp;button) const</td></tr>
+<tr class="memdesc:a497ed831c64b74816df25c3ac317d0ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a gamepad button is down and wasn't last frame.  <br /></td></tr>
+<tr class="memitem:a960a71bdedbad9ca6d4e83edc5d82620" id="r_a960a71bdedbad9ca6d4e83edc5d82620"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a960a71bdedbad9ca6d4e83edc5d82620">GamepadButtonWasReleased</a> (const GamepadButton &amp;button) const</td></tr>
+<tr class="memdesc:a960a71bdedbad9ca6d4e83edc5d82620"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a gamepad button is not down and was down last frame.  <br /></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class that takes one <a class="el" href="class_mochi_1_1_input_1_1_i_keyboard_provider.html">IKeyboardProvider</a>, one <a class="el" href="class_mochi_1_1_input_1_1_i_mouse_provider.html">IMouseProvider</a> and one <a class="el" href="class_mochi_1_1_input_1_1_i_gamepad_provider.html">IGamepadProvider</a> and updates and collects data from them each frame automatically. It provides functions to poll the state of each provider, used by the <a class="el" href="class_mochi_1_1_input_1_1_action_manager.html" title="Implementation of IActionManager meant to be used on any context where the user has control over the ...">ActionManager</a>. This class is not meant to be implemented differently in any way, as it already receives different sets of providers for that purpose. </p>
+<p>NOTE: The engine is not prepared for more than one player as for now. The <a class="el" href="class_mochi_1_1_input_1_1_input_manager.html" title="Class that takes one IKeyboardProvider, one IMouseProvider and one IGamepadProvider and updates and c...">InputManager</a> takes the polling of <a class="el" href="class_mochi_1_1_input_1_1_i_gamepad_provider.html">IGamepadProvider</a> from the first slot gamepad only.</p>
+<p>Ownership:</p>
+<ul>
+<li>It takes ownership as unique pointers of the <a class="el" href="class_mochi_1_1_input_1_1_i_keyboard_provider.html">IKeyboardProvider</a>, <a class="el" href="class_mochi_1_1_input_1_1_i_mouse_provider.html">IMouseProvider</a> and <a class="el" href="class_mochi_1_1_input_1_1_i_gamepad_provider.html">IGamepadProvider</a>.</li>
+</ul>
+<p>Guarantees:</p>
+<ul>
+<li>The correct state of each state is polled.</li>
+<li>Previous frame states are stored to poll the correct data.</li>
+</ul>
+<p>Non responsible:</p>
+<ul>
+<li><a class="el" href="class_mochi_1_1_input_1_1_input_manager.html" title="Class that takes one IKeyboardProvider, one IMouseProvider and one IGamepadProvider and updates and c...">InputManager</a> doesn't check the validity of the provider implementations. The user is responsible to use providers that are tested and do what is expected. </li>
+</ul>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aae544888d4a2dfa4150c02fcc217a272" name="aae544888d4a2dfa4150c02fcc217a272"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae544888d4a2dfa4150c02fcc217a272">&#9670;&#160;</a></span>InputManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Mochi::Input::InputManager::InputManager </td>
+          <td>(</td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="class_mochi_1_1_input_1_1_i_keyboard_provider.html">IKeyboardProvider</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>keyboardProvider</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="class_mochi_1_1_input_1_1_i_mouse_provider.html">IMouseProvider</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>mouseProvider</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="class_mochi_1_1_input_1_1_i_gamepad_provider.html">IGamepadProvider</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>mGamepadProvider</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">keyboardProvider</td><td></td></tr>
+    <tr><td class="paramname">mouseProvider</td><td></td></tr>
+    <tr><td class="paramname">mGamepadProvider</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a114a385737aaea029a9a0c360f42035d" name="a114a385737aaea029a9a0c360f42035d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a114a385737aaea029a9a0c360f42035d">&#9670;&#160;</a></span>GamepadButtonIsDown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Mochi::Input::InputManager::GamepadButtonIsDown </td>
+          <td>(</td>
+          <td class="paramtype">const GamepadButton &amp;</td>          <td class="paramname"><span class="paramname"><em>button</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a gamepad button is down. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">button</td><td>The button. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if pressed. </dd></dl>
+
+</div>
+</div>
+<a id="a497ed831c64b74816df25c3ac317d0ab" name="a497ed831c64b74816df25c3ac317d0ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a497ed831c64b74816df25c3ac317d0ab">&#9670;&#160;</a></span>GamepadButtonWasPressed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Mochi::Input::InputManager::GamepadButtonWasPressed </td>
+          <td>(</td>
+          <td class="paramtype">const GamepadButton &amp;</td>          <td class="paramname"><span class="paramname"><em>button</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a gamepad button is down and wasn't last frame. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">button</td><td>The button. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if pressed and wasn't pressed last frame. </dd></dl>
+
+</div>
+</div>
+<a id="a960a71bdedbad9ca6d4e83edc5d82620" name="a960a71bdedbad9ca6d4e83edc5d82620"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a960a71bdedbad9ca6d4e83edc5d82620">&#9670;&#160;</a></span>GamepadButtonWasReleased()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Mochi::Input::InputManager::GamepadButtonWasReleased </td>
+          <td>(</td>
+          <td class="paramtype">const GamepadButton &amp;</td>          <td class="paramname"><span class="paramname"><em>button</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a gamepad button is not down and was down last frame. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">button</td><td>The button. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if not pressed and was pressed last frame. </dd></dl>
+
+</div>
+</div>
+<a id="a1aeeac6ec14abc225298b5f632232ffa" name="a1aeeac6ec14abc225298b5f632232ffa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1aeeac6ec14abc225298b5f632232ffa">&#9670;&#160;</a></span>GetGamepadAxis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Mochi::Input::InputManager::GetGamepadAxis </td>
+          <td>(</td>
+          <td class="paramtype">const GamepadAxis &amp;</td>          <td class="paramname"><span class="paramname"><em>axis</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the value of the axis of the gamepad, between -1 and 1. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">axis</td><td>The axis to check. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value. </dd></dl>
+
+</div>
+</div>
+<a id="ac20a98b71652ab5610f8adc0998085f2" name="ac20a98b71652ab5610f8adc0998085f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac20a98b71652ab5610f8adc0998085f2">&#9670;&#160;</a></span>GetMouseDelta()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a> Mochi::Input::InputManager::GetMouseDelta </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the difference in position between last frames mouse position and this frame mouse position. </p>
+<dl class="section return"><dt>Returns</dt><dd>A vector with the difference vector. </dd></dl>
+
+</div>
+</div>
+<a id="a856d04adb7dfd8af6cd9671ed91dc8d0" name="a856d04adb7dfd8af6cd9671ed91dc8d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a856d04adb7dfd8af6cd9671ed91dc8d0">&#9670;&#160;</a></span>GetMousePosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a> Mochi::Input::InputManager::GetMousePosition </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the mouse position in this frame in screen coordinates. </p>
+<dl class="section return"><dt>Returns</dt><dd>A vector with the x and y position </dd></dl>
+
+</div>
+</div>
+<a id="a58a36e5dd0ca363e736bb774cb12fb37" name="a58a36e5dd0ca363e736bb774cb12fb37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58a36e5dd0ca363e736bb774cb12fb37">&#9670;&#160;</a></span>IsDown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Mochi::Input::InputManager::IsDown </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a keyboard key is down in this frame. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>The key code, as defined in the <a href="https://wiki.libsdl.org/SDL3/SDL_Keycode">SDL keycode definitions</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if is pressed. </dd></dl>
+
+</div>
+</div>
+<a id="a181d20d1a61eb1894867d89db2d95188" name="a181d20d1a61eb1894867d89db2d95188"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a181d20d1a61eb1894867d89db2d95188">&#9670;&#160;</a></span>MouseIsDown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Mochi::Input::InputManager::MouseIsDown </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned int &amp;</td>          <td class="paramname"><span class="paramname"><em>mouseButton</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a mouse button is down in this frame. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mouseButton</td><td>The index of the mouse button as defined in MouseButton. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if pressed. </dd></dl>
+
+</div>
+</div>
+<a id="adf6e4ed8bd8a9fcef45da82965d1bc77" name="adf6e4ed8bd8a9fcef45da82965d1bc77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf6e4ed8bd8a9fcef45da82965d1bc77">&#9670;&#160;</a></span>MouseWasPressed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Mochi::Input::InputManager::MouseWasPressed </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned int &amp;</td>          <td class="paramname"><span class="paramname"><em>mouseButton</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a mouse button is down in this frame and wasn't last frame. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mouseButton</td><td>The index of the mouse button as defined in MouseButton. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if pressed and not pressed last frame. </dd></dl>
+
+</div>
+</div>
+<a id="a49fe8d91cd64bd817587d05ff103fcd3" name="a49fe8d91cd64bd817587d05ff103fcd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49fe8d91cd64bd817587d05ff103fcd3">&#9670;&#160;</a></span>MouseWasReleased()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Mochi::Input::InputManager::MouseWasReleased </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned int &amp;</td>          <td class="paramname"><span class="paramname"><em>mouseButton</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a mouse button is not pressed in this frame and was last frame. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mouseButton</td><td>The index of the mouse button as defined in MouseButton. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if not pressed and was pressed last frame. </dd></dl>
+
+</div>
+</div>
+<a id="ac40ad17ec1f9cca254adc8acf17de5b0" name="ac40ad17ec1f9cca254adc8acf17de5b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac40ad17ec1f9cca254adc8acf17de5b0">&#9670;&#160;</a></span>WasPressed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Mochi::Input::InputManager::WasPressed </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a keyboard key is pressed this frame and wasn't the last. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>The key code, as defined in the <a href="https://wiki.libsdl.org/SDL3/SDL_Keycode">SDL keycode definitions</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if is pressed and wasn't pressed last frame. </dd></dl>
+
+</div>
+</div>
+<a id="ad6c9201743caad616f65b2679b98c1ed" name="ad6c9201743caad616f65b2679b98c1ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6c9201743caad616f65b2679b98c1ed">&#9670;&#160;</a></span>WasReleased()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Mochi::Input::InputManager::WasReleased </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a keyboard key is not pressed this frame and was the last. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>The key code, as defined in the <a href="https://wiki.libsdl.org/SDL3/SDL_Keycode">SDL keycode definitions</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if not pressed and was pressed last frame. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Engine/src/Input/<a class="el" href="_input_manager_8h_source.html">InputManager.h</a></li>
 <li>Engine/src/Input/<b>InputManager.cpp</b></li>

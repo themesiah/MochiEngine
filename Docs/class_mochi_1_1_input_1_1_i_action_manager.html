@@ -93,34 +93,229 @@ $(function(){initNavTree('class_mochi_1_1_input_1_1_i_action_manager.html','','c
   <div class="headertitle"><div class="title">Mochi::Input::IActionManager Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html" title="IActionManager is an interface with the purpose of giving the ability to identify which actions are b...">IActionManager</a> is an interface with the purpose of giving the ability to identify which actions are being performed by the player. Do not mistake this by an input manager that returns true or false if some key is pressed. An action manager should identify is a button or key has been pressed this frame, or released, or the relative value of an analog control like a joystick. The responsibility of those features comes with the implementation.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_i_action_manager_8h_source.html">IActionManager.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Mochi::Input::IActionManager:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_mochi_1_1_input_1_1_i_action_manager.png" usemap="#Mochi_3A_3AInput_3A_3AIActionManager_map" alt=""/>
   <map id="Mochi_3A_3AInput_3A_3AIActionManager_map" name="Mochi_3A_3AInput_3A_3AIActionManager_map">
-<area href="class_mochi_1_1_input_1_1_action_manager.html" alt="Mochi::Input::ActionManager" shape="rect" coords="0,56,210,80"/>
-<area href="class_mochi_1_1_input_1_1_virtual_action_manager.html" alt="Mochi::Input::VirtualActionManager" shape="rect" coords="220,56,430,80"/>
+<area href="class_mochi_1_1_input_1_1_action_manager.html" title="Implementation of IActionManager meant to be used on any context where the user has control over the ..." alt="Mochi::Input::ActionManager" shape="rect" coords="0,56,210,80"/>
+<area href="class_mochi_1_1_input_1_1_virtual_action_manager.html" title="An implementation of IActionManager that receives mock action states and allows to poll them when nee..." alt="Mochi::Input::VirtualActionManager" shape="rect" coords="220,56,430,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a23f7218651e7d0fdc936a052c6328bc6" id="r_a23f7218651e7d0fdc936a052c6328bc6"><td class="memItemLeft"><a id="a23f7218651e7d0fdc936a052c6328bc6" name="a23f7218651e7d0fdc936a052c6328bc6"></a>
-virtual bool&#160;</td><td class="memItemRight"><b>LoadActions</b> (std::vector&lt; char &gt; buffer)=0</td></tr>
-<tr class="memitem:ac95e540f122d3d559077bd265197e961" id="r_ac95e540f122d3d559077bd265197e961"><td class="memItemLeft"><a id="ac95e540f122d3d559077bd265197e961" name="ac95e540f122d3d559077bd265197e961"></a>
-virtual bool&#160;</td><td class="memItemRight"><b>LoadActionsFromFile</b> (const std::string &amp;path)=0</td></tr>
-<tr class="memitem:a49742ea840ca85128cb3d7ea36b331cb" id="r_a49742ea840ca85128cb3d7ea36b331cb"><td class="memItemLeft"><a id="a49742ea840ca85128cb3d7ea36b331cb" name="a49742ea840ca85128cb3d7ea36b331cb"></a>
-virtual bool&#160;</td><td class="memItemRight"><b>HasAction</b> (const std::string &amp;) const =0</td></tr>
-<tr class="memitem:a3634ae23c87b17b78de158ffbd8a7a95" id="r_a3634ae23c87b17b78de158ffbd8a7a95"><td class="memItemLeft"><a id="a3634ae23c87b17b78de158ffbd8a7a95" name="a3634ae23c87b17b78de158ffbd8a7a95"></a>
-virtual void&#160;</td><td class="memItemRight"><b>Update</b> (const float &amp;dt)=0</td></tr>
-<tr class="memitem:a8cc6193594678f9cee362863bf075477" id="r_a8cc6193594678f9cee362863bf075477"><td class="memItemLeft"><a id="a8cc6193594678f9cee362863bf075477" name="a8cc6193594678f9cee362863bf075477"></a>
-virtual bool&#160;</td><td class="memItemRight"><b>Performed</b> (const std::string &amp;actionName) const =0</td></tr>
-<tr class="memitem:aac119dcf7fd069a90d0a6e703bb2a8e0" id="r_aac119dcf7fd069a90d0a6e703bb2a8e0"><td class="memItemLeft"><a id="aac119dcf7fd069a90d0a6e703bb2a8e0" name="aac119dcf7fd069a90d0a6e703bb2a8e0"></a>
-virtual float&#160;</td><td class="memItemRight"><b>Value</b> (const std::string &amp;actionName) const =0</td></tr>
-<tr class="memitem:a614ce3436dbf6ae87de9c1bd385fb462" id="r_a614ce3436dbf6ae87de9c1bd385fb462"><td class="memItemLeft"><a id="a614ce3436dbf6ae87de9c1bd385fb462" name="a614ce3436dbf6ae87de9c1bd385fb462"></a>
-virtual <a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight"><b>CompoundValue</b> (const std::string &amp;action1, const std::string &amp;action2) const =0</td></tr>
+<tr class="memitem:a23f7218651e7d0fdc936a052c6328bc6" id="r_a23f7218651e7d0fdc936a052c6328bc6"><td class="memItemLeft">virtual bool&#160;</td><td class="memItemRight"><a class="el" href="#a23f7218651e7d0fdc936a052c6328bc6">LoadActions</a> (std::vector&lt; char &gt; buffer)=0</td></tr>
+<tr class="memitem:ac95e540f122d3d559077bd265197e961" id="r_ac95e540f122d3d559077bd265197e961"><td class="memItemLeft">virtual bool&#160;</td><td class="memItemRight"><a class="el" href="#ac95e540f122d3d559077bd265197e961">LoadActionsFromFile</a> (const std::string &amp;path)=0</td></tr>
+<tr class="memitem:a49742ea840ca85128cb3d7ea36b331cb" id="r_a49742ea840ca85128cb3d7ea36b331cb"><td class="memItemLeft">virtual bool&#160;</td><td class="memItemRight"><a class="el" href="#a49742ea840ca85128cb3d7ea36b331cb">HasAction</a> (const std::string &amp;) const =0</td></tr>
+<tr class="memitem:a3634ae23c87b17b78de158ffbd8a7a95" id="r_a3634ae23c87b17b78de158ffbd8a7a95"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a3634ae23c87b17b78de158ffbd8a7a95">Update</a> (const float &amp;dt)=0</td></tr>
+<tr class="memitem:a8cc6193594678f9cee362863bf075477" id="r_a8cc6193594678f9cee362863bf075477"><td class="memItemLeft">virtual bool&#160;</td><td class="memItemRight"><a class="el" href="#a8cc6193594678f9cee362863bf075477">Performed</a> (const std::string &amp;actionName) const =0</td></tr>
+<tr class="memitem:aac119dcf7fd069a90d0a6e703bb2a8e0" id="r_aac119dcf7fd069a90d0a6e703bb2a8e0"><td class="memItemLeft">virtual float&#160;</td><td class="memItemRight"><a class="el" href="#aac119dcf7fd069a90d0a6e703bb2a8e0">Value</a> (const std::string &amp;actionName) const =0</td></tr>
+<tr class="memitem:a614ce3436dbf6ae87de9c1bd385fb462" id="r_a614ce3436dbf6ae87de9c1bd385fb462"><td class="memItemLeft">virtual <a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight"><a class="el" href="#a614ce3436dbf6ae87de9c1bd385fb462">CompoundValue</a> (const std::string &amp;action1, const std::string &amp;action2) const =0</td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html" title="IActionManager is an interface with the purpose of giving the ability to identify which actions are b...">IActionManager</a> is an interface with the purpose of giving the ability to identify which actions are being performed by the player. Do not mistake this by an input manager that returns true or false if some key is pressed. An action manager should identify is a button or key has been pressed this frame, or released, or the relative value of an analog control like a joystick. The responsibility of those features comes with the implementation. </p>
+<p>Actually, a single <a class="el" href="class_mochi_1_1_input_1_1_action_manager.html" title="Implementation of IActionManager meant to be used on any context where the user has control over the ...">ActionManager</a> implementation should be enough for any game, but this interface allows us to implement also <a class="el" href="class_mochi_1_1_input_1_1_virtual_action_manager.html" title="An implementation of IActionManager that receives mock action states and allows to poll them when nee...">VirtualActionManager</a>, which is useful for tests. Check those two classes for more information on the implemented methods. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a614ce3436dbf6ae87de9c1bd385fb462" name="a614ce3436dbf6ae87de9c1bd385fb462"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a614ce3436dbf6ae87de9c1bd385fb462">&#9670;&#160;</a></span>CompoundValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a> Mochi::Input::IActionManager::CompoundValue </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>action1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>action2</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_input_1_1_action_manager.html#adc75b823efaf60772bc1bdfc563cde7d">Mochi::Input::ActionManager</a>.</p>
+
+</div>
+</div>
+<a id="a49742ea840ca85128cb3d7ea36b331cb" name="a49742ea840ca85128cb3d7ea36b331cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49742ea840ca85128cb3d7ea36b331cb">&#9670;&#160;</a></span>HasAction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Mochi::Input::IActionManager::HasAction </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_input_1_1_action_manager.html#af1c2f9d091f5d26d63c5f8f618830fb8">Mochi::Input::ActionManager</a>.</p>
+
+</div>
+</div>
+<a id="a23f7218651e7d0fdc936a052c6328bc6" name="a23f7218651e7d0fdc936a052c6328bc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23f7218651e7d0fdc936a052c6328bc6">&#9670;&#160;</a></span>LoadActions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Mochi::Input::IActionManager::LoadActions </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; char &gt;</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_input_1_1_action_manager.html#ab1610cbb01bb03e51cbbe97366d00de3">Mochi::Input::ActionManager</a>.</p>
+
+</div>
+</div>
+<a id="ac95e540f122d3d559077bd265197e961" name="ac95e540f122d3d559077bd265197e961"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac95e540f122d3d559077bd265197e961">&#9670;&#160;</a></span>LoadActionsFromFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Mochi::Input::IActionManager::LoadActionsFromFile </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_input_1_1_action_manager.html#a717790c4344119d4781528cf3a3879e8">Mochi::Input::ActionManager</a>.</p>
+
+</div>
+</div>
+<a id="a8cc6193594678f9cee362863bf075477" name="a8cc6193594678f9cee362863bf075477"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cc6193594678f9cee362863bf075477">&#9670;&#160;</a></span>Performed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Mochi::Input::IActionManager::Performed </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>actionName</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_input_1_1_action_manager.html#aea9d263b0f27d7620c226fcd49aa31e7">Mochi::Input::ActionManager</a>.</p>
+
+</div>
+</div>
+<a id="a3634ae23c87b17b78de158ffbd8a7a95" name="a3634ae23c87b17b78de158ffbd8a7a95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3634ae23c87b17b78de158ffbd8a7a95">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Mochi::Input::IActionManager::Update </td>
+          <td>(</td>
+          <td class="paramtype">const float &amp;</td>          <td class="paramname"><span class="paramname"><em>dt</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_input_1_1_action_manager.html#a2ab280666b8865c58ba8301e1f685a3e">Mochi::Input::ActionManager</a>.</p>
+
+</div>
+</div>
+<a id="aac119dcf7fd069a90d0a6e703bb2a8e0" name="aac119dcf7fd069a90d0a6e703bb2a8e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac119dcf7fd069a90d0a6e703bb2a8e0">&#9670;&#160;</a></span>Value()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual float Mochi::Input::IActionManager::Value </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>actionName</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_input_1_1_action_manager.html#a02c35ddcfe36e5a57610b80a185e4f2c">Mochi::Input::ActionManager</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>Engine/src/Input/<a class="el" href="_i_action_manager_8h_source.html">IActionManager.h</a></li>
 </ul>

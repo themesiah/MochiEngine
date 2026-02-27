@@ -11,12 +11,13 @@ var searchData=
   ['performableactionkeyboard_8',['PerformableActionKeyboard',['../struct_mochi_1_1_input_1_1_performable_action_keyboard.html',1,'Mochi::Input']]],
   ['performableactionmouse_9',['PerformableActionMouse',['../struct_mochi_1_1_input_1_1_performable_action_mouse.html',1,'Mochi::Input']]],
   ['performableactionmouseaxis_10',['PerformableActionMouseAxis',['../struct_mochi_1_1_input_1_1_performable_action_mouse_axis.html',1,'Mochi::Input']]],
-  ['playanimation_11',['PlayAnimation',['../class_mochi_1_1_graphics_1_1_animated_sprite.html#af586b67fee38d6e27e777ce7d9d70eab',1,'Mochi::Graphics::AnimatedSprite']]],
-  ['playbgm_12',['PlayBGM',['../class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#a41e22fcb4b06f7aa54f02c376bb26fdc',1,'Mochi::Audio::FMODWrapper']]],
-  ['playoneshot_13',['PlayOneShot',['../class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#a9fba3cbd6a2a943006304382b6c89e4c',1,'Mochi::Audio::FMODWrapper']]],
-  ['point_14',['Point',['../struct_mochi_1_1_physics_1_1_point.html',1,'Mochi::Physics']]],
-  ['pollevents_15',['PollEvents',['../class_mochi_1_1_event_1_1_dummy_event_dispatcher.html#aa879ec61a75606696d43d832aaef8136',1,'Mochi::Event::DummyEventDispatcher::PollEvents()'],['../class_mochi_1_1_event_1_1_i_system_event_dispatcher.html#a783b1102acffe1c2b1c931ce162045b3',1,'Mochi::Event::ISystemEventDispatcher::PollEvents()'],['../class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher.html#a1575b435bec601f5eaa8824869435908',1,'Mochi::Event::SDLSystemEventDispatcher::PollEvents()']]],
-  ['poplayer_16',['PopLayer',['../class_mochi_1_1_engine.html#a107d1939f2ca80f809d94ec3bc6778ea',1,'Mochi::Engine']]],
-  ['publish_17',['Publish',['../class_mochi_1_1_event_1_1_event_bus.html#a2743e6ad90e08f277711357b26cdb85e',1,'Mochi::Event::EventBus']]],
-  ['pushlayer_18',['PushLayer',['../class_mochi_1_1_engine.html#a96968a4a8d7f6bc8971adff496f012c2',1,'Mochi::Engine']]]
+  ['performed_11',['Performed',['../class_mochi_1_1_input_1_1_action_manager.html#aea9d263b0f27d7620c226fcd49aa31e7',1,'Mochi::Input::ActionManager']]],
+  ['playanimation_12',['PlayAnimation',['../class_mochi_1_1_graphics_1_1_animated_sprite.html#af586b67fee38d6e27e777ce7d9d70eab',1,'Mochi::Graphics::AnimatedSprite']]],
+  ['playbgm_13',['PlayBGM',['../class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#a41e22fcb4b06f7aa54f02c376bb26fdc',1,'Mochi::Audio::FMODWrapper']]],
+  ['playoneshot_14',['PlayOneShot',['../class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#a9fba3cbd6a2a943006304382b6c89e4c',1,'Mochi::Audio::FMODWrapper']]],
+  ['point_15',['Point',['../struct_mochi_1_1_physics_1_1_point.html',1,'Mochi::Physics']]],
+  ['pollevents_16',['PollEvents',['../class_mochi_1_1_event_1_1_dummy_event_dispatcher.html#aa879ec61a75606696d43d832aaef8136',1,'Mochi::Event::DummyEventDispatcher::PollEvents()'],['../class_mochi_1_1_event_1_1_i_system_event_dispatcher.html#a783b1102acffe1c2b1c931ce162045b3',1,'Mochi::Event::ISystemEventDispatcher::PollEvents()'],['../class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher.html#a1575b435bec601f5eaa8824869435908',1,'Mochi::Event::SDLSystemEventDispatcher::PollEvents()']]],
+  ['poplayer_17',['PopLayer',['../class_mochi_1_1_engine.html#a107d1939f2ca80f809d94ec3bc6778ea',1,'Mochi::Engine']]],
+  ['publish_18',['Publish',['../class_mochi_1_1_event_1_1_event_bus.html#a2743e6ad90e08f277711357b26cdb85e',1,'Mochi::Event::EventBus']]],
+  ['pushlayer_19',['PushLayer',['../class_mochi_1_1_engine.html#a96968a4a8d7f6bc8971adff496f012c2',1,'Mochi::Engine']]]
 ];

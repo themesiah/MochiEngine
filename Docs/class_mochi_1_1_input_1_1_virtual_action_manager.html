@@ -93,13 +93,18 @@ $(function(){initNavTree('class_mochi_1_1_input_1_1_virtual_action_manager.html'
   <div class="headertitle"><div class="title">Mochi::Input::VirtualActionManager Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>An implementation of <a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html" title="IActionManager is an interface with the purpose of giving the ability to identify which actions are b...">IActionManager</a> that receives mock action states and allows to poll them when needed. This is useful for testing and can be a base for emulating player actions on replays or similar features.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_virtual_action_manager_8h_source.html">VirtualActionManager.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Mochi::Input::VirtualActionManager:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_mochi_1_1_input_1_1_virtual_action_manager.png" usemap="#Mochi_3A_3AInput_3A_3AVirtualActionManager_map" alt=""/>
   <map id="Mochi_3A_3AInput_3A_3AVirtualActionManager_map" name="Mochi_3A_3AInput_3A_3AVirtualActionManager_map">
-<area href="class_mochi_1_1_input_1_1_i_action_manager.html" alt="Mochi::Input::IActionManager" shape="rect" coords="0,0,210,24"/>
+<area href="class_mochi_1_1_input_1_1_i_action_manager.html" title="IActionManager is an interface with the purpose of giving the ability to identify which actions are b..." alt="Mochi::Input::IActionManager" shape="rect" coords="0,0,210,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -112,10 +117,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a29dd6b807193b470e25c5ac7500101b3" id="r_a29dd6b807193b470e25c5ac7500101b3"><td class="memItemLeft">virtual bool&#160;</td><td class="memItemRight"><a class="el" href="#a29dd6b807193b470e25c5ac7500101b3">Performed</a> (const std::string &amp;actionName) const override</td></tr>
 <tr class="memitem:a595ad0acbe0d9510c41928985a32caea" id="r_a595ad0acbe0d9510c41928985a32caea"><td class="memItemLeft">virtual float&#160;</td><td class="memItemRight"><a class="el" href="#a595ad0acbe0d9510c41928985a32caea">Value</a> (const std::string &amp;actionName) const override</td></tr>
 <tr class="memitem:a407417604cc798898e663c768bfdb550" id="r_a407417604cc798898e663c768bfdb550"><td class="memItemLeft">virtual <a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight"><a class="el" href="#a407417604cc798898e663c768bfdb550">CompoundValue</a> (const std::string &amp;action1, const std::string &amp;action2) const override</td></tr>
-<tr class="memitem:a1e7a696d25b9faffe888b3b88b8b9e16" id="r_a1e7a696d25b9faffe888b3b88b8b9e16"><td class="memItemLeft"><a id="a1e7a696d25b9faffe888b3b88b8b9e16" name="a1e7a696d25b9faffe888b3b88b8b9e16"></a>
-void&#160;</td><td class="memItemRight"><b>SetActionState</b> (const std::string &amp;action, const float &amp;state)</td></tr>
+<tr class="memitem:a1e7a696d25b9faffe888b3b88b8b9e16" id="r_a1e7a696d25b9faffe888b3b88b8b9e16"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a1e7a696d25b9faffe888b3b88b8b9e16">SetActionState</a> (const std::string &amp;action, const float &amp;state)</td></tr>
+<tr class="memdesc:a1e7a696d25b9faffe888b3b88b8b9e16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets an action on the action map to be retrieved later. This action is not changed unless SetActionState is called again with a different value.  <br /></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>An implementation of <a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html" title="IActionManager is an interface with the purpose of giving the ability to identify which actions are b...">IActionManager</a> that receives mock action states and allows to poll them when needed. This is useful for testing and can be a base for emulating player actions on replays or similar features. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a407417604cc798898e663c768bfdb550" name="a407417604cc798898e663c768bfdb550"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a407417604cc798898e663c768bfdb550">&#9670;&#160;</a></span>CompoundValue()</h2>
 
@@ -252,6 +259,36 @@ void&#160;</td><td class="memItemRight"><b>SetActionState</b> (const std::string
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html">Mochi::Input::IActionManager</a>.</p>
+
+</div>
+</div>
+<a id="a1e7a696d25b9faffe888b3b88b8b9e16" name="a1e7a696d25b9faffe888b3b88b8b9e16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e7a696d25b9faffe888b3b88b8b9e16">&#9670;&#160;</a></span>SetActionState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mochi::Input::VirtualActionManager::SetActionState </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>action</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float &amp;</td>          <td class="paramname"><span class="paramname"><em>state</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets an action on the action map to be retrieved later. This action is not changed unless SetActionState is called again with a different value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action</td><td>The name of the action to change. </td></tr>
+    <tr><td class="paramname">state</td><td>The value of the action. Note that for checking if an action has been performed the value has to be different from 0. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

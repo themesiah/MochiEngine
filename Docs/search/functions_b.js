@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['onupdate_0',['OnUpdate',['../class_mochi_1_1_graphics_1_1_abstract_g_u_i.html#a25ae4e052e53c7d932aef1e2dd41f6a7',1,'Mochi::Graphics::AbstractGUI']]],
-  ['operator_2b_3d_1',['operator+=',['../struct_mochi_1_1_rectf.html#ab698352ba3fd207a4973fa3a3d60b0da',1,'Mochi::Rectf']]],
-  ['operator_2d_3d_2',['operator-=',['../struct_mochi_1_1_rectf.html#a3f8eca0df388421e950b8a8979fdd1c1',1,'Mochi::Rectf']]]
+  ['normalize_0',['Normalize',['../struct_mochi_1_1_vector2f.html#a69adc7c0b18d75394cda3f23809af434',1,'Mochi::Vector2f']]],
+  ['normalized_1',['Normalized',['../struct_mochi_1_1_vector2f.html#adfd0ca6591237abeb14ae7f78f38c761',1,'Mochi::Vector2f']]]
 ];

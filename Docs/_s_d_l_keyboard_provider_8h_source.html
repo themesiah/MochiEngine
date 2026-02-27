@@ -100,19 +100,22 @@ $(function(){initNavTree('_s_d_l_keyboard_provider_8h_source.html','',''); });
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">namespace </span>Mochi::Input</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>{</div>
-<div class="foldopen" id="foldopen00008" data-start="{" data-end="};">
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="class_mochi_1_1_input_1_1_s_d_l_keyboard_provider.html">    8</a></span>    <span class="keyword">class </span>SDLKeyboardProvider : <span class="keyword">public</span> <a class="code hl_class" href="class_mochi_1_1_input_1_1_i_keyboard_provider.html">IKeyboardProvider</a></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        SDLKeyboardProvider();</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keyword">virtual</span> ~SDLKeyboardProvider();</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> *GetState() <span class="keyword">const override</span>;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> GetMaxKeys() <span class="keyword">const override</span>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    };</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span></div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="class_mochi_1_1_input_1_1_s_d_l_keyboard_provider.html">   12</a></span>    <span class="keyword">class </span>SDLKeyboardProvider : <span class="keyword">public</span> <a class="code hl_class" href="class_mochi_1_1_input_1_1_i_keyboard_provider.html">IKeyboardProvider</a></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        SDLKeyboardProvider();</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="keyword">virtual</span> ~SDLKeyboardProvider();</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> *<a class="code hl_function" href="class_mochi_1_1_input_1_1_s_d_l_keyboard_provider.html#a3fc1fa007248a91edb3735b84400222d">GetState</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> <a class="code hl_function" href="class_mochi_1_1_input_1_1_s_d_l_keyboard_provider.html#ab62afe96d74edbbe10193e69b3b3ed9a">GetMaxKeys</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    };</div>
 </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_mochi_1_1_input_1_1_i_keyboard_provider_html"><div class="ttname"><a href="class_mochi_1_1_input_1_1_i_keyboard_provider.html">Mochi::Input::IKeyboardProvider</a></div><div class="ttdef"><b>Definition</b> IKeyboardProvider.h:9</div></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_mochi_1_1_input_1_1_i_keyboard_provider_html"><div class="ttname"><a href="class_mochi_1_1_input_1_1_i_keyboard_provider.html">Mochi::Input::IKeyboardProvider</a></div><div class="ttdef"><b>Definition</b> IKeyboardProvider.h:12</div></div>
+<div class="ttc" id="aclass_mochi_1_1_input_1_1_s_d_l_keyboard_provider_html_a3fc1fa007248a91edb3735b84400222d"><div class="ttname"><a href="class_mochi_1_1_input_1_1_s_d_l_keyboard_provider.html#a3fc1fa007248a91edb3735b84400222d">Mochi::Input::SDLKeyboardProvider::GetState</a></div><div class="ttdeci">virtual const bool * GetState() const override</div><div class="ttdoc">Gets an array of boolean values defining if each keyboard key is being pressed this frame or not....</div><div class="ttdef"><b>Definition</b> SDLKeyboardProvider.cpp:15</div></div>
+<div class="ttc" id="aclass_mochi_1_1_input_1_1_s_d_l_keyboard_provider_html_ab62afe96d74edbbe10193e69b3b3ed9a"><div class="ttname"><a href="class_mochi_1_1_input_1_1_s_d_l_keyboard_provider.html#ab62afe96d74edbbe10193e69b3b3ed9a">Mochi::Input::SDLKeyboardProvider::GetMaxKeys</a></div><div class="ttdeci">virtual size_t GetMaxKeys() const override</div><div class="ttdoc">Gets the maximum amount of keys, which is the size of the GetState array of bools.</div><div class="ttdef"><b>Definition</b> SDLKeyboardProvider.cpp:21</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

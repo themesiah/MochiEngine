@@ -19,7 +19,7 @@ namespace Mochi::Graphics
      *
      * Animation data is expected as a JSON with specific configuration as shown in the image.
      *
-     * ![img def](@ref ./AsepriteExport.png)
+     * ![img def](@ref ./Resources/AsepriteExport.png)
      */
     class AsepriteAnimationFactory : public IAnimationFactory
     {

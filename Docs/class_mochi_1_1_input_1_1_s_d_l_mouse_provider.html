@@ -93,6 +93,11 @@ $(function(){initNavTree('class_mochi_1_1_input_1_1_s_d_l_mouse_provider.html','
   <div class="headertitle"><div class="title">Mochi::Input::SDLMouseProvider Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implementation of <a class="el" href="class_mochi_1_1_input_1_1_i_mouse_provider.html">IMouseProvider</a> that uses SDL_GetMouseState and SDL_RenderCoordinatesFromWindow to retrieve mouse data.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_s_d_l_mouse_provider_8h_source.html">SDLMouseProvider.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Mochi::Input::SDLMouseProvider:</div>
 <div class="dyncontent">
@@ -108,8 +113,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aebd49f259dac62354e348c56d9d0468b" id="r_aebd49f259dac62354e348c56d9d0468b"><td class="memItemLeft"><a id="aebd49f259dac62354e348c56d9d0468b" name="aebd49f259dac62354e348c56d9d0468b"></a>
 &#160;</td><td class="memItemRight"><b>SDLMouseProvider</b> (const <a class="el" href="class_mochi_1_1_graphics_1_1_i_renderer.html">Graphics::IRenderer</a> *renderer)</td></tr>
 <tr class="memitem:a681afaf85b5149d9681ad55aa3d54add" id="r_a681afaf85b5149d9681ad55aa3d54add"><td class="memItemLeft">virtual std::array&lt; bool, MouseButton::MouseButtonsCount &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a681afaf85b5149d9681ad55aa3d54add">GetState</a> (float *x, float *y) const override</td></tr>
+<tr class="memdesc:a681afaf85b5149d9681ad55aa3d54add"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the state of the mouse, consisting of the pointer position in the screen and each of its buttons, defined in <a class="el" href="_input_commons_8h_source.html">InputCommons.h</a> in the MouseButtons enum.  <br /></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of <a class="el" href="class_mochi_1_1_input_1_1_i_mouse_provider.html">IMouseProvider</a> that uses SDL_GetMouseState and SDL_RenderCoordinatesFromWindow to retrieve mouse data. </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a681afaf85b5149d9681ad55aa3d54add" name="a681afaf85b5149d9681ad55aa3d54add"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a681afaf85b5149d9681ad55aa3d54add">&#9670;&#160;</a></span>GetState()</h2>
 
@@ -137,7 +145,17 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_mochi_1_1_input_1_1_i_mouse_provider.html">Mochi::Input::IMouseProvider</a>.</p>
+<p>Gets the state of the mouse, consisting of the pointer position in the screen and each of its buttons, defined in <a class="el" href="_input_commons_8h_source.html">InputCommons.h</a> in the MouseButtons enum. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Reference to a value that will be updated in the method with the X position. </td></tr>
+    <tr><td class="paramname">y</td><td>Reference to a value that will be updated in the method with the Y position. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An array of booleans for each mouse button, up to <a class="el" href="_input_commons_8h_source.html">InputCommons.h</a> in the MouseButtons enum. </dd></dl>
+
+<p>Implements <a class="el" href="class_mochi_1_1_input_1_1_i_mouse_provider.html#a0ffae398f9a5562bd2741fc10cb77632">Mochi::Input::IMouseProvider</a>.</p>
 
 </div>
 </div>

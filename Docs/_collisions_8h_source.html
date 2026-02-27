@@ -160,7 +160,7 @@ $(function(){initNavTree('_collisions_8h_source.html','',''); });
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        Vector2f lineVector = l.End - l.Position;</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordtype">float</span> lineLength = lineVector.Distance();</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordtype">float</span> dot = Vector2f::Dot(c.Position - l.Position, lineVector) / (lineLength * lineLength);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordtype">float</span> dot = <a class="code hl_function" href="struct_mochi_1_1_vector2f.html#af0fc34d77732430ea5df666bf64485b4">Vector2f::Dot</a>(c.Position - l.Position, lineVector) / (lineLength * lineLength);</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        dot = Math::Clamp01(dot);</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <a class="code hl_struct" href="struct_mochi_1_1_physics_1_1_point.html">Point</a> closestPoint = <a class="code hl_struct" href="struct_mochi_1_1_physics_1_1_point.html">Point</a>(l.Position + (lineVector * dot));</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">return</span> c.Collides(closestPoint);</div>
@@ -221,6 +221,7 @@ $(function(){initNavTree('_collisions_8h_source.html','',''); });
 <div class="ttc" id="astruct_mochi_1_1_physics_1_1_line_html"><div class="ttname"><a href="struct_mochi_1_1_physics_1_1_line.html">Mochi::Physics::Line</a></div><div class="ttdef"><b>Definition</b> Shapes.h:45</div></div>
 <div class="ttc" id="astruct_mochi_1_1_physics_1_1_point_html"><div class="ttname"><a href="struct_mochi_1_1_physics_1_1_point.html">Mochi::Physics::Point</a></div><div class="ttdef"><b>Definition</b> Shapes.h:32</div></div>
 <div class="ttc" id="astruct_mochi_1_1_physics_1_1_rectangle_html"><div class="ttname"><a href="struct_mochi_1_1_physics_1_1_rectangle.html">Mochi::Physics::Rectangle</a></div><div class="ttdef"><b>Definition</b> Shapes.h:78</div></div>
+<div class="ttc" id="astruct_mochi_1_1_vector2f_html_af0fc34d77732430ea5df666bf64485b4"><div class="ttname"><a href="struct_mochi_1_1_vector2f.html#af0fc34d77732430ea5df666bf64485b4">Mochi::Vector2f::Dot</a></div><div class="ttdeci">float Dot(const Vector2f &amp;rhs) const</div><div class="ttdoc">Gives the dot product of the vector and other vector.</div><div class="ttdef"><b>Definition</b> Types.hpp:168</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

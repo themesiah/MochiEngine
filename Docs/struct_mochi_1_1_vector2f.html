@@ -93,6 +93,11 @@ $(function(){initNavTree('struct_mochi_1_1_vector2f.html','','struct_mochi_1_1_v
   <div class="headertitle"><div class="title">Mochi::Vector2f Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Float vector of two positions with an X and Y elements and conversion with SDL_FPoint for ease of use with SDL. It allows basic operations like sum, substraction, multiplication and division of vectors, and also multiplication and division with scalars. It also gives useful methods like the Dot, or the length of the vector (the Distance from 0,0).  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_types_8hpp_source.html">Types.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -126,25 +131,26 @@ Vector2f &amp;&#160;</td><td class="memItemRight"><b>operator/=</b> (const float
 bool&#160;</td><td class="memItemRight"><b>operator==</b> (const Vector2f &amp;rhs)</td></tr>
 <tr class="memitem:abccb55db371a811a9802649f17e2dc9b" id="r_abccb55db371a811a9802649f17e2dc9b"><td class="memItemLeft"><a id="abccb55db371a811a9802649f17e2dc9b" name="abccb55db371a811a9802649f17e2dc9b"></a>
 std::string&#160;</td><td class="memItemRight"><b>ToString</b> () const</td></tr>
-<tr class="memitem:a7d2efc8f98340130dccb767a11f549ac" id="r_a7d2efc8f98340130dccb767a11f549ac"><td class="memItemLeft"><a id="a7d2efc8f98340130dccb767a11f549ac" name="a7d2efc8f98340130dccb767a11f549ac"></a>
-float&#160;</td><td class="memItemRight"><b>Distance</b> () const</td></tr>
+<tr class="memitem:a7d2efc8f98340130dccb767a11f549ac" id="r_a7d2efc8f98340130dccb767a11f549ac"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a7d2efc8f98340130dccb767a11f549ac">Distance</a> () const</td></tr>
+<tr class="memdesc:a7d2efc8f98340130dccb767a11f549ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives the length of the vector, or the distance to the origin point.  <br /></td></tr>
 <tr class="memitem:adfd0ca6591237abeb14ae7f78f38c761" id="r_adfd0ca6591237abeb14ae7f78f38c761"><td class="memItemLeft">Vector2f&#160;</td><td class="memItemRight"><a class="el" href="#adfd0ca6591237abeb14ae7f78f38c761">Normalized</a> () const</td></tr>
 <tr class="memdesc:adfd0ca6591237abeb14ae7f78f38c761"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a new copy of the vector, normlized. If vector was 0,0, returns 0,0.  <br /></td></tr>
 <tr class="memitem:a69adc7c0b18d75394cda3f23809af434" id="r_a69adc7c0b18d75394cda3f23809af434"><td class="memItemLeft"><a id="a69adc7c0b18d75394cda3f23809af434" name="a69adc7c0b18d75394cda3f23809af434"></a>
 void&#160;</td><td class="memItemRight"><b>Normalize</b> ()</td></tr>
-<tr class="memitem:af0fc34d77732430ea5df666bf64485b4" id="r_af0fc34d77732430ea5df666bf64485b4"><td class="memItemLeft"><a id="af0fc34d77732430ea5df666bf64485b4" name="af0fc34d77732430ea5df666bf64485b4"></a>
-float&#160;</td><td class="memItemRight"><b>Dot</b> (const Vector2f &amp;rhs) const</td></tr>
-<tr class="memitem:a73952d77536c3096882e312967d904b4" id="r_a73952d77536c3096882e312967d904b4"><td class="memItemLeft"><a id="a73952d77536c3096882e312967d904b4" name="a73952d77536c3096882e312967d904b4"></a>
-float&#160;</td><td class="memItemRight"><b>CosineProximity</b> (const Vector2f &amp;rhs) const</td></tr>
+<tr class="memdesc:a69adc7c0b18d75394cda3f23809af434"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the vector to its Normalized state. <br /></td></tr>
+<tr class="memitem:af0fc34d77732430ea5df666bf64485b4" id="r_af0fc34d77732430ea5df666bf64485b4"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#af0fc34d77732430ea5df666bf64485b4">Dot</a> (const Vector2f &amp;rhs) const</td></tr>
+<tr class="memdesc:af0fc34d77732430ea5df666bf64485b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives the dot product of the vector and other vector.  <br /></td></tr>
+<tr class="memitem:a73952d77536c3096882e312967d904b4" id="r_a73952d77536c3096882e312967d904b4"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a73952d77536c3096882e312967d904b4">CosineProximity</a> (const Vector2f &amp;rhs) const</td></tr>
+<tr class="memdesc:a73952d77536c3096882e312967d904b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the dot product of the normalized states of the vector and other vector. This is the same as the "Dot" operation given by the Unity <a class="el" href="class_mochi_1_1_engine.html" title="Main class of the MochiEngine. It owns and coordinates all subsystems and layers, and drives the appl...">Engine</a>.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:aee6d7ea26f6a18598ba2ff112c047be9" id="r_aee6d7ea26f6a18598ba2ff112c047be9"><td class="memItemLeft"><a id="aee6d7ea26f6a18598ba2ff112c047be9" name="aee6d7ea26f6a18598ba2ff112c047be9"></a>
-static float&#160;</td><td class="memItemRight"><b>Dot</b> (Vector2f lhs, const Vector2f &amp;rhs)</td></tr>
-<tr class="memitem:a5595477cd937f4a9fbd83c93466e2ff2" id="r_a5595477cd937f4a9fbd83c93466e2ff2"><td class="memItemLeft"><a id="a5595477cd937f4a9fbd83c93466e2ff2" name="a5595477cd937f4a9fbd83c93466e2ff2"></a>
-static float&#160;</td><td class="memItemRight"><b>CosineProximity</b> (Vector2f lhs, const Vector2f &amp;rhs)</td></tr>
-<tr class="memitem:a9ed32657fa7de0993f86334342732d3f" id="r_a9ed32657fa7de0993f86334342732d3f"><td class="memItemLeft"><a id="a9ed32657fa7de0993f86334342732d3f" name="a9ed32657fa7de0993f86334342732d3f"></a>
-static Vector2f&#160;</td><td class="memItemRight"><b>MoveTowards</b> (const Vector2f source, const Vector2f target, const float &amp;maxMagnitude)</td></tr>
+<tr class="memitem:aee6d7ea26f6a18598ba2ff112c047be9" id="r_aee6d7ea26f6a18598ba2ff112c047be9"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#aee6d7ea26f6a18598ba2ff112c047be9">Dot</a> (Vector2f lhs, const Vector2f &amp;rhs)</td></tr>
+<tr class="memdesc:aee6d7ea26f6a18598ba2ff112c047be9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives the dot product between two vectors.  <br /></td></tr>
+<tr class="memitem:a5595477cd937f4a9fbd83c93466e2ff2" id="r_a5595477cd937f4a9fbd83c93466e2ff2"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#a5595477cd937f4a9fbd83c93466e2ff2">CosineProximity</a> (Vector2f lhs, const Vector2f &amp;rhs)</td></tr>
+<tr class="memdesc:a5595477cd937f4a9fbd83c93466e2ff2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the dot product of the normalized states of two vectors. This is the same as the "Dot" operation given by the Unity <a class="el" href="class_mochi_1_1_engine.html" title="Main class of the MochiEngine. It owns and coordinates all subsystems and layers, and drives the appl...">Engine</a>.  <br /></td></tr>
+<tr class="memitem:a9ed32657fa7de0993f86334342732d3f" id="r_a9ed32657fa7de0993f86334342732d3f"><td class="memItemLeft">static Vector2f&#160;</td><td class="memItemRight"><a class="el" href="#a9ed32657fa7de0993f86334342732d3f">MoveTowards</a> (const Vector2f source, const Vector2f target, const float &amp;maxMagnitude)</td></tr>
+<tr class="memdesc:a9ed32657fa7de0993f86334342732d3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives the resulting vector when moving a source vector towards another vector up to a maximum distance.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -183,7 +189,228 @@ Vector2f&#160;</td><td class="memItemRight"><b>operator/</b> (Vector2f lhs, cons
 <tr class="memitem:a2694087ae71cca677057a74f42ef2011" id="r_a2694087ae71cca677057a74f42ef2011"><td class="memItemLeft"><a id="a2694087ae71cca677057a74f42ef2011" name="a2694087ae71cca677057a74f42ef2011"></a>
 Vector2f&#160;</td><td class="memItemRight"><b>operator/</b> (Vector2f lhs, const float &amp;rhs)</td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Float vector of two positions with an X and Y elements and conversion with SDL_FPoint for ease of use with SDL. It allows basic operations like sum, substraction, multiplication and division of vectors, and also multiplication and division with scalars. It also gives useful methods like the Dot, or the length of the vector (the Distance from 0,0). </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a73952d77536c3096882e312967d904b4" name="a73952d77536c3096882e312967d904b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73952d77536c3096882e312967d904b4">&#9670;&#160;</a></span>CosineProximity() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Mochi::Vector2f::CosineProximity </td>
+          <td>(</td>
+          <td class="paramtype">const Vector2f &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the dot product of the normalized states of the vector and other vector. This is the same as the "Dot" operation given by the Unity <a class="el" href="class_mochi_1_1_engine.html" title="Main class of the MochiEngine. It owns and coordinates all subsystems and layers, and drives the appl...">Engine</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rhs</td><td>Other vector. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The dot product of the normalized vectors. </dd></dl>
+
+</div>
+</div>
+<a id="a5595477cd937f4a9fbd83c93466e2ff2" name="a5595477cd937f4a9fbd83c93466e2ff2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5595477cd937f4a9fbd83c93466e2ff2">&#9670;&#160;</a></span>CosineProximity() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Mochi::Vector2f::CosineProximity </td>
+          <td>(</td>
+          <td class="paramtype">Vector2f</td>          <td class="paramname"><span class="paramname"><em>lhs</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Vector2f &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the dot product of the normalized states of two vectors. This is the same as the "Dot" operation given by the Unity <a class="el" href="class_mochi_1_1_engine.html" title="Main class of the MochiEngine. It owns and coordinates all subsystems and layers, and drives the appl...">Engine</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td>Left side vector. </td></tr>
+    <tr><td class="paramname">rhs</td><td>Right side vector. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The dot product of the normalized vectors. </dd></dl>
+
+</div>
+</div>
+<a id="a7d2efc8f98340130dccb767a11f549ac" name="a7d2efc8f98340130dccb767a11f549ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d2efc8f98340130dccb767a11f549ac">&#9670;&#160;</a></span>Distance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Mochi::Vector2f::Distance </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gives the length of the vector, or the distance to the origin point. </p>
+<dl class="section return"><dt>Returns</dt><dd>The length. </dd></dl>
+
+</div>
+</div>
+<a id="af0fc34d77732430ea5df666bf64485b4" name="af0fc34d77732430ea5df666bf64485b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0fc34d77732430ea5df666bf64485b4">&#9670;&#160;</a></span>Dot() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Mochi::Vector2f::Dot </td>
+          <td>(</td>
+          <td class="paramtype">const Vector2f &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gives the dot product of the vector and other vector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rhs</td><td>Other vector. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The dot product. </dd></dl>
+
+</div>
+</div>
+<a id="aee6d7ea26f6a18598ba2ff112c047be9" name="aee6d7ea26f6a18598ba2ff112c047be9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee6d7ea26f6a18598ba2ff112c047be9">&#9670;&#160;</a></span>Dot() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Mochi::Vector2f::Dot </td>
+          <td>(</td>
+          <td class="paramtype">Vector2f</td>          <td class="paramname"><span class="paramname"><em>lhs</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Vector2f &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gives the dot product between two vectors. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td>Left side vector </td></tr>
+    <tr><td class="paramname">rhs</td><td>Right side vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The dot product. </dd></dl>
+
+</div>
+</div>
+<a id="a9ed32657fa7de0993f86334342732d3f" name="a9ed32657fa7de0993f86334342732d3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ed32657fa7de0993f86334342732d3f">&#9670;&#160;</a></span>MoveTowards()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector2f Mochi::Vector2f::MoveTowards </td>
+          <td>(</td>
+          <td class="paramtype">const Vector2f</td>          <td class="paramname"><span class="paramname"><em>source</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Vector2f</td>          <td class="paramname"><span class="paramname"><em>target</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float &amp;</td>          <td class="paramname"><span class="paramname"><em>maxMagnitude</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gives the resulting vector when moving a source vector towards another vector up to a maximum distance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>Where to start. </td></tr>
+    <tr><td class="paramname">target</td><td>Where to end, at most. </td></tr>
+    <tr><td class="paramname">maxMagnitude</td><td>The maximum distance to move. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Target vector if distance was less than max magnitude, or a point inbetween if not. </dd></dl>
+
+</div>
+</div>
 <a id="adfd0ca6591237abeb14ae7f78f38c761" name="adfd0ca6591237abeb14ae7f78f38c761"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adfd0ca6591237abeb14ae7f78f38c761">&#9670;&#160;</a></span>Normalized()</h2>
 

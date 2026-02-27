@@ -5,6 +5,10 @@
 
 namespace Mochi::Input
 {
+
+    /**
+     * @brief Implementation of IKeyboardProvider that uses SDL_GetKeyboardState to retrieve keyboard data.
+     */
     class SDLKeyboardProvider : public IKeyboardProvider
     {
     public:

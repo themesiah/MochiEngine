@@ -106,6 +106,7 @@ Inheritance diagram for Mochi::Input::DummyMouseProvider:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a48804cc4d71fb44336b3eaf5400ac9fd" id="r_a48804cc4d71fb44336b3eaf5400ac9fd"><td class="memItemLeft">virtual std::array&lt; bool, MouseButton::MouseButtonsCount &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a48804cc4d71fb44336b3eaf5400ac9fd">GetState</a> (float *x, float *y) const override</td></tr>
+<tr class="memdesc:a48804cc4d71fb44336b3eaf5400ac9fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the state of the mouse, consisting of the pointer position in the screen and each of its buttons, defined in <a class="el" href="_input_commons_8h_source.html">InputCommons.h</a> in the MouseButtons enum.  <br /></td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a48804cc4d71fb44336b3eaf5400ac9fd" name="a48804cc4d71fb44336b3eaf5400ac9fd"></a>
@@ -135,7 +136,17 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_mochi_1_1_input_1_1_i_mouse_provider.html">Mochi::Input::IMouseProvider</a>.</p>
+<p>Gets the state of the mouse, consisting of the pointer position in the screen and each of its buttons, defined in <a class="el" href="_input_commons_8h_source.html">InputCommons.h</a> in the MouseButtons enum. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Reference to a value that will be updated in the method with the X position. </td></tr>
+    <tr><td class="paramname">y</td><td>Reference to a value that will be updated in the method with the Y position. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An array of booleans for each mouse button, up to <a class="el" href="_input_commons_8h_source.html">InputCommons.h</a> in the MouseButtons enum. </dd></dl>
+
+<p>Implements <a class="el" href="class_mochi_1_1_input_1_1_i_mouse_provider.html#a0ffae398f9a5562bd2741fc10cb77632">Mochi::Input::IMouseProvider</a>.</p>
 
 </div>
 </div>

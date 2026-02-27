@@ -9,6 +9,7 @@
 
 namespace Mochi::Input
 {
+    /// @brief IPerformableAction implementation to check if actions requiring a keyboard key are being performed.
     struct PerformableActionKeyboard : public IPerformableAction
     {
     private:
@@ -23,6 +24,7 @@ namespace Mochi::Input
         virtual float GetValue(InputManager *input) const;
     };
 
+    /// @brief IPerformableAction implementation to check if actions requiring a mouse button are being performed.
     struct PerformableActionMouse : public IPerformableAction
     {
     private:
@@ -36,6 +38,8 @@ namespace Mochi::Input
         virtual bool IsPerformed(InputManager *input) const;
         virtual float GetValue(InputManager *input) const;
     };
+
+    /// @brief IPerformableAction implementation to check the value of actions requiring mouse position.
     struct PerformableActionMouseAxis : public IPerformableAction
     {
     private:
@@ -48,6 +52,8 @@ namespace Mochi::Input
         virtual bool IsPerformed(InputManager *input) const;
         virtual float GetValue(InputManager *input) const;
     };
+
+    /// @brief IPerformableAction implementation to check if actions requiring a gamepad button are being performed.
     struct PerformableActionGamepad : public IPerformableAction
     {
     private:
@@ -61,6 +67,8 @@ namespace Mochi::Input
         virtual bool IsPerformed(InputManager *input) const;
         virtual float GetValue(InputManager *input) const;
     };
+
+    /// @brief IPerformableAction implementation to check the value of actions requiring gamepad axis.
     struct PerformableActionGamepadAxis : public IPerformableAction
     {
     private:

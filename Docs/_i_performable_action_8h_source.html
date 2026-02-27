@@ -101,20 +101,20 @@ $(function(){initNavTree('_i_performable_action_8h_source.html','',''); });
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">namespace </span>Mochi::Input</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>{</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="keyword">class </span><a class="code hl_class" href="class_mochi_1_1_input_1_1_input_manager.html">InputManager</a>;</div>
-<div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="struct_mochi_1_1_input_1_1_i_performable_action.html">    9</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="struct_mochi_1_1_input_1_1_i_performable_action.html">IPerformableAction</a></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keyword">virtual</span> <a class="code hl_struct" href="struct_mochi_1_1_input_1_1_i_performable_action.html">~IPerformableAction</a>() {}</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> IsPerformed(<a class="code hl_class" href="class_mochi_1_1_input_1_1_input_manager.html">InputManager</a> *input) <span class="keyword">const</span> = 0;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keyword">virtual</span> <span class="keywordtype">float</span> GetValue(<a class="code hl_class" href="class_mochi_1_1_input_1_1_input_manager.html">InputManager</a> *input) <span class="keyword">const</span> = 0;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    };</div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="struct_mochi_1_1_input_1_1_i_performable_action.html">   10</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="struct_mochi_1_1_input_1_1_i_performable_action.html">IPerformableAction</a></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="keyword">virtual</span> <a class="code hl_struct" href="struct_mochi_1_1_input_1_1_i_performable_action.html">~IPerformableAction</a>() {}</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> IsPerformed(<a class="code hl_class" href="class_mochi_1_1_input_1_1_input_manager.html">InputManager</a> *input) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keyword">virtual</span> <span class="keywordtype">float</span> GetValue(<a class="code hl_class" href="class_mochi_1_1_input_1_1_input_manager.html">InputManager</a> *input) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    };</div>
 </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_mochi_1_1_input_1_1_input_manager_html"><div class="ttname"><a href="class_mochi_1_1_input_1_1_input_manager.html">Mochi::Input::InputManager</a></div><div class="ttdef"><b>Definition</b> InputManager.h:20</div></div>
-<div class="ttc" id="astruct_mochi_1_1_input_1_1_i_performable_action_html"><div class="ttname"><a href="struct_mochi_1_1_input_1_1_i_performable_action.html">Mochi::Input::IPerformableAction</a></div><div class="ttdef"><b>Definition</b> IPerformableAction.h:10</div></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_mochi_1_1_input_1_1_input_manager_html"><div class="ttname"><a href="class_mochi_1_1_input_1_1_input_manager.html">Mochi::Input::InputManager</a></div><div class="ttdoc">Class that takes one IKeyboardProvider, one IMouseProvider and one IGamepadProvider and updates and c...</div><div class="ttdef"><b>Definition</b> InputManager.h:41</div></div>
+<div class="ttc" id="astruct_mochi_1_1_input_1_1_i_performable_action_html"><div class="ttname"><a href="struct_mochi_1_1_input_1_1_i_performable_action.html">Mochi::Input::IPerformableAction</a></div><div class="ttdoc">An interface defining if an action is being performed and what its value is for a single trigger.</div><div class="ttdef"><b>Definition</b> IPerformableAction.h:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
