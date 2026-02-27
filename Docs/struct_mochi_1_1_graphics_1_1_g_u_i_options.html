@@ -93,27 +93,42 @@ $(function(){initNavTree('struct_mochi_1_1_graphics_1_1_g_u_i_options.html','','
   <div class="headertitle"><div class="title">Mochi::Graphics::GUIOptions Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Options used by graphical GUI. This contains all the minimal data to show a sprite, including the path of the texture. Optional elements of the struct will be defaulted by the GUI implementation if not defined.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_g_u_i_common_8hpp_source.html">GUICommon.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aed050aa3c77ac266beaefa0e78995238" id="r_aed050aa3c77ac266beaefa0e78995238"><td class="memItemLeft"><a id="aed050aa3c77ac266beaefa0e78995238" name="aed050aa3c77ac266beaefa0e78995238"></a>
 std::string&#160;</td><td class="memItemRight"><b>TexturePath</b></td></tr>
+<tr class="memdesc:aed050aa3c77ac266beaefa0e78995238"><td class="mdescLeft">&#160;</td><td class="mdescRight">Path or unique identifier of the texture in the catalog. <br /></td></tr>
 <tr class="memitem:ac065bfe6535054eb068e3b5b4c805a2a" id="r_ac065bfe6535054eb068e3b5b4c805a2a"><td class="memItemLeft"><a id="ac065bfe6535054eb068e3b5b4c805a2a" name="ac065bfe6535054eb068e3b5b4c805a2a"></a>
 std::optional&lt; <a class="el" href="struct_mochi_1_1_rectf.html">Rectf</a> &gt;&#160;</td><td class="memItemRight"><b>ParentRect</b></td></tr>
+<tr class="memdesc:ac065bfe6535054eb068e3b5b4c805a2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The space occupied by the GUI element that you want to contain this element. This is useful for putting a text in the center of a button, for example. <br /></td></tr>
 <tr class="memitem:a334273879761b8b7108658648d39d1fe" id="r_a334273879761b8b7108658648d39d1fe"><td class="memItemLeft"><a id="a334273879761b8b7108658648d39d1fe" name="a334273879761b8b7108658648d39d1fe"></a>
 std::optional&lt; <a class="el" href="struct_mochi_1_1_rectf.html">Rectf</a> &gt;&#160;</td><td class="memItemRight"><b>SrcRect</b></td></tr>
+<tr class="memdesc:a334273879761b8b7108658648d39d1fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Source rect in the used texture, in case it contains more than one sprite. <br /></td></tr>
 <tr class="memitem:a25a507b11a61b46d1e67e0ac4c346b07" id="r_a25a507b11a61b46d1e67e0ac4c346b07"><td class="memItemLeft"><a id="a25a507b11a61b46d1e67e0ac4c346b07" name="a25a507b11a61b46d1e67e0ac4c346b07"></a>
 std::optional&lt; <a class="el" href="struct_mochi_1_1_rectf.html">Rectf</a> &gt;&#160;</td><td class="memItemRight"><b>DstRect</b></td></tr>
+<tr class="memdesc:a25a507b11a61b46d1e67e0ac4c346b07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destination rect, or where the GUI element will be placed according to the anchor and pivot. <br /></td></tr>
 <tr class="memitem:a05642cbac5fc5f4fffbbcd07e5e92ffa" id="r_a05642cbac5fc5f4fffbbcd07e5e92ffa"><td class="memItemLeft"><a id="a05642cbac5fc5f4fffbbcd07e5e92ffa" name="a05642cbac5fc5f4fffbbcd07e5e92ffa"></a>
 std::optional&lt; <a class="el" href="struct_mochi_1_1_rectf.html">Rectf</a> &gt;&#160;</td><td class="memItemRight"><b>Slice</b></td></tr>
+<tr class="memdesc:a05642cbac5fc5f4fffbbcd07e5e92ffa"><td class="mdescLeft">&#160;</td><td class="mdescRight">9-slice option to be able to make the sprite bigger than the texture without losing quality. <br /></td></tr>
 <tr class="memitem:a553aa5e5ffa2ec7f09d6f56737627398" id="r_a553aa5e5ffa2ec7f09d6f56737627398"><td class="memItemLeft"><a id="a553aa5e5ffa2ec7f09d6f56737627398" name="a553aa5e5ffa2ec7f09d6f56737627398"></a>
 <a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight"><b>ScreenAnchor</b></td></tr>
+<tr class="memdesc:a553aa5e5ffa2ec7f09d6f56737627398"><td class="mdescLeft">&#160;</td><td class="mdescRight">Where the origin (0,0) will be when deciding where to place the sprite. Goes from -1,-1 to 1,1. <br /></td></tr>
 <tr class="memitem:ad78d0a5eace9fd1401df060deffd10be" id="r_ad78d0a5eace9fd1401df060deffd10be"><td class="memItemLeft"><a id="ad78d0a5eace9fd1401df060deffd10be" name="ad78d0a5eace9fd1401df060deffd10be"></a>
 <a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight"><b>SpritePivot</b></td></tr>
+<tr class="memdesc:ad78d0a5eace9fd1401df060deffd10be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the pivot, which will act as the origin of the sprite when placing it in the screen. Goes from -1,-1 to 1,1. <br /></td></tr>
 <tr class="memitem:abc77a8c11f150ef056f4d0cb43de8e89" id="r_abc77a8c11f150ef056f4d0cb43de8e89"><td class="memItemLeft"><a id="abc77a8c11f150ef056f4d0cb43de8e89" name="abc77a8c11f150ef056f4d0cb43de8e89"></a>
 std::optional&lt; Color &gt;&#160;</td><td class="memItemRight"><b>Color</b></td></tr>
+<tr class="memdesc:abc77a8c11f150ef056f4d0cb43de8e89"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_mochi_1_1_color.html">Color</a> of the element. This is a blend with the original color of the texture. <br /></td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Options used by graphical GUI. This contains all the minimal data to show a sprite, including the path of the texture. Optional elements of the struct will be defaulted by the GUI implementation if not defined. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Engine/src/GUI/<a class="el" href="_g_u_i_common_8hpp_source.html">GUICommon.hpp</a></li>
 </ul>
 </div><!-- contents -->

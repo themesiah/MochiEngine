@@ -93,22 +93,53 @@ $(function(){initNavTree('class_mochi_1_1_event_1_1_s_d_l_system_event_dispatche
   <div class="headertitle"><div class="title">Mochi::Event::SDLSystemEventDispatcher Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implementation of the <a class="el" href="class_mochi_1_1_event_1_1_i_system_event_dispatcher.html" title="Interface to poll the events of the operative system (input, window controls, application exit....">ISystemEventDispatcher</a> using the SDL_PollEvent method to retrieve the operative system events.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_s_d_l_system_event_dispatcher_8h_source.html">SDLSystemEventDispatcher.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Mochi::Event::SDLSystemEventDispatcher:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher.png" usemap="#Mochi_3A_3AEvent_3A_3ASDLSystemEventDispatcher_map" alt=""/>
   <map id="Mochi_3A_3AEvent_3A_3ASDLSystemEventDispatcher_map" name="Mochi_3A_3AEvent_3A_3ASDLSystemEventDispatcher_map">
-<area href="class_mochi_1_1_event_1_1_i_system_event_dispatcher.html" alt="Mochi::Event::ISystemEventDispatcher" shape="rect" coords="0,0,248,24"/>
+<area href="class_mochi_1_1_event_1_1_i_system_event_dispatcher.html" title="Interface to poll the events of the operative system (input, window controls, application exit...." alt="Mochi::Event::ISystemEventDispatcher" shape="rect" coords="0,0,248,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa789b2325d4e652c90dd291ed812bf4d" id="r_aa789b2325d4e652c90dd291ed812bf4d"><td class="memItemLeft"><a id="aa789b2325d4e652c90dd291ed812bf4d" name="aa789b2325d4e652c90dd291ed812bf4d"></a>
-&#160;</td><td class="memItemRight"><b>SDLSystemEventDispatcher</b> (<a class="el" href="class_mochi_1_1_event_1_1_event_bus.html">EventBus</a> *eventBus)</td></tr>
+<tr class="memitem:aa789b2325d4e652c90dd291ed812bf4d" id="r_aa789b2325d4e652c90dd291ed812bf4d"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aa789b2325d4e652c90dd291ed812bf4d">SDLSystemEventDispatcher</a> (<a class="el" href="class_mochi_1_1_event_1_1_event_bus.html">EventBus</a> *eventBus)</td></tr>
 <tr class="memitem:a1575b435bec601f5eaa8824869435908" id="r_a1575b435bec601f5eaa8824869435908"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a1575b435bec601f5eaa8824869435908">PollEvents</a> () const</td></tr>
+<tr class="memdesc:a1575b435bec601f5eaa8824869435908"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polls the OS events and dispatches events using the <a class="el" href="class_mochi_1_1_event_1_1_event_bus.html" title="The event bus is a Pub-Sub implementation that accepts any type as event data.">EventBus</a>.  <br /></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of the <a class="el" href="class_mochi_1_1_event_1_1_i_system_event_dispatcher.html" title="Interface to poll the events of the operative system (input, window controls, application exit....">ISystemEventDispatcher</a> using the SDL_PollEvent method to retrieve the operative system events. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aa789b2325d4e652c90dd291ed812bf4d" name="aa789b2325d4e652c90dd291ed812bf4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa789b2325d4e652c90dd291ed812bf4d">&#9670;&#160;</a></span>SDLSystemEventDispatcher()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Mochi::Event::SDLSystemEventDispatcher::SDLSystemEventDispatcher </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_mochi_1_1_event_1_1_event_bus.html">EventBus</a> *</td>          <td class="paramname"><span class="paramname"><em>eventBus</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">eventBus</td><td>The main engine default event bus. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a1575b435bec601f5eaa8824869435908" name="a1575b435bec601f5eaa8824869435908"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1575b435bec601f5eaa8824869435908">&#9670;&#160;</a></span>PollEvents()</h2>
@@ -133,7 +164,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_mochi_1_1_event_1_1_i_system_event_dispatcher.html">Mochi::Event::ISystemEventDispatcher</a>.</p>
+<p>Polls the OS events and dispatches events using the <a class="el" href="class_mochi_1_1_event_1_1_event_bus.html" title="The event bus is a Pub-Sub implementation that accepts any type as event data.">EventBus</a>. </p>
+<p>Events dispatched:</p>
+<ul>
+<li><a class="el" href="struct_mochi_1_1_application_quit_event.html">ApplicationQuitEvent</a></li>
+<li><a class="el" href="struct_mochi_1_1_gamepad_added_event.html">GamepadAddedEvent</a></li>
+<li><a class="el" href="struct_mochi_1_1_gamepad_removed_event.html">GamepadRemovedEvent</a> </li>
+</ul>
+
+<p>Implements <a class="el" href="class_mochi_1_1_event_1_1_i_system_event_dispatcher.html#a783b1102acffe1c2b1c931ce162045b3">Mochi::Event::ISystemEventDispatcher</a>.</p>
 
 </div>
 </div>

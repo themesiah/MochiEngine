@@ -9,6 +9,9 @@ namespace Mochi
 }
 namespace Mochi::Debug
 {
+    /**
+     * @brief Interface to show different debug gizmos during the game, useful for debugging positions, directions, collisions...
+     */
     class IGizmos
     {
     public:

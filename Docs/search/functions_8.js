@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['layer_0',['Layer',['../class_mochi_1_1_layer.html#a3e92d2c73e6a792dcd68fda44b9effcf',1,'Mochi::Layer']]],
-  ['loadtexture_1',['LoadTexture',['../class_mochi_1_1_graphics_1_1_abstract_texture_factory.html#ad5bd8a4ebfa5b8bf0342593e6ab458de',1,'Mochi::Graphics::AbstractTextureFactory::LoadTexture()'],['../class_mochi_1_1_graphics_1_1_dummy_texture_factory.html#a87fe211cfdeea0862404eb5c0b567f0d',1,'Mochi::Graphics::DummyTextureFactory::LoadTexture()'],['../class_mochi_1_1_graphics_1_1_s_d_l_texture_factory.html#aa1f557a049b3a67cca4e0b0e753de739',1,'Mochi::Graphics::SDLTextureFactory::LoadTexture()'],['../class_mochi_1_1_graphics_1_1_sprite_base.html#a986d7e4edf8ce3c6665d3b43c50bda66',1,'Mochi::Graphics::SpriteBase::LoadTexture()']]]
+  ['initlayer_0',['InitLayer',['../class_mochi_1_1_debug_layer.html#ac9748d9565715583f9f44ae5c0cdd61b',1,'Mochi::DebugLayer::InitLayer()'],['../class_mochi_1_1_layer.html#a84ba866062d7d6bf28e028d0ee05640d',1,'Mochi::Layer::InitLayer()'],['../class_mochi_1_1_scripting_1_1_scripting_layer.html#a682807b02043f8b2780d61870550492b',1,'Mochi::Scripting::ScriptingLayer::InitLayer()']]],
+  ['isvalid_1',['IsValid',['../class_mochi_1_1_f_s_1_1_i_file_loader.html#ab4f7bc0eb65a6bb1f2908c446fdff870',1,'Mochi::FS::IFileLoader::IsValid()'],['../class_mochi_1_1_f_s_1_1_pack_file.html#a7a1ba0a39c9c1a316b707d7cfda73db8',1,'Mochi::FS::PackFile::IsValid()'],['../class_mochi_1_1_f_s_1_1_system_file_loader.html#aff9df4b6e8bf2967c890602922a37f02',1,'Mochi::FS::SystemFileLoader::IsValid()']]]
 ];

@@ -93,6 +93,11 @@ $(function(){initNavTree('class_mochi_1_1_graphics_1_1_abstract_g_u_i.html','','
   <div class="headertitle"><div class="title">Mochi::Graphics::AbstractGUI Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>An abstract class meant to be extended with specific implementations for different renderers. It also provides basic methods called on update to manage navigation in the vertical axis. All overrideable methods on this class are meant to provide ways to implement a simple immediate GUI, not a stateful GUI.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_abstract_g_u_i_8h_source.html">AbstractGUI.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Mochi::Graphics::AbstractGUI:</div>
 <div class="dyncontent">
@@ -100,29 +105,29 @@ Inheritance diagram for Mochi::Graphics::AbstractGUI:</div>
   <img src="class_mochi_1_1_graphics_1_1_abstract_g_u_i.png" usemap="#Mochi_3A_3AGraphics_3A_3AAbstractGUI_map" alt=""/>
   <map id="Mochi_3A_3AGraphics_3A_3AAbstractGUI_map" name="Mochi_3A_3AGraphics_3A_3AAbstractGUI_map">
 <area href="class_mochi_1_1_graphics_1_1_dummy_g_u_i.html" alt="Mochi::Graphics::DummyGUI" shape="rect" coords="0,56,177,80"/>
-<area href="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i.html" alt="Mochi::Graphics::SDLGUI" shape="rect" coords="187,56,364,80"/>
+<area href="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i.html" title="Implementation of AbstractGUI that uses SDLRenderer and SDLTTF to show GUI elements." alt="Mochi::Graphics::SDLGUI" shape="rect" coords="187,56,364,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae2c2e3fd7ccf55f6b1fef2bc1a035f95" id="r_ae2c2e3fd7ccf55f6b1fef2bc1a035f95"><td class="memItemLeft"><a id="ae2c2e3fd7ccf55f6b1fef2bc1a035f95" name="ae2c2e3fd7ccf55f6b1fef2bc1a035f95"></a>
-&#160;</td><td class="memItemRight"><b>AbstractGUI</b> (<a class="el" href="class_mochi_1_1_f_s_1_1_pack_catalog.html">FS::PackCatalog</a> *catalog, <a class="el" href="class_mochi_1_1_graphics_1_1_i_renderer.html">IRenderer</a> *renderer, <a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html">Input::IActionManager</a> *actionManager)</td></tr>
-<tr class="memitem:a647b4b697bad1662f2cf02aa2e805bc9" id="r_a647b4b697bad1662f2cf02aa2e805bc9"><td class="memItemLeft"><a id="a647b4b697bad1662f2cf02aa2e805bc9" name="a647b4b697bad1662f2cf02aa2e805bc9"></a>
-void&#160;</td><td class="memItemRight"><b>Update</b> (const float &amp;dt)</td></tr>
-<tr class="memitem:ace27a11ed645a0675d4b933c970b208e" id="r_ace27a11ed645a0675d4b933c970b208e"><td class="memItemLeft"><a id="ace27a11ed645a0675d4b933c970b208e" name="ace27a11ed645a0675d4b933c970b208e"></a>
-virtual <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_result_button.html">GUIResultButton</a>&#160;</td><td class="memItemRight"><b>Button</b> (const <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_button_options.html">GUIButtonOptions</a> &amp;options, const char *label, const <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_text_options.html">GUITextOptions</a> &amp;textOptions)</td></tr>
-<tr class="memitem:a1c1a5a465846c5920b5ac2059c50691a" id="r_a1c1a5a465846c5920b5ac2059c50691a"><td class="memItemLeft"><a id="a1c1a5a465846c5920b5ac2059c50691a" name="a1c1a5a465846c5920b5ac2059c50691a"></a>
-virtual <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_result.html">GUIResult</a>&#160;</td><td class="memItemRight"><b>Text</b> (const char *label, const <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_text_options.html">GUITextOptions</a> &amp;options)</td></tr>
-<tr class="memitem:a58df0b0adad307504779f0bc851b8864" id="r_a58df0b0adad307504779f0bc851b8864"><td class="memItemLeft"><a id="a58df0b0adad307504779f0bc851b8864" name="a58df0b0adad307504779f0bc851b8864"></a>
-virtual <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_result.html">GUIResult</a>&#160;</td><td class="memItemRight"><b>Sprite</b> (const <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_options.html">GUIOptions</a> &amp;options)</td></tr>
+<tr class="memitem:ae2c2e3fd7ccf55f6b1fef2bc1a035f95" id="r_ae2c2e3fd7ccf55f6b1fef2bc1a035f95"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ae2c2e3fd7ccf55f6b1fef2bc1a035f95">AbstractGUI</a> (<a class="el" href="class_mochi_1_1_f_s_1_1_pack_catalog.html">FS::PackCatalog</a> *catalog, <a class="el" href="class_mochi_1_1_graphics_1_1_i_renderer.html">IRenderer</a> *renderer, <a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html">Input::IActionManager</a> *actionManager)</td></tr>
+<tr class="memitem:a647b4b697bad1662f2cf02aa2e805bc9" id="r_a647b4b697bad1662f2cf02aa2e805bc9"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a647b4b697bad1662f2cf02aa2e805bc9">Update</a> (const float &amp;dt)</td></tr>
+<tr class="memdesc:a647b4b697bad1662f2cf02aa2e805bc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the current selectable element count for elements to use GetNextId again this frame. Also checks vertical axis input to move the selected element.  <br /></td></tr>
+<tr class="memitem:ace27a11ed645a0675d4b933c970b208e" id="r_ace27a11ed645a0675d4b933c970b208e"><td class="memItemLeft">virtual <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_result_button.html">GUIResultButton</a>&#160;</td><td class="memItemRight"><a class="el" href="#ace27a11ed645a0675d4b933c970b208e">Button</a> (const <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_button_options.html">GUIButtonOptions</a> &amp;options, const char *label, const <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_text_options.html">GUITextOptions</a> &amp;textOptions)</td></tr>
+<tr class="memdesc:ace27a11ed645a0675d4b933c970b208e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shows a button with a text. It should be able to be navigated and pressed with the mouse.  <br /></td></tr>
+<tr class="memitem:a1c1a5a465846c5920b5ac2059c50691a" id="r_a1c1a5a465846c5920b5ac2059c50691a"><td class="memItemLeft">virtual <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_result.html">GUIResult</a>&#160;</td><td class="memItemRight"><a class="el" href="#a1c1a5a465846c5920b5ac2059c50691a">Text</a> (const char *label, const <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_text_options.html">GUITextOptions</a> &amp;options)</td></tr>
+<tr class="memdesc:a1c1a5a465846c5920b5ac2059c50691a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shows a text.  <br /></td></tr>
+<tr class="memitem:a58df0b0adad307504779f0bc851b8864" id="r_a58df0b0adad307504779f0bc851b8864"><td class="memItemLeft">virtual <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_result.html">GUIResult</a>&#160;</td><td class="memItemRight"><a class="el" href="#a58df0b0adad307504779f0bc851b8864">Sprite</a> (const <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_options.html">GUIOptions</a> &amp;options)</td></tr>
+<tr class="memdesc:a58df0b0adad307504779f0bc851b8864"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shows a sprite.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a81bb131eaf0465c694d6b95b94f1fb08" id="r_a81bb131eaf0465c694d6b95b94f1fb08"><td class="memItemLeft"><a id="a81bb131eaf0465c694d6b95b94f1fb08" name="a81bb131eaf0465c694d6b95b94f1fb08"></a>
-GUIElementId&#160;</td><td class="memItemRight"><b>GetNextId</b> ()</td></tr>
+<tr class="memitem:a81bb131eaf0465c694d6b95b94f1fb08" id="r_a81bb131eaf0465c694d6b95b94f1fb08"><td class="memItemLeft">GUIElementId&#160;</td><td class="memItemRight"><a class="el" href="#a81bb131eaf0465c694d6b95b94f1fb08">GetNextId</a> ()</td></tr>
+<tr class="memdesc:a81bb131eaf0465c694d6b95b94f1fb08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use this method withing selectable elements to provide them a unique id while the UI layout remains the same. If called deterministically, the same selectable elements should always have the same IDs if the layout didn't change.  <br /></td></tr>
 <tr class="memitem:a25ae4e052e53c7d932aef1e2dd41f6a7" id="r_a25ae4e052e53c7d932aef1e2dd41f6a7"><td class="memItemLeft"><a id="a25ae4e052e53c7d932aef1e2dd41f6a7" name="a25ae4e052e53c7d932aef1e2dd41f6a7"></a>
 virtual void&#160;</td><td class="memItemRight"><b>OnUpdate</b> ()</td></tr>
+<tr class="memdesc:a25ae4e052e53c7d932aef1e2dd41f6a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override this if the new system requires additional data processed each frame. <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -139,6 +144,231 @@ std::unique_ptr&lt; <a class="el" href="class_mochi_1_1_graphics_1_1_abstract_te
 <tr class="memitem:a7021fbce90beb2b7bb0c2dc0e7dc00a2" id="r_a7021fbce90beb2b7bb0c2dc0e7dc00a2"><td class="memItemLeft"><a id="a7021fbce90beb2b7bb0c2dc0e7dc00a2" name="a7021fbce90beb2b7bb0c2dc0e7dc00a2"></a>
 <a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html">Input::IActionManager</a> *&#160;</td><td class="memItemRight"><b>mActionManager</b></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>An abstract class meant to be extended with specific implementations for different renderers. It also provides basic methods called on update to manage navigation in the vertical axis. All overrideable methods on this class are meant to provide ways to implement a simple immediate GUI, not a stateful GUI. </p>
+<p>NOTE: This class is mostly provisional. A GUI class can be enormous and have a lot functionality. It is also an Immediate GUI, and arguments can be given to make a stateful GUI instead of a stateless GUI like this. Making a fully fledged UI system was not the point on the engine, and this class and its implementations could be improved when the samples need it.</p>
+<p>Guarantees:</p>
+<ul>
+<li>When implemented, UI shows each frame it is shown.</li>
+<li>State of the currently selected UI element is the same while the UI layout don't change and GetNextId is called when needed.</li>
+</ul>
+<p>Not responsible:</p>
+<ul>
+<li>GetNextId should be called inside of the implementation when a element is selectable. </li>
+</ul>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae2c2e3fd7ccf55f6b1fef2bc1a035f95" name="ae2c2e3fd7ccf55f6b1fef2bc1a035f95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2c2e3fd7ccf55f6b1fef2bc1a035f95">&#9670;&#160;</a></span>AbstractGUI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Mochi::Graphics::AbstractGUI::AbstractGUI </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_mochi_1_1_f_s_1_1_pack_catalog.html">FS::PackCatalog</a> *</td>          <td class="paramname"><span class="paramname"><em>catalog</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_mochi_1_1_graphics_1_1_i_renderer.html">IRenderer</a> *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html">Input::IActionManager</a> *</td>          <td class="paramname"><span class="paramname"><em>actionManager</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">catalog</td><td>Catalog from which to get the UI sprites. </td></tr>
+    <tr><td class="paramname">renderer</td><td>Renderer used to draw the images. </td></tr>
+    <tr><td class="paramname">actionManager</td><td>Action manager, used to interact with interactable UI elements, like buttons. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="ace27a11ed645a0675d4b933c970b208e" name="ace27a11ed645a0675d4b933c970b208e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace27a11ed645a0675d4b933c970b208e">&#9670;&#160;</a></span>Button()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_result_button.html">GUIResultButton</a> Mochi::Graphics::AbstractGUI::Button </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_button_options.html">GUIButtonOptions</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>options</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>label</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_text_options.html">GUITextOptions</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>textOptions</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Shows a button with a text. It should be able to be navigated and pressed with the mouse. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">options</td><td>Options for the button. Check <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_button_options.html" title="The button options is a composite of 3 GUIOptions: the default, the focus and pressed states....">GUIButtonOptions</a>. </td></tr>
+    <tr><td class="paramname">label</td><td>Text that the button will show. Use an empty string if you don't want text. </td></tr>
+    <tr><td class="paramname">textOptions</td><td>Options for the text. Check <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_text_options.html" title="Options used by the graphical GUI specifically for texts. This contains all the minimal data to show ...">GUITextOptions</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The state of the button in this frame, including if it is focused, pressed and released. </dd></dl>
+
+<p>Reimplemented in <a class="el" href="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i.html#a325fbaba9370a24bdb7891aee3918678">Mochi::Graphics::SDLGUI</a>.</p>
+
+</div>
+</div>
+<a id="a81bb131eaf0465c694d6b95b94f1fb08" name="a81bb131eaf0465c694d6b95b94f1fb08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81bb131eaf0465c694d6b95b94f1fb08">&#9670;&#160;</a></span>GetNextId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GUIElementId Mochi::Graphics::AbstractGUI::GetNextId </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Use this method withing selectable elements to provide them a unique id while the UI layout remains the same. If called deterministically, the same selectable elements should always have the same IDs if the layout didn't change. </p>
+<dl class="section return"><dt>Returns</dt><dd>The id of the element. </dd></dl>
+
+</div>
+</div>
+<a id="a58df0b0adad307504779f0bc851b8864" name="a58df0b0adad307504779f0bc851b8864"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58df0b0adad307504779f0bc851b8864">&#9670;&#160;</a></span>Sprite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_result.html">GUIResult</a> Mochi::Graphics::AbstractGUI::Sprite </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_options.html">GUIOptions</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>options</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Shows a sprite. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">options</td><td>Options for the sprite. Check <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_options.html" title="Options used by graphical GUI. This contains all the minimal data to show a sprite,...">GUIOptions</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Space occupied by the UI, to be used as parent of other UIs. </dd></dl>
+
+<p>Reimplemented in <a class="el" href="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i.html#a00164b87729ef03a4aa4539ff66d2c85">Mochi::Graphics::SDLGUI</a>.</p>
+
+</div>
+</div>
+<a id="a1c1a5a465846c5920b5ac2059c50691a" name="a1c1a5a465846c5920b5ac2059c50691a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c1a5a465846c5920b5ac2059c50691a">&#9670;&#160;</a></span>Text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_result.html">GUIResult</a> Mochi::Graphics::AbstractGUI::Text </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>label</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_text_options.html">GUITextOptions</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>options</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Shows a text. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">label</td><td>The text to show. </td></tr>
+    <tr><td class="paramname">options</td><td>Options for the text. Check <a class="el" href="struct_mochi_1_1_graphics_1_1_g_u_i_text_options.html" title="Options used by the graphical GUI specifically for texts. This contains all the minimal data to show ...">GUITextOptions</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Space occupied by the UI, to be used as parent of other UIs. </dd></dl>
+
+<p>Reimplemented in <a class="el" href="class_mochi_1_1_graphics_1_1_s_d_l_g_u_i.html#ad47c6de9019b00256f976bbe166db8f6">Mochi::Graphics::SDLGUI</a>.</p>
+
+</div>
+</div>
+<a id="a647b4b697bad1662f2cf02aa2e805bc9" name="a647b4b697bad1662f2cf02aa2e805bc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a647b4b697bad1662f2cf02aa2e805bc9">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mochi::Graphics::AbstractGUI::Update </td>
+          <td>(</td>
+          <td class="paramtype">const float &amp;</td>          <td class="paramname"><span class="paramname"><em>dt</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resets the current selectable element count for elements to use GetNextId again this frame. Also checks vertical axis input to move the selected element. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dt</td><td>Delta time </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Engine/src/GUI/<a class="el" href="_abstract_g_u_i_8h_source.html">AbstractGUI.h</a></li>
 <li>Engine/src/GUI/<b>AbstractGUI.cpp</b></li>

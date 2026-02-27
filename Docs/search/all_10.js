@@ -1,4 +1,12 @@
 var searchData=
 [
-  ['update_0',['Update',['../class_mochi_1_1_debug_layer.html#a6dbfaaf83365eb0aa3995d24580fd7f9',1,'Mochi::DebugLayer::Update()'],['../class_mochi_1_1_graphics_1_1_animated_sprite.html#ac967ba3a2486318bf27a1886f2639914',1,'Mochi::Graphics::AnimatedSprite::Update()'],['../class_mochi_1_1_graphics_1_1_oneshot_animation.html#af64ef212186185343ce25807a50c99e6',1,'Mochi::Graphics::OneshotAnimation::Update()'],['../class_mochi_1_1_graphics_1_1_sprite_base.html#aca343e7e13008264b83ba1ca632532e6',1,'Mochi::Graphics::SpriteBase::Update()'],['../class_mochi_1_1_layer.html#a2452af59d8737b448b32813d40a98985',1,'Mochi::Layer::Update()'],['../class_mochi_1_1_scripting_1_1_scripting_layer.html#a3e099ab8f79429ec0ed6be13deaf3e5c',1,'Mochi::Scripting::ScriptingLayer::Update()']]]
+  ['text_0',['Text',['../class_mochi_1_1_graphics_1_1_abstract_g_u_i.html#a1c1a5a465846c5920b5ac2059c50691a',1,'Mochi::Graphics::AbstractGUI::Text()'],['../class_mochi_1_1_graphics_1_1_s_d_l_g_u_i.html#ad47c6de9019b00256f976bbe166db8f6',1,'Mochi::Graphics::SDLGUI::Text()']]],
+  ['textpivot_1',['TextPivot',['../struct_mochi_1_1_graphics_1_1_g_u_i_text_options.html#a5ad853e28fd9adaaadf18bd070534bc0',1,'Mochi::Graphics::GUITextOptions']]],
+  ['textsize_2',['TextSize',['../struct_mochi_1_1_graphics_1_1_g_u_i_text_options.html#abe53c5998b194493cbe598ebe11a2b61',1,'Mochi::Graphics::GUITextOptions']]],
+  ['texturepath_3',['TexturePath',['../struct_mochi_1_1_graphics_1_1_g_u_i_options.html#aed050aa3c77ac266beaefa0e78995238',1,'Mochi::Graphics::GUIOptions']]],
+  ['things_20worth_20reviewing_4',['Things Worth Reviewing',['../index.html#autotoc_md1',1,'']]],
+  ['tiledrenderoptions_5',['TiledRenderOptions',['../struct_mochi_1_1_graphics_1_1_tiled_render_options.html',1,'Mochi::Graphics']]],
+  ['timer_6',['Timer',['../class_mochi_1_1_time_1_1_timer.html',1,'Mochi::Time']]],
+  ['timesystem_7',['TimeSystem',['../class_mochi_1_1_time_1_1_time_system.html',1,'Mochi::Time']]],
+  ['transform_8',['Transform',['../struct_mochi_1_1_transform.html',1,'Mochi']]]
 ];

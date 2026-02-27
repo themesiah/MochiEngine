@@ -1,23 +1,13 @@
 var searchData=
 [
-  ['scriptinglayer_0',['ScriptingLayer',['../class_mochi_1_1_scripting_1_1_scripting_layer.html',1,'Mochi::Scripting']]],
-  ['scriptingmanager_1',['ScriptingManager',['../class_mochi_1_1_scripting_1_1_scripting_manager.html',1,'Mochi::Scripting']]],
-  ['sdlgamepadprovider_2',['SDLGamepadProvider',['../class_mochi_1_1_input_1_1_s_d_l_gamepad_provider.html',1,'Mochi::Input']]],
-  ['sdlgizmos_3',['SDLGizmos',['../class_mochi_1_1_debug_1_1_s_d_l_gizmos.html',1,'Mochi::Debug']]],
-  ['sdlgui_4',['SDLGUI',['../class_mochi_1_1_graphics_1_1_s_d_l_g_u_i.html',1,'Mochi::Graphics']]],
-  ['sdlkeyboardprovider_5',['SDLKeyboardProvider',['../class_mochi_1_1_input_1_1_s_d_l_keyboard_provider.html',1,'Mochi::Input']]],
-  ['sdlmouseprovider_6',['SDLMouseProvider',['../class_mochi_1_1_input_1_1_s_d_l_mouse_provider.html',1,'Mochi::Input']]],
-  ['sdlrenderer_7',['SDLRenderer',['../class_mochi_1_1_graphics_1_1_s_d_l_renderer.html',1,'Mochi::Graphics::SDLRenderer'],['../class_mochi_1_1_graphics_1_1_s_d_l_renderer.html#ab153be5d27814b674bfb7a532bb3fede',1,'Mochi::Graphics::SDLRenderer::SDLRenderer()']]],
-  ['sdlsystemeventdispatcher_8',['SDLSystemEventDispatcher',['../class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher.html',1,'Mochi::Event']]],
-  ['sdltexture_9',['SDLTexture',['../class_mochi_1_1_graphics_1_1_s_d_l_texture.html',1,'Mochi::Graphics']]],
-  ['sdltexturefactory_10',['SDLTextureFactory',['../class_mochi_1_1_graphics_1_1_s_d_l_texture_factory.html',1,'Mochi::Graphics']]],
-  ['setframe_11',['SetFrame',['../class_mochi_1_1_graphics_1_1_spritesheet.html#af2d5ddfdb3998596f9cfb81e20546361',1,'Mochi::Graphics::Spritesheet']]],
-  ['setup_12',['Setup',['../class_mochi_1_1_engine.html#ab94fefb2ec8339205da249776232e6b9',1,'Mochi::Engine']]],
-  ['shape_13',['Shape',['../struct_mochi_1_1_physics_1_1_shape.html',1,'Mochi::Physics']]],
-  ['spritebase_14',['SpriteBase',['../class_mochi_1_1_graphics_1_1_sprite_base.html',1,'Mochi::Graphics::SpriteBase'],['../class_mochi_1_1_graphics_1_1_sprite_base.html#a8265275798c8e00519589694926d62d9',1,'Mochi::Graphics::SpriteBase::SpriteBase(AbstractTextureFactory *factory, const std::string &amp;path)'],['../class_mochi_1_1_graphics_1_1_sprite_base.html#a814a1925fc4e91c7f8cd1f205e0dcc7d',1,'Mochi::Graphics::SpriteBase::SpriteBase()']]],
-  ['spritesheet_15',['Spritesheet',['../class_mochi_1_1_graphics_1_1_spritesheet.html',1,'Mochi::Graphics::Spritesheet'],['../class_mochi_1_1_graphics_1_1_spritesheet.html#a63ae50598feebd08fa578f3155b70c08',1,'Mochi::Graphics::Spritesheet::Spritesheet()']]],
-  ['startframerendering_16',['StartFrameRendering',['../class_mochi_1_1_graphics_1_1_dummy_renderer.html#a019521a2460a61547b8fcd90511e0784',1,'Mochi::Graphics::DummyRenderer::StartFrameRendering()'],['../class_mochi_1_1_graphics_1_1_i_renderer.html#a2c54d9c1dcfdd4f8e39ba8b5482ba5e1',1,'Mochi::Graphics::IRenderer::StartFrameRendering()'],['../class_mochi_1_1_graphics_1_1_s_d_l_renderer.html#ae1479f3b5249457978adc5a7d1f50d83',1,'Mochi::Graphics::SDLRenderer::StartFrameRendering()']]],
-  ['stopanimation_17',['StopAnimation',['../class_mochi_1_1_graphics_1_1_animated_sprite.html#a70def4bbb56055f6603613594feedabd',1,'Mochi::Graphics::AnimatedSprite']]],
-  ['systemfileloader_18',['SystemFileLoader',['../class_mochi_1_1_f_s_1_1_system_file_loader.html',1,'Mochi::FS']]],
-  ['systeminitializationerror_19',['SystemInitializationError',['../class_mochi_1_1_system_initialization_error.html',1,'Mochi']]]
+  ['rectangle_0',['Rectangle',['../struct_mochi_1_1_physics_1_1_rectangle.html',1,'Mochi::Physics']]],
+  ['rectf_1',['Rectf',['../struct_mochi_1_1_rectf.html',1,'Mochi']]],
+  ['render_2',['Render',['../class_mochi_1_1_debug_layer.html#ac1f6f94ff2139df9649a552fbc98c60d',1,'Mochi::DebugLayer::Render()'],['../class_mochi_1_1_graphics_1_1_dummy_renderer.html#a461be455f075df6771abc63152791895',1,'Mochi::Graphics::DummyRenderer::Render()'],['../class_mochi_1_1_graphics_1_1_i_renderer.html#a76dfd36eaca68224e810c00f71232068',1,'Mochi::Graphics::IRenderer::Render()'],['../class_mochi_1_1_graphics_1_1_s_d_l_renderer.html#a93179556c37ed99d69eab1d9a2718081',1,'Mochi::Graphics::SDLRenderer::Render()'],['../class_mochi_1_1_layer.html#af64f5be47d95ff61fb2e3a497f4846ae',1,'Mochi::Layer::Render()'],['../class_mochi_1_1_scripting_1_1_scripting_layer.html#a7a90104ef84516699d72ea97ecf7cfe6',1,'Mochi::Scripting::ScriptingLayer::Render()']]],
+  ['rendercommand_3',['RenderCommand',['../struct_mochi_1_1_graphics_1_1_render_command.html',1,'Mochi::Graphics']]],
+  ['rendererswappedevent_4',['RendererSwappedEvent',['../struct_mochi_1_1_renderer_swapped_event.html',1,'Mochi']]],
+  ['resourcenotfounderror_5',['ResourceNotFoundError',['../class_mochi_1_1_resource_not_found_error.html',1,'Mochi']]],
+  ['resume_6',['Resume',['../class_mochi_1_1_engine.html#a1c4b0466ffb0f2c58cad94dd85413b2b',1,'Mochi::Engine']]],
+  ['resumebgm_7',['ResumeBGM',['../class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#a5ae1a3e67716584e51e139686f20d8ae',1,'Mochi::Audio::FMODWrapper']]],
+  ['reviewing_8',['Things Worth Reviewing',['../index.html#autotoc_md1',1,'']]],
+  ['run_9',['Run',['../class_mochi_1_1_engine.html#a8607f25ed8f2f147e0392fd6e3f7b3df',1,'Mochi::Engine']]]
 ];

@@ -93,6 +93,11 @@ $(function(){initNavTree('class_mochi_1_1_event_1_1_i_system_event_dispatcher.ht
   <div class="headertitle"><div class="title">Mochi::Event::ISystemEventDispatcher Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Interface to poll the events of the operative system (input, window controls, application exit...).  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_i_system_event_dispatcher_8h_source.html">ISystemEventDispatcher.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Mochi::Event::ISystemEventDispatcher:</div>
 <div class="dyncontent">
@@ -100,15 +105,47 @@ Inheritance diagram for Mochi::Event::ISystemEventDispatcher:</div>
   <img src="class_mochi_1_1_event_1_1_i_system_event_dispatcher.png" usemap="#Mochi_3A_3AEvent_3A_3AISystemEventDispatcher_map" alt=""/>
   <map id="Mochi_3A_3AEvent_3A_3AISystemEventDispatcher_map" name="Mochi_3A_3AEvent_3A_3AISystemEventDispatcher_map">
 <area href="class_mochi_1_1_event_1_1_dummy_event_dispatcher.html" alt="Mochi::Event::DummyEventDispatcher" shape="rect" coords="0,56,248,80"/>
-<area href="class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher.html" alt="Mochi::Event::SDLSystemEventDispatcher" shape="rect" coords="258,56,506,80"/>
+<area href="class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher.html" title="Implementation of the ISystemEventDispatcher using the SDL_PollEvent method to retrieve the operative..." alt="Mochi::Event::SDLSystemEventDispatcher" shape="rect" coords="258,56,506,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a783b1102acffe1c2b1c931ce162045b3" id="r_a783b1102acffe1c2b1c931ce162045b3"><td class="memItemLeft"><a id="a783b1102acffe1c2b1c931ce162045b3" name="a783b1102acffe1c2b1c931ce162045b3"></a>
-virtual void&#160;</td><td class="memItemRight"><b>PollEvents</b> () const =0</td></tr>
+<tr class="memitem:a783b1102acffe1c2b1c931ce162045b3" id="r_a783b1102acffe1c2b1c931ce162045b3"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a783b1102acffe1c2b1c931ce162045b3">PollEvents</a> () const =0</td></tr>
+<tr class="memdesc:a783b1102acffe1c2b1c931ce162045b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implement this with the polling of events of the operative system. This will be called once per frame in the <a class="el" href="class_mochi_1_1_engine.html" title="Main class of the MochiEngine. It owns and coordinates all subsystems and layers, and drives the appl...">Engine</a> class.  <br /></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Interface to poll the events of the operative system (input, window controls, application exit...). </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a783b1102acffe1c2b1c931ce162045b3" name="a783b1102acffe1c2b1c931ce162045b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a783b1102acffe1c2b1c931ce162045b3">&#9670;&#160;</a></span>PollEvents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Mochi::Event::ISystemEventDispatcher::PollEvents </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implement this with the polling of events of the operative system. This will be called once per frame in the <a class="el" href="class_mochi_1_1_engine.html" title="Main class of the MochiEngine. It owns and coordinates all subsystems and layers, and drives the appl...">Engine</a> class. </p>
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_event_1_1_dummy_event_dispatcher.html#aa879ec61a75606696d43d832aaef8136">Mochi::Event::DummyEventDispatcher</a>, and <a class="el" href="class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher.html#a1575b435bec601f5eaa8824869435908">Mochi::Event::SDLSystemEventDispatcher</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>Engine/src/Event/<a class="el" href="_i_system_event_dispatcher_8h_source.html">ISystemEventDispatcher.h</a></li>
 </ul>

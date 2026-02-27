@@ -93,23 +93,36 @@ $(function(){initNavTree('struct_mochi_1_1_graphics_1_1_g_u_i_text_options.html'
   <div class="headertitle"><div class="title">Mochi::Graphics::GUITextOptions Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Options used by the graphical GUI specifically for texts. This contains all the minimal data to show text, besides the actual text. Optional elements of the struct will be defaulted by the GUI implementation if not defined.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_g_u_i_common_8hpp_source.html">GUICommon.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ad7e5b50299a2f65acd791c42bb672ee0" id="r_ad7e5b50299a2f65acd791c42bb672ee0"><td class="memItemLeft"><a id="ad7e5b50299a2f65acd791c42bb672ee0" name="ad7e5b50299a2f65acd791c42bb672ee0"></a>
 std::optional&lt; <a class="el" href="struct_mochi_1_1_rectf.html">Rectf</a> &gt;&#160;</td><td class="memItemRight"><b>ParentRect</b></td></tr>
+<tr class="memdesc:ad7e5b50299a2f65acd791c42bb672ee0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The space occupied by the GUI element that you want to contain this element. This is useful for putting a text in the center of a button, for example. <br /></td></tr>
 <tr class="memitem:a07f82b56795a9eebef59d7e22a25db47" id="r_a07f82b56795a9eebef59d7e22a25db47"><td class="memItemLeft"><a id="a07f82b56795a9eebef59d7e22a25db47" name="a07f82b56795a9eebef59d7e22a25db47"></a>
 std::optional&lt; <a class="el" href="struct_mochi_1_1_rectf.html">Rectf</a> &gt;&#160;</td><td class="memItemRight"><b>DstRect</b></td></tr>
+<tr class="memdesc:a07f82b56795a9eebef59d7e22a25db47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destination rect, or where the GUI element will be placed according to the anchor and pivot. <br /></td></tr>
 <tr class="memitem:a9e2f217760e283a2ab2608caa9c3c5f1" id="r_a9e2f217760e283a2ab2608caa9c3c5f1"><td class="memItemLeft"><a id="a9e2f217760e283a2ab2608caa9c3c5f1" name="a9e2f217760e283a2ab2608caa9c3c5f1"></a>
 <a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight"><b>ScreenAnchor</b></td></tr>
+<tr class="memdesc:a9e2f217760e283a2ab2608caa9c3c5f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Where the origin (0,0) will be when deciding where to place the text. Goes from -1,-1 to 1,1. <br /></td></tr>
 <tr class="memitem:a5ad853e28fd9adaaadf18bd070534bc0" id="r_a5ad853e28fd9adaaadf18bd070534bc0"><td class="memItemLeft"><a id="a5ad853e28fd9adaaadf18bd070534bc0" name="a5ad853e28fd9adaaadf18bd070534bc0"></a>
 <a class="el" href="struct_mochi_1_1_vector2f.html">Vector2f</a>&#160;</td><td class="memItemRight"><b>TextPivot</b></td></tr>
+<tr class="memdesc:a5ad853e28fd9adaaadf18bd070534bc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the pivot, which will act as the origin of the text when placing it in the screen. Goes from -1,-1 to 1,1. <br /></td></tr>
 <tr class="memitem:abe53c5998b194493cbe598ebe11a2b61" id="r_abe53c5998b194493cbe598ebe11a2b61"><td class="memItemLeft"><a id="abe53c5998b194493cbe598ebe11a2b61" name="abe53c5998b194493cbe598ebe11a2b61"></a>
 float&#160;</td><td class="memItemRight"><b>TextSize</b></td></tr>
+<tr class="memdesc:abe53c5998b194493cbe598ebe11a2b61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Height of the text in pixels. <br /></td></tr>
 <tr class="memitem:ad2f3088459b6bcf05b80fd06407fb4d7" id="r_ad2f3088459b6bcf05b80fd06407fb4d7"><td class="memItemLeft"><a id="ad2f3088459b6bcf05b80fd06407fb4d7" name="ad2f3088459b6bcf05b80fd06407fb4d7"></a>
 std::optional&lt; Color &gt;&#160;</td><td class="memItemRight"><b>Color</b></td></tr>
+<tr class="memdesc:ad2f3088459b6bcf05b80fd06407fb4d7"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_mochi_1_1_color.html">Color</a> of the text. <br /></td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Options used by the graphical GUI specifically for texts. This contains all the minimal data to show text, besides the actual text. Optional elements of the struct will be defaulted by the GUI implementation if not defined. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Engine/src/GUI/<a class="el" href="_g_u_i_common_8hpp_source.html">GUICommon.hpp</a></li>
 </ul>
 </div><!-- contents -->

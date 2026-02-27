@@ -10,6 +10,10 @@ namespace Mochi::Graphics
 }
 namespace Mochi
 {
+    /**
+     * @brief The debug layer is a layer automatically injected in the Engine if the game is in debug mode. It provides a text indicating that it is a development build,
+     * an FPS counter and two perpendicular lines crossing at the center of the screen.
+     */
     class DebugLayer : public Layer
     {
     public:

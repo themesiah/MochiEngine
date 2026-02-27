@@ -4,7 +4,7 @@ var annotated_dup =
       [ "Audio", null, [
         [ "DummyAudioManager", "class_mochi_1_1_audio_1_1_dummy_audio_manager.html", null ],
         [ "FMODMarkerEvent", "struct_mochi_1_1_audio_1_1_f_m_o_d_marker_event.html", null ],
-        [ "FMODWrapper", "class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html", null ],
+        [ "FMODWrapper", "class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html", "class_mochi_1_1_audio_1_1_f_m_o_d_wrapper" ],
         [ "IAudioManager", "class_mochi_1_1_audio_1_1_i_audio_manager.html", null ]
       ] ],
       [ "FS", null, [
@@ -44,13 +44,13 @@ var annotated_dup =
         [ "SDLTextureFactory", "class_mochi_1_1_graphics_1_1_s_d_l_texture_factory.html", "class_mochi_1_1_graphics_1_1_s_d_l_texture_factory" ],
         [ "SpriteBase", "class_mochi_1_1_graphics_1_1_sprite_base.html", "class_mochi_1_1_graphics_1_1_sprite_base" ],
         [ "Spritesheet", "class_mochi_1_1_graphics_1_1_spritesheet.html", "class_mochi_1_1_graphics_1_1_spritesheet" ],
-        [ "AbstractGUI", "class_mochi_1_1_graphics_1_1_abstract_g_u_i.html", null ],
-        [ "GUIOptions", "struct_mochi_1_1_graphics_1_1_g_u_i_options.html", null ],
-        [ "GUITextOptions", "struct_mochi_1_1_graphics_1_1_g_u_i_text_options.html", null ],
+        [ "AbstractGUI", "class_mochi_1_1_graphics_1_1_abstract_g_u_i.html", "class_mochi_1_1_graphics_1_1_abstract_g_u_i" ],
+        [ "GUIOptions", "struct_mochi_1_1_graphics_1_1_g_u_i_options.html", "struct_mochi_1_1_graphics_1_1_g_u_i_options" ],
+        [ "GUITextOptions", "struct_mochi_1_1_graphics_1_1_g_u_i_text_options.html", "struct_mochi_1_1_graphics_1_1_g_u_i_text_options" ],
         [ "GUIButtonOptions", "struct_mochi_1_1_graphics_1_1_g_u_i_button_options.html", null ],
         [ "GUIResult", "struct_mochi_1_1_graphics_1_1_g_u_i_result.html", null ],
         [ "GUIResultButton", "struct_mochi_1_1_graphics_1_1_g_u_i_result_button.html", null ],
-        [ "SDLGUI", "class_mochi_1_1_graphics_1_1_s_d_l_g_u_i.html", null ]
+        [ "SDLGUI", "class_mochi_1_1_graphics_1_1_s_d_l_g_u_i.html", "class_mochi_1_1_graphics_1_1_s_d_l_g_u_i" ]
       ] ],
       [ "Debug", null, [
         [ "IGizmos", "class_mochi_1_1_debug_1_1_i_gizmos.html", null ],
@@ -81,10 +81,10 @@ var annotated_dup =
         [ "VirtualActionManager", "class_mochi_1_1_input_1_1_virtual_action_manager.html", null ]
       ] ],
       [ "Event", null, [
-        [ "DummyEventDispatcher", "class_mochi_1_1_event_1_1_dummy_event_dispatcher.html", null ],
-        [ "EventBus", "class_mochi_1_1_event_1_1_event_bus.html", null ],
-        [ "ISystemEventDispatcher", "class_mochi_1_1_event_1_1_i_system_event_dispatcher.html", null ],
-        [ "SDLSystemEventDispatcher", "class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher.html", null ]
+        [ "DummyEventDispatcher", "class_mochi_1_1_event_1_1_dummy_event_dispatcher.html", "class_mochi_1_1_event_1_1_dummy_event_dispatcher" ],
+        [ "EventBus", "class_mochi_1_1_event_1_1_event_bus.html", "class_mochi_1_1_event_1_1_event_bus" ],
+        [ "ISystemEventDispatcher", "class_mochi_1_1_event_1_1_i_system_event_dispatcher.html", "class_mochi_1_1_event_1_1_i_system_event_dispatcher" ],
+        [ "SDLSystemEventDispatcher", "class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher.html", "class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher" ]
       ] ],
       [ "Physics", null, [
         [ "Shape", "struct_mochi_1_1_physics_1_1_shape.html", null ],

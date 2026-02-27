@@ -93,19 +93,146 @@ $(function(){initNavTree('class_mochi_1_1_event_1_1_event_bus.html','','class_mo
   <div class="headertitle"><div class="title">Mochi::Event::EventBus Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>The event bus is a Pub-Sub implementation that accepts any type as event data.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_event_bus_8h_source.html">EventBus.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac676d665d2150a14eac8bc53f3f7a0ab" id="r_ac676d665d2150a14eac8bc53f3f7a0ab"><td class="memTemplParams" colspan="2"><a id="ac676d665d2150a14eac8bc53f3f7a0ab" name="ac676d665d2150a14eac8bc53f3f7a0ab"></a>
-template&lt;typename EventType&gt; </td></tr>
-<tr class="memitem:ac676d665d2150a14eac8bc53f3f7a0ab template"><td class="memItemLeft">SubscriptionHandler&#160;</td><td class="memItemRight"><b>Subscribe</b> (std::function&lt; void(const EventType &amp;)&gt; callback)</td></tr>
-<tr class="memitem:aecea06cde68e8523a2045cf2650ebba6" id="r_aecea06cde68e8523a2045cf2650ebba6"><td class="memTemplParams" colspan="2"><a id="aecea06cde68e8523a2045cf2650ebba6" name="aecea06cde68e8523a2045cf2650ebba6"></a>
-template&lt;typename EventType&gt; </td></tr>
-<tr class="memitem:aecea06cde68e8523a2045cf2650ebba6 template"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><b>Unsubscribe</b> (SubscriptionHandler handler)</td></tr>
-<tr class="memitem:a2743e6ad90e08f277711357b26cdb85e" id="r_a2743e6ad90e08f277711357b26cdb85e"><td class="memTemplParams" colspan="2"><a id="a2743e6ad90e08f277711357b26cdb85e" name="a2743e6ad90e08f277711357b26cdb85e"></a>
-template&lt;typename EventType&gt; </td></tr>
-<tr class="memitem:a2743e6ad90e08f277711357b26cdb85e template"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><b>Publish</b> (const EventType &amp;event)</td></tr>
+<tr class="memitem:ac676d665d2150a14eac8bc53f3f7a0ab" id="r_ac676d665d2150a14eac8bc53f3f7a0ab"><td class="memTemplParams" colspan="2">template&lt;typename EventType&gt; </td></tr>
+<tr class="memitem:ac676d665d2150a14eac8bc53f3f7a0ab template"><td class="memItemLeft">SubscriptionHandler&#160;</td><td class="memItemRight"><a class="el" href="#ac676d665d2150a14eac8bc53f3f7a0ab">Subscribe</a> (std::function&lt; void(const EventType &amp;)&gt; callback)</td></tr>
+<tr class="memdesc:ac676d665d2150a14eac8bc53f3f7a0ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribe to a specific event type.  <br /></td></tr>
+<tr class="memitem:aecea06cde68e8523a2045cf2650ebba6" id="r_aecea06cde68e8523a2045cf2650ebba6"><td class="memTemplParams" colspan="2">template&lt;typename EventType&gt; </td></tr>
+<tr class="memitem:aecea06cde68e8523a2045cf2650ebba6 template"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aecea06cde68e8523a2045cf2650ebba6">Unsubscribe</a> (SubscriptionHandler handler)</td></tr>
+<tr class="memdesc:aecea06cde68e8523a2045cf2650ebba6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unsubscribe from a specific event. If the event type didn't exist or the handler wasn't subscribed, nothing happenns.  <br /></td></tr>
+<tr class="memitem:a2743e6ad90e08f277711357b26cdb85e" id="r_a2743e6ad90e08f277711357b26cdb85e"><td class="memTemplParams" colspan="2">template&lt;typename EventType&gt; </td></tr>
+<tr class="memitem:a2743e6ad90e08f277711357b26cdb85e template"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2743e6ad90e08f277711357b26cdb85e">Publish</a> (const EventType &amp;event)</td></tr>
+<tr class="memdesc:a2743e6ad90e08f277711357b26cdb85e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publish an event, triggering all callbacks subscribed to it with the provided data.  <br /></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The event bus is a Pub-Sub implementation that accepts any type as event data. </p>
+<p>A subscription handler is the identifier of the subscription, needed on a per-subscription basis in order to unsubscribe for it.</p>
+<p>Guarantees:</p>
+<ul>
+<li>Anyone can subscribe to any type of event at any time.</li>
+<li>Anyone can publish any type of event at any time.</li>
+<li>Anyone can unsubscribe from an event at any time.</li>
+</ul>
+<p>Non responsible:</p>
+<ul>
+<li>Publishing to an event where a destroyed class was subscribed and didn't unsubscribe can cause unexpected consecuences. </li>
+</ul>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a2743e6ad90e08f277711357b26cdb85e" name="a2743e6ad90e08f277711357b26cdb85e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2743e6ad90e08f277711357b26cdb85e">&#9670;&#160;</a></span>Publish()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EventType&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mochi::Event::EventBus::Publish </td>
+          <td>(</td>
+          <td class="paramtype">const EventType &amp;</td>          <td class="paramname"><span class="paramname"><em>event</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Publish an event, triggering all callbacks subscribed to it with the provided data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">EventType</td><td>The event type to which to publish. </td></tr>
+    <tr><td class="paramname">event</td><td>The event data of type EventType. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac676d665d2150a14eac8bc53f3f7a0ab" name="ac676d665d2150a14eac8bc53f3f7a0ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac676d665d2150a14eac8bc53f3f7a0ab">&#9670;&#160;</a></span>Subscribe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EventType&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SubscriptionHandler Mochi::Event::EventBus::Subscribe </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void(const EventType &amp;)&gt;</td>          <td class="paramname"><span class="paramname"><em>callback</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Subscribe to a specific event type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">EventType</td><td>The event type to which to subscribe. Whatever type works. It is recommended to use a type (struct or class) specifically created for that event. </td></tr>
+    <tr><td class="paramname">callback</td><td>The callback to be called when the event is published. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aecea06cde68e8523a2045cf2650ebba6" name="aecea06cde68e8523a2045cf2650ebba6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecea06cde68e8523a2045cf2650ebba6">&#9670;&#160;</a></span>Unsubscribe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EventType&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mochi::Event::EventBus::Unsubscribe </td>
+          <td>(</td>
+          <td class="paramtype">SubscriptionHandler</td>          <td class="paramname"><span class="paramname"><em>handler</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Unsubscribe from a specific event. If the event type didn't exist or the handler wasn't subscribed, nothing happenns. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">EventType</td><td>The event type from which to unsubscribe. </td></tr>
+    <tr><td class="paramname">handler</td><td>The identifier of the subscription. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>Engine/src/Event/<a class="el" href="_event_bus_8h_source.html">EventBus.h</a></li>
 </ul>

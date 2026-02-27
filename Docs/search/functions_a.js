@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['operator_2b_3d_0',['operator+=',['../struct_mochi_1_1_rectf.html#ab698352ba3fd207a4973fa3a3d60b0da',1,'Mochi::Rectf']]],
-  ['operator_2d_3d_1',['operator-=',['../struct_mochi_1_1_rectf.html#a3f8eca0df388421e950b8a8979fdd1c1',1,'Mochi::Rectf']]]
+  ['normalized_0',['Normalized',['../struct_mochi_1_1_vector2f.html#adfd0ca6591237abeb14ae7f78f38c761',1,'Mochi::Vector2f']]]
 ];

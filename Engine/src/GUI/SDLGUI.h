@@ -14,6 +14,12 @@ namespace Mochi::Graphics
 {
     class SDLRenderer;
     class IRenderer;
+    /**
+     * @brief Implementation of AbstractGUI that uses SDLRenderer and SDLTTF to show GUI elements.
+     *
+     * NOTE: This class is provisional. It uses a fixed font and has minimal functionality for a GUI system.
+     * This is not to be called a final product, but it does the trick.
+     */
     class SDLGUI : public AbstractGUI
     {
     private:

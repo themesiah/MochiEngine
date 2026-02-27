@@ -1,19 +1,12 @@
 var searchData=
 [
-  ['debuglayer_0',['DebugLayer',['../class_mochi_1_1_debug_layer.html',1,'Mochi']]],
-  ['deleteanimation_1',['DeleteAnimation',['../class_mochi_1_1_graphics_1_1_aseprite_animation_factory.html#ab1cc02ad0b934792bd34f067b162032f',1,'Mochi::Graphics::AsepriteAnimationFactory::DeleteAnimation()'],['../class_mochi_1_1_graphics_1_1_dummy_animation_factory.html#a77cc39a2ece6b1dcd008c15075162eea',1,'Mochi::Graphics::DummyAnimationFactory::DeleteAnimation()'],['../class_mochi_1_1_graphics_1_1_i_animation_factory.html#af2e5ecd0526bd83b358f2874f89963d9',1,'Mochi::Graphics::IAnimationFactory::DeleteAnimation()']]],
-  ['deletecache_2',['DeleteCache',['../class_mochi_1_1_graphics_1_1_abstract_texture_factory.html#a311bcb940cfced4ccb69a297e74748f7',1,'Mochi::Graphics::AbstractTextureFactory::DeleteCache()'],['../class_mochi_1_1_graphics_1_1_aseprite_animation_factory.html#a75f725eb215e793cd0a48f8fd25e3d4f',1,'Mochi::Graphics::AsepriteAnimationFactory::DeleteCache()'],['../class_mochi_1_1_graphics_1_1_dummy_animation_factory.html#a5667129867c7587dea94b93723e76485',1,'Mochi::Graphics::DummyAnimationFactory::DeleteCache()'],['../class_mochi_1_1_graphics_1_1_i_animation_factory.html#af5aed432a71a1c16a0d0cb122a5564af',1,'Mochi::Graphics::IAnimationFactory::DeleteCache()']]],
-  ['deletetexture_3',['DeleteTexture',['../class_mochi_1_1_graphics_1_1_abstract_texture_factory.html#a456af37bfaf4dcf55ad0df412ed17888',1,'Mochi::Graphics::AbstractTextureFactory']]],
-  ['documentation_4',['MochiEngine Documentation',['../index.html',1,'']]],
-  ['dummyanimationfactory_5',['DummyAnimationFactory',['../class_mochi_1_1_graphics_1_1_dummy_animation_factory.html',1,'Mochi::Graphics']]],
-  ['dummyaudiomanager_6',['DummyAudioManager',['../class_mochi_1_1_audio_1_1_dummy_audio_manager.html',1,'Mochi::Audio']]],
-  ['dummyeventdispatcher_7',['DummyEventDispatcher',['../class_mochi_1_1_event_1_1_dummy_event_dispatcher.html',1,'Mochi::Event']]],
-  ['dummygamepadprovider_8',['DummyGamepadProvider',['../class_mochi_1_1_input_1_1_dummy_gamepad_provider.html',1,'Mochi::Input']]],
-  ['dummygizmos_9',['DummyGizmos',['../class_mochi_1_1_graphics_1_1_dummy_gizmos.html',1,'Mochi::Graphics']]],
-  ['dummygui_10',['DummyGUI',['../class_mochi_1_1_graphics_1_1_dummy_g_u_i.html',1,'Mochi::Graphics']]],
-  ['dummykeyboardprovider_11',['DummyKeyboardProvider',['../class_mochi_1_1_input_1_1_dummy_keyboard_provider.html',1,'Mochi::Input']]],
-  ['dummymouseprovider_12',['DummyMouseProvider',['../class_mochi_1_1_input_1_1_dummy_mouse_provider.html',1,'Mochi::Input']]],
-  ['dummyrenderer_13',['DummyRenderer',['../class_mochi_1_1_graphics_1_1_dummy_renderer.html',1,'Mochi::Graphics']]],
-  ['dummytexture_14',['DummyTexture',['../class_mochi_1_1_graphics_1_1_dummy_texture.html',1,'Mochi::Graphics']]],
-  ['dummytexturefactory_15',['DummyTextureFactory',['../class_mochi_1_1_graphics_1_1_dummy_texture_factory.html',1,'Mochi::Graphics']]]
+  ['camera_0',['Camera',['../class_mochi_1_1_graphics_1_1_camera.html',1,'Mochi::Graphics']]],
+  ['cameraswappedevent_1',['CameraSwappedEvent',['../struct_mochi_1_1_camera_swapped_event.html',1,'Mochi']]],
+  ['chrono_2',['Chrono',['../class_mochi_1_1_time_1_1_chrono.html',1,'Mochi::Time']]],
+  ['circle_3',['Circle',['../struct_mochi_1_1_physics_1_1_circle.html',1,'Mochi::Physics']]],
+  ['clearbuscache_4',['ClearBusCache',['../class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#a3f18108b9038ab0f1fe076c15ea3cf63',1,'Mochi::Audio::FMODWrapper']]],
+  ['clearsoundcache_5',['ClearSoundCache',['../class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#ad041fe028b7ffb71f0bb03e2f0f8cf22',1,'Mochi::Audio::FMODWrapper']]],
+  ['color_6',['Color',['../struct_mochi_1_1_color.html',1,'Mochi::Color'],['../struct_mochi_1_1_graphics_1_1_g_u_i_options.html#abc77a8c11f150ef056f4d0cb43de8e89',1,'Mochi::Graphics::GUIOptions::Color'],['../struct_mochi_1_1_graphics_1_1_g_u_i_text_options.html#ad2f3088459b6bcf05b80fd06407fb4d7',1,'Mochi::Graphics::GUITextOptions::Color']]],
+  ['creategui_7',['CreateGUI',['../class_mochi_1_1_graphics_1_1_dummy_renderer.html#a54c84b17a07955005c83d7a84b5cfe3b',1,'Mochi::Graphics::DummyRenderer::CreateGUI()'],['../class_mochi_1_1_graphics_1_1_i_renderer.html#a9fb7e47eec7bd318172e9af56b777d7d',1,'Mochi::Graphics::IRenderer::CreateGUI()'],['../class_mochi_1_1_graphics_1_1_s_d_l_renderer.html#aa7338953146e0f7712ef26b659e3d9f4',1,'Mochi::Graphics::SDLRenderer::CreateGUI()']]],
+  ['createtexturefactory_8',['CreateTextureFactory',['../class_mochi_1_1_graphics_1_1_dummy_renderer.html#ad4cc57be39e73ed98578ff06eabca969',1,'Mochi::Graphics::DummyRenderer::CreateTextureFactory()'],['../class_mochi_1_1_graphics_1_1_i_renderer.html#ab3fbe362e1d305bd1801f2cebf00754d',1,'Mochi::Graphics::IRenderer::CreateTextureFactory()'],['../class_mochi_1_1_graphics_1_1_s_d_l_renderer.html#ab927fb0f2c37d621dc31a1ea70633596',1,'Mochi::Graphics::SDLRenderer::CreateTextureFactory()']]]
 ];

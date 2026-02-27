@@ -9,6 +9,11 @@
 
 namespace Mochi::Debug
 {
+    /**
+     * @brief A very simple profiler that captures the time spent between two lines of code and structures those times in sections.
+     *
+     * Call BeginSection and EndSection to provide a range of code to check.
+     */
     class FrameProfiler
     {
     public:

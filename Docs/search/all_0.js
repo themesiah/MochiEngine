@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['abstractgui_0',['AbstractGUI',['../class_mochi_1_1_graphics_1_1_abstract_g_u_i.html',1,'Mochi::Graphics']]],
+  ['abstractgui_0',['AbstractGUI',['../class_mochi_1_1_graphics_1_1_abstract_g_u_i.html',1,'Mochi::Graphics::AbstractGUI'],['../class_mochi_1_1_graphics_1_1_abstract_g_u_i.html#ae2c2e3fd7ccf55f6b1fef2bc1a035f95',1,'Mochi::Graphics::AbstractGUI::AbstractGUI()']]],
   ['abstracttexturefactory_1',['AbstractTextureFactory',['../class_mochi_1_1_graphics_1_1_abstract_texture_factory.html',1,'Mochi::Graphics']]],
   ['action_2',['Action',['../struct_mochi_1_1_input_1_1_action.html',1,'Mochi::Input']]],
   ['actionmanager_3',['ActionManager',['../class_mochi_1_1_input_1_1_action_manager.html',1,'Mochi::Input']]],

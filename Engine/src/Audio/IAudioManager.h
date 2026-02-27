@@ -5,6 +5,11 @@
 
 namespace Mochi::Audio
 {
+    /**
+     * @brief Interface for audio management, including loading and unloading audio, playing it, changing volume and other parameters.
+     *
+     * The implementations are meant to wrap some existing audio system to be used the same within the engine.
+     */
     class IAudioManager
     {
     public:

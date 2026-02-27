@@ -13,6 +13,9 @@ namespace Mochi
 }
 namespace Mochi::Debug
 {
+    /**
+     * @brief Implementation of IGizmos using SDL primitive methods for drawing shapes.
+     */
     class SDLGizmos : public IGizmos
     {
     private:
