@@ -1,9 +1,9 @@
 # SDLSpaceShooter
 
 # Table of contents
-1. [Purpose](#Purpose)
-2. [Building](#Configuring)
-3. [Links of interest](#Links)
+1. [Purpose](#purpose)
+2. [Building](#configuring-and-building)
+3. [Links of interest](#links-of-interest)
 
 ## Purpose
 
