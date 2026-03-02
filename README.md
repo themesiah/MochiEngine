@@ -2,8 +2,8 @@
 
 # Table of contents
 1. [Purpose](#Purpose)
-2. [Building](#Configuring and building)
-3. [Links of interest](#Links of interest)
+2. [Building](#Configuring)
+3. [Links of interest](#Links)
 
 ## Purpose
 
@@ -44,5 +44,5 @@ To run all tests. Do this only after building all targets.
 
 ## Links of interest
 
-[Engine documentation](https://themesiah.github.io/MochiEngine/Docs/index.html)
-[Architecture](./ARCHITECTURE.md)
+- [Engine documentation](https://themesiah.github.io/MochiEngine/Docs/index.html)
+- [Architecture](./ARCHITECTURE.md)
