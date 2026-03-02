@@ -21,7 +21,7 @@ namespace Mochi::Input
      * It provides functions to poll the state of each provider, used by the ActionManager.
      * This class is not meant to be implemented differently in any way, as it already receives different sets of providers for that purpose.
      *
-     * NOTE: The engine is not prepared for more than one player as for now. The InputManager takes the polling of IGamepadProvider from the first slot gamepad only.
+     * @remark The engine is not prepared for more than one player as for now. The InputManager takes the polling of IGamepadProvider from the first slot gamepad only.
      *
      * Ownership:
      *

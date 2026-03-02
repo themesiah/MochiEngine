@@ -30,7 +30,7 @@ namespace Mochi::Graphics
      * It also provides basic methods called on update to manage navigation in the vertical axis.
      * All overrideable methods on this class are meant to provide ways to implement a simple immediate GUI, not a stateful GUI.
      *
-     * NOTE: This class is mostly provisional. A GUI class can be enormous and have a lot functionality. It is also an Immediate GUI, and
+     * @remark This class is mostly provisional. A GUI class can be enormous and have a lot functionality. It is also an Immediate GUI, and
      * arguments can be given to make a stateful GUI instead of a stateless GUI like this. Making a fully fledged UI system was not the point on the engine,
      * and this class and its implementations could be improved when the samples need it.
      *

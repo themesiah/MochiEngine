@@ -26,7 +26,7 @@ namespace Mochi::Graphics
     /**
      * @brief This class allows rendering with SDL3 in "the simple way", that is showing textures with SDL_RenderTexture instead of using the GPU module.
      *
-     * NOTE: Do not mistake SDLRenderer (this) and SDL_Renderer (renderer struct used by SDL internally).
+     * @remark Do not mistake SDLRenderer (this) and SDL_Renderer (renderer struct used by SDL internally).
      *
      * Besides that, SDLRenderer is responsible for creating AbstractTextureFactory of the type SDLTextureFactory that generates SDLTexture and AbstractGUI of the
      * type SDLGUI.

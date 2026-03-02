@@ -6,6 +6,16 @@
 
 namespace Mochi::Utils
 {
+    /**
+     * @defgroup Stringutils String utils
+     *
+     * Utils/StringUtils.h
+     * @{
+     */
+
+    /// @brief Replaces all / with \\ and makes all text lowercase. This is used to standarize paths inside the catalog file system.
+    /// @param path The original path.
+    /// @return The normalized path.
     inline std::string NormalizePath(std::string path)
     {
         // Replace forward slashes with backslashes
@@ -18,6 +28,8 @@ namespace Mochi::Utils
 
         return path;
     }
+
+    /**@} */
 }
 
 #endif

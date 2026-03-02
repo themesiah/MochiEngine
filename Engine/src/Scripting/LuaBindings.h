@@ -19,9 +19,35 @@ namespace Mochi::Graphics
 }
 namespace Mochi::Scripting::Bindings
 {
-    void BindGraphics(ScriptingManager *, Graphics::Camera *);
-    void BindLogic(ScriptingManager *, Input::IActionManager *);
-    void BindAudio(ScriptingManager *, Audio::IAudioManager *audioManager);
+    /**
+     * @defgroup LuaBindings Lua Binding Modules
+     * Functions responsible for registering engine subsystems into lua
+     * @{
+     */
+
+    /**
+     * @brief Binds the graphics module classes to lua.
+     * Graphics::SpriteBase and its children and Graphics::Camera.
+     * @param scriptingManager The scripting manager module.
+     * @param camera The main camera.
+     */
+    void BindGraphics(ScriptingManager *scriptingManager, Graphics::Camera *camera);
+    /**
+     * @brief Binds base types, input and time methods to lua.
+     * Transform, Vector2f, Rectf, Color, Input::IActionManager and Time::TimeSystem.
+     * @param scriptingManager The scripting manager module.
+     * @param actionManager The action manager.
+     */
+    void BindLogic(ScriptingManager *scriptingManager, Input::IActionManager *actionManager);
+    /**
+     * @brief Binds audio methods to lua.
+     * Load and unload audio, play, pause and resume music, play oneshots...
+     * @param scriptingManager The scripting manager module.
+     * @param audioManager The audio manager.
+     */
+    void BindAudio(ScriptingManager *scriptingManager, Audio::IAudioManager *audioManager);
+
+    /**@} */
 }
 
 #endif

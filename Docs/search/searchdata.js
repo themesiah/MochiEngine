@@ -5,7 +5,8 @@ var indexSectionsWithContent =
   2: "abcdefghilmnoprstuvw",
   3: "cdpst",
   4: "o",
-  5: "dmrtw"
+  5: "abceglmsu",
+  6: "abcdefgilmnrtvw"
 };
 
 var indexSectionNames =
@@ -15,7 +16,8 @@ var indexSectionNames =
   2: "functions",
   3: "variables",
   4: "related",
-  5: "pages"
+  5: "groups",
+  6: "pages"
 };
 
 var indexSectionLabels =
@@ -25,6 +27,7 @@ var indexSectionLabels =
   2: "Functions",
   3: "Variables",
   4: "Friends",
-  5: "Pages"
+  5: "Modules",
+  6: "Pages"
 };
 

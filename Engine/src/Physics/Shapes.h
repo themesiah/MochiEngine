@@ -13,6 +13,12 @@ namespace Mochi::Physics
     struct Line;
     struct Circle;
     struct Rectangle;
+    /**
+     * @brief Abstract class representing a position in space where a physics shape is.
+     * This is meant to be extended and used for checking for collisions between different types of shapes.
+     *
+     * Check @ref ShapeCollision for a list of collision methods.
+     */
     struct Shape
     {
     protected:
@@ -28,6 +34,10 @@ namespace Mochi::Physics
         Vector2f Position;
     };
 
+    /**
+     * @brief Class representing a point in space.
+     * This is meant to be used for checking for collisions between different types of shapes.
+     */
     struct Point : public Shape
     {
     public:
@@ -41,6 +51,11 @@ namespace Mochi::Physics
         virtual bool Collides(const Rectangle &r) const override;
     };
 
+    /**
+     * @brief Class representing a line between two points in space.
+     * The inherited position variable is the start of the line, and the end point is where it ends.
+     * This is meant to be used for checking for collisions between different types of shapes.
+     */
     struct Line : public Shape
     {
     private:
@@ -56,6 +71,11 @@ namespace Mochi::Physics
         Vector2f End;
     };
 
+    /**
+     * @brief Class representing a circle in space.
+     * The position represents the center of the circle, and the radius is, of course, the radius.
+     * This is meant to be used for checking for collisions between different types of shapes.
+     */
     struct Circle : public Shape
     {
     public:
@@ -74,6 +94,11 @@ namespace Mochi::Physics
         float Radius;
     };
 
+    /**
+     * @brief Class representing a rectangle in space.
+     * The position is the center of the rectangle, and the extents is half the size (so, distance between the center and outermost part of the rectangle).
+     * This is meant to be used for checking for collisions between different types of shapes.
+     */
     struct Rectangle : public Shape
     {
     private:

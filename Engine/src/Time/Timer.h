@@ -3,6 +3,10 @@
 
 namespace Mochi::Time
 {
+    /**
+     * @brief Utility class to count the pass of time. If ticked each frame, IsDone will return true when the time parameter in the construction has passed.
+     * It will also show the passed time like a Chrono in GetTime and the difference between the construction time and GetTime with GetRemainingTime.
+     */
     class Timer
     {
     private:

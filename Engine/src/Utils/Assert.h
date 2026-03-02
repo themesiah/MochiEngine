@@ -4,6 +4,17 @@
 
 #include <iostream>
 
+/**
+ * @defgroup Assert Assertion macros
+ *
+ * Utils/Assert.h
+ * @{
+ */
+
+/**
+ * \def ASSERT(message, x)
+ * \brief Asserts and show a message if the predicate is false
+ */
 #ifndef DEBUG
 #define ASSERT(message, x)
 #else
@@ -19,3 +30,5 @@
     }
 #endif
 #endif
+
+/**@} */

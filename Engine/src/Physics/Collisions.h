@@ -6,6 +6,12 @@
 
 namespace Mochi::Physics
 {
+
+    /**
+     * @defgroup ShapeCollision Shape Collision Methods
+     * Methods responsible to check collisions between shapes.
+     * @{
+     */
     inline bool CollidesPointAndPoint(const Point &p1, const Point &p2)
     {
         return p1.Position == p2.Position;
@@ -119,6 +125,8 @@ namespace Mochi::Physics
                 r1.Position.y + r1.Extents.y >= r2.Position.y - r2.Extents.y &&
                 r1.Position.y - r1.Extents.y <= r2.Position.y + r2.Extents.y);
     }
+
+    /**@} */
 }
 
 #endif

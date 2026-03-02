@@ -12,7 +12,7 @@ namespace Mochi::Graphics
     /**
      * @brief An implementation of ITexture used by SDLRenderer.
      *
-     * NOTE: Do not mistake SDLTexture (this) with SDL_Texture (the struct used internally by SDL)
+     * @remark Do not mistake SDLTexture (this) with SDL_Texture (the struct used internally by SDL)
      *
      * Ownership:
      *

@@ -128,7 +128,7 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation of <a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html" title="IActionManager is an interface with the purpose of giving the ability to identify which actions are b...">IActionManager</a> meant to be used on any context where the user has control over the game. Expected flow for this class is creating it, loading the actions config file, updating it each frame and checking the state of the actions at any time. </p>
-<p>NOTE: Actions data is expected as a JSON. Check <a href="./Resources/Actions.json">this example</a> for a first example of the format.</p>
+<dl class="section remark"><dt>Remarks</dt><dd>Actions data is expected as a JSON. Check <a href="./Resources/Actions.json">this example</a> for a first example of the format.</dd></dl>
 <p>Actions are a set of PerformableAction, which defines when an action is considered as performed and how it gets its value.</p>
 <p>Related and important classes or structures:</p>
 <ul>
@@ -283,7 +283,7 @@ Public Member Functions</h2></td></tr>
 <p>Loads a list of actions from a JSON string data. </p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="class_mochi_1_1_malformed_input_action.html">MalformedInputAction</a></td><td>if JSON has not the correct format. </td></tr>
+    <tr><td class="paramname"><a class="el" href="class_mochi_1_1_malformed_input_action.html" title="Specific implementation of EngineError thrown when actions loaded by an Input::IActionManager are mal...">MalformedInputAction</a></td><td>if JSON has not the correct format. </td></tr>
   </table>
   </dd>
 </dl>

@@ -93,6 +93,11 @@ $(function(){initNavTree('class_mochi_1_1_time_1_1_time_system.html','','class_m
   <div class="headertitle"><div class="title">Mochi::Time::TimeSystem Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class that provides several time values useful for game development.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_time_system_8h_source.html">TimeSystem.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -107,19 +112,208 @@ void&#160;</td><td class="memItemRight"><b>Tick</b> (const float &amp;dt)</td></
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:abb6692aa603fd44b0072005d9009b924" id="r_abb6692aa603fd44b0072005d9009b924"><td class="memItemLeft"><a id="abb6692aa603fd44b0072005d9009b924" name="abb6692aa603fd44b0072005d9009b924"></a>
 static TimeSystem &amp;&#160;</td><td class="memItemRight"><b>GetInstance</b> ()</td></tr>
-<tr class="memitem:a5a766a81e8b4b07d5a710d56df38ffa5" id="r_a5a766a81e8b4b07d5a710d56df38ffa5"><td class="memItemLeft"><a id="a5a766a81e8b4b07d5a710d56df38ffa5" name="a5a766a81e8b4b07d5a710d56df38ffa5"></a>
-static float&#160;</td><td class="memItemRight"><b>GetDeltaTime</b> ()</td></tr>
-<tr class="memitem:a4d03988158c86863134b5ccdd78f0776" id="r_a4d03988158c86863134b5ccdd78f0776"><td class="memItemLeft"><a id="a4d03988158c86863134b5ccdd78f0776" name="a4d03988158c86863134b5ccdd78f0776"></a>
-static float&#160;</td><td class="memItemRight"><b>GetUnscaledDeltaTime</b> ()</td></tr>
-<tr class="memitem:acfa7badba545ad525b0e96b558f04ea4" id="r_acfa7badba545ad525b0e96b558f04ea4"><td class="memItemLeft"><a id="acfa7badba545ad525b0e96b558f04ea4" name="acfa7badba545ad525b0e96b558f04ea4"></a>
-static float&#160;</td><td class="memItemRight"><b>GetGameTime</b> ()</td></tr>
-<tr class="memitem:a8e14a073962ad38e21b25625f3734562" id="r_a8e14a073962ad38e21b25625f3734562"><td class="memItemLeft"><a id="a8e14a073962ad38e21b25625f3734562" name="a8e14a073962ad38e21b25625f3734562"></a>
-static float&#160;</td><td class="memItemRight"><b>GetUnscaledGameTime</b> ()</td></tr>
-<tr class="memitem:a80ef803f9eee3feeae9c13d179d81cc5" id="r_a80ef803f9eee3feeae9c13d179d81cc5"><td class="memItemLeft"><a id="a80ef803f9eee3feeae9c13d179d81cc5" name="a80ef803f9eee3feeae9c13d179d81cc5"></a>
-static void&#160;</td><td class="memItemRight"><b>SetTimeScale</b> (const float &amp;scale)</td></tr>
-<tr class="memitem:ac5abf04bffef5dda4e27791778a56331" id="r_ac5abf04bffef5dda4e27791778a56331"><td class="memItemLeft"><a id="ac5abf04bffef5dda4e27791778a56331" name="ac5abf04bffef5dda4e27791778a56331"></a>
-static float&#160;</td><td class="memItemRight"><b>GetTimeScale</b> ()</td></tr>
+<tr class="memitem:a5a766a81e8b4b07d5a710d56df38ffa5" id="r_a5a766a81e8b4b07d5a710d56df38ffa5"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#a5a766a81e8b4b07d5a710d56df38ffa5">GetDeltaTime</a> ()</td></tr>
+<tr class="memdesc:a5a766a81e8b4b07d5a710d56df38ffa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the last delta time, scaled by the time scale.  <br /></td></tr>
+<tr class="memitem:a4d03988158c86863134b5ccdd78f0776" id="r_a4d03988158c86863134b5ccdd78f0776"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#a4d03988158c86863134b5ccdd78f0776">GetUnscaledDeltaTime</a> ()</td></tr>
+<tr class="memdesc:a4d03988158c86863134b5ccdd78f0776"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the last delta time without scale.  <br /></td></tr>
+<tr class="memitem:acfa7badba545ad525b0e96b558f04ea4" id="r_acfa7badba545ad525b0e96b558f04ea4"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#acfa7badba545ad525b0e96b558f04ea4">GetGameTime</a> ()</td></tr>
+<tr class="memdesc:acfa7badba545ad525b0e96b558f04ea4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the time passed since opening the application, scaled.  <br /></td></tr>
+<tr class="memitem:a8e14a073962ad38e21b25625f3734562" id="r_a8e14a073962ad38e21b25625f3734562"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#a8e14a073962ad38e21b25625f3734562">GetUnscaledGameTime</a> ()</td></tr>
+<tr class="memdesc:a8e14a073962ad38e21b25625f3734562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the time passed since opening the application.  <br /></td></tr>
+<tr class="memitem:a80ef803f9eee3feeae9c13d179d81cc5" id="r_a80ef803f9eee3feeae9c13d179d81cc5"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a80ef803f9eee3feeae9c13d179d81cc5">SetTimeScale</a> (const float &amp;scale)</td></tr>
+<tr class="memdesc:a80ef803f9eee3feeae9c13d179d81cc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a time scale.  <br /></td></tr>
+<tr class="memitem:ac5abf04bffef5dda4e27791778a56331" id="r_ac5abf04bffef5dda4e27791778a56331"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#ac5abf04bffef5dda4e27791778a56331">GetTimeScale</a> ()</td></tr>
+<tr class="memdesc:ac5abf04bffef5dda4e27791778a56331"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current time scale.  <br /></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class that provides several time values useful for game development. </p>
+<p>This class has to be updated calling Tick with the real delta time passed since the last frame. This way, <a class="el" href="class_mochi_1_1_time_1_1_time_system.html" title="Class that provides several time values useful for game development.">TimeSystem</a> stores it, applies time scale if needed and updated the total time passed since the application started.</p>
+<p>Guarantees:</p>
+<ul>
+<li>Access everywhere in the engine to all time values provided by the class via static methods.</li>
+<li>A time scale greater than 0.</li>
+<li>No negative real delta time can be used to update.</li>
+<li>Update is done automatically by the <a class="el" href="class_mochi_1_1_engine.html" title="Main class of the MochiEngine. It owns and coordinates all subsystems and layers, and drives the appl...">Engine</a> at each frame.</li>
+</ul>
+<p>Thread safety:</p>
+<ul>
+<li>Accessing time is thread safe. </li>
+</ul>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a5a766a81e8b4b07d5a710d56df38ffa5" name="a5a766a81e8b4b07d5a710d56df38ffa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a766a81e8b4b07d5a710d56df38ffa5">&#9670;&#160;</a></span>GetDeltaTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Mochi::Time::TimeSystem::GetDeltaTime </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the last delta time, scaled by the time scale. </p>
+<dl class="section return"><dt>Returns</dt><dd>Time passed since the last frame, scaled </dd></dl>
+
+</div>
+</div>
+<a id="acfa7badba545ad525b0e96b558f04ea4" name="acfa7badba545ad525b0e96b558f04ea4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfa7badba545ad525b0e96b558f04ea4">&#9670;&#160;</a></span>GetGameTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Mochi::Time::TimeSystem::GetGameTime </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the time passed since opening the application, scaled. </p>
+<dl class="section return"><dt>Returns</dt><dd>Time passed since opening the application, scaled </dd></dl>
+
+</div>
+</div>
+<a id="ac5abf04bffef5dda4e27791778a56331" name="ac5abf04bffef5dda4e27791778a56331"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5abf04bffef5dda4e27791778a56331">&#9670;&#160;</a></span>GetTimeScale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Mochi::Time::TimeSystem::GetTimeScale </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the current time scale. </p>
+<dl class="section return"><dt>Returns</dt><dd>Time scale </dd></dl>
+
+</div>
+</div>
+<a id="a4d03988158c86863134b5ccdd78f0776" name="a4d03988158c86863134b5ccdd78f0776"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d03988158c86863134b5ccdd78f0776">&#9670;&#160;</a></span>GetUnscaledDeltaTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Mochi::Time::TimeSystem::GetUnscaledDeltaTime </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the last delta time without scale. </p>
+<dl class="section return"><dt>Returns</dt><dd>Real time passed since the last frame </dd></dl>
+
+</div>
+</div>
+<a id="a8e14a073962ad38e21b25625f3734562" name="a8e14a073962ad38e21b25625f3734562"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e14a073962ad38e21b25625f3734562">&#9670;&#160;</a></span>GetUnscaledGameTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Mochi::Time::TimeSystem::GetUnscaledGameTime </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the time passed since opening the application. </p>
+<dl class="section return"><dt>Returns</dt><dd>Time passed since opening the application </dd></dl>
+
+</div>
+</div>
+<a id="a80ef803f9eee3feeae9c13d179d81cc5" name="a80ef803f9eee3feeae9c13d179d81cc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80ef803f9eee3feeae9c13d179d81cc5">&#9670;&#160;</a></span>SetTimeScale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mochi::Time::TimeSystem::SetTimeScale </td>
+          <td>(</td>
+          <td class="paramtype">const float &amp;</td>          <td class="paramname"><span class="paramname"><em>scale</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets a time scale. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>Scale has to be greater or equal than 0, (useful to pause if 0) </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scale</td><td>The new time scale, greater or equal than 0 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>Engine/src/Time/<a class="el" href="_time_system_8h_source.html">TimeSystem.h</a></li>
 <li>Engine/src/Time/<b>TimeSystem.cpp</b></li>

@@ -93,6 +93,11 @@ $(function(){initNavTree('class_mochi_1_1_scripting_1_1_scripting_manager.html',
   <div class="headertitle"><div class="title">Mochi::Scripting::ScriptingManager Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="class_mochi_1_1_scripting_1_1_scripting_manager.html" title="ScriptingManager is a class containing the necessary methods to load and execute lua scripts binded t...">ScriptingManager</a> is a class containing the necessary methods to load and execute lua scripts binded to the C++ code.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_scripting_manager_8h_source.html">ScriptingManager.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -116,7 +121,33 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ad2cce6f2d04ed2f794b2335f53f9d79d" id="r_ad2cce6f2d04ed2f794b2335f53f9d79d"><td class="memItemLeft"><a id="ad2cce6f2d04ed2f794b2335f53f9d79d" name="ad2cce6f2d04ed2f794b2335f53f9d79d"></a>
 sol::state&#160;</td><td class="memItemRight"><b>State</b></td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="class_mochi_1_1_scripting_1_1_scripting_manager.html" title="ScriptingManager is a class containing the necessary methods to load and execute lua scripts binded t...">ScriptingManager</a> is a class containing the necessary methods to load and execute lua scripts binded to the C++ code. </p>
+<p>It allows separating script executions by a cleanable environment and global executions, updating script coroutines and executing from plain code or from a file.</p>
+<p>It also allows direct use of sol::state, providing advanced and manual use of the lua api. You can for example bind existing sprites from C++ in lua to manage their transforms, or capture lua data in tables directly from C++. This is dangerous and the user should be careful to manage lifetimes correctly when accesing the state directly.</p>
+<dl class="section remark"><dt>Remarks</dt><dd>As future work, this class could work with a map of environments, or passing the environment as a parameter on execute. For now, having an environment that can be cleaned would allow to load new scenes with a clean slate of level specific lua tables.</dd></dl>
+<p>Ownership:</p>
+<ul>
+<li>This class owns the sol2 state (which is the lua state).</li>
+<li>This class also owns the environment used to clean lua metadata.</li>
+</ul>
+<p>Guarantees:</p>
+<ul>
+<li>Lua will be initialized with the needed lua libraries and MochiEngine specific libraries.</li>
+<li>Lua state and environment state will start clean (besides the pre-loaded MochiEngine methods).</li>
+<li>All coroutines will be called each frame.</li>
+</ul>
+<p>Non responsible:</p>
+<ul>
+<li>No scripts besides the initialization ones will be loaded automatically.</li>
+<li>Executed scripts with any kind of errors will throw an error. There is no guarantee that the state of the game will be correct after that.</li>
+<li>References taken or injected directly using the public sol::state should be user managed. They can bring unexpected results if lifetimes are not well coordinated.</li>
+</ul>
+<p>Thread safety:</p>
+<ul>
+<li>This class is not thread safe. Code should be executed from the main thread. (TODO: Executions should be stored and done in the update. That way all besides update could be thread safe) </li>
+</ul>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Engine/src/Scripting/<a class="el" href="_scripting_manager_8h_source.html">ScriptingManager.h</a></li>
 <li>Engine/src/Scripting/<b>ScriptingManager.cpp</b></li>
 </ul>

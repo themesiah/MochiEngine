@@ -29,7 +29,7 @@ namespace Mochi::Input
      * Expected flow for this class is creating it, loading the actions config file, updating it each frame and checking the state
      * of the actions at any time.
      *
-     * NOTE: Actions data is expected as a JSON. Check [this example](./Resources/Actions.json) for a first example of the format.
+     * @remark Actions data is expected as a JSON. Check [this example](./Resources/Actions.json) for a first example of the format.
      *
      * Actions are a set of PerformableAction, which defines when an action is considered as performed and how it gets its value.
      *

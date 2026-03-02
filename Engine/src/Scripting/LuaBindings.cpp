@@ -24,10 +24,6 @@ namespace Mochi::Scripting::Bindings
 {
     void BindGraphics(ScriptingManager *manager, Graphics::Camera *camera)
     {
-        manager->State.new_usertype<Transform>("Transform",
-                                               "Position", &Transform::Position,
-                                               "Scale", &Transform::Scale,
-                                               "Move", &Transform::Move);
 
         manager->State.new_usertype<Graphics::SpriteBase>("SpriteBase",
                                                           "GetTransform", &Graphics::SpriteBase::GetTransform,
@@ -65,6 +61,11 @@ namespace Mochi::Scripting::Bindings
 
     void BindLogic(ScriptingManager *manager, Input::IActionManager *actionManager)
     {
+        manager->State.new_usertype<Transform>("Transform",
+                                               "Position", &Transform::Position,
+                                               "Scale", &Transform::Scale,
+                                               "Move", &Transform::Move);
+
         manager->State.new_usertype<Vector2f>(
             "Vector2f",
             sol::constructors<Vector2f(), Vector2f(float, float)>(),

@@ -4,10 +4,19 @@
 #include "../Constants.h"
 #include "../Types/Types.hpp"
 
-inline constexpr float CONST_PIXEL_PER_METER = 20.0f;
-
 namespace Mochi
 {
+
+    /**
+     * @defgroup Conversion Conversion methods
+     *
+     * List of methods used to convert coordinates systems.
+     *
+     * Utils/Conversion.hpp
+     * @{
+     */
+    inline constexpr float CONST_PIXEL_PER_METER = 20.0f;
+
     inline float PixelsToMeters(float px)
     {
         return px / CONST_PIXEL_PER_METER;
@@ -38,10 +47,13 @@ namespace Mochi
         return {r.x * CONST_PIXEL_PER_METER, r.y * CONST_PIXEL_PER_METER, r.w * CONST_PIXEL_PER_METER, r.h * CONST_PIXEL_PER_METER};
     }
 
+    /// @brief Inverts the Y element of a vector
     inline Vector2f FlipY(const Vector2f &v)
     {
         return {v.x, -v.y};
     }
+
+    /** @}*/
 }
 
 #endif

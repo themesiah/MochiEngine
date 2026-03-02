@@ -3,6 +3,27 @@
 
 #include <iostream>
 
+/**
+ * @defgroup Logs Log macros
+ *
+ *
+ * Utils/Logger.h
+ * @{
+ */
+
+/**
+ * \def LOG_INFO(x)
+ * \brief Logs debug information.
+ * \def LOG_OK(x)
+ * \brief Logs information about the success of a process.
+ * \def LOG_WARNING(x)
+ * \brief Logs warnings.
+ * \def LOG_ERROR(x)
+ * \brief Logs errors.
+ * \def LOG_PANIC(x)
+ * \brief Logs an error that should never happened if programmed correctly.
+ */
+
 #ifndef DEBUG
 #define LOG_INFO(x)
 #define LOG_OK(x)
@@ -24,3 +45,5 @@ inline constexpr const char *LOG_COLOR_PANIC = "\x1B[91m";
 #define LOG_PANIC(x) (std::cout << LOG_COLOR_PANIC << x << " (" << __FILE__ << ":" << __LINE__ << ")" << LOG_NOCOLOR << std::endl)
 #endif
 #endif
+
+/**@} */

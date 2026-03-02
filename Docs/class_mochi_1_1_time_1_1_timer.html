@@ -93,6 +93,11 @@ $(function(){initNavTree('class_mochi_1_1_time_1_1_timer.html','','class_mochi_1
   <div class="headertitle"><div class="title">Mochi::Time::Timer Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Utility class to count the pass of time. If ticked each frame, IsDone will return true when the time parameter in the construction has passed. It will also show the passed time like a <a class="el" href="class_mochi_1_1_time_1_1_chrono.html" title="Utility class to count the pass of time. If ticked each frame, GetTime will return the passed time si...">Chrono</a> in GetTime and the difference between the construction time and GetTime with GetRemainingTime.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_timer_8h_source.html">Timer.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -107,7 +112,9 @@ bool&#160;</td><td class="memItemRight"><b>IsDone</b> () const</td></tr>
 <tr class="memitem:aeec49fd2c35adfd10fcff7cda56a09fd" id="r_aeec49fd2c35adfd10fcff7cda56a09fd"><td class="memItemLeft"><a id="aeec49fd2c35adfd10fcff7cda56a09fd" name="aeec49fd2c35adfd10fcff7cda56a09fd"></a>
 void&#160;</td><td class="memItemRight"><b>Tick</b> (const float &amp;dt)</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Utility class to count the pass of time. If ticked each frame, IsDone will return true when the time parameter in the construction has passed. It will also show the passed time like a <a class="el" href="class_mochi_1_1_time_1_1_chrono.html" title="Utility class to count the pass of time. If ticked each frame, GetTime will return the passed time si...">Chrono</a> in GetTime and the difference between the construction time and GetTime with GetRemainingTime. </p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Engine/src/Time/<a class="el" href="_timer_8h_source.html">Timer.h</a></li>
 <li>Engine/src/Time/<b>Timer.cpp</b></li>
 </ul>

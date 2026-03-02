@@ -13,7 +13,7 @@ namespace Mochi::Scripting
 {
     ScriptingManager::ScriptingManager(FS::PackCatalog *packCatalog) : mCatalog(packCatalog), mEnvironment(sol::nil), State()
     {
-        State.open_libraries(sol::lib::base, sol::lib::coroutine, sol::lib::table, sol::lib::debug, sol::lib::math);
+        State.open_libraries(sol::lib::base, sol::lib::coroutine, sol::lib::table, sol::lib::debug, sol::lib::math, sol::lib::string);
         State.set_function("LogOk", [](const std::string &str)
                            { LOG_OK(str); });
         State.set_function("LogInfo", [](const std::string &str)

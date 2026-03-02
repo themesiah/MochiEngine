@@ -26,6 +26,28 @@ var NAVTREE =
 [
   [ "MochiEngine", "index.html", [
     [ "MochiEngine Documentation", "index.html", "index" ],
+    [ "LUA API", "md__docs_data_2_lua_bindings.html", [
+      [ "Included libraries", "md__docs_data_2_lua_bindings.html#autotoc_md1", null ],
+      [ "Non-binded methods", "md__docs_data_2_lua_bindings.html#autotoc_md2", [
+        [ "Events", "md__docs_data_2_lua_bindings.html#autotoc_md3", null ],
+        [ "Math", "md__docs_data_2_lua_bindings.html#autotoc_md4", null ],
+        [ "Coroutines", "md__docs_data_2_lua_bindings.html#autotoc_md5", null ]
+      ] ],
+      [ "Binded methods", "md__docs_data_2_lua_bindings.html#autotoc_md6", [
+        [ "Logs", "md__docs_data_2_lua_bindings.html#autotoc_md7", null ],
+        [ "Factory methods", "md__docs_data_2_lua_bindings.html#autotoc_md8", null ],
+        [ "Input", "md__docs_data_2_lua_bindings.html#autotoc_md9", null ],
+        [ "Time", "md__docs_data_2_lua_bindings.html#autotoc_md10", null ],
+        [ "Audio", "md__docs_data_2_lua_bindings.html#autotoc_md11", null ]
+      ] ],
+      [ "Classes", "md__docs_data_2_lua_bindings.html#autotoc_md12", [
+        [ "Vector2f", "md__docs_data_2_lua_bindings.html#autotoc_md13", null ],
+        [ "Rectf", "md__docs_data_2_lua_bindings.html#autotoc_md14", null ],
+        [ "Transform", "md__docs_data_2_lua_bindings.html#autotoc_md15", null ],
+        [ "Graphics", "md__docs_data_2_lua_bindings.html#autotoc_md16", null ]
+      ] ]
+    ] ],
+    [ "Topics", "topics.html", "topics" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
