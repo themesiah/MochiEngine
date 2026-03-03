@@ -30,7 +30,7 @@ set(SDL_ASM_TESTS OFF CACHE BOOL "" FORCE)
 FetchContent_Declare(
     SDL3
     GIT_REPOSITORY https://github.com/libsdl-org/SDL.git
-    GIT_TAG release-3.2.22
+    GIT_TAG release-3.4.2
     OVERRIDE_FIND_PACKAGE
 )
 FetchContent_MakeAvailable(SDL3)
@@ -38,7 +38,7 @@ FetchContent_MakeAvailable(SDL3)
 FetchContent_Declare(
     SDL3_image
     GIT_REPOSITORY https://github.com/libsdl-org/SDL_image.git
-    GIT_TAG release-3.2.4
+    GIT_TAG release-3.4.0
     OVERRIDE_FIND_PACKAGE
 )
 FetchContent_MakeAvailable(SDL3_image)
@@ -76,3 +76,31 @@ target_link_libraries(${PROJECT_NAME}
                     sol2
                     nlohmann_json
 )
+
+if (NOT USE_FMOD)
+    set(SDLMIXER_MIDI_NATIVE OFF)     # disable formats we don't use to make the build faster and smaller. Also some of these don't work on all platforms so you'll need to do some experimentation.
+    set(SDLMIXER_GME OFF)
+    set(SDLMIXER_WAVPACK OFF)     
+    set(SDLMIXER_MOD OFF)
+    set(SDLMIXER_MOD_XMP OFF)
+    set(SDLMIXER_OPUS OFF)
+    # set(SDLMIXER_MP3_MPG123 OFF)
+    # set(SDLMIXER_VORBIS_VORBISFILE OFF)
+    # set(SDLMIXER_FLAC_LIBFLAC OFF)
+
+    set(SDLMIXER_VENDORED ON CACHE BOOL "" FORCE)
+    set(SDLMIXER_TESTS OFF CACHE BOOL "" FORCE)
+    set(SDLMIXER_TESTS_INSTALL OFF CACHE BOOL "" FORCE)
+
+    FetchContent_Declare(
+        SDL3_mixer
+        GIT_REPOSITORY https://github.com/libsdl-org/SDL_mixer.git
+        GIT_TAG prerelease-3.1.2
+        OVERRIDE_FIND_PACKAGE
+    )
+    FetchContent_MakeAvailable(SDL3_mixer)
+
+    target_link_libraries(${PROJECT_NAME}
+                        INTERFACE
+                        SDL3_mixer::SDL3_mixer-static)
+endif()

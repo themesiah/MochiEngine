@@ -24,6 +24,8 @@
 #include "Audio/IAudioManager.h"
 #ifdef USE_FMOD
 #include "Audio/FMODWrapper.h"
+#else
+#include "Audio/SDLAudio.h"
 #endif
 
 #include "Constants.h"
@@ -88,6 +90,7 @@ namespace Mochi
             mAudio = std::make_unique<Audio::FMODWrapper>(mCatalog.get(), mScripting.get());
             LOG_OK("FMOD Initialized");
 #else
+            mAudio = std::make_unique<Audio::SDLAudio>(mCatalog.get());
 #endif
 
             mActionManager = std::make_unique<Input::ActionManager>(std::make_unique<Input::InputManager>(std::make_unique<Input::SDLKeyboardProvider>(),
