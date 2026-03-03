@@ -12,7 +12,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/SpaceShooter/bin/$<CONFIG
 
 
 # Add all subdirectories
-add_subdirectory("../../Engine" "Engine")
 add_subdirectory("Tests")
 
 file(GLOB SpaceShooter_src CONFIGURE_DEPENDS "src/*.cpp" "src/Bullets/*.cpp" "src/Enemies/*.cpp")

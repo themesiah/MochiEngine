@@ -69,7 +69,7 @@ Clone this repository somewhere using git.
 git clone https://github.com/themesiah/MochiEngine.git
 ```
 
-On the project folder, create a new folder called "Mega Space Robots".
+On the project folder, create a new folder called "MegaSpaceRobots".
 
 ### CMakeLists
 
@@ -89,8 +89,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/MegaSpaceRobots/bin/$<CON
 
 
 # Add all subdirectories
-add_subdirectory("../Engine" "Engine")
-
 file(GLOB MegaSpaceRobots_src CONFIGURE_DEPENDS "src/*.cpp")
 add_library(MegaSpaceRobotsLib ${MegaSpaceRobots_src})
 add_executable(MegaSpaceRobots src/main.cpp)
@@ -116,13 +114,21 @@ This will configure the full project to add our game as a target.
 In our *MegaSpaceRobots* folder, create a folder called *src*. Then inside create a file called *main.cpp* and put this:
 
 ```cpp
-const char *appName = "Mega Space Robots";
-const char *appVersion = "0.1";
-const char *appId = "com.mycompany.megaspacerobots";
-const char *windowName = "Mega Space Robots";
-Mochi::Engine engine(appName, appVersion, appId, windowName);
-MSR::GameLayer *gameLayer = new MSR::GameLayer();
-engine.PushLayer(gameLayer);
+#include "Engine.h"
+#include "GameLayer.h"
+
+int main()
+{
+    const char *appName = "Mega Space Robots";
+    const char *appVersion = "0.1";
+    const char *appId = "com.mycompany.megaspacerobots";
+    const char *windowName = "Mega Space Robots";
+    Mochi::Engine engine(appName, appVersion, appId, windowName);
+    MSR::GameLayer *gameLayer = new MSR::GameLayer();
+    engine.PushLayer(gameLayer);
+
+    engine.Run();
+}
 ```
 
 We don't have the game layer yet, but it will be what starts everything for our game!
@@ -131,9 +137,9 @@ Btw, we will work on the namespace **MSR** (Mega Space Robots).
 
 ### Layer file
 
-In the *MegaSpaceRobots/src* directory create two files: **Layer.h** and **Layer.cpp**.
+In the *MegaSpaceRobots/src* directory create two files: **GameLayer.h** and **GameLayer.cpp**.
 
-Layer.h
+GameLayer.h
 ```cpp
 #ifndef HDEF_GAMELAYER
 #define HDEF_GAMELAYER
@@ -143,38 +149,42 @@ Layer.h
 namespace MSR
 {
     // Inherit from Layer, necessary to be injected in the engine.
-    class GameLayer : public Layer
+    class GameLayer : public Mochi::Layer
     {
-        public:
-            GameLayer();
-            virtual ~GameLayer();
-            // Override the GUI method, as we will show a text.
-            virtual void GUI() const override;
-    }
+    public:
+        GameLayer();
+        virtual ~GameLayer();
+        // Override the GUI method, as we will show a text.
+        virtual void GUI() const override;
+    };
 }
+
+#endif
 ```
 
 This code declares that we will have a layer that will only override the GUI method for now.
 
-Layer.cpp
+GameLayer.cpp
 ```cpp
+#include "GameLayer.h"
 #include "GUI/AbstractGUI.h"
+#include "GUI/GUICommon.hpp"
 
 namespace MSR
 {
-    inline constexpr const char *CONST_HELLO_WORLD = "Hello Mega Space Robots!";
+    inline constexpr const char *CONST_HELLO_WORLD = "Hello\nMega Space Robots!";
 
     // Our constructor will do nothing for now.
     GameLayer::GameLayer() : Layer() {}
     GameLayer::~GameLayer() {}
-    void GameLayer::GUI()
+    void GameLayer::GUI() const
     {
         // This will define how our text will be shown.
-        const Graphics::GUITextOptions titleTextOptions{
-                .DstRect = {Rectf({0.0f, 0.0f}, {})},
-                .ScreenAnchor = Graphics::GUI_MIDDLE_CENTER,
-                .TextPivot = Graphics::GUI_MIDDLE_CENTER,
-                .TextSize = 82.0f};
+        const Mochi::Graphics::GUITextOptions titleTextOptions{
+            .DstRect = {Mochi::Rectf({0.0f, 0.0f}, {})},
+            .ScreenAnchor = Mochi::Graphics::GUI_MIDDLE_CENTER,
+            .TextPivot = Mochi::Graphics::GUI_MIDDLE_CENTER,
+            .TextSize = 62.0f};
 
         // Show the text
         mGUI->Text(CONST_HELLO_WORLD, titleTextOptions);
