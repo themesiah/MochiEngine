@@ -44,6 +44,8 @@ add_custom_command(
   COMMENT "Copying data folder from ${PROJECT_SOURCE_DIR} TO ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
 )
 
+copy_core(SpaceShooter)
+
 add_custom_command(TARGET SpaceShooter POST_BUILD
     COMMAND $<$<CONFIG:Release>:$<TARGET_FILE:Packer>>
             $<$<CONFIG:Release>:-pack>

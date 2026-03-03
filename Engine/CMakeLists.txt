@@ -25,7 +25,6 @@ file(GLOB Debug_src CONFIGURE_DEPENDS "src/Debug/*.cpp")
 set(LUA_VERSION "lua-5.4.7")
 add_subdirectory(Includes)
 
-add_subdirectory(Includes/FMOD EXCLUDE_FROM_ALL)
 add_subdirectory(src/Packer)
 
 # Adds source files and debug source files only if in debug
@@ -34,16 +33,23 @@ target_compile_features(Engine PUBLIC cxx_std_23)
 # A "DEBUG" definition is created and available in code if the game is in debug
 target_compile_definitions(Engine PUBLIC $<$<CONFIG:Debug>:DEBUG>)
 
-target_include_directories(Engine PUBLIC "Includes/FMOD")
 target_include_directories(Engine INTERFACE "src")
 
 target_link_libraries(Engine
                       PUBLIC
                       EngineDependencies
-                      fmod
-                      fmodstudio
                       PackerStatic
 )
+
+if (USE_FMOD)
+  add_subdirectory(Includes/FMOD EXCLUDE_FROM_ALL)
+  target_include_directories(Engine PUBLIC "Includes/FMOD")
+  target_compile_definitions(Engine PUBLIC "USE_FMOD")
+  target_link_libraries(Engine
+                        PUBLIC
+                        fmod
+                        fmodstudio)
+endif()
 
 # add compiler warning flags just when building this project via
 # the BUILD_INTERFACE genex
@@ -52,27 +58,6 @@ set(msvc_cxx "$<COMPILE_LANG_AND_ID:CXX,MSVC>")
 target_compile_options(Engine PUBLIC
   "$<${gcc_like_cxx}:$<BUILD_INTERFACE:-Wall;-Wextra;-Wshadow;-Wformat=2;-Wunused;-Wno-unused-variable;-Wno-unused-parameter>>"
   "$<${msvc_cxx}:$<BUILD_INTERFACE:-W3>>"
-)
-
-# After building the library, copy the fmod dlls to the output folder.
-add_custom_command(
-  TARGET Engine POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy
-  "${PROJECT_SOURCE_DIR}/Includes/FMOD/win/studio/lib/x64/fmodstudio.dll"
-  "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/fmodstudio.dll"
-  COMMAND ${CMAKE_COMMAND} -E copy
-  "${PROJECT_SOURCE_DIR}/Includes/FMOD/win/core/lib/x64/fmod.dll"
-  "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/fmod.dll"
-  COMMENT "Copying fmodstudio.dll and fmod.dll"
-)
-
-# After building the library, copy the core data folder to the output folder
-add_custom_command(
-  TARGET Engine POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy_directory
-  "${PROJECT_SOURCE_DIR}/CoreData"
-  "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Data/Core"
-  COMMENT "Copying data"
 )
 
 add_subdirectory(Tests)

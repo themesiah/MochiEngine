@@ -22,7 +22,9 @@
 #include "Input/DummyInputProviders.h"
 
 #include "Audio/IAudioManager.h"
+#ifdef USE_FMOD
 #include "Audio/FMODWrapper.h"
+#endif
 
 #include "Constants.h"
 #include "Exception.hpp"
@@ -82,8 +84,11 @@ namespace Mochi
             mRenderQueue.clear();
             LOG_OK("Renderer Initialized");
 
+#ifdef USE_FMOD
             mAudio = std::make_unique<Audio::FMODWrapper>(mCatalog.get(), mScripting.get());
             LOG_OK("FMOD Initialized");
+#else
+#endif
 
             mActionManager = std::make_unique<Input::ActionManager>(std::make_unique<Input::InputManager>(std::make_unique<Input::SDLKeyboardProvider>(),
                                                                                                           std::make_unique<Input::SDLMouseProvider>(mRenderer.get()),

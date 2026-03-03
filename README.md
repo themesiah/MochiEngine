@@ -43,6 +43,11 @@ cmake --build build --config <CONFIG> --target <SAMPLE_TARGET>
 To build one of the samples with an specific configuration. Currently the only sample is **SpaceShooter**.
 
 ```cmake
+cmake --build build --config <CONFIG> --target <SAMPLE_TARGET> -DUSE_FMOD=ON
+```
+By default, MochiEngine uses SDL3_Mixer as an audio backend. You can build linking to FMOD as an audio backend setting USE_FMOD to ON.
+
+```cmake
 cd build
 ctest -C Debug
 ```
@@ -90,14 +95,25 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/MegaSpaceRobots/bin/$<CON
 
 # Add all subdirectories
 file(GLOB MegaSpaceRobots_src CONFIGURE_DEPENDS "src/*.cpp")
+
+# Create a library of our game (to use on testing)
 add_library(MegaSpaceRobotsLib ${MegaSpaceRobots_src})
-add_executable(MegaSpaceRobots src/main.cpp)
 target_include_directories(MegaSpaceRobotsLib INTERFACE "src")
+
+# Our executable is the main.cpp file linked to the library
+add_executable(MegaSpaceRobots src/main.cpp)
+
+# Our library uses the Engine library
 target_link_libraries(MegaSpaceRobotsLib PUBLIC Engine)
+
+# Our game uses the game library
 target_link_libraries(MegaSpaceRobots
 PRIVATE
 MegaSpaceRobotsLib
 )
+
+# Copy core data of engine to end binary folder
+copy_core(MegaSpaceRobots)
 ```
 
 That's a minimal CMake file to generate our game files.

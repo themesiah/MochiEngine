@@ -1,3 +1,4 @@
+#ifdef USE_FMOD
 #ifndef HDEF_FMODWRAPPER
 #define HDEF_FMODWRAPPER
 
@@ -137,4 +138,5 @@ namespace Mochi::Audio
     };
 }
 
+#endif
 #endif

@@ -1,3 +1,4 @@
+#ifdef USE_FMOD
 #include "FMODWrapper.h"
 
 #include <iostream>
@@ -301,3 +302,4 @@ namespace Mochi::Audio
         }
     }
 }
+#endif
