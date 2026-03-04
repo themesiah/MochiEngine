@@ -105,23 +105,34 @@ Inheritance diagram for Mochi::Audio::IAudioManager:</div>
   <img src="class_mochi_1_1_audio_1_1_i_audio_manager.png" usemap="#Mochi_3A_3AAudio_3A_3AIAudioManager_map" alt=""/>
   <map id="Mochi_3A_3AAudio_3A_3AIAudioManager_map" name="Mochi_3A_3AAudio_3A_3AIAudioManager_map">
 <area href="class_mochi_1_1_audio_1_1_dummy_audio_manager.html" alt="Mochi::Audio::DummyAudioManager" shape="rect" coords="0,56,217,80"/>
-<area href="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html" title="Implementation of IAudioManager wrapping the C API of FMOD and FMOD Studio. FMOD uses audio banks gen..." alt="Mochi::Audio::FMODWrapper" shape="rect" coords="227,56,444,80"/>
+<area href="class_mochi_1_1_audio_1_1_s_d_l_audio.html" alt="Mochi::Audio::SDLAudio" shape="rect" coords="227,56,444,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a60a100b63a20c4e021403aed76f1a609" id="r_a60a100b63a20c4e021403aed76f1a609"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a60a100b63a20c4e021403aed76f1a609">Update</a> (const float &amp;dt)=0</td></tr>
+<tr class="memdesc:a60a100b63a20c4e021403aed76f1a609"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update internal audio subsystems.  <br /></td></tr>
 <tr class="memitem:aa38cd1d9b2654083ca1ed178fa459dfa" id="r_aa38cd1d9b2654083ca1ed178fa459dfa"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#aa38cd1d9b2654083ca1ed178fa459dfa">LoadAudio</a> (const std::string &amp;path)=0</td></tr>
+<tr class="memdesc:aa38cd1d9b2654083ca1ed178fa459dfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Preloads an audio file.  <br /></td></tr>
 <tr class="memitem:a6421aef4a91b399c1f05464d980590ee" id="r_a6421aef4a91b399c1f05464d980590ee"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a6421aef4a91b399c1f05464d980590ee">UnloadAudio</a> (const std::string &amp;path)=0</td></tr>
+<tr class="memdesc:a6421aef4a91b399c1f05464d980590ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unloads a loaded audio.  <br /></td></tr>
 <tr class="memitem:a696e2a8c879fd8daa298553cd944720f" id="r_a696e2a8c879fd8daa298553cd944720f"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a696e2a8c879fd8daa298553cd944720f">PlayBGM</a> (const std::string &amp;audioName)=0</td></tr>
+<tr class="memdesc:a696e2a8c879fd8daa298553cd944720f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays an audio as BGM.  <br /></td></tr>
 <tr class="memitem:a8b63f8d8da1ce6cc584c123ac04533b4" id="r_a8b63f8d8da1ce6cc584c123ac04533b4"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a8b63f8d8da1ce6cc584c123ac04533b4">PauseBGM</a> ()=0</td></tr>
+<tr class="memdesc:a8b63f8d8da1ce6cc584c123ac04533b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pauses current playing BGM (can resume at the same point).  <br /></td></tr>
 <tr class="memitem:ab121967b0728a8da3292a597d105cdd1" id="r_ab121967b0728a8da3292a597d105cdd1"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#ab121967b0728a8da3292a597d105cdd1">StopBGM</a> ()=0</td></tr>
+<tr class="memdesc:ab121967b0728a8da3292a597d105cdd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops current playing BGM (can't resume).  <br /></td></tr>
 <tr class="memitem:a4cd3c1364a66b18588a7b0cbbf9d95cb" id="r_a4cd3c1364a66b18588a7b0cbbf9d95cb"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a4cd3c1364a66b18588a7b0cbbf9d95cb">ResumeBGM</a> ()=0</td></tr>
+<tr class="memdesc:a4cd3c1364a66b18588a7b0cbbf9d95cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resume current playing BGM.  <br /></td></tr>
 <tr class="memitem:a2a924034d3a7d9887afa64ad444ad147" id="r_a2a924034d3a7d9887afa64ad444ad147"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a2a924034d3a7d9887afa64ad444ad147">SkipToTimelinePosition</a> (const int &amp;ms)=0</td></tr>
+<tr class="memdesc:a2a924034d3a7d9887afa64ad444ad147"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skip current playing BGM to a certain position.  <br /></td></tr>
 <tr class="memitem:a0cac77dbfd09f57e769e4c07cedc27bf" id="r_a0cac77dbfd09f57e769e4c07cedc27bf"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a0cac77dbfd09f57e769e4c07cedc27bf">PlayOneShot</a> (const std::string &amp;audioName)=0</td></tr>
+<tr class="memdesc:a0cac77dbfd09f57e769e4c07cedc27bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays an audio once and then stops it.  <br /></td></tr>
 <tr class="memitem:adc60851e6a18a6a2de2083c0f37506de" id="r_adc60851e6a18a6a2de2083c0f37506de"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#adc60851e6a18a6a2de2083c0f37506de">SetParameter</a> (const std::string &amp;parameterName, const float &amp;value)=0</td></tr>
+<tr class="memdesc:adc60851e6a18a6a2de2083c0f37506de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a parameter used by the audio system. This can vary between implementations. Check specific implementations of this class to check what you can do with this.  <br /></td></tr>
 <tr class="memitem:a76a3d620d92c747018540bead9b4832e" id="r_a76a3d620d92c747018540bead9b4832e"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a76a3d620d92c747018540bead9b4832e">SetMixerVolume</a> (const std::string &amp;mixerGroupName, const float &amp;value)=0</td></tr>
+<tr class="memdesc:a76a3d620d92c747018540bead9b4832e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the volume of a specific mixer/group.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Interface for audio management, including loading and unloading audio, playing it, changing volume and other parameters. </p>
@@ -150,7 +161,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#acce9c4f69f92630f6b6eb61738811b69">Mochi::Audio::FMODWrapper</a>.</p>
+<p>Preloads an audio file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The path to the file in the catalog </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_dummy_audio_manager.html#a826ac7b22da3c404349afc7ea7628831">Mochi::Audio::DummyAudioManager</a>, and <a class="el" href="class_mochi_1_1_audio_1_1_s_d_l_audio.html#aa47d9ba367256676461a66e0caab94e4">Mochi::Audio::SDLAudio</a>.</p>
 
 </div>
 </div>
@@ -177,7 +196,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#ac65626a0a44e59ce60035467d881af49">Mochi::Audio::FMODWrapper</a>.</p>
+<p>Pauses current playing BGM (can resume at the same point). </p>
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_dummy_audio_manager.html#a4ddafe8bc8dde96567714dba94e24a2f">Mochi::Audio::DummyAudioManager</a>, and <a class="el" href="class_mochi_1_1_audio_1_1_s_d_l_audio.html#aaa4bd88872918843001e2f60b0f83e36">Mochi::Audio::SDLAudio</a>.</p>
 
 </div>
 </div>
@@ -204,7 +225,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#a41e22fcb4b06f7aa54f02c376bb26fdc">Mochi::Audio::FMODWrapper</a>.</p>
+<p>Plays an audio as BGM. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">audioName</td><td>Identifier of the audio </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_dummy_audio_manager.html#a5cfe7f47e8aaa30a3f844dfc1f5e7446">Mochi::Audio::DummyAudioManager</a>, and <a class="el" href="class_mochi_1_1_audio_1_1_s_d_l_audio.html#a477a9611553c9d40193b243c8d6b1f32">Mochi::Audio::SDLAudio</a>.</p>
 
 </div>
 </div>
@@ -231,7 +260,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#a9fba3cbd6a2a943006304382b6c89e4c">Mochi::Audio::FMODWrapper</a>.</p>
+<p>Plays an audio once and then stops it. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">audioName</td><td>Identifier of the audio </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_dummy_audio_manager.html#a7048dfd359a830fc05832f6521025704">Mochi::Audio::DummyAudioManager</a>, and <a class="el" href="class_mochi_1_1_audio_1_1_s_d_l_audio.html#aecd98338b1e66fd699ee9696c06eb236">Mochi::Audio::SDLAudio</a>.</p>
 
 </div>
 </div>
@@ -258,7 +295,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#a5ae1a3e67716584e51e139686f20d8ae">Mochi::Audio::FMODWrapper</a>.</p>
+<p>Resume current playing BGM. </p>
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_dummy_audio_manager.html#a85e10e02d121a5a3bf27b62256595c93">Mochi::Audio::DummyAudioManager</a>, and <a class="el" href="class_mochi_1_1_audio_1_1_s_d_l_audio.html#acbd97f147c84a3857db101219c4cf2ef">Mochi::Audio::SDLAudio</a>.</p>
 
 </div>
 </div>
@@ -289,7 +328,16 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#ac49e67345bfc471a3ae978081fe6eb69">Mochi::Audio::FMODWrapper</a>.</p>
+<p>Changes the volume of a specific mixer/group. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mixerGroupName</td><td>The name of the mixer/group. </td></tr>
+    <tr><td class="paramname">value</td><td>The new volume (between 0 and 1) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_dummy_audio_manager.html#a616186bbbb7e7e565cf51e8ae2a9e056">Mochi::Audio::DummyAudioManager</a>, and <a class="el" href="class_mochi_1_1_audio_1_1_s_d_l_audio.html#ae78c89bfac0fd8b1d48d2ed49081aefc">Mochi::Audio::SDLAudio</a>.</p>
 
 </div>
 </div>
@@ -320,7 +368,16 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#ab8a3a0c4a5df85eb85277b1760929145">Mochi::Audio::FMODWrapper</a>.</p>
+<p>Sets a parameter used by the audio system. This can vary between implementations. Check specific implementations of this class to check what you can do with this. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parameterName</td><td>The name or identifier of the parameter. </td></tr>
+    <tr><td class="paramname">value</td><td>The value of the parameter. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_dummy_audio_manager.html#af7f62259844bddd15b9d388810bea135">Mochi::Audio::DummyAudioManager</a>, and <a class="el" href="class_mochi_1_1_audio_1_1_s_d_l_audio.html#ac25c5948a11b050281facaf031358e95">Mochi::Audio::SDLAudio</a>.</p>
 
 </div>
 </div>
@@ -347,7 +404,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#ac07e9f7220ea15fce8822b3cf80d545f">Mochi::Audio::FMODWrapper</a>.</p>
+<p>Skip current playing BGM to a certain position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ms</td><td>Point of the song in milliseconds </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_dummy_audio_manager.html#a92c04efd6e0d5f779ec658ca9e7f17d0">Mochi::Audio::DummyAudioManager</a>, and <a class="el" href="class_mochi_1_1_audio_1_1_s_d_l_audio.html#a7ba3bbeb8c6526d39d57fc718bf2df17">Mochi::Audio::SDLAudio</a>.</p>
 
 </div>
 </div>
@@ -374,7 +439,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#a55689529c43248398f3ce32d3d37a303">Mochi::Audio::FMODWrapper</a>.</p>
+<p>Stops current playing BGM (can't resume). </p>
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_dummy_audio_manager.html#a2eaef99492d10c063a293b915505b683">Mochi::Audio::DummyAudioManager</a>, and <a class="el" href="class_mochi_1_1_audio_1_1_s_d_l_audio.html#ae82fb58f86b0a6053d316304e418ba0a">Mochi::Audio::SDLAudio</a>.</p>
 
 </div>
 </div>
@@ -401,7 +468,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#ad4edd7769e5f9506aceea1876741db04">Mochi::Audio::FMODWrapper</a>.</p>
+<p>Unloads a loaded audio. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The path to the file in the catalog </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_dummy_audio_manager.html#a289736f2b6b0a6e7e32dc53135257d8c">Mochi::Audio::DummyAudioManager</a>, and <a class="el" href="class_mochi_1_1_audio_1_1_s_d_l_audio.html#a2fb7d81618e63946f48eeaff06a1916e">Mochi::Audio::SDLAudio</a>.</p>
 
 </div>
 </div>
@@ -428,7 +503,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#a49d33aca4f9a6626573e004ca2f06c34">Mochi::Audio::FMODWrapper</a>.</p>
+<p>Update internal audio subsystems. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dt</td><td>Delta time </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_audio_1_1_dummy_audio_manager.html#a12e1a1d98ea1d32d7c4b23942fbfd04d">Mochi::Audio::DummyAudioManager</a>, and <a class="el" href="class_mochi_1_1_audio_1_1_s_d_l_audio.html#af582f4ab631aa7a356a5752bcd6b1721">Mochi::Audio::SDLAudio</a>.</p>
 
 </div>
 </div>

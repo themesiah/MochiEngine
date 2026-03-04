@@ -106,16 +106,27 @@ Inheritance diagram for Mochi::Audio::DummyAudioManager:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a12e1a1d98ea1d32d7c4b23942fbfd04d" id="r_a12e1a1d98ea1d32d7c4b23942fbfd04d"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a12e1a1d98ea1d32d7c4b23942fbfd04d">Update</a> (const float &amp;dt) override</td></tr>
+<tr class="memdesc:a12e1a1d98ea1d32d7c4b23942fbfd04d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update internal audio subsystems.  <br /></td></tr>
 <tr class="memitem:a826ac7b22da3c404349afc7ea7628831" id="r_a826ac7b22da3c404349afc7ea7628831"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a826ac7b22da3c404349afc7ea7628831">LoadAudio</a> (const std::string &amp;path) override</td></tr>
+<tr class="memdesc:a826ac7b22da3c404349afc7ea7628831"><td class="mdescLeft">&#160;</td><td class="mdescRight">Preloads an audio file.  <br /></td></tr>
 <tr class="memitem:a289736f2b6b0a6e7e32dc53135257d8c" id="r_a289736f2b6b0a6e7e32dc53135257d8c"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a289736f2b6b0a6e7e32dc53135257d8c">UnloadAudio</a> (const std::string &amp;path) override</td></tr>
+<tr class="memdesc:a289736f2b6b0a6e7e32dc53135257d8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unloads a loaded audio.  <br /></td></tr>
 <tr class="memitem:a5cfe7f47e8aaa30a3f844dfc1f5e7446" id="r_a5cfe7f47e8aaa30a3f844dfc1f5e7446"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a5cfe7f47e8aaa30a3f844dfc1f5e7446">PlayBGM</a> (const std::string &amp;audioName) override</td></tr>
+<tr class="memdesc:a5cfe7f47e8aaa30a3f844dfc1f5e7446"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays an audio as BGM.  <br /></td></tr>
 <tr class="memitem:a4ddafe8bc8dde96567714dba94e24a2f" id="r_a4ddafe8bc8dde96567714dba94e24a2f"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a4ddafe8bc8dde96567714dba94e24a2f">PauseBGM</a> () override</td></tr>
+<tr class="memdesc:a4ddafe8bc8dde96567714dba94e24a2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pauses current playing BGM (can resume at the same point).  <br /></td></tr>
 <tr class="memitem:a2eaef99492d10c063a293b915505b683" id="r_a2eaef99492d10c063a293b915505b683"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a2eaef99492d10c063a293b915505b683">StopBGM</a> () override</td></tr>
+<tr class="memdesc:a2eaef99492d10c063a293b915505b683"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops current playing BGM (can't resume).  <br /></td></tr>
 <tr class="memitem:a85e10e02d121a5a3bf27b62256595c93" id="r_a85e10e02d121a5a3bf27b62256595c93"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a85e10e02d121a5a3bf27b62256595c93">ResumeBGM</a> () override</td></tr>
+<tr class="memdesc:a85e10e02d121a5a3bf27b62256595c93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resume current playing BGM.  <br /></td></tr>
 <tr class="memitem:a92c04efd6e0d5f779ec658ca9e7f17d0" id="r_a92c04efd6e0d5f779ec658ca9e7f17d0"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a92c04efd6e0d5f779ec658ca9e7f17d0">SkipToTimelinePosition</a> (const int &amp;ms) override</td></tr>
+<tr class="memdesc:a92c04efd6e0d5f779ec658ca9e7f17d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skip current playing BGM to a certain position.  <br /></td></tr>
 <tr class="memitem:a7048dfd359a830fc05832f6521025704" id="r_a7048dfd359a830fc05832f6521025704"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a7048dfd359a830fc05832f6521025704">PlayOneShot</a> (const std::string &amp;audioName) override</td></tr>
+<tr class="memdesc:a7048dfd359a830fc05832f6521025704"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays an audio once and then stops it.  <br /></td></tr>
 <tr class="memitem:af7f62259844bddd15b9d388810bea135" id="r_af7f62259844bddd15b9d388810bea135"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#af7f62259844bddd15b9d388810bea135">SetParameter</a> (const std::string &amp;parameterName, const float &amp;value) override</td></tr>
+<tr class="memdesc:af7f62259844bddd15b9d388810bea135"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a parameter used by the audio system. This can vary between implementations. Check specific implementations of this class to check what you can do with this.  <br /></td></tr>
 <tr class="memitem:a616186bbbb7e7e565cf51e8ae2a9e056" id="r_a616186bbbb7e7e565cf51e8ae2a9e056"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a616186bbbb7e7e565cf51e8ae2a9e056">SetMixerVolume</a> (const std::string &amp;mixerGroupName, const float &amp;value) override</td></tr>
+<tr class="memdesc:a616186bbbb7e7e565cf51e8ae2a9e056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the volume of a specific mixer/group.  <br /></td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a826ac7b22da3c404349afc7ea7628831" name="a826ac7b22da3c404349afc7ea7628831"></a>
@@ -141,7 +152,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html">Mochi::Audio::IAudioManager</a>.</p>
+<p>Preloads an audio file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The path to the file in the catalog </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html#aa38cd1d9b2654083ca1ed178fa459dfa">Mochi::Audio::IAudioManager</a>.</p>
 
 </div>
 </div>
@@ -168,7 +187,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html">Mochi::Audio::IAudioManager</a>.</p>
+<p>Pauses current playing BGM (can resume at the same point). </p>
+
+<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html#a8b63f8d8da1ce6cc584c123ac04533b4">Mochi::Audio::IAudioManager</a>.</p>
 
 </div>
 </div>
@@ -195,7 +216,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html">Mochi::Audio::IAudioManager</a>.</p>
+<p>Plays an audio as BGM. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">audioName</td><td>Identifier of the audio </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html#a696e2a8c879fd8daa298553cd944720f">Mochi::Audio::IAudioManager</a>.</p>
 
 </div>
 </div>
@@ -222,7 +251,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html">Mochi::Audio::IAudioManager</a>.</p>
+<p>Plays an audio once and then stops it. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">audioName</td><td>Identifier of the audio </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html#a0cac77dbfd09f57e769e4c07cedc27bf">Mochi::Audio::IAudioManager</a>.</p>
 
 </div>
 </div>
@@ -249,7 +286,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html">Mochi::Audio::IAudioManager</a>.</p>
+<p>Resume current playing BGM. </p>
+
+<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html#a4cd3c1364a66b18588a7b0cbbf9d95cb">Mochi::Audio::IAudioManager</a>.</p>
 
 </div>
 </div>
@@ -280,7 +319,16 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html">Mochi::Audio::IAudioManager</a>.</p>
+<p>Changes the volume of a specific mixer/group. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mixerGroupName</td><td>The name of the mixer/group. </td></tr>
+    <tr><td class="paramname">value</td><td>The new volume (between 0 and 1) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html#a76a3d620d92c747018540bead9b4832e">Mochi::Audio::IAudioManager</a>.</p>
 
 </div>
 </div>
@@ -311,7 +359,16 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html">Mochi::Audio::IAudioManager</a>.</p>
+<p>Sets a parameter used by the audio system. This can vary between implementations. Check specific implementations of this class to check what you can do with this. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parameterName</td><td>The name or identifier of the parameter. </td></tr>
+    <tr><td class="paramname">value</td><td>The value of the parameter. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html#adc60851e6a18a6a2de2083c0f37506de">Mochi::Audio::IAudioManager</a>.</p>
 
 </div>
 </div>
@@ -338,7 +395,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html">Mochi::Audio::IAudioManager</a>.</p>
+<p>Skip current playing BGM to a certain position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ms</td><td>Point of the song in milliseconds </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html#a2a924034d3a7d9887afa64ad444ad147">Mochi::Audio::IAudioManager</a>.</p>
 
 </div>
 </div>
@@ -365,7 +430,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html">Mochi::Audio::IAudioManager</a>.</p>
+<p>Stops current playing BGM (can't resume). </p>
+
+<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html#ab121967b0728a8da3292a597d105cdd1">Mochi::Audio::IAudioManager</a>.</p>
 
 </div>
 </div>
@@ -392,7 +459,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html">Mochi::Audio::IAudioManager</a>.</p>
+<p>Unloads a loaded audio. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The path to the file in the catalog </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html#a6421aef4a91b399c1f05464d980590ee">Mochi::Audio::IAudioManager</a>.</p>
 
 </div>
 </div>
@@ -419,7 +494,15 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html">Mochi::Audio::IAudioManager</a>.</p>
+<p>Update internal audio subsystems. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dt</td><td>Delta time </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html#a60a100b63a20c4e021403aed76f1a609">Mochi::Audio::IAudioManager</a>.</p>
 
 </div>
 </div>

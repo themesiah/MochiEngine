@@ -20,7 +20,6 @@ var hierarchy =
     [ "Mochi::Engine", "class_mochi_1_1_engine.html", null ],
     [ "Mochi::Event::EventBus", "class_mochi_1_1_event_1_1_event_bus.html", null ],
     [ "Mochi::FS::FileEntry", "struct_mochi_1_1_f_s_1_1_file_entry.html", null ],
-    [ "Mochi::Audio::FMODMarkerEvent", "struct_mochi_1_1_audio_1_1_f_m_o_d_marker_event.html", null ],
     [ "Mochi::Graphics::FrameData", "struct_mochi_1_1_graphics_1_1_frame_data.html", null ],
     [ "Mochi::Debug::FrameProfiler", "class_mochi_1_1_debug_1_1_frame_profiler.html", null ],
     [ "Mochi::Graphics::FrameTag", "struct_mochi_1_1_graphics_1_1_frame_tag.html", null ],
@@ -42,7 +41,7 @@ var hierarchy =
     ] ],
     [ "Mochi::Audio::IAudioManager", "class_mochi_1_1_audio_1_1_i_audio_manager.html", [
       [ "Mochi::Audio::DummyAudioManager", "class_mochi_1_1_audio_1_1_dummy_audio_manager.html", null ],
-      [ "Mochi::Audio::FMODWrapper", "class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html", null ]
+      [ "Mochi::Audio::SDLAudio", "class_mochi_1_1_audio_1_1_s_d_l_audio.html", null ]
     ] ],
     [ "Mochi::FS::IFileLoader", "class_mochi_1_1_f_s_1_1_i_file_loader.html", [
       [ "Mochi::FS::PackFile", "class_mochi_1_1_f_s_1_1_pack_file.html", null ],
