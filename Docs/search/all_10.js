@@ -9,5 +9,6 @@ var searchData=
   ['time_6',['Time',['../md__docs_data_2_lua_bindings.html#autotoc_md10',1,'']]],
   ['timer_7',['Timer',['../class_mochi_1_1_time_1_1_timer.html',1,'Mochi::Time']]],
   ['timesystem_8',['TimeSystem',['../class_mochi_1_1_time_1_1_time_system.html',1,'Mochi::Time']]],
-  ['transform_9',['Transform',['../struct_mochi_1_1_transform.html',1,'Mochi::Transform'],['../md__docs_data_2_lua_bindings.html#autotoc_md15',1,'Transform']]]
+  ['transform_9',['Transform',['../struct_mochi_1_1_transform.html',1,'Mochi::Transform'],['../md__docs_data_2_lua_bindings.html#autotoc_md15',1,'Transform']]],
+  ['types_10',['Custom utility types',['../group___types.html',1,'']]]
 ];

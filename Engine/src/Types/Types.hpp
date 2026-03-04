@@ -10,6 +10,11 @@
 
 namespace Mochi
 {
+    /**
+     * @defgroup Types Custom utility types
+     * @{
+     */
+
     /// @brief Float vector of two positions with an X and Y elements and conversion with SDL_FPoint for ease of use with SDL.
     /// It allows basic operations like sum, substraction, multiplication and division of vectors, and also multiplication and
     /// division with scalars. It also gives useful methods like the Dot, or the length of the vector (the Distance from 0,0).
@@ -430,6 +435,7 @@ namespace Mochi
             return *this;
         }
     };
+    /**@} */
 }
 
 #endif
