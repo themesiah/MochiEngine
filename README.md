@@ -9,7 +9,7 @@
 
 ## Introduction
 
-MochiEngine is a personal project of a 2D pixel art game engine based on [SDL3](https://github.com/libsdl-org/SDL) with the purpose of being used as a portfolio of general C++ knowledge and architecture skills.
+MochiEngine is a personal project of a 2D pixel art game engine based on [SDL3](https://github.com/libsdl-org/SDL) with the purpose of being used as a portfolio of general C++ knowledge and [architecture]((./ARCHITECTURE.md)) skills.
 This means that the engine has been purposedly prepare to work with 2D renderers and specifically pixel art. Any other usage of this engine has not been tested.
 
 If you stumbled across this project and want to try it, be free to do so!
