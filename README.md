@@ -3,8 +3,9 @@
 ## Table of contents
 1. [Introduction](#introduction)
 2. [Building](#configuring-and-building)
-3. [Basic usage](#basic-usage)
-4. [Links](#links)
+3. [Building your own project](#building-your-own-project)
+4. [Next steps](#next-steps)
+5. [Links](#links)
 
 ## Introduction
 
@@ -28,6 +29,11 @@ cmake -B build
 ```
 This will generate the configuration on a new folder named "build".
 
+```cmake
+cmake --B build -DUSE_FMOD=ON
+```
+By default, MochiEngine uses SDL3_Mixer as an audio backend. You can configure CMake to use FMOD as an audio backend setting USE_FMOD to ON.
+
 
 Build:
 
@@ -43,17 +49,12 @@ cmake --build build --config <CONFIG> --target <SAMPLE_TARGET>
 To build one of the samples with an specific configuration. Currently the only sample is **SpaceShooter**.
 
 ```cmake
-cmake --build build --config <CONFIG> --target <SAMPLE_TARGET> -DUSE_FMOD=ON
-```
-By default, MochiEngine uses SDL3_Mixer as an audio backend. You can build linking to FMOD as an audio backend setting USE_FMOD to ON.
-
-```cmake
 cd build
 ctest -C Debug
 ```
 To run all tests. Do this only after building all targets.
 
-## Basic usage
+## Building your own project
 
 There are 4 minimal requirements for building a game with MochiEngine:
 
@@ -227,6 +228,62 @@ You can then close the window or do an alt+f4 to close the application.
 
 Check [the documentation](https://themesiah.github.io/MochiEngine/Docs/index.html) for more info about what you can do in the engine.
 You can also check how the samples are done to get ideas!
+
+## Next Steps
+
+Check out the [Documentation](https://themesiah.github.io/MochiEngine/Docs/index.html) to see what you can do in your game layer.
+
+A few examples:
+
+- Check [SpriteBase](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_graphics_1_1_sprite_base.html) and the classes that extend it and put some sprites in your scene. Check [How to show a sprite](#how-to-show-a-sprite) for a quick tutorial.
+- Add Update
+- Check [ScriptingLayer](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_scripting_1_1_scripting_layer.html) and the [LUA API](https://themesiah.github.io/MochiEngine/Docs/md__docs_data_2_lua_bindings.html) and iterate faster!
+- Check [IAudioManager](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_audio_1_1_i_audio_manager.html) and add some sound to your game.
+- Check [ActionManager](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_input_1_1_action_manager.html) and react to your input! You can create your own *Actions.json* too, and put it on your own game folder.
+- Configure your CMakeLists to automatically copy your assets folder. Check the samples CMakeLists. Check [How to add assets](#how-to-add-assets) for more info.
+
+### How to show a sprite
+
+In your game layer:
+
+Include necessary classes:
+```cpp
+#include "Engine.h"
+#include "Graphics/SpriteBase.h"
+#include "Graphics/IRenderer.h"
+#include "Graphics/AbstractTextureFactory.h"
+```
+
+In the constructor or InitLayer (remember to declare them on the .h file before):
+```cpp
+mTextureFactory = mRenderer->CreateTextureFactory(mCatalog);
+mSprite = Mochi::Graphics::SpriteBase(mTextureFactory.get(), "MySprite.png");
+```
+
+And then, on the overriden render method:
+```cpp
+auto &engine = Mochi::Engine::Get();
+auto renderCommands = mSprite.GetRenderData();
+engine.AddRenderCommands(renderCommands);
+```
+
+Adding a render command to the engine adds them to a render queue that is sent to the renderer to draw them this frame, and only this frame.
+
+The sprites will be drawn at a default position if it wasn't changed, and can be offseted too by moving the camera.
+
+### How to add assets
+
+Adding assets in MochiEngine is super easy.
+
+Just create your own folder inside the Data folder generated when building the binary. The CMake configuration has methods to automatically copy this folder when building, and
+is included in the [MegaSpaceRobots example](#building-your-own-project). When built, the **Data** folder already contains **Core**, which has some necessary assets for the engine to work. Create a new folder inside the **Data** folder called, for example, **Game**. Then, at the start of your layer constructor:
+
+```cpp
+mCatalog->OpenPack("Data/Game");
+```
+
+And there you go! Whenever you try to get an asset (for example, the path for a sprite) it will check in the **root of every pack** opened with the [catalog](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_f_s_1_1_pack_catalog.html). If you add *ExampleSprite.png* into your **Game** folder, you will be able to access *ExampleSprite.png*. You can also put your own *Actions.json* file in the root of your **Game** folder. As the *Game* pack is loaded after the *Core* pack, your *Actions.json* file will **override** the original one, setting your own actions in the game.
+
 
 ## Links
 
