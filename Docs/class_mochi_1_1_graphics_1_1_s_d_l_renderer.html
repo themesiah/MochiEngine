@@ -126,6 +126,8 @@ SDL_Window *&#160;</td><td class="memItemRight"><b>GetWindow</b> () const</td></
 <tr class="memdesc:ab927fb0f2c37d621dc31a1ea70633596"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates (without ownership) a texture factory of the type compatible with the renderer.  <br /></td></tr>
 <tr class="memitem:aa7338953146e0f7712ef26b659e3d9f4" id="r_aa7338953146e0f7712ef26b659e3d9f4"><td class="memItemLeft">virtual std::unique_ptr&lt; <a class="el" href="class_mochi_1_1_graphics_1_1_abstract_g_u_i.html">AbstractGUI</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aa7338953146e0f7712ef26b659e3d9f4">CreateGUI</a> (<a class="el" href="class_mochi_1_1_f_s_1_1_pack_catalog.html">FS::PackCatalog</a> *catalog, <a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html">Input::IActionManager</a> *actionManager)</td></tr>
 <tr class="memdesc:aa7338953146e0f7712ef26b659e3d9f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates (without ownership) the GUI system compatible with the renderer.  <br /></td></tr>
+<tr class="memitem:a0e541a2750c7871cd8740eeb93eeac19" id="r_a0e541a2750c7871cd8740eeb93eeac19"><td class="memItemLeft">virtual std::unique_ptr&lt; <a class="el" href="class_mochi_1_1_debug_1_1_i_gizmos.html">Debug::IGizmos</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a0e541a2750c7871cd8740eeb93eeac19">CreateGizmos</a> ()</td></tr>
+<tr class="memdesc:a0e541a2750c7871cd8740eeb93eeac19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates (without ownership) a gizmos system compatible with the renderer. This system is only relevant on debug mode.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class allows rendering with SDL3 in "the simple way", that is showing textures with SDL_RenderTexture instead of using the GPU module. </p>
@@ -187,6 +189,36 @@ SDL_Window *&#160;</td><td class="memItemRight"><b>GetWindow</b> () const</td></
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a0e541a2750c7871cd8740eeb93eeac19" name="a0e541a2750c7871cd8740eeb93eeac19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e541a2750c7871cd8740eeb93eeac19">&#9670;&#160;</a></span>CreateGizmos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="class_mochi_1_1_debug_1_1_i_gizmos.html">Debug::IGizmos</a> &gt; Mochi::Graphics::SDLRenderer::CreateGizmos </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates (without ownership) a gizmos system compatible with the renderer. This system is only relevant on debug mode. </p>
+<dl class="section return"><dt>Returns</dt><dd>A unique pointer to the created gizmos system. </dd></dl>
+
+<p>Implements <a class="el" href="class_mochi_1_1_graphics_1_1_i_renderer.html#a8d9f5e6fa538818410fa81c22a430109">Mochi::Graphics::IRenderer</a>.</p>
+
+</div>
+</div>
 <a id="aa7338953146e0f7712ef26b659e3d9f4" name="aa7338953146e0f7712ef26b659e3d9f4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa7338953146e0f7712ef26b659e3d9f4">&#9670;&#160;</a></span>CreateGUI()</h2>
 

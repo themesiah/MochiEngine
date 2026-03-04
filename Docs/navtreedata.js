@@ -68,7 +68,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_abstract_g_u_i_8h_source.html",
-"class_mochi_1_1_input_1_1_i_gamepad_provider.html#a15284850eb8276b02c363df6351c04b6"
+"class_mochi_1_1_input_1_1_dummy_mouse_provider.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

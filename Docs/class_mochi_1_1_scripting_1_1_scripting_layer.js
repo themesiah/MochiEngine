@@ -1,5 +1,6 @@
 var class_mochi_1_1_scripting_1_1_scripting_layer =
 [
+    [ "Debug", "class_mochi_1_1_scripting_1_1_scripting_layer.html#a88364c0347ef1da8208fdc4371c1b326", null ],
     [ "GUI", "class_mochi_1_1_scripting_1_1_scripting_layer.html#ae8204c365aec3d6a0a67ef3de021b20f", null ],
     [ "InitLayer", "class_mochi_1_1_scripting_1_1_scripting_layer.html#a682807b02043f8b2780d61870550492b", null ],
     [ "Render", "class_mochi_1_1_scripting_1_1_scripting_layer.html#a7a90104ef84516699d72ea97ecf7cfe6", null ],

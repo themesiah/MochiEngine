@@ -121,12 +121,44 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ab3fbe362e1d305bd1801f2cebf00754d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates (without ownership) a texture factory of the type compatible with the renderer.  <br /></td></tr>
 <tr class="memitem:a9fb7e47eec7bd318172e9af56b777d7d" id="r_a9fb7e47eec7bd318172e9af56b777d7d"><td class="memItemLeft">virtual std::unique_ptr&lt; <a class="el" href="class_mochi_1_1_graphics_1_1_abstract_g_u_i.html">AbstractGUI</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a9fb7e47eec7bd318172e9af56b777d7d">CreateGUI</a> (<a class="el" href="class_mochi_1_1_f_s_1_1_pack_catalog.html">FS::PackCatalog</a> *catalog, <a class="el" href="class_mochi_1_1_input_1_1_i_action_manager.html">Input::IActionManager</a> *actionManager)=0</td></tr>
 <tr class="memdesc:a9fb7e47eec7bd318172e9af56b777d7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates (without ownership) the GUI system compatible with the renderer.  <br /></td></tr>
+<tr class="memitem:a8d9f5e6fa538818410fa81c22a430109" id="r_a8d9f5e6fa538818410fa81c22a430109"><td class="memItemLeft">virtual std::unique_ptr&lt; <a class="el" href="class_mochi_1_1_debug_1_1_i_gizmos.html">Debug::IGizmos</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a8d9f5e6fa538818410fa81c22a430109">CreateGizmos</a> ()=0</td></tr>
+<tr class="memdesc:a8d9f5e6fa538818410fa81c22a430109"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates (without ownership) a gizmos system compatible with the renderer. This system is only relevant on debug mode.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This interface provides means to show graphics in the game and create the subsystems needed to create textures for the same renderer and GUI using the same renderer. </p>
 <p>The interface provides separate methods for rendering to meet the needs of different kind of renderers (initialize, load to gpu, present, for example).</p>
 <p>Even if a single renderer is only planed to be used (in this case, SDL) this interface is still useful to inject a <a class="el" href="class_mochi_1_1_graphics_1_1_dummy_renderer.html">DummyRenderer</a> on Tests and be able to do integration tests without graphics. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a8d9f5e6fa538818410fa81c22a430109" name="a8d9f5e6fa538818410fa81c22a430109"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d9f5e6fa538818410fa81c22a430109">&#9670;&#160;</a></span>CreateGizmos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::unique_ptr&lt; <a class="el" href="class_mochi_1_1_debug_1_1_i_gizmos.html">Debug::IGizmos</a> &gt; Mochi::Graphics::IRenderer::CreateGizmos </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates (without ownership) a gizmos system compatible with the renderer. This system is only relevant on debug mode. </p>
+<dl class="section return"><dt>Returns</dt><dd>A unique pointer to the created gizmos system. </dd></dl>
+
+<p>Implemented in <a class="el" href="class_mochi_1_1_graphics_1_1_dummy_renderer.html#adf95c9edc1cdf550ccba114bb871285c">Mochi::Graphics::DummyRenderer</a>, and <a class="el" href="class_mochi_1_1_graphics_1_1_s_d_l_renderer.html#a0e541a2750c7871cd8740eeb93eeac19">Mochi::Graphics::SDLRenderer</a>.</p>
+
+</div>
+</div>
 <a id="a9fb7e47eec7bd318172e9af56b777d7d" name="a9fb7e47eec7bd318172e9af56b777d7d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9fb7e47eec7bd318172e9af56b777d7d">&#9670;&#160;</a></span>CreateGUI()</h2>
 

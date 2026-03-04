@@ -122,6 +122,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:af64f5be47d95ff61fb2e3a497f4846ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override this to send the render commands to the engine. This task could be done on the update, but making it here its clearer.  <br /></td></tr>
 <tr class="memitem:a28b5e80c4f361aa71ea3afa354364258" id="r_a28b5e80c4f361aa71ea3afa354364258"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a28b5e80c4f361aa71ea3afa354364258">GUI</a> () const</td></tr>
 <tr class="memdesc:a28b5e80c4f361aa71ea3afa354364258"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override this to draw the GUI of your layer. Even if this could be done anywhere, doing it here ensure it to be drawn after all rendering is done.  <br /></td></tr>
+<tr class="memitem:a8197c1ca727eb80d4448447d2f357c27" id="r_a8197c1ca727eb80d4448447d2f357c27"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a8197c1ca727eb80d4448447d2f357c27">Debug</a> () const</td></tr>
+<tr class="memdesc:a8197c1ca727eb80d4448447d2f357c27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override this to print, draw or show debug GUI's. This will be called after all renderings and other GUIs and will only be shown while in DEBUG configuration.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -141,6 +143,8 @@ Protected Attributes</h2></td></tr>
 <a class="el" href="class_mochi_1_1_audio_1_1_i_audio_manager.html">Audio::IAudioManager</a> *&#160;</td><td class="memItemRight"><b>mAudioManager</b></td></tr>
 <tr class="memitem:ac5fa3952e09dda2185d6846ef59754ae" id="r_ac5fa3952e09dda2185d6846ef59754ae"><td class="memItemLeft"><a id="ac5fa3952e09dda2185d6846ef59754ae" name="ac5fa3952e09dda2185d6846ef59754ae"></a>
 <a class="el" href="class_mochi_1_1_graphics_1_1_i_renderer.html">Graphics::IRenderer</a> *&#160;</td><td class="memItemRight"><b>mRenderer</b></td></tr>
+<tr class="memitem:afaa613b95ba57675c630d32409bfe6e1" id="r_afaa613b95ba57675c630d32409bfe6e1"><td class="memItemLeft"><a id="afaa613b95ba57675c630d32409bfe6e1" name="afaa613b95ba57675c630d32409bfe6e1"></a>
+<a class="el" href="class_mochi_1_1_debug_1_1_i_gizmos.html">Debug::IGizmos</a> *&#160;</td><td class="memItemRight"><b>mGizmos</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The layer class offers a simple way to organize domains of the application while having access to most of the <a class="el" href="class_mochi_1_1_engine.html" title="Main class of the MochiEngine. It owns and coordinates all subsystems and layers, and drives the appl...">Engine</a> subsystems. Note that a layer is meant to be inherited from and can't be instantated as is. A layer will Update, Render and show the GUI as a small <a class="el" href="class_mochi_1_1_engine.html" title="Main class of the MochiEngine. It owns and coordinates all subsystems and layers, and drives the appl...">Engine</a> class. So the layer is just a convenient responsability separator. Ownership: </p>
@@ -159,6 +163,35 @@ Protected Attributes</h2></td></tr>
 <li>Layers are thread safe if the implementation is thread safe. </li>
 </ul>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a8197c1ca727eb80d4448447d2f357c27" name="a8197c1ca727eb80d4448447d2f357c27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8197c1ca727eb80d4448447d2f357c27">&#9670;&#160;</a></span>Debug()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Mochi::Layer::Debug </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Override this to print, draw or show debug GUI's. This will be called after all renderings and other GUIs and will only be shown while in DEBUG configuration. </p>
+
+<p>Reimplemented in <a class="el" href="class_mochi_1_1_debug_layer.html#a5c9b841b482bf07dd2cb1910870190bf">Mochi::DebugLayer</a>, and <a class="el" href="class_mochi_1_1_scripting_1_1_scripting_layer.html#a88364c0347ef1da8208fdc4371c1b326">Mochi::Scripting::ScriptingLayer</a>.</p>
+
+</div>
+</div>
 <a id="a28b5e80c4f361aa71ea3afa354364258" name="a28b5e80c4f361aa71ea3afa354364258"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a28b5e80c4f361aa71ea3afa354364258">&#9670;&#160;</a></span>GUI()</h2>
 
