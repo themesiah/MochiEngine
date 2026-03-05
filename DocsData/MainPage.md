@@ -1,5 +1,11 @@
 # MochiEngine Documentation
 
+## Read first
+
+- [Intro](./../README.md)
+- [Quick start](./../QUICK_START.md)
+- [Architecture](./../ARCHITECTURE.md)
+
 ## Things Worth Reviewing
 
 - [CMake Structure](Resources/CMake%20Structure.svg)
