@@ -5,4 +5,4 @@
 - \ref Mochi::Engine
 - \ref Mochi::Layer
 - [LUA Bindings](LuaBindings.md)
-- ![CMake Structure](CMake%20Structure.svg)
+- [CMake Structure](Resources/CMake%20Structure.svg)
