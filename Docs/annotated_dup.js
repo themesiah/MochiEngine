@@ -3,6 +3,8 @@ var annotated_dup =
     [ "Mochi", null, [
       [ "Audio", null, [
         [ "DummyAudioManager", "class_mochi_1_1_audio_1_1_dummy_audio_manager.html", "class_mochi_1_1_audio_1_1_dummy_audio_manager" ],
+        [ "FMODMarkerEvent", "struct_mochi_1_1_audio_1_1_f_m_o_d_marker_event.html", null ],
+        [ "FMODWrapper", "class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html", "class_mochi_1_1_audio_1_1_f_m_o_d_wrapper" ],
         [ "IAudioManager", "class_mochi_1_1_audio_1_1_i_audio_manager.html", "class_mochi_1_1_audio_1_1_i_audio_manager" ],
         [ "SDLAudio", "class_mochi_1_1_audio_1_1_s_d_l_audio.html", "class_mochi_1_1_audio_1_1_s_d_l_audio" ]
       ] ],
@@ -13,6 +15,10 @@ var annotated_dup =
         [ "PackHeader", "struct_mochi_1_1_f_s_1_1_pack_header.html", null ],
         [ "PackFile", "class_mochi_1_1_f_s_1_1_pack_file.html", "class_mochi_1_1_f_s_1_1_pack_file" ],
         [ "SystemFileLoader", "class_mochi_1_1_f_s_1_1_system_file_loader.html", "class_mochi_1_1_f_s_1_1_system_file_loader" ]
+      ] ],
+      [ "Scripting", null, [
+        [ "ScriptingLayer", "class_mochi_1_1_scripting_1_1_scripting_layer.html", "class_mochi_1_1_scripting_1_1_scripting_layer" ],
+        [ "ScriptingManager", "class_mochi_1_1_scripting_1_1_scripting_manager.html", "class_mochi_1_1_scripting_1_1_scripting_manager" ]
       ] ],
       [ "Graphics", null, [
         [ "AbstractTextureFactory", "class_mochi_1_1_graphics_1_1_abstract_texture_factory.html", "class_mochi_1_1_graphics_1_1_abstract_texture_factory" ],
@@ -80,10 +86,6 @@ var annotated_dup =
         [ "EventBus", "class_mochi_1_1_event_1_1_event_bus.html", "class_mochi_1_1_event_1_1_event_bus" ],
         [ "ISystemEventDispatcher", "class_mochi_1_1_event_1_1_i_system_event_dispatcher.html", "class_mochi_1_1_event_1_1_i_system_event_dispatcher" ],
         [ "SDLSystemEventDispatcher", "class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher.html", "class_mochi_1_1_event_1_1_s_d_l_system_event_dispatcher" ]
-      ] ],
-      [ "Scripting", null, [
-        [ "ScriptingLayer", "class_mochi_1_1_scripting_1_1_scripting_layer.html", "class_mochi_1_1_scripting_1_1_scripting_layer" ],
-        [ "ScriptingManager", "class_mochi_1_1_scripting_1_1_scripting_manager.html", "class_mochi_1_1_scripting_1_1_scripting_manager" ]
       ] ],
       [ "Physics", null, [
         [ "Shape", "struct_mochi_1_1_physics_1_1_shape.html", null ],

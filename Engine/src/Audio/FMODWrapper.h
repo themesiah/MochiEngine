@@ -1,4 +1,4 @@
-#ifdef USE_FMOD
+#if defined(USE_FMOD) || defined(GENERATE_DOCS)
 #ifndef HDEF_FMODWRAPPER
 #define HDEF_FMODWRAPPER
 

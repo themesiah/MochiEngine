@@ -1,4 +1,4 @@
-#ifndef USE_FMOD
+#if !defined(USE_FMOD) || defined(GENERATE_DOCS)
 #ifndef HDEF_SDLAUDIO
 #define HDEF_SDLAUDIO
 

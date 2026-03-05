@@ -1,4 +1,4 @@
-#ifndef USE_FMOD
+#if !defined(USE_FMOD) || defined(GENERATE_DOCS)
 #include "SDLAudio.h"
 
 #include <SDL3_mixer/SDL_mixer.h>

@@ -20,3 +20,4 @@
 - \ref Mochi::Graphics::SpriteBase
 - \ref Mochi::Audio::IAudioManager
 - \ref Mochi::Input::IActionManager and \ref Mochi::Input::ActionManager
+- \ref Mochi::Event::EventBus

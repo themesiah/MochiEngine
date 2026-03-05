@@ -9,7 +9,7 @@ var searchData=
   ['repeat_6',['Repeat',['../group___math.html#gaa20fca6a39c932f92992c115bc91a483',1,'Mochi::Math']]],
   ['resourcenotfounderror_7',['ResourceNotFoundError',['../class_mochi_1_1_resource_not_found_error.html',1,'Mochi']]],
   ['resume_8',['Resume',['../class_mochi_1_1_engine.html#a1c4b0466ffb0f2c58cad94dd85413b2b',1,'Mochi::Engine']]],
-  ['resumebgm_9',['ResumeBGM',['../class_mochi_1_1_audio_1_1_dummy_audio_manager.html#a85e10e02d121a5a3bf27b62256595c93',1,'Mochi::Audio::DummyAudioManager::ResumeBGM()'],['../class_mochi_1_1_audio_1_1_i_audio_manager.html#a4cd3c1364a66b18588a7b0cbbf9d95cb',1,'Mochi::Audio::IAudioManager::ResumeBGM()'],['../class_mochi_1_1_audio_1_1_s_d_l_audio.html#acbd97f147c84a3857db101219c4cf2ef',1,'Mochi::Audio::SDLAudio::ResumeBGM()']]],
+  ['resumebgm_9',['ResumeBGM',['../class_mochi_1_1_audio_1_1_dummy_audio_manager.html#a85e10e02d121a5a3bf27b62256595c93',1,'Mochi::Audio::DummyAudioManager::ResumeBGM()'],['../class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#a5ae1a3e67716584e51e139686f20d8ae',1,'Mochi::Audio::FMODWrapper::ResumeBGM()'],['../class_mochi_1_1_audio_1_1_i_audio_manager.html#a4cd3c1364a66b18588a7b0cbbf9d95cb',1,'Mochi::Audio::IAudioManager::ResumeBGM()'],['../class_mochi_1_1_audio_1_1_s_d_l_audio.html#acbd97f147c84a3857db101219c4cf2ef',1,'Mochi::Audio::SDLAudio::ResumeBGM()']]],
   ['reviewing_10',['Things Worth Reviewing',['../index.html#autotoc_md19',1,'']]],
   ['run_11',['Run',['../class_mochi_1_1_engine.html#a8607f25ed8f2f147e0392fd6e3f7b3df',1,'Mochi::Engine']]]
 ];

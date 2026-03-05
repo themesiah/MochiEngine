@@ -68,7 +68,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_abstract_g_u_i_8h_source.html",
-"class_mochi_1_1_input_1_1_dummy_mouse_provider.html"
+"class_mochi_1_1_input_1_1_action_manager.html",
+"struct_mochi_1_1_rectf.html#a7e5128d468d95263c8c85f50417a708b"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

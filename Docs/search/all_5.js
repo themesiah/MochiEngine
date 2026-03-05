@@ -5,7 +5,9 @@ var searchData=
   ['finishrendering_2',['FinishRendering',['../class_mochi_1_1_graphics_1_1_dummy_renderer.html#a9f31ee26d51c2ade3b9fe203364b7284',1,'Mochi::Graphics::DummyRenderer::FinishRendering()'],['../class_mochi_1_1_graphics_1_1_i_renderer.html#ac6e3962f22001844df533c8383d9a5fe',1,'Mochi::Graphics::IRenderer::FinishRendering()'],['../class_mochi_1_1_graphics_1_1_s_d_l_renderer.html#a6006ea13708b362a6c6786f1307554af',1,'Mochi::Graphics::SDLRenderer::FinishRendering()']]],
   ['first_3',['Read first',['../index.html#autotoc_md18',1,'']]],
   ['flipy_4',['FlipY',['../group___conversion.html#gabed03483c794dd72d4c0688dc626041a',1,'Mochi']]],
-  ['framedata_5',['FrameData',['../struct_mochi_1_1_graphics_1_1_frame_data.html',1,'Mochi::Graphics']]],
-  ['frameprofiler_6',['FrameProfiler',['../class_mochi_1_1_debug_1_1_frame_profiler.html',1,'Mochi::Debug']]],
-  ['frametag_7',['FrameTag',['../struct_mochi_1_1_graphics_1_1_frame_tag.html',1,'Mochi::Graphics']]]
+  ['fmodmarkerevent_5',['FMODMarkerEvent',['../struct_mochi_1_1_audio_1_1_f_m_o_d_marker_event.html',1,'Mochi::Audio']]],
+  ['fmodwrapper_6',['FMODWrapper',['../class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html',1,'Mochi::Audio::FMODWrapper'],['../class_mochi_1_1_audio_1_1_f_m_o_d_wrapper.html#acd8d73f56b88d8aeed765ebb006c6676',1,'Mochi::Audio::FMODWrapper::FMODWrapper()']]],
+  ['framedata_7',['FrameData',['../struct_mochi_1_1_graphics_1_1_frame_data.html',1,'Mochi::Graphics']]],
+  ['frameprofiler_8',['FrameProfiler',['../class_mochi_1_1_debug_1_1_frame_profiler.html',1,'Mochi::Debug']]],
+  ['frametag_9',['FrameTag',['../struct_mochi_1_1_graphics_1_1_frame_tag.html',1,'Mochi::Graphics']]]
 ];
