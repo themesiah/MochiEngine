@@ -8,6 +8,7 @@
 
 #include "../Packer/PackCatalog.h"
 #include "../Utils/Logger.h"
+#include "../Utils/StringUtils.h"
 
 namespace Mochi::Scripting
 {
@@ -35,7 +36,7 @@ namespace Mochi::Scripting
             mEnvironment.abandon();
     }
 
-    void ScriptingManager::Execute(const std::string &code)
+    void ScriptingManager::Execute(const std::string_view &code)
     {
         try
         {
@@ -52,12 +53,13 @@ namespace Mochi::Scripting
 
     void ScriptingManager::ExecuteFile(const std::string &path)
     {
-        std::vector<char> data = mCatalog->GetFile(path);
+        auto normalizePath = Utils::NormalizePath(path);
+        std::vector<char> data = mCatalog->GetFile(normalizePath);
         std::string code(data.begin(), data.end());
         Execute(code);
     }
 
-    void ScriptingManager::ExecuteGlobal(const std::string &code)
+    void ScriptingManager::ExecuteGlobal(const std::string_view &code)
     {
         try
         {
@@ -71,7 +73,8 @@ namespace Mochi::Scripting
 
     void ScriptingManager::ExecuteFileGlobal(const std::string &path)
     {
-        std::vector<char> data = mCatalog->GetFile(path);
+        auto normalizePath = Utils::NormalizePath(path);
+        std::vector<char> data = mCatalog->GetFile(normalizePath);
         std::string code(data.begin(), data.end());
         ExecuteGlobal(code);
     }

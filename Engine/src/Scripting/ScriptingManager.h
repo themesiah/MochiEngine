@@ -3,6 +3,7 @@
 
 #include "sol/sol.hpp"
 #include <vector>
+#include <string_view>
 
 namespace Mochi::FS
 {
@@ -60,11 +61,22 @@ namespace Mochi::Scripting
     public:
         ScriptingManager(FS::PackCatalog *packCatalog);
         ~ScriptingManager();
-        void Execute(const std::string &code);
+        /// @brief Executes code on the current environment.
+        /// @param code The code to execute.
+        void Execute(const std::string_view &code);
+        /// @brief Executes the code on a file on the current environment.
+        /// @param path The path to the file with the code in the catalog.
         void ExecuteFile(const std::string &path);
-        void ExecuteGlobal(const std::string &code);
+        /// @brief Executes code on the global environment.
+        /// @param code The code to execute.
+        void ExecuteGlobal(const std::string_view &code);
+        /// @brief Executes the code on a file on the global environment.
+        /// @param path The path to the file with the code in the catalog.
         void ExecuteFileGlobal(const std::string &path);
+        /// @brief Update internal scripts, like coroutines.
+        /// @param dt The delta time.
         void Update(const float &dt);
+        /// @brief Resets the current environment.
         void CleanEnvironment();
         sol::state State;
     };
