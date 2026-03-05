@@ -83,7 +83,7 @@ var annotated_dup =
       ] ],
       [ "Scripting", null, [
         [ "ScriptingLayer", "class_mochi_1_1_scripting_1_1_scripting_layer.html", "class_mochi_1_1_scripting_1_1_scripting_layer" ],
-        [ "ScriptingManager", "class_mochi_1_1_scripting_1_1_scripting_manager.html", null ]
+        [ "ScriptingManager", "class_mochi_1_1_scripting_1_1_scripting_manager.html", "class_mochi_1_1_scripting_1_1_scripting_manager" ]
       ] ],
       [ "Physics", null, [
         [ "Shape", "struct_mochi_1_1_physics_1_1_shape.html", null ],

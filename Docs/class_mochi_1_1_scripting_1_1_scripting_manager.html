@@ -103,18 +103,19 @@ $(function(){initNavTree('class_mochi_1_1_scripting_1_1_scripting_manager.html',
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a29ceaed3cab8818b5510a5c04851a4ca" id="r_a29ceaed3cab8818b5510a5c04851a4ca"><td class="memItemLeft"><a id="a29ceaed3cab8818b5510a5c04851a4ca" name="a29ceaed3cab8818b5510a5c04851a4ca"></a>
 &#160;</td><td class="memItemRight"><b>ScriptingManager</b> (<a class="el" href="class_mochi_1_1_f_s_1_1_pack_catalog.html">FS::PackCatalog</a> *packCatalog)</td></tr>
-<tr class="memitem:a63ce8b22d8452b67dd02944cfe6392a8" id="r_a63ce8b22d8452b67dd02944cfe6392a8"><td class="memItemLeft"><a id="a63ce8b22d8452b67dd02944cfe6392a8" name="a63ce8b22d8452b67dd02944cfe6392a8"></a>
-void&#160;</td><td class="memItemRight"><b>Execute</b> (const std::string &amp;code)</td></tr>
-<tr class="memitem:ab69f1ee60d9b23a1d919f7208607fa42" id="r_ab69f1ee60d9b23a1d919f7208607fa42"><td class="memItemLeft"><a id="ab69f1ee60d9b23a1d919f7208607fa42" name="ab69f1ee60d9b23a1d919f7208607fa42"></a>
-void&#160;</td><td class="memItemRight"><b>ExecuteFile</b> (const std::string &amp;path)</td></tr>
-<tr class="memitem:a8e9307df83018d94ed7b421eb6a51268" id="r_a8e9307df83018d94ed7b421eb6a51268"><td class="memItemLeft"><a id="a8e9307df83018d94ed7b421eb6a51268" name="a8e9307df83018d94ed7b421eb6a51268"></a>
-void&#160;</td><td class="memItemRight"><b>ExecuteGlobal</b> (const std::string &amp;code)</td></tr>
-<tr class="memitem:a937de1957c52be60e8e4aae2cbf6dacd" id="r_a937de1957c52be60e8e4aae2cbf6dacd"><td class="memItemLeft"><a id="a937de1957c52be60e8e4aae2cbf6dacd" name="a937de1957c52be60e8e4aae2cbf6dacd"></a>
-void&#160;</td><td class="memItemRight"><b>ExecuteFileGlobal</b> (const std::string &amp;path)</td></tr>
-<tr class="memitem:a279bb92186d1c9c800150bf9888ff1d6" id="r_a279bb92186d1c9c800150bf9888ff1d6"><td class="memItemLeft"><a id="a279bb92186d1c9c800150bf9888ff1d6" name="a279bb92186d1c9c800150bf9888ff1d6"></a>
-void&#160;</td><td class="memItemRight"><b>Update</b> (const float &amp;dt)</td></tr>
+<tr class="memitem:a4883c4532ea9efda375e0812bbc88288" id="r_a4883c4532ea9efda375e0812bbc88288"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a4883c4532ea9efda375e0812bbc88288">Execute</a> (const std::string_view &amp;code)</td></tr>
+<tr class="memdesc:a4883c4532ea9efda375e0812bbc88288"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes code on the current environment.  <br /></td></tr>
+<tr class="memitem:ab69f1ee60d9b23a1d919f7208607fa42" id="r_ab69f1ee60d9b23a1d919f7208607fa42"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ab69f1ee60d9b23a1d919f7208607fa42">ExecuteFile</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:ab69f1ee60d9b23a1d919f7208607fa42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the code on a file on the current environment.  <br /></td></tr>
+<tr class="memitem:a3bb01ae418fc33e4ce28470eacc462a6" id="r_a3bb01ae418fc33e4ce28470eacc462a6"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a3bb01ae418fc33e4ce28470eacc462a6">ExecuteGlobal</a> (const std::string_view &amp;code)</td></tr>
+<tr class="memdesc:a3bb01ae418fc33e4ce28470eacc462a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes code on the global environment.  <br /></td></tr>
+<tr class="memitem:a937de1957c52be60e8e4aae2cbf6dacd" id="r_a937de1957c52be60e8e4aae2cbf6dacd"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a937de1957c52be60e8e4aae2cbf6dacd">ExecuteFileGlobal</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:a937de1957c52be60e8e4aae2cbf6dacd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the code on a file on the global environment.  <br /></td></tr>
+<tr class="memitem:a279bb92186d1c9c800150bf9888ff1d6" id="r_a279bb92186d1c9c800150bf9888ff1d6"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a279bb92186d1c9c800150bf9888ff1d6">Update</a> (const float &amp;dt)</td></tr>
+<tr class="memdesc:a279bb92186d1c9c800150bf9888ff1d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update internal scripts, like coroutines.  <br /></td></tr>
 <tr class="memitem:a41d4686e1314acd433937ed8bc592f56" id="r_a41d4686e1314acd433937ed8bc592f56"><td class="memItemLeft"><a id="a41d4686e1314acd433937ed8bc592f56" name="a41d4686e1314acd433937ed8bc592f56"></a>
 void&#160;</td><td class="memItemRight"><b>CleanEnvironment</b> ()</td></tr>
+<tr class="memdesc:a41d4686e1314acd433937ed8bc592f56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the current environment. <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -147,7 +148,133 @@ sol::state&#160;</td><td class="memItemRight"><b>State</b></td></tr>
 <ul>
 <li>This class is not thread safe. Code should be executed from the main thread. (TODO: Executions should be stored and done in the update. That way all besides update could be thread safe) </li>
 </ul>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a4883c4532ea9efda375e0812bbc88288" name="a4883c4532ea9efda375e0812bbc88288"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4883c4532ea9efda375e0812bbc88288">&#9670;&#160;</a></span>Execute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mochi::Scripting::ScriptingManager::Execute </td>
+          <td>(</td>
+          <td class="paramtype">const std::string_view &amp;</td>          <td class="paramname"><span class="paramname"><em>code</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Executes code on the current environment. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>The code to execute. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab69f1ee60d9b23a1d919f7208607fa42" name="ab69f1ee60d9b23a1d919f7208607fa42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab69f1ee60d9b23a1d919f7208607fa42">&#9670;&#160;</a></span>ExecuteFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mochi::Scripting::ScriptingManager::ExecuteFile </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Executes the code on a file on the current environment. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The path to the file with the code in the catalog. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a937de1957c52be60e8e4aae2cbf6dacd" name="a937de1957c52be60e8e4aae2cbf6dacd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a937de1957c52be60e8e4aae2cbf6dacd">&#9670;&#160;</a></span>ExecuteFileGlobal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mochi::Scripting::ScriptingManager::ExecuteFileGlobal </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Executes the code on a file on the global environment. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The path to the file with the code in the catalog. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3bb01ae418fc33e4ce28470eacc462a6" name="a3bb01ae418fc33e4ce28470eacc462a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bb01ae418fc33e4ce28470eacc462a6">&#9670;&#160;</a></span>ExecuteGlobal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mochi::Scripting::ScriptingManager::ExecuteGlobal </td>
+          <td>(</td>
+          <td class="paramtype">const std::string_view &amp;</td>          <td class="paramname"><span class="paramname"><em>code</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Executes code on the global environment. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>The code to execute. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a279bb92186d1c9c800150bf9888ff1d6" name="a279bb92186d1c9c800150bf9888ff1d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a279bb92186d1c9c800150bf9888ff1d6">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mochi::Scripting::ScriptingManager::Update </td>
+          <td>(</td>
+          <td class="paramtype">const float &amp;</td>          <td class="paramname"><span class="paramname"><em>dt</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update internal scripts, like coroutines. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dt</td><td>The delta time. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>Engine/src/Scripting/<a class="el" href="_scripting_manager_8h_source.html">ScriptingManager.h</a></li>
 <li>Engine/src/Scripting/<b>ScriptingManager.cpp</b></li>
 </ul>
