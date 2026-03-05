@@ -97,8 +97,6 @@ namespace Mochi
                                                                                                           std::make_unique<Input::SDLMouseProvider>(mRenderer.get()),
                                                                                                           std::make_unique<Input::SDLGamepadProvider>(mEventBus.get())));
 
-            auto actionsBuffer = mCatalog->GetFile(CONST_ACTIONS_FILE);
-            bool success = mActionManager->LoadActions(actionsBuffer);
             LOG_OK("Action manager Initialized");
 
             mGUI = mRenderer->CreateGUI(mCatalog.get(), mActionManager.get());
@@ -200,6 +198,14 @@ namespace Mochi
 
     void Engine::Run()
     {
+        auto actionsBuffer = mCatalog->GetFile(CONST_ACTIONS_FILE);
+        bool success = mActionManager->LoadActions(actionsBuffer);
+        if (!success)
+        {
+            throw SystemInitializationError("ActionManager", std::format("Actions file on {} can not be loaded.", CONST_ACTIONS_FILE));
+        }
+        LOG_OK("Actions file loaded");
+
         mIsRunning = true;
         mFrameStart = std::chrono::steady_clock::now();
         try
