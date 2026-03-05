@@ -2,9 +2,9 @@
 
 ## Read first
 
-- [Intro](https://themesiah.github.io/MochiEngine/)
-- [Quick start](https://themesiah.github.io/MochiEngine/QUICK_START.md)
-- [Architecture](https://themesiah.github.io/MochiEngine/ARCHITECTURE.md)
+- [Intro](https://github.com/themesiah/MochiEngine/blob/main/README.md)
+- [Quick start](https://github.com/themesiah/MochiEngine/blob/main/QUICK_START.md)
+- [Architecture](https://github.com/themesiah/MochiEngine/blob/main/ARCHITECTURE.md)
 
 ## Things Worth Reviewing
 
