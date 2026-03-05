@@ -111,3 +111,100 @@ With all of that, we can use different input providers if our way to retrieve da
 As you can see, even simple concepts like reacting to input turns out very complex if the features are meant to be as extensible as possible. Even if the engine could have done well with just reading input, this kind of system is one I think is mandatory to have it well implented and that always pays off in the end.
 
 ## Scripting
+
+*MochiEngine* scripting system works with LUA scripts, and it's binded to C++ with [sol2](https://github.com/ThePhD/sol2).
+
+There are lots of things to say about the scripting, but I will start with the whys.
+
+### Why scripting
+
+Scripting provides faster iteration and hot reload when needed. This makes a lot easier to test new things or, if the optimization is not an issue, making full games
+with an scripting system. The tools *MochiEngine* provides for scripting allow to make games entirely on scripting.
+
+### Why LUA
+
+Why not? Is a scripting language like any other. There is no big architectural, design or even personal reason to having implemented the scripting system using LUA instead of others, like Python or C#.
+
+### Why not letting the user choose?
+
+That's right. [ScriptingManager](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_scripting_1_1_scripting_manager.html) could have implemented an *IScriptingManager* interface and allow to chose the scripting backend and remove the direct dependency with the LUA state in some parts of the code, but it was not worth. All the samples work with LUA just fine and there was no real reason to switch scripting backends.
+
+### Why sol2
+
+Again, no big reason. [sol2](https://github.com/ThePhD/sol2) is a good library and it's been more updated than other lua binding libraries out there.
+
+---
+
+Now, let's see the features and how they work.
+
+### What can the scripting system do?
+
+The scripting system does 3 things: It exposes sol2 functionality (to bind classes and functions and share ownership of objects), it executes code and it keeps track of two environments, the global and a local one.
+
+The executed code can be executed with plain code obtained in the C++ context (be it hardcoded, downloaded somehwere...) or from a file in the catalog. When loading the code from a file it just gets the plain string in the file and executes it.
+
+And yes, there could be a map of environments and select where to execute each piece of code, so LUA tables are personalized for each engine layer, for example, to allow certain things and making the purpose of the code more clear. But again, it was good enough. In fact, those two environments allow us to put common bindings and functions on the global lua tables (that will live for all the lifetime of the application) and level specific data on the local environment. When a level is unloaded, the environment can just be reseted.
+
+### What can be done in a script?
+
+You can check the [LUA API](https://themesiah.github.io/MochiEngine/Docs/md__docs_data_2_lua_bindings.html) page in the documentation or check the .lua scripts in the samples.The things in the API should be enough for most games, and whatever is not there can be done on a per-game basis. You can load any amount of scripts and load them globally, even in your own game layer or even the main file. That allows you to define some utility functions that your game will need.
+
+LUA is incredibly powerful and flexible. You could write an "Update" function on a lua script and call it from C++ like this:
+
+```cpp
+mScriptingManager->State["Update"](deltaTime);
+```
+
+And then update all your LUA owned entities on that update in the script, to minimize context changes.
+
+### Coroutines
+
+One interesting thing in the scripting manager is the feature of coroutines.
+
+Using the [coroutines library](https://www.lua.org/pil/9.html) from LUA, I defined a simple yet powerful API inside an script that gets loaded with the engine to create corotuines (and tweens!). To make it even easier, the ScriptingManager already updates the Coroutines each frame, allowing you to use them with just writing in a script!
+
+## The catalog
+
+One thing that could come as unnecessary is [the pack catalog](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_f_s_1_1_pack_catalog.html) and the [packer](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_f_s_1_1_pack_file.html).
+
+### The packer
+
+The packer puts all files from a directory recursively on a single file. The packer has its own CMake project, and it builds when the engine is built. The binary file features two simple functions:
+
+```bash
+Packer.exe -pack "some/data/folder" "some/path/Name.pak"
+Packer.exe -unpack "some/path/Name.pak" "some/output/folder"
+```
+
+Those two pack and unpack respectively a .pak file (or whatever extension you chose).
+
+To do that, a header for the file is created and the **relative path** for each file is stored, alongside the current **head** of the binary blob and the **size** of the file.
+Having for each file its path (the id), where they start and their size, accesing them is trivial, and we don't even have to load the full file: just keep a file descriptor pointing to the file. 
+
+### Loading files
+
+We have two ways of loading files into the engine, using the [IFileLoader](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_f_s_1_1_i_file_loader.html) interface: [PackFile](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_f_s_1_1_pack_file.html) and [SystemFileLoader](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_f_s_1_1_system_file_loader.html). The first one gets files from a .pak as seen before. The second one reads plain files from the OS.
+
+Right now, the engine is configured to use PackFile on release builds, and SystemFileLoader on debug builds. CMake can be configured to auto-build the .pak files when doing a release build, as seen in [the CMake configuration file of the SpaceShooter sample](./Samples/SpaceShooter/CMakeLists.txt).
+
+### The catalog
+
+Now that we know what methods we have to load files, let's talk about the catalog. The catalog is just a collection of [IFileLoaders](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_f_s_1_1_i_file_loader.html) that work together. You open a pack (an *IFileLoader*) and then you can access any file on the pack, as you are getting something with the relative path of the pack.
+
+Check [this page](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_f_s_1_1_pack_catalog.html#details) for a more thorough explanation of the file system hierarchy and overrides.
+
+### Benefits of the packing
+
+There are three main benefits to this system.
+
+First, obfuscation. As a developer, I wouldn't want users to access my raw assets that easily. Sure, it can be reverse enginereed easily, but that's just a minimal of the userbase.
+
+Second, easy management. If you have a game with several packs with game data, you can easily know where is each asset, which one to load for a new level... and is also easier to do updates for the game, as downloading a single file is a lot simpler and straightforward than downloading a full folder. And there is a last trick that allows better updates...
+
+Third and most interesting, using the same relative path for a file in several packs priorizes the one on the last pack loaded, as seen in [the documentation page](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_f_s_1_1_pack_catalog.html#details). This allows several things:
+
+- Modding. It would be easy to make a game that loads all .pak in the game folder, in a "Mods" folder for example, and allow users to create their own mods.
+
+- Updating. Instead of changing a small asset in a 300mb .pak file and making users download a 300mb update, create a new one that will be loaded later with the same relative path and make users download 1kb of update. Of course, there is a tradeof, that is duplicated data. But is worth considering anyway.
+
+- Setup. Each game has their own requirements, and some engine default assets might not do for the end user. The greatest example is the [Actions file](./Engine/CoreData/Actions.json), that has a default version on the engine, both as a base and as an example, and can be easily overriden by the game by putting an *Actions.json* file in the root of their main pack. 
