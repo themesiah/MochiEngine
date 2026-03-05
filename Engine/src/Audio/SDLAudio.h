@@ -1,3 +1,4 @@
+#ifndef USE_FMOD
 #ifndef HDEF_SDLAUDIO
 #define HDEF_SDLAUDIO
 
@@ -42,4 +43,5 @@ namespace Mochi::Audio
     };
 }
 
+#endif
 #endif

@@ -1,3 +1,4 @@
+#ifndef USE_FMOD
 #include "SDLAudio.h"
 
 #include <SDL3_mixer/SDL_mixer.h>
@@ -127,3 +128,5 @@ namespace Mochi::Audio
     {
     }
 }
+
+#endif
