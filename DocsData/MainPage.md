@@ -2,7 +2,15 @@
 
 ## Things Worth Reviewing
 
+- [CMake Structure](Resources/CMake%20Structure.svg)
 - \ref Mochi::Engine
 - \ref Mochi::Layer
+- \ref Types
+- \ref Mochi::Graphics::IRenderer and \ref Mochi::Graphics::SDLRenderer
+- \ref Mochi::Graphics::AbstractTextureFactory and \ref Mochi::Graphics::SDLTextureFactory
+- \ref Mochi::FS::PackCatalog
 - [LUA Bindings](LuaBindings.md)
-- [CMake Structure](Resources/CMake%20Structure.svg)
+- \ref Mochi::Scripting::ScriptingManager and \ref Mochi::Scripting::ScriptingLayer
+- \ref Mochi::Graphics::SpriteBase
+- \ref Mochi::Audio::IAudioManager
+- \ref Mochi::Input::IActionManager and \ref Mochi::Input::ActionManager
