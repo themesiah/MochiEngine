@@ -36,6 +36,32 @@ When an abstraction has some common functionality between implementations (like 
 
 There can be a discussion about if all of them should be interfaces, and external classes should exist to do whatever common ground have those implementations (for the given examples, a GUISelectionSystem class and a TextureCache class), and then the interface implementations use those classes. That would've work, maybe even in a cleaner way, but I decided in favor of abstract classes to avoid adding more project structure complexity.
 
+## Engine lifecycle
+
+*MochiEngine* has the following lifetime steps: Creation, Setup, Run, Destroy. I also provide a shortcut Creation constructor that also fully setups the engine. Let's see each one:
+
+### Creation and setup
+
+When we create the engine with the constructor, two things could happen: You use the default constructor or you use the shortcut constructor.
+
+The default constructor setups a minimal set of the Subsystems, the ones that cannot be overriden, and expects you to call **engine.Setup** with the following subsystems, initialized by you: IRenderer, IActionManager, IAudioManager. This allows, besides being able to customize the engine with your own implementations, to setup tests with dummy or virtual subsistems. To use the shortcut constrcutor yo call this:
+
+```cpp
+Engine(const char *appName, const char *appVersion, const char *appId, const char *windowName)
+```
+
+And the *IRenderer* subsystem will be setup as **SDLRenderer**, the *IActionManager* will be **ActionManager** and *IAudioManager* will be either **FMOD** or **SDL_Mixer**.
+
+### Run
+
+*MochiEngine* provides a single method, called **Run** that starts the game process. Inside this method there is a **while loop** that keeps working until the engine receives a close event (alt+f4 or pressing the cross in the window) or the game logic sends that signal or any update on a layer returns a false. Between each frame there is a wait until it's time for the next frame, after all processes for this frame are done.
+
+During this step of the lifetime, Update is called for each layer, besides updating all subsystems automatically.
+
+### Destruction
+
+When the while loop ends be it by getting false from a layer update or because of the application close event, the main method ends (usually, depends on implementation) and then the engine is destroyed, destroying all of its contents (subsystems, layers, and the contents of those).
+
 ## The renderer
 
 One of the most difficult systems to abstract was the renderer.
@@ -71,6 +97,29 @@ However, this GUI does the trick, shows the capabilities of the system and parti
 ### Gizmos
 
 Same logic as with [AbstractTextureFactory](#abstracttexturefactory), the gizmos systems have their own logic, dependent on the renderer (because they mostly use primitives like drawing lines, points or circles). [IGizmos](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_debug_1_1_i_gizmos.html) is the abstraction for that.
+
+## Layer System
+
+The engine features a Layer System that allows to separate logic and/or contents between engine and game or between different domains of the game.
+
+A layer is nothing more than a class that, after being injected in the engine, gets initialized and then updated each frame for each of these methods: *Update*, *Render*, *GUI* and in debug mode, *Debug*.
+
+Layers allow, first and most important, to inject your own code into the application using *MochiEngine*. You create your own layer, construct the engine object, and then push the layer into the engine. When running the engine, the code in your own layer will be executed on each update too.
+
+An example of this is shown in [the Space Shooter sample main file](./Samples/SpaceShooter/src/main.cpp), as follows:
+
+```cpp
+const char *appName = "Space Shooter";
+const char *appVersion = "0.1";
+const char *appId = "com.scarletmochi.spaceshooter";
+const char *windowName = "Space Shooter";
+Mochi::Engine engine(appName, appVersion, appId, windowName);
+Mochi::Shooter::GameLayer *gameLayer = new Mochi::Shooter::GameLayer();
+engine.PushLayer(gameLayer);
+engine.Run();
+```
+
+As layers can be popped and pushed in runtime, this is great too to use them as "scenes". Implement some loading and unloading, push a loading screen layer, pop your level layer, push the new level layer, and when the new level is loaded, pop the loading screen. Or something like that. Its versatile enough to allow this or just to separate your game logic from your application logic from your UI logic, if needed.
 
 ## Action manager
 
