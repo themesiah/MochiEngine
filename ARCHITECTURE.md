@@ -1,14 +1,14 @@
 # Architecture
 
 ## Table of contents
-1- [Intro](#intro)
-2- [About interfaces](#interface-or-not-to-interface)
-3- [Engine lifecycle](#engine-lifecycle)
-4- [The renderer](#the-renderer)
-5- [Layer System](#layer-system)
-6- [Action Manager](#action-manager)
-7- [Scripting](#scripting)
-8- [The Catalog](#the-catalog)
+1. [Intro](#intro)
+2. [About interfaces](#interface-or-not-to-interface)
+3. [Engine lifecycle](#engine-lifecycle)
+4. [The renderer](#the-renderer)
+5. [Layer System](#layer-system)
+6. [Action Manager](#action-manager)
+7. [Scripting](#scripting)
+8. [The Catalog](#the-catalog)
 
 ## Intro
 
