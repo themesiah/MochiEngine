@@ -1,4 +1,4 @@
-# SDLSpaceShooter
+# Mochi Engine
 
 ## Table of contents
 1. [Introduction](#introduction)
@@ -7,12 +7,16 @@
 
 ## Introduction
 
-MochiEngine is a personal project of a 2D pixel art game engine based on [SDL3](https://github.com/libsdl-org/SDL) with the purpose of being used as a portfolio of general C++ knowledge and [architecture]((./ARCHITECTURE.md)) skills.
+MochiEngine is a personal project of a 2D pixel art game engine based on [SDL3](https://github.com/libsdl-org/SDL) with the purpose of being used as a portfolio of general C++ knowledge and [architecture](./ARCHITECTURE.md) skills.
 This means that the engine has been purposedly prepare to work with 2D renderers and specifically pixel art. Any other usage of this engine has not been tested.
 
 If you stumbled across this project and want to try it, be free to do so!
 
 Next there are instructions to build the sample projects and documentation with which you can start building games.
+
+## Architecture overview
+
+Check first the [architecture overview here](./ARCHITECTURE.md).
 
 ## Configuring and building
 
@@ -55,7 +59,7 @@ To run all tests. Do this only after building all targets.
 
 ## See more
 
-- [Documentation](https://themesiah.github.io/MochiEngine/Docs/index.html)
 - [Architecture](./ARCHITECTURE.md)
 - [Quick start](./QUICK_START.md)
 - [Space Shooter Sample](./Samples/SpaceShooter/)
+- [Documentation](https://themesiah.github.io/MochiEngine/Docs/index.html)

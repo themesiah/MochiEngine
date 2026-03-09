@@ -1,0 +1,10 @@
+- [x] Prepare github as engine+samples
+- [x] Automatize packer
+- [x] Make test building optional and prepare tests for calling "ctest" manually
+- [ ] Document and comment
+     - [ ] Architecture section diagram / table of contents
+- [ ] SDL Mixer
+- [ ] EnTT
+- [ ] Platformer sample
+- [ ] Puzzle sample
+- [ ] Zip packer
