@@ -13,6 +13,10 @@
 #include "IPerformableAction.h"
 #include "../Types/Types.hpp"
 
+namespace Mochi::FS
+{
+    class PackCatalog;
+}
 namespace Mochi::Input
 {
     /// @brief Set of performable actions that will be used to compute an "or" operation, making an action be considered performed
@@ -69,10 +73,11 @@ namespace Mochi::Input
     private:
         std::unique_ptr<InputManager> mInputManager;
         std::unordered_map<std::string, Action> mActions;
+        FS::PackCatalog *mCatalog;
 
     public:
         /// @param inputManager A unique pointer to the input manager. Reference will be moved by this class to take ownership of the unique pointer.
-        ActionManager(std::unique_ptr<InputManager> inputManager);
+        ActionManager(std::unique_ptr<InputManager> inputManager, FS::PackCatalog *catalog);
         virtual ~ActionManager();
 
         /// @brief Loads a list of actions from a JSON string data.

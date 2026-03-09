@@ -95,7 +95,8 @@ namespace Mochi
 
             mActionManager = std::make_unique<Input::ActionManager>(std::make_unique<Input::InputManager>(std::make_unique<Input::SDLKeyboardProvider>(),
                                                                                                           std::make_unique<Input::SDLMouseProvider>(mRenderer.get()),
-                                                                                                          std::make_unique<Input::SDLGamepadProvider>(mEventBus.get())));
+                                                                                                          std::make_unique<Input::SDLGamepadProvider>(mEventBus.get())),
+                                                                    mCatalog.get());
 
             LOG_OK("Action manager Initialized");
 
@@ -201,8 +202,7 @@ namespace Mochi
         // Loading the actions file here seems weird.
         // But it's actually so users can init their layers first, load their file packs
         // and then run the game, effectively loading the Actions.json file for their game automatically.
-        auto actionsBuffer = mCatalog->GetFile(CONST_ACTIONS_FILE);
-        bool success = mActionManager->LoadActions(actionsBuffer);
+        bool success = mActionManager->LoadActionsFromFile(CONST_ACTIONS_FILE);
         if (!success)
         {
             throw SystemInitializationError("ActionManager", std::format("Actions file on {} can not be loaded.", CONST_ACTIONS_FILE));

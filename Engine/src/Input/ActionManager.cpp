@@ -5,6 +5,7 @@
 #include <iostream>
 #include <nlohmann/json.hpp>
 
+#include "../Packer/PackCatalog.h"
 #include "../Utils/Assert.h"
 #include "../Utils/Logger.h"
 #include "../Utils/MathUtils.h"
@@ -15,7 +16,7 @@
 
 namespace Mochi::Input
 {
-    ActionManager::ActionManager(std::unique_ptr<InputManager> inputManager) : mInputManager(std::move(inputManager)), mActions()
+    ActionManager::ActionManager(std::unique_ptr<InputManager> inputManager, FS::PackCatalog *catalog) : mInputManager(std::move(inputManager)), mCatalog(catalog), mActions()
     {
     }
 
@@ -106,12 +107,7 @@ namespace Mochi::Input
 
     bool ActionManager::LoadActionsFromFile(const std::string &actionsFile)
     {
-        std::ifstream f(actionsFile);
-        ASSERT(std::format("Can't open actions file on {}", actionsFile), !f.fail());
-        if (f.fail())
-            throw ResourceNotFoundError(actionsFile);
-        std::vector<char> data((std::istreambuf_iterator<char>(f)), std::istreambuf_iterator<char>());
-        f.close();
+        std::vector<char> data = mCatalog->GetFile(actionsFile);
         return LoadActions(data);
     }
 

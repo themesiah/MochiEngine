@@ -146,26 +146,24 @@ TEST_CASE("Load fonts Filesystem")
 
 TEST_CASE("Load actions Packfile")
 {
-    Mochi::FS::PackFile file("TestData/Data.pak");
-    REQUIRE(file.IsValid());
+    std::unique_ptr<Mochi::FS::PackCatalog> pc = std::make_unique<Mochi::FS::PackCatalog>(Mochi::FS::PackCatalog::FileLoaderType::Packfile);
+    pc->OpenPack("TestData/Data");
 
-    Mochi::Input::ActionManager actionManager(nullptr);
-    REQUIRE(file.HasFile("Actions.json"));
-    auto buffer = file.GetFile("Actions.json");
-    bool success = actionManager.LoadActions(buffer);
+    Mochi::Input::ActionManager actionManager(nullptr, pc.get());
+    REQUIRE(pc->HasFile("Actions.json"));
+    bool success = actionManager.LoadActionsFromFile("Actions.json");
     REQUIRE(success);
     CHECK(actionManager.HasAction("Debug1"));
 }
 
 TEST_CASE("Load actions Filesystem")
 {
-    Mochi::FS::SystemFileLoader dir("TestData");
-    REQUIRE(dir.IsValid());
+    std::unique_ptr<Mochi::FS::PackCatalog> pc = std::make_unique<Mochi::FS::PackCatalog>(Mochi::FS::PackCatalog::FileLoaderType::FileSystem);
+    pc->OpenPack("TestData");
 
-    Mochi::Input::ActionManager actionManager(nullptr);
-    REQUIRE(dir.HasFile("Actions.json"));
-    auto buffer = dir.GetFile("Actions.json");
-    bool success = actionManager.LoadActions(buffer);
+    Mochi::Input::ActionManager actionManager(nullptr, pc.get());
+    REQUIRE(pc->HasFile("Actions.json"));
+    bool success = actionManager.LoadActionsFromFile("Actions.json");
     REQUIRE(success);
     CHECK(actionManager.HasAction("Debug1"));
 }

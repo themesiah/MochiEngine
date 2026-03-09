@@ -6,6 +6,7 @@
 
 #include "Input/InputManager.h"
 #include "Input/ActionManager.h"
+#include "Packer/PackCatalog.h"
 
 #include "Input/IKeyboardProvider.h"
 #include "Input/IMouseProvider.h"
@@ -86,10 +87,12 @@ TEST_CASE("Input::2- Action manager")
     MockKeyboardProvider *mockKeyboard = new MockKeyboardProvider();
     MockMouseProvider *mockMouse = new MockMouseProvider();
     MockGamepadProvider *mockGamepad = new MockGamepadProvider();
+    std::unique_ptr<Mochi::FS::PackCatalog> pc = std::make_unique<Mochi::FS::PackCatalog>(Mochi::FS::PackCatalog::FileLoaderType::FileSystem);
+    pc->OpenPack("TestData");
     memset(mockKeyboard->state, false, sizeof(mockKeyboard->state));
 
-    ActionManager actionManager(std::make_unique<InputManager>(std::unique_ptr<MockKeyboardProvider>(mockKeyboard), std::unique_ptr<MockMouseProvider>(mockMouse), std::unique_ptr<MockGamepadProvider>(mockGamepad)));
-    bool success = actionManager.LoadActionsFromFile("TestData/Actions.json");
+    ActionManager actionManager(std::make_unique<InputManager>(std::unique_ptr<MockKeyboardProvider>(mockKeyboard), std::unique_ptr<MockMouseProvider>(mockMouse), std::unique_ptr<MockGamepadProvider>(mockGamepad)), pc.get());
+    bool success = actionManager.LoadActionsFromFile("Actions.json");
     REQUIRE(success);
     REQUIRE(actionManager.HasAction("Shot"));
     REQUIRE(actionManager.HasAction("Horizontal"));

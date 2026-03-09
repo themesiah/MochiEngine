@@ -60,4 +60,6 @@ target_compile_options(Engine PUBLIC
   "$<${msvc_cxx}:$<BUILD_INTERFACE:-W3>>"
 )
 
+if(ENABLE_TESTS)
 add_subdirectory(Tests)
+endif()
