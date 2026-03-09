@@ -2,8 +2,10 @@
 
 ## Table of contents
 1. [Introduction](#introduction)
-2. [Building](#configuring-and-building)
-3. [See more](#see-more)
+2. [Architecture](#architecture-overview)
+3. [Important classes](#important-classes)
+4. [Building](#configuring-and-building)
+5. [See more](#see-more)
 
 ## Introduction
 
@@ -17,6 +19,17 @@ Next there are instructions to build the sample projects and documentation with 
 ## Architecture overview
 
 Check first the [architecture overview here](./ARCHITECTURE.md).
+
+## Important classes
+
+Check those classes docs now for a quick overview of the most important code of the project:
+
+- [Engine](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_engine.html) [(src)](./Engine/src/Engine.cpp)
+- [Layer](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_layer.html) [(src)](./Engine/src/Layer.cpp)
+- [SDL Renderer](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_graphics_1_1_s_d_l_renderer.html) [(src)](./Engine/src/Graphics/SDL/SDLRenderer.cpp)
+- [Sprite Base](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_graphics_1_1_sprite_base.html) [(src)](./Engine/src/Graphics/SpriteBase.cpp)
+- [Pack catalog](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_f_s_1_1_pack_catalog.html) [(src)](./Engine/src/Packer/PackCatalog.cpp)
+- [Scripting manager](https://themesiah.github.io/MochiEngine/Docs/class_mochi_1_1_scripting_1_1_scripting_manager.html) [(src)](./Engine/src/Scripting/ScriptingManager.cpp)
 
 ## Configuring and building
 
