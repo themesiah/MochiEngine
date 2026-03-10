@@ -87,7 +87,7 @@ namespace Mochi::Scripting
         }
     }
 
-    void ScriptingLayer::GUI() const
+    void ScriptingLayer::GUI()
     {
     }
 

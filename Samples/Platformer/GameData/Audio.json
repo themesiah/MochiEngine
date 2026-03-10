@@ -1,0 +1,14 @@
+{
+    "Entries": [
+        {
+            "Path": "Audio/MainLevel.ogg",
+            "Name": "MainLevel",
+            "Preload": true
+        },
+        {
+            "Path": "Audio/WilhelmScream.wav",
+            "Name": "WilhelmScream",
+            "Preload": false
+        }
+    ]
+}

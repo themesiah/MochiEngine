@@ -72,7 +72,7 @@ namespace Mochi::Shooter
         virtual void InitLayer() override;
         virtual bool Update(const float &dt) override;
         virtual void Render() const override;
-        virtual void GUI() const override;
+        virtual void GUI() override;
 #if DEBUG
         virtual void Debug() const override;
 #endif

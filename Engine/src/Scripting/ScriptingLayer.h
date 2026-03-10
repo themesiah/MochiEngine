@@ -68,7 +68,7 @@ namespace Mochi::Scripting
         /// @brief Renders owned sprites.
         virtual void Render() const override;
         /// @brief This class does not show any GUI.
-        virtual void GUI() const override;
+        virtual void GUI() override;
 #if DEBUG
         /// @brief This class does not show any debug data.
         virtual void Debug() const override;

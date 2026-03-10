@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "../RenderCommand.h"
+#include "../Utils/SDLUtils.h"
 
 namespace Mochi::FS
 {
@@ -47,11 +48,16 @@ namespace Mochi::Graphics
      *
      * - That a single SDL_Renderer and SDL_Window will be created and disposed when destroying the SDLRenderer.
      */
+
+    SDL_DELETER(SDL_Renderer, SDL_DestroyRenderer)
+    SDL_DELETER(SDL_Window, SDL_DestroyWindow)
+    using RendererPtr = std::unique_ptr<SDL_Renderer, SDL_RendererDeleter>;
+    using WindowPtr = std::unique_ptr<SDL_Window, SDL_WindowDeleter>;
     class SDLRenderer : public IRenderer
     {
     private:
-        std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer *)> mRenderer;
-        std::unique_ptr<SDL_Window, void (*)(SDL_Window *)> mWindow;
+        RendererPtr mRenderer;
+        WindowPtr mWindow;
 
     public:
         /// @brief Initializes the renderer and window for the application, setting the necessary metadata for the game to work.

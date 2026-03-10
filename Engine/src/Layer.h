@@ -72,7 +72,7 @@ namespace Mochi
 
         /// @brief Override this to draw the GUI of your layer.
         /// Even if this could be done anywhere, doing it here ensure it to be drawn after all rendering is done.
-        virtual void GUI() const {}
+        virtual void GUI() {}
 #if DEBUG
         /// @brief Override this to print, draw or show debug GUI's.
         /// This will be called after all renderings and other GUIs and will only be shown while in DEBUG configuration.

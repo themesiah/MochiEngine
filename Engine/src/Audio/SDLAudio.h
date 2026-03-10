@@ -4,27 +4,55 @@
 
 #include "IAudioManager.h"
 
+#include <nlohmann/json_fwd.hpp>
+#include <SDL3_mixer/SDL_mixer.h>
+
+#include <vector>
 #include <memory>
 #include <unordered_map>
+#include <string>
+
+#include "../Utils/SDLUtils.h"
 
 namespace Mochi::FS
 {
     class PackCatalog;
 }
-struct MIX_Mixer;
-struct MIX_Group;
-struct MIX_Track;
-struct MIX_Audio;
 namespace Mochi::Audio
 {
+    SDL_DELETER(MIX_Track, MIX_DestroyTrack)
+    SDL_DELETER(MIX_Audio, MIX_DestroyAudio)
+    SDL_DELETER(MIX_Mixer, MIX_DestroyMixer)
+    using TrackPtr = std::unique_ptr<MIX_Track, MIX_TrackDeleter>;
+    using MixerPtr = std::unique_ptr<MIX_Mixer, MIX_MixerDeleter>;
+    using AudioPtr = std::unique_ptr<MIX_Audio, MIX_AudioDeleter>;
     class SDLAudio : public IAudioManager
     {
     private:
+        enum AudioEntryType
+        {
+            SFX,
+            BGM
+        };
+        struct AudioEntry
+        {
+            std::string Name;
+            std::string Path;
+            AudioEntryType Type;
+        };
+
         FS::PackCatalog *mCatalog;
-        std::unique_ptr<MIX_Mixer, void (*)(MIX_Mixer *)> mMixer;
-        std::unique_ptr<MIX_Track, void (*)(MIX_Track *)> mBgmTrack;
-        std::unordered_map<std::string, MIX_Group *> mGroups;
-        std::unordered_map<std::string, MIX_Audio *> mAudioCache;
+        MixerPtr mMixer;
+        TrackPtr mBgmTrack;
+        std::vector<TrackPtr> mTrackPool;
+        std::unordered_map<std::string, AudioPtr> mAudioCache;
+
+        std::unordered_map<std::string, AudioEntry> mEntries;
+
+        void LoadAudioEntry(const nlohmann::json &j);
+        void UnloadAudioEntry(const std::string &entry);
+        MIX_Track *FindFreeTrack();
+        bool Preload(const std::string &path);
 
     public:
         SDLAudio(FS::PackCatalog *catalog);

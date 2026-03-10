@@ -20,7 +20,7 @@ namespace Mochi::Graphics
 {
 
     SDLRenderer::SDLRenderer(const char *appName, const char *appVersion, const char *appId, const char *windowName)
-        : mRenderer({nullptr, SDL_DestroyRenderer}), mWindow({nullptr, SDL_DestroyWindow})
+        : mRenderer({nullptr}), mWindow({nullptr})
     {
         SDL_Renderer *renderer;
         SDL_Window *window;

@@ -30,7 +30,7 @@ namespace Mochi
 
     void DebugLayer::InitLayer()
     {
-        }
+    }
 
     bool DebugLayer::Update(const float &dt)
     {
@@ -41,7 +41,7 @@ namespace Mochi
     {
     }
 
-    void DebugLayer::GUI() const
+    void DebugLayer::GUI()
     {
         // Dev build message
         const Graphics::GUITextOptions devBuildTextOptions{

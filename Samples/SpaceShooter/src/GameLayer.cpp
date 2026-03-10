@@ -232,7 +232,7 @@ namespace Mochi::Shooter
         engine.AddRenderCommands(mBackground->GetRenderData());
     }
 
-    void GameLayer::GUI() const
+    void GameLayer::GUI()
     {
         if (mLevelCompleted)
         {
