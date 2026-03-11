@@ -18,6 +18,7 @@ namespace Mochi::Time
         float GetRemainingTime() const;
         bool IsDone() const;
         Timer(const float &time);
+        Timer();
         void Tick(const float &dt);
     };
 }

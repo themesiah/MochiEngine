@@ -3,10 +3,19 @@
 
 #include "Layer.h"
 
+#include <memory>
+
+#include "Graphics/AbstractTextureFactory.h"
+#include "Graphics/IAnimationFactory.h"
+
 namespace Mochi::Platformer
 {
     class GameLayer : public Layer
     {
+    private:
+        std::unique_ptr<Graphics::AbstractTextureFactory> mTextureFactory;
+        std::unique_ptr<Graphics::IAnimationFactory> mAnimationFactory;
+
     public:
         GameLayer();
         virtual ~GameLayer();

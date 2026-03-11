@@ -3,7 +3,7 @@
 - [x] Make test building optional and prepare tests for calling "ctest" manually
 - [x] Document and comment
      - [x] Architecture section diagram / table of contents
-- [ ] SDL Mixer
+- [x] SDL Mixer
 - [ ] EnTT
 - [ ] Platformer sample
 - [ ] Puzzle sample

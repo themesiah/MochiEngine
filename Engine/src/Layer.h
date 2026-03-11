@@ -47,6 +47,7 @@ namespace Mochi
         Input::IActionManager *mActionManager;
         Audio::IAudioManager *mAudioManager;
         Graphics::IRenderer *mRenderer;
+        ECS::ECSWorld *mECSWorld;
 #if DEBUG
         Debug::IGizmos *mGizmos;
 #endif

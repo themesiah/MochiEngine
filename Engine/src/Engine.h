@@ -46,6 +46,10 @@ namespace Mochi
     {
         class ScriptingManager;
     }
+    namespace ECS
+    {
+        class ECSWorld;
+    }
     namespace Debug
     {
         class IGizmos;
@@ -127,6 +131,7 @@ namespace Mochi
         std::unique_ptr<Graphics::Camera> mCamera;
         std::unique_ptr<Graphics::AbstractGUI> mGUI;
         std::unique_ptr<Scripting::ScriptingManager> mScripting;
+        std::unique_ptr<ECS::ECSWorld> mECSWorld;
         std::unique_ptr<Debug::IGizmos> mGizmos;
         std::unique_ptr<Debug::FrameProfiler> mProfiler;
 
@@ -198,6 +203,7 @@ namespace Mochi
         Graphics::AbstractGUI *GetGUI() const { return mGUI.get(); }
         Event::EventBus *GetEventBus() const { return mEventBus.get(); }
         Scripting::ScriptingManager *GetScriptingManager() const { return mScripting.get(); }
+        ECS::ECSWorld *GetECSWorld() const { return mECSWorld.get(); }
         Debug::IGizmos *GetGizmos() const { return mGizmos.get(); }
 
         void SwapAudioManager(std::unique_ptr<Audio::IAudioManager> &&);

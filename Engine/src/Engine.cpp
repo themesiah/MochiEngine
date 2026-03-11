@@ -45,6 +45,8 @@
 #include "Layer.h"
 #include "Scripting/ScriptingLayer.h"
 
+#include "ECS/ECSWorld.h"
+
 #ifdef DEBUG
 #include "Debug/DebugLayer.h"
 #endif
@@ -145,6 +147,9 @@ namespace Mochi
 
             mEventDispatcher = std::make_unique<Event::SDLSystemEventDispatcher>(mEventBus.get());
             LOG_OK("Event dispatcher Initialized");
+
+            mECSWorld = std::make_unique<Mochi::ECS::ECSWorld>();
+            LOG_OK("ECS World initialized");
 
             mProfiler = std::make_unique<Mochi::Debug::FrameProfiler>();
             LOG_OK("Profiler initialized");
@@ -283,6 +288,11 @@ namespace Mochi
         mProfiler->BeginSection("GUIUpdate");
         mGUI->Update(dt);
         mProfiler->EndSection("GUIUpdate");
+
+        // ECS
+        mProfiler->BeginSection("ECS");
+        mECSWorld->Update(dt);
+        mProfiler->EndSection("ECS");
 
         int layerIndex = 0;
         for (const std::unique_ptr<Layer> &layer : mLayers)

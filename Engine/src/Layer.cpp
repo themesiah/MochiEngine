@@ -15,6 +15,7 @@ namespace Mochi
         mActionManager = e.GetActionManager();
         mAudioManager = e.GetAudio();
         mRenderer = e.GetRenderer();
+        mECSWorld = e.GetECSWorld();
 #if DEBUG
         mGizmos = e.GetGizmos();
 #endif

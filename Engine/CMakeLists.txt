@@ -15,6 +15,8 @@ file(GLOB Engine_src CONFIGURE_DEPENDS
         "src/Physics/*.cpp"
         "src/Physics/*.hpp"
         "src/Scripting/*.cpp"
+        "src/ECS/*.cpp"
+        "src/ECS/Systems/*.cpp"
         "src/*.hpp"
         "src/*.cpp")
 

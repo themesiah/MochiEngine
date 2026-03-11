@@ -6,6 +6,10 @@
 
 namespace Mochi::Time
 {
+    Timer::Timer() : mTargetTime(0.0f), mTotalTime(0)
+    {
+    }
+
     Timer::Timer(const float &time) : mTargetTime(time), mTotalTime(0)
     {
         if (time < 0)
