@@ -4,9 +4,11 @@
 #include "Layer.h"
 
 #include <memory>
+#include <vector>
 
 #include "Graphics/AbstractTextureFactory.h"
 #include "Graphics/IAnimationFactory.h"
+#include "ECS/ECSWorld.h"
 
 namespace Mochi::Platformer
 {
@@ -15,6 +17,8 @@ namespace Mochi::Platformer
     private:
         std::unique_ptr<Graphics::AbstractTextureFactory> mTextureFactory;
         std::unique_ptr<Graphics::IAnimationFactory> mAnimationFactory;
+        ECS::EntityType mPlayerEntity;
+        std::vector<ECS::EntityType> mBlocksEntities;
 
     public:
         GameLayer();

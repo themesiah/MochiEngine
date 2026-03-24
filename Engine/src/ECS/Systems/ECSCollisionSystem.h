@@ -3,6 +3,7 @@
 
 #include "../IECSSystem.h"
 #include "../Components/ECSCollider.h"
+#include "../Components/ECSTransform.h"
 
 namespace Mochi::ECS
 {

@@ -8,11 +8,16 @@
 #include "Packer/PackCatalog.h"
 #include "Audio/IAudioManager.h"
 #include "Input/IActionManager.h"
+#include "Utils/Conversion.hpp"
 
 #include "ECS/ECSWorld.h"
 #include "ECS/Components/ECSSprite.h"
 #include "ECS/Components/ECSTransform.h"
 #include "ECS/Components/ECSAnimation.h"
+#include "ECS/Components/ECSCollider.h"
+
+#include "Systems/PlayerMovementSystem.h"
+#include "Components/PlayerComponent.h"
 
 namespace Mochi::Platformer
 {
@@ -30,6 +35,29 @@ namespace Mochi::Platformer
 
     void GameLayer::InitLayer()
     {
+        mECSWorld->RegisterSystem<PlayerMovementSystem>();
+
+        mPlayerEntity = mECSWorld->CreateEntity();
+        auto playerTex = mTextureFactory->GetTexture("Player.png");
+        mECSWorld->Set<ECS::TransformComponent>(mPlayerEntity, ECS::TransformComponent{Vector2f{0.0f, 0.0f}, 1.0f});
+        mECSWorld->Set<PlayerComponent>(mPlayerEntity, PlayerComponent{5.0f});
+        mECSWorld->Set<ECS::SpriteComponent>(mPlayerEntity, ECS::SpriteComponent{playerTex.get(), 0});
+        mECSWorld->Set<ECS::ColliderComponent>(mPlayerEntity, ECS::ColliderComponent(
+                                                                  Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(Vector2f(7.0f, 15.0f))},
+                                                                  1,
+                                                                  2,
+                                                                  false));
+
+        auto blockEntity = mECSWorld->CreateEntity();
+        auto blockTex = mTextureFactory->GetTexture("Block.png");
+        mBlocksEntities.push_back(blockEntity);
+        mECSWorld->Set<ECS::TransformComponent>(blockEntity, ECS::TransformComponent{Vector2f{-2.0f, 0.0f}, 1.0f});
+        mECSWorld->Set<ECS::SpriteComponent>(blockEntity, ECS::SpriteComponent{blockTex.get(), 0});
+        mECSWorld->Set<ECS::ColliderComponent>(blockEntity, ECS::ColliderComponent(
+                                                                Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(blockTex->GetSize() / 2.0f)},
+                                                                2,
+                                                                0,
+                                                                false));
     }
 
     bool GameLayer::Update(const float &dt)

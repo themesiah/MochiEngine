@@ -1,9 +1,13 @@
 #include "ECSCollisionSystem.h"
+
+#include <variant>
+
 #include "../Components/ECSTransform.h"
 #include "../Components/ECSCollider.h"
 #include "../Events/ECSCollisionEvent.h"
 
 #include "../../Physics/Shapes.h"
+#include "../../Utils/Logger.h"
 
 /*
 
@@ -40,10 +44,10 @@ namespace Mochi::ECS
     {
         auto view = mRegistry.view<const TransformComponent, ColliderComponent>();
 
-        view.each([view](entt::entity entity, const TransformComponent &t, ColliderComponent &c)
+        view.each([view, this](entt::entity entity, const TransformComponent &t, ColliderComponent &c)
                   { view.each([&](entt::entity entity2, const TransformComponent &t2, ColliderComponent &c2)
                               {
-                if ((c.CollisionLayerMask & c.Layer) == c.Layer && CheckCollision(c, t, c2, t2))
+                if (entity != entity2 && (c.CollisionLayerMask & c2.Layer) == c2.Layer && CheckCollision(c, t, c2, t2))
                 {
                     mDispatcher.enqueue<CollisionEvent>(entity, entity2, c2.Trigger);
                 } }); });
@@ -56,44 +60,18 @@ namespace Mochi::ECS
 
     bool CollisionSystem::CheckCollision(ColliderComponent &c1, const TransformComponent &t1, ColliderComponent &c2, const TransformComponent &t2)
     {
-        switch (c1.ShapeType)
-        {
-        case ColliderShapeType::Point:
-            c1.Point.Position = t1.Position;
-            break;
-        case ColliderShapeType::Line:
-            c1.Line.End *= t1.Scale;
-            c1.Line.Position = t1.Position;
-            c1.Line.End += t1.Position;
-            break;
-        case ColliderShapeType::Circle:
-            c1.Circle.Position = t1.Position;
-            c1.Circle.Radius *= t1.Scale;
-            break;
-        case ColliderShapeType::Rectangle:
-            c1.Rectangle.Position = t1.Position;
-            c1.Rectangle.Extents *= t1.Scale;
-            break;
-        }
-        switch (c2.ShapeType)
-        {
-        case ColliderShapeType::Point:
-            c2.Point.Position = t2.Position;
-            break;
-        case ColliderShapeType::Line:
-            c2.Line.End *= t2.Scale;
-            c2.Line.Position = t2.Position;
-            c2.Line.End += t2.Position;
-            break;
-        case ColliderShapeType::Circle:
-            c2.Circle.Position = t2.Position;
-            c2.Circle.Radius *= t2.Scale;
-            break;
-        case ColliderShapeType::Rectangle:
-            c2.Rectangle.Position = t2.Position;
-            c2.Rectangle.Extents *= t2.Scale;
-            break;
-        }
-        return CollisionFnMatrix[(int)c1.ShapeType][(int)c2.ShapeType](c1, c2);
+        ShapeVariant a2 = c1.Shape;
+        ShapeVariant b2 = c2.Shape;
+        bool collision = false;
+        std::visit(
+            [&](auto &shapeA, auto &shapeB)
+            {
+                shapeA.Position += t1.Position;
+                shapeB.Position += t2.Position;
+                collision = shapeA.Collides(shapeB);
+            },
+            a2, b2);
+
+        return collision;
     }
 }

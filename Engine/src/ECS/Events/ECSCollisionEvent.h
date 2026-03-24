@@ -1,14 +1,14 @@
 #ifndef HDEF_ECSCOLLISIONEVENT
 #define HDEF_ECSCOLLISIONEVENT
 
-#include <entt/entt.hpp>
+#include "../ECSWorld.h"
 
 namespace Mochi::ECS
 {
     struct CollisionEvent
     {
-        entt::entity Entity;
-        entt::entity Other;
+        EntityType Entity;
+        EntityType Other;
         bool Trigger;
     };
 }

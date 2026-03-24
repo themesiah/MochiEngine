@@ -5,6 +5,7 @@
 #include "../Utils/Logger.h"
 #include "Systems/ECSRenderSystem.h"
 #include "Systems/ECSAnimationSystem.h"
+#include "Systems/ECSCollisionSystem.h"
 
 namespace Mochi::ECS
 {
@@ -12,6 +13,7 @@ namespace Mochi::ECS
     {
         RegisterSystem<RenderSystem>();
         RegisterSystem<AnimationSystem>();
+        RegisterSystem<CollisionSystem>();
     }
 
     ECSWorld::~ECSWorld()
@@ -29,5 +31,6 @@ namespace Mochi::ECS
         {
             s->Update(dt);
         }
+        mDispatcher.update();
     }
 }

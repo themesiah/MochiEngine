@@ -9,12 +9,6 @@
 
 namespace Mochi::ECS
 {
-    struct TestComponent
-    {
-        int Data;
-        int OtherData;
-    };
-
     using EntityType = entt::registry::entity_type;
     class ECSWorld
     {
