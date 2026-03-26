@@ -1,11 +1,14 @@
 #include "ECSWorld.h"
 
 #include <algorithm>
+#include <variant>
+#include <vector>
 
 #include "../Utils/Logger.h"
 #include "Systems/ECSRenderSystem.h"
 #include "Systems/ECSAnimationSystem.h"
 #include "Systems/ECSCollisionSystem.h"
+#include "Systems/ECSCharacterControllerSystem.h"
 
 namespace Mochi::ECS
 {
@@ -14,6 +17,7 @@ namespace Mochi::ECS
         RegisterSystem<RenderSystem>();
         RegisterSystem<AnimationSystem>();
         RegisterSystem<CollisionSystem>();
+        RegisterSystem<CharacterControllerSystem>(*this);
     }
 
     ECSWorld::~ECSWorld()
@@ -32,5 +36,34 @@ namespace Mochi::ECS
             s->Update(dt);
         }
         mDispatcher.update();
+    }
+
+    std::vector<RaycastHit> ECSWorld::Raycast(Vector2f startingPosition, Vector2f direction, float distance, uint32_t layerMask, bool hitTriggers)
+    {
+        return Raycast(startingPosition, startingPosition + direction.Normalized() * distance, layerMask, hitTriggers);
+    }
+
+    std::vector<RaycastHit> ECSWorld::Raycast(Vector2f startingPosition, Vector2f endPosition, uint32_t layerMask, bool hitTriggers)
+    {
+        Physics::Line l{startingPosition, endPosition};
+        std::vector<RaycastHit> hits;
+
+        auto view = mRegistry.view<const ColliderComponent, const TransformComponent>();
+
+        view.each([&](entt::entity entity, const ColliderComponent &c, const TransformComponent &t)
+                  {
+            if ((layerMask & c.Layer) == c.Layer)
+            {
+                auto c2 = c;
+                std::visit([&](auto &shape)
+                {
+                    shape.Position = t.Position;
+                    if (l.Collides(shape))
+                    {
+                        hits.push_back(RaycastHit{entity, c});
+                    } }, c2.Shape);
+            } });
+
+        return hits;
     }
 }

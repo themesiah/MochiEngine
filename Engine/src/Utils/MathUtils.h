@@ -24,6 +24,30 @@ namespace Mochi::Math
         return std::fabs(a - b) < F_EPSILON;
     }
 
+    /// @brief Returns 1, 0 or -1 depending on the sign of the provided number.
+    /// @param a The number to check
+    /// @return 1, 0 or -1
+    inline float Sign(const float &a)
+    {
+        if (a < 0.0f)
+            return -1.0f;
+        else if (a > 0.0f)
+            return 1.0f;
+        else
+            return 0.0f;
+    }
+
+    /// @brief Returns the absolute value of a float.
+    /// @param a The float
+    /// @return The absolute value
+    inline float Abs(const float &a)
+    {
+        if (a < 0.0f)
+            return -a;
+        else
+            return a;
+    }
+
     /// @brief Returns the maximum number between two numbers.
     /// @param a First number.
     /// @param b Second number.

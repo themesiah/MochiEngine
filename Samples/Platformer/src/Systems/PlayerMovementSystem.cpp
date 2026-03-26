@@ -6,6 +6,7 @@
 #include "Input/IActionManager.h"
 #include "Utils/Logger.h"
 #include "ECS/Components/ECSTransform.h"
+#include "ECS/Components/CharacterController.hpp"
 #include "ECS/Events/ECSCollisionEvent.h"
 
 #include "../Components/PlayerComponent.h"
@@ -20,16 +21,24 @@ namespace Mochi::Platformer
 
     PlayerMovementSystem::~PlayerMovementSystem()
     {
+        mDispatcher.sink<ECS::CollisionEvent>().disconnect<&PlayerMovementSystem::OnCollision>(this);
     }
 
     void PlayerMovementSystem::Update(const float &dt)
     {
         auto &e = Engine::Get();
         Input::IActionManager *actionManager = e.GetActionManager();
-        auto view = mRegistry.view<ECS::TransformComponent, const PlayerComponent>();
-        Vector2f mov = actionManager->CompoundValue("Horizontal", "Vertical");
-        view.each([mov, dt](entt::entity entity, ECS::TransformComponent &t, const PlayerComponent &c)
-                  { t.Position = t.Position + mov * c.Speed * dt; });
+        auto view = mRegistry.view<ECS::TransformComponent, const PlayerComponent, ECS::CharacterController>();
+        float horizontal = actionManager->Value("Horizontal");
+        bool jump = actionManager->Performed("Jump");
+        view.each([horizontal, dt, jump](entt::entity entity, ECS::TransformComponent &t, const PlayerComponent &c, ECS::CharacterController &cc)
+                  {
+                    //t.Position = t.Position + mov * c.Speed * dt;
+                    cc.Move(Vector2f::Right * horizontal);
+                    if (jump)
+                    {
+                        cc.Jump(20.0f);
+                    } });
     }
 
     int PlayerMovementSystem::GetPriority() const
@@ -39,6 +48,6 @@ namespace Mochi::Platformer
 
     void PlayerMovementSystem::OnCollision(const ECS::CollisionEvent &e)
     {
-        LOG_INFO("Two entities collided!");
+        // LOG_INFO("Two entities collided!");
     }
 }

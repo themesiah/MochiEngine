@@ -13,6 +13,14 @@ namespace Mochi::Physics
     struct Line;
     struct Circle;
     struct Rectangle;
+
+    /// @brief POD shape to define the bounding box of another shape
+    struct AABB
+    {
+        Vector2f Min;
+        Vector2f Max;
+    };
+
     /**
      * @brief Abstract class representing a position in space where a physics shape is.
      * This is meant to be extended and used for checking for collisions between different types of shapes.
@@ -31,6 +39,7 @@ namespace Mochi::Physics
         virtual bool Collides(const Line &l) const = 0;
         virtual bool Collides(const Circle &c) const = 0;
         virtual bool Collides(const Rectangle &r) const = 0;
+        virtual AABB GetAABB() const = 0;
         Vector2f Position;
     };
 
@@ -49,6 +58,7 @@ namespace Mochi::Physics
         virtual bool Collides(const Line &l) const override;
         virtual bool Collides(const Circle &c) const override;
         virtual bool Collides(const Rectangle &r) const override;
+        virtual AABB GetAABB() const override;
     };
 
     /**
@@ -68,6 +78,7 @@ namespace Mochi::Physics
         virtual bool Collides(const Line &l) const override;
         virtual bool Collides(const Circle &c) const override;
         virtual bool Collides(const Rectangle &r) const override;
+        virtual AABB GetAABB() const override;
         Vector2f End;
     };
 
@@ -91,6 +102,7 @@ namespace Mochi::Physics
         virtual bool Collides(const Line &l) const override;
         virtual bool Collides(const Circle &c) const override;
         virtual bool Collides(const Rectangle &r) const override;
+        virtual AABB GetAABB() const override;
         float Radius;
     };
 
@@ -112,6 +124,7 @@ namespace Mochi::Physics
         virtual bool Collides(const Line &l) const override;
         virtual bool Collides(const Circle &c) const override;
         virtual bool Collides(const Rectangle &r) const override;
+        virtual AABB GetAABB() const override;
         Vector2f Extents;
     };
 }

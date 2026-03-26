@@ -6,10 +6,17 @@
 #include <vector>
 
 #include "IECSSystem.h"
+#include "Components/ECSCollider.h"
 
 namespace Mochi::ECS
 {
     using EntityType = entt::registry::entity_type;
+    struct RaycastHit
+    {
+        EntityType Entity;
+        ColliderComponent Collider;
+    };
+
     class ECSWorld
     {
     private:
@@ -49,6 +56,9 @@ namespace Mochi::ECS
         }
 
         void Update(const float &dt);
+
+        std::vector<RaycastHit> Raycast(Vector2f startingPosition, Vector2f direction, float distance, uint32_t layerMask, bool hitTriggers);
+        std::vector<RaycastHit> Raycast(Vector2f startingPosition, Vector2f endPosition, uint32_t layerMask, bool hitTriggers);
     };
 }
 

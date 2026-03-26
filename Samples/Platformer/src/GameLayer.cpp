@@ -15,6 +15,7 @@
 #include "ECS/Components/ECSTransform.h"
 #include "ECS/Components/ECSAnimation.h"
 #include "ECS/Components/ECSCollider.h"
+#include "ECS/Components/CharacterController.hpp"
 
 #include "Systems/PlayerMovementSystem.h"
 #include "Components/PlayerComponent.h"
@@ -41,23 +42,40 @@ namespace Mochi::Platformer
         auto playerTex = mTextureFactory->GetTexture("Player.png");
         mECSWorld->Set<ECS::TransformComponent>(mPlayerEntity, ECS::TransformComponent{Vector2f{0.0f, 0.0f}, 1.0f});
         mECSWorld->Set<PlayerComponent>(mPlayerEntity, PlayerComponent{5.0f});
-        mECSWorld->Set<ECS::SpriteComponent>(mPlayerEntity, ECS::SpriteComponent{playerTex.get(), 0});
+        mECSWorld->Set<ECS::SpriteComponent>(mPlayerEntity, ECS::SpriteComponent{playerTex.get(), 1});
         mECSWorld->Set<ECS::ColliderComponent>(mPlayerEntity, ECS::ColliderComponent(
                                                                   Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(Vector2f(7.0f, 15.0f))},
                                                                   1,
                                                                   2,
                                                                   false));
+        mECSWorld->Set<ECS::CharacterController>(mPlayerEntity, ECS::CharacterController{5.0f, 100.0f, 20.0f, -10.0f, 0.1f, true});
 
-        auto blockEntity = mECSWorld->CreateEntity();
         auto blockTex = mTextureFactory->GetTexture("Block.png");
-        mBlocksEntities.push_back(blockEntity);
-        mECSWorld->Set<ECS::TransformComponent>(blockEntity, ECS::TransformComponent{Vector2f{-2.0f, 0.0f}, 1.0f});
-        mECSWorld->Set<ECS::SpriteComponent>(blockEntity, ECS::SpriteComponent{blockTex.get(), 0});
-        mECSWorld->Set<ECS::ColliderComponent>(blockEntity, ECS::ColliderComponent(
-                                                                Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(blockTex->GetSize() / 2.0f)},
-                                                                2,
-                                                                0,
-                                                                false));
+        auto blockSize = PixelsToMeters(blockTex->GetSize());
+        std::vector<Vector2f> blockPositions = {
+            {-2.0f, -1.0f},
+            {0.0f, -2.0f},
+            {blockSize.x * -1, -2.0f},
+            {blockSize.x * 1, -2.0f},
+            {blockSize.x * -2, -2.0f},
+            {blockSize.x * 2, -2.0f},
+            {blockSize.x * -3, -2.0f},
+            {blockSize.x * 3, -2.0f},
+            {blockSize.x * -4, -2.0f},
+            {blockSize.x * 4, -2.0f},
+        };
+        for (size_t i = 0; i < blockPositions.size(); ++i)
+        {
+            auto blockEntity = mECSWorld->CreateEntity();
+            mBlocksEntities.push_back(blockEntity);
+            mECSWorld->Set<ECS::TransformComponent>(blockEntity, ECS::TransformComponent{blockPositions[i], 1.0f});
+            mECSWorld->Set<ECS::SpriteComponent>(blockEntity, ECS::SpriteComponent{blockTex.get(), 0});
+            mECSWorld->Set<ECS::ColliderComponent>(blockEntity, ECS::ColliderComponent(
+                                                                    Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(blockTex->GetSize() / 2.0f)},
+                                                                    2,
+                                                                    0,
+                                                                    false));
+        }
     }
 
     bool GameLayer::Update(const float &dt)
