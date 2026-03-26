@@ -13,45 +13,67 @@ namespace Mochi::ECS
 {
     const float PENETRATION_SEPARATION = 0.05f;
     const float GROUNDED_CHECK_DISTANCE = 0.1f;
+    const float MAX_COYOTE_TIME = 0.2f;
 
+    /// @brief This class exemplifies how a CharacterController could be done for a simple 2D platformer using **MochiEngine**.
+    /// This might not be enough for an actual production environment, but has the minimal needs to understand the pattern behind character controllers
+    /// and prove that the engine is prepared to run them.
     class CharacterController
     {
     private:
         Vector2f mVelocity;
         Vector2f mCurrentDirection;
         bool mGrounded;
+        bool mJumped;
+        float mCoyoteTime;
 
     public:
         float MaxSpeed;
         float Acceleration;
         float DecelerationRate;
         float Gravity;
+        float MaxFallSpeed;
         float MaxPenetration;
         bool AirControl;
 
-        CharacterController(float maxSpeed, float acceleration, float decelerationRate, float gravity, float maxPenetration, bool airControl)
-            : MaxSpeed(maxSpeed), Acceleration(acceleration), DecelerationRate(decelerationRate), Gravity(gravity), MaxPenetration(maxPenetration),
-              AirControl(airControl)
+        CharacterController(float maxSpeed, float acceleration, float decelerationRate, float gravity, float maxFallSpeed, float maxPenetration, bool airControl)
+            : MaxSpeed(maxSpeed), Acceleration(acceleration), DecelerationRate(decelerationRate), Gravity(gravity), MaxFallSpeed(maxFallSpeed),
+              MaxPenetration(maxPenetration), AirControl(airControl)
         {
             mVelocity = Vector2f::Zero;
             mCurrentDirection = Vector2f::Zero;
             mGrounded = false;
+            mJumped = false;
+            mCoyoteTime = 0.0f;
         }
 
+        /// @brief The movement to apply this frame to the entity. This can be called multiple times, but only last one will be considered. The
+        /// movement will be normalized, so any vector2f is fine here.
+        /// @param direction The direction of the movement. In most cases, a movement with only the X axis would be enough, unless there are aerial entities.
         inline void Move(const Vector2f &direction)
         {
             mCurrentDirection = direction.Normalized();
         }
 
+        /// @brief Makes the character controller jump with an instant force, that will decrease over time thanks to the gravity, if any.
+        /// A character can't jump if it has already jumped. Also can't jump if too much time has passed since being grounded (coyote time).
+        /// @param force The instant Y force to jump with.
         inline void Jump(float force)
         {
-            if (!mGrounded)
+            if (mJumped || mCoyoteTime > MAX_COYOTE_TIME)
                 return;
             mVelocity.y = force;
             mGrounded = false;
+            mJumped = true;
         }
 
-        inline void Update(const float &dt, const EntityType &entity, ECSWorld &world, entt::registry &registry)
+        /// @brief Update the entity with the last velocity, its grounded status and whatever movement has been applied this frame.
+        /// This method has to be called ONCE per frame and only once. It modifies the TransformComponent of the entity with the new
+        /// values. This is already called on the default CharacterControllerSystem.
+        /// @param dt The delta time.
+        /// @param entity The entity with the character controller.
+        /// @param registry The ecs registry.
+        inline void Update(const float &dt, const EntityType &entity, entt::registry &registry)
         {
             auto t = registry.try_get<TransformComponent>(entity);
             if (!t)
@@ -63,10 +85,21 @@ namespace Mochi::ECS
             // Decelerate only if we are not moving
             if (Math::Approx(mCurrentDirection.Distance(), 0.0f))
             {
-                mVelocity *= (1.0f - (DecelerationRate * dt));
-                if (mVelocity.Distance() < 0.01f)
+                if (mGrounded)
                 {
-                    mVelocity = Vector2f::Zero;
+                    mVelocity *= (1.0f - (DecelerationRate * dt));
+                    if (mVelocity.Distance() < 0.01f)
+                    {
+                        mVelocity = Vector2f::Zero;
+                    }
+                }
+                else
+                {
+                    mVelocity.x *= (1.0f - (DecelerationRate * dt));
+                    if (mVelocity.x < 0.01f)
+                    {
+                        mVelocity.x = 0.0f;
+                    }
                 }
             }
 
@@ -81,29 +114,33 @@ namespace Mochi::ECS
             // Gravity overrides deceleration
             if (!mGrounded)
             {
-                mVelocity.y = Math::Min(lastYSpeed + Gravity * dt, MaxSpeed);
+                mVelocity.y = Math::Min(lastYSpeed + Gravity * dt, MaxFallSpeed);
             }
 
+            // Compute x and y axis separately to improve collision behaviour.
             Vector2f delta = mVelocity * dt;
-
             t->Position.x += delta.x;
-            ComputeHorizontalCollisions(entity, t, registry);
+            ComputeCollisions(entity, t, registry, Vector2fAxis::X);
             t->Position.y += delta.y;
-            ComputeVerticalCollisions(entity, t, registry);
+            ComputeCollisions(entity, t, registry, Vector2fAxis::Y);
 
-            ComputeGrounded(entity, t, registry);
+            // After all movement, check if we are grounded for the next frame.
+            ComputeGrounded(entity, t, registry, dt);
 
             // Reset current direction to avoid continuous movement if Move is not called on a frame
             mCurrentDirection = Vector2f::Zero;
         }
 
         /// @brief Modifies velocity and transform->position if collides with anything that is moving towards.
-        /// @param entity
-        /// @param tc
-        /// @param registry
-        inline void ComputeHorizontalCollisions(const EntityType &entity, TransformComponent *tc, entt::registry &registry)
+        /// Velocity is reduced to 0 in the selected axis if it is colliding with that axis in the movement direction.
+        /// Position is modified so it separates from the entity its colliding using a bounding box for each collider.
+        /// @param entity The entity with the current character controller
+        /// @param tc The valid transform component of the entity
+        /// @param registry The world registry
+        /// @param axis The axis we want to check (x or y)
+        inline void ComputeCollisions(const EntityType &entity, TransformComponent *tc, entt::registry &registry, Vector2fAxis axis)
         {
-            if (Math::Approx(mVelocity.x, 0.0f))
+            if (Math::Approx(axis == Vector2fAxis::X ? mVelocity.x : mVelocity.y, 0.0f))
                 return;
             auto view = registry.view<const TransformComponent, const ColliderComponent>();
 
@@ -116,8 +153,9 @@ namespace Mochi::ECS
             Physics::AABB A{tc->Position, tc->Position};
             std::visit([&](auto &shape)
                        {
-                        shape.Position = tc->Position;
-                        A = shape.GetAABB(); }, cc->Shape);
+                        auto shapeCopy = shape;
+                        shapeCopy.Position = tc->Position;
+                        A = shapeCopy.GetAABB(); }, cc->Shape);
 
             view.each(
                 [&](const auto &entity2, const auto &tc2, const auto &cc2)
@@ -126,17 +164,17 @@ namespace Mochi::ECS
                     {
                         std::visit([&](auto &shape2)
                                    {
-                        auto shape22 = shape2;
-                        shape22.Position = tc2.Position;
-                        Physics::AABB B = shape22.GetAABB();
+                        auto shape2copy = shape2;
+                        shape2copy.Position = tc2.Position;
+                        Physics::AABB B = shape2copy.GetAABB();
                         if (A.Max.x > B.Min.x && A.Min.x < B.Max.x
                             && A.Max.y > B.Min.y && A.Min.y < B.Max.y)
                         {
-                            if (mVelocity.x > 0.0f)
+                            if ((axis == Vector2fAxis::X ? mVelocity.x : mVelocity.y) > 0.0f)
                             {
-                                penetration = A.Max.x - B.Min.x;
+                                penetration = axis == Vector2fAxis::X ? (A.Max.x - B.Min.x) : (A.Max.y - B.Min.y);
                             } else {
-                                penetration = A.Min.x - B.Max.x;
+                                penetration = axis == Vector2fAxis::X ? (A.Min.x - B.Max.x) : (A.Min.y - B.Max.y);
                             }
                             collided = true;
                         } }, cc2.Shape);
@@ -145,66 +183,26 @@ namespace Mochi::ECS
 
             if (collided)
             {
-                mVelocity.x = 0.0f;
-                tc->Position.x -= Math::Sign(penetration) * Math::Min(Math::Abs(penetration), MaxPenetration) + Math::Sign(penetration) * PENETRATION_SEPARATION;
-            }
-        }
-
-        /// @brief Modifies velocity and transform->position if collides with anything that is moving towards.
-        /// @param entity
-        /// @param tc
-        /// @param registry
-        inline void ComputeVerticalCollisions(const EntityType &entity, TransformComponent *tc, entt::registry &registry)
-        {
-            if (Math::Approx(mVelocity.y, 0.0f))
-                return;
-            auto view = registry.view<const TransformComponent, const ColliderComponent>();
-
-            auto cc = registry.try_get<ColliderComponent>(entity);
-            if (!cc)
-                throw EngineError("An entity with a CharacterController needs a TransformComponent");
-            float penetration = 0.0f;
-            bool collided = false;
-
-            Physics::AABB A{tc->Position, tc->Position};
-            std::visit([&](auto &shape)
-                       {
-                        shape.Position = tc->Position;
-                        A = shape.GetAABB(); }, cc->Shape);
-
-            view.each(
-                [&](const auto &entity2, const auto &tc2, const auto &cc2)
+                if (axis == Vector2fAxis::X)
                 {
-                    if (entity != entity2 && (cc->CollisionLayerMask & cc2.Layer) == cc2.Layer && !collided)
-                    {
-                        std::visit([&](auto &shape2)
-                                   {
-                        auto shape22 = shape2;
-                        shape22.Position = tc2.Position;
-                        Physics::AABB B = shape22.GetAABB();
-                        if (A.Max.x > B.Min.x && A.Min.x < B.Max.x
-                            && A.Max.y > B.Min.y && A.Min.y < B.Max.y)
-                        {
-                            if (mVelocity.y > 0.0f)
-                            {
-                                penetration = A.Max.y - B.Min.y;
-                            } else {
-                                penetration = A.Min.y - B.Max.y;
-                                //mGrounded = true;
-                            }
-                            collided = true;
-                        } }, cc2.Shape);
-                    }
-                });
-
-            if (collided)
-            {
-                mVelocity.y = 0.0f;
-                tc->Position.y -= Math::Sign(penetration) * Math::Min(Math::Abs(penetration), MaxPenetration) + Math::Sign(penetration) * PENETRATION_SEPARATION;
+                    mVelocity.x = 0.0f;
+                    tc->Position.x -= Math::Sign(penetration) * Math::Min(Math::Abs(penetration), MaxPenetration) + Math::Sign(penetration) * PENETRATION_SEPARATION;
+                }
+                else
+                {
+                    mVelocity.y = 0.0f;
+                    tc->Position.y -= Math::Sign(penetration) * Math::Min(Math::Abs(penetration), MaxPenetration) + Math::Sign(penetration) * PENETRATION_SEPARATION;
+                }
             }
         }
 
-        inline void ComputeGrounded(const EntityType &entity, TransformComponent *tc, entt::registry &registry)
+        /// @brief Modifies the mGrounded member variable to the value of this frame.
+        /// An entity is grounded if it has floor underneath, it is not otherwise.
+        /// To check that, we lower the bottom part of the bounding box and check for collisions again. A collision means that we are grounded.
+        /// @param entity The entity with the character controller.
+        /// @param tc The valid transform component of the entity.
+        /// @param registry The world registry.
+        inline void ComputeGrounded(const EntityType &entity, TransformComponent *tc, entt::registry &registry, const float &dt)
         {
             if (mVelocity.y > 0.0f)
                 return;
@@ -223,6 +221,7 @@ namespace Mochi::ECS
                         A.Min.y -= GROUNDED_CHECK_DISTANCE; }, cc->Shape);
 
             mGrounded = false;
+            mCoyoteTime += dt;
             view.each(
                 [&](const auto &entity2, const auto &tc2, const auto &cc2)
                 {
@@ -237,6 +236,8 @@ namespace Mochi::ECS
                             && A.Max.y > B.Min.y && A.Min.y < B.Max.y)
                         {
                             mGrounded = true;
+                            mCoyoteTime = 0.0f;
+                            mJumped = false;
                         } }, cc2.Shape);
                     }
                 });

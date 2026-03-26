@@ -10,10 +10,18 @@
 
 namespace Mochi
 {
+
     /**
      * @defgroup Types Custom utility types
      * @{
      */
+
+    /// @brief Axis identifier for Vector2f usage. In methods that could work for any axis, allows to identify which axis we are using.
+    enum Vector2fAxis
+    {
+        X,
+        Y
+    };
 
     /// @brief Float vector of two positions with an X and Y elements and conversion with SDL_FPoint for ease of use with SDL.
     /// It allows basic operations like sum, substraction, multiplication and division of vectors, and also multiplication and

@@ -33,11 +33,10 @@ namespace Mochi::Platformer
         bool jump = actionManager->Performed("Jump");
         view.each([horizontal, dt, jump](entt::entity entity, ECS::TransformComponent &t, const PlayerComponent &c, ECS::CharacterController &cc)
                   {
-                    //t.Position = t.Position + mov * c.Speed * dt;
                     cc.Move(Vector2f::Right * horizontal);
                     if (jump)
                     {
-                        cc.Jump(20.0f);
+                        cc.Jump(10.0f);
                     } });
     }
 

@@ -48,7 +48,7 @@ namespace Mochi::Platformer
                                                                   1,
                                                                   2,
                                                                   false));
-        mECSWorld->Set<ECS::CharacterController>(mPlayerEntity, ECS::CharacterController{5.0f, 100.0f, 20.0f, -10.0f, 0.1f, true});
+        mECSWorld->Set<ECS::CharacterController>(mPlayerEntity, ECS::CharacterController{5.0f, 100.0f, 20.0f, -20.0f, 20.0f, 0.1f, true});
 
         auto blockTex = mTextureFactory->GetTexture("Block.png");
         auto blockSize = PixelsToMeters(blockTex->GetSize());
