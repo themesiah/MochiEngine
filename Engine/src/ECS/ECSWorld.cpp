@@ -29,6 +29,11 @@ namespace Mochi::ECS
         return mRegistry.create();
     }
 
+    void ECSWorld::DestroyEntity(const EntityType &e)
+    {
+        mRegistry.destroy(e);
+    }
+
     void ECSWorld::Update(const float &dt)
     {
         for (auto &s : mSystems)

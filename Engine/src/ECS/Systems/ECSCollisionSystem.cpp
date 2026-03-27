@@ -49,7 +49,8 @@ namespace Mochi::ECS
                               {
                 if (entity != entity2 && (c.CollisionLayerMask & c2.Layer) == c2.Layer && CheckCollision(c, t, c2, t2))
                 {
-                    mDispatcher.enqueue<CollisionEvent>(entity, entity2, c2.Trigger, (t2.Position - t.Position).Normalized(), c2.Layer);
+                    mDispatcher.enqueue<CollisionEvent>(entity, entity2, c2.Trigger, (t.Position - t2.Position).Normalized(), c2.Layer);
+                    //mDispatcher.trigger(CollisionEvent{entity, entity2, c2.Trigger, (t.Position - t2.Position).Normalized(), c2.Layer});
                 } }); });
     }
 

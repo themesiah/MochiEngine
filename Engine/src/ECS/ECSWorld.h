@@ -48,11 +48,19 @@ namespace Mochi::ECS
                       });
         }
         EntityType CreateEntity();
+        void DestroyEntity(const EntityType &e);
 
         template <typename ComponentType, typename... Args>
         void Set(EntityType entity, Args &&...args)
         {
-            mRegistry.emplace<ComponentType>(entity, std::forward<Args>(args)...);
+            if constexpr (std::is_empty_v<ComponentType>)
+            {
+                mRegistry.emplace<ComponentType>(entity);
+            }
+            else
+            {
+                mRegistry.emplace<ComponentType>(entity, std::forward<Args>(args)...);
+            }
         }
 
         void Update(const float &dt);

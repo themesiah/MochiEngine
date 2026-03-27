@@ -22,6 +22,7 @@
 #include "Systems/LeftRightEnemySystem.h"
 #include "Components/PlayerComponent.h"
 #include "Components/LeftRightComponent.h"
+#include "Components/EnemyComponent.h"
 #include "Tilemap.h"
 #include "PlatformerLayers.h"
 
@@ -107,9 +108,9 @@ namespace Mochi::Platformer
         mECSWorld->Set<ECS::ColliderComponent>(mPlayerEntity, ECS::ColliderComponent(
                                                                   Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(Vector2f(7.0f, 15.0f))},
                                                                   PlatformerLayers::Player,
-                                                                  PlatformerLayers::Scenario + PlatformerLayers::Enemy,
+                                                                  PlatformerLayers::Enemy,
                                                                   false));
-        mECSWorld->Set<ECS::CharacterController>(mPlayerEntity, ECS::CharacterController{5.0f, 100.0f, 20.0f, -20.0f, 20.0f, 0.1f, true});
+        mECSWorld->Set<ECS::CharacterController>(mPlayerEntity, ECS::CharacterController{5.0f, 100.0f, 20.0f, -20.0f, 20.0f, 0.1f, true, PlatformerLayers::Scenario});
     }
 
     void GameLayer::InitScenario()
@@ -161,10 +162,11 @@ namespace Mochi::Platformer
             mECSWorld->Set<ECS::ColliderComponent>(enemyEntity, ECS::ColliderComponent(
                                                                     Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(Vector2f{24.0f, 24.0f} / 2.0f)},
                                                                     PlatformerLayers::Enemy,
-                                                                    PlatformerLayers::Player + PlatformerLayers::Scenario,
+                                                                    PlatformerLayers::Player,
                                                                     false));
-            mECSWorld->Set<ECS::CharacterController>(enemyEntity, ECS::CharacterController(2.0f, 100.0f, 20.0f, -20.0f, 20.0f, 0.1f, false));
+            mECSWorld->Set<ECS::CharacterController>(enemyEntity, ECS::CharacterController(2.0f, 100.0f, 20.0f, -20.0f, 20.0f, 0.1f, false, PlatformerLayers::Scenario));
             mECSWorld->Set<LeftRightComponent>(enemyEntity, LeftRightComponent{-1.0f, 2, 0.8f});
+            mECSWorld->Set<EnemyComponent>(enemyEntity, EnemyComponent{});
         }
     }
 }

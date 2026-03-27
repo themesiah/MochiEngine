@@ -5,11 +5,13 @@
 #include "Engine.h"
 #include "Input/IActionManager.h"
 #include "Utils/Logger.h"
+#include "Utils/MathUtils.h"
 #include "ECS/Components/ECSTransform.h"
 #include "ECS/Components/CharacterController.hpp"
 #include "ECS/Events/ECSCollisionEvent.h"
 
 #include "../Components/PlayerComponent.h"
+#include "../Components/EnemyComponent.h"
 
 namespace Mochi::Platformer
 {
@@ -36,7 +38,7 @@ namespace Mochi::Platformer
                     cc.Move(Vector2f::Right * horizontal);
                     if (jump)
                     {
-                        cc.Jump(10.0f);
+                        cc.Jump(10.0f, false);
                     } });
     }
 
@@ -47,6 +49,24 @@ namespace Mochi::Platformer
 
     void PlayerMovementSystem::OnCollision(const ECS::CollisionEvent &e)
     {
-        // LOG_INFO("Two entities collided!");
+        if (!mRegistry.any_of<EnemyComponent>(e.Other) || !mRegistry.any_of<PlayerComponent>(e.Entity))
+            return;
+
+        if (e.CollisionNormal.y >= 0.9f)
+        {
+            LOG_INFO(std::format("Enemy dead with normal x {} and y {}!", e.CollisionNormal.x, e.CollisionNormal.y));
+            mRegistry.destroy(e.Other);
+            auto &cc = mRegistry.get<ECS::CharacterController>(e.Entity);
+
+            auto &e = Engine::Get();
+            Input::IActionManager *actionManager = e.GetActionManager();
+            bool jump = actionManager->Performed("JumpStay");
+            cc.Jump(jump ? 10.0f : 5.0f, true);
+        }
+        else
+        {
+            LOG_INFO("Player should be dead here!");
+            mRegistry.destroy(e.Entity);
+        }
     }
 }

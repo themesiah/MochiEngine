@@ -39,13 +39,6 @@ namespace Mochi::Platformer
     }
 
     void LeftRightEnemySystem::OnCollision(const ECS::CollisionEvent &e)
-    { /*
-         // Check if collided entity had LeftRightComponent and collided with terrain
-         LeftRightComponent *lrc = mRegistry.try_get<LeftRightComponent>(e.Entity);
-         if (lrc && (lrc->LayerMaskCheck & e.CollisionLayer) == e.CollisionLayer && Math::Abs(e.CollisionNormal.x) > Math::Abs(e.CollisionNormal.y))
-         {
-             LOG_INFO(std::format("Collided with normal x {}", e.CollisionNormal.x));
-             lrc->Direction *= -1.0f;
-         }*/
+    {
     }
 }

@@ -35,10 +35,11 @@ namespace Mochi::ECS
         float MaxFallSpeed;
         float MaxPenetration;
         bool AirControl;
+        uint32_t LayerMask;
 
-        CharacterController(float maxSpeed, float acceleration, float decelerationRate, float gravity, float maxFallSpeed, float maxPenetration, bool airControl)
+        CharacterController(float maxSpeed, float acceleration, float decelerationRate, float gravity, float maxFallSpeed, float maxPenetration, bool airControl, uint32_t layerMask)
             : MaxSpeed(maxSpeed), Acceleration(acceleration), DecelerationRate(decelerationRate), Gravity(gravity), MaxFallSpeed(maxFallSpeed),
-              MaxPenetration(maxPenetration), AirControl(airControl)
+              MaxPenetration(maxPenetration), AirControl(airControl), LayerMask(layerMask)
         {
             mVelocity = Vector2f::Zero;
             mCurrentDirection = Vector2f::Zero;
@@ -58,9 +59,9 @@ namespace Mochi::ECS
         /// @brief Makes the character controller jump with an instant force, that will decrease over time thanks to the gravity, if any.
         /// A character can't jump if it has already jumped. Also can't jump if too much time has passed since being grounded (coyote time).
         /// @param force The instant Y force to jump with.
-        inline void Jump(float force)
+        inline void Jump(float force, bool reset)
         {
-            if (mJumped || mCoyoteTime > MAX_COYOTE_TIME)
+            if (!reset && (mJumped || mCoyoteTime > MAX_COYOTE_TIME))
                 return;
             mVelocity.y = force;
             mGrounded = false;
@@ -81,6 +82,7 @@ namespace Mochi::ECS
                 throw EngineError("An entity with a CharacterController needs a TransformComponent");
             }
 
+            // Don't do additional movement if we are in the air without air control. So, free fall.
             if (!mGrounded && !AirControl)
             {
                 mCurrentDirection = Vector2f::Zero;
@@ -165,7 +167,7 @@ namespace Mochi::ECS
             view.each(
                 [&](const auto &entity2, const auto &tc2, const auto &cc2)
                 {
-                    if (entity != entity2 && (cc->CollisionLayerMask & cc2.Layer) == cc2.Layer && !collided)
+                    if (entity != entity2 && (LayerMask & cc2.Layer) == cc2.Layer && !collided)
                     {
                         std::visit([&](auto &shape2)
                                    {
@@ -230,7 +232,7 @@ namespace Mochi::ECS
             view.each(
                 [&](const auto &entity2, const auto &tc2, const auto &cc2)
                 {
-                    if (entity != entity2 && (cc->CollisionLayerMask & cc2.Layer) == cc2.Layer && !mGrounded)
+                    if (entity != entity2 && (LayerMask & cc2.Layer) == cc2.Layer && !mGrounded)
                     {
                         std::visit([&](auto &shape2)
                                    {
