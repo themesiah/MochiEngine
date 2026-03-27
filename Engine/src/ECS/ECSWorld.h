@@ -57,8 +57,8 @@ namespace Mochi::ECS
 
         void Update(const float &dt);
 
-        std::vector<RaycastHit> Raycast(Vector2f startingPosition, Vector2f direction, float distance, uint32_t layerMask, bool hitTriggers);
-        std::vector<RaycastHit> Raycast(Vector2f startingPosition, Vector2f endPosition, uint32_t layerMask, bool hitTriggers);
+        static std::vector<RaycastHit> Raycast(entt::registry &registry, Vector2f startingPosition, Vector2f direction, float distance, uint32_t layerMask, bool hitTriggers);
+        static std::vector<RaycastHit> Raycast(entt::registry &registry, Vector2f startingPosition, Vector2f endPosition, uint32_t layerMask, bool hitTriggers);
     };
 }
 

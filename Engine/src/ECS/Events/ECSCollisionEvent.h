@@ -10,6 +10,8 @@ namespace Mochi::ECS
         EntityType Entity;
         EntityType Other;
         bool Trigger;
+        Vector2f CollisionNormal;
+        uint32_t CollisionLayer;
     };
 }
 

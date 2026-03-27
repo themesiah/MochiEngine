@@ -81,6 +81,11 @@ namespace Mochi::ECS
                 throw EngineError("An entity with a CharacterController needs a TransformComponent");
             }
 
+            if (!mGrounded && !AirControl)
+            {
+                mCurrentDirection = Vector2f::Zero;
+            }
+
             float lastYSpeed = mVelocity.y;
             // Decelerate only if we are not moving
             if (Math::Approx(mCurrentDirection.Distance(), 0.0f))

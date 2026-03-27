@@ -11,7 +11,7 @@ namespace Mochi::ECS
     {
     public:
         CollisionSystem(entt::registry &registry, entt::dispatcher &dispatcher);
-        ~CollisionSystem();
+        virtual ~CollisionSystem();
         virtual void Update(const float &dt) override;
         virtual int GetPriority() const override;
 

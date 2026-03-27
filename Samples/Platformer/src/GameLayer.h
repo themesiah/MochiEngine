@@ -6,12 +6,17 @@
 #include <memory>
 #include <vector>
 
-#include "Graphics/AbstractTextureFactory.h"
-#include "Graphics/IAnimationFactory.h"
 #include "ECS/ECSWorld.h"
+
+namespace Mochi::Graphics
+{
+    class AbstractTextureFactory;
+    class IAnimationFactory;
+}
 
 namespace Mochi::Platformer
 {
+    class Tilemap;
     class GameLayer : public Layer
     {
     private:
@@ -19,6 +24,8 @@ namespace Mochi::Platformer
         std::unique_ptr<Graphics::IAnimationFactory> mAnimationFactory;
         ECS::EntityType mPlayerEntity;
         std::vector<ECS::EntityType> mBlocksEntities;
+        std::vector<ECS::EntityType> mEnemyEntities;
+        std::unique_ptr<Tilemap> mTilemap;
 
     public:
         GameLayer();
@@ -27,6 +34,15 @@ namespace Mochi::Platformer
         virtual bool Update(const float &dt) override;
         virtual void Render() const override;
         virtual void GUI() override;
+
+        // TEMP
+        void InitPlayer();
+        void InitScenario();
+        void InitEnemies();
+
+#if DEBUG
+        virtual void Debug() const override;
+#endif
     };
 }
 

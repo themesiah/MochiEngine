@@ -2,6 +2,7 @@
 
 #include "Graphics/IRenderer.h"
 #include "Graphics/IAnimationFactory.h"
+#include "Graphics/AbstractTextureFactory.h"
 #include "Graphics/AsepriteAnimationFactory.h"
 #include "Graphics/AnimationData.h"
 
@@ -18,16 +19,21 @@
 #include "ECS/Components/CharacterController.hpp"
 
 #include "Systems/PlayerMovementSystem.h"
+#include "Systems/LeftRightEnemySystem.h"
 #include "Components/PlayerComponent.h"
+#include "Components/LeftRightComponent.h"
+#include "Tilemap.h"
+#include "PlatformerLayers.h"
 
 namespace Mochi::Platformer
 {
-    GameLayer::GameLayer() : Layer()
+    GameLayer::GameLayer() : Layer(), mBlocksEntities(), mEnemyEntities()
     {
         mCatalog->OpenPack("Data/Game");
         mAudioManager->LoadAudio("Audio.json");
         mTextureFactory = mRenderer->CreateTextureFactory(mCatalog);
         mAnimationFactory = std::make_unique<Graphics::AsepriteAnimationFactory>(mCatalog);
+        mTilemap = std::make_unique<Tilemap>(mECSWorld, 30, 30, 32);
     }
 
     GameLayer::~GameLayer()
@@ -37,45 +43,11 @@ namespace Mochi::Platformer
     void GameLayer::InitLayer()
     {
         mECSWorld->RegisterSystem<PlayerMovementSystem>();
+        mECSWorld->RegisterSystem<LeftRightEnemySystem>();
 
-        mPlayerEntity = mECSWorld->CreateEntity();
-        auto playerTex = mTextureFactory->GetTexture("Player.png");
-        mECSWorld->Set<ECS::TransformComponent>(mPlayerEntity, ECS::TransformComponent{Vector2f{0.0f, 0.0f}, 1.0f});
-        mECSWorld->Set<PlayerComponent>(mPlayerEntity, PlayerComponent{5.0f});
-        mECSWorld->Set<ECS::SpriteComponent>(mPlayerEntity, ECS::SpriteComponent{playerTex.get(), 1});
-        mECSWorld->Set<ECS::ColliderComponent>(mPlayerEntity, ECS::ColliderComponent(
-                                                                  Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(Vector2f(7.0f, 15.0f))},
-                                                                  1,
-                                                                  2,
-                                                                  false));
-        mECSWorld->Set<ECS::CharacterController>(mPlayerEntity, ECS::CharacterController{5.0f, 100.0f, 20.0f, -20.0f, 20.0f, 0.1f, true});
-
-        auto blockTex = mTextureFactory->GetTexture("Block.png");
-        auto blockSize = PixelsToMeters(blockTex->GetSize());
-        std::vector<Vector2f> blockPositions = {
-            {-2.0f, -1.0f},
-            {0.0f, -2.0f},
-            {blockSize.x * -1, -2.0f},
-            {blockSize.x * 1, -2.0f},
-            {blockSize.x * -2, -2.0f},
-            {blockSize.x * 2, -2.0f},
-            {blockSize.x * -3, -2.0f},
-            {blockSize.x * 3, -2.0f},
-            {blockSize.x * -4, -2.0f},
-            {blockSize.x * 4, -2.0f},
-        };
-        for (size_t i = 0; i < blockPositions.size(); ++i)
-        {
-            auto blockEntity = mECSWorld->CreateEntity();
-            mBlocksEntities.push_back(blockEntity);
-            mECSWorld->Set<ECS::TransformComponent>(blockEntity, ECS::TransformComponent{blockPositions[i], 1.0f});
-            mECSWorld->Set<ECS::SpriteComponent>(blockEntity, ECS::SpriteComponent{blockTex.get(), 0});
-            mECSWorld->Set<ECS::ColliderComponent>(blockEntity, ECS::ColliderComponent(
-                                                                    Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(blockTex->GetSize() / 2.0f)},
-                                                                    2,
-                                                                    0,
-                                                                    false));
-        }
+        InitPlayer();
+        InitScenario();
+        InitEnemies();
     }
 
     bool GameLayer::Update(const float &dt)
@@ -116,5 +88,83 @@ namespace Mochi::Platformer
 
     void GameLayer::GUI()
     {
+    }
+
+#if DEBUG
+    void GameLayer::Debug() const
+    {
+        mTilemap->DebugGizmos(mGizmos);
+    }
+#endif
+
+    void GameLayer::InitPlayer()
+    {
+        mPlayerEntity = mECSWorld->CreateEntity();
+        auto playerTex = mTextureFactory->GetTexture("Player.png");
+        mECSWorld->Set<ECS::TransformComponent>(mPlayerEntity, ECS::TransformComponent{mTilemap->GetTile(10, 15).GetPosition(), 1.0f});
+        mECSWorld->Set<PlayerComponent>(mPlayerEntity, PlayerComponent{5.0f});
+        mECSWorld->Set<ECS::SpriteComponent>(mPlayerEntity, ECS::SpriteComponent{playerTex.get(), 1});
+        mECSWorld->Set<ECS::ColliderComponent>(mPlayerEntity, ECS::ColliderComponent(
+                                                                  Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(Vector2f(7.0f, 15.0f))},
+                                                                  PlatformerLayers::Player,
+                                                                  PlatformerLayers::Scenario + PlatformerLayers::Enemy,
+                                                                  false));
+        mECSWorld->Set<ECS::CharacterController>(mPlayerEntity, ECS::CharacterController{5.0f, 100.0f, 20.0f, -20.0f, 20.0f, 0.1f, true});
+    }
+
+    void GameLayer::InitScenario()
+    {
+        auto blockTex = mTextureFactory->GetTexture("Block.png");
+        std::vector<Vector2f> blockPositions = {
+            mTilemap->GetTile(9, 14).GetPosition(),
+            mTilemap->GetTile(9, 15).GetPosition(),
+            mTilemap->GetTile(9, 16).GetPosition(),
+            mTilemap->GetTile(9, 17).GetPosition(),
+            mTilemap->GetTile(9, 18).GetPosition(),
+            mTilemap->GetTile(10, 14).GetPosition(),
+            mTilemap->GetTile(11, 14).GetPosition(),
+            mTilemap->GetTile(12, 14).GetPosition(),
+            mTilemap->GetTile(12, 15).GetPosition(),
+            mTilemap->GetTile(13, 14).GetPosition(),
+            mTilemap->GetTile(14, 14).GetPosition(),
+            mTilemap->GetTile(15, 14).GetPosition(),
+            mTilemap->GetTile(15, 16).GetPosition(),
+            mTilemap->GetTile(16, 14).GetPosition(),
+            mTilemap->GetTile(17, 14).GetPosition(),
+        };
+        for (size_t i = 0; i < blockPositions.size(); ++i)
+        {
+            auto blockEntity = mECSWorld->CreateEntity();
+            mBlocksEntities.push_back(blockEntity);
+            mECSWorld->Set<ECS::TransformComponent>(blockEntity, ECS::TransformComponent{blockPositions[i], 1.0f});
+            mECSWorld->Set<ECS::SpriteComponent>(blockEntity, ECS::SpriteComponent{blockTex.get(), 0});
+            mECSWorld->Set<ECS::ColliderComponent>(blockEntity, ECS::ColliderComponent(
+                                                                    Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(blockTex->GetSize() / 2.0f)},
+                                                                    PlatformerLayers::Scenario,
+                                                                    0,
+                                                                    false));
+        }
+    }
+
+    void GameLayer::InitEnemies()
+    {
+        auto enemyTex = mTextureFactory->GetTexture("Enemy.png");
+        std::vector<Vector2f> blockPositions = {
+            mTilemap->GetTile(17, 15).GetPosition(),
+        };
+        for (size_t i = 0; i < blockPositions.size(); ++i)
+        {
+            auto enemyEntity = mECSWorld->CreateEntity();
+            mBlocksEntities.push_back(enemyEntity);
+            mECSWorld->Set<ECS::TransformComponent>(enemyEntity, ECS::TransformComponent{blockPositions[i], 1.0f});
+            mECSWorld->Set<ECS::SpriteComponent>(enemyEntity, ECS::SpriteComponent{enemyTex.get(), 0});
+            mECSWorld->Set<ECS::ColliderComponent>(enemyEntity, ECS::ColliderComponent(
+                                                                    Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(Vector2f{24.0f, 24.0f} / 2.0f)},
+                                                                    PlatformerLayers::Enemy,
+                                                                    PlatformerLayers::Player + PlatformerLayers::Scenario,
+                                                                    false));
+            mECSWorld->Set<ECS::CharacterController>(enemyEntity, ECS::CharacterController(2.0f, 100.0f, 20.0f, -20.0f, 20.0f, 0.1f, false));
+            mECSWorld->Set<LeftRightComponent>(enemyEntity, LeftRightComponent{-1.0f, 2, 0.8f});
+        }
     }
 }

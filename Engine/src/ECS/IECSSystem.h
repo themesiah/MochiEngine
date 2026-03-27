@@ -10,7 +10,7 @@ namespace Mochi::ECS
     {
     public:
         IECSSystem(entt::registry &registry, entt::dispatcher &dispatcher) : mRegistry(registry), mDispatcher(dispatcher) {}
-        ~IECSSystem() {}
+        virtual ~IECSSystem() {}
         virtual void Update(const float &dt) = 0;
         virtual int GetPriority() const = 0;
 

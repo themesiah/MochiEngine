@@ -38,17 +38,17 @@ namespace Mochi::ECS
         mDispatcher.update();
     }
 
-    std::vector<RaycastHit> ECSWorld::Raycast(Vector2f startingPosition, Vector2f direction, float distance, uint32_t layerMask, bool hitTriggers)
+    std::vector<RaycastHit> ECSWorld::Raycast(entt::registry &registry, Vector2f startingPosition, Vector2f direction, float distance, uint32_t layerMask, bool hitTriggers)
     {
-        return Raycast(startingPosition, startingPosition + direction.Normalized() * distance, layerMask, hitTriggers);
+        return Raycast(registry, startingPosition, startingPosition + direction.Normalized() * distance, layerMask, hitTriggers);
     }
 
-    std::vector<RaycastHit> ECSWorld::Raycast(Vector2f startingPosition, Vector2f endPosition, uint32_t layerMask, bool hitTriggers)
+    std::vector<RaycastHit> ECSWorld::Raycast(entt::registry &registry, Vector2f startingPosition, Vector2f endPosition, uint32_t layerMask, bool hitTriggers)
     {
         Physics::Line l{startingPosition, endPosition};
         std::vector<RaycastHit> hits;
 
-        auto view = mRegistry.view<const ColliderComponent, const TransformComponent>();
+        auto view = registry.view<const ColliderComponent, const TransformComponent>();
 
         view.each([&](entt::entity entity, const ColliderComponent &c, const TransformComponent &t)
                   {
