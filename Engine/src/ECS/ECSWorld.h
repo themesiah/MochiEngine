@@ -65,6 +65,19 @@ namespace Mochi::ECS
 
         void Update(const float &dt);
 
+        template <typename ComponentType, typename... Args>
+        void SetGlobal(Args &&...args)
+        {
+            if constexpr (std::is_empty_v<ComponentType>)
+            {
+                mRegistry.ctx().emplace<ComponentType>();
+            }
+            else
+            {
+                mRegistry.ctx().emplace<ComponentType>(std::forward<Args>(args)...);
+            }
+        }
+
         static std::vector<RaycastHit> Raycast(entt::registry &registry, Vector2f startingPosition, Vector2f direction, float distance, uint32_t layerMask, bool hitTriggers);
         static std::vector<RaycastHit> Raycast(entt::registry &registry, Vector2f startingPosition, Vector2f endPosition, uint32_t layerMask, bool hitTriggers);
     };

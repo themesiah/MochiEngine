@@ -118,6 +118,11 @@ namespace Mochi
             return lhs;
         }
 
+        Vector2f operator-()
+        {
+            return {-x, -y};
+        }
+
         friend Vector2f operator*(Vector2f lhs, const Vector2f &rhs)
         {
             lhs *= rhs;

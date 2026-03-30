@@ -39,6 +39,7 @@ namespace Mochi::Platformer
         void InitPlayer();
         void InitScenario();
         void InitEnemies();
+        void InitSpecialTiles();
 
 #if DEBUG
         virtual void Debug() const override;

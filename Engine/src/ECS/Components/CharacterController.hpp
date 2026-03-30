@@ -4,6 +4,7 @@
 #include <entt/entt.hpp>
 
 #include "../ECSWorld.h"
+#include "../Events/ECSCollisionEvent.h"
 #include "ECSTransform.h"
 #include "../../Types/Types.hpp"
 #include "../../Utils/MathUtils.h"
@@ -74,7 +75,7 @@ namespace Mochi::ECS
         /// @param dt The delta time.
         /// @param entity The entity with the character controller.
         /// @param registry The ecs registry.
-        inline void Update(const float &dt, const EntityType &entity, entt::registry &registry)
+        inline void Update(const float &dt, const EntityType &entity, entt::registry &registry, entt::dispatcher &dispatcher)
         {
             auto t = registry.try_get<TransformComponent>(entity);
             if (!t)
@@ -127,9 +128,9 @@ namespace Mochi::ECS
             // Compute x and y axis separately to improve collision behaviour.
             Vector2f delta = mVelocity * dt;
             t->Position.x += delta.x;
-            ComputeCollisions(entity, t, registry, Vector2fAxis::X);
+            ComputeCollisions(entity, t, registry, Vector2fAxis::X, dispatcher);
             t->Position.y += delta.y;
-            ComputeCollisions(entity, t, registry, Vector2fAxis::Y);
+            ComputeCollisions(entity, t, registry, Vector2fAxis::Y, dispatcher);
 
             // After all movement, check if we are grounded for the next frame.
             ComputeGrounded(entity, t, registry, dt);
@@ -145,7 +146,7 @@ namespace Mochi::ECS
         /// @param tc The valid transform component of the entity
         /// @param registry The world registry
         /// @param axis The axis we want to check (x or y)
-        inline void ComputeCollisions(const EntityType &entity, TransformComponent *tc, entt::registry &registry, Vector2fAxis axis)
+        inline void ComputeCollisions(const EntityType &entity, TransformComponent *tc, entt::registry &registry, Vector2fAxis axis, entt::dispatcher &dispatcher)
         {
             if (Math::Approx(axis == Vector2fAxis::X ? mVelocity.x : mVelocity.y, 0.0f))
                 return;
@@ -167,7 +168,7 @@ namespace Mochi::ECS
             view.each(
                 [&](const auto &entity2, const auto &tc2, const auto &cc2)
                 {
-                    if (entity != entity2 && (LayerMask & cc2.Layer) == cc2.Layer && !collided)
+                    if (entity != entity2 && (LayerMask & cc2.Layer) == cc2.Layer && !collided && !cc2.Trigger)
                     {
                         std::visit([&](auto &shape2)
                                    {
@@ -184,6 +185,7 @@ namespace Mochi::ECS
                                 penetration = axis == Vector2fAxis::X ? (A.Min.x - B.Max.x) : (A.Min.y - B.Max.y);
                             }
                             collided = true;
+                            dispatcher.enqueue<CollisionEvent>(entity, entity2, cc2.Trigger, -(mVelocity.Normalized()), cc2.Layer);
                         } }, cc2.Shape);
                     }
                 });

@@ -20,9 +20,14 @@
 
 #include "Systems/PlayerMovementSystem.h"
 #include "Systems/LeftRightEnemySystem.h"
+#include "Systems/CoinAcquirementSystem.h"
+#include "Systems/BreakableSystem.h"
 #include "Components/PlayerComponent.h"
 #include "Components/LeftRightComponent.h"
 #include "Components/EnemyComponent.h"
+#include "Components/GlobalDataComponent.h"
+#include "Components/CoinComponent.h"
+#include "Components/BreakableComponent.h"
 #include "Tilemap.h"
 #include "PlatformerLayers.h"
 
@@ -45,10 +50,14 @@ namespace Mochi::Platformer
     {
         mECSWorld->RegisterSystem<PlayerMovementSystem>();
         mECSWorld->RegisterSystem<LeftRightEnemySystem>();
+        mECSWorld->RegisterSystem<CoinAcquirementSystem>();
+        mECSWorld->RegisterSystem<BreakableSystem>();
+        mECSWorld->SetGlobal<GlobalDataComponent>();
 
         InitPlayer();
         InitScenario();
         InitEnemies();
+        InitSpecialTiles();
     }
 
     bool GameLayer::Update(const float &dt)
@@ -104,11 +113,11 @@ namespace Mochi::Platformer
         auto playerTex = mTextureFactory->GetTexture("Player.png");
         mECSWorld->Set<ECS::TransformComponent>(mPlayerEntity, ECS::TransformComponent{mTilemap->GetTile(10, 15).GetPosition(), 1.0f});
         mECSWorld->Set<PlayerComponent>(mPlayerEntity, PlayerComponent{5.0f});
-        mECSWorld->Set<ECS::SpriteComponent>(mPlayerEntity, ECS::SpriteComponent{playerTex.get(), 1});
+        mECSWorld->Set<ECS::SpriteComponent>(mPlayerEntity, ECS::SpriteComponent{playerTex.get(), 3});
         mECSWorld->Set<ECS::ColliderComponent>(mPlayerEntity, ECS::ColliderComponent(
                                                                   Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(Vector2f(7.0f, 15.0f))},
                                                                   PlatformerLayers::Player,
-                                                                  PlatformerLayers::Enemy,
+                                                                  PlatformerLayers::Enemy + PlatformerLayers::Coin,
                                                                   false));
         mECSWorld->Set<ECS::CharacterController>(mPlayerEntity, ECS::CharacterController{5.0f, 100.0f, 20.0f, -20.0f, 20.0f, 0.1f, true, PlatformerLayers::Scenario});
     }
@@ -158,7 +167,7 @@ namespace Mochi::Platformer
             auto enemyEntity = mECSWorld->CreateEntity();
             mBlocksEntities.push_back(enemyEntity);
             mECSWorld->Set<ECS::TransformComponent>(enemyEntity, ECS::TransformComponent{blockPositions[i], 1.0f});
-            mECSWorld->Set<ECS::SpriteComponent>(enemyEntity, ECS::SpriteComponent{enemyTex.get(), 0});
+            mECSWorld->Set<ECS::SpriteComponent>(enemyEntity, ECS::SpriteComponent{enemyTex.get(), 2});
             mECSWorld->Set<ECS::ColliderComponent>(enemyEntity, ECS::ColliderComponent(
                                                                     Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(Vector2f{24.0f, 24.0f} / 2.0f)},
                                                                     PlatformerLayers::Enemy,
@@ -167,6 +176,45 @@ namespace Mochi::Platformer
             mECSWorld->Set<ECS::CharacterController>(enemyEntity, ECS::CharacterController(2.0f, 100.0f, 20.0f, -20.0f, 20.0f, 0.1f, false, PlatformerLayers::Scenario));
             mECSWorld->Set<LeftRightComponent>(enemyEntity, LeftRightComponent{-1.0f, 2, 0.8f});
             mECSWorld->Set<EnemyComponent>(enemyEntity, EnemyComponent{});
+        }
+    }
+
+    void GameLayer::InitSpecialTiles()
+    {
+        auto coinTex = mTextureFactory->GetTexture("Coin.png");
+        std::vector<Vector2f> coinPositions = {
+            mTilemap->GetTile(15, 17).GetPosition(),
+        };
+        for (size_t i = 0; i < coinPositions.size(); ++i)
+        {
+            auto coinEntity = mECSWorld->CreateEntity();
+            mBlocksEntities.push_back(coinEntity);
+            mECSWorld->Set<ECS::TransformComponent>(coinEntity, ECS::TransformComponent{coinPositions[i], 1.0f});
+            mECSWorld->Set<ECS::SpriteComponent>(coinEntity, ECS::SpriteComponent{coinTex.get(), 1});
+            mECSWorld->Set<ECS::ColliderComponent>(coinEntity, ECS::ColliderComponent(
+                                                                   Physics::Circle{Vector2f{0.0f, 0.0f}, PixelsToMeters(12.0f)},
+                                                                   PlatformerLayers::Coin,
+                                                                   0,
+                                                                   false));
+            mECSWorld->Set<CoinComponent>(coinEntity);
+        }
+
+        auto breakableTex = mTextureFactory->GetTexture("BreakableBlock.png");
+        std::vector<Vector2f> breakablePositions = {
+            mTilemap->GetTile(15, 19).GetPosition(),
+        };
+        for (size_t i = 0; i < breakablePositions.size(); ++i)
+        {
+            auto breakableEntity = mECSWorld->CreateEntity();
+            mBlocksEntities.push_back(breakableEntity);
+            mECSWorld->Set<ECS::TransformComponent>(breakableEntity, ECS::TransformComponent{breakablePositions[i], 1.0f});
+            mECSWorld->Set<ECS::SpriteComponent>(breakableEntity, ECS::SpriteComponent{breakableTex.get(), 1});
+            mECSWorld->Set<ECS::ColliderComponent>(breakableEntity, ECS::ColliderComponent(
+                                                                        Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(breakableTex->GetSize() / 2.0f)},
+                                                                        PlatformerLayers::Scenario,
+                                                                        0,
+                                                                        false));
+            mECSWorld->Set<BreakableComponent>(breakableEntity);
         }
     }
 }

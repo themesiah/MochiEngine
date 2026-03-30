@@ -19,7 +19,7 @@ namespace Mochi::ECS
         auto view = mRegistry.view<CharacterController>();
 
         view.each([&](const entt::entity &entity, CharacterController &cc)
-                  { cc.Update(dt, entity, mRegistry); });
+                  { cc.Update(dt, entity, mRegistry, mDispatcher); });
     }
 
     int CharacterControllerSystem::GetPriority() const

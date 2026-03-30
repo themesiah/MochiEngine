@@ -7,7 +7,8 @@ namespace Mochi::Platformer
     {
         Player = 1,
         Scenario = 2,
-        Enemy = 4
+        Enemy = 4,
+        Coin = 8
     };
 }
 
