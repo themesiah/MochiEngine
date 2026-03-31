@@ -3,6 +3,7 @@
 
 #include "ECS/IECSSystem.h"
 #include "ECS/Events/ECSCollisionEvent.h"
+#include "ECS/Events/ECSCharacterControllerEvents.h"
 
 namespace Mochi::Platformer
 {
@@ -16,6 +17,8 @@ namespace Mochi::Platformer
 
     private:
         void OnCollision(const ECS::CollisionEvent &e);
+        void OnGrounded(const ECS::CCGroundedEvent &e);
+        void OnJumped(const ECS::CCJumpEvent &e);
     };
 }
 

@@ -30,6 +30,8 @@ namespace Mochi::ECS
                 rc.sourceRect = s.SrcRect;
                 rc.destRect.SetPosition(t.Position);
                 rc.destRect.SetSize(rc.sourceRect.GetSize() * t.Scale);
+                rc.flip = s.Flip;
+                rc.angle = s.Angle;
                 e.AddRenderCommand(rc);
             });
     }

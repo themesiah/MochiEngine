@@ -81,8 +81,7 @@ namespace Mochi::Platformer
 
             auto entity = mECSWorld->CreateEntity();
             auto spriteComponent = ECS::SpriteComponent{sprite.get(), 0};
-            ECS::AnimationComponent animationComponent{};
-            animationComponent.CurrentAnimation = "Down";
+            ECS::AnimationComponent animationComponent{"Down"};
             mECSWorld->Set<ECS::TransformComponent>(entity, ECS::TransformComponent{Vector2f(0.0f, 0.0f), 1.0f});
             mECSWorld->Set<ECS::SpriteComponent>(entity, spriteComponent);
             mECSWorld->Set<Mochi::Graphics::AnimationsData>(entity, *(animation.get()));
@@ -109,8 +108,10 @@ namespace Mochi::Platformer
 
     void GameLayer::InitPlayer()
     {
+        auto animation = mAnimationFactory->GetAnimationsData("Player.json");
+        auto playerTex = mTextureFactory->GetTexture(animation->TexturePath.string());
         mPlayerEntity = mECSWorld->CreateEntity();
-        auto playerTex = mTextureFactory->GetTexture("Player.png");
+        ECS::AnimationComponent animationComponent{"Idle"};
         mECSWorld->Set<ECS::TransformComponent>(mPlayerEntity, ECS::TransformComponent{mTilemap->GetTile(10, 15).GetPosition(), 1.0f});
         mECSWorld->Set<PlayerComponent>(mPlayerEntity, PlayerComponent{5.0f});
         mECSWorld->Set<ECS::SpriteComponent>(mPlayerEntity, ECS::SpriteComponent{playerTex.get(), 3});
@@ -120,6 +121,9 @@ namespace Mochi::Platformer
                                                                   PlatformerLayers::Enemy + PlatformerLayers::Coin,
                                                                   false));
         mECSWorld->Set<ECS::CharacterController>(mPlayerEntity, ECS::CharacterController{5.0f, 100.0f, 20.0f, -20.0f, 20.0f, 0.1f, true, PlatformerLayers::Scenario});
+        mECSWorld->Set<ECS::AnimationComponent>(mPlayerEntity, animationComponent);
+
+        mECSWorld->Set<Mochi::Graphics::AnimationsData>(mPlayerEntity, *(animation.get()));
     }
 
     void GameLayer::InitScenario()

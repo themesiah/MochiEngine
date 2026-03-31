@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <variant>
 #include <vector>
+#include <typeinfo>
+#include <string>
 
 #include "../Utils/Logger.h"
 #include "Systems/ECSRenderSystem.h"

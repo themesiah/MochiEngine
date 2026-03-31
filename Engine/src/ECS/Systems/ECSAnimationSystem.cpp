@@ -22,6 +22,17 @@ namespace Mochi::ECS
         view.each(
             [&](const Graphics::AnimationsData &ad, AnimationComponent &ac, SpriteComponent &sc)
             {
+                bool changed = false;
+                if (ac.CurrentAnimation != ac.NewAnimation)
+                {
+                    changed = true;
+                    ac.CurrentAnimation = ac.NewAnimation;
+                    auto newAnim = ad.Animations.at(ac.CurrentAnimation);
+                    ac.CurrentFrame = newAnim.From;
+                    ac.Timer = Time::Timer(ad.Frames[ac.CurrentFrame].Duration);
+                    ac.CurrentLoop = 0;
+                    sc.SrcRect = ad.Frames[ac.CurrentFrame].Frame;
+                }
                 Graphics::FrameTag current = ad.Animations.at(ac.CurrentAnimation);
                 ac.Timer.Tick(dt);
                 if (ac.Timer.IsDone())
@@ -30,32 +41,35 @@ namespace Mochi::ECS
                     sc.SrcRect = ad.Frames[ac.CurrentFrame].Frame;
                     ac.Timer = Time::Timer(ad.Frames[ac.CurrentFrame].Duration);
                 }
-
-                if (ac.Timer.GetRemainingTime() == ac.Timer.GetTime())
-                {
-                    ac.Timer = Time::Timer(ad.Frames[ac.CurrentFrame].Duration);
-                }
             });
     }
 
     int AnimationSystem::GetPriority() const
     {
-        return 1;
+        return 2;
     }
 
     void AnimationSystem::NextFrame(AnimationComponent &current, const Graphics::FrameTag &tag) const
     {
+        if (current.CurrentFrame == tag.To && tag.Repeat != 0 && current.CurrentLoop + 1 == tag.Repeat)
+            return;
         switch (tag.Direction)
         {
         case Graphics::AnimationDirection::Forward:
             current.CurrentFrame++;
             if (current.CurrentFrame > tag.To)
+            {
                 current.CurrentFrame = tag.From;
+                current.CurrentLoop++;
+            }
             break;
         case Graphics::AnimationDirection::Backward:
             current.CurrentFrame--;
             if (current.CurrentFrame < tag.From)
+            {
                 current.CurrentFrame = tag.To;
+                current.CurrentLoop++;
+            }
             break;
         case Graphics::AnimationDirection::Pingpong:
             if (current.Forward)
@@ -76,6 +90,7 @@ namespace Mochi::ECS
                     current.Forward = !current.Forward;
                     current.CurrentFrame++;
                     current.CurrentFrame++;
+                    current.CurrentLoop++;
                 }
             }
             break;
@@ -98,6 +113,7 @@ namespace Mochi::ECS
                     current.Forward = !current.Forward;
                     current.CurrentFrame++;
                     current.CurrentFrame++;
+                    current.CurrentLoop++;
                 }
             }
             break;

@@ -15,6 +15,14 @@ namespace Mochi::Graphics
         RenderCommandPositionScreen
     };
 
+    enum RenderCommandFlipMode
+    {
+        None,
+        Vertical,
+        Horizontal,
+        VerticalAndHorizontal
+    };
+
     struct TiledRenderOptions
     {
         float Scale;
@@ -29,6 +37,8 @@ namespace Mochi::Graphics
         Rectf sourceRect;
         Rectf destRect;
         unsigned int zindex;
+        double angle = 0.0;
+        RenderCommandFlipMode flip = RenderCommandFlipMode::None;
         RenderCommandPositionType PositionType = RenderCommandPositionWorld;
         std::optional<TiledRenderOptions> TiledRenderOptions;
     };

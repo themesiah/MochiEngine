@@ -5,6 +5,7 @@
 
 #include "../ECSWorld.h"
 #include "../Events/ECSCollisionEvent.h"
+#include "../Events/ECSCharacterControllerEvents.h"
 #include "ECSTransform.h"
 #include "../../Types/Types.hpp"
 #include "../../Utils/MathUtils.h"
@@ -49,6 +50,21 @@ namespace Mochi::ECS
             mCoyoteTime = 0.0f;
         }
 
+        Vector2f GetVelocity()
+        {
+            return mVelocity;
+        }
+
+        bool IsGrounded()
+        {
+            return mGrounded;
+        }
+
+        bool IsJumping()
+        {
+            return mJumped;
+        }
+
         /// @brief The movement to apply this frame to the entity. This can be called multiple times, but only last one will be considered. The
         /// movement will be normalized, so any vector2f is fine here.
         /// @param direction The direction of the movement. In most cases, a movement with only the X axis would be enough, unless there are aerial entities.
@@ -60,13 +76,15 @@ namespace Mochi::ECS
         /// @brief Makes the character controller jump with an instant force, that will decrease over time thanks to the gravity, if any.
         /// A character can't jump if it has already jumped. Also can't jump if too much time has passed since being grounded (coyote time).
         /// @param force The instant Y force to jump with.
-        inline void Jump(float force, bool reset)
+        inline void Jump(float force, bool reset, entt::dispatcher &dispatcher, EntityType entity)
         {
             if (!reset && (mJumped || mCoyoteTime > MAX_COYOTE_TIME))
                 return;
             mVelocity.y = force;
             mGrounded = false;
             mJumped = true;
+
+            dispatcher.trigger(ECS::CCJumpEvent{entity});
         }
 
         /// @brief Update the entity with the last velocity, its grounded status and whatever movement has been applied this frame.
@@ -133,7 +151,12 @@ namespace Mochi::ECS
             ComputeCollisions(entity, t, registry, Vector2fAxis::Y, dispatcher);
 
             // After all movement, check if we are grounded for the next frame.
+            bool wasGrounded = mGrounded;
             ComputeGrounded(entity, t, registry, dt);
+            if (!wasGrounded && mGrounded)
+            {
+                dispatcher.trigger(ECS::CCGroundedEvent{entity});
+            }
 
             // Reset current direction to avoid continuous movement if Move is not called on a frame
             mCurrentDirection = Vector2f::Zero;

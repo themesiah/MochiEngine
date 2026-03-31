@@ -110,7 +110,23 @@ namespace Mochi::Graphics
             }
             else
             {
-                SDL_RenderTexture(mRenderer.get(), tex->GetTexture(), &src, &dstRect);
+                SDL_FlipMode mode = SDL_FlipMode::SDL_FLIP_NONE;
+                switch (command.flip)
+                {
+                case RenderCommandFlipMode::Horizontal:
+                    mode = SDL_FlipMode::SDL_FLIP_HORIZONTAL;
+                    break;
+                case RenderCommandFlipMode::Vertical:
+                    mode = SDL_FlipMode::SDL_FLIP_VERTICAL;
+                    break;
+                case RenderCommandFlipMode::VerticalAndHorizontal:
+                    mode = SDL_FlipMode::SDL_FLIP_HORIZONTAL_AND_VERTICAL;
+                    break;
+                default:
+                    mode = SDL_FlipMode::SDL_FLIP_NONE;
+                    break;
+                }
+                SDL_RenderTextureRotated(mRenderer.get(), tex->GetTexture(), &src, &dstRect, command.angle, NULL, mode);
             }
         }
     }
