@@ -185,7 +185,10 @@ namespace Mochi::Platformer
 
     void GameLayer::InitSpecialTiles()
     {
-        auto coinTex = mTextureFactory->GetTexture("Coin.png");
+
+        ECS::AnimationComponent animationComponent{"Idle"};
+        auto animation = mAnimationFactory->GetAnimationsData("Coin.json");
+        auto coinTex = mTextureFactory->GetTexture(animation->TexturePath.string());
         std::vector<Vector2f> coinPositions = {
             mTilemap->GetTile(15, 17).GetPosition(),
         };
@@ -201,6 +204,9 @@ namespace Mochi::Platformer
                                                                    0,
                                                                    false));
             mECSWorld->Set<CoinComponent>(coinEntity);
+            mECSWorld->Set<ECS::AnimationComponent>(coinEntity, animationComponent);
+
+            mECSWorld->Set<Mochi::Graphics::AnimationsData>(coinEntity, *(animation.get()));
         }
 
         auto breakableTex = mTextureFactory->GetTexture("BreakableBlock.png");

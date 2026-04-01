@@ -92,7 +92,6 @@ namespace Mochi::Platformer
 
     void PlayerMovementSystem::OnGrounded(const ECS::CCGroundedEvent &e)
     {
-        LOG_INFO("Grounded");
         if (mRegistry.all_of<PlayerComponent>(e.Entity))
         {
             auto &anim = mRegistry.get<ECS::AnimationComponent>(e.Entity);
@@ -110,7 +109,6 @@ namespace Mochi::Platformer
 
     void PlayerMovementSystem::OnJumped(const ECS::CCJumpEvent &e)
     {
-        LOG_INFO("Jumped");
         if (mRegistry.all_of<PlayerComponent>(e.Entity))
         {
             auto &anim = mRegistry.get<ECS::AnimationComponent>(e.Entity);
