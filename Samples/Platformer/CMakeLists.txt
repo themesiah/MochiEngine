@@ -11,7 +11,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/Platformer/bin/$<CONFIG>)
 
 
 # Add all subdirectories
-file(GLOB Platformer_src CONFIGURE_DEPENDS "src/*.cpp" "src/Systems/*.cpp")
+file(GLOB Platformer_src CONFIGURE_DEPENDS "src/*.cpp" "src/Systems/*.cpp" "src/Tilemap/*.cpp")
 add_library(PlatformerLib ${Platformer_src})
 add_executable(Platformer src/main.cpp)
 set_target_properties(Platformer PROPERTIES

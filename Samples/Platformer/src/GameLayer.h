@@ -35,12 +35,6 @@ namespace Mochi::Platformer
         virtual void Render() const override;
         virtual void GUI() override;
 
-        // TEMP
-        void InitPlayer();
-        void InitScenario();
-        void InitEnemies();
-        void InitSpecialTiles();
-
 #if DEBUG
         virtual void Debug() const override;
 #endif

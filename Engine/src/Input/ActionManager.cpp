@@ -1,8 +1,6 @@
 #include "ActionManager.h"
 #include "InputManager.h"
 
-#include <fstream>
-#include <iostream>
 #include <nlohmann/json.hpp>
 
 #include "../Packer/PackCatalog.h"

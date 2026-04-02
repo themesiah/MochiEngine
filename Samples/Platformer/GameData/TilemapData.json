@@ -1,0 +1,57 @@
+{
+	"properties":
+	{
+		"width":30,
+		"height":30,
+		"tileSize":32
+	},
+	"tilesets":
+	[
+		"Tilemap.json"
+	],
+	"enemyTypes":[
+		{"sourceType":"Sprite", "source":"Enemy.png", "colliderSize":[24.0, 24.0]}
+	],
+	"breakableTypes":[
+		{"sourceType":"Sprite", "source":"BreakableBlock.png"}
+	],
+	"scenario":[
+		{"i":9,"j":14,"set":0},
+		{"i":9,"j":15,"set":0},
+		{"i":9,"j":16,"set":0},
+		{"i":9,"j":17,"set":0},
+		{"i":9,"j":18,"set":0},
+		{"i":10,"j":14,"set":0},
+		{"i":11,"j":14,"set":0},
+		{"i":12,"j":14,"set":0},
+		{"i":12,"j":15,"set":0},
+		{"i":13,"j":14,"set":0},
+		{"i":14,"j":14,"set":0},
+		{"i":15,"j":14,"set":0},
+		{"i":15,"j":16,"set":0},
+		{"i":16,"j":14,"set":0},
+		{"i":17,"j":14,"set":0}
+	],
+	"foreground":{},
+	"background":{},
+	"zindex":{
+		"scenario":1,
+		"foreground":10,
+		"background":0,
+		"enemies":3,
+		"coins":2,
+		"breakables":2
+	},
+	"enemies":[
+		{"i":17, "j":15, "type":0}
+	],
+	"coins":[
+		{"i":15, "j":17}
+	],
+	"breakables":[
+		{"i":15, "j":19, "type":0}
+	],
+	"playerStart":{
+		"i":10,"j":15
+	}
+}
