@@ -109,7 +109,7 @@ namespace Mochi::Platformer
 
         // Initialize the player
         auto playerStart = data.at("playerStart");
-        InitPlayer(playerStart);
+        LoadPlayer(playerStart);
     }
 
     void Tilemap::LoadProperties(const nlohmann::json properties)
@@ -171,7 +171,6 @@ namespace Mochi::Platformer
 
     void Tilemap::LoadScenario(const nlohmann::json scenario)
     {
-
         for (size_t i = 0; i < scenario.size(); ++i)
         {
             nlohmann::json tile = scenario[i];
@@ -180,6 +179,192 @@ namespace Mochi::Platformer
             int y = tile.at("j");
             AddTile(x, y, set);
         }
+    }
+
+    void Tilemap::LoadEnemies(const nlohmann::json enemies)
+    {
+        for (size_t z = 0; z < enemies.size(); ++z)
+        {
+            auto enemy = enemies[z];
+            int i = enemy["i"];
+            int j = enemy["j"];
+            std::string type = enemy["type"];
+            AddEnemy(i, j, type);
+        }
+    }
+
+    void Tilemap::LoadCoins(const nlohmann::json coins)
+    {
+        for (size_t z = 0; z < coins.size(); ++z)
+        {
+            auto coin = coins[z];
+            int i = coin["i"];
+            int j = coin["j"];
+            AddCoin(i, j);
+        }
+    }
+
+    void Tilemap::LoadBreakables(const nlohmann::json breakables)
+    {
+        for (size_t z = 0; z < breakables.size(); ++z)
+        {
+            auto breakable = breakables[z];
+            int i = breakable["i"];
+            int j = breakable["j"];
+            std::string type = breakable["type"];
+            AddBreakable(i, j, type);
+        }
+    }
+
+    void Tilemap::LoadPlayer(const nlohmann::json playerStart)
+    {
+        int i = playerStart["i"];
+        int j = playerStart["j"];
+        SetPlayerStartingPosition(i, j);
+    }
+
+    void Tilemap::Render() const
+    {
+        Engine::Get().AddRenderCommands(mRenderCommandCache);
+    }
+
+    void Tilemap::SaveTilemap(const std::string &path)
+    {
+    }
+
+    void Tilemap::SetProperties(const TilemapProperties &properties)
+    {
+        mProperties = properties;
+    }
+
+    void Tilemap::AddTileset(const std::string &tilesetPath)
+    {
+        mTilesetIds.push_back(tilesetPath);
+
+        std::shared_ptr<Tileset> ts = std::make_shared<Tileset>(tilesetPath, mAnimationFactory, mTextureFactory);
+        mTilesets[tilesetPath] = ts;
+    }
+
+    void Tilemap::RemoveTileset(const int &tilesetIndex)
+    {
+        if (mTilesetIds.size() > tilesetIndex)
+        {
+            mTilesets.erase(mTilesetIds[tilesetIndex]);
+            mTilesetIds.erase(mTilesetIds.cbegin() + tilesetIndex);
+        }
+        else
+        {
+            LOG_ERROR(std::format("No tileset with index", tilesetIndex));
+        }
+    }
+
+    void Tilemap::ResetTilesets()
+    {
+        mTilesetIds.clear();
+        mTilesets.clear();
+    }
+
+    void Tilemap::AddTile(const int &i, const int &j, const int &tileset)
+    {
+        mTiles.push_back({i, j, tileset});
+    }
+
+    void Tilemap::RemoveTile(const int &tileIndex)
+    {
+        if (mTiles.size() > tileIndex)
+        {
+            mTiles.erase(mTiles.cbegin() + tileIndex);
+        }
+        else
+        {
+            LOG_ERROR(std::format("No tile with index", tileIndex));
+        }
+    }
+
+    void Tilemap::ResetTiles()
+    {
+        mTiles.clear();
+    }
+
+    void Tilemap::AddEnemy(const int &i, const int &j, const std::string &type)
+    {
+        mEnemies.push_back({i, j, type});
+    }
+
+    void Tilemap::RemoveEnemy(const int &enemyIndex)
+    {
+        if (mEnemies.size() > enemyIndex)
+        {
+            mEnemies.erase(mEnemies.cbegin() + enemyIndex);
+        }
+        else
+        {
+            LOG_ERROR(std::format("No tile with index", enemyIndex));
+        }
+    }
+
+    void Tilemap::ResetEnemies()
+    {
+        mEnemies.clear();
+    }
+
+    void Tilemap::AddCoin(const int &i, const int &j)
+    {
+        mCoins.push_back({i, j});
+    }
+
+    void Tilemap::RemoveCoin(const int &coinIndex)
+    {
+        if (mCoins.size() > coinIndex)
+        {
+            mCoins.erase(mCoins.cbegin() + coinIndex);
+        }
+        else
+        {
+            LOG_ERROR(std::format("No tile with index", coinIndex));
+        }
+    }
+
+    void Tilemap::ResetCoins()
+    {
+        mCoins.clear();
+    }
+
+    void Tilemap::AddBreakable(const int &i, const int &j, const std::string &type)
+    {
+        mBreakables.push_back({i, j, type});
+    }
+
+    void Tilemap::RemoveBreakable(const int &breakableIndex)
+    {
+        if (mBreakables.size() > breakableIndex)
+        {
+            mBreakables.erase(mBreakables.cbegin() + breakableIndex);
+        }
+        else
+        {
+            LOG_ERROR(std::format("No tile with index", breakableIndex));
+        }
+    }
+
+    void Tilemap::ResetBreakables()
+    {
+        mBreakables.clear();
+    }
+
+    void Tilemap::SetPlayerStartingPosition(const int &i, const int &j)
+    {
+        mPlayerStart.i = i;
+        mPlayerStart.j = j;
+    }
+
+    void Tilemap::InitScenario()
+    {
+        for (size_t i = 0; i < mTileEntities.size(); ++i)
+        {
+            mWorld->DestroyEntity(mTileEntities[i]);
+        }
+        mTileEntities.clear();
 
         for (size_t i = 0; i < mTiles.size(); ++i)
         {
@@ -213,6 +398,7 @@ namespace Mochi::Platformer
             mRenderCommandCache.push_back(rc);
 
             auto blockEntity = mWorld->CreateEntity();
+            mTileEntities.push_back(blockEntity);
             mWorld->Set<ECS::TransformComponent>(blockEntity, ECS::TransformComponent{rc.destRect.GetPosition(), 1.0f});
             // mECSWorld->Set<ECS::SpriteComponent>(blockEntity, ECS::SpriteComponent{blockTex.get(), 0});
             mWorld->Set<ECS::ColliderComponent>(blockEntity, ECS::ColliderComponent(
@@ -223,18 +409,20 @@ namespace Mochi::Platformer
         }
     }
 
-    void Tilemap::LoadEnemies(const nlohmann::json enemies)
+    void Tilemap::InitEnemies()
     {
-        for (size_t z = 0; z < enemies.size(); ++z)
+        for (size_t i = 0; i < mEnemyEntities.size(); ++i)
         {
-            auto enemyEntity = mWorld->CreateEntity();
-            auto enemy = enemies[z];
-            int i = enemy["i"];
-            int j = enemy["j"];
-            std::string type = enemy["type"];
-            EnemyType enemyType = mEnemyTypes[type];
-            AddEnemy(i, j, type);
+            mWorld->DestroyEntity(mEnemyEntities[i]);
+        }
+        mEnemyEntities.clear();
 
+        for (size_t i = 0; i < mEnemies.size(); ++i)
+        {
+            auto enemy = mEnemies[i];
+            auto enemyEntity = mWorld->CreateEntity();
+            mEnemyEntities.push_back(enemyEntity);
+            EnemyType enemyType = mEnemyTypes[enemy.Type];
             std::string texPath;
             if (enemyType.SourceType == (int)SourceType::Sprite)
             {
@@ -252,7 +440,7 @@ namespace Mochi::Platformer
             Graphics::ITexture *enemyTex = mTextureFactory->GetTexture(texPath).get();
             auto colliderSize = enemyType.Collider;
 
-            mWorld->Set<ECS::TransformComponent>(enemyEntity, ECS::TransformComponent{GetTile(i, j).GetPosition(), 1.0f});
+            mWorld->Set<ECS::TransformComponent>(enemyEntity, ECS::TransformComponent{GetTile(enemy.i, enemy.j).GetPosition(), 1.0f});
             mWorld->Set<ECS::SpriteComponent>(enemyEntity, ECS::SpriteComponent{enemyTex, mZindexes.Enemies});
             mWorld->Set<ECS::ColliderComponent>(enemyEntity, ECS::ColliderComponent(
                                                                  Physics::Rectangle{colliderSize.GetPosition(), PixelsToMeters(colliderSize.GetSize() / 2.0f)},
@@ -265,19 +453,23 @@ namespace Mochi::Platformer
         }
     }
 
-    void Tilemap::LoadCoins(const nlohmann::json coins)
+    void Tilemap::InitCoins()
     {
+        for (size_t i = 0; i < mCoinEntities.size(); ++i)
+        {
+            mWorld->DestroyEntity(mCoinEntities[i]);
+        }
+        mCoinEntities.clear();
+
         ECS::AnimationComponent animationComponent{"Idle"};
         auto animation = mAnimationFactory->GetAnimationsData("Coin.json");
         auto coinTex = mTextureFactory->GetTexture(animation->TexturePath.string());
-        for (size_t z = 0; z < coins.size(); ++z)
+        for (size_t z = 0; z < mCoins.size(); ++z)
         {
-            auto coin = coins[z];
+            auto coin = mCoins[z];
             auto coinEntity = mWorld->CreateEntity();
-            int i = coin["i"];
-            int j = coin["j"];
-            AddCoin(i, j);
-            mWorld->Set<ECS::TransformComponent>(coinEntity, ECS::TransformComponent{GetTile(i, j).GetPosition(), 1.0f});
+            mCoinEntities.push_back(coinEntity);
+            mWorld->Set<ECS::TransformComponent>(coinEntity, ECS::TransformComponent{GetTile(coin.i, coin.j).GetPosition(), 1.0f});
             mWorld->Set<ECS::SpriteComponent>(coinEntity, ECS::SpriteComponent{coinTex.get(), mZindexes.Coins});
             mWorld->Set<ECS::ColliderComponent>(coinEntity, ECS::ColliderComponent(
                                                                 Physics::Circle{Vector2f{0.0f, 0.0f}, PixelsToMeters(12.0f)},
@@ -291,17 +483,20 @@ namespace Mochi::Platformer
         }
     }
 
-    void Tilemap::LoadBreakables(const nlohmann::json breakables)
+    void Tilemap::InitBreakables()
     {
-        for (size_t z = 0; z < breakables.size(); ++z)
+        for (size_t i = 0; i < mBreakableEntities.size(); ++i)
+        {
+            mWorld->DestroyEntity(mBreakableEntities[i]);
+        }
+        mBreakableEntities.clear();
+
+        for (size_t z = 0; z < mBreakables.size(); ++z)
         {
             auto breakableEntity = mWorld->CreateEntity();
-            auto breakable = breakables[z];
-            int i = breakable["i"];
-            int j = breakable["j"];
-            std::string type = breakable["type"];
-            BreakableType breakableType = mBreakableTypes[type];
-            AddBreakable(i, j, type);
+            mBreakableEntities.push_back(breakableEntity);
+            auto breakable = mBreakables[z];
+            BreakableType breakableType = mBreakableTypes[breakable.Type];
 
             std::string texPath;
             if (breakableType.SourceType == SourceType::Sprite)
@@ -318,7 +513,7 @@ namespace Mochi::Platformer
                 mWorld->Set<Mochi::Graphics::AnimationsData>(breakableEntity, *(animation.get()));
             }
             auto breakableTex = mTextureFactory->GetTexture(texPath);
-            mWorld->Set<ECS::TransformComponent>(breakableEntity, ECS::TransformComponent{GetTile(i, j).GetPosition(), 1.0f});
+            mWorld->Set<ECS::TransformComponent>(breakableEntity, ECS::TransformComponent{GetTile(breakable.i, breakable.j).GetPosition(), 1.0f});
             mWorld->Set<ECS::SpriteComponent>(breakableEntity, ECS::SpriteComponent{breakableTex.get(), mZindexes.Breakables});
             mWorld->Set<ECS::ColliderComponent>(breakableEntity, ECS::ColliderComponent(
                                                                      Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(breakableTex->GetSize() / 2.0f)},
@@ -329,147 +524,35 @@ namespace Mochi::Platformer
         }
     }
 
-    void Tilemap::InitPlayer(const nlohmann::json playerStart)
+    void Tilemap::InitPlayer()
     {
+        mWorld->DestroyEntity(mPlayerEntity);
+        mPlayerEntity = mWorld->CreateEntity();
 
         auto animation = mAnimationFactory->GetAnimationsData("Player.json");
         auto playerTex = mTextureFactory->GetTexture(animation->TexturePath.string());
-        auto playerEntity = mWorld->CreateEntity();
-        int i = playerStart["i"];
-        int j = playerStart["j"];
-        SetPlayerStartingPosition(i, j);
         ECS::AnimationComponent animationComponent{"Idle"};
-        mWorld->Set<ECS::TransformComponent>(playerEntity, ECS::TransformComponent{GetTile(i, j).GetPosition(), 1.0f});
-        mWorld->Set<PlayerComponent>(playerEntity, PlayerComponent{5.0f});
-        mWorld->Set<ECS::SpriteComponent>(playerEntity, ECS::SpriteComponent{playerTex.get(), mZindexes.Player});
-        mWorld->Set<ECS::ColliderComponent>(playerEntity, ECS::ColliderComponent(
-                                                              Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(Vector2f(7.0f, 15.0f))},
-                                                              PlatformerLayers::Player,
-                                                              PlatformerLayers::Enemy + PlatformerLayers::Coin,
-                                                              false));
-        mWorld->Set<ECS::CharacterController>(playerEntity, ECS::CharacterController{5.0f, 100.0f, 20.0f, -20.0f, 20.0f, 0.1f, true, PlatformerLayers::Scenario});
-        mWorld->Set<ECS::AnimationComponent>(playerEntity, animationComponent);
+        mWorld->Set<ECS::TransformComponent>(mPlayerEntity, ECS::TransformComponent{GetTile(mPlayerStart.i, mPlayerStart.j).GetPosition(), 1.0f});
+        mWorld->Set<PlayerComponent>(mPlayerEntity, PlayerComponent{5.0f});
+        mWorld->Set<ECS::SpriteComponent>(mPlayerEntity, ECS::SpriteComponent{playerTex.get(), mZindexes.Player});
+        mWorld->Set<ECS::ColliderComponent>(mPlayerEntity, ECS::ColliderComponent(
+                                                               Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(Vector2f(7.0f, 15.0f))},
+                                                               PlatformerLayers::Player,
+                                                               PlatformerLayers::Enemy + PlatformerLayers::Coin,
+                                                               false));
+        mWorld->Set<ECS::CharacterController>(mPlayerEntity, ECS::CharacterController{5.0f, 100.0f, 20.0f, -20.0f, 20.0f, 0.1f, true, PlatformerLayers::Scenario});
+        mWorld->Set<ECS::AnimationComponent>(mPlayerEntity, animationComponent);
 
-        mWorld->Set<Mochi::Graphics::AnimationsData>(playerEntity, *(animation.get()));
-    }
-
-    void Tilemap::Render() const
-    {
-        Engine::Get().AddRenderCommands(mRenderCommandCache);
+        mWorld->Set<Mochi::Graphics::AnimationsData>(mPlayerEntity, *(animation.get()));
     }
 
-    void Tilemap::SaveTilemap(const std::string &path)
+    void Tilemap::InitMap()
     {
-    }
-
-    void Tilemap::SetProperties(const TilemapProperties &properties)
-    {
-        mProperties = properties;
-    }
-    void Tilemap::AddTileset(const std::string &tilesetPath)
-    {
-        mTilesetIds.push_back(tilesetPath);
-
-        std::shared_ptr<Tileset> ts = std::make_shared<Tileset>(tilesetPath, mAnimationFactory, mTextureFactory);
-        mTilesets[tilesetPath] = ts;
-    }
-    void Tilemap::RemoveTileset(const int &tilesetIndex)
-    {
-        if (mTilesetIds.size() > tilesetIndex)
-        {
-            mTilesets.erase(mTilesetIds[tilesetIndex]);
-            mTilesetIds.erase(mTilesetIds.cbegin() + tilesetIndex);
-        }
-        else
-        {
-            LOG_ERROR(std::format("No tileset with index", tilesetIndex));
-        }
-    }
-    void Tilemap::ResetTilesets()
-    {
-        mTilesetIds.clear();
-        mTilesets.clear();
-    }
-    void Tilemap::AddTile(const int &i, const int &j, const int &tileset)
-    {
-        mTiles.push_back({i, j, tileset});
-    }
-    void Tilemap::RemoveTile(const int &tileIndex)
-    {
-        if (mTiles.size() > tileIndex)
-        {
-            mTiles.erase(mTiles.cbegin() + tileIndex);
-        }
-        else
-        {
-            LOG_ERROR(std::format("No tile with index", tileIndex));
-        }
-    }
-    void Tilemap::ResetTiles()
-    {
-        mTiles.clear();
-    }
-    void Tilemap::AddEnemy(const int &i, const int &j, const std::string &type)
-    {
-        mEnemies.push_back({i, j, type});
-    }
-    void Tilemap::RemoveEnemy(const int &enemyIndex)
-    {
-        if (mEnemies.size() > enemyIndex)
-        {
-            mEnemies.erase(mEnemies.cbegin() + enemyIndex);
-        }
-        else
-        {
-            LOG_ERROR(std::format("No tile with index", enemyIndex));
-        }
-    }
-    void Tilemap::ResetEnemies()
-    {
-        mEnemies.clear();
-    }
-    void Tilemap::AddCoin(const int &i, const int &j)
-    {
-        mCoins.push_back({i, j});
-    }
-    void Tilemap::RemoveCoin(const int &coinIndex)
-    {
-        if (mCoins.size() > coinIndex)
-        {
-            mCoins.erase(mCoins.cbegin() + coinIndex);
-        }
-        else
-        {
-            LOG_ERROR(std::format("No tile with index", coinIndex));
-        }
-    }
-    void Tilemap::ResetCoins()
-    {
-        mCoins.clear();
-    }
-    void Tilemap::AddBreakable(const int &i, const int &j, const std::string &type)
-    {
-        mBreakables.push_back({i, j, type});
-    }
-    void Tilemap::RemoveBreakable(const int &breakableIndex)
-    {
-        if (mBreakables.size() > breakableIndex)
-        {
-            mBreakables.erase(mBreakables.cbegin() + breakableIndex);
-        }
-        else
-        {
-            LOG_ERROR(std::format("No tile with index", breakableIndex));
-        }
-    }
-    void Tilemap::ResetBreakables()
-    {
-        mBreakables.clear();
-    }
-    void Tilemap::SetPlayerStartingPosition(const int &i, const int &j)
-    {
-        mPlayerStart.i = i;
-        mPlayerStart.j = j;
+        InitScenario();
+        InitCoins();
+        InitBreakables();
+        InitEnemies();
+        InitPlayer();
     }
 
 #if DEBUG

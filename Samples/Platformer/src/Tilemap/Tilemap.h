@@ -8,6 +8,7 @@
 
 #include "Types/Types.hpp"
 #include "Graphics/RenderCommand.h"
+#include "ECS/ECSWorld.h"
 
 #include "Tileset.h"
 #include "TilemapDataStructures.h"
@@ -52,6 +53,13 @@ namespace Mochi::Platformer
         std::vector<TilemapBreakable> mBreakables;
         TilemapPlayerStart mPlayerStart;
 
+        // Entities
+        std::vector<ECS::EntityType> mTileEntities;
+        std::vector<ECS::EntityType> mCoinEntities;
+        std::vector<ECS::EntityType> mEnemyEntities;
+        std::vector<ECS::EntityType> mBreakableEntities;
+        ECS::EntityType mPlayerEntity;
+
         std::vector<Graphics::RenderCommand> mRenderCommandCache;
         ECS::ECSWorld *mWorld;
         Graphics::AbstractTextureFactory *mTextureFactory;
@@ -68,7 +76,12 @@ namespace Mochi::Platformer
         void LoadEnemies(const nlohmann::json enemies);
         void LoadCoins(const nlohmann::json coins);
         void LoadBreakables(const nlohmann::json breakables);
-        void InitPlayer(const nlohmann::json playerStart);
+        void LoadPlayer(const nlohmann::json playerStart);
+        void InitScenario();
+        void InitEnemies();
+        void InitCoins();
+        void InitBreakables();
+        void InitPlayer();
 
     public:
         Tilemap(ECS::ECSWorld *world, FS::PackCatalog *catalog, Graphics::AbstractTextureFactory *textureFactory, Graphics::IAnimationFactory *animationFactory);
@@ -96,6 +109,7 @@ namespace Mochi::Platformer
 
         void LoadTilemap(const std::string &tilemapData);
         void SaveTilemap(const std::string &path);
+        void InitMap();
         void Render() const;
 #if DEBUG
         void DebugGizmos(Debug::IGizmos *gizmos) const;

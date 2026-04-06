@@ -33,7 +33,8 @@ namespace Mochi::ECS
 
     void ECSWorld::DestroyEntity(const EntityType &e)
     {
-        mRegistry.destroy(e);
+        if (mRegistry.valid(e))
+            mRegistry.destroy(e);
     }
 
     void ECSWorld::Update(const float &dt)

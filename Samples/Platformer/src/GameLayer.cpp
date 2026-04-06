@@ -45,6 +45,7 @@ namespace Mochi::Platformer
         mECSWorld->SetGlobal<GlobalDataComponent>();
 
         mTilemap->LoadTilemap("Tilemap1.json");
+        mTilemap->InitMap();
     }
 
     bool GameLayer::Update(const float &dt)
