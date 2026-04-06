@@ -16,9 +16,9 @@
 int main()
 {
 #if DEBUG
-    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    /*_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
-    _CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDOUT);
+    _CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDOUT);*/
 #endif
     const char *appName = "Mochi Platformer";
     const char *appVersion = "0.1";

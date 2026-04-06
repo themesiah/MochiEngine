@@ -1,0 +1,11 @@
+{
+	"zindex":{
+		"scenario":1,
+		"foreground":10,
+		"background":0,
+		"enemies":3,
+		"coins":2,
+		"breakables":2,
+		"player":5
+	}
+}

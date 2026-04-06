@@ -1,0 +1,5 @@
+{
+	"enemyTypes":[
+		{"id":"Enemy1", "sourceType":0, "source":"Enemy.png", "collider":[0.0, 0.0, 24.0, 24.0]}
+	]
+}

@@ -13,7 +13,7 @@
 #include "Graphics/IAnimationFactory.h"
 
 #include "Tileset.h"
-#include "Tile.h"
+#include "TilemapDataStructures.h"
 
 #include "ECS/Components/ECSSprite.h"
 #include "ECS/Components/ECSTransform.h"
@@ -35,8 +35,7 @@
 namespace Mochi::Platformer
 {
     Tilemap::Tilemap(ECS::ECSWorld *world, FS::PackCatalog *catalog, Graphics::AbstractTextureFactory *textureFactory, Graphics::IAnimationFactory *animationFactory)
-        : mWorld(world), mTilesets({}), mTiles({}), mRenderCommandCache({}), mWidth(0), mHeight(0), mSquareSize(0.0f), mSquareSizePixels(0.0f),
-          mCatalog(catalog), mTextureFactory(textureFactory), mAnimationFactory(animationFactory)
+        : mWorld(world), mTilesets({}), mTiles({}), mRenderCommandCache({}), mCatalog(catalog), mTextureFactory(textureFactory), mAnimationFactory(animationFactory)
     {
     }
 
@@ -46,12 +45,12 @@ namespace Mochi::Platformer
 
     Rectf Tilemap::GetTile(const int &i, const int &j) const
     {
-        if (i >= mWidth || j >= mHeight)
+        if (i >= mProperties.Width || j >= mProperties.Height)
             throw EngineError("Tilemap is not that big");
 
-        float x = ((float)i - mWidth / 2) * mSquareSize - mSquareSize / 2;
-        float y = ((float)j - mHeight / 2) * mSquareSize - mSquareSize / 2;
-        return Rectf{x, y, mSquareSizePixels, mSquareSizePixels};
+        float x = ((float)i - mProperties.Width / 2) * mRealSquareSize - mRealSquareSize / 2;
+        float y = ((float)j - mProperties.Height / 2) * mRealSquareSize - mRealSquareSize / 2;
+        return Rectf{x, y, mProperties.TileSize, mProperties.TileSize};
     }
 
     bool Tilemap::HasTileAt(const int &i, const int &j) const
@@ -71,49 +70,106 @@ namespace Mochi::Platformer
 
         // Main properties
         auto properties = data.at("properties");
-        mWidth = properties.at("width");
-        mHeight = properties.at("height");
-        mSquareSizePixels = properties.at("tileSize");
-        mSquareSize = PixelsToMeters(mSquareSizePixels);
+        LoadProperties(properties);
+
+        // Zindexes
+        std::vector<char> rawZindex = mCatalog->GetFile("ZIndexes.json");
+        nlohmann::json zindexData = nlohmann::json::parse(rawZindex);
+        LoadZIndexes(zindexData);
 
         // Load tilesets
         auto tileSets = data.at("tilesets");
         LoadTilesets(tileSets);
 
+        // Load enemy types
+        std::vector<char> rawEnemies = mCatalog->GetFile("EnemyTypes.json");
+        nlohmann::json enemyDataTypes = nlohmann::json::parse(rawEnemies);
+        LoadEnemyTypes(enemyDataTypes);
+
+        // Load breakable types
+        std::vector<char> rawBreakables = mCatalog->GetFile("BreakableTypes.json");
+        nlohmann::json breakableDataTypes = nlohmann::json::parse(rawBreakables);
+        LoadBreakableTypes(breakableDataTypes);
+
         // Load main scenario
         auto scenario = data.at("scenario");
-        auto zindexes = data.at("zindex");
-        LoadScenario(scenario, zindexes);
+        LoadScenario(scenario);
 
         // Load enemies
-        auto enemyTypes = data.at("enemyTypes");
         auto enemies = data.at("enemies");
-        LoadEnemies(enemyTypes, enemies);
+        LoadEnemies(enemies);
 
         // Load coins
         auto coins = data.at("coins");
         LoadCoins(coins);
 
         // Load breakables
-        auto breakableTypes = data.at("breakableTypes");
         auto breakables = data.at("breakables");
-        LoadBreakables(breakableTypes, breakables);
+        LoadBreakables(breakables);
 
         // Initialize the player
         auto playerStart = data.at("playerStart");
         InitPlayer(playerStart);
     }
 
+    void Tilemap::LoadProperties(const nlohmann::json properties)
+    {
+        mProperties.Width = properties.at("width");
+        mProperties.Height = properties.at("height");
+        mProperties.TileSize = properties.at("tileSize");
+
+        mRealSquareSize = PixelsToMeters(mProperties.TileSize);
+    }
+
     void Tilemap::LoadTilesets(const nlohmann::json tilesets)
     {
         for (size_t i = 0; i < tilesets.size(); ++i)
         {
-            Tileset ts = Tileset(tilesets[i], mAnimationFactory, mTextureFactory);
-            mTilesets.push_back(ts);
+            AddTileset(tilesets[i]);
         }
     }
 
-    void Tilemap::LoadScenario(const nlohmann::json scenario, const nlohmann::json zindexes)
+    void Tilemap::LoadZIndexes(const nlohmann::json zindexes)
+    {
+        auto zindex = zindexes["zindex"];
+        mZindexes.Background = zindex["background"];
+        mZindexes.Breakables = zindex["breakables"];
+        mZindexes.Coins = zindex["coins"];
+        mZindexes.Enemies = zindex["enemies"];
+        mZindexes.Foreground = zindex["foreground"];
+        mZindexes.Scenario = zindex["scenario"];
+        mZindexes.Player = zindex["player"];
+    }
+
+    void Tilemap::LoadEnemyTypes(const nlohmann::json enemyTypes)
+    {
+        auto types = enemyTypes["enemyTypes"];
+        for (size_t i = 0; i < types.size(); ++i)
+        {
+            auto type = types[i];
+            Rectf collider;
+            auto colliderSize = type["collider"];
+            collider.x = colliderSize[0];
+            collider.y = colliderSize[1];
+            collider.w = colliderSize[2];
+            collider.h = colliderSize[3];
+            EnemyType et{type["id"], type["sourceType"], type["source"], collider};
+            mEnemyTypes[et.Id] = et;
+        }
+    }
+
+    void Tilemap::LoadBreakableTypes(const nlohmann::json breakableTypes)
+    {
+        auto types = breakableTypes["breakableTypes"];
+        for (size_t i = 0; i < types.size(); ++i)
+        {
+            auto type = types[i];
+            BreakableType bt{type["id"], type["sourceType"], type["source"]};
+            mBreakableTypes[bt.Id] = bt;
+        }
+    }
+
+    void Tilemap::LoadScenario(const nlohmann::json scenario)
     {
 
         for (size_t i = 0; i < scenario.size(); ++i)
@@ -122,7 +178,7 @@ namespace Mochi::Platformer
             int set = tile.at("set");
             int x = tile.at("i");
             int y = tile.at("j");
-            mTiles.push_back({x, y, set});
+            AddTile(x, y, set);
         }
 
         for (size_t i = 0; i < mTiles.size(); ++i)
@@ -135,7 +191,7 @@ namespace Mochi::Platformer
                 if (HasTileAt(tile.i - 1, tile.j))
                     tss += 2;
             }
-            if (tile.i < mWidth)
+            if (tile.i < mProperties.Width)
             {
                 if (HasTileAt(tile.i + 1, tile.j))
                     tss += 4;
@@ -145,15 +201,15 @@ namespace Mochi::Platformer
                 if (HasTileAt(tile.i, tile.j - 1))
                     tss += 8;
             }
-            if (tile.j < mHeight)
+            if (tile.j < mProperties.Height)
             {
                 if (HasTileAt(tile.i, tile.j + 1))
                     tss += 1;
             }
 
-            Graphics::RenderCommand rc = mTilesets[tile.TilesetIndex].GetTileCommand(tss);
+            Graphics::RenderCommand rc = mTilesets[mTilesetIds[tile.TilesetIndex]]->GetTileCommand(tss);
             rc.destRect = GetTile(tile.i, tile.j);
-            rc.zindex = zindexes.at("scenario");
+            rc.zindex = mZindexes.Scenario;
             mRenderCommandCache.push_back(rc);
 
             auto blockEntity = mWorld->CreateEntity();
@@ -167,7 +223,7 @@ namespace Mochi::Platformer
         }
     }
 
-    void Tilemap::LoadEnemies(const nlohmann::json enemyTypes, const nlohmann::json enemies)
+    void Tilemap::LoadEnemies(const nlohmann::json enemies)
     {
         for (size_t z = 0; z < enemies.size(); ++z)
         {
@@ -175,21 +231,31 @@ namespace Mochi::Platformer
             auto enemy = enemies[z];
             int i = enemy["i"];
             int j = enemy["j"];
-            int type = enemy["type"];
-            auto enemyType = enemyTypes[type];
+            std::string type = enemy["type"];
+            EnemyType enemyType = mEnemyTypes[type];
+            AddEnemy(i, j, type);
 
             std::string texPath;
-            if (enemyType["sourceType"] == "Sprite")
+            if (enemyType.SourceType == (int)SourceType::Sprite)
             {
-                texPath = enemyType["source"];
-            } // TODO: source animation
+                texPath = enemyType.Source;
+            }
+            else if (enemyType.SourceType == (int)SourceType::Animation)
+            {
+                auto animation = mAnimationFactory->GetAnimationsData(enemyType.Source);
+                texPath = animation->TexturePath.string();
+                ECS::AnimationComponent animationComponent{animation->Animations.cbegin()->first};
+                mWorld->Set<ECS::AnimationComponent>(enemyEntity, animationComponent);
+
+                mWorld->Set<Mochi::Graphics::AnimationsData>(enemyEntity, *(animation.get()));
+            }
             Graphics::ITexture *enemyTex = mTextureFactory->GetTexture(texPath).get();
-            auto colliderSize = enemyType["colliderSize"];
+            auto colliderSize = enemyType.Collider;
 
             mWorld->Set<ECS::TransformComponent>(enemyEntity, ECS::TransformComponent{GetTile(i, j).GetPosition(), 1.0f});
-            mWorld->Set<ECS::SpriteComponent>(enemyEntity, ECS::SpriteComponent{enemyTex, 3});
+            mWorld->Set<ECS::SpriteComponent>(enemyEntity, ECS::SpriteComponent{enemyTex, mZindexes.Enemies});
             mWorld->Set<ECS::ColliderComponent>(enemyEntity, ECS::ColliderComponent(
-                                                                 Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(Vector2f{colliderSize[0], colliderSize[1]} / 2.0f)},
+                                                                 Physics::Rectangle{colliderSize.GetPosition(), PixelsToMeters(colliderSize.GetSize() / 2.0f)},
                                                                  PlatformerLayers::Enemy,
                                                                  PlatformerLayers::Player,
                                                                  false));
@@ -210,8 +276,9 @@ namespace Mochi::Platformer
             auto coinEntity = mWorld->CreateEntity();
             int i = coin["i"];
             int j = coin["j"];
+            AddCoin(i, j);
             mWorld->Set<ECS::TransformComponent>(coinEntity, ECS::TransformComponent{GetTile(i, j).GetPosition(), 1.0f});
-            mWorld->Set<ECS::SpriteComponent>(coinEntity, ECS::SpriteComponent{coinTex.get(), 2});
+            mWorld->Set<ECS::SpriteComponent>(coinEntity, ECS::SpriteComponent{coinTex.get(), mZindexes.Coins});
             mWorld->Set<ECS::ColliderComponent>(coinEntity, ECS::ColliderComponent(
                                                                 Physics::Circle{Vector2f{0.0f, 0.0f}, PixelsToMeters(12.0f)},
                                                                 PlatformerLayers::Coin,
@@ -224,25 +291,35 @@ namespace Mochi::Platformer
         }
     }
 
-    void Tilemap::LoadBreakables(const nlohmann::json breakableTypes, const nlohmann::json breakables)
+    void Tilemap::LoadBreakables(const nlohmann::json breakables)
     {
         for (size_t z = 0; z < breakables.size(); ++z)
         {
+            auto breakableEntity = mWorld->CreateEntity();
             auto breakable = breakables[z];
             int i = breakable["i"];
             int j = breakable["j"];
-            int type = breakable["type"];
-            auto breakableType = breakableTypes[type];
+            std::string type = breakable["type"];
+            BreakableType breakableType = mBreakableTypes[type];
+            AddBreakable(i, j, type);
 
             std::string texPath;
-            if (breakableType["sourceType"] == "Sprite")
+            if (breakableType.SourceType == SourceType::Sprite)
             {
-                texPath = breakableType["source"];
+                texPath = breakableType.Source;
+            }
+            else if (breakableType.SourceType == SourceType::Animation)
+            {
+                auto animation = mAnimationFactory->GetAnimationsData(breakableType.Source);
+                texPath = animation->TexturePath.string();
+                ECS::AnimationComponent animationComponent{animation->Animations.cbegin()->first};
+                mWorld->Set<ECS::AnimationComponent>(breakableEntity, animationComponent);
+
+                mWorld->Set<Mochi::Graphics::AnimationsData>(breakableEntity, *(animation.get()));
             }
             auto breakableTex = mTextureFactory->GetTexture(texPath);
-            auto breakableEntity = mWorld->CreateEntity();
             mWorld->Set<ECS::TransformComponent>(breakableEntity, ECS::TransformComponent{GetTile(i, j).GetPosition(), 1.0f});
-            mWorld->Set<ECS::SpriteComponent>(breakableEntity, ECS::SpriteComponent{breakableTex.get(), 2});
+            mWorld->Set<ECS::SpriteComponent>(breakableEntity, ECS::SpriteComponent{breakableTex.get(), mZindexes.Breakables});
             mWorld->Set<ECS::ColliderComponent>(breakableEntity, ECS::ColliderComponent(
                                                                      Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(breakableTex->GetSize() / 2.0f)},
                                                                      PlatformerLayers::Scenario,
@@ -254,15 +331,17 @@ namespace Mochi::Platformer
 
     void Tilemap::InitPlayer(const nlohmann::json playerStart)
     {
+
         auto animation = mAnimationFactory->GetAnimationsData("Player.json");
         auto playerTex = mTextureFactory->GetTexture(animation->TexturePath.string());
         auto playerEntity = mWorld->CreateEntity();
         int i = playerStart["i"];
         int j = playerStart["j"];
+        SetPlayerStartingPosition(i, j);
         ECS::AnimationComponent animationComponent{"Idle"};
         mWorld->Set<ECS::TransformComponent>(playerEntity, ECS::TransformComponent{GetTile(i, j).GetPosition(), 1.0f});
         mWorld->Set<PlayerComponent>(playerEntity, PlayerComponent{5.0f});
-        mWorld->Set<ECS::SpriteComponent>(playerEntity, ECS::SpriteComponent{playerTex.get(), 4});
+        mWorld->Set<ECS::SpriteComponent>(playerEntity, ECS::SpriteComponent{playerTex.get(), mZindexes.Player});
         mWorld->Set<ECS::ColliderComponent>(playerEntity, ECS::ColliderComponent(
                                                               Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(Vector2f(7.0f, 15.0f))},
                                                               PlatformerLayers::Player,
@@ -279,22 +358,136 @@ namespace Mochi::Platformer
         Engine::Get().AddRenderCommands(mRenderCommandCache);
     }
 
+    void Tilemap::SaveTilemap(const std::string &path)
+    {
+    }
+
+    void Tilemap::SetProperties(const TilemapProperties &properties)
+    {
+        mProperties = properties;
+    }
+    void Tilemap::AddTileset(const std::string &tilesetPath)
+    {
+        mTilesetIds.push_back(tilesetPath);
+
+        std::shared_ptr<Tileset> ts = std::make_shared<Tileset>(tilesetPath, mAnimationFactory, mTextureFactory);
+        mTilesets[tilesetPath] = ts;
+    }
+    void Tilemap::RemoveTileset(const int &tilesetIndex)
+    {
+        if (mTilesetIds.size() > tilesetIndex)
+        {
+            mTilesets.erase(mTilesetIds[tilesetIndex]);
+            mTilesetIds.erase(mTilesetIds.cbegin() + tilesetIndex);
+        }
+        else
+        {
+            LOG_ERROR(std::format("No tileset with index", tilesetIndex));
+        }
+    }
+    void Tilemap::ResetTilesets()
+    {
+        mTilesetIds.clear();
+        mTilesets.clear();
+    }
+    void Tilemap::AddTile(const int &i, const int &j, const int &tileset)
+    {
+        mTiles.push_back({i, j, tileset});
+    }
+    void Tilemap::RemoveTile(const int &tileIndex)
+    {
+        if (mTiles.size() > tileIndex)
+        {
+            mTiles.erase(mTiles.cbegin() + tileIndex);
+        }
+        else
+        {
+            LOG_ERROR(std::format("No tile with index", tileIndex));
+        }
+    }
+    void Tilemap::ResetTiles()
+    {
+        mTiles.clear();
+    }
+    void Tilemap::AddEnemy(const int &i, const int &j, const std::string &type)
+    {
+        mEnemies.push_back({i, j, type});
+    }
+    void Tilemap::RemoveEnemy(const int &enemyIndex)
+    {
+        if (mEnemies.size() > enemyIndex)
+        {
+            mEnemies.erase(mEnemies.cbegin() + enemyIndex);
+        }
+        else
+        {
+            LOG_ERROR(std::format("No tile with index", enemyIndex));
+        }
+    }
+    void Tilemap::ResetEnemies()
+    {
+        mEnemies.clear();
+    }
+    void Tilemap::AddCoin(const int &i, const int &j)
+    {
+        mCoins.push_back({i, j});
+    }
+    void Tilemap::RemoveCoin(const int &coinIndex)
+    {
+        if (mCoins.size() > coinIndex)
+        {
+            mCoins.erase(mCoins.cbegin() + coinIndex);
+        }
+        else
+        {
+            LOG_ERROR(std::format("No tile with index", coinIndex));
+        }
+    }
+    void Tilemap::ResetCoins()
+    {
+        mCoins.clear();
+    }
+    void Tilemap::AddBreakable(const int &i, const int &j, const std::string &type)
+    {
+        mBreakables.push_back({i, j, type});
+    }
+    void Tilemap::RemoveBreakable(const int &breakableIndex)
+    {
+        if (mBreakables.size() > breakableIndex)
+        {
+            mBreakables.erase(mBreakables.cbegin() + breakableIndex);
+        }
+        else
+        {
+            LOG_ERROR(std::format("No tile with index", breakableIndex));
+        }
+    }
+    void Tilemap::ResetBreakables()
+    {
+        mBreakables.clear();
+    }
+    void Tilemap::SetPlayerStartingPosition(const int &i, const int &j)
+    {
+        mPlayerStart.i = i;
+        mPlayerStart.j = j;
+    }
+
 #if DEBUG
     void Tilemap::DebugGizmos(Debug::IGizmos *gizmos) const
     {
         const Color color = Color{255, 255, 0, 30};
 
-        for (int i = -mWidth / 2; i < mWidth / 2; ++i)
+        for (int i = -mProperties.Width / 2; i < mProperties.Width / 2; ++i)
         {
-            Vector2f start{(float)i * mSquareSize, -mHeight / 2.0f * mSquareSize};
-            Vector2f end{(float)i * mSquareSize, mHeight / 2.0f * mSquareSize};
+            Vector2f start{(float)i * mRealSquareSize, -mProperties.Height / 2.0f * mRealSquareSize};
+            Vector2f end{(float)i * mRealSquareSize, mProperties.Height / 2.0f * mRealSquareSize};
             Physics::Line l{start, end};
             gizmos->DrawLine(&l, color);
         }
-        for (int j = -mHeight / 2; j < mHeight / 2; ++j)
+        for (int j = -mProperties.Height / 2; j < mProperties.Height / 2; ++j)
         {
-            Vector2f start{-mWidth / 2.0f * mSquareSize, (float)j * mSquareSize};
-            Vector2f end{mWidth / 2.0f * mSquareSize, (float)j * mSquareSize};
+            Vector2f start{-mProperties.Width / 2.0f * mRealSquareSize, (float)j * mRealSquareSize};
+            Vector2f end{mProperties.Width / 2.0f * mRealSquareSize, (float)j * mRealSquareSize};
             Physics::Line l{start, end};
             gizmos->DrawLine(&l, color);
         }

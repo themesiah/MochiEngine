@@ -9,12 +9,6 @@
 	[
 		"Tilemap.json"
 	],
-	"enemyTypes":[
-		{"sourceType":"Sprite", "source":"Enemy.png", "colliderSize":[24.0, 24.0]}
-	],
-	"breakableTypes":[
-		{"sourceType":"Sprite", "source":"BreakableBlock.png"}
-	],
 	"scenario":[
 		{"i":9,"j":14,"set":0},
 		{"i":9,"j":15,"set":0},
@@ -34,22 +28,14 @@
 	],
 	"foreground":{},
 	"background":{},
-	"zindex":{
-		"scenario":1,
-		"foreground":10,
-		"background":0,
-		"enemies":3,
-		"coins":2,
-		"breakables":2
-	},
 	"enemies":[
-		{"i":17, "j":15, "type":0}
+		{"i":17, "j":15, "type":"Enemy1"}
 	],
 	"coins":[
 		{"i":15, "j":17}
 	],
 	"breakables":[
-		{"i":15, "j":19, "type":0}
+		{"i":15, "j":19, "type":"Breakable1"}
 	],
 	"playerStart":{
 		"i":10,"j":15

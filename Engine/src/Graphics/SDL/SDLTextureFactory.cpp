@@ -31,7 +31,7 @@ namespace Mochi::Graphics
 
         auto textureBuffer = mCatalog->GetFile(normalizedPath);
         auto tex = IMG_LoadTexture_IO(mRenderer, SDL_IOFromConstMem(textureBuffer.data(), textureBuffer.size()), true);
-        ASSERT("Failed loading texture from the catalog", tex != nullptr);
+        ASSERT(std::format("Failed loading texture from the catalog with path {}", normalizedPath), tex != nullptr);
         if (tex == nullptr)
             throw EngineError(std::format("Texture {} was not loaded, but was found on the system", texturePath));
 

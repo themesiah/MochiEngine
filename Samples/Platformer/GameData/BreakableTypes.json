@@ -1,0 +1,5 @@
+{
+	"breakableTypes":[
+		{"id":"Breakable1", "sourceType":0, "source":"BreakableBlock.png"}
+	]
+}
