@@ -32,6 +32,8 @@ namespace Mochi::Event
             {
                 mEventBus->Publish<GamepadRemovedEvent>({event.gdevice.which});
             }
+
+            mEventBus->Publish<SDL_Event>(event);
         }
     }
 

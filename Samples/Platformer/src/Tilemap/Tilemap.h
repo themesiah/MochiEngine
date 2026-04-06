@@ -66,6 +66,7 @@ namespace Mochi::Platformer
         Graphics::IAnimationFactory *mAnimationFactory;
         FS::PackCatalog *mCatalog;
         float mRealSquareSize;
+        bool mInitialized;
 
         void LoadProperties(const nlohmann::json properties);
         void LoadTilesets(const nlohmann::json tilesets);
@@ -82,6 +83,7 @@ namespace Mochi::Platformer
         void InitCoins();
         void InitBreakables();
         void InitPlayer();
+        void GenerateRenderCommands();
 
     public:
         Tilemap(ECS::ECSWorld *world, FS::PackCatalog *catalog, Graphics::AbstractTextureFactory *textureFactory, Graphics::IAnimationFactory *animationFactory);

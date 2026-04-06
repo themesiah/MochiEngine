@@ -35,7 +35,8 @@
 namespace Mochi::Platformer
 {
     Tilemap::Tilemap(ECS::ECSWorld *world, FS::PackCatalog *catalog, Graphics::AbstractTextureFactory *textureFactory, Graphics::IAnimationFactory *animationFactory)
-        : mWorld(world), mTilesets({}), mTiles({}), mRenderCommandCache({}), mCatalog(catalog), mTextureFactory(textureFactory), mAnimationFactory(animationFactory)
+        : mWorld(world), mTilesets({}), mTiles({}), mRenderCommandCache({}), mCatalog(catalog), mTextureFactory(textureFactory), mAnimationFactory(animationFactory),
+          mInitialized(false)
     {
     }
 
@@ -65,6 +66,7 @@ namespace Mochi::Platformer
 
     void Tilemap::LoadTilemap(const std::string &tilemapData)
     {
+        mInitialized = false;
         std::vector<char> raw = mCatalog->GetFile(tilemapData);
         nlohmann::json data = nlohmann::json::parse(raw);
 
@@ -110,6 +112,10 @@ namespace Mochi::Platformer
         // Initialize the player
         auto playerStart = data.at("playerStart");
         LoadPlayer(playerStart);
+
+        // Generate and cache render commands to easily draw the same scenario each frame
+        GenerateRenderCommands();
+        mInitialized = true;
     }
 
     void Tilemap::LoadProperties(const nlohmann::json properties)
@@ -267,6 +273,8 @@ namespace Mochi::Platformer
     void Tilemap::AddTile(const int &i, const int &j, const int &tileset)
     {
         mTiles.push_back({i, j, tileset});
+        if (mInitialized)
+            GenerateRenderCommands();
     }
 
     void Tilemap::RemoveTile(const int &tileIndex)
@@ -274,6 +282,8 @@ namespace Mochi::Platformer
         if (mTiles.size() > tileIndex)
         {
             mTiles.erase(mTiles.cbegin() + tileIndex);
+            if (mInitialized)
+                GenerateRenderCommands();
         }
         else
         {
@@ -284,6 +294,8 @@ namespace Mochi::Platformer
     void Tilemap::ResetTiles()
     {
         mTiles.clear();
+        if (mInitialized)
+            GenerateRenderCommands();
     }
 
     void Tilemap::AddEnemy(const int &i, const int &j, const std::string &type)
@@ -392,17 +404,13 @@ namespace Mochi::Platformer
                     tss += 1;
             }
 
-            Graphics::RenderCommand rc = mTilesets[mTilesetIds[tile.TilesetIndex]]->GetTileCommand(tss);
-            rc.destRect = GetTile(tile.i, tile.j);
-            rc.zindex = mZindexes.Scenario;
-            mRenderCommandCache.push_back(rc);
-
             auto blockEntity = mWorld->CreateEntity();
             mTileEntities.push_back(blockEntity);
-            mWorld->Set<ECS::TransformComponent>(blockEntity, ECS::TransformComponent{rc.destRect.GetPosition(), 1.0f});
-            // mECSWorld->Set<ECS::SpriteComponent>(blockEntity, ECS::SpriteComponent{blockTex.get(), 0});
+            Rectf tileRect = GetTile(tile.i, tile.j);
+            // TODO: Group colliders in bigger colliders
+            mWorld->Set<ECS::TransformComponent>(blockEntity, ECS::TransformComponent{tileRect.GetPosition(), 1.0f});
             mWorld->Set<ECS::ColliderComponent>(blockEntity, ECS::ColliderComponent(
-                                                                 Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(rc.destRect.GetSize() / 2.0f)},
+                                                                 Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(tileRect.GetSize() / 2.0f)},
                                                                  PlatformerLayers::Scenario,
                                                                  0,
                                                                  false));
@@ -553,6 +561,42 @@ namespace Mochi::Platformer
         InitBreakables();
         InitEnemies();
         InitPlayer();
+    }
+
+    void Tilemap::GenerateRenderCommands()
+    {
+        mRenderCommandCache.clear();
+        for (size_t i = 0; i < mTiles.size(); ++i)
+        {
+            TileSpaceStatus tss = 0;
+            auto tile = mTiles[i];
+
+            if (tile.i > 0)
+            {
+                if (HasTileAt(tile.i - 1, tile.j))
+                    tss += 2;
+            }
+            if (tile.i < mProperties.Width)
+            {
+                if (HasTileAt(tile.i + 1, tile.j))
+                    tss += 4;
+            }
+            if (tile.j > 0)
+            {
+                if (HasTileAt(tile.i, tile.j - 1))
+                    tss += 8;
+            }
+            if (tile.j < mProperties.Height)
+            {
+                if (HasTileAt(tile.i, tile.j + 1))
+                    tss += 1;
+            }
+
+            Graphics::RenderCommand rc = mTilesets[mTilesetIds[tile.TilesetIndex]]->GetTileCommand(tss);
+            rc.destRect = GetTile(tile.i, tile.j);
+            rc.zindex = mZindexes.Scenario;
+            mRenderCommandCache.push_back(rc);
+        }
     }
 
 #if DEBUG

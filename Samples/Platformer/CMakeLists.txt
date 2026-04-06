@@ -76,3 +76,5 @@ add_custom_target(copy_platformer_data_folder
         "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/fmod.dll"
         DEPENDS Platformer
     )
+
+add_subdirectory(MapEditor)

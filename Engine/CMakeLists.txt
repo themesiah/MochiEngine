@@ -23,6 +23,9 @@ file(GLOB Engine_src CONFIGURE_DEPENDS
 # Get debug .cpp files to use only on debug builds
 file(GLOB Debug_src CONFIGURE_DEPENDS "src/Debug/*.cpp")
 
+
+file(GLOB Imgui_src CONFIGURE_DEPENDS "Includes/ImGui/*.cpp")
+
 # Lua version needed to automatically download lua and use it with sol2
 set(LUA_VERSION "lua-5.4.7")
 add_subdirectory(Includes)
@@ -30,12 +33,12 @@ add_subdirectory(Includes)
 add_subdirectory(src/Packer)
 
 # Adds source files and debug source files only if in debug
-add_library(Engine ${Engine_src} $<$<CONFIG:Debug>:${Debug_src}>)
+add_library(Engine ${Engine_src} ${Imgui_src} $<$<CONFIG:Debug>:${Debug_src}>)
 target_compile_features(Engine PUBLIC cxx_std_23)
 # A "DEBUG" definition is created and available in code if the game is in debug
 target_compile_definitions(Engine PUBLIC $<$<CONFIG:Debug>:DEBUG>)
 
-target_include_directories(Engine INTERFACE "src")
+target_include_directories(Engine INTERFACE "src" "Includes/ImGui")
 
 target_link_libraries(Engine
                       PUBLIC
