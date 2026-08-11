@@ -155,6 +155,29 @@ namespace Mochi::Math
         return (val - a) / (b - a);
     }
 
+    /// @brief Returns the value number without the decimal part
+    /// @param val The number to remove the decimal part from
+    /// @return The number without the decimal part
+    inline int Floor(const float &val)
+    {
+        if (val > 0.0f)
+        {
+            return (int)val;
+        }
+        else
+        {
+            return ((int)val) - 1;
+        }
+    }
+
+    /// @brief Returns the value number without the decimal part + 1
+    /// @param val The number to get the ceil from
+    /// @return The ceil of the number
+    inline int Ceil(const float &val)
+    {
+        return Floor(val) + 1;
+    }
+
     /**@} */
 }
 #endif

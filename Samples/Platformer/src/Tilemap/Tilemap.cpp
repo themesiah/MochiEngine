@@ -11,6 +11,8 @@
 #include "Packer/PackCatalog.h"
 #include "Graphics/AbstractTextureFactory.h"
 #include "Graphics/IAnimationFactory.h"
+#include "Physics/Shapes.h"
+#include "Physics/Collisions.h"
 
 #include "Tileset.h"
 #include "TilemapDataStructures.h"
@@ -30,6 +32,7 @@
 
 #if DEBUG
 #include "Debug/IGizmos.h"
+#include "GUI/AbstractGUI.h"
 #endif
 
 namespace Mochi::Platformer
@@ -49,9 +52,21 @@ namespace Mochi::Platformer
         if (i >= mProperties.Width || j >= mProperties.Height)
             throw EngineError("Tilemap is not that big");
 
-        float x = ((float)i - mProperties.Width / 2) * mRealSquareSize - mRealSquareSize / 2;
-        float y = ((float)j - mProperties.Height / 2) * mRealSquareSize - mRealSquareSize / 2;
-        return Rectf{x, y, mProperties.TileSize, mProperties.TileSize};
+        float x = i * mRealSquareSize + mRealSquareSize / 2.0f;
+        float y = j * mRealSquareSize + mRealSquareSize / 2.0f;
+        return Rectf{x, y, mRealSquareSize, mRealSquareSize};
+    }
+
+    int Tilemap::GetTileIndex(const int &i, const int &j) const
+    {
+        for (int z = 0; z < mTiles.size(); ++z)
+        {
+            if (mTiles[z].i == i && mTiles[z].j == j)
+            {
+                return z;
+            }
+        }
+        return -1;
     }
 
     bool Tilemap::HasTileAt(const int &i, const int &j) const
@@ -62,6 +77,57 @@ namespace Mochi::Platformer
                 return true;
         }
         return false;
+    }
+
+    TilemapTile Tilemap::WorldToTile(const Vector2f &worldPos) const
+    {
+        auto worldPos2 = worldPos;
+        Vector2f screenWorldSize = PixelsToMeters(Vector2f{CONST_RENDER_LOGICAL_X, CONST_RENDER_LOGICAL_Y});
+        worldPos2 -= screenWorldSize / 2.0f;
+        int i = Math::Floor(worldPos2.x / mRealSquareSize);
+        int j = Math::Floor(worldPos2.y / mRealSquareSize);
+
+        if (HasTileAt(i, j))
+        {
+            return mTiles[GetTileIndex(i, j)];
+        }
+        return {i, j, -1};
+    }
+
+    int Tilemap::GetEnemyIndexAt(const int &i, const int &j)
+    {
+        for (int i = 0; i < mEnemies.size(); ++i)
+        {
+            if (mEnemies[i].i == i && mEnemies[i].j == j)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    int Tilemap::GetCoinIndexAt(const int &i, const int &j)
+    {
+        for (int i = 0; i < mCoins.size(); ++i)
+        {
+            if (mCoins[i].i == i && mCoins[i].j == j)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    int Tilemap::GetBreakableIndexAt(const int &i, const int &j)
+    {
+        for (int i = 0; i < mBreakables.size(); ++i)
+        {
+            if (mBreakables[i].i == i && mBreakables[i].j == j)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     void Tilemap::LoadTilemap(const std::string &tilemapData)
@@ -116,6 +182,11 @@ namespace Mochi::Platformer
         // Generate and cache render commands to easily draw the same scenario each frame
         GenerateRenderCommands();
         mInitialized = true;
+    }
+
+    void Tilemap::LoadDefault()
+    {
+        LoadTilemap("DefaultTilemap.json");
     }
 
     void Tilemap::LoadProperties(const nlohmann::json properties)
@@ -410,7 +481,7 @@ namespace Mochi::Platformer
             // TODO: Group colliders in bigger colliders
             mWorld->Set<ECS::TransformComponent>(blockEntity, ECS::TransformComponent{tileRect.GetPosition(), 1.0f});
             mWorld->Set<ECS::ColliderComponent>(blockEntity, ECS::ColliderComponent(
-                                                                 Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(tileRect.GetSize() / 2.0f)},
+                                                                 Physics::Rectangle{Vector2f{0.0f, 0.0f}, tileRect.GetSize() / 2.0f},
                                                                  PlatformerLayers::Scenario,
                                                                  0,
                                                                  false));
@@ -540,7 +611,9 @@ namespace Mochi::Platformer
         auto animation = mAnimationFactory->GetAnimationsData("Player.json");
         auto playerTex = mTextureFactory->GetTexture(animation->TexturePath.string());
         ECS::AnimationComponent animationComponent{"Idle"};
-        mWorld->Set<ECS::TransformComponent>(mPlayerEntity, ECS::TransformComponent{GetTile(mPlayerStart.i, mPlayerStart.j).GetPosition(), 1.0f});
+        auto playerTile = GetTile(mPlayerStart.i, mPlayerStart.j);
+        auto playerPos = playerTile.GetPosition(); // + playerTile.GetSize() / 2.0f;
+        mWorld->Set<ECS::TransformComponent>(mPlayerEntity, ECS::TransformComponent{playerPos, 1.0f});
         mWorld->Set<PlayerComponent>(mPlayerEntity, PlayerComponent{5.0f});
         mWorld->Set<ECS::SpriteComponent>(mPlayerEntity, ECS::SpriteComponent{playerTex.get(), mZindexes.Player});
         mWorld->Set<ECS::ColliderComponent>(mPlayerEntity, ECS::ColliderComponent(
@@ -566,6 +639,7 @@ namespace Mochi::Platformer
     void Tilemap::GenerateRenderCommands()
     {
         mRenderCommandCache.clear();
+        Vector2f tileSize{mProperties.TileSize, mProperties.TileSize};
         for (size_t i = 0; i < mTiles.size(); ++i)
         {
             TileSpaceStatus tss = 0;
@@ -593,30 +667,54 @@ namespace Mochi::Platformer
             }
 
             Graphics::RenderCommand rc = mTilesets[mTilesetIds[tile.TilesetIndex]]->GetTileCommand(tss);
-            rc.destRect = GetTile(tile.i, tile.j);
+            auto tileRect = GetTile(tile.i, tile.j);
+            tileRect.SetSize(tileSize);
+            rc.destRect = tileRect;
             rc.zindex = mZindexes.Scenario;
             mRenderCommandCache.push_back(rc);
         }
     }
 
 #if DEBUG
-    void Tilemap::DebugGizmos(Debug::IGizmos *gizmos) const
+    void Tilemap::DebugGizmos(Debug::IGizmos *gizmos, Graphics::Camera *camera) const
     {
         const Color color = Color{255, 255, 0, 30};
 
-        for (int i = -mProperties.Width / 2; i < mProperties.Width / 2; ++i)
+        for (int i = 0; i < mProperties.Width; ++i)
         {
-            Vector2f start{(float)i * mRealSquareSize, -mProperties.Height / 2.0f * mRealSquareSize};
-            Vector2f end{(float)i * mRealSquareSize, mProperties.Height / 2.0f * mRealSquareSize};
+            Vector2f start{i * mRealSquareSize, 0.0f};
+            Vector2f end{i * mRealSquareSize, mProperties.Height * mRealSquareSize};
+            start -= camera->GetPosition();
+            end -= camera->GetPosition();
             Physics::Line l{start, end};
             gizmos->DrawLine(&l, color);
         }
-        for (int j = -mProperties.Height / 2; j < mProperties.Height / 2; ++j)
+        for (int j = 0; j < mProperties.Height; ++j)
         {
-            Vector2f start{-mProperties.Width / 2.0f * mRealSquareSize, (float)j * mRealSquareSize};
-            Vector2f end{mProperties.Width / 2.0f * mRealSquareSize, (float)j * mRealSquareSize};
+            Vector2f start{0.0f, j * mRealSquareSize};
+            Vector2f end{mProperties.Width * mRealSquareSize, j * mRealSquareSize};
+            start -= camera->GetPosition();
+            end -= camera->GetPosition();
             Physics::Line l{start, end};
             gizmos->DrawLine(&l, color);
+        }
+
+        Engine &e = Engine::Get();
+        auto gui = e.GetGUI();
+        Graphics::GUITextOptions options;
+        options.TextSize = 16.0f;
+        Vector2f size = mRealSquareSize;
+        Vector2f cameraPos = MetersToPixels(camera->GetPosition());
+        cameraPos.y = -cameraPos.y;
+        float halfTileSize = mProperties.TileSize / 2.0f;
+        for (int i = 0; i < mProperties.Width; ++i)
+        {
+            for (int j = 0; j < mProperties.Height; ++j)
+            {
+                Vector2f pos = Vector2f(i * mProperties.TileSize + halfTileSize, -j * mProperties.TileSize - halfTileSize) - cameraPos;
+                options.DstRect = Rectf(pos, size);
+                gui->Text(std::format("{}-{}", i, j).c_str(), options);
+            }
         }
     }
 #endif

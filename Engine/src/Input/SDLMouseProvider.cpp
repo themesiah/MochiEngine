@@ -5,6 +5,8 @@
 #include "../Graphics/IRenderer.h"
 #include "../Graphics/SDL/SDLRenderer.h"
 
+#include "../Constants.h"
+
 namespace Mochi::Input
 {
     SDLMouseProvider::SDLMouseProvider(const Graphics::IRenderer *renderer)
@@ -20,6 +22,7 @@ namespace Mochi::Input
     std::array<bool, MouseButton::MouseButtonsCount> SDLMouseProvider::GetState(float *x, float *y) const
     {
         const SDL_MouseButtonFlags mouseFlags = SDL_GetMouseState(x, y);
+        *y = CONST_RENDER_LOGICAL_Y - *y; // Bottom left is 0,0
         SDL_RenderCoordinatesFromWindow(mRenderer, *x, *y, x, y);
         std::array<bool, 5> buttons{};
         for (int i = 0; i < 5; ++i)

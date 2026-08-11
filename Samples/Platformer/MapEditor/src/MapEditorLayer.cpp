@@ -5,13 +5,21 @@
 #include "imgui_impl_sdl3.h"
 
 #include "Graphics/SDL/SDLRenderer.h"
+#include "Graphics/AsepriteAnimationFactory.h"
+#include "Graphics/AbstractTextureFactory.h"
 #include "Constants.h"
 #include "Layer.h"
+
+#include "MapEditor.h"
 
 namespace Mochi::Platformer::Editor
 {
     MapEditorLayer::MapEditorLayer() : Layer()
     {
+        mCatalog->OpenPack("Data/Game");
+        mCatalog->OpenPack("Data/EditorData");
+        mTextureFactory = mRenderer->CreateTextureFactory(mCatalog);
+        mAnimationFactory = std::make_unique<Graphics::AsepriteAnimationFactory>(mCatalog);
     }
 
     MapEditorLayer::~MapEditorLayer()
@@ -36,34 +44,51 @@ namespace Mochi::Platformer::Editor
 
         mEventPollingSubscription = mEventBus->Subscribe<SDL_Event>([&](const SDL_Event &e)
                                                                     { ImGui_ImplSDL3_ProcessEvent(&e); });
+
+        mTilemap = std::make_unique<Tilemap>(mECSWorld, mCatalog, mTextureFactory.get(), mAnimationFactory.get());
+        mMapEditor = std::make_unique<MapEditor>(mActionManager, mTilemap.get(), mCamera);
+        mTilemap->LoadDefault();
+        mTilemap->InitMap();
     }
 
     bool MapEditorLayer::Update(const float &dt)
     {
+        if (mActionManager->Performed("Drag"))
+        {
+            Vector2f delta = mActionManager->CompoundValue("DragDeltaHorizontal", "DragDeltaVertical") * dt;
+            mCamera->Move(delta.x, delta.y);
+        }
+        mMapEditor->Update(dt);
         return true;
     }
 
     void MapEditorLayer::Render() const
     {
+        mTilemap->Render();
     }
 
     void MapEditorLayer::GUI()
     {
-        // ImGui_ImplSDL3_ProcessEvent();
-        ImGui_ImplSDL3_NewFrame();
-        ImGui_ImplSDLRenderer3_NewFrame();
-        ImGui::NewFrame();
-        ImGui::Begin("Test");
-        ImGui::Text("Holaaa");
-        ImGui::End();
-        ImGui::Render();
-        Graphics::SDLRenderer *renderer = dynamic_cast<Graphics::SDLRenderer *>(mRenderer);
-        ImGui_ImplSDLRenderer3_RenderDrawData(ImGui::GetDrawData(), renderer->GetRenderer());
     }
 
 #if DEBUG
     void MapEditorLayer::Debug() const
     {
+        mTilemap->DebugGizmos(mGizmos, mCamera);
+
+        ImGui_ImplSDL3_NewFrame();
+        ImGui_ImplSDLRenderer3_NewFrame();
+        ImGui::NewFrame();
+        ImGui::Begin("Map Editor");
+        if (ImGui::Button("Reset camera"))
+        {
+            mCamera->SetPosition(Vector2f::Zero);
+        }
+        mMapEditor->GUI();
+        ImGui::End();
+        ImGui::Render();
+        Graphics::SDLRenderer *renderer = dynamic_cast<Graphics::SDLRenderer *>(mRenderer);
+        ImGui_ImplSDLRenderer3_RenderDrawData(ImGui::GetDrawData(), renderer->GetRenderer());
     }
 #endif
 }

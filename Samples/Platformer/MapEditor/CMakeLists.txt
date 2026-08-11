@@ -30,3 +30,19 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
         -static-libstdc++
     )
 endif()
+
+add_custom_command(
+  TARGET PlatformerMapEditor POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_directory
+  "${PROJECT_SOURCE_DIR}/EditorData"
+  "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Data/EditorData"
+  COMMENT "Copying data folder from ${PROJECT_SOURCE_DIR} TO ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
+)
+
+add_custom_command(
+  TARGET PlatformerMapEditor POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_directory
+  "${PROJECT_SOURCE_DIR}/../GameData"
+  "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Data/Game"
+  COMMENT "Copying data folder from ${PROJECT_SOURCE_DIR} TO ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
+)

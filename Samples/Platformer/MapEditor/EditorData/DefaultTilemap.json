@@ -1,0 +1,26 @@
+{
+	"properties": {
+		"width": 30,
+		"height": 30,
+		"tileSize": 64
+	},
+	"tilesets": [
+		"Tilemap.json"
+	],
+	"scenario": [
+		{
+			"i": 0,
+			"j": 0,
+			"set": 0
+		}
+	],
+	"foreground": {},
+	"background": {},
+	"enemies": [],
+	"coins": [],
+	"breakables": [],
+	"playerStart": {
+		"i": 0,
+		"j": 2
+	}
+}

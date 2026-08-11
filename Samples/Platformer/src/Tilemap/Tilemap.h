@@ -89,7 +89,12 @@ namespace Mochi::Platformer
         Tilemap(ECS::ECSWorld *world, FS::PackCatalog *catalog, Graphics::AbstractTextureFactory *textureFactory, Graphics::IAnimationFactory *animationFactory);
         ~Tilemap();
         Rectf GetTile(const int &i, const int &j) const;
+        int GetTileIndex(const int &i, const int &j) const;
         bool HasTileAt(const int &i, const int &j) const;
+        TilemapTile WorldToTile(const Vector2f &worldPos) const;
+        int GetEnemyIndexAt(const int &i, const int &j);
+        int GetCoinIndexAt(const int &i, const int &j);
+        int GetBreakableIndexAt(const int &i, const int &j);
 
         void SetProperties(const TilemapProperties &properties);
         void AddTileset(const std::string &tilesetPath);
@@ -111,10 +116,11 @@ namespace Mochi::Platformer
 
         void LoadTilemap(const std::string &tilemapData);
         void SaveTilemap(const std::string &path);
+        void LoadDefault();
         void InitMap();
         void Render() const;
 #if DEBUG
-        void DebugGizmos(Debug::IGizmos *gizmos) const;
+        void DebugGizmos(Debug::IGizmos *gizmos, Graphics::Camera *camera) const;
 #endif
     };
 }
