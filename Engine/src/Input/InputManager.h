@@ -53,6 +53,7 @@ namespace Mochi::Input
         float mMouseY;
         float mDeltaMouseX;
         float mDeltaMouseY;
+        int mMouseBlockingLayer;
 
         GamepadData mGamepadData;
         GamepadData mLastGamepadData;
@@ -80,15 +81,15 @@ namespace Mochi::Input
         /// @brief Checks if a mouse button is down in this frame.
         /// @param mouseButton The index of the mouse button as defined in MouseButton.
         /// @return True if pressed.
-        bool MouseIsDown(const unsigned int &mouseButton) const;
+        bool MouseIsDown(const unsigned int &mouseButton, const unsigned int &mouseLayer) const;
         /// @brief Checks if a mouse button is down in this frame and wasn't last frame.
         /// @param mouseButton The index of the mouse button as defined in MouseButton.
         /// @return True if pressed and not pressed last frame.
-        bool MouseWasPressed(const unsigned int &mouseButton) const;
+        bool MouseWasPressed(const unsigned int &mouseButton, const unsigned int &mouseLayer) const;
         /// @brief Checks if a mouse button is not pressed in this frame and was last frame.
         /// @param mouseButton The index of the mouse button as defined in MouseButton.
         /// @return True if not pressed and was pressed last frame.
-        bool MouseWasReleased(const unsigned int &mouseButton) const;
+        bool MouseWasReleased(const unsigned int &mouseButton, const unsigned int &mouseLayer) const;
         /// @brief Gets the mouse position in this frame in screen coordinates.
         /// @return A vector with the x and y position
         Vector2f GetMousePosition() const;
@@ -111,6 +112,10 @@ namespace Mochi::Input
         /// @param button The button.
         /// @return True if not pressed and was pressed last frame.
         bool GamepadButtonWasReleased(const GamepadButton &button) const;
+        /// @brief Sets a mouse layer that will be used through the frame and will block all other layers.
+        /// Useful to block through UI, for example.
+        /// @param layer The layer that will be used and will block all other layers
+        void SetBlockingLayer(const unsigned int &layer);
     };
 }
 

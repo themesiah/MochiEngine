@@ -31,6 +31,7 @@ namespace Mochi::Input
         MouseButton mButton;
         ActionTrigger mTrigger;
         float mValue;
+        unsigned int mMouseLayer;
 
     public:
         PerformableActionMouse(const nlohmann::json &json);

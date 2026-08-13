@@ -45,6 +45,8 @@ namespace Mochi::Graphics
         Vector2f SpritePivot;
         /// @brief Color of the element. This is a blend with the original color of the texture.
         std::optional<Color> Color;
+        /// @brief Marks if this GUI element should block the mouse buttons for different layers other than the GUI layer
+        std::optional<bool> BlockRaycast;
     };
 
     /// @brief Options used by the graphical GUI specifically for texts. This contains all the minimal data to show text, besides the actual text.

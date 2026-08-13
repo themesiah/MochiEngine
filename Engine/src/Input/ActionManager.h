@@ -6,6 +6,7 @@
 #include <string>
 #include <memory>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 #include <nlohmann/json_fwd.hpp>
 
@@ -73,7 +74,10 @@ namespace Mochi::Input
     private:
         std::unique_ptr<InputManager> mInputManager;
         std::unordered_map<std::string, Action> mActions;
+        std::unordered_set<std::string> mCancelledActions;
         FS::PackCatalog *mCatalog;
+
+        bool IsActionCancelled(const std::string &actionName) const;
 
     public:
         /// @param inputManager A unique pointer to the input manager. Reference will be moved by this class to take ownership of the unique pointer.
@@ -109,6 +113,9 @@ namespace Mochi::Input
         /// @param action2 Second action to check.
         /// @return Vector with the two resulting values.
         Vector2f CompoundValue(const std::string &action1, const std::string &action2) const override;
+        /// @brief Sets a blocking layer in the input manager
+        /// @param layer The layer to block other layers
+        void SetBlockingLayer(const unsigned int &layer) const override;
     };
 }
 

@@ -14,7 +14,7 @@
 
 namespace Mochi::Input
 {
-    ActionManager::ActionManager(std::unique_ptr<InputManager> inputManager, FS::PackCatalog *catalog) : mInputManager(std::move(inputManager)), mCatalog(catalog), mActions()
+    ActionManager::ActionManager(std::unique_ptr<InputManager> inputManager, FS::PackCatalog *catalog) : mInputManager(std::move(inputManager)), mCatalog(catalog), mActions(), mCancelledActions()
     {
     }
 
@@ -117,6 +117,7 @@ namespace Mochi::Input
     void ActionManager::Update(const float &delta)
     {
         mInputManager->Update();
+        mCancelledActions.clear();
     }
 
     bool ActionManager::Performed(const std::string &actionName) const
@@ -158,5 +159,10 @@ namespace Mochi::Input
         float x = Value(action1);
         float y = Value(action2);
         return {x, y};
+    }
+
+    void ActionManager::SetBlockingLayer(const unsigned int &layer) const
+    {
+        mInputManager->SetBlockingLayer(layer);
     }
 }

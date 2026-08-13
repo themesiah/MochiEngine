@@ -18,7 +18,8 @@ namespace Mochi::Input
                                std::unique_ptr<IMouseProvider> mouseProvider,
                                std::unique_ptr<IGamepadProvider> gamepadProvider) : mKeyboardProvider(std::move(keyboardProvider)),
                                                                                     mMouseProvider(std::move(mouseProvider)),
-                                                                                    mGamepadProvider(std::move(gamepadProvider))
+                                                                                    mGamepadProvider(std::move(gamepadProvider)),
+                                                                                    mMouseBlockingLayer(-1)
     {
         memset(mKeyboardState, false, sizeof(mKeyboardState));
         memset(mKeyboardLastState, false, sizeof(mKeyboardLastState));
@@ -60,6 +61,7 @@ namespace Mochi::Input
         mDeltaMouseY = y - mMouseY;
         mMouseX = x;
         mMouseY = y;
+        mMouseBlockingLayer = -1;
 
         // Gamepad
         mLastGamepadData = mGamepadData;
@@ -71,24 +73,30 @@ namespace Mochi::Input
         }
     }
 
-    bool InputManager::MouseIsDown(const unsigned int &mouseButton) const
+    bool InputManager::MouseIsDown(const unsigned int &mouseButton, const unsigned int &mouseLayer) const
     {
         if (mouseButton >= mMouseState.size())
             throw EngineError(std::format("Mouse buttons are {} at max", mMouseState.size()));
+        if (mMouseBlockingLayer != -1 && mMouseBlockingLayer != mouseLayer)
+            return false;
         return mMouseState[mouseButton];
     }
 
-    bool InputManager::MouseWasPressed(const unsigned int &mouseButton) const
+    bool InputManager::MouseWasPressed(const unsigned int &mouseButton, const unsigned int &mouseLayer) const
     {
         if (mouseButton >= mMouseState.size())
             throw EngineError(std::format("Mouse buttons are {} at max", mMouseState.size()));
+        if (mMouseBlockingLayer != -1 && mMouseBlockingLayer != mouseLayer)
+            return false;
         return mMouseState[mouseButton] && !mMouseLastState[mouseButton];
     }
 
-    bool InputManager::MouseWasReleased(const unsigned int &mouseButton) const
+    bool InputManager::MouseWasReleased(const unsigned int &mouseButton, const unsigned int &mouseLayer) const
     {
         if (mouseButton >= mMouseState.size())
             throw EngineError(std::format("Mouse buttons are {} at max", mMouseState.size()));
+        if (mMouseBlockingLayer != -1 && mMouseBlockingLayer != mouseLayer)
+            return false;
         return !mMouseState[mouseButton] && mMouseLastState[mouseButton];
     }
 
@@ -118,5 +126,9 @@ namespace Mochi::Input
     bool InputManager::GamepadButtonWasReleased(const GamepadButton &button) const
     {
         return !mGamepadData.ButtonsData[button] && mLastGamepadData.ButtonsData[button];
+    }
+    void InputManager::SetBlockingLayer(const unsigned int &layer)
+    {
+        mMouseBlockingLayer = layer;
     }
 }

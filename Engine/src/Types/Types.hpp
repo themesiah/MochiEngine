@@ -400,6 +400,14 @@ namespace Mochi
             h *= scale;
         }
 
+        inline bool IsPointInside(const Vector2f &point)
+        {
+            return point.x > x &&
+                   point.x < x + w &&
+                   point.y > y &&
+                   point.y < y + h;
+        }
+
         /// @brief Utility method to check if a texture is valid. A texture is valid when its width and height are greater than 0.
         /// @return True if the texture is valid, false otherwise.
         inline bool IsTextureValid()

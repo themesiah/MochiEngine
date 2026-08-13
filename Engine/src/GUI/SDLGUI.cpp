@@ -76,6 +76,11 @@ namespace Mochi::Graphics
         {
             SDL_RenderTexture(mSDLRenderer->GetRenderer(), sdltex->GetTexture(), &src, &dst);
         }
+
+        if (options.BlockRaycast.has_value() && options.BlockRaycast.value() == true)
+        {
+            mRaycastBlockingRegions.push_back(finalRect);
+        }
         return {finalRect};
     }
 
@@ -104,10 +109,7 @@ namespace Mochi::Graphics
         }
         bool mouseFocus = false;
         auto mousePos = mActionManager->CompoundValue("MousePosX", "MousePosY");
-        if (mousePos.x > guiResult.FinalRect.x &&
-            mousePos.x < guiResult.FinalRect.x + guiResult.FinalRect.w &&
-            mousePos.y > guiResult.FinalRect.y &&
-            mousePos.y < guiResult.FinalRect.y + guiResult.FinalRect.h)
+        if (guiResult.FinalRect.IsPointInside(mousePos))
         {
             mouseFocus = true;
             mFocusId = id;

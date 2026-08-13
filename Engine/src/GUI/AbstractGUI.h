@@ -3,6 +3,7 @@
 
 #include <string>
 #include <memory>
+#include <vector>
 
 #include "../Types/Types.hpp"
 #include "GUICommon.hpp"
@@ -58,6 +59,7 @@ namespace Mochi::Graphics
         IRenderer *mRenderer;
         FS::PackCatalog *mCatalog;
         Input::IActionManager *mActionManager;
+        std::vector<Rectf> mRaycastBlockingRegions;
         /// @brief Use this method withing selectable elements to provide them a unique id while the UI layout remains the same.
         /// If called deterministically, the same selectable elements should always have the same IDs if the layout didn't change.
         /// @return The id of the element.

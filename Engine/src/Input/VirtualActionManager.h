@@ -27,6 +27,7 @@ namespace Mochi::Input
         virtual bool Performed(const std::string &actionName) const override;
         virtual float Value(const std::string &actionName) const override;
         virtual Vector2f CompoundValue(const std::string &action1, const std::string &action2) const override;
+        virtual void SetBlockingLayer(const unsigned int &layer) const override;
 
         /// @brief Sets an action on the action map to be retrieved later. This action is not changed unless SetActionState is called again with a different value.
         /// @param action The name of the action to change.

@@ -61,6 +61,7 @@ namespace Mochi::Input
         mButton = MouseButton::MouseButtonInvalid;
         mValue = 0.0f;
         mTrigger = ActionTrigger::Never;
+        mMouseLayer = 0;
 
         if (!json.contains("Trigger") || !json.at("Trigger").is_number_integer() || json.at("Trigger") < 0 || json.at("Trigger") >= ActionTrigger::ActionTriggerCount)
             throw MalformedInputAction(std::source_location::current());
@@ -73,24 +74,31 @@ namespace Mochi::Input
         if (!json.contains("Value") || !json.at("Value").is_number_integer())
             throw MalformedInputAction(std::source_location::current());
         mValue = json.at("Value");
+
+        if (!json.contains("Layer") || !json.at("Layer").is_number_integer() || json.at("Layer") < 0)
+            throw MalformedInputAction(std::source_location::current());
+        mMouseLayer = json.at("Layer");
     }
+
     PerformableActionMouse::~PerformableActionMouse()
     {
     }
+
     bool PerformableActionMouse::IsPerformed(InputManager *input) const
     {
         switch (mTrigger)
         {
         case ActionTrigger::Down:
-            return input->MouseIsDown(mButton);
+            return input->MouseIsDown(mButton, mMouseLayer);
         case ActionTrigger::Pressed:
-            return input->MouseWasPressed(mButton);
+            return input->MouseWasPressed(mButton, mMouseLayer);
         case ActionTrigger::Released:
-            return input->MouseWasReleased(mButton);
+            return input->MouseWasReleased(mButton, mMouseLayer);
         default:
             return false;
         }
     }
+
     float PerformableActionMouse::GetValue(InputManager *input) const
     {
         if (IsPerformed(input))

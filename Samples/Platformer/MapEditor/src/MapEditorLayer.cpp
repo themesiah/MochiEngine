@@ -53,6 +53,10 @@ namespace Mochi::Platformer::Editor
 
     bool MapEditorLayer::Update(const float &dt)
     {
+        if (ImGui::GetIO().WantCaptureMouse)
+        {
+            mActionManager->SetBlockingLayer(0);
+        }
         if (mActionManager->Performed("Drag"))
         {
             Vector2f delta = mActionManager->CompoundValue("DragDeltaHorizontal", "DragDeltaVertical") * dt;

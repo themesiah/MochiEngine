@@ -52,6 +52,10 @@ namespace Mochi::Input
         return {Value(action1), Value(action2)};
     }
 
+    void VirtualActionManager::SetBlockingLayer(const unsigned int &layer) const
+    {
+    }
+
     void VirtualActionManager::SetActionState(const std::string &action, const float &state)
     {
         mActionsState[action] = state;

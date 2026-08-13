@@ -30,6 +30,7 @@ namespace Mochi::Input
         virtual bool Performed(const std::string &actionName) const = 0;
         virtual float Value(const std::string &actionName) const = 0;
         virtual Vector2f CompoundValue(const std::string &action1, const std::string &action2) const = 0;
+        virtual void SetBlockingLayer(const unsigned int &layer) const = 0;
     };
 }
 

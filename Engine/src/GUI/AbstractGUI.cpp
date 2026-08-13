@@ -10,7 +10,8 @@
 namespace Mochi::Graphics
 {
     AbstractGUI::AbstractGUI(FS::PackCatalog *catalog, IRenderer *renderer, Input::IActionManager *actionManager)
-        : mRenderer(renderer), mCatalog(catalog), mActionManager(actionManager), mCurrentId(0), mFocusId(-1), mPressedId(-1)
+        : mRenderer(renderer), mCatalog(catalog), mActionManager(actionManager), mCurrentId(0), mFocusId(-1), mPressedId(-1),
+          mRaycastBlockingRegions()
     {
         mTextureFactory = mRenderer->CreateTextureFactory(catalog);
     }
@@ -27,6 +28,7 @@ namespace Mochi::Graphics
     void AbstractGUI::ResetFrame()
     {
         mCurrentId = 0;
+        mRaycastBlockingRegions.clear();
     }
 
     void AbstractGUI::Update(const float &dt)
@@ -48,6 +50,17 @@ namespace Mochi::Graphics
         {
             mFocusId = 0;
         }
+
+        auto mousePos = mActionManager->CompoundValue("MousePosX", "MousePosY");
+        for (auto &region : mRaycastBlockingRegions)
+        {
+            if (region.IsPointInside(mousePos))
+            {
+                mActionManager->SetBlockingLayer(0);
+                break;
+            }
+        }
+
         ResetFrame();
         OnUpdate();
     }
