@@ -35,9 +35,9 @@ namespace Mochi::Platformer::Editor
         Tilemap *mTilemap;
         Graphics::Camera *mCamera;
         MapEditorEditingState mEditingState;
-        std::string mSelectedBreakableType;
-        std::string mSelectedEnemyType;
+        int mSelectedEnemyType;
         int mSelectedTileSet;
+        int mSelectedBreakableType;
 
     public:
         MapEditor(Input::IActionManager *actionManager, Tilemap *tilemap, Graphics::Camera *camera);

@@ -13,7 +13,7 @@ namespace Mochi::Platformer::Editor
 {
     MapEditor::MapEditor(Input::IActionManager *actionManager, Tilemap *tilemap, Graphics::Camera *camera)
         : mActionManager(actionManager), mTilemap(tilemap), mCamera(camera), mEditingState(MapEditorEditingState::Nothing),
-          mSelectedBreakableType(""), mSelectedTileSet(0)
+          mSelectedBreakableType(0), mSelectedTileSet(0), mSelectedEnemyType(0)
     {
     }
 
@@ -33,14 +33,17 @@ namespace Mochi::Platformer::Editor
             mousePos.y += camPixels.y;
             TilemapTile tile = mTilemap->WorldToTile(mousePos);
 
-            if (place)
+            if (mTilemap->IsValidPosition(tile.i, tile.j))
             {
-                PlaceElement(tile.i, tile.j);
-            }
+                if (place)
+                {
+                    PlaceElement(tile.i, tile.j);
+                }
 
-            if (erase)
-            {
-                RemoveElement(tile.i, tile.j);
+                if (erase)
+                {
+                    RemoveElement(tile.i, tile.j);
+                }
             }
         }
     }
@@ -55,7 +58,7 @@ namespace Mochi::Platformer::Editor
             mTilemap->AddTile(i, j, mSelectedTileSet);
             break;
         case MapEditorEditingState::Breakables:
-            mTilemap->AddBreakable(i, j, mSelectedBreakableType);
+            mTilemap->AddBreakable(i, j, mTilemap->GetBreakableIds()[mSelectedBreakableType]);
             break;
         case MapEditorEditingState::Coins:
             mTilemap->AddCoin(i, j);
@@ -64,7 +67,7 @@ namespace Mochi::Platformer::Editor
             mTilemap->SetPlayerStartingPosition(i, j);
             break;
         case MapEditorEditingState::Enemies:
-            mTilemap->AddEnemy(i, j, mSelectedEnemyType);
+            mTilemap->AddEnemy(i, j, mTilemap->GetEnemyIds()[mSelectedEnemyType]);
             break;
         }
     }
@@ -117,9 +120,78 @@ namespace Mochi::Platformer::Editor
 
     void MapEditor::GUI()
     {
-        ImGui::Text("Holaaa");
         int editingState = (int)mEditingState;
         ImGui::Combo("Placement type", &editingState, EditingStateItems, IM_ARRAYSIZE(EditingStateItems));
         mEditingState = (MapEditorEditingState)editingState;
+
+        if (mEditingState == MapEditorEditingState::Tiles)
+        {
+            auto tileSets = mTilemap->GetTilesetIds();
+            if (tileSets.size() > 0)
+            {
+                if (ImGui::BeginCombo("##tileset combo", tileSets[mSelectedTileSet].c_str()))
+                {
+                    for (int i = 0; i < tileSets.size(); ++i)
+                    {
+                        bool isSelected = mSelectedTileSet == i;
+                        if (ImGui::Selectable(tileSets[i].c_str(), isSelected))
+                            mSelectedTileSet = i;
+                        if (isSelected)
+                            ImGui::SetItemDefaultFocus();
+                    }
+                    ImGui::EndCombo();
+                }
+            }
+            else
+            {
+                ImGui::Text("No tilesets added to tilemap.");
+            }
+        }
+        else if (mEditingState == MapEditorEditingState::Breakables)
+        {
+            auto breakables = mTilemap->GetBreakableIds();
+            if (breakables.size() > 0)
+            {
+                if (ImGui::BeginCombo("##breakables combo", breakables[mSelectedBreakableType].c_str()))
+                {
+                    for (int i = 0; i < breakables.size(); ++i)
+                    {
+                        bool isSelected = mSelectedBreakableType == i;
+                        if (ImGui::Selectable(breakables[i].c_str(), isSelected))
+                            mSelectedBreakableType = i;
+                        if (isSelected)
+                            ImGui::SetItemDefaultFocus();
+                    }
+                    ImGui::EndCombo();
+                }
+            }
+            else
+            {
+                ImGui::Text("No breakables added to tilemap.");
+            }
+        }
+        else if (mEditingState == MapEditorEditingState::Enemies)
+        {
+            auto enemies = mTilemap->GetEnemyIds();
+            if (enemies.size() > 0)
+            {
+                if (ImGui::BeginCombo("##enemies combo", enemies[mSelectedEnemyType].c_str()))
+                {
+                    for (int i = 0; i < enemies.size(); ++i)
+                    {
+                        bool isSelected = mSelectedEnemyType == i;
+                        if (ImGui::Selectable(enemies[i].c_str(), isSelected))
+                            mSelectedEnemyType = i;
+                        if (isSelected)
+                            ImGui::SetItemDefaultFocus();
+                    }
+                    ImGui::EndCombo();
+                }
+            }
+            else
+            {
+                ImGui::Text("No enemies added to tilemap.");
+            }
+        }
     }
 }

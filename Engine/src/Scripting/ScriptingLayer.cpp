@@ -92,7 +92,7 @@ namespace Mochi::Scripting
     }
 
 #if DEBUG
-    void ScriptingLayer::Debug() const
+    void ScriptingLayer::Debug()
     {
     }
 

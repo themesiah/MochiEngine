@@ -9,12 +9,13 @@
 #include "Graphics/AbstractTextureFactory.h"
 #include "Constants.h"
 #include "Layer.h"
+#include "ECS/Systems/ECSCharacterControllerSystem.h"
 
 #include "MapEditor.h"
 
 namespace Mochi::Platformer::Editor
 {
-    MapEditorLayer::MapEditorLayer() : Layer()
+    MapEditorLayer::MapEditorLayer() : Layer(), mAreGizmosActive(true)
     {
         mCatalog->OpenPack("Data/Game");
         mCatalog->OpenPack("Data/EditorData");
@@ -49,6 +50,7 @@ namespace Mochi::Platformer::Editor
         mMapEditor = std::make_unique<MapEditor>(mActionManager, mTilemap.get(), mCamera);
         mTilemap->LoadDefault();
         mTilemap->InitMap();
+        mECSWorld->UnregisterSystem<ECS::CharacterControllerSystem>();
     }
 
     bool MapEditorLayer::Update(const float &dt)
@@ -76,14 +78,16 @@ namespace Mochi::Platformer::Editor
     }
 
 #if DEBUG
-    void MapEditorLayer::Debug() const
+    void MapEditorLayer::Debug()
     {
-        mTilemap->DebugGizmos(mGizmos, mCamera);
+        if (mAreGizmosActive)
+            mTilemap->DebugGizmos(mGizmos, mCamera);
 
         ImGui_ImplSDL3_NewFrame();
         ImGui_ImplSDLRenderer3_NewFrame();
         ImGui::NewFrame();
         ImGui::Begin("Map Editor");
+        ImGui::Checkbox("Gizmos", &mAreGizmosActive);
         if (ImGui::Button("Reset camera"))
         {
             mCamera->SetPosition(Vector2f::Zero);

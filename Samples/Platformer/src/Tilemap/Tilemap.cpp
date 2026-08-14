@@ -79,6 +79,11 @@ namespace Mochi::Platformer
         return false;
     }
 
+    bool Tilemap::IsValidPosition(const int &i, const int &j) const
+    {
+        return i >= 0 && j >= 0 && i < mProperties.Width && j < mProperties.Height;
+    }
+
     TilemapTile Tilemap::WorldToTile(const Vector2f &worldPos) const
     {
         auto worldPos2 = worldPos;
@@ -96,11 +101,11 @@ namespace Mochi::Platformer
 
     int Tilemap::GetEnemyIndexAt(const int &i, const int &j)
     {
-        for (int i = 0; i < mEnemies.size(); ++i)
+        for (int z = 0; z < mEnemies.size(); ++z)
         {
-            if (mEnemies[i].i == i && mEnemies[i].j == j)
+            if (mEnemies[z].i == i && mEnemies[z].j == j)
             {
-                return i;
+                return z;
             }
         }
         return -1;
@@ -108,11 +113,11 @@ namespace Mochi::Platformer
 
     int Tilemap::GetCoinIndexAt(const int &i, const int &j)
     {
-        for (int i = 0; i < mCoins.size(); ++i)
+        for (int z = 0; z < mCoins.size(); ++z)
         {
-            if (mCoins[i].i == i && mCoins[i].j == j)
+            if (mCoins[z].i == i && mCoins[z].j == j)
             {
-                return i;
+                return z;
             }
         }
         return -1;
@@ -120,11 +125,11 @@ namespace Mochi::Platformer
 
     int Tilemap::GetBreakableIndexAt(const int &i, const int &j)
     {
-        for (int i = 0; i < mBreakables.size(); ++i)
+        for (int z = 0; z < mBreakables.size(); ++z)
         {
-            if (mBreakables[i].i == i && mBreakables[i].j == j)
+            if (mBreakables[z].i == i && mBreakables[z].j == j)
             {
-                return i;
+                return z;
             }
         }
         return -1;
@@ -343,9 +348,32 @@ namespace Mochi::Platformer
 
     void Tilemap::AddTile(const int &i, const int &j, const int &tileset)
     {
-        mTiles.push_back({i, j, tileset});
+        if (HasTileAt(i, j))
+        {
+            RemoveTile(GetTileIndex(i, j));
+        }
+        TilemapTile tile{i, j, tileset};
+        mTiles.push_back(tile);
         if (mInitialized)
+        {
             GenerateRenderCommands();
+            AddTileEntity(tile);
+        }
+    }
+
+    void Tilemap::AddTileEntity(const TilemapTile &tile)
+    {
+
+        auto blockEntity = mWorld->CreateEntity();
+        mTileEntities.push_back(blockEntity);
+        Rectf tileRect = GetTile(tile.i, tile.j);
+        // TODO: Group colliders in bigger colliders
+        mWorld->Set<ECS::TransformComponent>(blockEntity, ECS::TransformComponent{tileRect.GetPosition(), 1.0f});
+        mWorld->Set<ECS::ColliderComponent>(blockEntity, ECS::ColliderComponent(
+                                                             Physics::Rectangle{Vector2f{0.0f, 0.0f}, tileRect.GetSize() / 2.0f},
+                                                             PlatformerLayers::Scenario,
+                                                             0,
+                                                             false));
     }
 
     void Tilemap::RemoveTile(const int &tileIndex)
@@ -353,6 +381,8 @@ namespace Mochi::Platformer
         if (mTiles.size() > tileIndex)
         {
             mTiles.erase(mTiles.cbegin() + tileIndex);
+            mWorld->DestroyEntity(mTileEntities[tileIndex]);
+            mTileEntities.erase(mTileEntities.cbegin() + tileIndex);
             if (mInitialized)
                 GenerateRenderCommands();
         }
@@ -371,7 +401,49 @@ namespace Mochi::Platformer
 
     void Tilemap::AddEnemy(const int &i, const int &j, const std::string &type)
     {
-        mEnemies.push_back({i, j, type});
+        int enemyIndexAt = GetEnemyIndexAt(i, j);
+        if (enemyIndexAt >= 0)
+        {
+            RemoveEnemy(enemyIndexAt);
+        }
+        TilemapEnemy enemy{i, j, type};
+        mEnemies.push_back(enemy);
+        if (mInitialized)
+            AddEnemyEntity(enemy);
+    }
+
+    void Tilemap::AddEnemyEntity(const TilemapEnemy &enemy)
+    {
+        auto enemyEntity = mWorld->CreateEntity();
+        mEnemyEntities.push_back(enemyEntity);
+        EnemyType enemyType = mEnemyTypes[enemy.Type];
+        std::string texPath;
+        if (enemyType.SourceType == (int)SourceType::Sprite)
+        {
+            texPath = enemyType.Source;
+        }
+        else if (enemyType.SourceType == (int)SourceType::Animation)
+        {
+            auto animation = mAnimationFactory->GetAnimationsData(enemyType.Source);
+            texPath = animation->TexturePath.string();
+            ECS::AnimationComponent animationComponent{animation->Animations.cbegin()->first};
+            mWorld->Set<ECS::AnimationComponent>(enemyEntity, animationComponent);
+
+            mWorld->Set<Mochi::Graphics::AnimationsData>(enemyEntity, *(animation.get()));
+        }
+        Graphics::ITexture *enemyTex = mTextureFactory->GetTexture(texPath).get();
+        auto colliderSize = enemyType.Collider;
+
+        mWorld->Set<ECS::TransformComponent>(enemyEntity, ECS::TransformComponent{GetTile(enemy.i, enemy.j).GetPosition(), 1.0f});
+        mWorld->Set<ECS::SpriteComponent>(enemyEntity, ECS::SpriteComponent{enemyTex, mZindexes.Enemies});
+        mWorld->Set<ECS::ColliderComponent>(enemyEntity, ECS::ColliderComponent(
+                                                             Physics::Rectangle{colliderSize.GetPosition(), PixelsToMeters(colliderSize.GetSize() / 2.0f)},
+                                                             PlatformerLayers::Enemy,
+                                                             PlatformerLayers::Player,
+                                                             false));
+        mWorld->Set<ECS::CharacterController>(enemyEntity, ECS::CharacterController(2.0f, 100.0f, 20.0f, -20.0f, 20.0f, 0.1f, false, PlatformerLayers::Scenario));
+        mWorld->Set<LeftRightComponent>(enemyEntity, LeftRightComponent{-1.0f, 2, 0.8f});
+        mWorld->Set<EnemyComponent>(enemyEntity, EnemyComponent{});
     }
 
     void Tilemap::RemoveEnemy(const int &enemyIndex)
@@ -379,6 +451,8 @@ namespace Mochi::Platformer
         if (mEnemies.size() > enemyIndex)
         {
             mEnemies.erase(mEnemies.cbegin() + enemyIndex);
+            mWorld->DestroyEntity(mEnemyEntities[enemyIndex]);
+            mEnemyEntities.erase(mEnemyEntities.cbegin() + enemyIndex);
         }
         else
         {
@@ -393,7 +467,32 @@ namespace Mochi::Platformer
 
     void Tilemap::AddCoin(const int &i, const int &j)
     {
-        mCoins.push_back({i, j});
+        if (GetCoinIndexAt(i, j) >= 0)
+            return;
+        TilemapCoin coin{i, j};
+        mCoins.push_back(coin);
+        if (mInitialized)
+            AddCoinEntity(coin);
+    }
+
+    void Tilemap::AddCoinEntity(const TilemapCoin &coin)
+    {
+        ECS::AnimationComponent animationComponent{"Idle"};
+        auto animation = mAnimationFactory->GetAnimationsData("Coin.json");
+        auto coinTex = mTextureFactory->GetTexture(animation->TexturePath.string());
+        auto coinEntity = mWorld->CreateEntity();
+        mCoinEntities.push_back(coinEntity);
+        mWorld->Set<ECS::TransformComponent>(coinEntity, ECS::TransformComponent{GetTile(coin.i, coin.j).GetPosition(), 1.0f});
+        mWorld->Set<ECS::SpriteComponent>(coinEntity, ECS::SpriteComponent{coinTex.get(), mZindexes.Coins});
+        mWorld->Set<ECS::ColliderComponent>(coinEntity, ECS::ColliderComponent(
+                                                            Physics::Circle{Vector2f{0.0f, 0.0f}, PixelsToMeters(12.0f)},
+                                                            PlatformerLayers::Coin,
+                                                            0,
+                                                            false));
+        mWorld->Set<CoinComponent>(coinEntity);
+        mWorld->Set<ECS::AnimationComponent>(coinEntity, animationComponent);
+
+        mWorld->Set<Mochi::Graphics::AnimationsData>(coinEntity, *(animation.get()));
     }
 
     void Tilemap::RemoveCoin(const int &coinIndex)
@@ -401,6 +500,8 @@ namespace Mochi::Platformer
         if (mCoins.size() > coinIndex)
         {
             mCoins.erase(mCoins.cbegin() + coinIndex);
+            mWorld->DestroyEntity(mCoinEntities[coinIndex]);
+            mCoinEntities.erase(mCoinEntities.cbegin() + coinIndex);
         }
         else
         {
@@ -415,7 +516,46 @@ namespace Mochi::Platformer
 
     void Tilemap::AddBreakable(const int &i, const int &j, const std::string &type)
     {
-        mBreakables.push_back({i, j, type});
+        int breakableIndexAt = GetBreakableIndexAt(i, j);
+        if (breakableIndexAt >= 0)
+        {
+            RemoveBreakable(breakableIndexAt);
+        }
+        TilemapBreakable breakable{i, j, type};
+        mBreakables.push_back(breakable);
+        if (mInitialized)
+            AddBreakableEntity(breakable);
+    }
+
+    void Tilemap::AddBreakableEntity(const TilemapBreakable &breakable)
+    {
+        auto breakableEntity = mWorld->CreateEntity();
+        mBreakableEntities.push_back(breakableEntity);
+        BreakableType breakableType = mBreakableTypes[breakable.Type];
+
+        std::string texPath;
+        if (breakableType.SourceType == SourceType::Sprite)
+        {
+            texPath = breakableType.Source;
+        }
+        else if (breakableType.SourceType == SourceType::Animation)
+        {
+            auto animation = mAnimationFactory->GetAnimationsData(breakableType.Source);
+            texPath = animation->TexturePath.string();
+            ECS::AnimationComponent animationComponent{animation->Animations.cbegin()->first};
+            mWorld->Set<ECS::AnimationComponent>(breakableEntity, animationComponent);
+
+            mWorld->Set<Mochi::Graphics::AnimationsData>(breakableEntity, *(animation.get()));
+        }
+        auto breakableTex = mTextureFactory->GetTexture(texPath);
+        mWorld->Set<ECS::TransformComponent>(breakableEntity, ECS::TransformComponent{GetTile(breakable.i, breakable.j).GetPosition(), 1.0f});
+        mWorld->Set<ECS::SpriteComponent>(breakableEntity, ECS::SpriteComponent{breakableTex.get(), mZindexes.Breakables});
+        mWorld->Set<ECS::ColliderComponent>(breakableEntity, ECS::ColliderComponent(
+                                                                 Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(breakableTex->GetSize() / 2.0f)},
+                                                                 PlatformerLayers::Scenario,
+                                                                 0,
+                                                                 false));
+        mWorld->Set<BreakableComponent>(breakableEntity);
     }
 
     void Tilemap::RemoveBreakable(const int &breakableIndex)
@@ -423,6 +563,8 @@ namespace Mochi::Platformer
         if (mBreakables.size() > breakableIndex)
         {
             mBreakables.erase(mBreakables.cbegin() + breakableIndex);
+            mWorld->DestroyEntity(mBreakableEntities[breakableIndex]);
+            mBreakableEntities.erase(mBreakableEntities.cbegin() + breakableIndex);
         }
         else
         {
@@ -439,6 +581,8 @@ namespace Mochi::Platformer
     {
         mPlayerStart.i = i;
         mPlayerStart.j = j;
+        if (mInitialized)
+            InitPlayer();
     }
 
     void Tilemap::InitScenario()
@@ -451,40 +595,8 @@ namespace Mochi::Platformer
 
         for (size_t i = 0; i < mTiles.size(); ++i)
         {
-            TileSpaceStatus tss = 0;
             auto tile = mTiles[i];
-
-            if (tile.i > 0)
-            {
-                if (HasTileAt(tile.i - 1, tile.j))
-                    tss += 2;
-            }
-            if (tile.i < mProperties.Width)
-            {
-                if (HasTileAt(tile.i + 1, tile.j))
-                    tss += 4;
-            }
-            if (tile.j > 0)
-            {
-                if (HasTileAt(tile.i, tile.j - 1))
-                    tss += 8;
-            }
-            if (tile.j < mProperties.Height)
-            {
-                if (HasTileAt(tile.i, tile.j + 1))
-                    tss += 1;
-            }
-
-            auto blockEntity = mWorld->CreateEntity();
-            mTileEntities.push_back(blockEntity);
-            Rectf tileRect = GetTile(tile.i, tile.j);
-            // TODO: Group colliders in bigger colliders
-            mWorld->Set<ECS::TransformComponent>(blockEntity, ECS::TransformComponent{tileRect.GetPosition(), 1.0f});
-            mWorld->Set<ECS::ColliderComponent>(blockEntity, ECS::ColliderComponent(
-                                                                 Physics::Rectangle{Vector2f{0.0f, 0.0f}, tileRect.GetSize() / 2.0f},
-                                                                 PlatformerLayers::Scenario,
-                                                                 0,
-                                                                 false));
+            AddTileEntity(tile);
         }
     }
 
@@ -499,36 +611,7 @@ namespace Mochi::Platformer
         for (size_t i = 0; i < mEnemies.size(); ++i)
         {
             auto enemy = mEnemies[i];
-            auto enemyEntity = mWorld->CreateEntity();
-            mEnemyEntities.push_back(enemyEntity);
-            EnemyType enemyType = mEnemyTypes[enemy.Type];
-            std::string texPath;
-            if (enemyType.SourceType == (int)SourceType::Sprite)
-            {
-                texPath = enemyType.Source;
-            }
-            else if (enemyType.SourceType == (int)SourceType::Animation)
-            {
-                auto animation = mAnimationFactory->GetAnimationsData(enemyType.Source);
-                texPath = animation->TexturePath.string();
-                ECS::AnimationComponent animationComponent{animation->Animations.cbegin()->first};
-                mWorld->Set<ECS::AnimationComponent>(enemyEntity, animationComponent);
-
-                mWorld->Set<Mochi::Graphics::AnimationsData>(enemyEntity, *(animation.get()));
-            }
-            Graphics::ITexture *enemyTex = mTextureFactory->GetTexture(texPath).get();
-            auto colliderSize = enemyType.Collider;
-
-            mWorld->Set<ECS::TransformComponent>(enemyEntity, ECS::TransformComponent{GetTile(enemy.i, enemy.j).GetPosition(), 1.0f});
-            mWorld->Set<ECS::SpriteComponent>(enemyEntity, ECS::SpriteComponent{enemyTex, mZindexes.Enemies});
-            mWorld->Set<ECS::ColliderComponent>(enemyEntity, ECS::ColliderComponent(
-                                                                 Physics::Rectangle{colliderSize.GetPosition(), PixelsToMeters(colliderSize.GetSize() / 2.0f)},
-                                                                 PlatformerLayers::Enemy,
-                                                                 PlatformerLayers::Player,
-                                                                 false));
-            mWorld->Set<ECS::CharacterController>(enemyEntity, ECS::CharacterController(2.0f, 100.0f, 20.0f, -20.0f, 20.0f, 0.1f, false, PlatformerLayers::Scenario));
-            mWorld->Set<LeftRightComponent>(enemyEntity, LeftRightComponent{-1.0f, 2, 0.8f});
-            mWorld->Set<EnemyComponent>(enemyEntity, EnemyComponent{});
+            AddEnemyEntity(enemy);
         }
     }
 
@@ -546,19 +629,7 @@ namespace Mochi::Platformer
         for (size_t z = 0; z < mCoins.size(); ++z)
         {
             auto coin = mCoins[z];
-            auto coinEntity = mWorld->CreateEntity();
-            mCoinEntities.push_back(coinEntity);
-            mWorld->Set<ECS::TransformComponent>(coinEntity, ECS::TransformComponent{GetTile(coin.i, coin.j).GetPosition(), 1.0f});
-            mWorld->Set<ECS::SpriteComponent>(coinEntity, ECS::SpriteComponent{coinTex.get(), mZindexes.Coins});
-            mWorld->Set<ECS::ColliderComponent>(coinEntity, ECS::ColliderComponent(
-                                                                Physics::Circle{Vector2f{0.0f, 0.0f}, PixelsToMeters(12.0f)},
-                                                                PlatformerLayers::Coin,
-                                                                0,
-                                                                false));
-            mWorld->Set<CoinComponent>(coinEntity);
-            mWorld->Set<ECS::AnimationComponent>(coinEntity, animationComponent);
-
-            mWorld->Set<Mochi::Graphics::AnimationsData>(coinEntity, *(animation.get()));
+            AddCoinEntity(coin);
         }
     }
 
@@ -572,34 +643,8 @@ namespace Mochi::Platformer
 
         for (size_t z = 0; z < mBreakables.size(); ++z)
         {
-            auto breakableEntity = mWorld->CreateEntity();
-            mBreakableEntities.push_back(breakableEntity);
             auto breakable = mBreakables[z];
-            BreakableType breakableType = mBreakableTypes[breakable.Type];
-
-            std::string texPath;
-            if (breakableType.SourceType == SourceType::Sprite)
-            {
-                texPath = breakableType.Source;
-            }
-            else if (breakableType.SourceType == SourceType::Animation)
-            {
-                auto animation = mAnimationFactory->GetAnimationsData(breakableType.Source);
-                texPath = animation->TexturePath.string();
-                ECS::AnimationComponent animationComponent{animation->Animations.cbegin()->first};
-                mWorld->Set<ECS::AnimationComponent>(breakableEntity, animationComponent);
-
-                mWorld->Set<Mochi::Graphics::AnimationsData>(breakableEntity, *(animation.get()));
-            }
-            auto breakableTex = mTextureFactory->GetTexture(texPath);
-            mWorld->Set<ECS::TransformComponent>(breakableEntity, ECS::TransformComponent{GetTile(breakable.i, breakable.j).GetPosition(), 1.0f});
-            mWorld->Set<ECS::SpriteComponent>(breakableEntity, ECS::SpriteComponent{breakableTex.get(), mZindexes.Breakables});
-            mWorld->Set<ECS::ColliderComponent>(breakableEntity, ECS::ColliderComponent(
-                                                                     Physics::Rectangle{Vector2f{0.0f, 0.0f}, PixelsToMeters(breakableTex->GetSize() / 2.0f)},
-                                                                     PlatformerLayers::Scenario,
-                                                                     0,
-                                                                     false));
-            mWorld->Set<BreakableComponent>(breakableEntity);
+            AddBreakableEntity(breakable);
         }
     }
 
@@ -673,6 +718,31 @@ namespace Mochi::Platformer
             rc.zindex = mZindexes.Scenario;
             mRenderCommandCache.push_back(rc);
         }
+    }
+
+    std::vector<std::string> Tilemap::GetTilesetIds() const
+    {
+        return mTilesetIds;
+    }
+
+    std::vector<std::string> Tilemap::GetBreakableIds() const
+    {
+        std::vector<std::string> keys{};
+        for (auto &element : mBreakableTypes)
+        {
+            keys.push_back(element.first);
+        }
+        return keys;
+    }
+
+    std::vector<std::string> Tilemap::GetEnemyIds() const
+    {
+        std::vector<std::string> keys{};
+        for (auto &element : mEnemyTypes)
+        {
+            keys.push_back(element.first);
+        }
+        return keys;
     }
 
 #if DEBUG

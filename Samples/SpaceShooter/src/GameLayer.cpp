@@ -293,7 +293,7 @@ namespace Mochi::Shooter
     }
 
 #if DEBUG
-    void GameLayer::Debug() const
+    void GameLayer::Debug()
     {
 
         if (mActionManager->Performed("Debug3"))

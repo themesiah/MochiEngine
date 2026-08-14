@@ -56,7 +56,7 @@ namespace Mochi
         mGUI->Text(std::format("{} fps", (int)(1.0f / Engine::Get().GetLastRealDelta())).c_str(), fpsTextOptions);
     }
 
-    void DebugLayer::Debug() const
+    void DebugLayer::Debug()
     {
         Physics::Line l({0.0f, -100.0f}, {0.0f, 100.0f});
         mGizmos->DrawLine(&l, {255, 0, 255, 50});

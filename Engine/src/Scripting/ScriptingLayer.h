@@ -71,7 +71,7 @@ namespace Mochi::Scripting
         virtual void GUI() override;
 #if DEBUG
         /// @brief This class does not show any debug data.
-        virtual void Debug() const override;
+        virtual void Debug() override;
 #endif
     };
 }

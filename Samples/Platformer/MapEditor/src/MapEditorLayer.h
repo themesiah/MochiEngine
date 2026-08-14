@@ -24,6 +24,7 @@ namespace Mochi::Platformer::Editor
         std::unique_ptr<Graphics::AbstractTextureFactory> mTextureFactory;
         std::unique_ptr<Graphics::IAnimationFactory> mAnimationFactory;
         std::unique_ptr<MapEditor> mMapEditor;
+        bool mAreGizmosActive;
 
     public:
         MapEditorLayer();
@@ -34,7 +35,7 @@ namespace Mochi::Platformer::Editor
         virtual void GUI() override;
 
 #if DEBUG
-        virtual void Debug() const override;
+        virtual void Debug() override;
 #endif
     };
 }

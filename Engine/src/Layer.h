@@ -77,7 +77,7 @@ namespace Mochi
 #if DEBUG
         /// @brief Override this to print, draw or show debug GUI's.
         /// This will be called after all renderings and other GUIs and will only be shown while in DEBUG configuration.
-        virtual void Debug() const {}
+        virtual void Debug() {}
 #endif
     };
 }

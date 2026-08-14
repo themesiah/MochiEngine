@@ -5,7 +5,7 @@
 		"tileSize": 64
 	},
 	"tilesets": [
-		"Tilemap.json"
+		"Tileset1.json"
 	],
 	"scenario": [
 		{
@@ -21,6 +21,6 @@
 	"breakables": [],
 	"playerStart": {
 		"i": 0,
-		"j": 2
+		"j": 1
 	}
 }

@@ -85,12 +85,18 @@ namespace Mochi::Platformer
         void InitPlayer();
         void GenerateRenderCommands();
 
+        void AddTileEntity(const TilemapTile &tile);
+        void AddCoinEntity(const TilemapCoin &coin);
+        void AddBreakableEntity(const TilemapBreakable &breakable);
+        void AddEnemyEntity(const TilemapEnemy &enemy);
+
     public:
         Tilemap(ECS::ECSWorld *world, FS::PackCatalog *catalog, Graphics::AbstractTextureFactory *textureFactory, Graphics::IAnimationFactory *animationFactory);
         ~Tilemap();
         Rectf GetTile(const int &i, const int &j) const;
         int GetTileIndex(const int &i, const int &j) const;
         bool HasTileAt(const int &i, const int &j) const;
+        bool IsValidPosition(const int &i, const int &j) const;
         TilemapTile WorldToTile(const Vector2f &worldPos) const;
         int GetEnemyIndexAt(const int &i, const int &j);
         int GetCoinIndexAt(const int &i, const int &j);
@@ -119,6 +125,11 @@ namespace Mochi::Platformer
         void LoadDefault();
         void InitMap();
         void Render() const;
+
+        std::vector<std::string> GetTilesetIds() const;
+        std::vector<std::string> GetBreakableIds() const;
+        std::vector<std::string> GetEnemyIds() const;
+
 #if DEBUG
         void DebugGizmos(Debug::IGizmos *gizmos, Graphics::Camera *camera) const;
 #endif

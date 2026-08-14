@@ -47,6 +47,17 @@ namespace Mochi::ECS
                           return a->GetPriority() > b->GetPriority();
                       });
         }
+
+        template <typename TSystem>
+        void UnregisterSystem()
+        {
+            static_assert(std::is_base_of_v<IECSSystem, TSystem>,
+                          "TSystem must inherit from IECSSystem");
+
+            std::erase_if(mSystems, [](const SystemPtr &system)
+                          { return dynamic_cast<TSystem *>(system.get()) != nullptr; });
+        }
+
         EntityType CreateEntity();
         void DestroyEntity(const EntityType &e);
 

@@ -74,7 +74,7 @@ namespace Mochi::Shooter
         virtual void Render() const override;
         virtual void GUI() override;
 #if DEBUG
-        virtual void Debug() const override;
+        virtual void Debug() override;
 #endif
 
         // Game specific

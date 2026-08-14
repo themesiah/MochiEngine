@@ -23,7 +23,7 @@ namespace Mochi
         virtual bool Update(const float &dt) override;
         virtual void Render() const override;
         virtual void GUI() override;
-        virtual void Debug() const override;
+        virtual void Debug() override;
     };
 }
 

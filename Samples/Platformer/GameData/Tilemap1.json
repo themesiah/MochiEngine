@@ -7,7 +7,7 @@
 	},
 	"tilesets":
 	[
-		"Tilemap.json"
+		"Tileset1.json"
 	],
 	"scenario":[
 		{"i":9,"j":14,"set":0},

@@ -63,7 +63,7 @@ namespace Mochi::Platformer
     }
 
 #if DEBUG
-    void GameLayer::Debug() const
+    void GameLayer::Debug()
     {
         mTilemap->DebugGizmos(mGizmos, mCamera);
     }
